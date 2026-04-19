@@ -1,9 +1,0 @@
-{
-  "warnings": [
-    "1주차 월요일 상세는 md 기준으로 반영했지만, 화~금과 2주차 일부 세부 블록은 skeleton 상태다.",
-    "노재형 PCI는 개별 후기 부족으로 placeholder guide를 적용했다.",
-    "심장내과 조장용 공지/PCI 보조 문서는 26.02.06 update 버전을 기준으로 구조화했다."
-  ],
-  "excluded_sessions": [],
-  "unconfigured_assignments": []
-}

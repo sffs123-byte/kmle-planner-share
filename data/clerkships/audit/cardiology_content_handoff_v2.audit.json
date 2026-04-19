@@ -6,7 +6,7 @@
     "briefing": "/Users/sffs123gmail.com/.openclaw/workspace/kmle-planner/data/clerkships/briefings/cardiology_content_handoff_v2.daily_briefing.json",
     "reminders": "/Users/sffs123gmail.com/.openclaw/workspace/kmle-planner/data/clerkships/reminders/cardiology_content_handoff_v2.day_reminders.json",
     "audit": "/Users/sffs123gmail.com/.openclaw/workspace/kmle-planner/data/clerkships/audit/cardiology_content_handoff_v2.audit.json",
-    "planner_import": "/Users/sffs123gmail.com/.openclaw/workspace/kmle-planner/data/planner_state_cardiology_content_handoff_v2_import.json"
+    "planner_import": "/Users/sffs123gmail.com/.openclaw/workspace/kmle-planner-deploy/data/planner_state_cardiology_content_handoff_v2_import.json"
   },
   "counts": {
     "sessions": 73,
