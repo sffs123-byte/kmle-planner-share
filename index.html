@@ -3563,6 +3563,8 @@
         selectedWeekKey = weekKeyFromDate(baseDate);
         calendarMonthCursor = startOfWeek(baseDate);
       }
+      saveState(`bundle import: ${bundle.meta?.clerkship_id || 'unknown'}`);
+      window.__kmlePlannerState = state;
       renderAll();
       if (switchToCalendar) {
         document.querySelector('[data-tab="calendar"]').click();
@@ -3591,6 +3593,23 @@
         return true;
       } catch (error) {
         console.error('auto respiratory bundle load failed', error);
+        return false;
+      }
+    }
+
+    async function ensureCardiologyBundlePresent() {
+      const clerkshipId = 'cardiology-2026-04-chief-draft-v2';
+      const alreadyLoaded = Boolean(state.clerkshipBundles?.[clerkshipId])
+        && (state.calendarEvents || []).some(event => event.bundleId === clerkshipId);
+      if (alreadyLoaded || location.protocol === 'file:') return false;
+      try {
+        await loadPlannerBundleFromUrl('./data/clerkships/bundles/cardiology_content_handoff_v2.bundle.json', {
+          switchToCalendar: false,
+          jumpToBundleDate: false
+        });
+        return true;
+      } catch (error) {
+        console.error('auto cardiology bundle load failed', error);
         return false;
       }
     }
@@ -7382,6 +7401,7 @@
     window.__kmlePlannerState = state;
     renderAll();
     void ensureRespiratoryBundlePresent();
+    void ensureCardiologyBundlePresent();
     void checkForAppUpdate({ silent: !plannerStandaloneMode() });
     window.setInterval(() => { void checkForAppUpdate(); }, 60000);
 
