@@ -1,0 +1,3922 @@
+{
+  "summary": {
+    "bundle_id": "cardiology-2026-04-chief-draft-v2",
+    "actionable_section_count": 123,
+    "referenced_actionable_count": 94,
+    "unreferenced_actionable_count": 29,
+    "low_coverage_count": 37,
+    "transformed_section_count": 94
+  },
+  "rows": [
+    {
+      "ref": "0-1",
+      "title": "심장내과 전체 인계",
+      "line_range": "7-9",
+      "referenced": false,
+      "source_line_count": 1,
+      "exact_hit_count": 0,
+      "missing_count": 1,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "실습의 전반적인 흐름, 유폴리오 과제 및 현장 승인 항목, 그리고 일자별/파트별 상세 인계를 다룹니다. 특히 '알파벳별 개인 일정'을 통해 조원 간 역할을 미리 나누시기 바랍니다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "0-2",
+      "title": "조장용 공지 / 문자 예시",
+      "line_range": "10-12",
+      "referenced": false,
+      "source_line_count": 1,
+      "exact_hit_count": 0,
+      "missing_count": 1,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "조장이 조원들에게 전달해야 할 주차별/일자별 공지 사항과 교수님들께 보내야 할 문자 템플릿이 정리되어 있습니다. 연락 금지 교수님과 연락 주의 교수님을 반드시 확인하세요."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "0-3",
+      "title": "PCI 및 외래 인계",
+      "line_range": "13-15",
+      "referenced": false,
+      "source_line_count": 1,
+      "exact_hit_count": 0,
+      "missing_count": 1,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "심혈관조영실(PCI실) 입실 동선, 주의사항, 그리고 각 교수님별 외래 참관 스타일과 질문 포인트를 담고 있습니다. 외래 참관 전 해당 교수님의 인계를 미리 확인하는 것이 좋습니다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "0-4",
+      "title": "김준형 교수님 심전도 발표 인계",
+      "line_range": "16-18",
+      "referenced": false,
+      "source_line_count": 1,
+      "exact_hit_count": 0,
+      "missing_count": 1,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "가장 까다로운 일정 중 하나인 심전도 발표의 금기어, 슬라이드 구성 디테일, 그리고 역대 조들의 생생한 피드백이 정리되어 있습니다. 발표 준비 시 반드시 정독이 필요합니다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "1-1-1",
+      "title": "교수님 및 장소",
+      "line_range": "24-219",
+      "referenced": false,
+      "source_line_count": 148,
+      "exact_hit_count": 0,
+      "missing_count": 148,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "연락금지 교수님께는 먼저 연락하지 않습니다. 다만 교수님이 먼저 연락주실 수 있으므로, 조장은 모든 교수님 번호를 미리 저장해둡니다.",
+        "아래 표를 보고 교수님 얼굴을 미리 익혀두는 것이 좋습니다.",
+        "연락금지 교수님이 많이 해제되어 2026년 기준 실습 지도체계, 실습지도 역할, 시간표가 새로 업데이트되었습니다.",
+        "책임교수: 진선아 / 부책임교수: 성석우, 오진경",
+        "오스키 센터: 042-580-8390",
+        "심장내과 의국: 042-280-8796"
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "1-1-2",
+      "title": "시간표",
+      "line_range": "220-316",
+      "referenced": true,
+      "source_line_count": 71,
+      "exact_hit_count": 210,
+      "missing_count": 39,
+      "coverage_percent": 45.1,
+      "missing_examples": [
+        "08:00–08:40: 전공의 발표 참관 *(교육실)*",
+        "08:40–10:00: Orientation *(교육실)* — **진선아 교수**",
+        "10:00–12:00: 자율실습 및 보충학습",
+        "12:00–13:00: 종례 발표 *(교육실)* — **성인환 교수**",
+        "13:00–14:00: 점심시간",
+        "14:00–16:00: Pretest *(교육실)* — **성석우 교수**"
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-27-0800-resident",
+          "line": "의국회의는 오전 7시 50분까지 교육실로 가면 된다."
+        },
+        {
+          "from": "session:s-2026-04-27-0800-resident",
+          "line": "의국회의는 오전 7시 50분까지 교육실로 가면 된다."
+        },
+        {
+          "from": "session:s-2026-04-27-0800-resident",
+          "line": "전공의 발표를 듣는 형태로 진행되며, 보통 오전 8시 30분쯤 끝난다."
+        },
+        {
+          "from": "session:s-2026-04-27-0800-resident",
+          "line": "교육실 문을 열고 들어가면 맞은편 벽 쪽에 의자가 일렬로 놓여 있는 경우가 많다."
+        },
+        {
+          "from": "session:s-2026-04-27-0800-resident",
+          "line": "1-3-2. 의국회의"
+        },
+        {
+          "from": "session:s-2026-04-27-0800-resident",
+          "line": "집합 및 진행"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-27-0800-resident",
+        "session:s-2026-04-27-0840-ot",
+        "session:s-2026-04-27-1000-selfstudy",
+        "session:s-2026-04-27-1200-ihd",
+        "session:s-2026-04-27-1400-pretest",
+        "session:s-2026-04-27-1600-physical"
+      ]
+    },
+    {
+      "ref": "1-1-3",
+      "title": "알파벳별 개인 일정",
+      "line_range": "317-358",
+      "referenced": true,
+      "source_line_count": 32,
+      "exact_hit_count": 4,
+      "missing_count": 31,
+      "coverage_percent": 3.1,
+      "missing_examples": [
+        "기본 원칙",
+        "조장 C는 고정이고, 나머지 A / B / D / E / F는 사다리타기로 나눈다.",
+        "알파벳별 일정은 절대적인 고정표라기보다는, 발표 / 병력청취 / PPT 제작이 한 사람에게 과하게 몰리지 않도록 조 안에서 역할을 나누기 위한 기본 틀이다.",
+        "우리 조는 6명조이므로 아래 배치를 기준으로 움직이면 된다.",
+        "6명조 기준 역할 정리",
+        "1. A"
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "간호사 선생님께 실습학생이라고 말씀드리고 초진환자를 부탁하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "초진 보는 곳은 따로 정해져 있다기보다, 대기하는 장소나 빈 진료실에서 진행하는 경우가 많다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "1-4-3. 외래 및 PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "공통 준비"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-1000-abc-pci",
+        "session:s-2026-04-28-1000-def-outpatient",
+        "session:s-2026-04-29-1400-abc-selfstudy",
+        "session:s-2026-04-29-1400-def-outpatient",
+        "session:s-2026-04-30-0800-ecg-a",
+        "session:s-2026-04-30-0840-abc-outpatient"
+      ]
+    },
+    {
+      "ref": "1-1-4",
+      "title": "유폴리오 - [내가 직접 서술]유폴리오라는 사이트를 통해 과제를 제출해야하는 것. 근데, 현장에서 교수님께 승인을 받아야하는 것들이 있다. 승인을 받기 위해서는 준비를 해야하니, 미리 현장승인을 받아야한다는 것을 알고 그 수업일정에 들어가야한다. 현장승인이 필요한 과제가 들어있는 수업은 실습 캘린더 상에 특별한 색깔로 표시되어야한다.",
+      "line_range": "359-451",
+      "referenced": true,
+      "source_line_count": 70,
+      "exact_hit_count": 10,
+      "missing_count": 65,
+      "coverage_percent": 7.1,
+      "missing_examples": [
+        "현장승인 기본 원칙",
+        "현장승인이 필요한 항목은 미리 준비한 상태로 수업에 들어가야 한다.",
+        "핫스팟을 이용해 아이패드로 유폴리오에 접속한 뒤, .만 찍어서 제출해두고 교수님께 승인만 받으면 되게 준비해두는 것이 좋다.",
+        "자유기록(현장승인)",
+        "총 10개 항목이며, 실습내용과 느낀점은 모두 .만 찍어서 제출한 뒤 현장승인을 받으면 된다.",
+        "일정 전에 미리 제출해두는 것이 편하고, 시간은 아무렇게나 넣어도 무방하다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-27-1400-pretest",
+          "line": "치프 선생님이 없는 경우에는 성석우 교수님께 월요일 오전에 연락해 Pretest 일정을 확인했다는 인계가 있다."
+        },
+        {
+          "from": "session:s-2026-04-27-1400-pretest",
+          "line": "치프 선생님이 없는 경우에는 성석우 교수님께 월요일 오전에 연락해 Pretest 일정을 확인했다는 인계가 있다."
+        },
+        {
+          "from": "session:s-2026-04-27-1400-pretest",
+          "line": "치프 선생님이 없는 경우라면 이때 교수님께 ECG 케이스와 MI 케이스도 함께 요청하고, 나의 꿈 스캔본도 드리면 된다."
+        },
+        {
+          "from": "session:s-2026-04-27-1400-pretest",
+          "line": "Pretest는 서술형 시험이며, 한 문제 안에서도 여러 내용을 함께 서술해야 하는 형태라고 한다."
+        },
+        {
+          "from": "session:s-2026-04-27-1400-pretest",
+          "line": "1-3-5. Pretest"
+        },
+        {
+          "from": "session:s-2026-04-27-1400-pretest",
+          "line": "일정 확인"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-27-1400-pretest",
+        "session:s-2026-04-27-1600-physical",
+        "session:s-2026-04-28-0840-heartsound",
+        "session:s-2026-04-28-1000-abc-pci",
+        "session:s-2026-04-28-1000-def-outpatient",
+        "session:s-2026-04-28-1400-htn-cpx"
+      ]
+    },
+    {
+      "ref": "1-1-5",
+      "title": "발표 준비",
+      "line_range": "452-495",
+      "referenced": true,
+      "source_line_count": 36,
+      "exact_hit_count": 1,
+      "missing_count": 35,
+      "coverage_percent": 2.8,
+      "missing_examples": [
+        "발표 공통 원칙",
+        "기본적으로 모든 발표에서 발표 대본이 보이면 큰 감점이라고 생각하면 된다. 이재환 교수님의 POMR 발표도 같은 기준으로 보면 된다. 필요한 경우에는 티 나지 않는 정도의 간단한 메모만 준비하는 것이 좋다.",
+        "다만 성인환 교수님 발표는 대본 사용에 비교적 관대한 편이었다는 인계가 있다. (15,16조)",
+        "영상 자료를 넣는 경우에는 자동실행과 반복재생이 정상적으로 되는지 미리 확인한다. 재생이 끊기면 방향키 <- -> 순서로 누르면 다시 재생된다.",
+        "발표 장비 및 세팅",
+        "발표는 개인 노트북으로 진행한다. HDMI 연결이 가능한 노트북이나 연결 잭을 반드시 준비한다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-1200-echoecg",
+          "line": "PPT 대본에 적힌 질문들을 꼭 읽어보고 간다."
+        },
+        {
+          "from": "session:s-2026-04-28-1200-echoecg",
+          "line": "PPT 대본에 적힌 질문들을 꼭 읽어보고 간다."
+        },
+        {
+          "from": "session:s-2026-04-28-1200-echoecg",
+          "line": "관상동맥과 벽의 위치도 파악하고 가야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1200-echoecg",
+          "line": "기본적인 것을 물어보시니, 심초음파는 KMLE나 알렌이라도 보고 가는 것이 좋다."
+        },
+        {
+          "from": "session:s-2026-04-28-1200-echoecg",
+          "line": "1-4-4. My Echo & EKG 발표"
+        },
+        {
+          "from": "session:s-2026-04-28-1200-echoecg",
+          "line": "준비 포인트"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-1200-echoecg",
+        "session:s-2026-04-29-0840-ihd-topic",
+        "session:s-2026-04-29-1000-pomr",
+        "session:s-2026-04-29-1200-mi",
+        "session:s-2026-04-30-0800-ecg-a",
+        "session:s-2026-05-01-0800-ecg-b"
+      ]
+    },
+    {
+      "ref": "1-2",
+      "title": "월요일 실습 시작 전 할 일",
+      "line_range": "496-637",
+      "referenced": true,
+      "source_line_count": 114,
+      "exact_hit_count": 110,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2. 월요일 실습 시작 전 할 일"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2. 월요일 실습 시작 전 할 일"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2. 월요일 실습 시작 전 할 일"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "오전에 바로 챙길 것"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "성석우 교수님께 MI 케이스와 심전도 케이스를 받는다. (5,6조는 치프 선생님이 주셨다는 인계가 있었다.)"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "심장 신체진찰에서 쓸 인계받은 자 2개를 챙긴다."
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-27-1000-selfstudy"
+      ]
+    },
+    {
+      "ref": "1-2-1",
+      "title": "조장",
+      "line_range": "498-551",
+      "referenced": true,
+      "source_line_count": 43,
+      "exact_hit_count": 0,
+      "missing_count": 43,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "전 조 인계받기",
+        "전 조 조장에게 인계받을 때 심장 진찰용 자를 함께 받아온다.",
+        "My Echo & ECG 준비",
+        "My Echo & ECG 발표를 위해 본인 심전도와 심초음파 영상을 미리 준비해야 한다. 이 자료는 1주차 화요일 성인환 교수님 증례발표 수업에서 사용한다.",
+        "심초음파는 월요일 오후 복영남 교수님 수업 시간에 찍고 오면 되지만, 실습 시작 전 주 금요일 늦어도 월요일 오전까지는 심초음파실 간호사 또는 임상병리사에게 초음파 촬영 예정임을 미리 말씀드려야 한다.",
+        "심전도 검사는 별도 사전 조율 없이 정해진 시간에 방문해 번호표를 받고 촬영하면 된다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "assignment:assign-my-echo-ecg",
+          "line": "첫날 검사와 자료 다운로드를 끝내야 화요일 발표가 안정적이다."
+        },
+        {
+          "from": "assignment:assign-my-echo-ecg",
+          "line": "본인 ECG 스캔 + echo 영상 mp4 정리 후 발표자료 작성"
+        },
+        {
+          "from": "assignment:assign-my-echo-ecg",
+          "line": "심초음파 영상은 avi보다 mp4로 바로 받는 편이 안전"
+        }
+      ],
+      "derived_ids": [
+        "assignment:assign-my-echo-ecg"
+      ]
+    },
+    {
+      "ref": "1-2-2",
+      "title": "6명인 조 역할",
+      "line_range": "552-588",
+      "referenced": false,
+      "source_line_count": 31,
+      "exact_hit_count": 0,
+      "missing_count": 31,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "조원들 알파벳별 역할 정하기",
+        "조장은 C로 고정하고, 나머지 A / B / D / E / F는 사다리타기로 정한다.",
+        "우리 조는 6명조이므로 G는 고려하지 않아도 된다.",
+        "PCI와 외래 참관도 기본적으로 알파벳 순서에 맞춰 진행한다.",
+        "알파벳별 발표 역할은 심장내과에서 절대적으로 고정된 규칙이라기보다, 일정과 발표 부담을 고려해 조 안에서 자율적으로 배분하는 구조로 이해하면 된다.",
+        "한 명에게 발표와 병력청취, PPT 제작이 과도하게 몰리지 않도록 나누는 것이 중요하다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "1-2-4",
+      "title": "조원",
+      "line_range": "589-637",
+      "referenced": true,
+      "source_line_count": 37,
+      "exact_hit_count": 41,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2. 월요일 실습 시작 전 할 일"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2. 월요일 실습 시작 전 할 일"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "전 조 조장에게 인계받을 때 심장 진찰용 자를 함께 받아온다."
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "My Echo & ECG 발표를 위해 본인 심전도와 심초음파 영상을 미리 준비해야 한다. 이 자료는 1주차 화요일 성인환 교수님 증례발표 수업에서 사용한다."
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2. 월요일 실습 시작 전 할 일"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2-1. 조장"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-27-1000-selfstudy"
+      ]
+    },
+    {
+      "ref": "1-3-1",
+      "title": "조장",
+      "line_range": "641-651",
+      "referenced": true,
+      "source_line_count": 7,
+      "exact_hit_count": 7,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2. 월요일 실습 시작 전 할 일"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2. 월요일 실습 시작 전 할 일"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "전 조 조장에게 인계받을 때 심장 진찰용 자를 함께 받아온다."
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "My Echo & ECG 발표를 위해 본인 심전도와 심초음파 영상을 미리 준비해야 한다. 이 자료는 1주차 화요일 성인환 교수님 증례발표 수업에서 사용한다."
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2. 월요일 실습 시작 전 할 일"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2-1. 조장"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-27-1000-selfstudy"
+      ]
+    },
+    {
+      "ref": "1-3-2",
+      "title": "의국회의",
+      "line_range": "652-665",
+      "referenced": true,
+      "source_line_count": 9,
+      "exact_hit_count": 9,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-27-0800-resident",
+          "line": "1-3-2. 의국회의"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-27-0800-resident"
+      ]
+    },
+    {
+      "ref": "1-3-3",
+      "title": "OT",
+      "line_range": "666-681",
+      "referenced": true,
+      "source_line_count": 11,
+      "exact_hit_count": 11,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-27-0840-ot",
+          "line": "1-3-3. OT"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-27-0840-ot"
+      ]
+    },
+    {
+      "ref": "1-3-4",
+      "title": "IHD Q&A",
+      "line_range": "682-703",
+      "referenced": true,
+      "source_line_count": 16,
+      "exact_hit_count": 16,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-27-1200-ihd",
+          "line": "1-3-4. IHD Q&A"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-27-1200-ihd"
+      ]
+    },
+    {
+      "ref": "1-3-5",
+      "title": "Pretest",
+      "line_range": "704-723",
+      "referenced": true,
+      "source_line_count": 14,
+      "exact_hit_count": 14,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-27-1400-pretest",
+          "line": "1-3-5. Pretest"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-27-1400-pretest"
+      ]
+    },
+    {
+      "ref": "1-3-6",
+      "title": "심장 신체진찰",
+      "line_range": "724-745",
+      "referenced": true,
+      "source_line_count": 16,
+      "exact_hit_count": 16,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-27-1600-physical",
+          "line": "1-3-6. 심장 신체진찰"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-27-1600-physical"
+      ]
+    },
+    {
+      "ref": "1-3-7",
+      "title": "일정 후 할 일",
+      "line_range": "746-766",
+      "referenced": true,
+      "source_line_count": 16,
+      "exact_hit_count": 5,
+      "missing_count": 10,
+      "coverage_percent": 37.5,
+      "missing_examples": [
+        "역할별 할 일",
+        "MI 환자는 퇴원이 빠르므로 병력청취를 최대한 바로 하는 것이 좋다.",
+        "영상 녹화가 가능하면 녹화하고, 부득이하게 거부하면 녹음이라도 해두는 것이 좋다.",
+        "이 영상 또는 녹음은 MI 발표 첫 페이지에 첨부해야 하므로, 환자에게 녹화 / 녹음 가능 여부와 문진 가능 여부를 묻는 동의 과정도 함께 담아두는 것이 좋다.",
+        "전원이 할 일",
+        "Pretest 유폴리오 자유기록(과제)을 당일 제출한다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2. 월요일 실습 시작 전 할 일"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2. 월요일 실습 시작 전 할 일"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "전 조 조장에게 인계받을 때 심장 진찰용 자를 함께 받아온다."
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "My Echo & ECG 발표를 위해 본인 심전도와 심초음파 영상을 미리 준비해야 한다. 이 자료는 1주차 화요일 성인환 교수님 증례발표 수업에서 사용한다."
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2. 월요일 실습 시작 전 할 일"
+        },
+        {
+          "from": "session:s-2026-04-27-1000-selfstudy",
+          "line": "1-2-1. 조장"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-27-1000-selfstudy"
+      ]
+    },
+    {
+      "ref": "1-4-1",
+      "title": "대면환자 증례보고서 OT",
+      "line_range": "770-786",
+      "referenced": true,
+      "source_line_count": 11,
+      "exact_hit_count": 11,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-0800-facecase",
+          "line": "1-4-1. 대면환자 증례보고서 OT"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-0800-facecase"
+      ]
+    },
+    {
+      "ref": "1-4-2",
+      "title": "심음청진",
+      "line_range": "787-833",
+      "referenced": true,
+      "source_line_count": 36,
+      "exact_hit_count": 36,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-0840-heartsound",
+          "line": "1-4-2. 심음청진"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-0840-heartsound"
+      ]
+    },
+    {
+      "ref": "1-4-3",
+      "title": "외래 및 PCI 참관",
+      "line_range": "834-848",
+      "referenced": true,
+      "source_line_count": 9,
+      "exact_hit_count": 9,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "1-4-3. 외래 및 PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "1-4-3. 외래 및 PCI 참관"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-1000-abc-pci",
+        "session:s-2026-04-28-1000-def-outpatient"
+      ]
+    },
+    {
+      "ref": "1-4-4",
+      "title": "My Echo & EKG 발표",
+      "line_range": "849-875",
+      "referenced": true,
+      "source_line_count": 20,
+      "exact_hit_count": 20,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-1200-echoecg",
+          "line": "1-4-4. My Echo & EKG 발표"
+        },
+        {
+          "from": "assignment:assign-my-echo-ecg",
+          "line": "첫날 검사와 자료 다운로드를 끝내야 화요일 발표가 안정적이다."
+        },
+        {
+          "from": "assignment:assign-my-echo-ecg",
+          "line": "본인 ECG 스캔 + echo 영상 mp4 정리 후 발표자료 작성"
+        },
+        {
+          "from": "assignment:assign-my-echo-ecg",
+          "line": "심초음파 영상은 avi보다 mp4로 바로 받는 편이 안전"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-1200-echoecg",
+        "assignment:assign-my-echo-ecg"
+      ]
+    },
+    {
+      "ref": "1-4-5",
+      "title": "CPX HTN",
+      "line_range": "876-930",
+      "referenced": true,
+      "source_line_count": 46,
+      "exact_hit_count": 46,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-1400-htn-cpx",
+          "line": "1-4-5. CPX HTN"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-1400-htn-cpx"
+      ]
+    },
+    {
+      "ref": "1-5-1",
+      "title": "허혈성 심질환",
+      "line_range": "934-962",
+      "referenced": true,
+      "source_line_count": 22,
+      "exact_hit_count": 22,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-29-0840-ihd-topic",
+          "line": "1-5-1. 허혈성 심질환"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-29-0840-ihd-topic"
+      ]
+    },
+    {
+      "ref": "1-5-2",
+      "title": "POMR 증례발표",
+      "line_range": "963-981",
+      "referenced": true,
+      "source_line_count": 13,
+      "exact_hit_count": 13,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-29-1000-pomr",
+          "line": "1-5-2. POMR 증례발표"
+        },
+        {
+          "from": "assignment:assign-pomr-ecg-case",
+          "line": "A/B는 POMR과 심전도 발표를 같은 케이스로 이어서 준비하면 효율적이다."
+        },
+        {
+          "from": "assignment:assign-pomr-ecg-case",
+          "line": "심전도 케이스를 POMR과 연동해 슬라이드 2종 정리"
+        },
+        {
+          "from": "assignment:assign-pomr-ecg-case",
+          "line": "전공의 선생님 피드백 슬롯 확보 필요"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-29-1000-pomr",
+        "assignment:assign-pomr-ecg-case"
+      ]
+    },
+    {
+      "ref": "1-5-3",
+      "title": "흉통 CPX",
+      "line_range": "982-1007",
+      "referenced": true,
+      "source_line_count": 19,
+      "exact_hit_count": 19,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:overlay-2026-04-29-cpx",
+          "line": "1-5-3. 흉통 CPX"
+        },
+        {
+          "from": "session:overlay-2026-04-29-cpx",
+          "line": "2-6-3. 2주차 수요일"
+        },
+        {
+          "from": "session:overlay-2026-04-29-cpx",
+          "line": "**김준형 교수님 (발표 전날 리마인드)**:"
+        },
+        {
+          "from": "session:overlay-2026-04-29-cpx",
+          "line": "\"교수님 안녕하세요. 현재 심장내과 실습 중인 PK 0,0조 조장 000입니다. 내일 오전 7시 50분 교육실에서 진행되는 심전도 발표 때 뵙겠습니다. 혹시 일정에 변동 사항이 있다면 말씀 부탁드립니다. 감사합니다!\""
+        }
+      ],
+      "derived_ids": [
+        "session:overlay-2026-04-29-cpx"
+      ]
+    },
+    {
+      "ref": "1-5-4",
+      "title": "MI 발표",
+      "line_range": "1008-1030",
+      "referenced": true,
+      "source_line_count": 16,
+      "exact_hit_count": 16,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-29-1200-mi",
+          "line": "1-5-4. MI 발표"
+        },
+        {
+          "from": "assignment:assign-mi-case",
+          "line": "MI 환자는 퇴원이 빨라 병력청취를 가능한 빨리 시작해야 한다."
+        },
+        {
+          "from": "assignment:assign-mi-case",
+          "line": "환자 병력청취/녹화/녹음 + 발표자료"
+        },
+        {
+          "from": "assignment:assign-mi-case",
+          "line": "동의 장면까지 녹화/녹음 파일로 남기면 발표 첫 페이지에 넣기 좋다."
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-29-1200-mi",
+        "assignment:assign-mi-case"
+      ]
+    },
+    {
+      "ref": "1-5-5",
+      "title": "DEF 외래 참관",
+      "line_range": "1031-1044",
+      "referenced": true,
+      "source_line_count": 9,
+      "exact_hit_count": 9,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "1-5-5. DEF 외래 참관"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-29-1400-def-outpatient"
+      ]
+    },
+    {
+      "ref": "1-5-6",
+      "title": "일정 후 할 일",
+      "line_range": "1045-1062",
+      "referenced": true,
+      "source_line_count": 12,
+      "exact_hit_count": 0,
+      "missing_count": 12,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "조장",
+        "치프 쌤 또는 레지 2년차 선생님께 심전도 발표 피드백 부탁 문자를 드린다.",
+        "김준형 교수님께 목요일 심전도 발표 일정 리마인드 문자를 보낸다. (2025-2학기부터 인계사항)",
+        "A학생 및 발표자",
+        "치프 쌤 또는 레지 2년차 선생님께 피드백을 받는다.",
+        "조장 또는 발표자가 문자해서 피드백 시간과 장소를 잡는다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-29-1400-abc-selfstudy",
+          "line": "ABC 자율실습"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-29-1400-abc-selfstudy"
+      ]
+    },
+    {
+      "ref": "1-6-1",
+      "title": "심전도 발표 A",
+      "line_range": "1066-1080",
+      "referenced": true,
+      "source_line_count": 10,
+      "exact_hit_count": 10,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-30-0800-ecg-a",
+          "line": "1-6-1. 심전도 발표 A"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-30-0800-ecg-a"
+      ]
+    },
+    {
+      "ref": "1-6-2",
+      "title": "외래참관 & PCI 참관",
+      "line_range": "1081-1087",
+      "referenced": true,
+      "source_line_count": 3,
+      "exact_hit_count": 3,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "1-6-2. 외래참관 & PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-30-0840-def-pci",
+          "line": "1-6-2. 외래참관 & PCI 참관"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-30-0840-abc-outpatient",
+        "session:s-2026-04-30-0840-def-pci"
+      ]
+    },
+    {
+      "ref": "1-6-3",
+      "title": "CPX 두근거림 / 실신",
+      "line_range": "1088-1116",
+      "referenced": true,
+      "source_line_count": 21,
+      "exact_hit_count": 21,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-30-1400-palpit",
+          "line": "1-6-3. CPX 두근거림 / 실신"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-30-1400-palpit"
+      ]
+    },
+    {
+      "ref": "1-7-1",
+      "title": "심전도 발표 B(G)",
+      "line_range": "1120-1132",
+      "referenced": true,
+      "source_line_count": 8,
+      "exact_hit_count": 8,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-01-0800-ecg-b",
+          "line": "1-7-1. 심전도 발표 B(G)"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-01-0800-ecg-b"
+      ]
+    },
+    {
+      "ref": "1-7-2",
+      "title": "제세동 / 심폐소생술 OT",
+      "line_range": "1133-1166",
+      "referenced": true,
+      "source_line_count": 26,
+      "exact_hit_count": 26,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-01-0840-osce",
+          "line": "1-7-2. 제세동 / 심폐소생술 OT"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-01-0840-osce"
+      ]
+    },
+    {
+      "ref": "1-8-1",
+      "title": "조장",
+      "line_range": "1170-1182",
+      "referenced": true,
+      "source_line_count": 8,
+      "exact_hit_count": 0,
+      "missing_count": 8,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "이동 계획",
+        "세종에 가는 방법을 미리 정한다. (차를 탈지, 숙소를 잡을지, 버스를 탈지)",
+        "자차로 이동하면 1시간 전 출발, BRT를 타려면 문화동에서 2시간 전 택시를 타고 대전역으로 가고, 택시로 세종을 가려면 1시간 전 출발을 기준으로 잡았다는 인계가 있다.",
+        "첫날 운영 메모",
+        "첫날은 세종에 9시쯤 도착해서 4층 교육수련실에 가 출입증을 받고 서명을 2개 정도 하면 된다고 한다.",
+        "3층 의학도서관 안에 있는 PK실을 쓰면 되고, 3층 컴퓨터 2대 중 1대만 EMR이 된다는 인계가 있다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-04-1000-abc-outpatient-sejong",
+          "line": "ABC 외래 참관"
+        },
+        {
+          "from": "session:s-2026-05-04-1330-def-outpatient-sejong",
+          "line": "DEF 외래 참관"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-04-1000-abc-outpatient-sejong",
+        "session:s-2026-05-04-1330-def-outpatient-sejong"
+      ]
+    },
+    {
+      "ref": "1-8-2",
+      "title": "세종 일정 관련 참고사항",
+      "line_range": "1183-1200",
+      "referenced": true,
+      "source_line_count": 12,
+      "exact_hit_count": 12,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-04-1000-abc-outpatient-sejong",
+          "line": "ABC 외래 참관"
+        },
+        {
+          "from": "session:s-2026-05-04-1330-def-outpatient-sejong",
+          "line": "DEF 외래 참관"
+        },
+        {
+          "from": "session:s-2026-05-05-1000-abc-pci-sejong",
+          "line": "김민수 교수님 시술과 노재형 교수님 PCI를 참관한다."
+        },
+        {
+          "from": "session:s-2026-05-05-1000-abc-pci-sejong",
+          "line": "김민수 교수님 시술과 노재형 교수님 PCI를 참관한다."
+        },
+        {
+          "from": "session:s-2026-05-05-1000-abc-pci-sejong",
+          "line": "2026년에는 두 분 다 바쁘셔서 질문은 많지 않았다는 인계가 있다."
+        },
+        {
+          "from": "session:s-2026-05-05-1000-abc-pci-sejong",
+          "line": "2025년에는 외래에 가지 않은 나머지 조원들이 10시부터 1시간 동안 노재형 교수님 PCI를 참관했다."
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-04-1000-abc-outpatient-sejong",
+        "session:s-2026-05-04-1330-def-outpatient-sejong",
+        "session:s-2026-05-05-1000-abc-pci-sejong",
+        "session:s-2026-05-05-1100-def-pci-sejong",
+        "session:s-2026-05-05-1330-def-arrhyproc",
+        "session:s-2026-05-06-1000-abc-arrhyproc"
+      ]
+    },
+    {
+      "ref": "1-9-1",
+      "title": "조장",
+      "line_range": "1204-1215",
+      "referenced": false,
+      "source_line_count": 7,
+      "exact_hit_count": 0,
+      "missing_count": 7,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "연락 및 준비",
+        "연금이 아닌 교수님들께 수업 1~2일 전에 일정 확인 문자를 보내는 것이 원칙이다. 보통 낮 1~2시쯤 보냈다는 인계가 있다.",
+        "김미주 교수님 호흡곤란 CPX는 미리 대본을 짜야 하므로, 일정 있는 주 월요일에 연락드려 케이스를 받아오는 것이 좋다. 간단히 일정 확인 문자만 보내도 ~~에 대한 케이스 준비해오세요라고 답장 주신다고 한다.",
+        "세종 운영 감각",
+        "11,12조 인계에서는 세종 시간표는 거의 의미가 없고 오전 10시 시작이라고 보면 된다고 했다.",
+        "외래참관과 초진환자를 못 채운 학생을 먼저 외래로 보내고, 나머지는 PCI룸으로 가서 참관하는 흐름이었다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "1-9-2",
+      "title": "외래 참관",
+      "line_range": "1216-1224",
+      "referenced": true,
+      "source_line_count": 5,
+      "exact_hit_count": 5,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-04-1000-abc-outpatient-sejong",
+          "line": "ABC 외래 참관"
+        },
+        {
+          "from": "session:s-2026-05-04-1330-def-outpatient-sejong",
+          "line": "DEF 외래 참관"
+        },
+        {
+          "from": "session:overlay-2026-05-04-pci-split",
+          "line": "김민수 교수님께 전날 연락드리면 **월요일 세종 도착 시 전화** 달라고 하시는 경우가 많다."
+        },
+        {
+          "from": "session:overlay-2026-05-04-pci-split",
+          "line": "1-8-2. 세종 일정 관련 참고사항"
+        },
+        {
+          "from": "session:overlay-2026-05-04-pci-split",
+          "line": "김민수 교수님 중심 운영"
+        },
+        {
+          "from": "session:overlay-2026-05-04-pci-split",
+          "line": "김민수 교수님께 전날 연락드리면 **월요일 세종 도착 시 전화** 달라고 하시는 경우가 많다."
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-04-1000-abc-outpatient-sejong",
+        "session:s-2026-05-04-1330-def-outpatient-sejong",
+        "session:overlay-2026-05-04-pci-split"
+      ]
+    },
+    {
+      "ref": "1-9-3",
+      "title": "PCI 참관",
+      "line_range": "1225-1238",
+      "referenced": true,
+      "source_line_count": 9,
+      "exact_hit_count": 9,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:overlay-2026-05-04-pci-split",
+          "line": "김민수 교수님께 전날 연락드리면 **월요일 세종 도착 시 전화** 달라고 하시는 경우가 많다."
+        },
+        {
+          "from": "session:overlay-2026-05-04-pci-split",
+          "line": "1-8-2. 세종 일정 관련 참고사항"
+        },
+        {
+          "from": "session:overlay-2026-05-04-pci-split",
+          "line": "김민수 교수님 중심 운영"
+        },
+        {
+          "from": "session:overlay-2026-05-04-pci-split",
+          "line": "김민수 교수님께 전날 연락드리면 **월요일 세종 도착 시 전화** 달라고 하시는 경우가 많다."
+        },
+        {
+          "from": "session:overlay-2026-05-04-pci-split",
+          "line": "아침에 전화드리면 오후에 몇 시까지 PCI방으로 오라는 식으로 안내해주신다."
+        },
+        {
+          "from": "session:overlay-2026-05-04-pci-split",
+          "line": "세종 일정은 일부 오진경/박재형 교수님 수업을 제외하면 대부분 김민수 교수님이 안내하고 주도한다고 보면 된다."
+        }
+      ],
+      "derived_ids": [
+        "session:overlay-2026-05-04-pci-split"
+      ]
+    },
+    {
+      "ref": "1-9-4",
+      "title": "심혈관질환의 개요 Q&A",
+      "line_range": "1239-1246",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 4,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:overlay-2026-05-04-q-a",
+          "line": "1-9-4. 심혈관질환의 개요 Q&A"
+        }
+      ],
+      "derived_ids": [
+        "session:overlay-2026-05-04-q-a"
+      ]
+    },
+    {
+      "ref": "1-9-5",
+      "title": "일정 후 할 일",
+      "line_range": "1247-1253",
+      "referenced": false,
+      "source_line_count": 3,
+      "exact_hit_count": 0,
+      "missing_count": 3,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "조장",
+        "세종에서 초진 일정을 다시 확인한다.",
+        "이번 주 심전도 발표인 학생 4명에 대해 전공의 선생님 피드백 일정을 잡는 문자를 드린다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "1-10-1",
+      "title": "외래 참관",
+      "line_range": "1257-1271",
+      "referenced": true,
+      "source_line_count": 10,
+      "exact_hit_count": 10,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:overlay-2026-05-05-quota",
+          "line": "1-10-1. 외래 참관"
+        }
+      ],
+      "derived_ids": [
+        "session:overlay-2026-05-05-quota"
+      ]
+    },
+    {
+      "ref": "1-10-2",
+      "title": "오전 PCI 참관",
+      "line_range": "1272-1282",
+      "referenced": true,
+      "source_line_count": 6,
+      "exact_hit_count": 6,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-05-1000-abc-pci-sejong",
+          "line": "1-10-2. 오전 PCI 참관"
+        },
+        {
+          "from": "session:s-2026-05-05-1100-def-pci-sejong",
+          "line": "1-10-2. 오전 PCI 참관"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-05-1000-abc-pci-sejong",
+        "session:s-2026-05-05-1100-def-pci-sejong"
+      ]
+    },
+    {
+      "ref": "1-10-3",
+      "title": "점심",
+      "line_range": "1283-1295",
+      "referenced": false,
+      "source_line_count": 8,
+      "exact_hit_count": 0,
+      "missing_count": 8,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "2026 메모",
+        "2026년에는 화요일 점심을 따로 사주기보다, 수요일 부정맥과 심전도 수업 때 도시락을 시켜 같이 먹으면서 수업했다는 인계가 있다.",
+        "7,8조도 수요일에 도시락을 사주시며 부정맥 수업을 했다고 한다.",
+        "2025 메모",
+        "원래는 심장내과에서 사주는 식사 시간이고, 키노하나에서 다 같이 식사하는 경우가 많았다.",
+        "보통 김민수 교수님 수업 후 같이 먹는 느낌이었다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "1-10-4",
+      "title": "부정맥 시술 참관",
+      "line_range": "1296-1305",
+      "referenced": true,
+      "source_line_count": 6,
+      "exact_hit_count": 6,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-05-1330-def-arrhyproc",
+          "line": "1-10-4. 부정맥 시술 참관"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-05-1330-def-arrhyproc"
+      ]
+    },
+    {
+      "ref": "1-10-5",
+      "title": "일정 후 할 일",
+      "line_range": "1306-1312",
+      "referenced": false,
+      "source_line_count": 3,
+      "exact_hit_count": 0,
+      "missing_count": 3,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "조장",
+        "김민수 교수님 기준으로 초진 일정이 어떻게 이어질지 다시 확인한다.",
+        "다음 조 OSCE센터 예약을 한다. (ICU room, ER room)"
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "1-11-1",
+      "title": "조장",
+      "line_range": "1316-1321",
+      "referenced": false,
+      "source_line_count": 2,
+      "exact_hit_count": 0,
+      "missing_count": 2,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "기본 메모",
+        "일정이 끝나고 치프쌤에게 받을 피드백 일정을 다시 조정한다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "1-11-2",
+      "title": "심장초음파 수업",
+      "line_range": "1322-1341",
+      "referenced": true,
+      "source_line_count": 14,
+      "exact_hit_count": 15,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-06-1330-echo-understanding",
+          "line": "1-11-2. 심장초음파 수업"
+        },
+        {
+          "from": "session:s-2026-05-06-1330-echo-understanding",
+          "line": "1-11-6. 심초음파실 참관(ABC)"
+        },
+        {
+          "from": "session:s-2026-05-06-1330-echo-understanding",
+          "line": "담당 교수 및 준비"
+        },
+        {
+          "from": "session:s-2026-05-06-1330-echo-understanding",
+          "line": "오진경 교수님이 진행한다."
+        },
+        {
+          "from": "session:s-2026-05-06-1330-echo-understanding",
+          "line": "하루 전날 교수님께 일정 확인 문자를 보내 장소와 시간을 확인하는 것이 좋다."
+        },
+        {
+          "from": "session:s-2026-05-06-1330-echo-understanding",
+          "line": "심초음파실로 오라고 하시면 1시 30분에 심초음파 검사실로 가서 기다리면 된다."
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-06-1330-echo-understanding",
+        "session:overlay-2026-05-06-item1"
+      ]
+    },
+    {
+      "ref": "1-11-3",
+      "title": "외래 참관",
+      "line_range": "1342-1349",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 4,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:overlay-2026-05-06-item2",
+          "line": "1-11-3. 외래 참관"
+        }
+      ],
+      "derived_ids": [
+        "session:overlay-2026-05-06-item2"
+      ]
+    },
+    {
+      "ref": "1-11-4",
+      "title": "부정맥과 심전도",
+      "line_range": "1350-1369",
+      "referenced": true,
+      "source_line_count": 14,
+      "exact_hit_count": 14,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-06-1100-arrhy-lecture",
+          "line": "1-11-4. 부정맥과 심전도"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-06-1100-arrhy-lecture"
+      ]
+    },
+    {
+      "ref": "1-11-5",
+      "title": "부정맥 시술 참관",
+      "line_range": "1370-1378",
+      "referenced": true,
+      "source_line_count": 5,
+      "exact_hit_count": 5,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-06-1000-abc-arrhyproc",
+          "line": "1-11-5. 부정맥 시술 참관"
+        },
+        {
+          "from": "session:overlay-2026-05-06-item3",
+          "line": "1-11-5. 부정맥 시술 참관"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-06-1000-abc-arrhyproc",
+        "session:overlay-2026-05-06-item3"
+      ]
+    },
+    {
+      "ref": "1-11-6",
+      "title": "심초음파실 참관(ABC)",
+      "line_range": "1379-1410",
+      "referenced": true,
+      "source_line_count": 23,
+      "exact_hit_count": 23,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-06-1330-echo-understanding",
+          "line": "박재형 교수님이 진행한다."
+        },
+        {
+          "from": "session:s-2026-05-06-1330-echo-understanding",
+          "line": "박재형 교수님이 진행한다."
+        },
+        {
+          "from": "session:s-2026-05-06-1330-echo-understanding",
+          "line": "*시간표에 없어도 있는 일정**이라는 인계가 있다."
+        },
+        {
+          "from": "session:s-2026-05-06-1330-echo-understanding",
+          "line": "2026년에는 심초음파실 문 밖에서 8시 50분부터 대기했고, 교수님이 9시에 맞춰 오셔서 진행했다."
+        },
+        {
+          "from": "session:s-2026-05-06-1330-echo-understanding",
+          "line": "1-11-2. 심장초음파 수업"
+        },
+        {
+          "from": "session:s-2026-05-06-1330-echo-understanding",
+          "line": "담당 교수 및 기본 흐름"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-06-1330-echo-understanding"
+      ]
+    },
+    {
+      "ref": "1-11-7",
+      "title": "일정 후 / 본원 이동",
+      "line_range": "1411-1420",
+      "referenced": false,
+      "source_line_count": 5,
+      "exact_hit_count": 0,
+      "missing_count": 5,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "조장",
+        "김준형 교수님께 심전도 발표 일정 리마인드 문자를 보낸다.",
+        "C, D학생",
+        "치프쌤 또는 레지던트 2년차 선생님께 피드백을 받는다.",
+        "치프쌤마다 피드백 시간, 장소, 파일 준비 방식이 다르다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "1-12-1",
+      "title": "조장",
+      "line_range": "1424-1429",
+      "referenced": false,
+      "source_line_count": 2,
+      "exact_hit_count": 0,
+      "missing_count": 2,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "기본 메모",
+        "치프 또는 레지던트 2년차 선생님께 피드백 관련 문자를 보낸다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "1-12-2",
+      "title": "심전도 발표 C,D",
+      "line_range": "1430-1438",
+      "referenced": true,
+      "source_line_count": 5,
+      "exact_hit_count": 5,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-07-0800-ecg-cd",
+          "line": "1-12-2. 심전도 발표 C,D"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-07-0800-ecg-cd"
+      ]
+    },
+    {
+      "ref": "1-12-3",
+      "title": "호흡곤란 CPX",
+      "line_range": "1439-1475",
+      "referenced": true,
+      "source_line_count": 28,
+      "exact_hit_count": 28,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-07-0900-dyspnea",
+          "line": "1-12-3. 호흡곤란 CPX"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-07-0900-dyspnea"
+      ]
+    },
+    {
+      "ref": "1-12-4",
+      "title": "ABC 외래 참관",
+      "line_range": "1476-1482",
+      "referenced": true,
+      "source_line_count": 3,
+      "exact_hit_count": 3,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-07-1330-abc-outpatient",
+          "line": "1-12-4. ABC 외래 참관"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-07-1330-abc-outpatient"
+      ]
+    },
+    {
+      "ref": "1-12-5",
+      "title": "일정 후 할 일",
+      "line_range": "1483-1489",
+      "referenced": true,
+      "source_line_count": 3,
+      "exact_hit_count": 0,
+      "missing_count": 3,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "E, F학생",
+        "치프쌤 또는 레지던트 2년차 선생님께 피드백을 받는다.",
+        "치프쌤마다 피드백 시간, 장소, 파일 준비 방식이 다르다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-07-1330-def-selfstudy",
+          "line": "DEF 자율실습"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-07-1330-def-selfstudy"
+      ]
+    },
+    {
+      "ref": "1-13-1",
+      "title": "심전도 발표 E,F",
+      "line_range": "1493-1501",
+      "referenced": true,
+      "source_line_count": 5,
+      "exact_hit_count": 5,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-08-0800-ecg-ef",
+          "line": "1-13-1. 심전도 발표 E,F"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-08-0800-ecg-ef"
+      ]
+    },
+    {
+      "ref": "1-13-2",
+      "title": "심장판막질환",
+      "line_range": "1502-1537",
+      "referenced": true,
+      "source_line_count": 29,
+      "exact_hit_count": 29,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-08-1330-valvular",
+          "line": "1-13-2. 심장판막질환"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-08-1330-valvular"
+      ]
+    },
+    {
+      "ref": "2-1-1",
+      "title": "실습 전주 공지",
+      "line_range": "1544-1557",
+      "referenced": true,
+      "source_line_count": 10,
+      "exact_hit_count": 1,
+      "missing_count": 9,
+      "coverage_percent": 10.0,
+      "missing_examples": [
+        "**ABCDEF 분배**: C는 조장 고정(조장 스케줄 배려용), 나머지 ABDEF 5명이서 사다리타기로 분배(인원수가 더 많거나 적을 경우 알파벳 추가 후 돌리기).",
+        "**프린트**: 월요일 아침에 배부 예정 (예진기록지 2부).",
+        "**프리테스트 준비**",
+        "**성인환 교수님 월요일 IHD 수업 질문 준비**: 드박이나 이것저것 참고해서 답변까지 작성 후 질문자-답변자 구성해서 1인 1질문/1답변 가능하도록 분배.",
+        "**성석우 교수님 월요일 심장진찰 준비**: 드박, 이러닝 컨소시엄 등 참고. 남자 두 명 환자 역할로 미리 뽑아두기. 환자 역할은 안에 흰 티 입고 오기.",
+        "**박재형 교수님 자필 과제**: \"나의 꿈\" 1페이지, \"심음청진의 방법\" 4페이지(양면 2장) — 총 5페이지."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-24-chief",
+          "line": "ABCDEF 분배: C는 조장 고정(조장 스케줄 배려용), 나머지 ABDEF 5명이서 사다리타기로 분배."
+        },
+        {
+          "from": "session:comm-2026-04-24-chief",
+          "line": "프린트: 월요일 아침에 배부 예정 (예진기록지 2부)."
+        },
+        {
+          "from": "session:comm-2026-04-24-chief",
+          "line": "2-1-1. 실습 전주 공지"
+        },
+        {
+          "from": "session:comm-2026-04-24-chief",
+          "line": "ABCDEF 분배: C는 조장 고정(조장 스케줄 배려용), 나머지 ABDEF 5명이서 사다리타기로 분배."
+        },
+        {
+          "from": "session:comm-2026-04-24-chief",
+          "line": "프린트: 월요일 아침에 배부 예정 (예진기록지 2부)."
+        },
+        {
+          "from": "session:comm-2026-04-24-chief",
+          "line": "프리테스트 준비."
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-24-chief"
+      ]
+    },
+    {
+      "ref": "2-1-2",
+      "title": "월요일 공지",
+      "line_range": "1558-1569",
+      "referenced": true,
+      "source_line_count": 8,
+      "exact_hit_count": 1,
+      "missing_count": 7,
+      "coverage_percent": 12.5,
+      "missing_examples": [
+        "**4시~4시 반쯤에 EKG -> Echo 순으로 찍으러 가기**",
+        "**DEF**: MI case 환자 문진 및 녹화.",
+        "**AB**: 심전도 발표 미리 준비하기.",
+        "**AB**: 수요일 이재환 교수님 POMR 발표 준비하기. 아무나 해도 되는데 목요일 발표 미리 연습하는 겸, EKG 케이스 환자로 그대로 하면 됨. 김준형 교수님과는 스타일이 많이 다르니 야마 참고.",
+        "**전원**: Pretest 유폴리오 과제 업로드 (세 줄 정도 작성).",
+        "**전원**: 화요일 성인환 교수님 My Echo & ECG PPT 발표 준비."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-27-chief",
+          "line": "4시~4시 반쯤 EKG -> Echo 순으로 촬영 가기."
+        },
+        {
+          "from": "session:comm-2026-04-27-chief",
+          "line": "DEF: MI case 환자 문진 및 녹화."
+        },
+        {
+          "from": "session:comm-2026-04-27-chief",
+          "line": "2-1-2. 월요일 공지"
+        },
+        {
+          "from": "session:comm-2026-04-27-chief",
+          "line": "4시~4시 반쯤 EKG -> Echo 순으로 촬영 가기."
+        },
+        {
+          "from": "session:comm-2026-04-27-chief",
+          "line": "DEF: MI case 환자 문진 및 녹화."
+        },
+        {
+          "from": "session:comm-2026-04-27-chief",
+          "line": "AB: 심전도 발표 및 수요일 POMR 발표 준비."
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-27-chief"
+      ]
+    },
+    {
+      "ref": "2-1-3",
+      "title": "화요일 공지",
+      "line_range": "1570-1577",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 1,
+      "missing_count": 3,
+      "coverage_percent": 25.0,
+      "missing_examples": [
+        "**DEF**: MI case 발표 자료 완성.",
+        "**AB**: POMR 증례발표 PPT 준비 + 전공의 선생님 피드백받을 PPT도 완성.",
+        "**전원**: 흉통 CPX 준비 (증례토의 느낌)."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-28-chief",
+          "line": "DEF: MI case 발표 자료 완성."
+        },
+        {
+          "from": "session:comm-2026-04-28-chief",
+          "line": "AB: POMR 증례발표 및 전공의 피드백용 PPT 완성."
+        },
+        {
+          "from": "session:comm-2026-04-28-chief",
+          "line": "2-1-3. 화요일 공지"
+        },
+        {
+          "from": "session:comm-2026-04-28-chief",
+          "line": "DEF: MI case 발표 자료 완성."
+        },
+        {
+          "from": "session:comm-2026-04-28-chief",
+          "line": "AB: POMR 증례발표 및 전공의 피드백용 PPT 완성."
+        },
+        {
+          "from": "session:comm-2026-04-28-chief",
+          "line": "전원: 흉통 CPX 준비 (증례토의 형식)."
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-28-chief"
+      ]
+    },
+    {
+      "ref": "2-1-4",
+      "title": "수요일 공지",
+      "line_range": "1578-1584",
+      "referenced": true,
+      "source_line_count": 3,
+      "exact_hit_count": 1,
+      "missing_count": 2,
+      "coverage_percent": 33.3,
+      "missing_examples": [
+        "**A**: 목요일 심전도 발표 준비 (조장, 발표자 7:20까지, 그 외 7:30~40 전까지 출근).",
+        "**전원**: 권희진 교수님 두근거림/실신 CPX 준비. 두 명씩 나누어서 두근거림, 실신 롤플레잉 준비하기. 감별진단들의 임상적 특징, 진단 및 치료 방법들에 대해서도 알아가기."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-29-chief",
+          "line": "A: 목요일 심전도 발표 준비 (발표자/조장 7:20까지, 그 외 7:40까지 출근)."
+        },
+        {
+          "from": "session:comm-2026-04-29-chief",
+          "line": "전원: 권희진 교수님 두근거림/실신 CPX 준비 (2인 1조 롤플레잉, 감별진단 숙지)."
+        },
+        {
+          "from": "session:comm-2026-04-29-chief",
+          "line": "2-1-4. 수요일 공지"
+        },
+        {
+          "from": "session:comm-2026-04-29-chief",
+          "line": "A: 목요일 심전도 발표 준비 (발표자/조장 7:20까지, 그 외 7:40까지 출근)."
+        },
+        {
+          "from": "session:comm-2026-04-29-chief",
+          "line": "전원: 권희진 교수님 두근거림/실신 CPX 준비 (2인 1조 롤플레잉, 감별진단 숙지)."
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-29-chief"
+      ]
+    },
+    {
+      "ref": "2-1-5",
+      "title": "목요일 공지",
+      "line_range": "1585-1592",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 1,
+      "missing_count": 3,
+      "coverage_percent": 25.0,
+      "missing_examples": [
+        "**B**: 금요일 심전도 발표 준비 (조장, 발표자 7:10까지, 그 외 7:30까지 출근).",
+        "**OSCE 연습**: (연습 일정 잡았다면) 일정 종료 후 OSCE 센터에서 제세동/심폐소생술 OSCE 연습.",
+        "**전원**: 금요일 안계택 교수님 제세동/심폐소생술 OSCE 준비."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-30-chief",
+          "line": "B: 금요일 심전도 발표 준비 (발표자/조장 7:10까지, 그 외 7:30까지 출근)."
+        },
+        {
+          "from": "session:comm-2026-04-30-chief",
+          "line": "OSCE 센터 제세동/심폐소생술 연습."
+        },
+        {
+          "from": "session:comm-2026-04-30-chief",
+          "line": "2-1-5. 목요일 공지"
+        },
+        {
+          "from": "session:comm-2026-04-30-chief",
+          "line": "B: 금요일 심전도 발표 준비 (발표자/조장 7:10까지, 그 외 7:30까지 출근)."
+        },
+        {
+          "from": "session:comm-2026-04-30-chief",
+          "line": "OSCE 센터 제세동/심폐소생술 연습."
+        },
+        {
+          "from": "session:comm-2026-04-30-chief",
+          "line": "전원: 금요일 안계택 교수님 OSCE 준비."
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-30-chief"
+      ]
+    },
+    {
+      "ref": "2-1-6",
+      "title": "금요일 공지",
+      "line_range": "1593-1600",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 1,
+      "missing_count": 3,
+      "coverage_percent": 25.0,
+      "missing_examples": [
+        "**세종 이동**: 다음 주 세종 9:30까지 집합 후 세종 명찰 받고 10시부터 일정 시작. 김민수 교수님 연락대로 진행하기. 일정 없거나 외래 등 유폴 다 채웠어도 심혈관 조영실 가서 참관하기.",
+        "**ABC**: 목금 심전도 발표 준비할 수 있도록 얘기해두기.",
+        "**1주차 주간성찰 유폴리오 작성**"
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-05-01-chief",
+          "line": "다음 주 세종 9:30 집합 후 명찰 수령 (10시 일정 시작)."
+        },
+        {
+          "from": "session:comm-2026-05-01-chief",
+          "line": "ABC: 목금 심전도 발표 준비 리마인드."
+        },
+        {
+          "from": "session:comm-2026-05-01-chief",
+          "line": "2-1-6. 금요일 공지"
+        },
+        {
+          "from": "session:comm-2026-05-01-chief",
+          "line": "다음 주 세종 9:30 집합 후 명찰 수령 (10시 일정 시작)."
+        },
+        {
+          "from": "session:comm-2026-05-01-chief",
+          "line": "ABC: 목금 심전도 발표 준비 리마인드."
+        },
+        {
+          "from": "session:comm-2026-05-01-chief",
+          "line": "1주차 주간성찰 유폴리오 작성."
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-05-01-chief"
+      ]
+    },
+    {
+      "ref": "2-1-7",
+      "title": "일요일 공지",
+      "line_range": "1601-1606",
+      "referenced": true,
+      "source_line_count": 2,
+      "exact_hit_count": 1,
+      "missing_count": 1,
+      "coverage_percent": 50.0,
+      "missing_examples": [
+        "내일 세종 9:30까지 집합 후 세종 명찰 받고 10시부터 각자 일정 진행 시작."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-05-03-chief",
+          "line": "내일 세종 9:30 집합 후 10시 일정 시작."
+        },
+        {
+          "from": "session:comm-2026-05-03-chief",
+          "line": "2-1-7. 일요일 공지"
+        },
+        {
+          "from": "session:comm-2026-05-03-chief",
+          "line": "내일 세종 9:30 집합 후 10시 일정 시작."
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-05-03-chief"
+      ]
+    },
+    {
+      "ref": "2-1-8",
+      "title": "2주차 세종 관련 추가 공지",
+      "line_range": "1607-1613",
+      "referenced": true,
+      "source_line_count": 3,
+      "exact_hit_count": 0,
+      "missing_count": 3,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "세종 관련 공지는 각자 조 상황, 교수님 연락 맞춰서 알아서 하기.",
+        "전공의 선생님 ECG 발표 피드백은 CD 화요일, EF 수요일에 할 가능성 높음. 그 전에 각자 PPT 완성시키기.",
+        "화요일에 노재형 교수님 심혈관질환에 대한 Q&A 유폴 제출 — 자세한 건 드박 참고."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-05-06-chief",
+          "line": "일정 종료 후 공지"
+        },
+        {
+          "from": "session:comm-2026-05-06-chief",
+          "line": "일정 종료 후 공지"
+        },
+        {
+          "from": "session:comm-2026-05-06-chief",
+          "line": "CD: 목요일 심전도 발표 준비 (발표자/조장 7:20까지, 그 외 7:40까지 출근)."
+        },
+        {
+          "from": "session:comm-2026-05-06-chief",
+          "line": "김미주 교수님 호흡곤란 CPX 준비 (2인 1조 가상환자 대본 작성 및 암기, 신체진찰 포함)."
+        },
+        {
+          "from": "session:comm-2026-05-06-chief",
+          "line": "2-1-8. 2주차 수요일 공지"
+        },
+        {
+          "from": "session:comm-2026-05-06-chief",
+          "line": "일정 종료 후 공지"
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-05-06-chief"
+      ]
+    },
+    {
+      "ref": "2-1-9",
+      "title": "2주차 수요일 공지",
+      "line_range": "1614-1620",
+      "referenced": true,
+      "source_line_count": 3,
+      "exact_hit_count": 1,
+      "missing_count": 2,
+      "coverage_percent": 33.3,
+      "missing_examples": [
+        "**CD**: 목요일 심전도 발표 준비하기 (조장, 발표자 7:20까지, 그 외 7:30~40 전까지 출근).",
+        "**김미주 교수님 호흡곤란 CPX 준비**: 2명씩 짝지어서 교수님이 제시한 설정에 맞게 가상환자 대본 작성. 의사/환자는 랜덤이니 대본 다 외워가기. 신체진찰 있음."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-05-07-chief",
+          "line": "EF: 금요일 심전도 발표 준비 (발표자/조장 7:20까지, 그 외 7:40까지 출근)."
+        },
+        {
+          "from": "session:comm-2026-05-07-chief",
+          "line": "양유진 교수님 심장판막 강의 준비 (야마 확인)."
+        },
+        {
+          "from": "session:comm-2026-05-07-chief",
+          "line": "2-1-9. 2주차 목요일 공지"
+        },
+        {
+          "from": "session:comm-2026-05-07-chief",
+          "line": "EF: 금요일 심전도 발표 준비 (발표자/조장 7:20까지, 그 외 7:40까지 출근)."
+        },
+        {
+          "from": "session:comm-2026-05-07-chief",
+          "line": "양유진 교수님 심장판막 강의 준비 (야마 확인)."
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-05-07-chief"
+      ]
+    },
+    {
+      "ref": "2-1-10",
+      "title": "2주차 목요일 공지",
+      "line_range": "1621-1627",
+      "referenced": true,
+      "source_line_count": 3,
+      "exact_hit_count": 0,
+      "missing_count": 3,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**일정 종료 후 공지**",
+        "**EF**: 금요일 심전도 발표 준비하기 (조장, 발표자 7:20까지, 그 외 7:30~40 전까지 출근).",
+        "**양유진 교수님 심장판막 강의 준비**: 돌아가면서 질문 던지심. 야마만 보면 됨. 부담 없음."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "과제 Checklist (금요일 내)"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "과제 Checklist (금요일 내)"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "이재환 교수님 POMR"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "2주차 주간성찰 및 최종성찰"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "2-1-10. 2주차 금요일 공지"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "과제 Checklist (금요일 내)"
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-05-08-chief"
+      ]
+    },
+    {
+      "ref": "2-1-11",
+      "title": "2주차 금요일 공지",
+      "line_range": "1628-1639",
+      "referenced": false,
+      "source_line_count": 8,
+      "exact_hit_count": 0,
+      "missing_count": 8,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**과제 Checklist (금요일 내 제출)**",
+        "1. 이재환 교수님 POMR",
+        "2. 2주차 주간성찰, 최종성찰",
+        "**과제 Checklist (토요일 내 제출)**",
+        "1. 송필상 교수님 대면증례보고서",
+        "2. 김민수 교수님 심전도 조별 토의"
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "2-2-1",
+      "title": "과제 Checklist (조원 취합용)",
+      "line_range": "1643-1654",
+      "referenced": true,
+      "source_line_count": 8,
+      "exact_hit_count": 3,
+      "missing_count": 6,
+      "coverage_percent": 25.0,
+      "missing_examples": [
+        "**1주차 주간성찰** (금요일)",
+        "**Pretest 유폴리오** (당일)",
+        "**2주차 주간/최종성찰** (금요일)",
+        "**심전도 조별 토의** (토요일)",
+        "**임상표현/임상술기 계획 및 자기평가** (토요일, 총 8개)",
+        "**심초음파 검사의 이해** (토요일)"
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "과제 Checklist (금요일 내)"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "과제 Checklist (금요일 내)"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "2주차 주간성찰 및 최종성찰"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "2-1-10. 2주차 금요일 공지"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "과제 Checklist (금요일 내)"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "2주차 주간성찰 및 최종성찰"
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-05-08-chief",
+        "assignment:assign-final-uploads"
+      ]
+    },
+    {
+      "ref": "2-2-2",
+      "title": "인계용 파일 리스트 (다음 조 전달용)",
+      "line_range": "1655-1665",
+      "referenced": true,
+      "source_line_count": 7,
+      "exact_hit_count": 11,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "과제 Checklist (금요일 내)"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "과제 Checklist (금요일 내)"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "2주차 주간성찰 및 최종성찰"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "2-1-10. 2주차 금요일 공지"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "과제 Checklist (금요일 내)"
+        },
+        {
+          "from": "session:comm-2026-05-08-chief",
+          "line": "2주차 주간성찰 및 최종성찰"
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-05-08-chief",
+        "assignment:assign-final-uploads"
+      ]
+    },
+    {
+      "ref": "2-3",
+      "title": "문자 기본 원칙",
+      "line_range": "1666-1679",
+      "referenced": true,
+      "source_line_count": 10,
+      "exact_hit_count": 0,
+      "missing_count": 10,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**연락 금지 교수님**: 노재형 교수님 (연락 보낼 필요 없음).",
+        "**연락 주의 교수님**:",
+        "**박재형 교수님**: 전주 금요일 연락 보내고 답장 없어도 심음청진 위치랑 시간 고정이니 추가 연락 하지 말 것.",
+        "**김준형 교수님**: 월요일에 심전도 발표 총정리해서 리마인드 문자, 매주 수요일에 다음날 심전도 발표 있다는 문자 연락.",
+        "**성인환 교수님**: 제일 첫 연락 빼고는 안 보냄.",
+        "**성석우 교수님**"
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 화요일 오후 2시에 의국에서 고혈압 CPX가 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 이번 주 수요일 오전 11시에 교육실에서 흉통 CPX 시험이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "2-6-1. 성석우 교수님"
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-27-admin",
+        "session:comm-2026-04-28-admin",
+        "session:comm-2026-04-29-admin",
+        "session:comm-2026-04-30-admin",
+        "session:comm-2026-05-04-admin",
+        "session:comm-2026-05-05-admin"
+      ]
+    },
+    {
+      "ref": "2-4-1",
+      "title": "전주 금요일 준비 및 문자",
+      "line_range": "1683-1689",
+      "referenced": true,
+      "source_line_count": 3,
+      "exact_hit_count": 0,
+      "missing_count": 3,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**준비할 것**: 이름 명단표(15장), 사진 명단표(5장) 정도 넉넉하게 준비. 예진기록지 1인당 2부씩 프린트해서 주기.",
+        "**박재형 교수님 문자**:",
+        "\"교수님 안녕하세요. 다음 주부터 2주간 심장내과 실습 예정인 PK 0,0조 조장 000입니다. 다음 주 17일 화요일 오전 9시부터 OSCE센터에서 심음청진 시험이 예정되어 있다고 전달 받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-24-admin",
+          "line": "\"교수님 안녕하세요. 다음 주부터 2주간 심장내과 실습 예정인 PK 0,0조 조장 000입니다. 다음 주 화요일 오전 9시부터 OSCE센터에서 심음청진 시험이 예정되어 있다고 전달 받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-24-admin",
+          "line": "\"교수님 안녕하세요. 다음 주부터 2주간 심장내과 실습 예정인 PK 0,0조 조장 000입니다. 다음 주 화요일 오전 9시부터 OSCE센터에서 심음청진 시험이 예정되어 있다고 전달 받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-24-admin",
+          "line": "2-4-1. 박재형 교수님"
+        },
+        {
+          "from": "session:comm-2026-04-24-admin",
+          "line": "\"교수님 안녕하세요. 다음 주부터 2주간 심장내과 실습 예정인 PK 0,0조 조장 000입니다. 다음 주 화요일 오전 9시부터 OSCE센터에서 심음청진 시험이 예정되어 있다고 전달 받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-24-admin"
+      ]
+    },
+    {
+      "ref": "2-4-2",
+      "title": "전주 일요일 문자",
+      "line_range": "1690-1701",
+      "referenced": false,
+      "source_line_count": 8,
+      "exact_hit_count": 0,
+      "missing_count": 8,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**진선아 교수님**:",
+        "\"교수님 안녕하세요. 내일부터 2주간 심장내과 실습 예정인 PK 0,0조 조장 000입니다. 내일 의국 회의 후 오전 8시 40분부터 교육실에서 오리엔테이션이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 2주간 성실히 배우겠습니다. 감사합니다.\"",
+        "**성인환 교수님**:",
+        "\"교수님 안녕하세요. 내일부터 2주간 심장내과 실습 예정인 PK 0,0조 조장 000입니다. 주말에 연락드려 죄송합니다. 다름이 아니라, 내일 12시부터 교육실에서 증례발표 수업이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 2주간 성실히 배우겠습니다. 감사합니다.\"",
+        "**복영남 교수님**:",
+        "\"교수님 안녕하세요. 내일부터 2주간 심장내과 실습 예정인 PK 0,0조 조장 000입니다. 주말에 연락드려 죄송합니다. 다름이 아니라, 내일 오후 4시부터 심초음파실에서 심장 진찰 수업이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 2주간 성실히 배우겠습니다. 감사합니다.\""
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "2-5-1",
+      "title": "1주차 월요일 (화, 수 일정까지 한 번에 보냄)",
+      "line_range": "1705-1718",
+      "referenced": true,
+      "source_line_count": 10,
+      "exact_hit_count": 0,
+      "missing_count": 10,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**성석우 교수님**:",
+        "\"교수님 안녕하세요. 현재 심장내과 실습 중인 PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\"",
+        "**진선아 교수님 (OT 하면서 여쭤봐도 됨)**:",
+        "\"교수님 안녕하세요. 이번 주부터 2주 간 심장내과 실습 중인 PK 0,0조 조장 000입니다. 내일 화요일 오후 2시에 의국에서 고혈압 CPX가 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 2주 간 성실히 배우겠습니다. 감사합니다.\"",
+        "**박현웅 교수님**:",
+        "\"교수님 안녕하세요. 이번 주부터 2주 간 심장내과 실습 중인 PK 0,0조 조장 000입니다. 이번 주 수요일 오전 11시에 교육실에서 흉통 CPX 시험이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 2주 간 성실히 배우겠습니다. 감사합니다.\""
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. 내일부터 2주간 실습 예정인 PK 0,0조 조장 000입니다. 내일 의국 회의 후 오전 8시 40분부터 교육실에서 오리엔테이션이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 성실히 배우겠습니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. 내일부터 2주간 실습 예정인 PK 0,0조 조장 000입니다. 내일 의국 회의 후 오전 8시 40분부터 교육실에서 오리엔테이션이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 성실히 배우겠습니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 주말에 연락드려 죄송합니다. 다름이 아니라, 내일 12시부터 교육실에서 증례발표 수업이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 주말에 연락드려 죄송합니다. 내일 오후 4시부터 심초음파실에서 심장 진찰 수업이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "2-5-1. 진선아 교수님"
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. 내일부터 2주간 실습 예정인 PK 0,0조 조장 000입니다. 내일 의국 회의 후 오전 8시 40분부터 교육실에서 오리엔테이션이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 성실히 배우겠습니다. 감사합니다.\""
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-26-admin"
+      ]
+    },
+    {
+      "ref": "2-5-2",
+      "title": "1주차 화요일",
+      "line_range": "1719-1727",
+      "referenced": true,
+      "source_line_count": 5,
+      "exact_hit_count": 0,
+      "missing_count": 5,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**전공의 선생님 (인원수에 따라 수 조정)**:",
+        "\"선생님 안녕하세요. 현재 심장내과 실습 중인 PK 0,0조 조장 000입니다. 다름이 아니라 이번 주 목요일 1명, 이번 주 금요일 1명, 다음 주 목요일 2명, 다음 주 금요일 2명이 김준형 교수님 심전도 발표를 앞두고 있어, 사전에 피드백을 부탁드리고자 연락드렸습니다. 선생님께서 편하신 시간에 이번 주 발표 예정인 2명에 대해 피드백을 받을 수 있을지 여쭙고 싶습니다. 바쁘신 와중에 번거롭게 해드려 죄송합니다. 감사합니다.\"",
+        "(※ 이후 심전도 케이스 환자 명단 송부: 환자번호 - 환자이름 - 발표학생 알파벳 순)",
+        "**정진옥 교수님 (당일 외래 들어가는 조원에게 부탁하는 것이 나을 수도 있음)**:",
+        "\"교수님 안녕하세요. 현재 심장내과 실습 중인 PK 0,0조 조장 000입니다. 내일 수요일 8시 40분에 교육실에서 허혈성 심질환 수업을 진행하며 7개 주제를 발표하는 것으로 인계받았는데, 전 조와 변동 없이 준비해오면 될지 여쭙고자 연락드립니다. 2주 간 성실히 배우겠습니다. 감사합니다.\""
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. 내일부터 2주간 실습 예정인 PK 0,0조 조장 000입니다. 내일 의국 회의 후 오전 8시 40분부터 교육실에서 오리엔테이션이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 성실히 배우겠습니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. 내일부터 2주간 실습 예정인 PK 0,0조 조장 000입니다. 내일 의국 회의 후 오전 8시 40분부터 교육실에서 오리엔테이션이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 성실히 배우겠습니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 주말에 연락드려 죄송합니다. 다름이 아니라, 내일 12시부터 교육실에서 증례발표 수업이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 주말에 연락드려 죄송합니다. 내일 오후 4시부터 심초음파실에서 심장 진찰 수업이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "2-5-1. 진선아 교수님"
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. 내일부터 2주간 실습 예정인 PK 0,0조 조장 000입니다. 내일 의국 회의 후 오전 8시 40분부터 교육실에서 오리엔테이션이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 성실히 배우겠습니다. 감사합니다.\""
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-26-admin"
+      ]
+    },
+    {
+      "ref": "2-5-3",
+      "title": "1주차 수요일",
+      "line_range": "1728-1735",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 0,
+      "missing_count": 4,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**권희진 교수님**:",
+        "\"교수님 안녕하세요. 현재 심장내과 실습 중인 PK 0,0조 조장 000입니다. 내일 목요일 오후 2시에 교육실에서 두근거림, 실신 CPX가 진행된다고 전달받아, 혹시 일정에 변동사항이 있는지 여쭙고자 연락드렸습니다. 조원은 총 O명입니다. 2주 간 성실히 배우겠습니다. 감사합니다.\"",
+        "**김준형 교수님 (발표 전날 리마인드)**:",
+        "\"교수님 안녕하세요. 현재 심장내과 실습 중인 PK 0,0조 조장 000입니다. 내일 오전 7시 50분 교육실에서 심전도 발표를 진행하는 것으로 전달받았는데, 혹시 일정에 변동 사항이 있다면 말씀 부탁드립니다. 감사합니다!\""
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. 내일부터 2주간 실습 예정인 PK 0,0조 조장 000입니다. 내일 의국 회의 후 오전 8시 40분부터 교육실에서 오리엔테이션이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 성실히 배우겠습니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. 내일부터 2주간 실습 예정인 PK 0,0조 조장 000입니다. 내일 의국 회의 후 오전 8시 40분부터 교육실에서 오리엔테이션이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 성실히 배우겠습니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 주말에 연락드려 죄송합니다. 다름이 아니라, 내일 12시부터 교육실에서 증례발표 수업이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 주말에 연락드려 죄송합니다. 내일 오후 4시부터 심초음파실에서 심장 진찰 수업이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "2-5-1. 진선아 교수님"
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. 내일부터 2주간 실습 예정인 PK 0,0조 조장 000입니다. 내일 의국 회의 후 오전 8시 40분부터 교육실에서 오리엔테이션이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 성실히 배우겠습니다. 감사합니다.\""
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-26-admin"
+      ]
+    },
+    {
+      "ref": "2-5-4",
+      "title": "1주차 목요일",
+      "line_range": "1736-1741",
+      "referenced": true,
+      "source_line_count": 2,
+      "exact_hit_count": 0,
+      "missing_count": 2,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**안계택 교수님 (외래 갔던 학생 통해 확인 가능하면 생략 가능)**:",
+        "\"교수님 안녕하세요. 현재 심장내과 실습 중인 PK 0,0조 조장 000입니다. 내일 금요일 오전 8시 40분부터 교육실에서 제세동/심폐소생술 OT 진행하고, 10시 반부터 OSCE센터에서 OSCE 진행하는 것으로 알고 있어서, 혹시 일정에 변동사항이 있는지 여쭙고자 연락드립니다. 2주 간 성실히 배우겠습니다. 감사합니다.\""
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. 내일부터 2주간 실습 예정인 PK 0,0조 조장 000입니다. 내일 의국 회의 후 오전 8시 40분부터 교육실에서 오리엔테이션이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 성실히 배우겠습니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. 내일부터 2주간 실습 예정인 PK 0,0조 조장 000입니다. 내일 의국 회의 후 오전 8시 40분부터 교육실에서 오리엔테이션이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 성실히 배우겠습니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 주말에 연락드려 죄송합니다. 다름이 아니라, 내일 12시부터 교육실에서 증례발표 수업이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 주말에 연락드려 죄송합니다. 내일 오후 4시부터 심초음파실에서 심장 진찰 수업이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "2-5-1. 진선아 교수님"
+        },
+        {
+          "from": "session:comm-2026-04-26-admin",
+          "line": "\"교수님 안녕하세요. 내일부터 2주간 실습 예정인 PK 0,0조 조장 000입니다. 내일 의국 회의 후 오전 8시 40분부터 교육실에서 오리엔테이션이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 성실히 배우겠습니다. 감사합니다.\""
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-26-admin"
+      ]
+    },
+    {
+      "ref": "2-5-5",
+      "title": "1주차 일요일",
+      "line_range": "1742-1747",
+      "referenced": false,
+      "source_line_count": 2,
+      "exact_hit_count": 0,
+      "missing_count": 2,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**김민수 교수님**:",
+        "\"교수님 안녕하세요. 내일 월요일부터 사흘간 세종충남대병원 심장내과 실습 예정인 PK 0,0조 조장 000입니다. 시간표대로 오전 10시까지 병원으로 가면 될지, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "2-6-1",
+      "title": "2주차 월요일",
+      "line_range": "1751-1761",
+      "referenced": true,
+      "source_line_count": 7,
+      "exact_hit_count": 0,
+      "missing_count": 7,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**김미주 교수님**:",
+        "\"교수님 안녕하세요. 현재 심장내과 실습 중인 PK 0,0조 조장 000입니다. 이번 주 목요일 9시에 교육실에서 호흡곤란 CPX가 진행된다고 전달받아, 혹시 일정에 변동사항이 있는지 확인 부탁드립니다. 조원은 총 O명입니다. 감사합니다.\"",
+        "**박재형 교수님 (시간표에는 없으나 진행하는 수업)**:",
+        "\"교수님 안녕하세요. 현재 심장내과 실습 중인 PK 0,0조 조장 000입니다. 다름이 아니라, 오늘부터 수요일까지 세종에서 실습을 진행 중인데 심장 초음파 강의가 예정되어 있는 것으로 알고 있어, 교수님께 편하신 시간대가 언제인지 여쭙고자 연락드렸습니다. 감사합니다!\"",
+        "(※ 10시 이전에 진행될 경우 김민수 교수님께도 해당 일정 미리 연락드릴 것.)",
+        "**전공의 선생님**:"
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 화요일 오후 2시에 의국에서 고혈압 CPX가 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 이번 주 수요일 오전 11시에 교육실에서 흉통 CPX 시험이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "2-6-1. 성석우 교수님"
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-27-admin"
+      ]
+    },
+    {
+      "ref": "2-6-2",
+      "title": "2주차 화요일",
+      "line_range": "1762-1767",
+      "referenced": true,
+      "source_line_count": 2,
+      "exact_hit_count": 0,
+      "missing_count": 2,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**오진경 교수님**:",
+        "\"교수님 안녕하세요. 현재 심장내과 실습 중인 PK 0,0조 조장 000입니다. 내일 오후 1시 30분에 심초음파실에서 '심초음파의 이해' 강의가 예정되어 있는 것으로 알고 있는데, 혹시 변동 사항이 있는지 확인드리고자 연락드립니다. 실습에 성실히 임하겠습니다! 감사합니다.\""
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 화요일 오후 2시에 의국에서 고혈압 CPX가 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 이번 주 수요일 오전 11시에 교육실에서 흉통 CPX 시험이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "2-6-1. 성석우 교수님"
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-27-admin"
+      ]
+    },
+    {
+      "ref": "2-6-3",
+      "title": "2주차 수요일",
+      "line_range": "1768-1773",
+      "referenced": true,
+      "source_line_count": 2,
+      "exact_hit_count": 2,
+      "missing_count": 0,
+      "coverage_percent": 100.0,
+      "missing_examples": [],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 화요일 오후 2시에 의국에서 고혈압 CPX가 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 이번 주 수요일 오전 11시에 교육실에서 흉통 CPX 시험이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "2-6-1. 성석우 교수님"
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-27-admin",
+        "session:overlay-2026-04-29-cpx"
+      ]
+    },
+    {
+      "ref": "2-6-4",
+      "title": "2주차 목요일",
+      "line_range": "1774-1781",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 0,
+      "missing_count": 4,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**양유진 교수님 (26.04.27 이후 복귀 시)**:",
+        "\"교수님 안녕하세요. 현재 심장내과 실습 중인 PK 0,0조 조장 000입니다. 내일 금요일 오후 1시 30분에 심초음파실에서 '심장판막질환' 강의가 예정되어 있다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\"",
+        "**복영남 교수님 (양유진 교수님 부재 시)**:",
+        "\"교수님 안녕하세요. 내일 금요일 오후 1시 30분 예정된 심장판막질환 강의 변동사항 확인드리고자 연락드립니다. 감사합니다.\""
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 화요일 오후 2시에 의국에서 고혈압 CPX가 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 이번 주 수요일 오전 11시에 교육실에서 흉통 CPX 시험이 진행된다고 전달받았는데, 혹시 변동사항이 있는지 확인드리고자 연락드립니다. 감사합니다.\""
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "2-6-1. 성석우 교수님"
+        },
+        {
+          "from": "session:comm-2026-04-27-admin",
+          "line": "\"교수님 안녕하세요. PK 0,0조 조장 000입니다. 내일 8시 교육실에서 대면증례보고서 OT가 있는 것으로 전달받았는데, 변동 사항 있는지 확인 부탁드립니다. 감사합니다.\""
+        }
+      ],
+      "derived_ids": [
+        "session:comm-2026-04-27-admin"
+      ]
+    },
+    {
+      "ref": "3-1-1",
+      "title": "입실 동선 / 준비물",
+      "line_range": "1788-1801",
+      "referenced": true,
+      "source_line_count": 9,
+      "exact_hit_count": 0,
+      "missing_count": 9,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "심혈관조영실3으로 가서 **벨을 누르고** 들어갑니다. (눌러도 문을 안 열어주시면, 벨을 좀 누르며 기다리다 보면 언젠가 안에서 누군가 열어주십니다.)",
+        "탈의실에 들어가서 가운을 벗고 (옷은 갈아입지 않습니다! 가운만 벗기), 신발은 탈의실 안에 있는 신발장에 있는 슬리퍼로 갈아신고 나옵니다.",
+        "너스캡(널스캡)을 씁니다.",
+        "**왼쪽에 있는 민트색 철문**으로 들어갑니다. (**절대 심혈관조영술을 하고 있는 정면 문으로 들어가면 안 됩니다. 개털립니다.**)",
+        "철문 열고 들어가면 가운데 낮은 칸막이가 있고 책상이 있는데, 거기 앉아서 공부하며 교수님을 기다립니다. (왜인지 8시 30분에 이미 시술을 시작한 경우가 많은 듯합니다. 그냥 밖에서 기다리다가 시술이 끝나서 나오시면 가서 인사드리면 됩니다.) 한참 기다릴 수 있습니다.",
+        "**끝나고 현장평가(유폴리오)를 반드시 받습니다.** (교수님이 시술 중이시면 나중에 다른 수업 때 받으면 됩니다.)"
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "간호사 선생님께 실습학생이라고 말씀드리고 초진환자를 부탁하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "초진 보는 곳은 따로 정해져 있다기보다, 대기하는 장소나 빈 진료실에서 진행하는 경우가 많다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "1-4-3. 외래 및 PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "공통 준비"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-1000-abc-pci",
+        "session:s-2026-04-30-0840-def-pci",
+        "session:s-2026-05-05-1000-abc-pci-sejong",
+        "session:s-2026-05-05-1100-def-pci-sejong",
+        "session:s-2026-05-05-1330-def-arrhyproc",
+        "session:s-2026-05-06-1000-abc-arrhyproc"
+      ]
+    },
+    {
+      "ref": "3-1-2",
+      "title": "심장진찰 인계 (참고용)",
+      "line_range": "1802-1807",
+      "referenced": false,
+      "source_line_count": 2,
+      "exact_hit_count": 0,
+      "missing_count": 2,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "2026년부터 심장 진찰 담당이 성석우 교수님에서 복영남 교수님으로 변경되었으나, 이전 성석우 교수님 시절의 인계를 참고용으로 남겨둡니다.",
+        "**성석우 교수님 시절**: 제멋대로 오시거나 지각이 잦은 일정. 안 오시면 교수님은 연락 금지이니 치프 선생님을 통해 다시 한번 일정을 확인해야 했습니다. 상당히 귀찮아하시고 기분이 안 좋아 보이시는 게 디폴트였습니다. 시험 치는 학생 말고 다른 학생들도 잘 보고 있나 확인하시니 딴짓하지 말고 집중해야 했습니다. 환자 진찰 시 높임말 지양 (예: \"맥박은 정상이십니다\" X -> \"정상입니다\" O)."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "3-1-3",
+      "title": "PCI 인계 공통",
+      "line_range": "1808-1822",
+      "referenced": true,
+      "source_line_count": 11,
+      "exact_hit_count": 0,
+      "missing_count": 11,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "아이패드는 탈의실에 두고 가기 (시술 방해 방지용, 끝나고 승인받을 때 가져옴).",
+        "서 있지 말고 의자를 끌어와서 앉아 있기.",
+        "들어갔을 때 시술 중이시면 바깥 창문으로 지켜보고 있기.",
+        "시술실 앞에 붙어 있는 종이에서 환자 목록을 보고 공부하라고 하시면, 빈 컴퓨터(비밀번호 1)에서 공부하기.",
+        "**공부 항목**: 주호소, 병명, 심전도 특징, 시행 검사 (운동유발검사, CAG, CT 등).",
+        "**주요 질문 리스트**:"
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "간호사 선생님께 실습학생이라고 말씀드리고 초진환자를 부탁하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "초진 보는 곳은 따로 정해져 있다기보다, 대기하는 장소나 빈 진료실에서 진행하는 경우가 많다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "1-4-3. 외래 및 PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "공통 준비"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-1000-abc-pci",
+        "session:s-2026-04-30-0840-def-pci",
+        "session:s-2026-05-05-1000-abc-pci-sejong",
+        "session:s-2026-05-05-1100-def-pci-sejong",
+        "session:s-2026-05-05-1330-def-arrhyproc",
+        "session:s-2026-05-06-1000-abc-arrhyproc"
+      ]
+    },
+    {
+      "ref": "3-2-1",
+      "title": "성석우 교수님",
+      "line_range": "1826-1841",
+      "referenced": true,
+      "source_line_count": 12,
+      "exact_hit_count": 0,
+      "missing_count": 12,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "8시 반부터 도착해 시술 시작 여부를 수시로 확인합니다. 창문 앞에서 대기하면 간호사 선생님이 들어오라고 하실 수도 있습니다.",
+        "시술 후 보호자 설명 시 교수님 뒤를 따라가 함께 듣습니다.",
+        "시술한 환자의 Echo, ECG, CAG 영상을 틀어두고 설명해주실 때 집중해서 듣습니다.",
+        "**질문 포인트**:",
+        "운동부하검사에서 어느 lead를 봐야 하는지 (precordial lead의 ST 변화).",
+        "ST depression 진단 기준, upsloping/horizontal/downsloping 중 어느 것이 안 좋은지."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-30-0840-def-pci",
+          "line": "교수님별 인계는 별도 파일을 확인하고 들어가면 된다."
+        },
+        {
+          "from": "session:s-2026-04-30-0840-def-pci",
+          "line": "교수님별 인계는 별도 파일을 확인하고 들어가면 된다."
+        },
+        {
+          "from": "session:s-2026-04-30-0840-def-pci",
+          "line": "목요일에도 외래와 PCI 참관 일정이 같이 있을 수 있으니, 본인 교수님 인계를 미리 읽고 움직이는 것이 중요하다."
+        },
+        {
+          "from": "session:s-2026-04-30-0840-def-pci",
+          "line": "1-6-2. 외래참관 & PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-30-0840-def-pci",
+          "line": "운영 원칙"
+        },
+        {
+          "from": "session:s-2026-04-30-0840-def-pci",
+          "line": "교수님별 인계는 별도 파일을 확인하고 들어가면 된다."
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-30-0840-def-pci"
+      ]
+    },
+    {
+      "ref": "3-2-2",
+      "title": "이재환 교수님",
+      "line_range": "1842-1851",
+      "referenced": true,
+      "source_line_count": 6,
+      "exact_hit_count": 0,
+      "missing_count": 6,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "시술실 안 테이블에 앉아 있으면 오셔서 EMR을 보여주며 설명하십니다.",
+        "시술실 따라 들어가서 벽 쪽에 서서 참관합니다 (이름 없는 납복 착용).",
+        "시술 중 Balloon이나 Stent를 직접 보여주시기도 합니다.",
+        "시술 후 EMR 보고서 작성 과정을 참관하고 현장평가 승인을 받습니다.",
+        "관상동맥 해부학을 20분 정도 설명해주시는 경우도 있으니 잘 들어두어야 합니다 (성인환 교수님 수업 때 질문으로 나올 수 있음).",
+        "AAA 환자 케이스의 경우 AAA의 정의, 정상 abdominal aorta 직경, 수술 적응증 등을 물어보실 수 있습니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "간호사 선생님께 실습학생이라고 말씀드리고 초진환자를 부탁하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "초진 보는 곳은 따로 정해져 있다기보다, 대기하는 장소나 빈 진료실에서 진행하는 경우가 많다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "1-4-3. 외래 및 PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-28-1000-abc-pci",
+          "line": "공통 준비"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-1000-abc-pci"
+      ]
+    },
+    {
+      "ref": "3-2-3",
+      "title": "김태석 교수님 (세종)",
+      "line_range": "1852-1859",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 0,
+      "missing_count": 4,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "세종 일정 시 PCI룸에서 참관합니다.",
+        "VT 심전도 등을 주며 조원끼리 분석해보라고 하시는 등 강의형 시술 참관이 이루어집니다.",
+        "RR interval, Wide QRS, P wave 유무 등을 분석하며 교수님 설명을 듣습니다.",
+        "굉장히 친절하시고 잘 알려주시는 편입니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-06-1000-abc-arrhyproc",
+          "line": "2026년에는 2주차 화요일 오후에 김민수 교수님 부정맥 시술 참관을 했고, 수요일 오후에는 따로 진행하지 않았다는 인계가 있다."
+        },
+        {
+          "from": "session:s-2026-05-06-1000-abc-arrhyproc",
+          "line": "2026년에는 2주차 화요일 오후에 김민수 교수님 부정맥 시술 참관을 했고, 수요일 오후에는 따로 진행하지 않았다는 인계가 있다."
+        },
+        {
+          "from": "session:s-2026-05-06-1000-abc-arrhyproc",
+          "line": "2025년에는 김태석 교수님 부정맥 시술 참관을 수요일 오후에 하기도 했다."
+        },
+        {
+          "from": "session:s-2026-05-06-1000-abc-arrhyproc",
+          "line": "그 경우 3층 PCI방에 들어가 전날처럼 의자를 인원수만큼 가져다 놓고 참관했고, 김태석 교수님이 계속 시술 중이셔서 인사도 못 드리고 나온 조도 있었다."
+        },
+        {
+          "from": "session:s-2026-05-06-1000-abc-arrhyproc",
+          "line": "1-11-5. 부정맥 시술 참관"
+        },
+        {
+          "from": "session:s-2026-05-06-1000-abc-arrhyproc",
+          "line": "진행 여부 메모"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-06-1000-abc-arrhyproc"
+      ]
+    },
+    {
+      "ref": "3-2-4",
+      "title": "김민수 교수님 (세종)",
+      "line_range": "1860-1867",
+      "referenced": false,
+      "source_line_count": 4,
+      "exact_hit_count": 0,
+      "missing_count": 4,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "세종 일정 시 PCI룸에서 부정맥 시술(RFCA, Cryoablation 등)을 참관합니다.",
+        "시술 중간에 나오셔서 EPS(Electrophysiological Study) 해석법 등을 설명해주십니다.",
+        "WPW syndrome 환자 EKG를 보며 bypass tract 위치나 시술 전후 차이를 질문하실 수 있습니다.",
+        "본인 발표 케이스 심전도 질문 시 친절하게 EMR을 열어 설명해주십니다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "3-3-1",
+      "title": "공통 원칙",
+      "line_range": "1871-1878",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 0,
+      "missing_count": 4,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "시간표에 정해진 교수님 외래에만 들어갑니다. (성석우 교수님 지시: 공강 시간에 임의로 다른 교수님 초진 보러 들어가지 말 것.)",
+        "7명 조는 미리 어떤 교수님께 2명이 들어갈지 확인하고 진행합니다.",
+        "외래 시작 10분 전부터 끝날 때까지 참관하는 것이 원칙입니다.",
+        "교수님 바로 뒤나 옆에 자리 잡아 모니터 화면을 함께 볼 수 있도록 합니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "간호사 선생님께 실습학생이라고 말씀드리고 초진환자를 부탁하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "초진 보는 곳은 따로 정해져 있다기보다, 대기하는 장소나 빈 진료실에서 진행하는 경우가 많다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "1-4-3. 외래 및 PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "공통 준비"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-1000-def-outpatient",
+        "session:s-2026-04-29-1400-def-outpatient",
+        "session:s-2026-04-30-0840-abc-outpatient",
+        "session:s-2026-05-04-1000-abc-outpatient-sejong",
+        "session:s-2026-05-04-1330-def-outpatient-sejong",
+        "session:s-2026-05-07-1330-abc-outpatient"
+      ]
+    },
+    {
+      "ref": "3-3-2",
+      "title": "초진 / 예진 / 유폴리오",
+      "line_range": "1879-1886",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 0,
+      "missing_count": 4,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "간호사 선생님께 실습 학생임을 알리고 초진 환자 배정을 부탁합니다.",
+        "예진기록지는 꼼꼼히 작성하되, 교수님 선호에 따라 1111111이나 점(.)을 찍지 말고 양식을 채워야 하는 경우도 있습니다.",
+        "유폴리오 외래 참관 승인은 교수님별 타이밍이 다르니 인계를 잘 읽고 챙깁니다.",
+        "대전 본원에서 초진을 다 못 채운 경우 세종 충남대병원에서 채울 수 있습니다. (하지만 외래를 다 채웠더라도 2주차 목요일 대전 외래는 들어가야 합니다.)"
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "간호사 선생님께 실습학생이라고 말씀드리고 초진환자를 부탁하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "초진 보는 곳은 따로 정해져 있다기보다, 대기하는 장소나 빈 진료실에서 진행하는 경우가 많다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "1-4-3. 외래 및 PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "공통 준비"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-1000-def-outpatient",
+        "session:s-2026-04-29-1400-def-outpatient",
+        "session:s-2026-04-30-0840-abc-outpatient",
+        "session:s-2026-05-04-1000-abc-outpatient-sejong",
+        "session:s-2026-05-04-1330-def-outpatient-sejong",
+        "session:s-2026-05-07-1330-abc-outpatient"
+      ]
+    },
+    {
+      "ref": "3-4-1",
+      "title": "이재환 교수님",
+      "line_range": "1890-1898",
+      "referenced": true,
+      "source_line_count": 5,
+      "exact_hit_count": 0,
+      "missing_count": 5,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "2명이 번갈아 가며 1시간씩 참관합니다.",
+        "초진 예진을 시키지 않는 경우가 많으며, 대신 EMR을 보고 예진기록지를 작성해 나중에 사인을 받으라고 하십니다.",
+        "교수님 바로 뒤나 옆에 앉아 모니터를 열심히 보는 자세가 중요합니다.",
+        "**질문 포인트**: LDL 조절 목표치, CAC(Coronary Artery Calcium) score, 가정혈압 목표(135/85), CCB 부작용(잇몸 증상 등).",
+        "IHD 감별 포인트(Stable vs Unstable angina), 응급실 처치 순서 등에 대해서도 질문하십니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "교수님별 인계는 별도 파일을 확인하고 들어가면 된다."
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "교수님별 인계는 별도 파일을 확인하고 들어가면 된다."
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "목요일에도 외래와 PCI 참관 일정이 같이 있을 수 있으니, 본인 교수님 인계를 미리 읽고 움직이는 것이 중요하다."
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "1-6-2. 외래참관 & PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "운영 원칙"
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "교수님별 인계는 별도 파일을 확인하고 들어가면 된다."
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-30-0840-abc-outpatient"
+      ]
+    },
+    {
+      "ref": "3-4-2",
+      "title": "박현웅 교수님",
+      "line_range": "1899-1906",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 0,
+      "missing_count": 4,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "외래 시작부터 참관합니다. 의자가 하나뿐이면 밖에서 가져와야 합니다.",
+        "매우 친절하시며 AS, MR 환자의 심잡음을 직접 들어보게 해주십니다.",
+        "**질문 포인트**: Typical anginal pain (Old Coex Cafe 순서), Statin 부작용(당뇨 유발 등), 메이 터너 증후군.",
+        "독특한 환자 케이스에 대해 먼저 여쭤보면 좋아하십니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "교수님별 인계는 별도 파일을 확인하고 들어가면 된다."
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "교수님별 인계는 별도 파일을 확인하고 들어가면 된다."
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "목요일에도 외래와 PCI 참관 일정이 같이 있을 수 있으니, 본인 교수님 인계를 미리 읽고 움직이는 것이 중요하다."
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "1-6-2. 외래참관 & PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "운영 원칙"
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "교수님별 인계는 별도 파일을 확인하고 들어가면 된다."
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-30-0840-abc-outpatient",
+        "session:s-2026-05-07-1330-abc-outpatient"
+      ]
+    },
+    {
+      "ref": "3-4-3",
+      "title": "송필상 교수님 (참고용)",
+      "line_range": "1907-1911",
+      "referenced": false,
+      "source_line_count": 1,
+      "exact_hit_count": 0,
+      "missing_count": 1,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "현재는 이직하셨으나 이전 인계 참고: 간호사 선생님께 예진 환자를 미리 부탁해야 했습니다. 예진기록지 사인을 잘 해주시는 편이었습니다. NYHA 분류를 full term으로 말하는 것을 선호하셨습니다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "3-4-4",
+      "title": "진선아 교수님",
+      "line_range": "1912-1918",
+      "referenced": true,
+      "source_line_count": 3,
+      "exact_hit_count": 0,
+      "missing_count": 3,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "오후 외래가 늦게 시작되는 경우가 많고, 초진 환자는 주로 오전에 몰려 오후에는 예진할 환자가 없을 수도 있습니다.",
+        "질문보다는 참관 위주로 진행됩니다.",
+        "유폴리오 승인은 외래 종료 후 밖에서 기다렸다가 받는 것이 안전합니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "김준형, 진선아, 복영남 교수님 외래를 들어가는 흐름으로 이해하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "김준형, 진선아, 복영남 교수님 외래를 들어가는 흐름으로 이해하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "공휴일이나 교수님 휴가 때문에 외래 구성이 바뀌는 경우가 있었다."
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "15,16조는 2주차 목요일이 공휴일이라 오리엔테이션 때 1주차 수요일에 조원 전원이 김준형, 진선아, 복영남 교수님 외래와 추가로 김미주 교수님 외래까지 참관하라고 들었다."
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "1-5-5. DEF 외래 참관"
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "기본 대상"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-29-1400-def-outpatient"
+      ]
+    },
+    {
+      "ref": "3-4-5",
+      "title": "성석우 교수님",
+      "line_range": "1919-1925",
+      "referenced": true,
+      "source_line_count": 3,
+      "exact_hit_count": 0,
+      "missing_count": 3,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "외래 내내 참관합니다. 교수님 맞은편 모니터 연동 좌석에서 EMR 작성을 실시간으로 볼 수 있습니다. (컴퓨터 조작 금지)",
+        "초진 환자가 있으면 교수님이 직접 보고 오라고 지시하십니다.",
+        "특이 케이스(버거씨병 등)에 대해 질문하시며 알려주시기도 합니다. 예진기록지 사인을 잘 해주시는 편입니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-07-1330-abc-outpatient",
+          "line": "외래와 초진을 모두 채웠더라도 들어가야 한다."
+        },
+        {
+          "from": "session:s-2026-05-07-1330-abc-outpatient",
+          "line": "외래와 초진을 모두 채웠더라도 들어가야 한다."
+        },
+        {
+          "from": "session:s-2026-05-07-1330-abc-outpatient",
+          "line": "인계를 잘 보고 들어가면 된다는 인계가 있다."
+        },
+        {
+          "from": "session:s-2026-05-07-1330-abc-outpatient",
+          "line": "1-12-4. ABC 외래 참관"
+        },
+        {
+          "from": "session:s-2026-05-07-1330-abc-outpatient",
+          "line": "운영 메모"
+        },
+        {
+          "from": "session:s-2026-05-07-1330-abc-outpatient",
+          "line": "외래와 초진을 모두 채웠더라도 들어가야 한다."
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-07-1330-abc-outpatient"
+      ]
+    },
+    {
+      "ref": "3-4-6",
+      "title": "권희진 교수님",
+      "line_range": "1926-1933",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 0,
+      "missing_count": 4,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "진료실 내 의자가 없어 Standing으로 참관해야 할 수도 있습니다.",
+        "**질문 폭격이 심하므로 주의**: Afib, PSVT, PVC의 기전/진단/치료를 완벽히 숙지해야 합니다. (A-fib 2023 가이드라인 등)",
+        "모른다고 하거나 애매하게 답하면 혼나며, 레포트 과제를 내주시기도 하니 확실하게 공부해서 가야 합니다.",
+        "심부전 환자 기구(CRT 등)에 대해서도 물어보십니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "교수님별 인계는 별도 파일을 확인하고 들어가면 된다."
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "교수님별 인계는 별도 파일을 확인하고 들어가면 된다."
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "목요일에도 외래와 PCI 참관 일정이 같이 있을 수 있으니, 본인 교수님 인계를 미리 읽고 움직이는 것이 중요하다."
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "1-6-2. 외래참관 & PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "운영 원칙"
+        },
+        {
+          "from": "session:s-2026-04-30-0840-abc-outpatient",
+          "line": "교수님별 인계는 별도 파일을 확인하고 들어가면 된다."
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-30-0840-abc-outpatient"
+      ]
+    },
+    {
+      "ref": "3-4-7",
+      "title": "복영남 교수님",
+      "line_range": "1934-1940",
+      "referenced": true,
+      "source_line_count": 3,
+      "exact_hit_count": 0,
+      "missing_count": 3,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "환자가 매우 많아 외래 마지막까지 참관하게 될 가능성이 높습니다.",
+        "중간중간 환자 상태나 심전도, 청진 소견에 대해 질문하십니다. (ST depression 의미, 심잡음 종류 등)",
+        "예진기록지 글씨와 내용을 매우 꼼꼼히 보시고 채점 및 피드백하십니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "김준형, 진선아, 복영남 교수님 외래를 들어가는 흐름으로 이해하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "김준형, 진선아, 복영남 교수님 외래를 들어가는 흐름으로 이해하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "공휴일이나 교수님 휴가 때문에 외래 구성이 바뀌는 경우가 있었다."
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "15,16조는 2주차 목요일이 공휴일이라 오리엔테이션 때 1주차 수요일에 조원 전원이 김준형, 진선아, 복영남 교수님 외래와 추가로 김미주 교수님 외래까지 참관하라고 들었다."
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "1-5-5. DEF 외래 참관"
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "기본 대상"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-29-1400-def-outpatient"
+      ]
+    },
+    {
+      "ref": "3-4-8",
+      "title": "안계택 교수님",
+      "line_range": "1941-1946",
+      "referenced": true,
+      "source_line_count": 2,
+      "exact_hit_count": 0,
+      "missing_count": 2,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "매우 친절하시며 초진 환자가 없으면 가서 공부하라고 일찍 보내주시는 스타일입니다.",
+        "외래 옆에서 지켜보는 것보다 각자 공부하는 것이 더 낫다고 말씀하시기도 합니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "간호사 선생님께 실습학생이라고 말씀드리고 초진환자를 부탁하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "초진 보는 곳은 따로 정해져 있다기보다, 대기하는 장소나 빈 진료실에서 진행하는 경우가 많다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "1-4-3. 외래 및 PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "공통 준비"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-1000-def-outpatient",
+        "session:s-2026-05-07-1330-abc-outpatient"
+      ]
+    },
+    {
+      "ref": "3-4-9",
+      "title": "정진옥 교수님",
+      "line_range": "1947-1953",
+      "referenced": true,
+      "source_line_count": 3,
+      "exact_hit_count": 0,
+      "missing_count": 3,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "동그란 의자를 교수님 왼쪽 구석으로 옮겨 앉아 참관합니다.",
+        "예진기록지를 참고하여 진료하시며, 질문보다는 환자 케이스에 대한 간략한 설명을 해주십니다.",
+        "몸이 안 좋으실 때는 참관을 사양하실 수도 있으니 상황을 잘 살펴야 합니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "간호사 선생님께 실습학생이라고 말씀드리고 초진환자를 부탁하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "초진 보는 곳은 따로 정해져 있다기보다, 대기하는 장소나 빈 진료실에서 진행하는 경우가 많다."
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "1-4-3. 외래 및 PCI 참관"
+        },
+        {
+          "from": "session:s-2026-04-28-1000-def-outpatient",
+          "line": "공통 준비"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-28-1000-def-outpatient"
+      ]
+    },
+    {
+      "ref": "3-4-10",
+      "title": "김준형 교수님",
+      "line_range": "1954-1960",
+      "referenced": true,
+      "source_line_count": 3,
+      "exact_hit_count": 0,
+      "missing_count": 3,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "14:00 정각에 시작합니다. 교수님 왼쪽 대각선 뒤에 소리 없이 서서 참관합니다.",
+        "움직이거나 꼼지락거리는 것을 매우 싫어하시니 주의해야 합니다.",
+        "유폴리오 승인 시 지연되는 것을 싫어하시므로 핫스팟과 로그인을 미리 준비해둡니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "김준형, 진선아, 복영남 교수님 외래를 들어가는 흐름으로 이해하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "김준형, 진선아, 복영남 교수님 외래를 들어가는 흐름으로 이해하면 된다."
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "공휴일이나 교수님 휴가 때문에 외래 구성이 바뀌는 경우가 있었다."
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "15,16조는 2주차 목요일이 공휴일이라 오리엔테이션 때 1주차 수요일에 조원 전원이 김준형, 진선아, 복영남 교수님 외래와 추가로 김미주 교수님 외래까지 참관하라고 들었다."
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "1-5-5. DEF 외래 참관"
+        },
+        {
+          "from": "session:s-2026-04-29-1400-def-outpatient",
+          "line": "기본 대상"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-29-1400-def-outpatient"
+      ]
+    },
+    {
+      "ref": "3-4-11",
+      "title": "김미주 교수님",
+      "line_range": "1961-1968",
+      "referenced": false,
+      "source_line_count": 4,
+      "exact_hit_count": 0,
+      "missing_count": 4,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "중환자실 담당이라 초진은 거의 없습니다.",
+        "교수님 앞자리 모니터가 연동되므로 처방 내역을 실시간으로 보며 질문에 대비합니다.",
+        "**질문 포인트**: LDL 목표치, Statin 부작용, 4 pillar 약물, Treadmill test 양성 소견.",
+        "분위기가 다소 무거울 수 있으나 집중해서 보면 배울 것이 많습니다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "3-5-1",
+      "title": "황원묵 교수님",
+      "line_range": "1972-1979",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 0,
+      "missing_count": 4,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "매우 친절하시며 예진 보고 환자와 같이 들어가 참관합니다.",
+        "진료 도중 심전도나 초음파를 보며 질문하십니다. (위험인자, ST 변화 의미 등)",
+        "모든 리드에서 나타나는 소견을 자세히 물어보실 수 있습니다. (예: 어떤 약을 써야 하는지, 그중에서도 구체적으로 어떤 약인지 등)",
+        "틀려도 핀잔을 주지는 않으시며, 모르는 것은 검색해서 읽어보라고 하시는 등 교육적인 분위기입니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-04-1330-def-outpatient-sejong",
+          "line": "DEF 외래 참관"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-04-1330-def-outpatient-sejong"
+      ]
+    },
+    {
+      "ref": "3-5-2",
+      "title": "김태석 교수님",
+      "line_range": "1980-1988",
+      "referenced": false,
+      "source_line_count": 5,
+      "exact_hit_count": 0,
+      "missing_count": 5,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "초진 환자당 진료 시간이 길고 매우 정성스럽게 보십니다.",
+        "환자 자리에 앉아보라고 하시며 다정하게 피드백해주십니다. (지적 거의 없고 잘한다 잘한다 해주시는 분위기)",
+        "**교수님 철학**: 의사-환자 관계만큼 의사-의사 관계가 중요하며, 기록지는 다른 의사가 봐도 보기 좋게 적어야 함을 강조하십니다.",
+        "Assessment에 교과서적 내용 나열보다는 실제 환자 가능성 위주로 적기를 선호하십니다. (기능성 흉통이 의심되면 기질적 질환을 불필요하게 나열하지 말 것)",
+        "Atrial flutter는 약물 치료보다 바로 ablation을 선호한다는 실무 팁도 주십니다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "3-5-3",
+      "title": "김용균 교수님",
+      "line_range": "1989-1995",
+      "referenced": false,
+      "source_line_count": 3,
+      "exact_hit_count": 0,
+      "missing_count": 3,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "간호사 선생님께 말씀드리면 환자를 배정해 줍니다. (주로 교육실이나 5번 진료실에서 예진)",
+        "예진기록지를 매우 꼼꼼히 읽고 피드백하십니다. 브리핑은 따로 시키지 않습니다.",
+        "**질문 포인트**: Wellen sign, Broad T wave inversion 원인 등. (모르면 집 가서 공부해 보라고 하시고 친절히 보내주십니다)"
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "3-5-4",
+      "title": "오진경 교수님",
+      "line_range": "1996-2001",
+      "referenced": false,
+      "source_line_count": 2,
+      "exact_hit_count": 0,
+      "missing_count": 2,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "외래에 2명씩만 들어가는 것을 선호하십니다.",
+        "예진기록지 내용보다는 참관 자체에 의의를 두며 사인을 잘 해주십니다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "3-5-5",
+      "title": "김민수 교수님",
+      "line_range": "2002-2009",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 0,
+      "missing_count": 4,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "세종 실습의 총괄 역할을 하시며, 초진 환자가 부족하면 다른 교수님 외래를 적극적으로 연결해 주십니다.",
+        "월요일 오전에는 초진 환자가 없는 경우가 많아 3명이 한꺼번에 들어가 1시간 정도 참관하기도 합니다.",
+        "외래 시작부터 끝까지 참관하며 환자 설명을 듣는 흐름입니다.",
+        "유폴리오 승인 및 인계 사인은 수요일 일정 후에 일괄적으로 해주시는 경우가 많습니다."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-04-1000-abc-outpatient-sejong",
+          "line": "ABC 외래 참관"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-04-1000-abc-outpatient-sejong"
+      ]
+    },
+    {
+      "ref": "4-1",
+      "title": "발표 유의사항",
+      "line_range": "2013-2036",
+      "referenced": true,
+      "source_line_count": 20,
+      "exact_hit_count": 0,
+      "missing_count": 20,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**발표 시 마우스 세팅**: 항상 표기(포인터) 상태로 만들어 놓아야 합니다. 무선 마우스 2개(발표자용, 교수님용)와 마우스 패드를 준비하세요.",
+        "**대본 및 슬라이드 노트 절대 금지**: 슬라이드 노트 적발 시 최하점입니다. TV 화면을 보며 능숙하게 발표할 수 있도록 연습하세요.",
+        "**용어 및 금기어 준수**:",
+        "'환자' 대신 '몇 세 남자/여자가'로 지칭.",
+        "'케이스 발표' 대신 '심전도 발표' 또는 'ECG 발표'.",
+        "높임말 지양: \"했습니다\"로 통일."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-30-0800-ecg-a",
+          "line": "7시 50분 발표 시작이다."
+        },
+        {
+          "from": "session:s-2026-04-30-0800-ecg-a",
+          "line": "7시 50분 발표 시작이다."
+        },
+        {
+          "from": "session:s-2026-04-30-0800-ecg-a",
+          "line": "조장과 조원은 7시 10분, 나머지 인원은 7시 35분까지 교육실 도착을 기준으로 움직인다."
+        },
+        {
+          "from": "session:s-2026-04-30-0800-ecg-a",
+          "line": "조장은 인계대로 세팅을 다 해놓아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-30-0800-ecg-a",
+          "line": "1-6-1. 심전도 발표 A"
+        },
+        {
+          "from": "session:s-2026-04-30-0800-ecg-a",
+          "line": "기본 운영"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-30-0800-ecg-a",
+        "session:s-2026-05-01-0800-ecg-b",
+        "session:s-2026-05-07-0800-ecg-cd",
+        "session:s-2026-05-08-0800-ecg-ef"
+      ]
+    },
+    {
+      "ref": "4-2",
+      "title": "2026 인계 - 5,6조",
+      "line_range": "2037-2046",
+      "referenced": false,
+      "source_line_count": 6,
+      "exact_hit_count": 0,
+      "missing_count": 6,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**A학생**: 첫 번째 순서라 비교적 관대하나, PI를 한 장에 담는 것을 선호하십니다. 환자의 주관적 말보다 EMR 기록 기반 작성을 추천합니다. RFCA 시술 영상은 해부학적 구조가 잘 보이게 여러 개 준비하세요.",
+        "**B학생**: PI Summary를 일기처럼 쓰지 말고 항목별로 간단히 정리하세요. 고령 환자의 경우 WBC 1만 정도의 작은 수치 변화도 중요하게 다루어야 합니다.",
+        "**C학생**: PCI 관련 용어(DES, DCB 등) 발표 시 풀네임으로 언급하세요. 심초음파 뷰가 정확하지 않으면 EF 파악 불가 지적을 받을 수 있으니 주의하세요. 10~15분 이내로 컴팩트하게 발표하는 것이 중요합니다.",
+        "**D학생**: 목요일은 시술 일정으로 8시 반경 종료될 수 있습니다. Holter 기록 시간과 소견 명시가 중요하며, 가이드라인은 반드시 최신판을 사용하세요.",
+        "**E학생**: 질문하시기 전까지는 해석을 덧붙이지 말고 소견 위주로 간결하고 빠르게 발표하세요. 60세 이상은 BMI보다 허리둘레를 넣는 것을 좋아하십니다.",
+        "**F학생**: 발표 능숙도를 강조하십니다. Cue list와 Problem list의 연관성을 명확히 설명하세요. Flutter 심전도의 기전(sawtooth 양상 이유) 질문에 대비하세요."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "4-3",
+      "title": "2026 인계 - 7,8조",
+      "line_range": "2047-2056",
+      "referenced": false,
+      "source_line_count": 6,
+      "exact_hit_count": 0,
+      "missing_count": 6,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**A**: \"DCC를 성공적으로 했다\"는 표현은 지양하세요 (DCC는 당연히 성공하는 것). 시술 종류를 명확히 구분(잘 모르면 AF Ablation)하고, \"약간\" 같은 단어는 쓰지 마세요. 초음파 영상은 Papillary view로 준비하는 것이 벽 운동 확인에 좋습니다.",
+        "**B**: 리드 설명 시 +/- 대신 Positive/Negative 사용하세요. AV block은 P/QRS 화살표로 처음부터 끝까지 표시해야 합니다. Origin(기원) 찾기(LBBB -> RV origin 등)는 필수입니다.",
+        "**C**: VT 환자의 경우 PVC burden을 구해오세요. Problem list는 의무기록 형식으로 작성해야 합니다.",
+        "**D**: 규칙적인 리듬일 때 HR 계산은 10초 파형 수가 아닌 RR 간격 기준으로 설명하세요.",
+        "**E**: Monomorphic과 Monophasic은 엄연히 다른 단어이므로 정확히 구분해서 사용하세요.",
+        "**F**: PI에는 이번 내원과 직접 관련된 정보만 기재하고, 전원/응급실 경로를 명확히 구분하세요. DCC 약어 사용에 주의하세요."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "4-4",
+      "title": "2025 인계 - 21,22조",
+      "line_range": "2057-2064",
+      "referenced": false,
+      "source_line_count": 4,
+      "exact_hit_count": 0,
+      "missing_count": 4,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**PI 진단명 유의**: PI에 진단명을 미리 넣으면 해석 과정을 보여줄 수 없으므로 넣지 말라고 하십니다.",
+        "**심전도 해석**: Axis 설명 시 모호하면 Biphasic 표현을 사용하세요. AF에서 P wave가 '잘 안 보인다' 대신 '보이지 않는다'고 표현해야 합니다.",
+        "**발음 및 기전**: Cardiomegaly 설명 시 'Ratio(레이시오)' 발음 주의하세요. Lab 수치 이상 시 정확한 기전을 물어보시므로 숙지가 필요합니다.",
+        "**시각 자료**: 초음파 슬라이드 옆에 정상 대조군 영상을 붙여 이상 소견을 부각하세요. 가이드라인 출처 명시 및 최신판 사용은 기본입니다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "4-5",
+      "title": "2025 인계 - 15,16조",
+      "line_range": "2065-2074",
+      "referenced": false,
+      "source_line_count": 6,
+      "exact_hit_count": 0,
+      "missing_count": 6,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**A**: 첫 번째 발표자나 교수님 담당 환자일 경우 질문이 많아져 30분 이상 길어질 수 있습니다. EKG wave를 1초 단위로 세밀하게 관찰하세요 (Afib 사이의 P wave 등).",
+        "**B**: 부정맥 약물 투여 기간 등 상세 EMR 기록 확인 필수입니다. Cue list에서 기저 질환(고혈압 등)이 누락되지 않도록 주의하세요.",
+        "**C**: 'CHA2DS2-VASc score' 발음('챠드 바') 및 TEE 발음('에소파지얼') 준수하세요.",
+        "**E**: PSVT-RFCA 주제라면 EPS 판독지를 여러 장 넣고 정확히 해석해야 합니다.",
+        "**F**: 마지막 발표자일수록 교수님 피로도가 높아져 날카로워질 수 있습니다. Problem list 작성 시 assessment 만들듯 간결하게 하세요.",
+        "**G**: 확실히 빨리 끝내는 것이 포인트입니다. 핵심 위주로 8분 내외 진행 시 만족해하셨습니다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "4-6",
+      "title": "2025 인계 - 17,18조",
+      "line_range": "2075-2083",
+      "referenced": false,
+      "source_line_count": 5,
+      "exact_hit_count": 0,
+      "missing_count": 5,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**A**: PI에 고혈압 등 과거력을 넣지 마세요. 응급실과 병동 처치 구분을 명확히 해야 합니다.",
+        "**B**: Assessment 작성 시 해당 검사를 시행하는 이유를 공부하세요. Past ECG와 CXR를 포함하여 준비해야 합니다.",
+        "**C**: Vfib HR 수치를 기계 판독 그대로 믿지 마세요 (보통 300회쯤). 환자 저산소혈증에 대한 치료 소견 누락 주의하세요.",
+        "**D**: Echo 소견은 에코실에 직접 문의하여 정확히 파악하는 것이 좋습니다. Cue list를 계층화(관련 항목끼리 묶기) 하세요.",
+        "**F**: PPM(영구 심박동기) 관련 Atrial high rate 기준 등 전문 지식을 숙지하세요. Chest PA에서 Stomach air 등 해부학적 구조를 물어보실 수 있습니다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "4-7",
+      "title": "2025 인계 - 13,14조",
+      "line_range": "2084-2089",
+      "referenced": false,
+      "source_line_count": 2,
+      "exact_hit_count": 0,
+      "missing_count": 2,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**기본 수칙**: PI에 현재진행형 문장 지양하세요. 영어 발음(Syncope 등)을 정확히 하세요. Problem list에 'r/o' 사용 금지입니다.",
+        "**2주차 피드백**: Intubation 시 ABGA 결과를 포함하세요. AV block과 PPM에서 심전도 변화 기전(Conduction system의 방향성 등)을 완벽히 파악해야 합니다."
+      ],
+      "transformed_examples": [],
+      "derived_ids": []
+    },
+    {
+      "ref": "4-8",
+      "title": "23년도 인계 - 1주차 목요일 A",
+      "line_range": "2090-2099",
+      "referenced": true,
+      "source_line_count": 6,
+      "exact_hit_count": 0,
+      "missing_count": 6,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**19,20조**: PI와 CC 매칭 불량 지적을 받았습니다. 점수가 다소 짠 편입니다.",
+        "**1,2조**: 피드백 때 치프 선생님께 TTE, PCI, CAG 발표 준비물을 꼭 점검받으라는 인계입니다.",
+        "**5,6조**: 성석우 교수님 참관 시 대본 사용(발표자 모드 포함)이 강력 금지되었습니다. HDMI 연결 불안정에 대비해 개인 노트북을 권장합니다.",
+        "**9,10조**: 교수님이 7시 30분에 오셔서 지각을 혼내신 적이 있으니 일찍 도착하세요.",
+        "**13,14조**: 항응고제 복용 중인 환자의 coagulation test 결과를 '비정상'이라고 표현했다가 혼났습니다 (기대 결과임).",
+        "**37,38조**: 심전도나 심초음파 설명 시 위치를 정확히 짚어야 합니다. 목소리가 작아지지 않도록 유의하세요."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-04-30-0800-ecg-a",
+          "line": "7시 50분 발표 시작이다."
+        },
+        {
+          "from": "session:s-2026-04-30-0800-ecg-a",
+          "line": "7시 50분 발표 시작이다."
+        },
+        {
+          "from": "session:s-2026-04-30-0800-ecg-a",
+          "line": "조장과 조원은 7시 10분, 나머지 인원은 7시 35분까지 교육실 도착을 기준으로 움직인다."
+        },
+        {
+          "from": "session:s-2026-04-30-0800-ecg-a",
+          "line": "조장은 인계대로 세팅을 다 해놓아야 한다."
+        },
+        {
+          "from": "session:s-2026-04-30-0800-ecg-a",
+          "line": "1-6-1. 심전도 발표 A"
+        },
+        {
+          "from": "session:s-2026-04-30-0800-ecg-a",
+          "line": "기본 운영"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-04-30-0800-ecg-a"
+      ]
+    },
+    {
+      "ref": "4-9",
+      "title": "23년도 인계 - 1주차 금요일 B",
+      "line_range": "2100-2108",
+      "referenced": true,
+      "source_line_count": 5,
+      "exact_hit_count": 0,
+      "missing_count": 5,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**5,6조**: 권희진 교수님 참관 시 치료 알고리즘 같은 교과서적 내용보다 학생 수준의 핵심 위주 발표를 선호하십니다.",
+        "**9,10조**: HDMI 선 고장 시 교육실 컴퓨터로 개인 메일 접속 등의 대안을 미리 생각하세요.",
+        "**11,12조**: HDMI 연결 이슈로 멘탈이 나가지 않도록 예비 노트북과 마우스를 준비하세요.",
+        "**13,14조**: Afib 치료로 RFCA라고 특정하기보다 'AF Ablation'이라는 포괄적 용어를 사용하세요.",
+        "**37,38조**: STEMI 환자 EKG (HR, Sinus rhythm, Axis, ST elevation, Q wave, T inversion 등)를 완벽히 정리하세요."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-01-0800-ecg-b",
+          "line": "7시 50분 발표 시작이다."
+        },
+        {
+          "from": "session:s-2026-05-01-0800-ecg-b",
+          "line": "7시 50분 발표 시작이다."
+        },
+        {
+          "from": "session:s-2026-05-01-0800-ecg-b",
+          "line": "조장과 조원은 7시 10분, 나머지 인원은 7시 35분까지 교육실 도착을 기준으로 움직인다."
+        },
+        {
+          "from": "session:s-2026-05-01-0800-ecg-b",
+          "line": "조장은 인계대로 세팅을 해놓아야 한다."
+        },
+        {
+          "from": "session:s-2026-05-01-0800-ecg-b",
+          "line": "1-7-1. 심전도 발표 B(G)"
+        },
+        {
+          "from": "session:s-2026-05-01-0800-ecg-b",
+          "line": "기본 운영"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-01-0800-ecg-b"
+      ]
+    },
+    {
+      "ref": "4-10",
+      "title": "23년도 인계 - 2주차 목요일 C,D",
+      "line_range": "2109-2118",
+      "referenced": true,
+      "source_line_count": 6,
+      "exact_hit_count": 0,
+      "missing_count": 6,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**1,2조**: 10분 이내로 준비하세요. 교수님 개입 시 시간이 늘어나는데, 시간 초과로 감점될 수 있습니다.",
+        "**5,6조**: PI는 간결하게 유지하세요. 내원일 기준 초음파가 없으면 이전 기록이라도 넣어 맥락을 유지해야 합니다.",
+        "**9,10조**: 슬라이드 노트가 적힌 것이 들통나 감점된 사례가 있으니 반드시 지우세요.",
+        "**11,12조**: 약물 용량, 용어 사용, 슬라이드 순서 등 사소한 지적에 대비하세요. 치료 가이드라인 출처 표기는 필수입니다.",
+        "**13,14조**: 부정맥 환자라면 IHD 관련 내용은 과거력으로 옮기는 것이 김준형 교수님 스타일입니다.",
+        "**37,38조**: 눈으로 직접 확인하지 않은 외부 판독 결과는 PI에 확정적으로 적지 마세요 (\"의뢰되어 내원\" 후 \"심전도 촬영\" 순서로 기술)."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-07-0800-ecg-cd",
+          "line": "7시 50분 발표 시작이다."
+        },
+        {
+          "from": "session:s-2026-05-07-0800-ecg-cd",
+          "line": "7시 50분 발표 시작이다."
+        },
+        {
+          "from": "session:s-2026-05-07-0800-ecg-cd",
+          "line": "조장과 조원은 7시 10분, 나머지 인원은 7시 35분까지 교육실 도착을 기준으로 움직인다."
+        },
+        {
+          "from": "session:s-2026-05-07-0800-ecg-cd",
+          "line": "조장은 인계대로 세팅을 해놓아야 한다."
+        },
+        {
+          "from": "session:s-2026-05-07-0800-ecg-cd",
+          "line": "1-12-2. 심전도 발표 C,D"
+        },
+        {
+          "from": "session:s-2026-05-07-0800-ecg-cd",
+          "line": "기본 운영"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-07-0800-ecg-cd"
+      ]
+    },
+    {
+      "ref": "4-11",
+      "title": "23년도 인계 - 2주차 금요일 E,F",
+      "line_range": "2119-2124",
+      "referenced": true,
+      "source_line_count": 4,
+      "exact_hit_count": 0,
+      "missing_count": 4,
+      "coverage_percent": 0.0,
+      "missing_examples": [
+        "**19,20조**: 발표 전 CAG, Echo 뷰가 올바른지 치프 선생님께 반드시 사전 검토 받으세요.",
+        "**5,6조**: PI 기술 시 논리적 흐름을 강조하세요. CXR 소견을 EMR 판독 그대로 읽지 말고 본인이 직접 분석해야 합니다.",
+        "**13,14조**: 김준형 교수님 부재 시 박재형 교수님이 참관하실 수 있는데, 지식의 끝까지 물어보시는 스타일이라 더 긴장해야 합니다.",
+        "**11,12조**: 자동 슬라이드 넘기기 기능이 꺼져 있는지 꼭 확인하세요."
+      ],
+      "transformed_examples": [
+        {
+          "from": "session:s-2026-05-08-0800-ecg-ef",
+          "line": "7시 50분 발표 시작이다."
+        },
+        {
+          "from": "session:s-2026-05-08-0800-ecg-ef",
+          "line": "7시 50분 발표 시작이다."
+        },
+        {
+          "from": "session:s-2026-05-08-0800-ecg-ef",
+          "line": "조장과 조원은 7시 10분, 나머지 인원은 7시 35분까지 교육실 도착을 기준으로 움직인다."
+        },
+        {
+          "from": "session:s-2026-05-08-0800-ecg-ef",
+          "line": "조장은 인계대로 세팅을 해놓아야 한다."
+        },
+        {
+          "from": "session:s-2026-05-08-0800-ecg-ef",
+          "line": "1-13-1. 심전도 발표 E,F"
+        },
+        {
+          "from": "session:s-2026-05-08-0800-ecg-ef",
+          "line": "기본 운영"
+        }
+      ],
+      "derived_ids": [
+        "session:s-2026-05-08-0800-ecg-ef"
+      ]
+    }
+  ]
+}

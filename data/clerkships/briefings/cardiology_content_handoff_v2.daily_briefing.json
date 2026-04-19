@@ -1,0 +1,687 @@
+[
+  {
+    "date": "2026-04-27",
+    "headline": "1주차 월요일",
+    "day_summary": [
+      "1-3. 1주차 월요일"
+    ],
+    "sessions": [
+      {
+        "time": "08:00~08:40",
+        "title": "전공의 발표 참관",
+        "professor": "",
+        "difficulty": 4,
+        "intro": [
+          "의국회의는 오전 7시 50분까지 교육실로 가면 된다.",
+          "전공의 발표를 듣는 형태로 진행되며, 보통 오전 8시 30분쯤 끝난다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "08:40~10:00",
+        "title": "OT",
+        "professor": "진선아 교수님",
+        "difficulty": 6,
+        "intro": [
+          "OT는 진선아 교수님이 진행한다.",
+          "의국회의가 끝난 뒤 교수님들 회의 때문에 교육실 밖에서 잠시 기다렸다가 OT를 시작한 경우가 있었다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "10:00~12:00",
+        "title": "자율실습 및 보충학습",
+        "professor": "",
+        "difficulty": 3,
+        "intro": [
+          "### 1-2. 월요일 실습 시작 전 할 일",
+          "전 조 조장에게 인계받을 때 심장 진찰용 자를 함께 받아온다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "12:00~13:00",
+        "title": "IHD Q&A / 성인환 교수님 수업",
+        "professor": "성인환 교수님",
+        "difficulty": 5,
+        "intro": [
+          "시간표상 증례발표로 적혀 있지만, 실제로는 성인환 교수님과 IHD 관련 질문을 가지고 토의하는 시간이다.",
+          "IHD 전반을 공부해가고, 조원들끼리 질문과 답을 미리 공유한 뒤 질문자와 답변자를 정해 들어가면 편하다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "14:00~16:00",
+        "title": "Pretest",
+        "professor": "성석우 교수님",
+        "difficulty": 8,
+        "intro": [
+          "치프 선생님이 없는 경우에는 성석우 교수님께 월요일 오전에 연락해 Pretest 일정을 확인했다는 인계가 있다.",
+          "치프 선생님이 없는 경우라면 이때 교수님께 ECG 케이스와 MI 케이스도 함께 요청하고, `나의 꿈` 스캔본도 드리면 된다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "16:00~18:00",
+        "title": "심장 신체진찰",
+        "professor": "복영남 교수님",
+        "difficulty": 7,
+        "intro": [
+          "2026년부터는 심장 신체진찰 담당이 성석우 교수님에서 복영남 교수님으로 변경되었다.",
+          "연락드렸을 때 월요일 오후 5시에 심장초음파실에서 보자고 하셨다는 인계가 있다."
+        ],
+        "prepare_points": []
+      }
+    ],
+    "assignment_start_today": [
+      "박재형 자필과제 제출",
+      "성석우 교수님용 `나의 꿈` 스캔본",
+      "My Echo & ECG 발표 준비",
+      "허혈성 심질환 주제 발표 준비",
+      "POMR 발표 케이스 준비 (A/B)",
+      "MI case 발표 준비",
+      "Pretest 자유기록(과제) 제출",
+      "유폴 현장승인 · 심장진찰"
+    ],
+    "assignment_due_today": [
+      "Pretest 자유기록(과제) 제출",
+      "유폴 현장승인 · 심장진찰"
+    ],
+    "max_session_difficulty": 8,
+    "max_professor_score": 0
+  },
+  {
+    "date": "2026-04-28",
+    "headline": "1주차 화요일",
+    "day_summary": [
+      "1-4. 1주차 화요일"
+    ],
+    "sessions": [
+      {
+        "time": "08:00~08:40",
+        "title": "대면환자 증례보고서 OT",
+        "professor": "성석우 교수님",
+        "difficulty": 5,
+        "intro": [
+          "성석우 교수님이 진행한다. (50분 정도)",
+          "2026년에는 한 환자에 여러 학생이 문진을 가면 환자가 너무 힘들 수 있어, 서로 겹치지 않도록 각자 환자를 골라 대면증례보고서를 쓰라고 하셨다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "08:40~10:00",
+        "title": "심음 청진",
+        "professor": "박재형 교수님",
+        "difficulty": 7,
+        "intro": [
+          "OSCE센터 B그룹 안 ICU룸에서 진행한다.",
+          "조장은 수업 전에 조원들 `심음청진` 과제와 `나의 꿈` 자필과제를 전부 모아두고, 시험이 끝난 뒤 바로 교수님께 제출한다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "10:00~12:00",
+        "title": "ABC 심혈관조영실 참관",
+        "professor": "이재환 교수님 / 박현웅 교수님",
+        "difficulty": 6,
+        "intro": [
+          "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다.",
+          "간호사 선생님께 실습학생이라고 말씀드리고 초진환자를 부탁하면 된다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "10:00~12:00",
+        "title": "DEF 외래 참관(예진)",
+        "professor": "정진옥 교수님 / 안계택 교수님",
+        "difficulty": 6,
+        "intro": [
+          "유폴리오, 초진기록지, Patient log 3개 사인을 받아야 한다.",
+          "간호사 선생님께 실습학생이라고 말씀드리고 초진환자를 부탁하면 된다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "12:00~13:00",
+        "title": "My Echo & ECG 발표",
+        "professor": "성인환 교수님",
+        "difficulty": 6,
+        "intro": [
+          "PPT 대본에 적힌 질문들을 꼭 읽어보고 간다.",
+          "관상동맥과 벽의 위치도 파악하고 가야 한다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "14:00~16:00",
+        "title": "CPX HTN",
+        "professor": "진선아 교수님",
+        "difficulty": 7,
+        "intro": [
+          "진선아 교수님이 **의국**에서 진행한다.",
+          "인계파일 `CPX HTN`에 있는 야마와 피드백을 다 보면 부족한 것은 없다고 한다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "16:00~18:00",
+        "title": "자율실습 및 보충학습",
+        "professor": "",
+        "difficulty": 3,
+        "intro": [],
+        "prepare_points": []
+      }
+    ],
+    "assignment_start_today": [
+      "대면증례보고서 제출",
+      "외래 예진기록지 1회차",
+      "유폴 현장승인 · 심음청진",
+      "유폴 현장승인 · CPX HTN",
+      "유폴 현장승인 · 1주차 화 ABC PCI",
+      "유폴 현장승인 · 1주차 화 DEF 외래참관"
+    ],
+    "assignment_due_today": [
+      "박재형 자필과제 제출",
+      "성석우 교수님용 `나의 꿈` 스캔본",
+      "My Echo & ECG 발표 준비",
+      "유폴 현장승인 · 심음청진",
+      "유폴 현장승인 · CPX HTN",
+      "유폴 현장승인 · 1주차 화 ABC PCI",
+      "유폴 현장승인 · 1주차 화 DEF 외래참관"
+    ],
+    "max_session_difficulty": 7,
+    "max_professor_score": 0
+  },
+  {
+    "date": "2026-04-29",
+    "headline": "1주차 수요일",
+    "day_summary": [
+      "1-5. 1주차 수요일"
+    ],
+    "sessions": [
+      {
+        "time": "08:40~10:00",
+        "title": "허혈성 심질환 주제 발표",
+        "professor": "정진옥 교수님",
+        "difficulty": 6,
+        "intro": [
+          "정진옥 교수님이 진행한다.",
+          "2026년에는 정진옥 교수님 일정이 자주 바뀌니 미리 연락드려 시간과 장소를 확정받는 것이 좋다. 7,8조는 11시로 옮겨진 적이 있었다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "10:00~12:00",
+        "title": "POMR 증례발표",
+        "professor": "이재환 교수님",
+        "difficulty": 7,
+        "intro": [
+          "이재환 교수님이 진행한다.",
+          "조장은 교육실 컴퓨터에 미리 발표자 2명의 PPT를 띄워두는 것이 좋다. (USB 가능)"
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "12:00~13:00",
+        "title": "MI case 발표",
+        "professor": "성인환 교수님",
+        "difficulty": 6,
+        "intro": [
+          "성인환 교수님이 진행한다.",
+          "셋째 날에는 MI 환자에 대한 case 발표를 한다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "14:00~18:00",
+        "title": "ABC 자율실습",
+        "professor": "",
+        "difficulty": 3,
+        "intro": [],
+        "prepare_points": []
+      },
+      {
+        "time": "14:00~18:00",
+        "title": "DEF 외래 참관(예진)",
+        "professor": "김준형 교수님 / 진선아 교수님 / 복영남 교수님",
+        "difficulty": 6,
+        "intro": [
+          "김준형, 진선아, 복영남 교수님 외래를 들어가는 흐름으로 이해하면 된다.",
+          "공휴일이나 교수님 휴가 때문에 외래 구성이 바뀌는 경우가 있었다."
+        ],
+        "prepare_points": []
+      }
+    ],
+    "assignment_start_today": [
+      "POMR 수정본 업로드",
+      "CPX 흉통 제출",
+      "외래 예진기록지 2회차",
+      "유폴 현장승인 · 1주차 수 DEF 외래참관"
+    ],
+    "assignment_due_today": [
+      "허혈성 심질환 주제 발표 준비",
+      "POMR 발표 케이스 준비 (A/B)",
+      "MI case 발표 준비",
+      "유폴 현장승인 · 1주차 수 DEF 외래참관"
+    ],
+    "max_session_difficulty": 7,
+    "max_professor_score": 0
+  },
+  {
+    "date": "2026-04-30",
+    "headline": "1주차 목요일",
+    "day_summary": [
+      "1-6. 1주차 목요일"
+    ],
+    "sessions": [
+      {
+        "time": "08:00~08:40",
+        "title": "A 심전도 발표",
+        "professor": "김준형 교수님",
+        "difficulty": 8,
+        "intro": [
+          "7시 50분 발표 시작이다.",
+          "조장과 조원은 7시 10분, 나머지 인원은 7시 35분까지 교육실 도착을 기준으로 움직인다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "08:40~12:00",
+        "title": "ABC 외래 참관(예진)",
+        "professor": "이재환 교수님 / 박현웅 교수님 / 권희진 교수님",
+        "difficulty": 6,
+        "intro": [
+          "교수님별 인계는 별도 파일을 확인하고 들어가면 된다.",
+          "목요일에도 외래와 PCI 참관 일정이 같이 있을 수 있으니, 본인 교수님 인계를 미리 읽고 움직이는 것이 중요하다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "08:40~12:00",
+        "title": "DEF 심혈관조영실 참관",
+        "professor": "안계택 교수님 / 성석우 교수님",
+        "difficulty": 7,
+        "intro": [
+          "교수님별 인계는 별도 파일을 확인하고 들어가면 된다.",
+          "목요일에도 외래와 PCI 참관 일정이 같이 있을 수 있으니, 본인 교수님 인계를 미리 읽고 움직이는 것이 중요하다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "12:00~13:00",
+        "title": "자율실습 및 보충학습",
+        "professor": "",
+        "difficulty": 3,
+        "intro": [],
+        "prepare_points": []
+      },
+      {
+        "time": "14:00~16:00",
+        "title": "CPX 두근거림 / 실신",
+        "professor": "권희진 교수님",
+        "difficulty": 8,
+        "intro": [
+          "권희진 교수님이 진행한다.",
+          "2026년에는 전날 교수님께 연락드렸더니 조원 수를 물어보시고, 2명씩 짝을 지어 두근거림이나 실신 중 하나에 대해 롤플레잉을 준비해오라고 하셨다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "16:00~18:00",
+        "title": "자율실습 및 보충학습",
+        "professor": "",
+        "difficulty": 3,
+        "intro": [],
+        "prepare_points": []
+      }
+    ],
+    "assignment_start_today": [
+      "유폴 현장승인 · CPX 두근거림/실신",
+      "유폴 현장승인 · A 심전도 발표",
+      "유폴 현장승인 · 1주차 목 DEF PCI",
+      "유폴 현장승인 · 1주차 목 ABC 외래참관"
+    ],
+    "assignment_due_today": [
+      "유폴 현장승인 · CPX 두근거림/실신",
+      "유폴 현장승인 · A 심전도 발표",
+      "유폴 현장승인 · 1주차 목 DEF PCI",
+      "유폴 현장승인 · 1주차 목 ABC 외래참관"
+    ],
+    "max_session_difficulty": 8,
+    "max_professor_score": 0
+  },
+  {
+    "date": "2026-05-01",
+    "headline": "1주차 금요일",
+    "day_summary": [
+      "1-7. 1주차 금요일"
+    ],
+    "sessions": [
+      {
+        "time": "08:00~08:40",
+        "title": "B 심전도 발표",
+        "professor": "김준형 교수님",
+        "difficulty": 8,
+        "intro": [
+          "7시 50분 발표 시작이다.",
+          "조장과 조원은 7시 10분, 나머지 인원은 7시 35분까지 교육실 도착을 기준으로 움직인다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "08:40~12:00",
+        "title": "제세동 / 심폐소생술 OT 및 OSCE",
+        "professor": "안계택 교수님",
+        "difficulty": 8,
+        "intro": [
+          "안계택 교수님이 진행한다.",
+          "2026년에는 **앞으로 계속 3시 반에 하는 걸로 인계하라**고 하셨다는 인계가 있다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "12:00~13:00",
+        "title": "자율실습 및 보충학습",
+        "professor": "",
+        "difficulty": 3,
+        "intro": [],
+        "prepare_points": []
+      },
+      {
+        "time": "14:00~18:00",
+        "title": "자율실습 및 보충학습",
+        "professor": "",
+        "difficulty": 3,
+        "intro": [],
+        "prepare_points": []
+      }
+    ],
+    "assignment_start_today": [
+      "주간실습계획과 성찰 1주차",
+      "유폴 현장승인 · 임상술기(척도평가) OSCE",
+      "유폴 현장승인 · B 심전도 발표"
+    ],
+    "assignment_due_today": [
+      "주간실습계획과 성찰 1주차",
+      "유폴 현장승인 · 임상술기(척도평가) OSCE",
+      "유폴 현장승인 · B 심전도 발표"
+    ],
+    "max_session_difficulty": 8,
+    "max_professor_score": 0
+  },
+  {
+    "date": "2026-05-04",
+    "headline": "2주차 월요일",
+    "day_summary": [
+      "1-9. 2주차 월요일"
+    ],
+    "sessions": [
+      {
+        "time": "10:00~12:00",
+        "title": "ABC 외래 참관",
+        "professor": "김민수 교수님 / 노재형 교수님",
+        "difficulty": 6,
+        "intro": [],
+        "prepare_points": []
+      },
+      {
+        "time": "13:30~16:00",
+        "title": "DEF 외래 참관",
+        "professor": "황원묵 교수님",
+        "difficulty": 6,
+        "intro": [],
+        "prepare_points": []
+      }
+    ],
+    "assignment_start_today": [
+      "심혈관질환 Q&A 제출",
+      "유폴 현장승인 · 2주차 월 ABC 외래참관",
+      "유폴 현장승인 · 2주차 월 DEF 외래참관"
+    ],
+    "assignment_due_today": [
+      "유폴 현장승인 · 2주차 월 ABC 외래참관",
+      "유폴 현장승인 · 2주차 월 DEF 외래참관"
+    ],
+    "max_session_difficulty": 6,
+    "max_professor_score": 0
+  },
+  {
+    "date": "2026-05-05",
+    "headline": "2주차 화요일",
+    "day_summary": [
+      "1-10. 2주차 화요일"
+    ],
+    "sessions": [
+      {
+        "time": "10:00~11:00",
+        "title": "ABC PCI 참관",
+        "professor": "노재형 교수님",
+        "difficulty": 6,
+        "intro": [
+          "김민수 교수님 시술과 노재형 교수님 PCI를 참관한다.",
+          "2026년에는 두 분 다 바쁘셔서 질문은 많지 않았다는 인계가 있다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "11:00~12:00",
+        "title": "DEF PCI 참관",
+        "professor": "노재형 교수님",
+        "difficulty": 6,
+        "intro": [
+          "김민수 교수님 시술과 노재형 교수님 PCI를 참관한다.",
+          "2026년에는 두 분 다 바쁘셔서 질문은 많지 않았다는 인계가 있다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "13:30~16:00",
+        "title": "DEF 부정맥 시술 참관",
+        "professor": "김민수 교수님",
+        "difficulty": 6,
+        "intro": [
+          "화요일 오후에는 외래 참관 학생은 외래를 보고, 나머지 학생들은 부정맥 시술을 참관한다.",
+          "3층 PCI방에서 참관하고, 이때 김민수 교수님이 유폴리오 현장승인(PCI 참관, 외래 참관 등)을 해주셨다는 인계가 있다."
+        ],
+        "prepare_points": []
+      }
+    ],
+    "assignment_start_today": [
+      "유폴 현장승인 · 2주차 화 ABC PCI",
+      "유폴 현장승인 · 2주차 화 DEF PCI"
+    ],
+    "assignment_due_today": [
+      "심혈관질환 Q&A 제출",
+      "유폴 현장승인 · 2주차 화 ABC PCI",
+      "유폴 현장승인 · 2주차 화 DEF PCI"
+    ],
+    "max_session_difficulty": 6,
+    "max_professor_score": 0
+  },
+  {
+    "date": "2026-05-06",
+    "headline": "2주차 수요일",
+    "day_summary": [
+      "1-11. 2주차 수요일"
+    ],
+    "sessions": [
+      {
+        "time": "10:00~11:00",
+        "title": "ABC 부정맥 시술 참관",
+        "professor": "김태석 교수님",
+        "difficulty": 6,
+        "intro": [
+          "2026년에는 2주차 화요일 오후에 김민수 교수님 부정맥 시술 참관을 했고, 수요일 오후에는 따로 진행하지 않았다는 인계가 있다.",
+          "2025년에는 김태석 교수님 부정맥 시술 참관을 수요일 오후에 하기도 했다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "11:00~12:00",
+        "title": "부정맥과 심전도",
+        "professor": "김민수 교수님",
+        "difficulty": 5,
+        "intro": [
+          "2026년에는 전날 시술 참관 중 의국 선생님이 와서 `12시 의국에서 수업하고 점심 도시락 사주신다`고 알려주셨다고 한다.",
+          "즉 **12시 의국 고정**으로 생각하면 되고, 밥을 사주시니 안 먹고 가는 것이 낫다는 인계가 있다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "13:30~16:00",
+        "title": "심초음파의 이해",
+        "professor": "오진경 교수님",
+        "difficulty": 5,
+        "intro": [
+          "박재형 교수님이 진행한다.",
+          "**시간표에 없어도 있는 일정**이라는 인계가 있다."
+        ],
+        "prepare_points": []
+      }
+    ],
+    "assignment_start_today": [
+      "심전도 조별 토의 제출",
+      "심초음파 검사의 이해 제출",
+      "유폴 현장승인 · 예진 미충족자 외래 보충"
+    ],
+    "assignment_due_today": [
+      "유폴 현장승인 · 예진 미충족자 외래 보충"
+    ],
+    "max_session_difficulty": 6,
+    "max_professor_score": 0
+  },
+  {
+    "date": "2026-05-07",
+    "headline": "2주차 목요일",
+    "day_summary": [
+      "1-12. 2주차 목요일"
+    ],
+    "sessions": [
+      {
+        "time": "08:00~09:00",
+        "title": "C,D 심전도 발표",
+        "professor": "김준형 교수님",
+        "difficulty": 8,
+        "intro": [
+          "7시 50분 발표 시작이다.",
+          "조장과 조원은 7시 10분, 나머지 인원은 7시 35분까지 교육실 도착을 기준으로 움직인다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "09:00~11:00",
+        "title": "CPX 호흡곤란",
+        "professor": "김미주 교수님",
+        "difficulty": 8,
+        "intro": [
+          "JVP 측정 자를 준비한다.",
+          "김미주 교수님이 case를 배정해주시고, 그 case에 맞는 대본을 준비하면 된다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "11:00~12:00",
+        "title": "자율실습 및 보충학습",
+        "professor": "",
+        "difficulty": 3,
+        "intro": [],
+        "prepare_points": []
+      },
+      {
+        "time": "13:30~16:00",
+        "title": "ABC 외래 참관(예진)",
+        "professor": "안계택 교수님 / 박현웅 교수님 / 성석우 교수님",
+        "difficulty": 6,
+        "intro": [
+          "외래와 초진을 모두 채웠더라도 들어가야 한다.",
+          "인계를 잘 보고 들어가면 된다는 인계가 있다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "13:30~16:00",
+        "title": "DEF 자율실습",
+        "professor": "",
+        "difficulty": 3,
+        "intro": [],
+        "prepare_points": []
+      }
+    ],
+    "assignment_start_today": [
+      "유폴 현장승인 · CPX 호흡곤란",
+      "유폴 현장승인 · C,D 심전도 발표",
+      "유폴 현장승인 · 2주차 목 ABC 외래참관"
+    ],
+    "assignment_due_today": [
+      "유폴 현장승인 · CPX 호흡곤란",
+      "유폴 현장승인 · C,D 심전도 발표",
+      "유폴 현장승인 · 2주차 목 ABC 외래참관"
+    ],
+    "max_session_difficulty": 8,
+    "max_professor_score": 0
+  },
+  {
+    "date": "2026-05-08",
+    "headline": "2주차 금요일",
+    "day_summary": [
+      "1-13. 2주차 금요일"
+    ],
+    "sessions": [
+      {
+        "time": "08:00~09:00",
+        "title": "E,F 심전도 발표",
+        "professor": "김준형 교수님",
+        "difficulty": 8,
+        "intro": [
+          "7시 50분 발표 시작이다.",
+          "조장과 조원은 7시 10분, 나머지 인원은 7시 35분까지 교육실 도착을 기준으로 움직인다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "10:00~12:00",
+        "title": "자율실습 및 보충학습",
+        "professor": "",
+        "difficulty": 3,
+        "intro": [],
+        "prepare_points": []
+      },
+      {
+        "time": "13:30~15:00",
+        "title": "심장판막질환",
+        "professor": "양유진 교수님",
+        "difficulty": 5,
+        "intro": [
+          "양유진 교수님은 2026.04.27에 복귀 예정이고, 그 전까지는 복영남 교수님이 진행하신다는 인계가 있다.",
+          "실제로는 1월 심장 진찰 때 복영남 교수님이 언제 진행할지 말씀해주셨다고 한다."
+        ],
+        "prepare_points": []
+      },
+      {
+        "time": "15:00~18:00",
+        "title": "자율실습 및 보충학습",
+        "professor": "",
+        "difficulty": 3,
+        "intro": [],
+        "prepare_points": []
+      }
+    ],
+    "assignment_start_today": [
+      "주간실습계획과 성찰 2주차",
+      "임상표현 계획과 자기평가 6개",
+      "임상술기 계획과 자기평가 2개",
+      "유폴 현장승인 · 심장판막질환",
+      "유폴 현장승인 · E,F 심전도 발표"
+    ],
+    "assignment_due_today": [
+      "POMR 수정본 업로드",
+      "외래 예진기록지 1회차",
+      "외래 예진기록지 2회차",
+      "주간실습계획과 성찰 2주차",
+      "유폴 현장승인 · 심장판막질환",
+      "유폴 현장승인 · E,F 심전도 발표"
+    ],
+    "max_session_difficulty": 8,
+    "max_professor_score": 0
+  }
+]
