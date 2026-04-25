@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kmle-planner-20260420T125300Z';
+const CACHE_NAME = 'kmle-planner-2026-04-26-cardiology-pci-notices-messages';
 const ASSETS = [
   './',
   './index.html',
@@ -13,7 +13,7 @@ const ASSETS = [
   './data/canary_import_seed.json',
   './data/allen_question_counts_2026-04-10.json'
 ];
-const NETWORK_FIRST_PATHS = new Set(['/', '/kmle-planner/', '/kmle-planner/index.html', '/kmle-planner/sync.js', '/kmle-planner/manifest.webmanifest', '/kmle-planner/version.json', '/kmle-planner-share/', '/kmle-planner-share/index.html', '/kmle-planner-share/sync.js', '/kmle-planner-share/manifest.webmanifest', '/kmle-planner-share/version.json']);
+const NETWORK_FIRST_PATHS = new Set(['/', '/kmle-planner/', '/kmle-planner/index.html', '/kmle-planner/sync.js', '/kmle-planner/manifest.webmanifest', '/kmle-planner/version.json']);
 
 async function putInCache(request, response) {
   if (!response || response.status !== 200) return response;

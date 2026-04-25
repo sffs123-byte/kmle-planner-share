@@ -2713,7 +2713,7 @@
   </div>
 
   <script>
-    const STORAGE_KEY = 'kmlePlannerState.share.v1';
+    const STORAGE_KEY = 'kmlePlannerState.v2';
     const APP_VERSION = '20260422T172400Z';
     const APP_VERSION_LABEL = '2026-04-23 02:24 KST';
     const STAGES = [
@@ -3121,9 +3121,10 @@
           presentation: ['show', 'hide'].includes(event?.boardSignalOverrides?.presentation) ? event.boardSignalOverrides.presentation : 'auto',
           exam: ['show', 'hide'].includes(event?.boardSignalOverrides?.exam) ? event.boardSignalOverrides.exam : 'auto'
         },
-        boardDifficultyOverride: Number.isFinite(Number(event?.boardDifficultyOverride)) && String(event?.boardDifficultyOverride) !== ''
+        boardDifficultyOverride: event?.boardDifficultyOverride !== null && event?.boardDifficultyOverride !== undefined && Number.isFinite(Number(event.boardDifficultyOverride)) && String(event.boardDifficultyOverride) !== ''
           ? Math.max(0, Math.min(10, Number(event.boardDifficultyOverride)))
           : null,
+        evaluation_items: Array.isArray(event?.evaluation_items) ? event.evaluation_items : [],
         completed: Boolean(event?.completed),
         professor: event?.professor || '',
         difficulty: Number(event?.difficulty || 0) || null,
@@ -3232,6 +3233,12 @@
         startTime: session.start_time || '',
         endTime: session.end_time || '',
         note: session.note || session.summary || '',
+        userNote: session.userNote || session.boardUserNote || '',
+        boardSignalOverrides: session.boardSignalOverrides || {},
+        boardDifficultyOverride: session.boardDifficultyOverride !== null && session.boardDifficultyOverride !== undefined && Number.isFinite(Number(session.boardDifficultyOverride)) && String(session.boardDifficultyOverride) !== ''
+          ? Number(session.boardDifficultyOverride)
+          : null,
+        evaluation_items: Array.isArray(session.evaluation_items) ? session.evaluation_items : [],
         completed: false,
         professor: session.professor || '',
         difficulty: session.difficulty || null,
@@ -3349,7 +3356,7 @@
           displayColor: event.displayColor || '',
           displayState: event.displayState || 'normal',
           boardSignalOverrides: event.boardSignalOverrides || null,
-          boardDifficultyOverride: Number.isFinite(Number(event.boardDifficultyOverride)) && String(event.boardDifficultyOverride) !== ''
+          boardDifficultyOverride: event.boardDifficultyOverride !== null && event.boardDifficultyOverride !== undefined && Number.isFinite(Number(event.boardDifficultyOverride)) && String(event.boardDifficultyOverride) !== ''
             ? Number(event.boardDifficultyOverride)
             : null
         }])
@@ -3653,8 +3660,6 @@
         selectedWeekKey = weekKeyFromDate(baseDate);
         calendarMonthCursor = startOfWeek(baseDate);
       }
-      saveState(`bundle import: ${bundle.meta?.clerkship_id || 'unknown'}`);
-      window.__kmlePlannerState = state;
       renderAll();
       if (switchToCalendar) {
         document.querySelector('[data-tab="calendar"]').click();
@@ -3683,23 +3688,6 @@
         return true;
       } catch (error) {
         console.error('auto respiratory bundle load failed', error);
-        return false;
-      }
-    }
-
-    async function ensureCardiologyBundlePresent() {
-      const clerkshipId = 'cardiology-2026-04-chief-draft-v2';
-      const alreadyLoaded = Boolean(state.clerkshipBundles?.[clerkshipId])
-        && (state.calendarEvents || []).some(event => event.bundleId === clerkshipId);
-      if (alreadyLoaded || location.protocol === 'file:') return false;
-      try {
-        await loadPlannerBundleFromUrl('./data/clerkships/bundles/cardiology_content_handoff_v2.bundle.json', {
-          switchToCalendar: false,
-          jumpToBundleDate: false
-        });
-        return true;
-      } catch (error) {
-        console.error('auto cardiology bundle load failed', error);
         return false;
       }
     }
@@ -4436,6 +4424,43 @@
         });
       }
       return targets.filter(target => target.text);
+    }
+
+
+    function communicationGuideForBundle(bundle) {
+      return bundle?.fixed_info?.communication_guide || bundle?.analysis_appendix?.communication_guide_v2 || null;
+    }
+
+    function pciOutpatientGuideForBundle(bundle) {
+      return bundle?.fixed_info?.pci_outpatient_guide || bundle?.analysis_appendix?.pci_outpatient_assets_v1 || null;
+    }
+
+    function renderCopyableCardListHtml(entries, emptyMessage = '복사할 문구가 아직 없다.') {
+      if (!Array.isArray(entries) || !entries.length) {
+        return `<div class="empty">${escapeHtml(emptyMessage)}</div>`;
+      }
+      return `<div class="detail-screen-stack">
+        ${entries.map(entry => {
+          const body = String(entry.body || '').trim();
+          const preview = body.split('\n').map(line => line.trim()).filter(Boolean).slice(0, 2).join(' / ');
+          const chips = [entry.week, entry.day, entry.timing, entry.recipient].filter(Boolean);
+          return `<article class="detail-screen-section" style="border-left:4px solid #2563eb;">
+            <div class="badge-row" style="margin-bottom:8px; gap:6px;">
+              ${chips.slice(0, 4).map(chip => `<span class="calendar-mini-chip">${escapeHtml(chip)}</span>`).join('')}
+            </div>
+            <div class="item-title" style="font-size:16px; margin-bottom:4px;">${escapeHtml(entry.title || entry.recipient || '문구')}</div>
+            ${entry.note ? `<div class="item-meta" style="margin-bottom:6px;">${escapeHtml(entry.note)}</div>` : ''}
+            ${preview ? `<div class="reference-info-line" style="color:#475569; margin-bottom:10px;">${escapeHtml(preview)}</div>` : ''}
+            <div class="badge-row" style="gap:8px; margin-bottom:10px;">
+              <button type="button" class="btn btn-small btn-secondary" data-copy="${escapeHtml(body)}" data-label="${escapeHtml(entry.copy_label || entry.title || '문구')}" onclick="copyTextToClipboard(this.dataset.copy, this.dataset.label)">${escapeHtml(entry.copy_label || '복사하기')}</button>
+            </div>
+            <details>
+              <summary style="cursor:pointer; font-weight:700; color:#1d4ed8;">자세히 보기</summary>
+              <pre style="white-space:pre-wrap; word-break:keep-all; overflow:auto; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:12px; line-height:1.65; color:#0f172a; font-family:inherit; font-size:13px; margin-top:10px;">${escapeHtml(body)}</pre>
+            </details>
+          </article>`;
+        }).join('')}
+      </div>`;
     }
 
     function isWeeklySummaryEvent(event) {
@@ -5922,6 +5947,44 @@
       return ['show', 'hide'].includes(mode) ? mode : 'auto';
     }
 
+    function normalizeEvaluationItems(value) {
+      return Array.isArray(value) ? value.filter(item => item && (item.label || item.id)) : [];
+    }
+
+    function calendarEventEvaluationItems(event, session, assignment = null, relatedAssignments = []) {
+      const collected = [
+        ...normalizeEvaluationItems(session?.evaluation_items),
+        ...normalizeEvaluationItems(assignment?.evaluation_items),
+        ...normalizeEvaluationItems(event?.evaluation_items),
+        ...relatedAssignments.flatMap(item => normalizeEvaluationItems(item?.evaluation_items))
+      ];
+      const seen = new Set();
+      return collected.filter(item => {
+        const key = item.id || item.label;
+        if (!key || seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    function evaluationItemsTotal(items) {
+      return normalizeEvaluationItems(items).reduce((sum, item) => sum + (Number(item.points || 0) || 0), 0);
+    }
+
+    function renderEvaluationItemsSectionHtml(items) {
+      const rows = normalizeEvaluationItems(items);
+      if (!rows.length) return '';
+      const total = evaluationItemsTotal(rows);
+      return `<div class="detail-screen-section">
+        <h4>📊 평가 비중</h4>
+        <div class="badge-row" style="margin-top:8px; margin-bottom:8px;">
+          <span class="calendar-mini-chip" style="background:#f0fdf4; color:#166534; border-color:#86efac;">평가 ${total}점</span>
+          ${rows.map(item => `<span class="calendar-mini-chip" title="${escapeHtml(item.source || '')}">${escapeHtml(item.label || '')} ${Number(item.points || 0)}점</span>`).join('')}
+        </div>
+        <p class="item-meta">1-6. 심장내과.pdf 2페이지 평가항목 표의 비율(%) 기준. 지식/술기/태도 세부점수는 제외했다.</p>
+      </div>`;
+    }
+
     function calendarEventBoardConfig(event, session, relatedAssignments = []) {
       const signature = [event?.title || '', session?.title || ''].join(' ');
       const presentationRegex = /(발표|presentation)/i;
@@ -5942,7 +6005,8 @@
         ...relatedAssignments.map(assignment => Number(assignment?.difficulty_total || 0) || 0)
       ].filter(Boolean);
       const autoDifficulty = difficultyCandidates.length ? Math.max(...difficultyCandidates) : 0;
-      const displayDifficulty = Number.isFinite(Number(event?.boardDifficultyOverride)) && String(event?.boardDifficultyOverride) !== ''
+      const hasDifficultyOverride = event?.boardDifficultyOverride !== null && event?.boardDifficultyOverride !== undefined && Number.isFinite(Number(event.boardDifficultyOverride)) && String(event.boardDifficultyOverride) !== '';
+      const displayDifficulty = hasDifficultyOverride
         ? Math.max(0, Math.min(10, Number(event.boardDifficultyOverride)))
         : autoDifficulty;
 
@@ -5952,6 +6016,8 @@
       const examVisible = examMode === 'show' ? true : examMode === 'hide' ? false : examAuto;
       const onsiteCount = onsiteAssignments.length || (assignmentMeta?.onsite_required ? 1 : 0) || (session?.approval_required ? 1 : 0);
       const onsiteVisible = onsiteAuto;
+      const evaluationItems = calendarEventEvaluationItems(event, session, assignmentMeta, relatedAssignments);
+      const evaluationPoints = evaluationItemsTotal(evaluationItems);
 
       const flags = [];
       if (assignmentVisible) flags.push(assignmentCount > 1 ? `과제 ${assignmentCount}` : '과제');
@@ -5959,6 +6025,7 @@
       if (presentationVisible) flags.push('발표');
       if (examVisible) flags.push('시험');
       if (displayDifficulty) flags.push(`난이도 ${displayDifficulty}/10`);
+      if (evaluationPoints) flags.push(`평가 ${evaluationPoints}점`);
       if (event?.completed) flags.push('완료');
       if (calendarEventHasCustomSchedule(event)) flags.push('변경');
       if (calendarEventIsCancelled(event)) flags.push('X');
@@ -5968,7 +6035,8 @@
         onsite: { visible: onsiteVisible, auto: onsiteAuto, count: onsiteCount },
         presentation: { visible: presentationVisible, auto: presentationAuto, mode: presentationMode },
         exam: { visible: examVisible, auto: examAuto, mode: examMode },
-        difficulty: { value: displayDifficulty, autoValue: autoDifficulty, overridden: Number.isFinite(Number(event?.boardDifficultyOverride)) && String(event?.boardDifficultyOverride) !== '' },
+        difficulty: { value: displayDifficulty, autoValue: autoDifficulty, overridden: hasDifficultyOverride },
+        evaluation: { items: evaluationItems, points: evaluationPoints },
         flags
       };
     }
@@ -5992,6 +6060,7 @@
           .map(([key, value]) => [key, Array.isArray(value) ? [...value] : []])
       ].filter(([, items]) => items.length > 0);
 
+      const evaluationHtml = renderEvaluationItemsSectionHtml(calendarEventEvaluationItems(event, session, findBundleAssignmentForEvent(event), relatedAssignments));
       const relationHtml = relatedAssignments.length > 0
         ? `<div class="detail-screen-section">
             <h4>🔗 연관 과제 (1페이지)</h4>
@@ -6073,6 +6142,7 @@
       if (!sections.length && !relationHtml && !copyHtml && !detailGuideHtml) return '';
       return `
         <div class="detail-screen-stack">
+          ${evaluationHtml}
           ${relationHtml}
           ${copyHtml}
           ${detailGuideHtml}
@@ -6109,6 +6179,7 @@
         }
       ].filter(section => section.items.length > 0);
 
+      const evaluationHtml = renderEvaluationItemsSectionHtml(calendarEventEvaluationItems(event, null, assignment, []));
       const sessionRelationHtml = relatedSessions.length > 0
         ? `<div class="detail-screen-section">
             <h4>📅 연관 수업/세션</h4>
@@ -6125,6 +6196,7 @@
 
       return `
         <div class="detail-screen-stack">
+          ${evaluationHtml}
           ${sections.map(section => `
             <div class="detail-screen-section">
               <h4>${escapeHtml(section.title)}</h4>
@@ -6334,6 +6406,7 @@
       const uportfolioGuide = uportfolioGuideForWeek(weekDays);
       const assignmentChecklist = assignmentChecklistForWeek(weekDays);
       const bundle = bundleForWeek(weekDays);
+      const fixedInfo = bundle?.fixed_info || {};
       const checklistBundleId = bundle?.meta?.clerkship_id || '';
       const checklistSummary = assignmentChecklist ? checklistProgress(checklistBundleId, assignmentChecklist) : { total: 0, done: 0 };
       const hasSejongContext = hasSejongContextForWeek(weekDays);
@@ -6363,6 +6436,10 @@
                 <button class="btn btn-small ${activeCalendarSummaryFilter === 'chief_admin' ? 'btn-secondary' : 'btn-ghost'}" onclick="setCalendarSummaryFilter('chief_admin')">조장·행정 ${categoryCounts.chief_admin || 0}</button>
                 ${locationGuide ? `<button class="btn btn-small btn-ghost" onclick="openCalendarLocationGuide('${weekKey}')">장소 지도 ${locationGuide.counts?.places || 0}</button>` : ''}
                 <button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'basic_info')">심장내과 기본정보</button>
+                ${fixedInfo.evaluation_score_weights ? `<button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'evaluation_scores')">평가 비중</button>` : ''}
+                ${pciOutpatientGuideForBundle(bundle) ? `<button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'pci_outpatient')">PCI/외래 가이드</button>` : ''}
+                ${communicationGuideForBundle(bundle)?.day_notices?.length ? `<button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'day_notices')">요일별 공지</button>` : ''}
+                ${communicationGuideForBundle(bundle)?.professor_messages?.length ? `<button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'professor_messages')">교수님 문자</button>` : ''}
                 <button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'professors')">교수님</button>
                 <button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'group_rules')">조 운영 규칙</button>
                 ${hasSejongContext ? `<button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'sejong_notes')">세종 운영 메모</button>` : ''}
@@ -6536,6 +6613,140 @@
                     <div>${renderReferenceLinesHtml(block.raw_md_excerpt.split('\n'))}</div>
                   </div>
                 `).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+
+      if (panelKey === 'pci_outpatient') {
+        const guide = pciOutpatientGuideForBundle(bundle);
+        const guidePacks = (bundle?.analysis_appendix?.guide_packs || []).filter(pack => String(pack.type || '').includes('pci') || String(pack.id || '').includes('pci') || String(pack.name || '').includes('외래'));
+        return `
+          <div class="detail-screen-panel">
+            <div class="detail-screen-head">
+              <button class="detail-screen-back" onclick="openCalendarSummaryDetail('${weekKey}')">← 종합으로</button>
+              <button class="detail-screen-close" onclick="closeCalendarDetailScreen()" aria-label="닫기">✕</button>
+            </div>
+            <div class="detail-screen-body">
+              <div class="detail-screen-hero">
+                <div class="badge-row">
+                  <span class="calendar-mini-chip">PCI/외래</span>
+                  <span class="calendar-mini-chip">이미지 ${guide?.counts?.images || guide?.asset_urls?.length || 0}</span>
+                  <span class="calendar-mini-chip">가이드 ${guidePacks.length}</span>
+                </div>
+                <div class="detail-screen-title">PCI 및 외래 가이드</div>
+                <div class="detail-screen-summary">심혈관조영실 입실 동선 이미지를 바로 보고, PCI/외래 인계는 필요할 때만 펼쳐서 확인한다.</div>
+              </div>
+              <div class="detail-screen-stack">
+                <div class="detail-screen-section">
+                  <h4>PCI 입실 이미지</h4>
+                  ${(guide?.asset_urls || []).length ? `<div class="location-guide-thumb-grid" style="margin-top:12px;">${(guide.asset_urls || []).map((url, index) => {
+                    const fileName = pathBasename((guide.image_files || [])[index] || url);
+                    const caption = index === 0 ? 'PCI 입실 동선' : 'PCI 민트색 문';
+                    return `<button type="button" class="location-guide-thumb" data-src="${escapeHtml(url)}" data-caption="${escapeHtml(caption)}" data-file-name="${escapeHtml(fileName)}" onclick="openImageLightbox(this.dataset.src, this.dataset.caption, this.dataset.fileName)">
+                      <img src="${encodeURI(url)}" alt="${escapeHtml(caption)}" loading="lazy" />
+                      <span>${escapeHtml(fileName)}</span>
+                    </button>`;
+                  }).join('')}</div>` : `<div class="empty">연결된 PCI 이미지가 아직 없다.</div>`}
+                </div>
+                ${guidePacks.map(pack => `
+                  <div class="detail-screen-section">
+                    <h4>${escapeHtml(pack.name || pack.id || 'PCI/외래 가이드')}</h4>
+                    <div>${renderReferenceLinesHtml([...(pack.core_points || []), ...(pack.watchouts || [])])}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      if (panelKey === 'day_notices') {
+        const guide = communicationGuideForBundle(bundle);
+        const notices = guide?.day_notices || [];
+        return `
+          <div class="detail-screen-panel">
+            <div class="detail-screen-head">
+              <button class="detail-screen-back" onclick="openCalendarSummaryDetail('${weekKey}')">← 종합으로</button>
+              <button class="detail-screen-close" onclick="closeCalendarDetailScreen()" aria-label="닫기">✕</button>
+            </div>
+            <div class="detail-screen-body">
+              <div class="detail-screen-hero">
+                <div class="badge-row">
+                  <span class="calendar-mini-chip">공지 ${notices.length}</span>
+                  <span class="calendar-mini-chip">복사 가능</span>
+                  <span class="calendar-mini-chip">조장 실전형</span>
+                </div>
+                <div class="detail-screen-title">요일별 조원 공지</div>
+                <div class="detail-screen-summary">상단 요약 박스와 번호별 행동 지시가 들어간, 바로 복사해서 단톡에 올리는 공지 모음이다.</div>
+              </div>
+              ${renderCopyableCardListHtml(notices, '요일별 공지가 아직 없다.')}
+            </div>
+          </div>
+        `;
+      }
+
+      if (panelKey === 'professor_messages') {
+        const guide = communicationGuideForBundle(bundle);
+        const messages = guide?.professor_messages || [];
+        return `
+          <div class="detail-screen-panel">
+            <div class="detail-screen-head">
+              <button class="detail-screen-back" onclick="openCalendarSummaryDetail('${weekKey}')">← 종합으로</button>
+              <button class="detail-screen-close" onclick="closeCalendarDetailScreen()" aria-label="닫기">✕</button>
+            </div>
+            <div class="detail-screen-body">
+              <div class="detail-screen-hero">
+                <div class="badge-row">
+                  <span class="calendar-mini-chip">문자 ${messages.length}</span>
+                  <span class="calendar-mini-chip">원문 유지</span>
+                  <span class="calendar-mini-chip">PK 3,4조 조장 배강렬</span>
+                </div>
+                <div class="detail-screen-title">교수님별 문자</div>
+                <div class="detail-screen-summary">원본 문자 예시에서 이름과 조만 채운 문구다. 자세히 보기를 열어 확인하고, 복사하기로 그대로 보낸다.</div>
+              </div>
+              ${renderCopyableCardListHtml(messages, '교수님 문자 예시가 아직 없다.')}
+            </div>
+          </div>
+        `;
+      }
+
+      if (panelKey === 'evaluation_scores') {
+        const evalGuide = fixedInfo.evaluation_score_weights || {};
+        const items = Array.isArray(evalGuide.items) ? evalGuide.items : [];
+        const cpx = Array.isArray(evalGuide.cpx_breakdown) ? evalGuide.cpx_breakdown : [];
+        const total = Number(evalGuide.total_points || items.reduce((sum, item) => sum + (Number(item.points || 0) || 0), 0));
+        return `
+          <div class="detail-screen-panel">
+            <div class="detail-screen-head">
+              <button class="detail-screen-back" onclick="openCalendarSummaryDetail('${weekKey}')">← 종합으로</button>
+              <button class="detail-screen-close" onclick="closeCalendarDetailScreen()" aria-label="닫기">✕</button>
+            </div>
+            <div class="detail-screen-body">
+              <div class="detail-screen-hero">
+                <div class="badge-row">
+                  <span class="calendar-mini-chip">총 ${total}점</span>
+                  <span class="calendar-mini-chip">평가항목 ${items.length}</span>
+                  <span class="calendar-mini-chip">CPX 각 6점</span>
+                </div>
+                <div class="detail-screen-title">심장내과 평가 비중</div>
+                <div class="detail-screen-summary">${escapeHtml(evalGuide.source_pdf || '1-6. 심장내과.pdf')} ${evalGuide.source_page ? `${evalGuide.source_page}페이지` : ''} · 비율(%) 숫자만 반영, 지식/술기/태도 세부점수는 제외.</div>
+              </div>
+              <div class="detail-screen-stack">
+                <div class="detail-screen-section">
+                  <h4>평가항목별 비율</h4>
+                  <div class="reference-info-list">
+                    ${items.map(item => `<div class="reference-info-line"><strong>${escapeHtml(item.label || '')}</strong>: ${Number(item.points || 0)}점${item.display_note ? ` · ${escapeHtml(item.display_note)}` : ''}</div>`).join('')}
+                  </div>
+                </div>
+                <div class="detail-screen-section">
+                  <h4>CPX 세부 반영</h4>
+                  <div class="reference-info-list">
+                    ${cpx.map(item => `<div class="reference-info-line"><strong>${escapeHtml(item.label || '')}</strong>: ${Number(item.points || 0)}점</div>`).join('')}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -6925,6 +7136,7 @@
                 ${boardConfig.presentation.visible ? `<span class="calendar-mini-chip">발표</span>` : ''}
                 ${boardConfig.exam.visible ? `<span class="calendar-mini-chip">시험</span>` : ''}
                 ${boardConfig.difficulty.value ? `<span class="calendar-mini-chip">난이도 ${boardConfig.difficulty.value}/10</span>` : ''}
+                ${boardConfig.evaluation?.points ? `<span class="calendar-mini-chip" style="background:#f0fdf4; color:#166534; border-color:#86efac;">평가 ${boardConfig.evaluation.points}점</span>` : ''}
                 ${event.track ? `<span class="calendar-mini-chip">${escapeHtml(event.track)}트랙</span>` : ''}
                 <span class="calendar-mini-chip">${escapeHtml(event.time || '종일')}</span>
               </div>
@@ -7822,7 +8034,6 @@
     window.__kmlePlannerState = state;
     renderAll();
     void ensureRespiratoryBundlePresent();
-    void ensureCardiologyBundlePresent();
     void ensureLoadedBundlesHaveLatestChecklist();
     void checkForAppUpdate({ silent: !plannerStandaloneMode() });
     window.setInterval(() => { void checkForAppUpdate(); }, 60000);

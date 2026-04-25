@@ -1,7 +1,7 @@
 {
-  "name": "국시 준비 플래너 A",
-  "short_name": "국시 플래너A",
-  "description": "공유용 A 사이트용 국시 준비 일정·과목 진행도 플래너",
+  "name": "국시 준비 플래너",
+  "short_name": "국시 플래너",
+  "description": "국시 준비 일정, 과목 진행도, 복습 루프를 관리하는 로컬 스타일 학습 플래너",
   "lang": "ko",
   "start_url": "./",
   "scope": "./",

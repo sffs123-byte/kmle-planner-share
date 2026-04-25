@@ -1,9 +1,9 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-const STORAGE_KEY = 'kmlePlannerState.share.v1';
-const CONFIG_KEY = 'kmlePlannerSyncCodeConfig.share.v1';
-const META_KEY = 'kmlePlannerSyncMeta.share.v1';
-const PLANNER_STATE_VERSION = 'kmlePlannerState.share.v1';
+const STORAGE_KEY = 'kmlePlannerState.v2';
+const CONFIG_KEY = 'kmlePlannerSyncCodeConfig.v1';
+const META_KEY = 'kmlePlannerSyncMeta.v3';
+const PLANNER_STATE_VERSION = 'kmlePlannerState.v2';
 const PLANNER_USER_STATE_VERSION = 'planner-user-state.v1';
 const PLANNER_USER_ID = 'gangryeol-main';
 
@@ -29,7 +29,7 @@ function sanitizeSyncCode(value) {
 }
 
 function getOrCreateDeviceId() {
-  const key = 'kmlePlannerDeviceId.share.v1';
+  const key = 'kmlePlannerDeviceId.v1';
   const existing = localStorage.getItem(key);
   if (existing) return existing;
   const created = globalThis.crypto?.randomUUID?.() || `device-${Math.random().toString(36).slice(2, 10)}`;
