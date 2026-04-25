@@ -8815,27 +8815,29 @@
           {
             "name": "성인환",
             "site": "본원",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
-            "image_path": ""
+            "contact_mode": "private",
+            "image_path": "",
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인."
           },
           {
             "name": "정진옥",
             "site": "본원",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
+            "contact_mode": "private",
             "image_path": "",
-            "contact_note": "문자보다 당일 외래 들어가는 조원에게 다음날 IHD 발표 진행을 여쭤보게 하는 편이 더 낫다는 인계 있음."
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인. 문자보다 당일 외래 들어가는 조원에게 다음날 IHD 발표 진행을 여쭤보게 하는 편이 더 낫다는 인계 있음."
           },
           {
             "name": "이재환",
             "site": "본원",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
-            "image_path": ""
+            "contact_mode": "private",
+            "image_path": "",
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인."
           },
           {
             "name": "김준형",
@@ -8849,19 +8851,20 @@
           {
             "name": "안계택",
             "site": "본원",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
+            "contact_mode": "private",
             "image_path": "",
-            "contact_note": "외래 갔던 학생을 통해 전달되면 별도 연락을 안 보내도 된다는 인계 있음."
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인. 외래 갔던 학생을 통해 전달되면 별도 연락을 안 보내도 된다는 인계 있음."
           },
           {
             "name": "진선아",
             "site": "본원",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
-            "image_path": ""
+            "contact_mode": "private",
+            "image_path": "",
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인."
           },
           {
             "name": "송필상",
@@ -8875,36 +8878,38 @@
           {
             "name": "박현웅",
             "site": "본원",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
-            "image_path": ""
+            "contact_mode": "private",
+            "image_path": "",
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인."
           },
           {
             "name": "성석우",
             "site": "본원",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
+            "contact_mode": "private",
             "image_path": "",
-            "contact_note": "평일 일과 중 연락은 가능하나 휴일/퇴근 후 연락 금지. 전주 연락은 굳이 하지 말라고 한 인계 있음. 월요일 pre-test는 치프 선생님에게 확인."
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인. 평일 일과 중 연락은 가능하나 휴일/퇴근 후 연락 금지. 전주 연락은 굳이 하지 말라고 한 인계 있음. 월요일 pre-test는 치프 선생님에게 확인."
           },
           {
             "name": "김미주",
             "site": "본원",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
-            "image_path": ""
+            "contact_mode": "private",
+            "image_path": "",
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인."
           },
           {
             "name": "권희진",
             "site": "본원",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
+            "contact_mode": "private",
             "image_path": "",
-            "contact_note": "전날 조장이 CPX 일정 컨펌 문자. 1~2시쯤 보내고 답장 없으면 6~7시쯤 한 번 더 연락."
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인. 전날 조장이 CPX 일정 컨펌 문자. 1~2시쯤 보내고 답장 없으면 6~7시쯤 한 번 더 연락."
           },
           {
             "name": "양유진",
@@ -8918,26 +8923,29 @@
           {
             "name": "복영남",
             "site": "본원",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
-            "image_path": ""
+            "contact_mode": "private",
+            "image_path": "",
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인."
           },
           {
             "name": "박재형",
             "site": "본원",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
-            "image_path": ""
+            "contact_mode": "private",
+            "image_path": "",
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인."
           },
           {
             "name": "김민수",
             "site": "세종",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
-            "image_path": ""
+            "contact_mode": "private",
+            "image_path": "",
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인."
           },
           {
             "name": "노재형",
@@ -8951,18 +8959,20 @@
           {
             "name": "오진경",
             "site": "세종",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
-            "image_path": ""
+            "contact_mode": "private",
+            "image_path": "",
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인."
           },
           {
             "name": "김태석",
             "site": "세종",
-            "contact_label": "개별 연락처",
+            "contact_label": "공유본 비공개",
             "phone": "공유본 비공개",
-            "contact_mode": "direct",
-            "image_path": ""
+            "contact_mode": "private",
+            "image_path": "",
+            "contact_note": "개인 연락처는 public 공유본에서 숨김. 원문 인계파일/조장 개인 저장 연락처를 확인."
           },
           {
             "name": "황원묵",
