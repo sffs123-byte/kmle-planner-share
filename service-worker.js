@@ -1,7 +1,8 @@
-const CACHE_NAME = 'kmle-planner-20260428T182815Z';
+const CACHE_NAME = 'kmle-planner-20260429T100232Z';
 const ASSETS = [
   './',
   './index.html',
+  './cpx-script-board.html',
   './manifest.webmanifest',
   './sync.js',
   './version.json',
@@ -13,7 +14,7 @@ const ASSETS = [
   './data/canary_import_seed.json',
   './data/allen_question_counts_2026-04-10.json'
 ];
-const NETWORK_FIRST_PATHS = new Set(['/', '/kmle-planner/', '/kmle-planner/index.html', '/kmle-planner/sync.js', '/kmle-planner/manifest.webmanifest', '/kmle-planner/version.json']);
+const NETWORK_FIRST_PATHS = new Set(['/', '/kmle-planner/', '/kmle-planner/index.html', '/kmle-planner/cpx-script-board.html', '/kmle-planner/sync.js', '/kmle-planner/manifest.webmanifest', '/kmle-planner/version.json']);
 
 async function putInCache(request, response) {
   if (!response || response.status !== 200) return response;

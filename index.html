@@ -2689,11 +2689,25 @@
       <div class="panel" style="padding:28px;">
         <div class="panel-header">
           <div>
-            <div class="panel-title">퀴즈 모음</div>
-            <div class="panel-subtitle">Anki SRS 방식의 과목별 Pre-test 퀴즈</div>
+            <div class="panel-title">퀴즈/실기 도구 모음</div>
+            <div class="panel-subtitle">Anki SRS 퀴즈와 CPX 대본 공유보드를 한곳에서 연다.</div>
           </div>
         </div>
         <div id="quizGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:20px;">
+          <a href="./cpx-script-board.html?v=20260429T100232Z" target="_blank" style="text-decoration:none;">
+            <div class="quiz-card" style="background:linear-gradient(135deg,#f8fbff 0%,#eef4ff 100%);border:1px solid #bfdbfe;border-radius:var(--radius-lg);padding:22px 20px;cursor:pointer;transition:box-shadow 0.18s,transform 0.18s;" onmouseover="this.style.boxShadow='0 10px 32px rgba(37,74,145,0.18)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                <span style="font-size:1.5rem;">📋</span>
+                <span style="font-weight:800;font-size:0.97rem;color:var(--text);">CPX 대본 공유보드</span>
+              </div>
+              <div style="color:var(--muted);font-size:0.82rem;margin-bottom:10px;">58개 세부 CC · v12 Quick Sheet 미리보기 · Supabase 실시간 공유 편집</div>
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="background:#dbeafe;color:#254a91;font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">CPX</span>
+                <span style="background:#f0fdf4;color:var(--green);font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">Realtime</span>
+                <span style="background:#fff7ed;color:#ea580c;font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">대본 편집</span>
+              </div>
+            </div>
+          </a>
           <a href="./quizzes/심장내과_pretest_quiz.html" target="_blank" style="text-decoration:none;">
             <div class="quiz-card" style="background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px 20px;cursor:pointer;transition:box-shadow 0.18s,transform 0.18s;" onmouseover="this.style.boxShadow='0 8px 28px rgba(47,109,246,0.13)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
               <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
@@ -2750,7 +2764,7 @@
             </div>
           </a>
         </div>
-        <p style="color:var(--muted);font-size:0.82rem;margin-top:24px;">새 과목 퀴즈/암기 도구는 quizzes/ 폴더에 HTML 추가 후 이 목록에 카드를 추가하세요.</p>
+        <p style="color:var(--muted);font-size:0.82rem;margin-top:24px;">새 과목 퀴즈/암기 도구는 quizzes/ 폴더에 HTML 추가 후 이 목록에 카드를 추가하세요. CPX 공유보드는 루트의 cpx-script-board.html에서 관리합니다.</p>
       </div>
     </section>
 
