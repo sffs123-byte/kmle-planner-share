@@ -10,7 +10,7 @@ from typing import Any, Dict, List, Optional
 ROOT = Path(__file__).resolve().parents[1]
 OUT_ID = "pediatrics_2026_05_track_bca_content_handoff_v1"
 CLERKSHIP_ID = "pediatrics-2026-05-track-bca"
-GENERATED_AT = "2026-05-10T08:08:00+09:00"
+GENERATED_AT = "2026-05-10T08:40:00+09:00"
 WEEK1_HANDOFF_PACKET = ROOT / "data" / "clerkships" / "packets" / "pediatrics" / "2026-05-10_week1_b_compressed_handoff_v2.json"
 
 WEEK_STARTS = {
@@ -404,9 +404,154 @@ def build_assignments() -> List[Dict[str, Any]]:
     ]
 
 
+def build_professor_directory() -> List[Dict[str, Any]]:
+    def prof(name: str, site: str, roles: List[str], office: str, phone: str, email: str, source_refs: List[str] | None = None) -> Dict[str, Any]:
+        return {
+            "name": name,
+            "site": site,
+            "roles": roles,
+            "modes": ["공식 PDF 실습지도체계"],
+            "contact_label": "공식 PDF 연락처",
+            "phone": phone,
+            "contact_mode": "office",
+            "contact_note": f"{office} · E-mail: {email} · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": source_refs or ["official_pdf:실습지도체계"],
+            "image_path": "",
+        }
+
+    return [
+        prof("임한혁", "본원", ["책임교수", "내분비-유전대사", "CPX/OSCE"], "연구동 3층", "042-280-7825", "damus@cnuh.co.kr"),
+        prof("조은영", "본원", ["부책임교수", "감염", "CPX/OSCE", "대면진료증례보고서 제출"], "연구동 1층", "042-280-7265", "eycho@cnuh.co.kr"),
+        prof("장미영", "본원", ["신생아", "CPX/OSCE"], "연구동 3층", "042-280-7253", "mychang@cnuh.co.kr"),
+        prof("임연정", "본원", ["혈액종양", "CPX/OSCE"], "연구동 3층", "042-280-7252", "pedonco@cnuh.co.kr"),
+        prof("정은희", "본원", ["알레르기·호흡기", "CPX/OSCE", "아나필락시스 교육"], "연구동 3층", "042-280-7249", "ehchung@cnu.ac.kr"),
+        prof("강준원", "본원", ["신경", "CPX/OSCE"], "연구동 3층", "042-280-8244", "childlove@cnu.ac.kr"),
+        prof("김현진", "본원", ["소화기영양", "CPX/OSCE"], "연구동 4층", "042-280-7244", "tai832@cnuh.co.kr"),
+        prof("강미현", "본원", ["신생아", "CPX/OSCE", "신생아소생술"], "연구동 2층", "042-280-6759", "lubyuhki@cnuh.co.kr"),
+        prof("양은애", "본원", ["알레르기·호흡기", "OT", "CPX/OSCE"], "연구동 1층", "042-280-7244", "anni79@cnuh.co.kr"),
+        prof("신지혜", "본원", ["신생아", "NICU", "NBS/POMR", "CPX/OSCE"], "연구동 2층", "042-280-7797", "sjh7182@cnuh.co.kr"),
+        prof("최아영", "본원", ["중환자", "PICU", "CPX/OSCE"], "연구동 2층", "042-280-6759", "mist13@cnuh.co.kr"),
+        prof("정승연", "본원", ["신경", "외래 예진", "CPX/OSCE"], "연구동 1층", "042-280-7244", "tylor9@cnuh.co.kr"),
+        prof("김경민", "본원", ["감염", "병동실습 입원환자 1건", "CPX/OSCE"], "연구동 2층", "042-280-7797", "kyungman1126@cnuh.co.kr"),
+        prof("배은영", "본원", ["심장", "심초음파/외래", "CPX/OSCE"], "연구동 2층", "042-280-7244", "pebble@cnuh.co.kr"),
+        prof("김유미", "세종", ["내분비-유전대사", "CPX/OSCE"], "세종충남대병원 연구실", "042-280-7244", "ym.kim@cnu.ac.kr"),
+        prof("김지나", "세종", ["심장/중환자", "세종 OT", "소아심장", "CPX/OSCE"], "세종충남대병원 연구실", "042-280-7244", "drgnkim@naver.com"),
+        prof("김은희", "세종", ["신경", "CPX/증례토의"], "세종충남대병원 연구실", "042-280-7244", "luke2178@cnuh.co.kr"),
+        prof("김민지", "세종", ["알레르기·호흡기", "CPX/증례토의"], "세종충남대병원 연구실", "042-280-7244", "alpineheidi@hanmail.net"),
+        prof("이병국", "세종", ["신생아", "세종 NICU", "CPX/OSCE"], "세종충남대병원 연구실", "042-280-7244", "raphael@cnuh.co.kr"),
+        prof("소혜진", "세종", ["감염", "CPX/OSCE"], "세종충남대병원 연구실", "042-280-7244", "twinkler@cnuh.co.kr"),
+        prof("민지수", "세종", ["신장", "소아신장 mini-lecture", "CPX/OSCE"], "세종충남대병원 연구실", "042-280-7244", "jeesu.min@cnuh.co.kr"),
+        prof("권유원", "세종", ["소화기영양", "CPX/OSCE"], "세종충남대병원 연구실", "042-280-7244", "yani68@cnuh.co.kr"),
+        prof("윤영미", "세종", ["신생아", "세종 NICU", "CPX/OSCE"], "세종충남대병원 연구실", "042-280-7244", "yoonmiya81@cnuh.co.kr"),
+        prof("조은경", "기초", ["미생물학 기초 실습"], "미생물학교실", "042-280-7244", "hayoungj@cnu.ac.kr"),
+        prof("최철희", "기초", ["미생물학 기초 실습"], "미생물학교실", "042-280-7244", "choich@cnu.ac.kr"),
+        prof("백승화", "기초", ["미생물학 기초 실습"], "미생물학교실", "042-280-7244", "swpaik11@cnu.ac.kr"),
+    ]
+
+
+def build_location_guide() -> Dict[str, Any]:
+    return {
+        "title": "소아청소년과 장소 지도",
+        "source_pdf": "소아청소년과 공지.pdf / 2026 B분과·C분과 인계",
+        "intro": [
+            "지도는 실제 이동 순서 중심으로 압축했다. 공식 PDF의 장소명에 최신 2026 인계의 동선/방 번호를 덧붙인다.",
+            "방 번호와 시간은 당일 안내가 최우선이다. 특히 감염 외래는 공식 3번방과 최신 인계 5번방이 충돌한다.",
+            "대전 1~3주차는 소아동 2층 의국을 시작점으로, 3층 NICU, 4층 341병동/병원학교, 외래 구역을 반복 이동한다.",
+        ],
+        "counts": {"places": 7, "images": 4, "campuses": 2},
+        "entries": [
+            {
+                "campus": "대전 본원",
+                "title": "소아동 2층 소아청소년과 의국",
+                "summary": [
+                    "프리테스트, 1주차 OT, 수/목 아침집담회, 일부 CPX/피드백의 기준 장소.",
+                    "1~3주차 월요일 08:20 프리테스트는 의국 기준. 1주차 월요일 08:40~09:00 OT도 의국 기준.",
+                    "4주차 금요일 CPX #5와 최종 포트폴리오 제출도 대전 소아동 2층 의국 라인으로 표시한다.",
+                ],
+                "image_files": ["assets/pediatrics-location-guide/daejeon/peds_daejeon_overview.svg"],
+                "asset_urls": ["./assets/pediatrics-location-guide/daejeon/peds_daejeon_overview.svg"],
+            },
+            {
+                "campus": "대전 본원",
+                "title": "소아동 3층 NICU / 신생아중환자실",
+                "summary": [
+                    "B분과 화·수 신생아 실습의 중심. 신지혜 교수님 OT, POMR 환아 배정, NBS, 분만/C-sec 참관이 연결된다.",
+                    "입장 루틴: 자동문 → 신발장/크록스 → 사물함/일회용 가운 → 손씻기/명부 → 안쪽 PK 책상.",
+                    "NICU를 네 명이 동시에 비우지 않는 것이 최신 인계상 중요하다.",
+                ],
+                "image_files": ["assets/pediatrics-location-guide/daejeon/peds_daejeon_nicu.svg"],
+                "asset_urls": ["./assets/pediatrics-location-guide/daejeon/peds_daejeon_nicu.svg"],
+            },
+            {
+                "campus": "대전 본원",
+                "title": "소아동 4층 341병동 / 병원학교 / 혈액종양·감염 병동",
+                "summary": [
+                    "월 오전 혈종 다학제회의/회진, 월 오후 환자상태보고 재료, 목요일 혈종 POMR의 출발점.",
+                    "2주차 C분과 화요일 김경민 교수님 감염 병동 POMR/입원환자 1건도 341병동 스테이션 기준으로 잡는다.",
+                    "병원학교 회의가 없거나 OT가 늦으면 스테이션/의국 EMR 설명으로 대체될 수 있다.",
+                ],
+                "image_files": ["assets/pediatrics-location-guide/daejeon/peds_daejeon_ward_outpatient.svg"],
+                "asset_urls": ["./assets/pediatrics-location-guide/daejeon/peds_daejeon_ward_outpatient.svg"],
+            },
+            {
+                "campus": "대전 본원",
+                "title": "소아청소년과 외래 구역",
+                "summary": [
+                    "1번방: 정은희/양은애, 2번방: 신경, 3번방: 감염/소화기, 4번방: 내분비, 6번방: 강미현, 7번방: 임연정, 8번방: 배은영.",
+                    "외래 3건 평가축은 이 구역에서 확보한다. 1주차 B분과에서는 목 오전 감염 외래, 목 오후 혈종 외래가 후보.",
+                    "임연정 교수님 7번방은 6번방과 8번방 사이로 최신 인계에 표시되어 있다.",
+                ],
+                "image_files": ["assets/pediatrics-location-guide/daejeon/peds_daejeon_ward_outpatient.svg"],
+                "asset_urls": ["./assets/pediatrics-location-guide/daejeon/peds_daejeon_ward_outpatient.svg"],
+            },
+            {
+                "campus": "세종",
+                "title": "세종 1층 소아청소년센터",
+                "summary": [
+                    "4주차 화요일 오전 세종 OT 시작점. 공식 시간표상 김지나 교수님 라인으로 표시.",
+                    "세종 주간은 CPX와 병행되어 피로도가 높으므로, 지도는 위치 확인보다 일정 충돌 방어용으로 본다.",
+                ],
+                "image_files": ["assets/pediatrics-location-guide/sejong/peds_sejong_overview.svg"],
+                "asset_urls": ["./assets/pediatrics-location-guide/sejong/peds_sejong_overview.svg"],
+            },
+            {
+                "campus": "세종",
+                "title": "세종 3층 NICU",
+                "summary": [
+                    "4주차 화요일 오전 세종 NICU 참관. 이병국/윤영미 교수님 라인이 공식표에 보인다.",
+                    "대전 NICU와 별개로 세종 실습 포트폴리오 소재를 확보하는 장소.",
+                ],
+                "image_files": ["assets/pediatrics-location-guide/sejong/peds_sejong_overview.svg"],
+                "asset_urls": ["./assets/pediatrics-location-guide/sejong/peds_sejong_overview.svg"],
+            },
+            {
+                "campus": "세종",
+                "title": "세종 10층 의국",
+                "summary": [
+                    "4주차 화~목 mini-lecture와 증례토의의 중심 장소.",
+                    "화 오후 소아신장, 수 오전 소아심장, 목 오전 병동 증례토의가 10층 의국 기준으로 표시되어 있다.",
+                ],
+                "image_files": ["assets/pediatrics-location-guide/sejong/peds_sejong_overview.svg"],
+                "asset_urls": ["./assets/pediatrics-location-guide/sejong/peds_sejong_overview.svg"],
+            },
+        ],
+    }
+
+
 def build_fixed_info() -> Dict[str, Any]:
     return {
         "source_title": "2026 소아청소년과 실습 bundle — 강렬 2번째 조/B→C→A→공통",
+        "basic_info_title": "소아청소년과 기본정보",
+        "primary_source": "소아청소년과 공지.pdf + 최신 2026 인계",
+        "책임교수": "임한혁",
+        "부책임교수": ["조은영"],
+        "core_contacts": [
+            {"label": "소아청소년과 책임교수", "value": "임한혁 교수님 042-280-7825", "note": "공식 PDF"},
+            {"label": "소아청소년과 부책임교수", "value": "조은영 교수님 042-280-7265", "note": "대면증례보고서/최종 포트폴리오 제출 라인"},
+            {"label": "대전 시작점", "value": "소아동 2층 소아청소년과 의국", "note": "프테/OT/집담회/CPX"},
+        ],
+        "professor_directory": build_professor_directory(),
+        "location_guide": build_location_guide(),
         "primary_source_policy": [
             "1. 교수님/총조장 최신 공지 또는 당일 직접 안내",
             "2. 최신 2026 인계의 실제 시간·동선·방 번호",
@@ -421,11 +566,22 @@ def build_fixed_info() -> Dict[str, Any]:
             "weeks": {"1주차":"B분과", "2주차":"C분과", "3주차":"A분과", "4주차":"CPX/세종 공통"},
         },
         "evaluation_score_weights": {
-            "Pre-test/Post-test": "30% — 1~3주차 월요일 3회가 핵심, 4주차는 정규 프테가 아니라 재시/피드백 주간으로 해석",
-            "CPX/OSCE": "40% — 평가는 4주차이나 3주차 전까지 스크립트/체크리스트 1회독 필요",
-            "외래/입원 예진": "20% — 외래 3건 + 병동실습 입원환자 1건",
-            "개인 실습 평가": "10% — 환자 파악, 질환 이해, POMR, 침상토론, 태도",
-            "포트폴리오/대면진료증례보고서": "P/F 또는 감점 리스크 — 금요일 마감 우선 표시",
+            "title": "소아청소년과 평가 비중",
+            "source_pdf": "소아청소년과 공지.pdf",
+            "items": [
+                {"label": "Pre-test/Post-test", "points": 30, "display_note": "1~3주차 월요일 3회가 핵심"},
+                {"label": "CPX/OSCE", "points": 40, "display_note": "평가는 4주차, 준비는 3주차 전 완료 권장"},
+                {"label": "외래/입원 예진", "points": 20, "display_note": "외래 3건 + 병동실습 입원환자 1건"},
+                {"label": "개인 실습 평가", "points": 10, "display_note": "환자 파악, 질환 이해, POMR, 침상토론, 태도"}
+            ],
+            "cpx_breakdown": [
+                {"label": "CPX/OSCE", "points": 40},
+                {"label": "포트폴리오/대면진료증례보고서", "points": 0}
+            ],
+            "notes": [
+                "포트폴리오/대면진료증례보고서는 P/F 또는 감점 리스크로 별도 관리한다.",
+                "4주차는 국시 공부 주간이 아니라 CPX/증례/제출 마감 주간으로 본다."
+            ]
         },
         "operating_principles": [
             "앱 메인 카드는 clean slot만 노출하고 원문/근거는 접기 상세와 packet으로 보존한다.",

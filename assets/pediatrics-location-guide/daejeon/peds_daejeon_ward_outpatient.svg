@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <style>
+      .bg{fill:#f8fbff} .card{fill:#fff;stroke:#cbd5e1;stroke-width:3;rx:24} .title{font:800 42px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;fill:#0f172a} .sub{font:600 24px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;fill:#475569} .txt{font:600 22px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;fill:#334155} .small{font:500 18px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;fill:#64748b} .pill{fill:#e0f2fe;stroke:#38bdf8;stroke-width:2;rx:18} .hot{fill:#fee2e2;stroke:#ef4444;stroke-width:2;rx:18} .ok{fill:#dcfce7;stroke:#22c55e;stroke-width:2;rx:18} .warn{fill:#fef3c7;stroke:#f59e0b;stroke-width:2;rx:18} .line{stroke:#64748b;stroke-width:4;fill:none;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10" fill="#64748b"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1200" height="760"/>
+  
+  <text class="title" x="60" y="78">341병동 · 병원학교 · 외래 지도</text>
+  <text class="sub" x="60" y="120">혈종/감염 병동과 외래 예진이 점수와 직접 연결된다.</text>
+  <rect class="card hot" x="80" y="180" width="460" height="180"/><text class="sub" x="120" y="230">341병동 안쪽 병원학교</text><text class="txt" x="120" y="280">혈액종양 다학제회의</text><text class="small" x="120" y="320">회의 진행 여부 직접 확인. 환자 흐름을 미리 듣는다.</text>
+  <rect class="card warn" x="660" y="180" width="460" height="180"/><text class="sub" x="700" y="230">341병동 스테이션/회진</text><text class="txt" x="700" y="280">EMR 설명 · 환자 배정</text><text class="small" x="700" y="320">혈종 POMR, C분과 감염 병동 1건의 핵심 장소.</text>
+  <path class="line" d="M545 270 H655"/>
+  <rect class="card" x="80" y="450" width="1040" height="170"/><text class="sub" x="120" y="500">외래 방 번호 빠른표</text><text class="txt" x="120" y="545">1: 알레르기/호흡기 · 2: 신경 · 3: 감염/소화기 · 4: 내분비</text><text class="txt" x="120" y="585">6: 강미현 신생아 · 7: 임연정 혈종 · 8: 배은영 심장</text>
+
+</svg>

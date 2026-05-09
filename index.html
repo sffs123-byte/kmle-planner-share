@@ -2800,8 +2800,8 @@
 
   <script>
     const STORAGE_KEY = 'kmlePlannerState.v2';
-    const APP_VERSION = '20260510T081800Z';
-    const APP_VERSION_LABEL = '2026-05-10 08:18 KST';
+    const APP_VERSION = '20260510T084000Z';
+    const APP_VERSION_LABEL = '2026-05-10 08:40 KST';
     const STAGES = [
       { id: 'lecture', label: '강의 듣기', short: '강의', note: '강의/팟캐스트/기본 인강 소화' },
       { id: 'framework', label: '개념 틀 짜기', short: '개념틀', note: '총정리 구조, 도식, 로직 프레임 정리' },
@@ -4246,6 +4246,9 @@
       (fixedInfo.professor_directory || []).forEach(item => {
         ensure(item.name, {
           site: item.site || '',
+          modes: item.modes || [],
+          roles: item.roles || [],
+          sourceRefs: item.source_refs || item.sourceRefs || [],
           contactHint: item.contact_note || '개별 연락은 해당 일정의 확인 문자/조장 공지 흐름을 우선 참고',
           phone: item.phone || '',
           contactLabel: item.contact_label || '연락처',
@@ -6822,8 +6825,8 @@
                   <span class="calendar-mini-chip">평가항목 ${items.length}</span>
                   <span class="calendar-mini-chip">CPX 각 6점</span>
                 </div>
-                <div class="detail-screen-title">심장내과 평가 비중</div>
-                <div class="detail-screen-summary">${escapeHtml(evalGuide.source_pdf || '1-6. 심장내과.pdf')} ${evalGuide.source_page ? `${evalGuide.source_page}페이지` : ''} · 비율(%) 숫자만 반영, 지식/술기/태도 세부점수는 제외.</div>
+                <div class="detail-screen-title">${escapeHtml(evalGuide.title || `${bundle?.meta?.subject || '실습'} 평가 비중`)}</div>
+                <div class="detail-screen-summary">${escapeHtml(evalGuide.source_pdf || fixedInfo.primary_source || '공식 자료')} ${evalGuide.source_page ? `${evalGuide.source_page}페이지` : ''} · 비율(%) 숫자만 반영, 지식/술기/태도 세부점수는 제외.</div>
               </div>
               <div class="detail-screen-stack">
                 <div class="detail-screen-section">
@@ -6863,9 +6866,10 @@
                   <span class="calendar-mini-chip">교수님 ${professorDirectory.length}</span>
                   <span class="calendar-mini-chip">본원 ${(grouped['본원'] || []).length}</span>
                   <span class="calendar-mini-chip">세종 ${(grouped['세종'] || []).length}</span>
+                  ${Object.entries(grouped).filter(([site]) => !['본원', '세종'].includes(site)).map(([site, rows]) => `<span class="calendar-mini-chip">${escapeHtml(site)} ${rows.length}</span>`).join('')}
                 </div>
-                <div class="detail-screen-title">교수님</div>
-                <div class="detail-screen-summary">이름, 운영 위치, 연결 수업, 연락 경로를 표처럼 정돈해서 본다.</div>
+              <div class="detail-screen-title">교수님</div>
+              <div class="detail-screen-summary">이름, 운영 위치, 연결 수업, 연락 경로를 표처럼 정돈해서 본다.</div>
               </div>
               <div class="detail-screen-stack">
                 ${Object.entries(grouped).map(([site, rows]) => `
@@ -6993,10 +6997,12 @@
         `;
       }
 
-      const contacts = [
-        fixedInfo['심장내과 의국'] ? { label: '심장내과 의국', value: fixedInfo['심장내과 의국'] } : null,
-        fixedInfo['오스키 센터'] ? { label: '오스키센터', value: fixedInfo['오스키 센터'] } : null,
-      ].filter(Boolean);
+      const contacts = Array.isArray(fixedInfo.core_contacts) && fixedInfo.core_contacts.length
+        ? fixedInfo.core_contacts
+        : [
+            fixedInfo['심장내과 의국'] ? { label: '심장내과 의국', value: fixedInfo['심장내과 의국'] } : null,
+            fixedInfo['오스키 센터'] ? { label: '오스키센터', value: fixedInfo['오스키 센터'] } : null,
+          ].filter(Boolean);
       const principals = [
         fixedInfo['책임교수'] ? `책임교수: ${fixedInfo['책임교수']}` : null,
         Array.isArray(fixedInfo['부책임교수']) && fixedInfo['부책임교수'].length ? `부책임교수: ${fixedInfo['부책임교수'].join(', ')}` : null,
@@ -7016,7 +7022,7 @@
                 ${contacts.length ? `<span class="calendar-mini-chip">연락처 ${contacts.length}</span>` : ''}
                 ${principals.length ? `<span class="calendar-mini-chip">교수진 ${principals.length}</span>` : ''}
               </div>
-              <div class="detail-screen-title">심장내과 기본정보</div>
+              <div class="detail-screen-title">${escapeHtml(fixedInfo.basic_info_title || `${bundle?.meta?.subject || '실습'} 기본정보`)}</div>
               <div class="detail-screen-summary">${calendarBoardRangeLabel(weekDays)} · 실습 중 자주 찾는 연락처와 기본 운영 정보를 한곳에 묶어둔다.</div>
               <div class="detail-filter-row">
                 ${bundleLocationGuide(bundle) ? `<button class="btn btn-small btn-ghost" onclick="openCalendarLocationGuide('${weekKey}')">장소 지도 보기</button>` : ''}
@@ -7038,7 +7044,7 @@
               <div class="reference-info-card">
                 <h5>핵심 연락처</h5>
                 <div class="reference-info-list">
-                  ${contacts.length ? contacts.map(item => `<div class="reference-info-line"><strong>${escapeHtml(item.label)}</strong>: ${escapeHtml(item.value)}</div>`).join('') : `<div class="reference-info-line">등록된 연락처가 없다.</div>`}
+                ${contacts.length ? contacts.map(item => `<div class="reference-info-line"><strong>${escapeHtml(item.label)}</strong>: ${escapeHtml(item.value || item.phone || '')}${item.note ? ` · ${escapeHtml(item.note)}` : ''}</div>`).join('') : `<div class="reference-info-line">등록된 연락처가 없다.</div>`}
                 </div>
               </div>
             </div>
@@ -7102,7 +7108,7 @@
                 <span class="calendar-mini-chip">이미지 ${locationGuide.counts?.images || 0}</span>
                 <span class="calendar-mini-chip">캠퍼스 ${locationGuide.counts?.campuses || 0}</span>
               </div>
-              <div class="detail-screen-title">심장내과 장소 지도</div>
+              <div class="detail-screen-title">${escapeHtml(locationGuide.title || `${bundle?.meta?.subject || '실습'} 장소 지도`)}</div>
               <div class="detail-screen-summary">${calendarBoardRangeLabel(weekDays)} · 본원/세종 장소 설명과 이미지 파일을 한 화면에서 본다.</div>
             </div>
             <div class="detail-screen-stack">
@@ -8217,6 +8223,6 @@
       });
     }
   </script>
-  <script type="module" src="./sync.js?v=20260510T081800Z"></script>
+  <script type="module" src="./sync.js?v=20260510T084000Z"></script>
 </body>
 </html>

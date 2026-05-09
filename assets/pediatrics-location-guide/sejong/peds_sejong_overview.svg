@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <style>
+      .bg{fill:#f8fbff} .card{fill:#fff;stroke:#cbd5e1;stroke-width:3;rx:24} .title{font:800 42px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;fill:#0f172a} .sub{font:600 24px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;fill:#475569} .txt{font:600 22px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;fill:#334155} .small{font:500 18px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;fill:#64748b} .pill{fill:#e0f2fe;stroke:#38bdf8;stroke-width:2;rx:18} .hot{fill:#fee2e2;stroke:#ef4444;stroke-width:2;rx:18} .ok{fill:#dcfce7;stroke:#22c55e;stroke-width:2;rx:18} .warn{fill:#fef3c7;stroke:#f59e0b;stroke-width:2;rx:18} .line{stroke:#64748b;stroke-width:4;fill:none;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10" fill="#64748b"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1200" height="760"/>
+  
+  <text class="title" x="60" y="78">세종 소아청소년과 4주차 지도</text>
+  <text class="sub" x="60" y="120">4주차는 세종 실습과 CPX가 겹친다. 국시 공부 시간은 거의 기대하지 않는다.</text>
+  <rect class="card ok" x="90" y="190" width="300" height="150"/><text class="sub" x="130" y="240">1층 소아청소년센터</text><text class="txt" x="130" y="285">화 오전 세종 OT</text><text class="small" x="130" y="315">김지나 교수님/세종 시작점</text>
+  <rect class="card warn" x="450" y="190" width="300" height="150"/><text class="sub" x="490" y="240">3층 NICU</text><text class="txt" x="490" y="285">NICU 참관</text><text class="small" x="490" y="315">이병국/윤영미 교수님</text>
+  <rect class="card hot" x="810" y="190" width="300" height="150"/><text class="sub" x="850" y="240">10층 의국</text><text class="txt" x="850" y="285">mini-lecture/증례토의</text><text class="small" x="850" y="315">소아신장·심장·병동 증례</text>
+  <path class="line" d="M390 265 H445"/><path class="line" d="M750 265 H805"/>
+  <rect class="card" x="90" y="450" width="1020" height="150"/><text class="sub" x="130" y="500">운영 포인트</text><text class="txt" x="130" y="545">화-목 세종 이동 + 수/목 CPX + 금 대전 CPX #5/제출 마감.</text><text class="small" x="130" y="580">대면증례보고서와 최종 포트폴리오는 3주차 이전부터 역산해야 한다.</text>
+
+</svg>

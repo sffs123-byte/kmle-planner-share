@@ -17,7 +17,7 @@
         "clerkship_id": "pediatrics-2026-05-track-bca",
         "subject": "소아청소년과",
         "track": "2026-05 B→C→A rotation",
-        "generated_at": "2026-05-10T08:08:00+09:00",
+        "generated_at": "2026-05-10T08:40:00+09:00",
         "content_source": {
           "subject": "소아청소년과 실습",
           "purpose": "평가 점수 방어 + 수면 방어 + 국시 공부 시간 확보",
@@ -35,6 +35,657 @@
       },
       "fixed_info": {
         "source_title": "2026 소아청소년과 실습 bundle — 강렬 2번째 조/B→C→A→공통",
+        "basic_info_title": "소아청소년과 기본정보",
+        "primary_source": "소아청소년과 공지.pdf + 최신 2026 인계",
+        "책임교수": "임한혁",
+        "부책임교수": [
+          "조은영"
+        ],
+        "core_contacts": [
+          {
+            "label": "소아청소년과 책임교수",
+            "value": "임한혁 교수님 042-280-7825",
+            "note": "공식 PDF"
+          },
+          {
+            "label": "소아청소년과 부책임교수",
+            "value": "조은영 교수님 042-280-7265",
+            "note": "대면증례보고서/최종 포트폴리오 제출 라인"
+          },
+          {
+            "label": "대전 시작점",
+            "value": "소아동 2층 소아청소년과 의국",
+            "note": "프테/OT/집담회/CPX"
+          }
+        ],
+        "professor_directory": [
+          {
+            "name": "임한혁",
+            "site": "본원",
+            "roles": [
+              "책임교수",
+              "내분비-유전대사",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7825",
+            "contact_mode": "office",
+            "contact_note": "연구동 3층 · E-mail: damus@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "조은영",
+            "site": "본원",
+            "roles": [
+              "부책임교수",
+              "감염",
+              "CPX/OSCE",
+              "대면진료증례보고서 제출"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7265",
+            "contact_mode": "office",
+            "contact_note": "연구동 1층 · E-mail: eycho@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "장미영",
+            "site": "본원",
+            "roles": [
+              "신생아",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7253",
+            "contact_mode": "office",
+            "contact_note": "연구동 3층 · E-mail: mychang@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "임연정",
+            "site": "본원",
+            "roles": [
+              "혈액종양",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7252",
+            "contact_mode": "office",
+            "contact_note": "연구동 3층 · E-mail: pedonco@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "정은희",
+            "site": "본원",
+            "roles": [
+              "알레르기·호흡기",
+              "CPX/OSCE",
+              "아나필락시스 교육"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7249",
+            "contact_mode": "office",
+            "contact_note": "연구동 3층 · E-mail: ehchung@cnu.ac.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "강준원",
+            "site": "본원",
+            "roles": [
+              "신경",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-8244",
+            "contact_mode": "office",
+            "contact_note": "연구동 3층 · E-mail: childlove@cnu.ac.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "김현진",
+            "site": "본원",
+            "roles": [
+              "소화기영양",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "연구동 4층 · E-mail: tai832@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "강미현",
+            "site": "본원",
+            "roles": [
+              "신생아",
+              "CPX/OSCE",
+              "신생아소생술"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-6759",
+            "contact_mode": "office",
+            "contact_note": "연구동 2층 · E-mail: lubyuhki@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "양은애",
+            "site": "본원",
+            "roles": [
+              "알레르기·호흡기",
+              "OT",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "연구동 1층 · E-mail: anni79@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "신지혜",
+            "site": "본원",
+            "roles": [
+              "신생아",
+              "NICU",
+              "NBS/POMR",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7797",
+            "contact_mode": "office",
+            "contact_note": "연구동 2층 · E-mail: sjh7182@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "최아영",
+            "site": "본원",
+            "roles": [
+              "중환자",
+              "PICU",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-6759",
+            "contact_mode": "office",
+            "contact_note": "연구동 2층 · E-mail: mist13@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "정승연",
+            "site": "본원",
+            "roles": [
+              "신경",
+              "외래 예진",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "연구동 1층 · E-mail: tylor9@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "김경민",
+            "site": "본원",
+            "roles": [
+              "감염",
+              "병동실습 입원환자 1건",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7797",
+            "contact_mode": "office",
+            "contact_note": "연구동 2층 · E-mail: kyungman1126@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "배은영",
+            "site": "본원",
+            "roles": [
+              "심장",
+              "심초음파/외래",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "연구동 2층 · E-mail: pebble@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "김유미",
+            "site": "세종",
+            "roles": [
+              "내분비-유전대사",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "세종충남대병원 연구실 · E-mail: ym.kim@cnu.ac.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "김지나",
+            "site": "세종",
+            "roles": [
+              "심장/중환자",
+              "세종 OT",
+              "소아심장",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "세종충남대병원 연구실 · E-mail: drgnkim@naver.com · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "김은희",
+            "site": "세종",
+            "roles": [
+              "신경",
+              "CPX/증례토의"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "세종충남대병원 연구실 · E-mail: luke2178@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "김민지",
+            "site": "세종",
+            "roles": [
+              "알레르기·호흡기",
+              "CPX/증례토의"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "세종충남대병원 연구실 · E-mail: alpineheidi@hanmail.net · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "이병국",
+            "site": "세종",
+            "roles": [
+              "신생아",
+              "세종 NICU",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "세종충남대병원 연구실 · E-mail: raphael@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "소혜진",
+            "site": "세종",
+            "roles": [
+              "감염",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "세종충남대병원 연구실 · E-mail: twinkler@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "민지수",
+            "site": "세종",
+            "roles": [
+              "신장",
+              "소아신장 mini-lecture",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "세종충남대병원 연구실 · E-mail: jeesu.min@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "권유원",
+            "site": "세종",
+            "roles": [
+              "소화기영양",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "세종충남대병원 연구실 · E-mail: yani68@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "윤영미",
+            "site": "세종",
+            "roles": [
+              "신생아",
+              "세종 NICU",
+              "CPX/OSCE"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "세종충남대병원 연구실 · E-mail: yoonmiya81@cnuh.co.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "조은경",
+            "site": "기초",
+            "roles": [
+              "미생물학 기초 실습"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "미생물학교실 · E-mail: hayoungj@cnu.ac.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "최철희",
+            "site": "기초",
+            "roles": [
+              "미생물학 기초 실습"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "미생물학교실 · E-mail: choich@cnu.ac.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          },
+          {
+            "name": "백승화",
+            "site": "기초",
+            "roles": [
+              "미생물학 기초 실습"
+            ],
+            "modes": [
+              "공식 PDF 실습지도체계"
+            ],
+            "contact_label": "공식 PDF 연락처",
+            "phone": "042-280-7244",
+            "contact_mode": "office",
+            "contact_note": "미생물학교실 · E-mail: swpaik11@cnu.ac.kr · 공식 PDF 실습지도체계 기준. 실제 연락은 교수님/총조장 최신 안내 우선.",
+            "source_refs": [
+              "official_pdf:실습지도체계"
+            ],
+            "image_path": ""
+          }
+        ],
+        "location_guide": {
+          "title": "소아청소년과 장소 지도",
+          "source_pdf": "소아청소년과 공지.pdf / 2026 B분과·C분과 인계",
+          "intro": [
+            "지도는 실제 이동 순서 중심으로 압축했다. 공식 PDF의 장소명에 최신 2026 인계의 동선/방 번호를 덧붙인다.",
+            "방 번호와 시간은 당일 안내가 최우선이다. 특히 감염 외래는 공식 3번방과 최신 인계 5번방이 충돌한다.",
+            "대전 1~3주차는 소아동 2층 의국을 시작점으로, 3층 NICU, 4층 341병동/병원학교, 외래 구역을 반복 이동한다."
+          ],
+          "counts": {
+            "places": 7,
+            "images": 4,
+            "campuses": 2
+          },
+          "entries": [
+            {
+              "campus": "대전 본원",
+              "title": "소아동 2층 소아청소년과 의국",
+              "summary": [
+                "프리테스트, 1주차 OT, 수/목 아침집담회, 일부 CPX/피드백의 기준 장소.",
+                "1~3주차 월요일 08:20 프리테스트는 의국 기준. 1주차 월요일 08:40~09:00 OT도 의국 기준.",
+                "4주차 금요일 CPX #5와 최종 포트폴리오 제출도 대전 소아동 2층 의국 라인으로 표시한다."
+              ],
+              "image_files": [
+                "assets/pediatrics-location-guide/daejeon/peds_daejeon_overview.svg"
+              ],
+              "asset_urls": [
+                "./assets/pediatrics-location-guide/daejeon/peds_daejeon_overview.svg"
+              ]
+            },
+            {
+              "campus": "대전 본원",
+              "title": "소아동 3층 NICU / 신생아중환자실",
+              "summary": [
+                "B분과 화·수 신생아 실습의 중심. 신지혜 교수님 OT, POMR 환아 배정, NBS, 분만/C-sec 참관이 연결된다.",
+                "입장 루틴: 자동문 → 신발장/크록스 → 사물함/일회용 가운 → 손씻기/명부 → 안쪽 PK 책상.",
+                "NICU를 네 명이 동시에 비우지 않는 것이 최신 인계상 중요하다."
+              ],
+              "image_files": [
+                "assets/pediatrics-location-guide/daejeon/peds_daejeon_nicu.svg"
+              ],
+              "asset_urls": [
+                "./assets/pediatrics-location-guide/daejeon/peds_daejeon_nicu.svg"
+              ]
+            },
+            {
+              "campus": "대전 본원",
+              "title": "소아동 4층 341병동 / 병원학교 / 혈액종양·감염 병동",
+              "summary": [
+                "월 오전 혈종 다학제회의/회진, 월 오후 환자상태보고 재료, 목요일 혈종 POMR의 출발점.",
+                "2주차 C분과 화요일 김경민 교수님 감염 병동 POMR/입원환자 1건도 341병동 스테이션 기준으로 잡는다.",
+                "병원학교 회의가 없거나 OT가 늦으면 스테이션/의국 EMR 설명으로 대체될 수 있다."
+              ],
+              "image_files": [
+                "assets/pediatrics-location-guide/daejeon/peds_daejeon_ward_outpatient.svg"
+              ],
+              "asset_urls": [
+                "./assets/pediatrics-location-guide/daejeon/peds_daejeon_ward_outpatient.svg"
+              ]
+            },
+            {
+              "campus": "대전 본원",
+              "title": "소아청소년과 외래 구역",
+              "summary": [
+                "1번방: 정은희/양은애, 2번방: 신경, 3번방: 감염/소화기, 4번방: 내분비, 6번방: 강미현, 7번방: 임연정, 8번방: 배은영.",
+                "외래 3건 평가축은 이 구역에서 확보한다. 1주차 B분과에서는 목 오전 감염 외래, 목 오후 혈종 외래가 후보.",
+                "임연정 교수님 7번방은 6번방과 8번방 사이로 최신 인계에 표시되어 있다."
+              ],
+              "image_files": [
+                "assets/pediatrics-location-guide/daejeon/peds_daejeon_ward_outpatient.svg"
+              ],
+              "asset_urls": [
+                "./assets/pediatrics-location-guide/daejeon/peds_daejeon_ward_outpatient.svg"
+              ]
+            },
+            {
+              "campus": "세종",
+              "title": "세종 1층 소아청소년센터",
+              "summary": [
+                "4주차 화요일 오전 세종 OT 시작점. 공식 시간표상 김지나 교수님 라인으로 표시.",
+                "세종 주간은 CPX와 병행되어 피로도가 높으므로, 지도는 위치 확인보다 일정 충돌 방어용으로 본다."
+              ],
+              "image_files": [
+                "assets/pediatrics-location-guide/sejong/peds_sejong_overview.svg"
+              ],
+              "asset_urls": [
+                "./assets/pediatrics-location-guide/sejong/peds_sejong_overview.svg"
+              ]
+            },
+            {
+              "campus": "세종",
+              "title": "세종 3층 NICU",
+              "summary": [
+                "4주차 화요일 오전 세종 NICU 참관. 이병국/윤영미 교수님 라인이 공식표에 보인다.",
+                "대전 NICU와 별개로 세종 실습 포트폴리오 소재를 확보하는 장소."
+              ],
+              "image_files": [
+                "assets/pediatrics-location-guide/sejong/peds_sejong_overview.svg"
+              ],
+              "asset_urls": [
+                "./assets/pediatrics-location-guide/sejong/peds_sejong_overview.svg"
+              ]
+            },
+            {
+              "campus": "세종",
+              "title": "세종 10층 의국",
+              "summary": [
+                "4주차 화~목 mini-lecture와 증례토의의 중심 장소.",
+                "화 오후 소아신장, 수 오전 소아심장, 목 오전 병동 증례토의가 10층 의국 기준으로 표시되어 있다."
+              ],
+              "image_files": [
+                "assets/pediatrics-location-guide/sejong/peds_sejong_overview.svg"
+              ],
+              "asset_urls": [
+                "./assets/pediatrics-location-guide/sejong/peds_sejong_overview.svg"
+              ]
+            }
+          ]
+        },
         "primary_source_policy": [
           "1. 교수님/총조장 최신 공지 또는 당일 직접 안내",
           "2. 최신 2026 인계의 실제 시간·동선·방 번호",

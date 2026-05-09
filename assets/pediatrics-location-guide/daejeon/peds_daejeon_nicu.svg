@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <style>
+      .bg{fill:#f8fbff} .card{fill:#fff;stroke:#cbd5e1;stroke-width:3;rx:24} .title{font:800 42px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;fill:#0f172a} .sub{font:600 24px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;fill:#475569} .txt{font:600 22px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;fill:#334155} .small{font:500 18px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;fill:#64748b} .pill{fill:#e0f2fe;stroke:#38bdf8;stroke-width:2;rx:18} .hot{fill:#fee2e2;stroke:#ef4444;stroke-width:2;rx:18} .ok{fill:#dcfce7;stroke:#22c55e;stroke-width:2;rx:18} .warn{fill:#fef3c7;stroke:#f59e0b;stroke-width:2;rx:18} .line{stroke:#64748b;stroke-width:4;fill:none;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10" fill="#64748b"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1200" height="760"/>
+  
+  <text class="title" x="60" y="78">NICU 입장 지도</text>
+  <text class="sub" x="60" y="120">소아동 3층 신생아중환자실. 입장 루틴을 지키면 실수 줄어든다.</text>
+  <rect class="card" x="80" y="185" width="220" height="110"/><text class="txt" x="115" y="235">자동문</text><text class="small" x="115" y="265">3층 NICU 입구</text>
+  <rect class="card warn" x="355" y="185" width="220" height="110"/><text class="txt" x="390" y="235">신발장</text><text class="small" x="390" y="265">개인 크록스 권장</text>
+  <rect class="card" x="630" y="185" width="220" height="110"/><text class="txt" x="665" y="235">사물함/가운</text><text class="small" x="665" y="265">실습가운 보관</text>
+  <rect class="card ok" x="905" y="185" width="220" height="110"/><text class="txt" x="940" y="235">손씻기/명부</text><text class="small" x="940" y="265">입장 전 체크</text>
+  <path class="line" d="M300 240 H350"/><path class="line" d="M575 240 H625"/><path class="line" d="M850 240 H900"/>
+  <rect class="card hot" x="225" y="420" width="750" height="160"/><text class="sub" x="265" y="475">PK 책상</text><text class="txt" x="265" y="520">들어가자마자 왼쪽. EMR 컴퓨터 2대/대기/과제 처리.</text><text class="small" x="265" y="555">신지혜 교수님 OT, POMR 환아 배정, NBS/레포트 안내를 여기서 받는다.</text>
+
+</svg>
