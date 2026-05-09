@@ -2815,8 +2815,8 @@
 
   <script>
     const STORAGE_KEY = 'kmlePlannerState.v2';
-    const APP_VERSION = '20260509T234915Z';
-    const APP_VERSION_LABEL = '2026-05-10 08:49 KST';
+    const APP_VERSION = '20260510T085200Z';
+    const APP_VERSION_LABEL = '2026-05-10 08:52 KST';
     const STAGES = [
       { id: 'lecture', label: '강의 듣기', short: '강의', note: '강의/팟캐스트/기본 인강 소화' },
       { id: 'framework', label: '개념 틀 짜기', short: '개념틀', note: '총정리 구조, 도식, 로직 프레임 정리' },
@@ -4202,6 +4202,20 @@
       return String(name || '').replace(/\s*교수님\s*$/u, '').trim();
     }
 
+    function isLikelyProfessorPersonName(name, knownNames = null) {
+      const clean = normalizeProfessorName(name)
+        .replace(/\s*교수님\s*등\s*$/u, '')
+        .replace(/\s+등\s*$/u, '')
+        .trim();
+      if (!clean) return false;
+      if (knownNames instanceof Set && knownNames.has(clean)) return true;
+      if (/\s/.test(clean)) return false;
+      if (/[0-9]/.test(clean)) return false;
+      if (/(센터|의국|병동|외래|공통|교육|치프|선생님|실습|분과|조|과제|수업|평가)/u.test(clean)) return false;
+      if (!/^[가-힣]{2,4}$/u.test(clean)) return false;
+      return true;
+    }
+
     function professorAvatarText(name) {
       const clean = normalizeProfessorName(name);
       return clean.slice(-2) || clean.slice(0, 2) || '교수';
@@ -4221,6 +4235,7 @@
       const map = new Map();
       const fixedInfo = bundle.fixed_info || {};
       const sessionList = bundle.sessions || [];
+      const knownProfessorNames = new Set((fixedInfo.professor_directory || []).map(item => normalizeProfessorName(item.name)).filter(Boolean));
       const splitNames = (value) => String(value || '').split(/[\/,]|·/g).map(name => normalizeProfessorName(name)).filter(Boolean);
 
       const ensure = (name, patch = {}) => {
@@ -4287,6 +4302,7 @@
 
       sessionList.forEach(session => {
         splitNames(session.professor || '').forEach(professor => {
+          if (!isLikelyProfessorPersonName(professor, knownProfessorNames)) return;
           const role = session.title?.includes('발표') ? '발표/평가' : (session.title?.includes('CPX') ? 'CPX/수업' : (session.title?.includes('외래') ? '외래' : (session.title?.includes('PCI') || session.title?.includes('시술') ? '시술/참관' : '수업')));
           ensure(professor, {
             site: session.site || '',
@@ -8238,6 +8254,6 @@
       });
     }
   </script>
-  <script type="module" src="./sync.js?v=20260510T084700Z"></script>
+  <script type="module" src="./sync.js?v=20260510T085200Z"></script>
 </body>
 </html>
