@@ -10,8 +10,8 @@ from typing import Any, Dict, List, Optional
 ROOT = Path(__file__).resolve().parents[1]
 OUT_ID = "pediatrics_2026_05_track_bca_content_handoff_v1"
 CLERKSHIP_ID = "pediatrics-2026-05-track-bca"
-GENERATED_AT = "2026-05-10T08:00:00+09:00"
-WEEK1_ANALYSIS_PACKET = ROOT / "data" / "clerkships" / "packets" / "pediatrics" / "2026-05-10_week1_b_sentence_analysis_v1.json"
+GENERATED_AT = "2026-05-10T08:08:00+09:00"
+WEEK1_HANDOFF_PACKET = ROOT / "data" / "clerkships" / "packets" / "pediatrics" / "2026-05-10_week1_b_compressed_handoff_v2.json"
 
 WEEK_STARTS = {
     1: "2026-05-11",
@@ -453,33 +453,39 @@ def build_fixed_info() -> Dict[str, Any]:
     }
 
 
-def apply_week1_sentence_analysis(sessions: List[Dict[str, Any]]) -> None:
-    if not WEEK1_ANALYSIS_PACKET.exists():
+def apply_week1_compressed_handoff(sessions: List[Dict[str, Any]]) -> None:
+    if not WEEK1_HANDOFF_PACKET.exists():
         return
-    packet = json.loads(WEEK1_ANALYSIS_PACKET.read_text())
+    packet = json.loads(WEEK1_HANDOFF_PACKET.read_text())
     enhancements = packet.get("sessions", {})
     for session in sessions:
         enhancement = enhancements.get(session.get("id"))
         if not enhancement:
             continue
-        session_sections = session.setdefault("sections", {})
-        # Keep clean-card sections first, then replace/append long-form handoff sections.
-        for title, items in enhancement.get("sections", {}).items():
-            if title == "핵심 정리":
-                existing = session_sections.get(title, [])
-                session_sections[title] = list(items) + [item for item in existing if item not in items]
-            else:
-                session_sections[title] = list(items)
-        raw_refs = enhancement.get("raw_refs", [])
-        session["raw_source_refs"] = raw_refs
-        session["handoff_analysis_packet"] = str(WEEK1_ANALYSIS_PACKET.relative_to(ROOT))
-        session["handoff_sentence_coverage"] = enhancement.get("coverage", [])
+        original_sections = session.setdefault("sections", {})
+        compact_sections = enhancement.get("sections", {})
+        # App-visible detail should be compressed. Do not expose raw sentence-by-sentence analysis.
+        keep_keys = ["카드 표시", "상세 접기", "전날/당일 준비", "점수 연결"]
+        session["sections"] = {key: original_sections[key] for key in keep_keys if key in original_sections}
+        ordered = ["최신 인계 우선 결론", "오늘 할 행동", "확인할 것", "과제·평가 연결", "구버전/예외 참고"]
+        for key in ordered:
+            if compact_sections.get(key):
+                session["sections"][key] = list(compact_sections[key])
+        session["source_priority_refs"] = {
+            "top_refs": enhancement.get("top_refs", []),
+            "support_refs": enhancement.get("support_refs", []),
+            "archive_refs": enhancement.get("archive_refs", []),
+        }
+        session["handoff_summary_packet"] = str(WEEK1_HANDOFF_PACKET.relative_to(ROOT))
+        session.pop("raw_source_refs", None)
+        session.pop("handoff_analysis_packet", None)
+        session.pop("handoff_sentence_coverage", None)
         session["calendar_body_short"] = session.get("calendar_body_short") or session.get("summary", "")
 
 
 def build_bundle() -> Dict[str, Any]:
     sessions = build_sessions()
-    apply_week1_sentence_analysis(sessions)
+    apply_week1_compressed_handoff(sessions)
     assignments = build_assignments()
     return {
         "meta": {
@@ -498,7 +504,7 @@ def build_bundle() -> Dict[str, Any]:
                 "uportfolio_handoff": ".tmp/peds_handoff_20260510/유폴리오_과제_제출_인계_2026-05-08_extracted.md",
                 "C_handoff": ".tmp/peds_handoff_20260510/C분과_인계_2026-05-01_extracted.md",
                 "inpatient_inference": ".tmp/peds_handoff_20260510/inpatient_pomr_inference_20260510.md",
-                "week1_sentence_analysis": "data/clerkships/packets/pediatrics/2026-05-10_week1_b_sentence_analysis_v1.json",
+                "week1_compressed_handoff": "data/clerkships/packets/pediatrics/2026-05-10_week1_b_compressed_handoff_v2.json",
             },
             "calendar_event_source": "official baseline + 2026 handoff overrides + user rotation assumption",
         },
