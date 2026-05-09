@@ -10,7 +10,8 @@ from typing import Any, Dict, List, Optional
 ROOT = Path(__file__).resolve().parents[1]
 OUT_ID = "pediatrics_2026_05_track_bca_content_handoff_v1"
 CLERKSHIP_ID = "pediatrics-2026-05-track-bca"
-GENERATED_AT = "2026-05-10T07:43:00+09:00"
+GENERATED_AT = "2026-05-10T08:00:00+09:00"
+WEEK1_ANALYSIS_PACKET = ROOT / "data" / "clerkships" / "packets" / "pediatrics" / "2026-05-10_week1_b_sentence_analysis_v1.json"
 
 WEEK_STARTS = {
     1: "2026-05-11",
@@ -452,8 +453,33 @@ def build_fixed_info() -> Dict[str, Any]:
     }
 
 
+def apply_week1_sentence_analysis(sessions: List[Dict[str, Any]]) -> None:
+    if not WEEK1_ANALYSIS_PACKET.exists():
+        return
+    packet = json.loads(WEEK1_ANALYSIS_PACKET.read_text())
+    enhancements = packet.get("sessions", {})
+    for session in sessions:
+        enhancement = enhancements.get(session.get("id"))
+        if not enhancement:
+            continue
+        session_sections = session.setdefault("sections", {})
+        # Keep clean-card sections first, then replace/append long-form handoff sections.
+        for title, items in enhancement.get("sections", {}).items():
+            if title == "핵심 정리":
+                existing = session_sections.get(title, [])
+                session_sections[title] = list(items) + [item for item in existing if item not in items]
+            else:
+                session_sections[title] = list(items)
+        raw_refs = enhancement.get("raw_refs", [])
+        session["raw_source_refs"] = raw_refs
+        session["handoff_analysis_packet"] = str(WEEK1_ANALYSIS_PACKET.relative_to(ROOT))
+        session["handoff_sentence_coverage"] = enhancement.get("coverage", [])
+        session["calendar_body_short"] = session.get("calendar_body_short") or session.get("summary", "")
+
+
 def build_bundle() -> Dict[str, Any]:
     sessions = build_sessions()
+    apply_week1_sentence_analysis(sessions)
     assignments = build_assignments()
     return {
         "meta": {
@@ -472,6 +498,7 @@ def build_bundle() -> Dict[str, Any]:
                 "uportfolio_handoff": ".tmp/peds_handoff_20260510/유폴리오_과제_제출_인계_2026-05-08_extracted.md",
                 "C_handoff": ".tmp/peds_handoff_20260510/C분과_인계_2026-05-01_extracted.md",
                 "inpatient_inference": ".tmp/peds_handoff_20260510/inpatient_pomr_inference_20260510.md",
+                "week1_sentence_analysis": "data/clerkships/packets/pediatrics/2026-05-10_week1_b_sentence_analysis_v1.json",
             },
             "calendar_event_source": "official baseline + 2026 handoff overrides + user rotation assumption",
         },
