@@ -2800,8 +2800,8 @@
 
   <script>
     const STORAGE_KEY = 'kmlePlannerState.v2';
-    const APP_VERSION = '20260510T084000Z';
-    const APP_VERSION_LABEL = '2026-05-10 08:40 KST';
+    const APP_VERSION = '20260510T084700Z';
+    const APP_VERSION_LABEL = '2026-05-10 08:47 KST';
     const STAGES = [
       { id: 'lecture', label: '강의 듣기', short: '강의', note: '강의/팟캐스트/기본 인강 소화' },
       { id: 'framework', label: '개념 틀 짜기', short: '개념틀', note: '총정리 구조, 도식, 로직 프레임 정리' },
@@ -6527,7 +6527,7 @@
                 <button class="btn btn-small ${activeCalendarSummaryFilter === 'presentation_exam' ? 'btn-secondary' : 'btn-ghost'}" onclick="setCalendarSummaryFilter('presentation_exam')">발표·시험 ${categoryCounts.presentation_exam || 0}</button>
                 <button class="btn btn-small ${activeCalendarSummaryFilter === 'chief_admin' ? 'btn-secondary' : 'btn-ghost'}" onclick="setCalendarSummaryFilter('chief_admin')">조장·행정 ${categoryCounts.chief_admin || 0}</button>
                 ${locationGuide ? `<button class="btn btn-small btn-ghost" onclick="openCalendarLocationGuide('${weekKey}')">장소 지도 ${locationGuide.counts?.places || 0}</button>` : ''}
-                <button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'basic_info')">심장내과 기본정보</button>
+                <button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'basic_info')">${escapeHtml(fixedInfo.basic_info_title || `${bundle?.meta?.subject || '실습'} 기본정보`)}</button>
                 ${fixedInfo.evaluation_score_weights ? `<button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'evaluation_scores')">평가 비중</button>` : ''}
                 ${pciOutpatientGuideForBundle(bundle) ? `<button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'pci_outpatient')">PCI/외래 가이드</button>` : ''}
                 ${communicationGuideForBundle(bundle)?.day_notices?.length ? `<button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'day_notices')">요일별 공지</button>` : ''}
@@ -8223,6 +8223,6 @@
       });
     }
   </script>
-  <script type="module" src="./sync.js?v=20260510T084000Z"></script>
+  <script type="module" src="./sync.js?v=20260510T084700Z"></script>
 </body>
 </html>
