@@ -11,7 +11,8 @@ const defaultConfig = {
   supabaseUrl: 'https://fqvmubjivjyohrwqfbdk.supabase.co',
   supabaseAnonKey: 'sb_publishable_x9mnaYjAMbFGGBacRbWmww_3GPRftzR',
   syncCode: '',
-  autoSync: true
+  autoSync: true,
+  userStateEnabled: false
 };
 
 function generateRandomCode() {
@@ -75,7 +76,8 @@ function normalizeConfig(config) {
     supabaseUrl: config?.supabaseUrl?.trim?.() ? config.supabaseUrl.trim() : defaultConfig.supabaseUrl,
     supabaseAnonKey: config?.supabaseAnonKey?.trim?.() ? config.supabaseAnonKey.trim() : defaultConfig.supabaseAnonKey,
     syncCode: sanitizeSyncCode(config?.syncCode || ''),
-    autoSync: config?.autoSync !== false
+    autoSync: config?.autoSync !== false,
+    userStateEnabled: config?.userStateEnabled === true
   };
 }
 
@@ -413,7 +415,7 @@ function renderSessionText() {
   const appInfo = typeof window.__kmlePlannerAppInfo === 'function' ? window.__kmlePlannerAppInfo() : null;
 
   ui.sessionText.textContent = [
-    `user state: ${PLANNER_USER_ID}`,
+    config.userStateEnabled ? `user state: ${PLANNER_USER_ID}` : 'user state: 비활성화 — 로컬 저장 우선',
     `device: ${meta.deviceId}`,
     `마지막 로컬 변경: ${formatDateTime(meta.lastLocalChangeAt)}`,
     `마지막 user state 업로드: ${formatDateTime(meta.lastUserStateUploadedAt)}`,
@@ -456,6 +458,14 @@ async function initializeSupabase() {
   const config = readConfig();
   renderConfigToUI();
 
+  if (!config.userStateEnabled && !config.syncCode) {
+    supabase = null;
+    stopLoops();
+    renderSessionText();
+    setStatus('로컬 저장 모드 — 자동 동기화 코드를 쓰지 않으면 Supabase에 연결하지 않는다.', 'pending');
+    return;
+  }
+
   if (!config.supabaseUrl || !config.supabaseAnonKey) {
     supabase = null;
     renderSessionText();
@@ -475,8 +485,12 @@ async function initializeSupabase() {
   renderSessionText();
 
   kickOffLoops();
-  setStatus('Supabase 연결됨. planner_user_state를 확인 중이다.', 'connected');
-  await pullPlannerUserState({ reason: '초기 확인' });
+  if (config.userStateEnabled) {
+    setStatus('Supabase 연결됨. planner_user_state를 확인 중이다.', 'connected');
+    await pullPlannerUserState({ reason: '초기 확인' });
+  } else {
+    setStatus('동기화 코드 연결 준비 완료. planner_user_state 자동 연결은 꺼져 있다.', 'pending');
+  }
   if (config.syncCode) {
     await pullRemoteState({ reason: 'legacy 초기 확인' });
   }
@@ -522,11 +536,13 @@ function kickOffLoops() {
     void checkLocalStateChange();
   }, 1000);
 
-  startRealtimeSubscription();
+  if (config.userStateEnabled) {
+    startRealtimeSubscription();
+  }
 
   if (config.autoSync !== false) {
     remoteTimer = setInterval(() => {
-      void pullPlannerUserState({ reason: '백업 폴링' });
+      if (config.userStateEnabled) void pullPlannerUserState({ reason: '백업 폴링' });
       if (config.syncCode) void pullRemoteState({ reason: 'legacy 자동 폴링' });
     }, 15000);
   }
@@ -549,7 +565,7 @@ async function checkLocalStateChange() {
   const nextHash = hashStateRaw(raw);
 
   if (nextHash !== localHash) {
-    markLocalStateDirty(nextHash, { includeLegacy: Boolean(config.syncCode) });
+    markLocalStateDirty(nextHash, { includeUserState: config.userStateEnabled, includeLegacy: Boolean(config.syncCode) });
     if (config.autoSync === false) {
       setStatus('로컬 데이터가 바뀌었다. 자동 동기화는 꺼져 있으니 필요하면 수동 업로드를 눌러줘.', 'pending');
       return;
@@ -559,7 +575,7 @@ async function checkLocalStateChange() {
   }
 
   const meta = readMeta();
-  const needsUserStatePush = Boolean(meta.pendingUserStateHash) && meta.pendingUserStateHash === nextHash;
+  const needsUserStatePush = Boolean(config.userStateEnabled && meta.pendingUserStateHash) && meta.pendingUserStateHash === nextHash;
   const needsLegacyPush = Boolean(config.syncCode && meta.pendingLegacyHash) && meta.pendingLegacyHash === nextHash;
   if (!needsUserStatePush && !needsLegacyPush) return;
 
@@ -576,11 +592,16 @@ async function flushImmediateSync(reason = '즉시 업로드') {
   const nextHash = hashStateRaw(raw);
   const changed = nextHash !== localHash;
   if (changed) {
-    markLocalStateDirty(nextHash, { includeLegacy: Boolean(config.syncCode) });
+    markLocalStateDirty(nextHash, { includeUserState: config.userStateEnabled, includeLegacy: Boolean(config.syncCode) });
   }
 
   if (config.autoSync === false) {
     setStatus('로컬 데이터가 바뀌었다. 자동 동기화는 꺼져 있으니 필요하면 수동 업로드를 눌러줘.', 'pending');
+    return;
+  }
+
+  if (!config.userStateEnabled && !config.syncCode) {
+    setStatus('로컬 저장 완료 — 자동 동기화 코드는 연결하지 않았다.', 'pending');
     return;
   }
 
@@ -597,12 +618,12 @@ function scheduleImmediateSync(reason = '즉시 업로드') {
   const raw = getRawPlannerState();
   const nextHash = hashStateRaw(raw);
   const meta = readMeta();
-  const hasPendingPush = (Boolean(meta.pendingUserStateHash) && meta.pendingUserStateHash === nextHash)
+  const hasPendingPush = (Boolean(config.userStateEnabled && meta.pendingUserStateHash) && meta.pendingUserStateHash === nextHash)
     || (Boolean(config.syncCode && meta.pendingLegacyHash) && meta.pendingLegacyHash === nextHash);
   if (nextHash === localHash && !hasPendingPush) return;
 
   if (nextHash !== localHash) {
-    markLocalStateDirty(nextHash, { includeLegacy: Boolean(config.syncCode) });
+    markLocalStateDirty(nextHash, { includeUserState: config.userStateEnabled, includeLegacy: Boolean(config.syncCode) });
   }
 
   immediateSyncReason = reason;
@@ -649,12 +670,12 @@ async function plannerUserStatePush(payload, updatedAt, deviceId, userId = PLANN
   return Array.isArray(data) ? data[0] : data;
 }
 
-function markLocalStateDirty(nextHash, { includeLegacy = false } = {}) {
+function markLocalStateDirty(nextHash, { includeUserState = true, includeLegacy = false } = {}) {
   localHash = nextHash;
   const meta = readMeta();
   meta.lastHash = nextHash;
   meta.lastLocalChangeAt = nowIso();
-  meta.pendingUserStateHash = nextHash;
+  meta.pendingUserStateHash = includeUserState ? nextHash : '';
   if (includeLegacy) {
     meta.pendingLegacyHash = nextHash;
   } else if (!readConfig().syncCode) {
@@ -670,7 +691,7 @@ async function retryPendingSync(reason = '자동 재시도 업로드') {
   const raw = getRawPlannerState();
   const currentHash = hashStateRaw(raw);
   const meta = readMeta();
-  const needsUserStatePush = Boolean(meta.pendingUserStateHash) && meta.pendingUserStateHash === currentHash;
+  const needsUserStatePush = Boolean(config.userStateEnabled && meta.pendingUserStateHash) && meta.pendingUserStateHash === currentHash;
   const needsLegacyPush = Boolean(config.syncCode && meta.pendingLegacyHash) && meta.pendingLegacyHash === currentHash;
   if (!needsUserStatePush && !needsLegacyPush) return false;
 
@@ -912,10 +933,13 @@ function bootstrapMetaFromCurrentState() {
 }
 
 function resumeAggressiveSync(reason = '포그라운드 복귀') {
+  const config = readConfig();
   void initializeSupabase();
   void flushImmediateSync(`${reason} 업로드`);
-  void pullPlannerUserState({ reason });
-  if (readConfig().syncCode) {
+  if (config.userStateEnabled) {
+    void pullPlannerUserState({ reason });
+  }
+  if (config.syncCode) {
     void pullRemoteState({ reason: `legacy ${reason}` });
   }
 }
@@ -970,5 +994,5 @@ injectUI();
 bootstrapMetaFromCurrentState();
 renderConfigToUI();
 renderSessionText();
-setStatus('planner_user_state 연결 준비 중이다.', 'default');
+setStatus('동기화 상태 확인 중이다.', 'default');
 void initializeSupabase();
