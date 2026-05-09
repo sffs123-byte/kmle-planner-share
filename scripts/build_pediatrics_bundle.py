@@ -1,0 +1,597 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import json
+import re
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT_ID = "pediatrics_2026_05_track_bca_content_handoff_v1"
+CLERKSHIP_ID = "pediatrics-2026-05-track-bca"
+GENERATED_AT = "2026-05-10T07:43:00+09:00"
+
+WEEK_STARTS = {
+    1: "2026-05-11",
+    2: "2026-05-18",
+    3: "2026-05-25",
+    4: "2026-06-01",
+}
+WEEK_LABELS = {
+    1: "1주차 B분과",
+    2: "2주차 C분과",
+    3: "3주차 A분과",
+    4: "4주차 공통",
+}
+DAY_OFFSETS = {"월요일": 0, "화요일": 1, "수요일": 2, "목요일": 3, "금요일": 4}
+INTENSITY_TO_DIFFICULTY = {
+    "low": 3,
+    "medium": 5,
+    "medium_high": 6,
+    "high": 8,
+    "highest": 10,
+    "highest_deadline": 10,
+    "variable": 6,
+}
+
+
+def safe_id(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+
+
+def date_for(week: int, weekday: str) -> str:
+    base = datetime.fromisoformat(WEEK_STARTS[week])
+    return (base + timedelta(days=DAY_OFFSETS[weekday])).date().isoformat()
+
+
+def parse_time_pair(time_label: str) -> tuple[str, str]:
+    matches = re.findall(r"\d{1,2}:\d{2}", time_label)
+    if len(matches) >= 2:
+        return matches[0], matches[1]
+    if len(matches) == 1:
+        return matches[0], ""
+    return "", ""
+
+
+def session(
+    *,
+    id: str,
+    week: int,
+    weekday: str,
+    time: str,
+    title: str,
+    professor: str = "",
+    event_type: str = "session",
+    difficulty: int = 5,
+    site: str = "대전",
+    location: str = "",
+    summary: str = "",
+    card: Optional[List[str]] = None,
+    detail: Optional[List[str]] = None,
+    prep: Optional[List[str]] = None,
+    eval_items: Optional[List[str]] = None,
+    source_refs: Optional[List[str]] = None,
+    needs_confirmation: bool = False,
+    status: str = "active",
+    kind: str = "",
+) -> Dict[str, Any]:
+    start, end = parse_time_pair(time)
+    note_bits = []
+    if summary:
+        note_bits.append(summary)
+    if card:
+        note_bits.append("체크: " + " / ".join(card[:3]))
+    return {
+        "id": id,
+        "clerkship": CLERKSHIP_ID,
+        "week": WEEK_LABELS[week],
+        "day": weekday,
+        "date": date_for(week, weekday),
+        "time_raw": time,
+        "start_time": start,
+        "end_time": end,
+        "time_label": time,
+        "title": title,
+        "professor": professor,
+        "event_type": event_type,
+        "difficulty": difficulty,
+        "status": status,
+        "kind": kind,
+        "needs_confirmation": needs_confirmation,
+        "site": site,
+        "location": location,
+        "summary": summary or (card[0] if card else ""),
+        "note": " · ".join(note_bits),
+        "calendar_body_short": summary or (card[0] if card else ""),
+        "evaluation_items": eval_items or [],
+        "sections": {
+            "카드 표시": card or [],
+            "상세 접기": detail or [],
+            "전날/당일 준비": prep or [],
+            "점수 연결": eval_items or [],
+        },
+        "source_refs": source_refs or [],
+        "boardSignalOverrides": {
+            "assignment": "high" if event_type == "assignment" or difficulty >= 8 else "auto",
+            "presentation": "high" if "발표" in title or "노티" in title or "보고" in title else "auto",
+            "exam": "high" if event_type == "exam" or "CPX" in title or "프리테스트" in title else "auto",
+        },
+        "boardDifficultyOverride": difficulty,
+    }
+
+
+def assignment(
+    *,
+    id: str,
+    name: str,
+    start: str,
+    due: str,
+    priority: str,
+    difficulty: int,
+    fmt: str,
+    summary: str,
+    linked: Optional[List[str]] = None,
+    notes: Optional[List[str]] = None,
+    milestones: Optional[List[Dict[str, str]]] = None,
+    needs_confirmation: bool = False,
+) -> Dict[str, Any]:
+    score = {"최상": 10, "상": 8, "중": 5, "낮음": 3, "확인필요": 6}.get(priority, difficulty)
+    return {
+        "id": id,
+        "name": name,
+        "priority_label": priority,
+        "priority_score": score,
+        "format": fmt,
+        "raw_deadline": due,
+        "start_when": start,
+        "start_at": start,
+        "soft_deadline": due,
+        "hard_deadline": due,
+        "follow_up": "",
+        "needs_confirmation": needs_confirmation,
+        "difficulty_content": difficulty,
+        "difficulty_operational": difficulty,
+        "difficulty_total": difficulty,
+        "linked_session_ids": linked or [],
+        "linked_professors": [],
+        "milestones": milestones or [],
+        "notes": notes or [],
+        "content_summary": summary,
+        "source_ids": [],
+    }
+
+
+def build_sessions() -> List[Dict[str, Any]]:
+    sessions: List[Dict[str, Any]] = []
+
+    # Week 1 — B division: actual-operation clean slots.
+    sessions.extend([
+        session(
+            id="peds-w1-mon-pretest-ot",
+            week=1,
+            weekday="월요일",
+            time="08:20~09:00",
+            title="프리테스트 #1 + 1주차 OT",
+            professor="양은애 교수님",
+            event_type="exam",
+            difficulty=10,
+            location="소아동 2층 소아청소년과 의국",
+            summary="08:20 프리테스트 20분, 08:40~09:00 OT. 끝나면 B분과 혈종 병원학교 진행 여부 확인.",
+            card=["08:10까지 도착 권장", "객관식 5 + 주관식 5", "프테 직후 병원학교/혈종 이동 확인"],
+            detail=["1주차 범위는 홍창의 1~11장. 최신 2026.04.10 복기 1차가 최우선.", "4주차는 정규 프테가 아니라 재시/피드백 주간으로 본다."],
+            prep=["전날 밤 프리테스트 복기 1차 answer-bank 암기", "신분/필기구/청진기/마스크 준비"],
+            eval_items=["실습시험 30% 중 1회차", "출석/태도"],
+            source_refs=["official_notice:pretest", "overall_handoff:pretest"],
+        ),
+        session(
+            id="peds-w1-mon-hemonc-am",
+            week=1,
+            weekday="월요일",
+            time="09:00~13:00(프테/OT 직후 변동)",
+            title="혈액종양 병동: 병원학교 다학제회의/EMR 설명/회진/케이스 배정",
+            professor="임연정 교수님",
+            difficulty=8,
+            location="341병동 안쪽 병원학교 → 혈액종양 병동/스테이션 → 의국",
+            summary="프테/OT 종료 후 병원학교 회의 진행 여부 확인. 환자 설명은 월 오후 보고와 목 POMR로 이어진다.",
+            card=["병원학교 진행 여부 직접 확인", "환자 설명·EMR 교육 녹음", "배정 환자 치료단계 메모"],
+            detail=["병원학교 회의가 끝나가도 직접 확인하는 쪽이 안전.", "마스크 착용. 회진 중에는 가까이서 보고, 짐은 스테이션에 두는 편이 안전.", "교수님 설명은 약자와 치료 단계가 많아 녹음/필기가 중요."],
+            prep=["마스크", "녹음 준비", "혈종 프테/ALL·AML 기본 용어"],
+            eval_items=["개인 실습 평가 10%", "환자상태보고", "POMR/예진기록지 후보"],
+            source_refs=["B_clean_slots_v2:P008/P012/P020/P023/P029"],
+        ),
+        session(
+            id="peds-w1-mon-hemonc-briefing",
+            week=1,
+            weekday="월요일",
+            time="14:00~18:00(보고 시간 당일확인)",
+            title="혈액종양 환자상태보고/질문/피드백",
+            professor="임연정 교수님",
+            event_type="presentation",
+            difficulty=9,
+            location="의국 또는 외래 7번방/혈종 진료실",
+            summary="배정 환자를 전공의 노티처럼 짧게 보고. 월 점심부터 바로 준비해야 한다.",
+            card=["A4 반쪽/짧은 노티형 보고", "조원끼리 질문 1개", "교수님께 질문 1개"],
+            detail=["현재 시점 중심으로 짧게. PI 발표처럼 길게 늘이지 않는다.", "ALL risk/치료 단계, oncologic emergency, ITP/IDA/hemophilia 기본 질문 가능.", "교수님 출장/당직 등으로 생략·연기될 수 있어 오전에 확인."],
+            prep=["월 점심에 담당 환자 한 줄 요약", "질문 1개", "치료 단계/검사 수치 확인"],
+            eval_items=["개인 실습 평가 10%", "OSCE 환자상태보고 연계"],
+            source_refs=["B_clean_slots_v2:P075/P087/P089/P092/P109/T001"],
+            needs_confirmation=True,
+        ),
+        session(
+            id="peds-w1-tue-nicu-ot",
+            week=1,
+            weekday="화요일",
+            time="08:45~13:00(OT 09:00~09:30 변동)",
+            title="NICU 입장/신생아 OT/과제 배정/환자 설명",
+            professor="신지혜 교수님",
+            difficulty=8,
+            location="소아동 3층 NICU, 입장 후 왼쪽 PK 책상",
+            summary="B분과 과제가 한 번에 생성되는 날. 자기소개서, NBS, 자습레포트, 신생아 POMR 확인.",
+            card=["크록스/실내화", "신발→사물함→일회용 가운→손 씻기→명부", "NBS/자습레포트/POMR 배정 확인"],
+            detail=["NICU는 대기가 길어 노트북/충전기 필요.", "청진기는 환아별 개인 청진기가 있어 필수는 아님.", "POMR 아기는 직접 진찰 가능한지 확인."],
+            prep=["개인 크록스", "노트북/충전기", "NBS 양식", "자기소개서 작성 시작"],
+            eval_items=["포트폴리오 P/F", "예진/입원 대면 환자 평가 후보", "개인 실습 평가"],
+            source_refs=["B_clean_slots_v2:T002/P140/P156/P166/P192"],
+        ),
+        session(
+            id="peds-w1-tue-nicu-outpatient",
+            week=1,
+            weekday="화요일",
+            time="13:40~18:00(2명씩 교대)",
+            title="강미현 교수님 외래 + NICU 대기/회진 가능성",
+            professor="강미현 교수님 / 장미영 교수님 / 신지혜 교수님",
+            difficulty=6,
+            location="강미현 교수님 외래(공식 6번방) + NICU",
+            summary="2명씩 외래 교대. NICU를 4명이 동시에 비우지 않는 것이 핵심 리스크.",
+            card=["외래 시간 확인", "2명씩 교대", "NICU 공백 최소화"],
+            detail=["외래 안 들어간 조원은 NICU 대기.", "질문은 1~2개 가볍게 준비.", "장미영 교수님 회진은 일정에 따라 있을 수도 없을 수도 있음."],
+            prep=["외래 질문 1개", "NICU 과제 진행", "퇴근은 17:30~18:00 분위기"],
+            eval_items=["태도", "개인 실습 평가"],
+            source_refs=["B_clean_slots_v2:P174/P198/P206/P217/P233"],
+            needs_confirmation=True,
+        ),
+        session(
+            id="peds-w1-wed-conference-csec-nicu",
+            week=1,
+            weekday="수요일",
+            time="08:20~13:00",
+            title="아침집담회 후 C-sec 참관 또는 NICU/NBS",
+            professor="신지혜 교수님",
+            difficulty=7,
+            location="소아청소년과 의국 → NICU/수술실",
+            summary="집담회 후 C-sec 여부 확인. 수술 있으면 바로 참관, 없으면 NICU 대기/NBS.",
+            card=["08:20 의국집담회", "C-sec 여부 확인", "자필 자기소개서 제출 타이밍"],
+            detail=["수술실 갈 때 출입카드/수술복/헤어캡/마스크/신발커버.", "아기 나오면 초기 처치 보고 NICU까지 따라가기.", "수술 일정 없으면 NICU 대기/자습."],
+            prep=["출입카드", "자기소개서", "NBS 양식"],
+            eval_items=["OSCE 신생아소생술 연계", "포트폴리오 소재"],
+            source_refs=["B_clean_slots_v2:P180/P181/P192/P202/P246/P262"],
+            needs_confirmation=True,
+        ),
+        session(
+            id="peds-w1-wed-nbs-pomr",
+            week=1,
+            weekday="수요일",
+            time="14:00~18:00(교수님 호출/상황 따라 변동)",
+            title="New Ballard score / POMR 환아 진찰 / NICU 대기",
+            professor="신지혜 교수님 / 장미영 교수님 / 강미현 교수님",
+            difficulty=7,
+            location="NICU / 신생아실",
+            summary="NBS는 교수님 타이밍 우선. POMR 환아 직접 진찰과 서명 가능성 확인.",
+            card=["NBS 타이밍 확인", "POMR 환아 직접 진찰", "손 씻기/장갑/소독"],
+            detail=["먼저 했더라도 교수님이 다시 시키면 다시 하는 편이 안전.", "장미영 교수님 질문 대비: RDS, TTN, PPHN, surfactant, RDS CXR.", "진료환자로그 서명 가능하면 미리 받기."],
+            prep=["NBS 양식", "RDS/TTN quick review", "POMR 초안 시작"],
+            eval_items=["포트폴리오 P/F", "신생아 POMR", "개인 실습 평가"],
+            source_refs=["B_clean_slots_v2:P187/P202/P206/P232/P251/T003"],
+        ),
+        session(
+            id="peds-w1-thu-infection-outpatient",
+            week=1,
+            weekday="목요일",
+            time="08:20~13:00",
+            title="아침집담회 후 조은영 교수님 감염 외래/발열 CPX식 mini-lecture",
+            professor="조은영 교수님",
+            difficulty=7,
+            location="공식 3번방 / 최신 인계 5번방 — 당일 확인",
+            summary="외래 환자가 적으면 발열 소아 CPX식 병력청취와 A/P 수업으로 진행될 수 있음.",
+            card=["08:20 의국집담회", "방 번호 당일 확인", "발열 소아 CPX식 병력청취"],
+            detail=["어린 영아: 출생 주수, 몸무게, 분만 방법, 경련 여부 질문.", "Problem list → Assessment → Plan 흐름.", "감염 자유기록/발열 과제 여부 확인."],
+            prep=["발열 CPX 질문 리스트", "영아 발열 red flag", "교수님께 과제 여부 확인"],
+            eval_items=["CPX 40% 연계", "외래 예진/예진 환자 평가 20% 후보", "개인 실습 평가"],
+            source_refs=["B_clean_slots_v2:P286/P288/P293/P295/P301/P311"],
+            needs_confirmation=True,
+        ),
+        session(
+            id="peds-w1-thu-hemonc-pomr",
+            week=1,
+            weekday="목요일",
+            time="14:00~18:30(외래 종료 후 피드백, 늦어질 수 있음)",
+            title="임연정 교수님 외래 + 혈종 POMR/노티 피드백",
+            professor="임연정 교수님",
+            event_type="presentation",
+            difficulty=10,
+            location="외래 7번방 또는 혈종 진료실",
+            summary="1주차 B분과 최고강도. POMR/노티는 수요일 밤까지 초안 완료가 안전하다.",
+            card=["POMR 종이/iPad", "현재 시점 5~6문장 노티", "날짜·수치·성장백분위 정확히"],
+            detail=["Problem list에는 정보만, 해석은 Assessment.", "각자 교수님께 질문 1개 준비.", "피드백 반영 후 유폴리오 업로드."],
+            prep=["수요일 밤 POMR 초안", "목 점심 노티 리허설", "검사 수치/치료단계 확인"],
+            eval_items=["개인 실습 평가 10%", "POMR/예진기록지", "환자상태보고"],
+            source_refs=["B_clean_slots_v2:P335/P337/P347/P349/P352/P359/P362/P363/P364/P365/P366/P369/P376/P380"],
+            needs_confirmation=True,
+        ),
+        session(
+            id="peds-w1-fri-common-portfolio",
+            week=1,
+            weekday="금요일",
+            time="09:00~18:00(공통강의/보충/대기 변동) + 17:00 제출",
+            title="금요일 floating common + B분과 유폴리오/주간포트폴리오 마감",
+            professor="강미현/신지혜/정은희 교수님 등",
+            event_type="assignment",
+            difficulty=8,
+            location="의국 또는 공지 장소",
+            summary="일정은 변동 가능. 제출 누락 방지가 핵심. 주간포트폴리오 17:00 마감.",
+            card=["금요일 일정 당일 확인", "B분과 과제 제출 상태 점검", "주간포트폴리오 17:00"],
+            detail=["공식상 1주차 금 오후 신생아소생술, 2주차 금 오전 아나필락시스.", "현장 대체/취소 가능성이 있어 floating으로 둔다.", "멀리 가지 말라는 인계가 있음."],
+            prep=["오전 제출 목록 점검", "미완 과제 마무리", "포트폴리오 5줄 소감"],
+            eval_items=["포트폴리오 P/F", "제출 지각 리스크"],
+            source_refs=["B_clean_slots_v2:P395/P401/P403/P404/P421/P424/P427/P429/P433"],
+            needs_confirmation=True,
+        ),
+    ])
+
+    # Week 2 — C division: official skeleton + key inpatient POMR inference.
+    sessions.extend([
+        session(id="peds-w2-mon-pretest", week=2, weekday="월요일", time="08:20~08:40", title="프리테스트 #2", event_type="exam", difficulty=10, location="소아동 2층 의국", summary="2주차 범위: 감염, 소화기, 호흡기, 심혈관 + 전주 집담회 가능.", card=["프테 #2", "주관식 5 + 객관식 5", "전주 집담회 1문제 가능"], eval_items=["실습시험 30% 중 2회차"]),
+        session(id="peds-w2-mon-endo-am", week=2, weekday="월요일", time="09:00~13:00", title="C분과 내분비-유전대사: 임한혁 교수님 외래", professor="임한혁 교수님", difficulty=7, location="외래 4번방", summary="외래 예진 1건 확보 후보. 예진기록지 피드백/브리핑 가능.", card=["외래 예진 후보", "예진기록지 사진/제출", "저신장·성조숙 질문 대비"], eval_items=["외래 예진 20%", "개인 실습 평가"]),
+        session(id="peds-w2-mon-endo-pm", week=2, weekday="월요일", time="14:00~18:00", title="내분비: 외래 환자 정리/증례토의", professor="임한혁 교수님", difficulty=7, location="의국", summary="예진 환자 브리핑과 피드백 가능. 점수 차이를 위해 예진지 꼼꼼히 작성.", card=["예진 브리핑", "감별진단 근거", "질문 1개"], eval_items=["외래 예진 20%", "개인 실습 평가"]),
+        session(id="peds-w2-tue-infection-ward-am", week=2, weekday="화요일", time="09:30~13:00(전날 확인)", title="C분과 감염 병동: 김경민 교수님 회진/입원환자 배정", professor="김경민 교수님", difficulty=10, location="341병동 스테이션", summary="병동실습 입원환자 1건 확보 D-day. 최신 앞조 자료상 UTI/APN/발열 환자가 가장 흔함.", card=["전날 341병동 09:30 확인 문자", "입원환자 1건 확보", "회진 전 EMR 진단명 확인"], detail=["앞조 병동 POMR 24개 중 UTI/APN/수신증 발열 계열이 17개.", "POMR 작성 또는 예진기록지 대체 여부는 교수님께 확인.", "환자 문진/신체진찰을 직접 반영."], prep=["월요일 점심/오후 교수님께 시간장소 확인", "UTI/APN/무병소 발열 quick review", "SOAP/POMR 양식 준비"], eval_items=["병동실습 입원환자 1건", "예진/대면 환자 평가 20%", "개인 실습 평가"], source_refs=["inpatient_pomr_inference", "C_handoff:P60-P65/P330-P363"], needs_confirmation=True),
+        session(id="peds-w2-tue-infection-ward-pm", week=2, weekday="화요일", time="14:00~18:00", title="감염 병동 POMR/예진기록지 작성", professor="김경민 교수님", event_type="assignment", difficulty=9, location="341병동/PK실/의국", summary="배정 환자 문진·신체진찰 후 POMR 또는 예진기록지 작성 시작. 금요일까지 제출.", card=["문진/신체진찰", "Problem list", "금요일 제출 초안"], eval_items=["병동실습 입원환자 1건", "포트폴리오/예진기록지"], needs_confirmation=True),
+        session(id="peds-w2-wed-conference", week=2, weekday="수요일", time="08:20", title="아침집담회", difficulty=5, location="의국", summary="프리테스트 다음 회차 반영 가능성 있음.", card=["내용 메모", "프테 #3 대비"]),
+        session(id="peds-w2-wed-gi-am", week=2, weekday="수요일", time="09:00~13:00", title="소화기영양: 김현진 교수님 외래", professor="김현진 교수님", difficulty=8, location="외래 3번방", summary="외래 예진 후보. 복통/변비/IBD/간염 질문 가능.", card=["초진/신환 예진 후보", "SOAP 양식", "복통 red flag"], eval_items=["외래 예진 20%", "개인 실습 평가"]),
+        session(id="peds-w2-wed-gi-pm", week=2, weekday="수요일", time="14:00~18:00", title="소화기영양: 모의환자 증례 작성/피드백", professor="김현진 교수님", difficulty=7, location="의국", summary="모유수유 레포트/모의환자 case 과제 확인.", card=["모의환자 case", "모유수유 레포트", "예진기록지 당일 제출 여부"], eval_items=["개인평가", "포트폴리오"]),
+        session(id="peds-w2-thu-conference", week=2, weekday="목요일", time="08:20", title="아침집담회", difficulty=5, location="의국", summary="프리테스트 #3 반영 가능성.", card=["핵심 3줄 메모"]),
+        session(id="peds-w2-thu-neuro-am", week=2, weekday="목요일", time="09:00~13:00", title="신경: 강준원 교수님 mini-lecture/뇌파검사", professor="강준원 교수님", difficulty=6, location="외래 2번방", summary="발작/두통/발달장애 중심. 국시 연계 강함.", card=["발작 정의", "뇌파", "질문 1개"], eval_items=["개인평가", "국시 연계"]),
+        session(id="peds-w2-thu-neuro-pm", week=2, weekday="목요일", time="14:00~18:00", title="신경: 정승연 교수님 외래 예진", professor="정승연 교수님", difficulty=7, location="외래 2번방", summary="초진/신환이 있으면 예진 후보. 환자 수대로 분배.", card=["외래 예진 후보", "예진기록지 프린트", "환자 수대로 분배"], eval_items=["외래 예진 20%", "개인평가"]),
+        session(id="peds-w2-fri-common-anaphylaxis", week=2, weekday="금요일", time="09:00~13:00(공지 확인)", title="공통강의: 아나필락시스 교육 및 실습", professor="정은희 교수님/교육센터", difficulty=6, location="의국 또는 공지 장소", summary="공식상 2주차 금 오전. 일정 대체 가능성 있어 확인 필요.", card=["흡입제/에피네프린", "소감 기록", "주간포트폴리오 17:00"], eval_items=["포트폴리오", "A분과 호흡기 개인평가에도 재사용 가능"], needs_confirmation=True),
+    ])
+
+    # Week 3 — A division: official skeleton for now.
+    sessions.extend([
+        session(id="peds-w3-mon-pretest", week=3, weekday="월요일", time="08:20~08:40", title="프리테스트 #3", event_type="exam", difficulty=10, location="의국", summary="3주차 범위: 혈액종양, 신요로, 내분비, 신경, 골격, 알레르기, 결체조직 등 + 전주 집담회 가능.", card=["프테 #3", "마지막 정규 프테", "재시 회피 목표"], eval_items=["실습시험 30% 중 3회차"]),
+        session(id="peds-w3-mon-allergy-am", week=3, weekday="월요일", time="09:00~13:00", title="A분과 알레르기·호흡기 분과 실습", professor="정은희/양은애 교수님", difficulty=7, location="의국", summary="알레르기/호흡기 분과 시작. 외래/POMR/아나필락시스 내용이 개인평가에 연결.", card=["분과 과제 확인", "POMR/외래 기록", "질문 1개"], eval_items=["개인평가", "외래 예진 후보"]),
+        session(id="peds-w3-mon-allergy-pm", week=3, weekday="월요일", time="14:00~18:00", title="정은희 교수님 외래", professor="정은희 교수님", difficulty=7, location="외래 1번방", summary="외래 예진 후보. 호흡기/알레르기 POMR 가능성 확인.", card=["외래 예진 후보", "POMR 필요 확인", "환자 진료로그/피드백"], eval_items=["외래 예진 20%", "개인평가"]),
+        session(id="peds-w3-tue-cardio-echo-am", week=3, weekday="화요일", time="09:00~13:00", title="심장: 심초음파 실습", professor="배은영 교수님", difficulty=6, location="외래 종합기능검사실", summary="심초음파/심장 외래 참관. 순환기 개인평가 소감 소재.", card=["심초음파 관찰", "심잡음/선천심질환 메모"]),
+        session(id="peds-w3-tue-cardio-outpatient-pm", week=3, weekday="화요일", time="14:00~18:00", title="배은영 교수님 외래", professor="배은영 교수님", difficulty=6, location="외래 8번방", summary="심장 외래 참관/예진 가능성 확인.", card=["외래 관찰", "질문 1개"]),
+        session(id="peds-w3-wed-conference-cath-picu", week=3, weekday="수요일", time="08:20~13:00", title="아침집담회 + 심도자/PICU 실습", professor="김지나/배은영 교수님", difficulty=7, location="의국/심혈관조영실/PICU", summary="심도자 일정이 없으면 PICU 실습 가능.", card=["집담회", "심도자 여부 확인", "PICU 대체 가능"]),
+        session(id="peds-w3-wed-picu-pm", week=3, weekday="수요일", time="14:00~18:00", title="PICU 실습", professor="최아영 교수님", difficulty=7, location="소아중환자실", summary="소아소생술/중환자 평가 경험. OSCE 연계 가능.", card=["PICU 동선", "소아 BLS", "중환자 소감"], eval_items=["OSCE 연계", "개인평가"]),
+        session(id="peds-w3-thu-conference-allergy", week=3, weekday="목요일", time="08:20~13:00", title="아침집담회 + 알레르기·호흡기/대면진료 보충", professor="정은희/양은애 교수님", difficulty=7, location="의국/외래", summary="대면진료실습/보충학습 가능. 부족한 예진/기록 보완 후보.", card=["집담회", "부족 예진 확인", "보충 일정"], needs_confirmation=True),
+        session(id="peds-w3-thu-yang-outpatient", week=3, weekday="목요일", time="14:00~18:00", title="양은애 교수님 외래", professor="양은애 교수님", difficulty=7, location="외래 1번방", summary="외래 예진/대면진료실습 보완 후보.", card=["외래 예진 후보", "부족 기록 보완"], eval_items=["외래 예진 20%"]),
+        session(id="peds-w3-fri-common-buffer", week=3, weekday="금요일", time="09:00~18:00 + 17:00 제출", title="3주차 금요일: 보충/대면진료/CPX 준비 buffer + 주간포트폴리오", event_type="assignment", difficulty=8, location="의국/공지 장소", summary="4주차 전 마지막 buffer. 부족한 예진·POMR·대면진료증례보고서 초안·CPX 스크립트를 여기서 정리.", card=["부족 예진 0 만들기", "CPX 5개 주제 1회독", "주간포트폴리오 17:00"], eval_items=["포트폴리오 P/F", "CPX/OSCE 40% 준비", "예진 20% 마감"]),
+    ])
+
+    # Week 4 — common CPX/Sejong week.
+    sessions.extend([
+        session(id="peds-w4-mon-cpx-1", week=4, weekday="월요일", time="09:00~13:00", title="CPX #1", event_type="exam", difficulty=10, location="대전 소아동 2층 의국/CPX 장소", summary="4주차 CPX 시작. 3주차 전까지 스크립트 1회독이 끝나야 한다.", card=["CPX #1", "전날 밤 새벽 금지", "체크리스트 기반"], eval_items=["CPX/OSCE 40%"]),
+        session(id="peds-w4-mon-cpx-2", week=4, weekday="월요일", time="14:00~18:00", title="CPX #2", event_type="exam", difficulty=10, location="대전 소아동 2층 의국/CPX 장소", summary="오전 피드백을 오후에 바로 반영. 포트폴리오/증례보고서 미루면 안 됨.", card=["CPX #2", "오전 실수 회수", "저녁 증례보고서 점검"], eval_items=["CPX/OSCE 40%"]),
+        session(id="peds-w4-tue-sejong-nicu", week=4, weekday="화요일", time="09:00~13:00", title="세종 OT/NICU 참관", difficulty=7, site="세종", location="세종 1층 센터/10층 의국/3층 NICU", summary="세종 이동 주간. 국시 공부 시간 거의 없음.", card=["세종 이동", "NICU 참관", "대면증례 준비 계속"], eval_items=["세종 실습", "포트폴리오"]),
+        session(id="peds-w4-tue-kidney-mini", week=4, weekday="화요일", time="14:00~18:00", title="세종 소아신장 mini-lecture", difficulty=6, site="세종", location="세종 10층 의국", summary="소아신장 mini-lecture. 증례/포트폴리오 소재 메모.", card=["소아신장", "포트폴리오 소재"]),
+        session(id="peds-w4-wed-cardio-cpx3", week=4, weekday="수요일", time="09:00~18:00", title="세종 소아심장 mini-lecture + CPX #3", event_type="exam", difficulty=10, site="세종", location="세종 10층 의국/CPX 장소", summary="세종 일정과 CPX가 겹치는 고강도 날.", card=["소아심장", "CPX #3", "이동 피로 관리"], eval_items=["CPX/OSCE 40%", "세종 실습"]),
+        session(id="peds-w4-thu-case-cpx4", week=4, weekday="목요일", time="09:00~18:00", title="세종 병동 증례토의 + CPX #4", event_type="exam", difficulty=10, site="세종", location="세종 병동/의국/CPX 장소", summary="증례토의와 CPX가 같이 있는 날. 대면진료증례보고서가 미완이면 밤이 무너진다.", card=["증례토의", "CPX #4", "보고서 최종화"], eval_items=["CPX/OSCE 40%", "대면진료증례보고서"]),
+        session(id="peds-w4-fri-cpx5-deadlines", week=4, weekday="금요일", time="09:00~17:00", title="CPX #5 + 대면진료증례보고서/최종 포트폴리오 마감", event_type="exam", difficulty=10, location="대전 소아동 2층 의국/CPX 장소", summary="금요일 오전 CPX 전까지 보고서는 사실상 끝나 있어야 한다. 최종 포트폴리오 17:00.", card=["CPX #5", "대면진료증례보고서 12:00", "최종 포트폴리오 17:00"], eval_items=["CPX/OSCE 40%", "대면진료증례보고서 P/F", "포트폴리오 P/F"]),
+    ])
+    return sessions
+
+
+def build_assignments() -> List[Dict[str, Any]]:
+    return [
+        assignment(id="peds-pretest-1-prep", name="프리테스트 #1 준비", start="2026-05-10T18:00:00", due="2026-05-11T08:20:00", priority="최상", difficulty=10, fmt="복기/홍창의 1~11장 answer-bank", summary="1주차 최고 우선순위. 프테 #1은 실습시험 30% 축 중 첫 회차.", linked=["peds-w1-mon-pretest-ot"]),
+        assignment(id="peds-pretest-2-prep", name="프리테스트 #2 준비", start="2026-05-17T18:00:00", due="2026-05-18T08:20:00", priority="최상", difficulty=10, fmt="감염/소화기/호흡기/심혈관 + 집담회", summary="2주차 프테. 전주 집담회 1문제 가능성을 반영.", linked=["peds-w2-mon-pretest"]),
+        assignment(id="peds-pretest-3-prep", name="프리테스트 #3 준비", start="2026-05-24T18:00:00", due="2026-05-25T08:20:00", priority="최상", difficulty=10, fmt="혈액종양/신요로/내분비/신경/골격/알레르기/결체조직", summary="마지막 정규 프테. 재시 회피 목표.", linked=["peds-w3-mon-pretest"]),
+        assignment(id="peds-week1-portfolio", name="1주차 주간 포트폴리오", start="2026-05-12T20:00:00", due="2026-05-15T17:00:00", priority="상", difficulty=7, fmt="U-Folio 주간 포트폴리오", summary="B분과 혈종/신생아/감염 외래 소감과 과제 업로드 상태 확인.", linked=["peds-w1-fri-common-portfolio"]),
+        assignment(id="peds-week2-portfolio", name="2주차 주간 포트폴리오", start="2026-05-19T20:00:00", due="2026-05-22T17:00:00", priority="상", difficulty=7, fmt="U-Folio 주간 포트폴리오", summary="C분과 감염 병동 POMR, 내분비/소화기/신경 개인평가 정리.", linked=["peds-w2-fri-common-anaphylaxis"]),
+        assignment(id="peds-week3-portfolio", name="3주차 주간 포트폴리오", start="2026-05-26T20:00:00", due="2026-05-29T17:00:00", priority="상", difficulty=8, fmt="U-Folio 주간 포트폴리오", summary="A분과 과제와 부족 예진 마감, 4주차 CPX 준비 전 마지막 정리.", linked=["peds-w3-fri-common-buffer"]),
+        assignment(id="peds-final-portfolio", name="최종 포트폴리오 제출", start="2026-06-04T20:00:00", due="2026-06-05T17:00:00", priority="최상", difficulty=10, fmt="최종 U-Folio 포트폴리오", summary="금요일 17:00 hard deadline. CPX #5와 겹치므로 목요일 밤까지 완성.", linked=["peds-w4-fri-cpx5-deadlines"]),
+        assignment(id="peds-outpatient-3-cases", name="외래환자 예진 3건", start="2026-05-12T09:00:00", due="2026-05-29T17:00:00", priority="최상", difficulty=9, fmt="외래 예진기록지/피드백 3건", summary="공식 예진환자 보고서: 외래 매주 1명씩 총 3건. 기회 생기면 바로 확보.", linked=["peds-w2-mon-endo-am", "peds-w2-wed-gi-am", "peds-w3-mon-allergy-pm"], milestones=[{"title":"1주차 외래/대체 예진 1건 확인", "due":"2026-05-15T16:00:00"}, {"title":"2주차 외래 예진 1건 확보", "due":"2026-05-22T16:00:00"}, {"title":"3주차 외래 예진 1건 확보", "due":"2026-05-29T16:00:00"}]),
+        assignment(id="peds-inpatient-ward-case", name="병동실습 입원환자 1건", start="2026-05-19T09:30:00", due="2026-05-22T17:00:00", priority="최상", difficulty=10, fmt="김경민 교수님 감염 병동 POMR/예진기록지", summary="앞조 자료상 정석 후보. 2주차 C분과 화요일에 감염 입원환아 1건 확보.", linked=["peds-w2-tue-infection-ward-am", "peds-w2-tue-infection-ward-pm"], notes=["최신 앞조 병동 POMR은 UTI/APN/발열 환자가 다수.", "B분과 혈종/신생아 POMR은 대체 인정 가능성 확인만 하고 여기에 의존하지 않음."]),
+        assignment(id="peds-b-hemonc-patient-briefing", name="B분과 혈액종양 환자상태보고", start="2026-05-11T11:30:00", due="2026-05-11T16:00:00", priority="상", difficulty=9, fmt="짧은 노티/질문 1개", summary="월요일 오후 임연정 교수님께 배정 환자를 짧게 보고. OSCE 환자상태보고와 연결.", linked=["peds-w1-mon-hemonc-briefing"]),
+        assignment(id="peds-b-hemonc-pomr", name="B분과 혈종 POMR/개인평가", start="2026-05-12T20:00:00", due="2026-05-15T17:00:00", priority="상", difficulty=9, fmt="피드백 받은 POMR + 개인평가(혈액종양)", summary="목요일 피드백 전 수요일 밤까지 초안. 피드백 반영 후 U-Folio 제출.", linked=["peds-w1-thu-hemonc-pomr"]),
+        assignment(id="peds-b-neonate-bundle", name="B분과 신생아 과제 묶음", start="2026-05-13T09:00:00", due="2026-05-15T17:00:00", priority="상", difficulty=8, fmt="자기소개서/NBS/자습레포트/신생아 POMR", summary="NICU에서 생성되는 신생아 과제. NBS와 POMR은 포트폴리오/예진기록지 메뉴와 연결.", linked=["peds-w1-tue-nicu-ot", "peds-w1-wed-nbs-pomr"]),
+        assignment(id="peds-c-infection-pomr", name="C분과 감염 병동 POMR", start="2026-05-19T09:30:00", due="2026-05-22T17:00:00", priority="최상", difficulty=10, fmt="병동 POMR/예진기록지", summary="공식 병동 입원환자 1건의 핵심 제출물.", linked=["peds-w2-tue-infection-ward-am", "peds-w2-tue-infection-ward-pm"]),
+        assignment(id="peds-a-division-tasks", name="A분과 개인평가/호흡기·심장·PICU 과제", start="2026-05-25T09:00:00", due="2026-05-29T17:00:00", priority="상", difficulty=8, fmt="개인평가 + POMR/외래/아나필락시스 내용", summary="A분과 인계 추가 확인 전까지 skeleton. 3주차 금요일 전 부족 예진/과제 마감.", linked=["peds-w3-fri-common-buffer"], needs_confirmation=True),
+        assignment(id="peds-cpx-prep", name="CPX/OSCE 5주제 1회독", start="2026-05-27T20:00:00", due="2026-05-31T22:00:00", priority="최상", difficulty=10, fmt="CPX 5개 스크립트 + OSCE 체크리스트", summary="4주차는 짬이 거의 없으므로 3주차 주말 전 1회독 완료.", linked=["peds-w4-mon-cpx-1", "peds-w4-fri-cpx5-deadlines"]),
+        assignment(id="peds-face-case-report", name="대면진료증례보고서", start="2026-05-28T20:00:00", due="2026-06-05T12:00:00", priority="최상", difficulty=10, fmt="대면진료증례보고서", summary="금요일 12:00 제출. 목요일 밤까지 사실상 완료해야 CPX #5를 망치지 않음.", linked=["peds-w4-thu-case-cpx4", "peds-w4-fri-cpx5-deadlines"]),
+    ]
+
+
+def build_fixed_info() -> Dict[str, Any]:
+    return {
+        "source_title": "2026 소아청소년과 실습 bundle — 강렬 2번째 조/B→C→A→공통",
+        "primary_source_policy": [
+            "1. 교수님/총조장 최신 공지 또는 당일 직접 안내",
+            "2. 최신 2026 인계의 실제 시간·동선·방 번호",
+            "3. 공식 PDF의 평가·큰 구조·필수 마감·분과 슬롯명",
+            "4. 2025 이전 인계는 archive 참고",
+        ],
+        "rotation_assumption": {
+            "team_total": 11,
+            "kangryeol_group": "2번째 조",
+            "members": ["박민석", "장윤서", "배강렬", "김단아"],
+            "mapped_group": "B조(중간조) 가정",
+            "weeks": {"1주차":"B분과", "2주차":"C분과", "3주차":"A분과", "4주차":"CPX/세종 공통"},
+        },
+        "evaluation_score_weights": {
+            "Pre-test/Post-test": "30% — 1~3주차 월요일 3회가 핵심, 4주차는 정규 프테가 아니라 재시/피드백 주간으로 해석",
+            "CPX/OSCE": "40% — 평가는 4주차이나 3주차 전까지 스크립트/체크리스트 1회독 필요",
+            "외래/입원 예진": "20% — 외래 3건 + 병동실습 입원환자 1건",
+            "개인 실습 평가": "10% — 환자 파악, 질환 이해, POMR, 침상토론, 태도",
+            "포트폴리오/대면진료증례보고서": "P/F 또는 감점 리스크 — 금요일 마감 우선 표시",
+        },
+        "operating_principles": [
+            "앱 메인 카드는 clean slot만 노출하고 원문/근거는 접기 상세와 packet으로 보존한다.",
+            "금요일은 강의보다 마감/제출 체크일로 강조한다.",
+            "4주차는 국시 공부 불가능 주간으로 보고 CPX/증례/포트폴리오를 3주차 이전에 역산한다.",
+            "공식 PDF와 인계가 충돌하면 시간/방/동선은 최신 인계, 평가/마감/큰 구조는 공식 PDF 우선.",
+        ],
+        "inpatient_case_inference": {
+            "recommended_slot": "2주차 C분과 화요일 김경민 교수님 감염 병동",
+            "common_patient_types_latest_front_groups": {
+                "UTI/APN/수신증 관련 발열": 17,
+                "폐렴/호흡기감염": 3,
+                "AGE/장염/복통·구토": 1,
+                "Fever/FUO": 1,
+                "Kawasaki 의심": 1,
+                "Cellulitis/피부감염": 1,
+            },
+        },
+        "files": {
+            "b_clean_slots": "data/clerkships/packets/pediatrics/pediatrics_division_B_clean_slots_v2.md",
+            "official_vs_handoff": "data/clerkships/packets/pediatrics/pediatrics_B_official_vs_handoff_diff_v1.md",
+            "week4_baseline": "data/clerkships/packets/pediatrics/pediatrics_week4_common_schedule_v1.md",
+            "inpatient_inference": "data/clerkships/packets/pediatrics/2026-05-10_inpatient_pomr_inference.md",
+        },
+    }
+
+
+def build_bundle() -> Dict[str, Any]:
+    sessions = build_sessions()
+    assignments = build_assignments()
+    return {
+        "meta": {
+            "clerkship_id": CLERKSHIP_ID,
+            "subject": "소아청소년과",
+            "track": "2026-05 B→C→A rotation",
+            "generated_at": GENERATED_AT,
+            "content_source": {
+                "subject": "소아청소년과 실습",
+                "purpose": "평가 점수 방어 + 수면 방어 + 국시 공부 시간 확보",
+                "style_reference": "심장내과 content_handoff_v2 bundle pattern",
+            },
+            "packet_source": {
+                "B_clean_slots": ".tmp/peds_handoff_20260510/pediatrics_division_B_clean_slots_v2.md",
+                "official_pdf_text": ".tmp/peds_handoff_20260510/소아청소년과_공지_pdftotext_layout.txt",
+                "uportfolio_handoff": ".tmp/peds_handoff_20260510/유폴리오_과제_제출_인계_2026-05-08_extracted.md",
+                "C_handoff": ".tmp/peds_handoff_20260510/C분과_인계_2026-05-01_extracted.md",
+                "inpatient_inference": ".tmp/peds_handoff_20260510/inpatient_pomr_inference_20260510.md",
+            },
+            "calendar_event_source": "official baseline + 2026 handoff overrides + user rotation assumption",
+        },
+        "fixed_info": build_fixed_info(),
+        "sessions": sessions,
+        "assignments": assignments,
+    }
+
+
+def build_briefing(bundle: Dict[str, Any]) -> Dict[str, Any]:
+    days: Dict[str, List[Dict[str, Any]]] = {}
+    for s in bundle["sessions"]:
+        days.setdefault(s["date"], []).append({
+            "time": s["time_label"],
+            "title": s["title"],
+            "difficulty": s["difficulty"],
+            "must_do": s["sections"].get("카드 표시", [])[:3],
+            "evaluation_items": s.get("evaluation_items", []),
+        })
+    return {
+        "meta": {"bundle_id": bundle["meta"]["clerkship_id"], "generated_at": GENERATED_AT},
+        "briefing_rule": "각 날짜는 일정 → 점수 연결 → 오늘 반드시 확보할 것 순서로 요약한다.",
+        "days": days,
+    }
+
+
+def build_reminders(bundle: Dict[str, Any]) -> Dict[str, Any]:
+    reminders = []
+    for s in bundle["sessions"]:
+        if s["difficulty"] >= 8 or s["event_type"] in {"exam", "assignment", "presentation"}:
+            reminders.append({
+                "date": s["date"],
+                "session_id": s["id"],
+                "level": "critical" if s["difficulty"] >= 10 else "high",
+                "message": f"{s['time_label']} {s['title']} — {s['summary']}",
+                "checklist": s["sections"].get("전날/당일 준비", []) or s["sections"].get("카드 표시", []),
+            })
+    for a in bundle["assignments"]:
+        reminders.append({
+            "date": str(a["hard_deadline"])[:10],
+            "assignment_id": a["id"],
+            "level": "critical" if a["priority_score"] >= 10 else "high",
+            "message": f"{a['name']} 마감 — {a['hard_deadline']}",
+            "checklist": a.get("notes", []) or [a.get("format", ""), a.get("content_summary", "")],
+        })
+    return {"meta": {"bundle_id": bundle["meta"]["clerkship_id"], "generated_at": GENERATED_AT}, "reminders": reminders}
+
+
+def build_audit(bundle: Dict[str, Any]) -> Dict[str, Any]:
+    errors = []
+    ids = [s["id"] for s in bundle["sessions"]]
+    if len(ids) != len(set(ids)):
+        errors.append("duplicate session ids")
+    assignment_ids = [a["id"] for a in bundle["assignments"]]
+    if len(assignment_ids) != len(set(assignment_ids)):
+        errors.append("duplicate assignment ids")
+    for s in bundle["sessions"]:
+        for field in ["date", "title", "time_label"]:
+            if not s.get(field):
+                errors.append(f"missing {field}: {s.get('id')}")
+    required_labels = ["프리테스트 #1", "프리테스트 #2", "프리테스트 #3", "병동실습 입원환자", "CPX #5"]
+    found_text = json.dumps(bundle, ensure_ascii=False)
+    for label in required_labels:
+        if label not in found_text:
+            errors.append(f"required label not found: {label}")
+    counts_by_week: Dict[str, int] = {}
+    for s in bundle["sessions"]:
+        counts_by_week[s["week"]] = counts_by_week.get(s["week"], 0) + 1
+    return {
+        "meta": {"bundle_id": bundle["meta"]["clerkship_id"], "generated_at": GENERATED_AT},
+        "counts": {"sessions": len(bundle["sessions"]), "assignments": len(bundle["assignments"]), "sessions_by_week": counts_by_week},
+        "hard_gates": {
+            "has_meta_clerkship_id": bool(bundle.get("meta", {}).get("clerkship_id")),
+            "sessions_array": isinstance(bundle.get("sessions"), list),
+            "assignments_array": isinstance(bundle.get("assignments"), list),
+            "has_three_pretests": sum(1 for s in bundle["sessions"] if "프리테스트" in s["title"]) == 3,
+            "has_inpatient_case": "병동실습 입원환자" in found_text,
+            "has_week4_cpx": sum(1 for s in bundle["sessions"] if "CPX" in s["title"]) >= 5,
+        },
+        "errors": errors,
+        "pass": not errors,
+    }
+
+
+def write_json(path: Path, data: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+
+
+def main() -> None:
+    bundle = build_bundle()
+    briefing = build_briefing(bundle)
+    reminders = build_reminders(bundle)
+    audit = build_audit(bundle)
+
+    write_json(ROOT / "data" / "clerkships" / "bundles" / f"{OUT_ID}.bundle.json", bundle)
+    write_json(ROOT / "data" / "clerkships" / "briefings" / f"{OUT_ID}.daily_briefing.json", briefing)
+    write_json(ROOT / "data" / "clerkships" / "reminders" / f"{OUT_ID}.day_reminders.json", reminders)
+    write_json(ROOT / "data" / "clerkships" / "audit" / f"{OUT_ID}.audit.json", audit)
+
+    # Minimal import state for manual JSON import/testing. The live app normally imports the bundle directly.
+    import_state = {
+        "subjects": [{
+            "id": "subject-pediatrics",
+            "name": "소아과",
+            "color": "#ec4899",
+            "note": "소아청소년과 2026-05 B→C→A rotation bundle import seed",
+            "parts": [],
+            "recentHistory": [],
+        }],
+        "calendarEvents": [],
+        "tasks": [],
+        "clerkshipBundles": {bundle["meta"]["clerkship_id"]: bundle},
+    }
+    write_json(ROOT / "data" / f"planner_state_{OUT_ID}_import.json", import_state)
+
+    print(json.dumps({"bundle": f"data/clerkships/bundles/{OUT_ID}.bundle.json", **audit["counts"], "audit_pass": audit["pass"]}, ensure_ascii=False, indent=2))
+    if not audit["pass"]:
+        raise SystemExit(1)
+
+
+if __name__ == "__main__":
+    main()

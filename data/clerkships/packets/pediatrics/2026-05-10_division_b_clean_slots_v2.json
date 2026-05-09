@@ -1,0 +1,374 @@
+{
+  "meta": {
+    "id": "pediatrics-division-b-clean-slots-v2",
+    "generated_at": "2026-05-10T06:47:00+09:00",
+    "reason_for_v2": "사용자 피드백: 공식 PDF와 실제 일정은 자주 달라지므로 정확한 시간은 인계가 맞다. 공식 PDF는 골격/평가 기준, 인계는 실제 시간 override로 사용.",
+    "source_db": {
+      "id": "pediatrics-division-b-source-db-v1",
+      "subject": "소아청소년과",
+      "division": "B분과",
+      "division_areas": [
+        "혈액종양",
+        "신생아",
+        "감염"
+      ],
+      "source_doc": "2026 소아청소년과 분과 B 인계(2026.05.01 업데이트).docx",
+      "source_path": "~/Desktop/의학과 공부 파일/본3/소아청소년과/인계/분과 B 인계(2026.05.01 업데이트) .docx",
+      "extracted_markdown": ".tmp/peds_handoff_20260510/B분과_인계_2026-05-01_extracted.md",
+      "generated_at": "2026-05-10T06:26:00+09:00",
+      "purpose": "GitHub 일정 bundle에 원문 내용을 일정/과제/체크리스트 단위로 분배하기 위한 원문 보존형 source database",
+      "target_user_context": {
+        "student": "배강렬",
+        "group_label": "2번째 조 / B조(중간조) 가정",
+        "members": [
+          "박민석",
+          "장윤서",
+          "배강렬",
+          "김단아"
+        ],
+        "role": "전체 조장 아님. 우리 조 실행 체크용."
+      }
+    },
+    "official_baseline_id": "pediatrics-official-notice-baseline-v1"
+  },
+  "priority_policy": {
+    "source_precedence": [
+      "1. 교수님/총조장 최신 공지 또는 당일 직접 안내",
+      "2. 최신 2026 인계의 실제 시간·동선·방 번호",
+      "3. 공식 PDF의 큰 구조·평가·필수 마감·분과 슬롯명",
+      "4. 2025 이전 인계는 archive 참고만"
+    ],
+    "official_pdf_role": "평가, 과제 대분류, 공통 마감, 분과 슬롯 골격",
+    "handoff_role": "실제 도착시각, 교수님 연락/방 번호, 그날 할 일, 과제 작성 팁",
+    "ui_rule": "앱 메인에는 clean_slots만 표시하고, raw 인계는 필요한 최신 refs만 접기 상세로 연결한다."
+  },
+  "clean_slots": [
+    {
+      "slot_id": "b_mon_0820_pretest_then_ot",
+      "weekday": "월요일",
+      "time_display": "08:20 프리테스트 → 08:40~09:00 OT(1주차)",
+      "time_confidence": "high",
+      "time_source": "official + 전체 인계",
+      "title": "프리테스트/OT 후 B분과 시작",
+      "place_display": "소아동 2층 소아청소년과 의국",
+      "professors": [
+        "양은애 교수님(OT 가능)"
+      ],
+      "what_to_show_on_card": [
+        "08:20 프리테스트 20분",
+        "1주차는 08:40~09:00 전체 OT 후 분과 이동",
+        "끝나자마자 혈종 병원학교/스테이션 진행 여부 확인"
+      ],
+      "handoff_clean_notes": [
+        "OT가 늦게 끝나도 병원학교 회의가 아직 진행 중일 수 있으니 직접 확인.",
+        "프테 끝나고 바로 이탈하지 말고 양은애 교수님 전달사항/분과 이동 안내 확인."
+      ],
+      "raw_refs_keep_collapsed": [
+        "P008",
+        "P020",
+        "P023"
+      ],
+      "source_role": "official skeleton + handoff override"
+    },
+    {
+      "slot_id": "b_mon_am_hemonc_meeting_round",
+      "weekday": "월요일",
+      "time_display": "프테/OT 직후 ~ 점심 전. 보통 09:00 전후 시작",
+      "time_confidence": "medium_variable",
+      "time_source": "B분과 인계 2026 1학기",
+      "title": "혈액종양 병동: 병원학교 다학제회의/EMR 설명/회진/케이스 배정",
+      "place_display": "341병동 안쪽 병원학교 → 혈액종양 병동/스테이션 → 의국",
+      "professors": [
+        "임연정 교수님",
+        "정은선 교수님(상황별 입원전담)"
+      ],
+      "what_to_show_on_card": [
+        "병원학교 회의 진행 여부 먼저 확인",
+        "환자 설명·EMR 교육은 녹음 추천",
+        "월 오후 환자상태보고/목 POMR의 환자 배정 가능"
+      ],
+      "handoff_clean_notes": [
+        "병원학교는 소아동 4층 341병동 안쪽. 회의 중이면 벽쪽 의자에 앉아 참관.",
+        "마스크 착용. 회진 중에는 가까이서 보고, 짐은 스테이션에 두는 편이 안전.",
+        "교수님 설명이 방대하고 약자가 많으므로 녹음/필기 우선."
+      ],
+      "raw_refs_keep_collapsed": [
+        "P008",
+        "P012",
+        "P020",
+        "P023",
+        "P029"
+      ],
+      "source_role": "handoff actual workflow"
+    },
+    {
+      "slot_id": "b_mon_pm_hemonc_briefing",
+      "weekday": "월요일",
+      "time_display": "14:00~16:00 사이 교수님 안내 우선. 과거 사례 15:30 또는 16:00 많음",
+      "time_confidence": "variable_confirm_same_day",
+      "time_source": "B분과 인계 2026 1학기",
+      "title": "혈액종양 환자상태보고/질문/피드백",
+      "place_display": "의국 또는 외래 7번방/혈종 진료실",
+      "professors": [
+        "임연정 교수님"
+      ],
+      "what_to_show_on_card": [
+        "A4 반쪽 이내 또는 짧은 노티형 환자상태보고",
+        "조원끼리 질문 1개씩 준비",
+        "교수님께 드릴 질문 1개 준비"
+      ],
+      "handoff_clean_notes": [
+        "전공의가 교수님께 노티하듯 짧고 현재 시점 중심으로 말하기.",
+        "ALL risk/치료 단계, oncologic emergency, ITP/IDA/hemophilia 기본 질문 가능.",
+        "교수님 출장/당직 등으로 생략·연기될 수 있으므로 오전에 반드시 재확인."
+      ],
+      "raw_refs_keep_collapsed": [
+        "P075",
+        "P087",
+        "P089",
+        "P092",
+        "P109",
+        "T001"
+      ],
+      "source_role": "handoff actual workflow"
+    },
+    {
+      "slot_id": "b_tue_am_nicu_ot",
+      "weekday": "화요일",
+      "time_display": "08:45~09:00 NICU 도착 권장. OT 시작은 09:00~09:30 변동",
+      "time_confidence": "medium_variable",
+      "time_source": "B분과 인계 2026 1학기",
+      "title": "NICU 입장/신생아 OT/과제 배정/환자 설명",
+      "place_display": "소아동 3층 NICU, 입장 후 왼쪽 PK 책상",
+      "professors": [
+        "신지혜 교수님"
+      ],
+      "what_to_show_on_card": [
+        "개인 크록스/실내화 준비",
+        "입장: 신발 → 사물함 → 일회용 가운 → 손 씻기 → 명부",
+        "자기소개서/NBS/자습레포트/POMR 과제 배정 확인"
+      ],
+      "handoff_clean_notes": [
+        "NICU는 대기가 길어서 노트북/충전기 가져가 과제 처리하는 게 좋음.",
+        "청진기는 환아별 개인 청진기가 있어 필수는 아님.",
+        "교수님이 POMR 아기 배정 후 직접 진찰해도 된다고 하는 경우가 많음."
+      ],
+      "raw_refs_keep_collapsed": [
+        "T002",
+        "P140",
+        "P156",
+        "P166",
+        "P192"
+      ],
+      "source_role": "handoff actual workflow"
+    },
+    {
+      "slot_id": "b_tue_pm_kang_outpatient_nicu",
+      "weekday": "화요일",
+      "time_display": "13:40~14:00 외래 시작 확인 → 2명씩 교대. 퇴근 17:30~18:00 분위기",
+      "time_confidence": "medium_variable",
+      "time_source": "B분과 인계 2026 1학기",
+      "title": "강미현 교수님 외래 + NICU 대기/회진 가능성",
+      "place_display": "강미현 교수님 외래(공식 6번방) + NICU",
+      "professors": [
+        "강미현 교수님",
+        "장미영 교수님",
+        "신지혜 교수님"
+      ],
+      "what_to_show_on_card": [
+        "2명씩 외래 교대",
+        "NICU 4명 동시 공백 최소화",
+        "질문 1~2개 준비"
+      ],
+      "handoff_clean_notes": [
+        "외래 전 신지혜 교수님 또는 강미현 교수님께 시간 확인.",
+        "외래 안 들어간 조원은 NICU 대기. 신지혜 교수님이 NICU 비우는 것에 민감할 수 있음.",
+        "장미영 교수님 회진은 출장/일정에 따라 있을 수도 없을 수도 있음."
+      ],
+      "raw_refs_keep_collapsed": [
+        "P174",
+        "P198",
+        "P206",
+        "P217",
+        "P233"
+      ],
+      "source_role": "handoff actual workflow"
+    },
+    {
+      "slot_id": "b_wed_0820_conference_then_nicu",
+      "weekday": "수요일",
+      "time_display": "08:20 의국집담회 → 이후 NICU/수술실",
+      "time_confidence": "high_for_conference_variable_after",
+      "time_source": "official + B분과 인계",
+      "title": "아침집담회 후 C-sec 참관 또는 NICU 대기",
+      "place_display": "소아청소년과 의국 → NICU/수술실",
+      "professors": [
+        "신지혜 교수님"
+      ],
+      "what_to_show_on_card": [
+        "집담회 후 C-sec 여부 확인",
+        "수술실 갈 땐 출입카드/수술복/헤어캡/마스크/신발커버",
+        "자필 자기소개서 제출 타이밍 잡기"
+      ],
+      "handoff_clean_notes": [
+        "C-sec 있으면 아기 나오는 장면과 초기 처치 보고 NICU까지 따라가기.",
+        "손 씻고 scrub하는 수술이 아니라 멀리서 참관. 걸리적거리지 않는 위치 유지.",
+        "수술 일정이 없으면 NICU 대기/자습."
+      ],
+      "raw_refs_keep_collapsed": [
+        "P180",
+        "P181",
+        "P192",
+        "P202",
+        "P246",
+        "P262"
+      ],
+      "source_role": "official anchor + handoff actual workflow"
+    },
+    {
+      "slot_id": "b_wed_pm_nbs_pomr",
+      "weekday": "수요일",
+      "time_display": "오후 14:00 이후 교수님 호출/상황 따라 NBS·진찰",
+      "time_confidence": "variable",
+      "time_source": "B분과 인계 2026 1학기",
+      "title": "New Ballard score / POMR 환아 진찰 / NICU 대기",
+      "place_display": "NICU / 신생아실",
+      "professors": [
+        "신지혜 교수님",
+        "장미영 교수님",
+        "강미현 교수님"
+      ],
+      "what_to_show_on_card": [
+        "NBS는 교수님 지시 타이밍 우선",
+        "POMR 환아 직접 진찰",
+        "손 씻기/장갑/소독 철저"
+      ],
+      "handoff_clean_notes": [
+        "NBS를 먼저 했더라도 교수님이 다시 시키면 그냥 한 번 더 하는 쪽이 안전.",
+        "장미영 교수님 회진/질문 대비: RDS, TTN, PPHN, surfactant, RDS CXR 소견.",
+        "진료환자로그 서명 가능하면 신생아 진찰 후 미리 받기."
+      ],
+      "raw_refs_keep_collapsed": [
+        "P187",
+        "P202",
+        "P206",
+        "P232",
+        "P251",
+        "T003"
+      ],
+      "source_role": "handoff actual workflow"
+    },
+    {
+      "slot_id": "b_thu_0820_conference_then_infection",
+      "weekday": "목요일",
+      "time_display": "08:20 의국집담회 → 09:00 전후 감염 외래",
+      "time_confidence": "high_for_conference_medium_for_room",
+      "time_source": "official + B분과 인계",
+      "title": "조은영 교수님 감염 외래/발열 CPX식 mini-lecture",
+      "place_display": "공식표: 외래 3번방 / 최신 인계 다수: 외래 5번방. 당일 확인 필요",
+      "professors": [
+        "조은영 교수님"
+      ],
+      "what_to_show_on_card": [
+        "집담회 후 교수님께 인사하고 방 확인",
+        "발열 소아 CPX식 병력청취 준비",
+        "Problem list → Assessment → Plan 흐름"
+      ],
+      "handoff_clean_notes": [
+        "교수님이 보호자 역할로 모의 CPX를 진행하는 사례가 많음.",
+        "어린 영아면 출생 주수, 몸무게, 분만 방법, 경련 여부 질문 중요.",
+        "감염 자유기록/발열 파트 과제 여부는 매번 달라져 당일 확인."
+      ],
+      "raw_refs_keep_collapsed": [
+        "P286",
+        "P288",
+        "P293",
+        "P295",
+        "P301",
+        "P311"
+      ],
+      "source_role": "handoff overrides exact room/time, official gives skeleton"
+    },
+    {
+      "slot_id": "b_thu_pm_hemonc_outpatient_pomr",
+      "weekday": "목요일",
+      "time_display": "14:00 외래 시작 기준. 종료 후 POMR/노티 피드백, 17:00~18:30까지 변동",
+      "time_confidence": "medium_variable",
+      "time_source": "B분과 인계 2026 1학기",
+      "title": "임연정 교수님 외래 + 혈종 POMR/노티 피드백",
+      "place_display": "외래 7번방 또는 해당 혈종 진료실",
+      "professors": [
+        "임연정 교수님"
+      ],
+      "what_to_show_on_card": [
+        "POMR 종이/iPad 준비",
+        "현재 시점 기준 5~6문장 노티",
+        "검사 수치·날짜·성장백분위 정확히"
+      ],
+      "handoff_clean_notes": [
+        "POMR은 읽어보시고 구두 노티를 시키는 흐름이 많음.",
+        "Problem list에는 정보만, 해석은 Assessment로 분리.",
+        "각자 교수님께 질문 1개 준비. 피드백 반영 후 유폴리오 업로드."
+      ],
+      "raw_refs_keep_collapsed": [
+        "P335",
+        "P337",
+        "P347",
+        "P349",
+        "P352",
+        "P359",
+        "P362",
+        "P363",
+        "P364",
+        "P365",
+        "P366",
+        "P369",
+        "P376",
+        "P380"
+      ],
+      "source_role": "handoff actual workflow"
+    },
+    {
+      "slot_id": "b_fri_common_floating",
+      "weekday": "금요일",
+      "time_display": "공통강의/보충학습/대면진료실습 변동. 1주차 오후 신생아소생술, 2주차 오전 아나필락시스가 공식 기준",
+      "time_confidence": "low_until_notice",
+      "time_source": "official framework + handoff says variable",
+      "title": "금요일 공통/보충/강의 + 주간 포트폴리오 마감",
+      "place_display": "의국 또는 공지 장소",
+      "professors": [
+        "강미현 교수님",
+        "신지혜 교수님",
+        "정은희 교수님 등"
+      ],
+      "what_to_show_on_card": [
+        "금요일 일정은 총조장/교수님 공지 확인",
+        "주간 포트폴리오 17:00 마감",
+        "B분과 유폴리오 과제 전체 제출 상태 점검"
+      ],
+      "handoff_clean_notes": [
+        "공식상 1주차 금 오후 신생아 소생술, 2주차 금 오전 아나필락시스 교육.",
+        "현장에서는 이미 대체되거나 없어지는 경우가 있어 fixed slot보다 floating slot으로 둔다.",
+        "일정 없어도 양은애 교수님이 갑자기 부를 수 있으므로 멀리 가지 말라는 인계가 있음."
+      ],
+      "raw_refs_keep_collapsed": [
+        "P395",
+        "P401",
+        "P403",
+        "P404",
+        "P421",
+        "P424",
+        "P427",
+        "P429",
+        "P433"
+      ],
+      "source_role": "floating common event"
+    }
+  ],
+  "archive_policy": {
+    "main_card": "time_display, title, place_display, top checklist만 표시",
+    "detail_collapsed": "handoff_clean_notes + raw_refs_keep_collapsed 원문",
+    "archive_only": "2025 이전 조별 사례, 농담/감상, 취소/출장으로만 발생한 특수 사례, 반복 동선 설명",
+    "never_drop": "과제 마감/제출 위치/교수 피드백 기준/평가와 관련된 원문"
+  }
+}

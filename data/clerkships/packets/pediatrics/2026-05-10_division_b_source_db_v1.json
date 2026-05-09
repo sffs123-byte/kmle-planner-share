@@ -1,0 +1,2193 @@
+{
+  "meta": {
+    "id": "pediatrics-division-b-source-db-v1",
+    "subject": "소아청소년과",
+    "division": "B분과",
+    "division_areas": [
+      "혈액종양",
+      "신생아",
+      "감염"
+    ],
+    "source_doc": "2026 소아청소년과 분과 B 인계(2026.05.01 업데이트).docx",
+    "source_path": "~/Desktop/의학과 공부 파일/본3/소아청소년과/인계/분과 B 인계(2026.05.01 업데이트) .docx",
+    "extracted_markdown": ".tmp/peds_handoff_20260510/B분과_인계_2026-05-01_extracted.md",
+    "generated_at": "2026-05-10T06:26:00+09:00",
+    "purpose": "GitHub 일정 bundle에 원문 내용을 일정/과제/체크리스트 단위로 분배하기 위한 원문 보존형 source database",
+    "target_user_context": {
+      "student": "배강렬",
+      "group_label": "2번째 조 / B조(중간조) 가정",
+      "members": [
+        "박민석",
+        "장윤서",
+        "배강렬",
+        "김단아"
+      ],
+      "role": "전체 조장 아님. 우리 조 실행 체크용."
+    }
+  },
+  "schema_plan": {
+    "bundle_layers": [
+      {
+        "layer": "source_raw_blocks",
+        "purpose": "docx 원문을 P/T 번호 단위로 그대로 보존. UI 상세 패널/근거 팝업의 source of truth."
+      },
+      {
+        "layer": "schedule_slots",
+        "purpose": "요일/시간/장소/교수님 단위 일정 카드. 각 카드가 raw_source_refs를 통해 원문 블록을 가져옴."
+      },
+      {
+        "layer": "assignment_registry",
+        "purpose": "유폴리오/발표/서면 과제의 시작일·마감·제출위치·raw 근거를 따로 관리."
+      },
+      {
+        "layer": "checklist_templates",
+        "purpose": "우리 조 4명이 당일 체크할 행동 목록. 일정 카드에서 생성."
+      },
+      {
+        "layer": "question_banks",
+        "purpose": "혈종/신생아/감염 질문 야마를 과제/일정에 연결. 원문 표는 raw block으로 보존."
+      },
+      {
+        "layer": "sensitive_flags",
+        "purpose": "공개 GitHub Pages에 올리기 전 비밀번호/내부 보안정보/환자식별 위험 문구를 표시. B분과는 환자 실명은 없음."
+      }
+    ],
+    "ui_distribution_rule": {
+      "calendar_card": "summary_for_card + time_label + location + top 3 checklist",
+      "detail_panel": "linked raw_source_refs_primary 원문 전문 노출",
+      "source_tab": "raw_source_refs_supporting 포함 전체 인계 원문 블록 검색/열람",
+      "assignment_panel": "assignment_registry 기준으로 제출 위치/마감/필드/관련 일정 표시",
+      "daily_briefing": "해당 요일 schedule_slots + due assignments만 압축 표시"
+    },
+    "privacy_note": "GitHub Pages가 공개 상태라면 전체 인계의 의국 비밀번호 같은 항목은 push 전 sensitive flag 확인 필요. 원문 보존은 하되 공개 노출 방식은 마지막에 강렬 확인 후 결정."
+  },
+  "schedule_slots": [
+    {
+      "slot_id": "b_mon_am_hemonc_ward_meeting_rounding_assignment",
+      "week": "B분과 주간",
+      "weekday": "월요일",
+      "time_label": "오전",
+      "title": "혈액종양병동실습 1: 병원학교 다학제회의 → 병동/EMR 설명 → 회진 → 케이스 배정",
+      "professors": [
+        "임연정 교수님"
+      ],
+      "site": "소아동 4층 341병동 안쪽 병원학교 / 혈액종양 병동 / 의국",
+      "bundle_role": "calendar_event + detail_raw_sections",
+      "summary_for_card": "프테/OT 후 병원학교 회의가 진행 중이면 직접 확인. 회진 전후 설명이 POMR·환자상태보고의 핵심이므로 녹음/필기 우선.",
+      "checklist_items": [
+        "프테 후 341병동 병원학교 회의 진행 여부 직접 확인",
+        "병원학교/혈종 병동 마스크 착용",
+        "환자 설명·EMR 교육 녹음",
+        "배정 환자 확인 후 당일 오후 브리핑 준비",
+        "목요일 약식 POMR/노티 발표 여부 확인"
+      ],
+      "raw_source_refs_primary": [
+        "P005",
+        "P008",
+        "P012",
+        "P015",
+        "P020",
+        "P023",
+        "P029"
+      ],
+      "raw_source_refs_supporting": [
+        "P033",
+        "P037",
+        "P043",
+        "P047",
+        "P052",
+        "P058",
+        "P062",
+        "P067",
+        "P071"
+      ],
+      "assignment_links": [
+        "b_hemonc_patient_status_briefing",
+        "b_hemonc_short_pomr"
+      ]
+    },
+    {
+      "slot_id": "b_mon_pm_hemonc_patient_briefing",
+      "week": "B분과 주간",
+      "weekday": "월요일",
+      "time_label": "오후 15:30~16:00 전후 / 교수님 안내 우선",
+      "title": "혈액종양병동실습 2: 환자상태보고/질문/피드백",
+      "professors": [
+        "임연정 교수님"
+      ],
+      "site": "의국 또는 외래 7번방/소아청소년과 외래",
+      "bundle_role": "calendar_event + assignment_detail + question_prep",
+      "summary_for_card": "배정 환자를 전공의가 교수님께 노티하듯 짧게 보고. 서로 질문·교수님께 질문을 미리 준비해야 민망하지 않음.",
+      "checklist_items": [
+        "A4 반쪽 이내 환자상태보고 대본 작성",
+        "각자 발표 전 조원끼리 대본 공유",
+        "서로에게 할 질문 1개씩 준비",
+        "교수님께 드릴 질문 1개씩 준비",
+        "ALL/ITP/IDA/hemophilia/oncologic emergency 기본 복습"
+      ],
+      "raw_source_refs_primary": [
+        "P075",
+        "P083",
+        "P085",
+        "P086",
+        "P087",
+        "P089",
+        "P092",
+        "P096"
+      ],
+      "raw_source_refs_supporting": [
+        "P098",
+        "P102",
+        "P106",
+        "P109",
+        "P116",
+        "P121",
+        "T001"
+      ],
+      "assignment_links": [
+        "b_hemonc_patient_status_briefing",
+        "b_hemonc_short_pomr"
+      ]
+    },
+    {
+      "slot_id": "b_tue_am_nicu_ot_tasks_rounding",
+      "week": "B분과 주간",
+      "weekday": "화요일",
+      "time_label": "오전 08:45~09:00 NICU 도착 권장",
+      "title": "신생아분과 1일차 오전: NICU 입장/OT/과제 배정/환자 설명",
+      "professors": [
+        "신지혜 교수님"
+      ],
+      "site": "소아동 3층 NICU / PK 대기 책상",
+      "bundle_role": "calendar_event + fixed_location_guide + assignment_start",
+      "summary_for_card": "NICU는 시작 시간이 흔들리고 대기가 길다. 크록스/가운/명부/PK 책상 위치를 알고, OT에서 자기소개서·NBS·자습레포트·POMR 과제를 확정한다.",
+      "checklist_items": [
+        "개인 크록스 또는 실내화 준비",
+        "NICU 입장: 신발 갈아신기 → 사물함 → 일회용 가운 → 손 씻기 → 명부 작성",
+        "노트북/충전기 준비해 대기 시간 과제 처리",
+        "NBS 종이 또는 iPad 양식 준비",
+        "자기소개서 수기 제출 마감 확인",
+        "POMR 아기 배정 후 직접 진찰 가능 여부 확인"
+      ],
+      "raw_source_refs_primary": [
+        "T002",
+        "P140",
+        "P156",
+        "P160",
+        "P161",
+        "P165",
+        "P166",
+        "P173",
+        "P191",
+        "P192"
+      ],
+      "raw_source_refs_supporting": [
+        "P209",
+        "P215",
+        "P219",
+        "P222",
+        "P227",
+        "P233",
+        "P246",
+        "P251",
+        "P257",
+        "P267",
+        "P269",
+        "P271",
+        "P277"
+      ],
+      "assignment_links": [
+        "b_neonate_self_intro",
+        "b_neonate_nbs",
+        "b_neonate_self_study_report",
+        "b_neonate_pomr"
+      ]
+    },
+    {
+      "slot_id": "b_tue_pm_kang_mihyun_outpatient_nicu_wait",
+      "week": "B분과 주간",
+      "weekday": "화요일",
+      "time_label": "오후 14:00 전후 / 2명씩 교대",
+      "title": "신생아분과 화요일 오후: 강미현 교수님 외래 + NICU 대기/회진 가능성",
+      "professors": [
+        "강미현 교수님",
+        "장미영 교수님"
+      ],
+      "site": "외래 / NICU",
+      "bundle_role": "calendar_event + rotation_split_checklist",
+      "summary_for_card": "외래는 2명씩 교대. NICU를 4명이 동시에 비우지 않는 것이 중요하고, 남는 시간은 자습·환아 관찰·과제 처리.",
+      "checklist_items": [
+        "오전 중 외래 시작 시간 확인 문자 또는 교수님 안내 확인",
+        "2명씩 교대 순서 정하기",
+        "NICU 4명 전원 공백 최소화",
+        "질문 1~2개 준비",
+        "5:30~6:00 퇴근은 분위기 보고 판단"
+      ],
+      "raw_source_refs_primary": [
+        "P174",
+        "P179",
+        "P198",
+        "P206"
+      ],
+      "raw_source_refs_supporting": [
+        "P217",
+        "P219",
+        "P230",
+        "P233",
+        "P246",
+        "P257",
+        "P270",
+        "P275"
+      ],
+      "assignment_links": [
+        "b_neonate_self_study_report",
+        "b_neonate_pomr"
+      ]
+    },
+    {
+      "slot_id": "b_wed_am_nicu_csec_or_wait",
+      "week": "B분과 주간",
+      "weekday": "수요일",
+      "time_label": "의국회의 후 NICU/수술실",
+      "title": "신생아분과 수요일 오전: 의국회의 후 C-sec 참관 또는 NICU 대기",
+      "professors": [
+        "신지혜 교수님"
+      ],
+      "site": "의국회의 → NICU → 수술실",
+      "bundle_role": "calendar_event + procedure_guide",
+      "summary_for_card": "C-sec 있으면 바로 수술실. 수술복/헤어캡/마스크/신발커버, 아기 나오면 초기 처치 보고 NICU까지 따라가기.",
+      "checklist_items": [
+        "의국회의 후 C-sec 여부 확인",
+        "NICU에 짐 두고 수술복 환복",
+        "출입카드 챙기기",
+        "수술장에서는 걸리적거리지 않게 신생아 케이지 주변 참관",
+        "초기 처치 후 NICU 이동 따라가기",
+        "자필 자기소개서 교수님께 제출"
+      ],
+      "raw_source_refs_primary": [
+        "P180",
+        "P181",
+        "P186",
+        "P202"
+      ],
+      "raw_source_refs_supporting": [
+        "P209",
+        "P217",
+        "P222",
+        "P246",
+        "P251",
+        "P262",
+        "P271",
+        "P275",
+        "P277"
+      ],
+      "assignment_links": [
+        "b_neonate_self_intro",
+        "b_neonate_nbs"
+      ]
+    },
+    {
+      "slot_id": "b_wed_pm_nbs_pomr_exam_wait",
+      "week": "B분과 주간",
+      "weekday": "수요일",
+      "time_label": "오후 / 교수님 호출 또는 대기 중 진행",
+      "title": "신생아분과 수요일 오후: New Ballard Score, POMR 환아 진찰, NICU 대기",
+      "professors": [
+        "신지혜 교수님",
+        "장미영 교수님"
+      ],
+      "site": "NICU / 신생아실",
+      "bundle_role": "calendar_event + assignment_work_block",
+      "summary_for_card": "NBS는 교수님이 시킬 때 하는 게 안전. 먼저 했다면 교수님이 다시 시킬 때 그냥 한 번 더 하는 쪽이 낫다는 인계가 있음.",
+      "checklist_items": [
+        "NBS 양식 준비",
+        "교수님께 NBS 타이밍 확인",
+        "POMR 환아 직접 진찰",
+        "아기 진찰 전 손 씻기/장갑/소독",
+        "장미영 교수님 회진/질문 가능성 대비 RDS·TTN·PPHN·surfactant 훑기",
+        "진료환자로그 서명 가능하면 미리 받기"
+      ],
+      "raw_source_refs_primary": [
+        "P187",
+        "P190",
+        "P202",
+        "P206"
+      ],
+      "raw_source_refs_supporting": [
+        "P232",
+        "P233",
+        "P251",
+        "P262",
+        "P277",
+        "T003"
+      ],
+      "assignment_links": [
+        "b_neonate_nbs",
+        "b_neonate_pomr",
+        "b_neonate_self_study_report"
+      ]
+    },
+    {
+      "slot_id": "b_thu_am_infection_outpatient_cpx",
+      "week": "B분과 주간",
+      "weekday": "목요일",
+      "time_label": "오전 09:00 전후",
+      "title": "감염분과 오전: 조은영 교수님 외래/모의 CPX/발열 접근",
+      "professors": [
+        "조은영 교수님"
+      ],
+      "site": "소아청소년과 외래 5번방",
+      "bundle_role": "calendar_event + cpx_practice_guide",
+      "summary_for_card": "대개 발열 소아 모의 CPX. SOAP/assessment 먼저 세우고 검사·치료 계획으로 가는 논리 흐름을 강조.",
+      "checklist_items": [
+        "의국회의 후 교수님께 인사/외래 5번방 확인",
+        "발열 소아 병력청취 질문 리스트 준비",
+        "출생 주수/몸무게/분만 방법/경련 여부 등 어린 영아 질문 준비",
+        "Problem list → Assessment → Plan 흐름으로 말하기",
+        "감염 자유기록/발열 파트 과제 여부 확인"
+      ],
+      "raw_source_refs_primary": [
+        "P283",
+        "P286",
+        "P288",
+        "P290",
+        "P291",
+        "P292",
+        "P293",
+        "P295",
+        "P301"
+      ],
+      "raw_source_refs_supporting": [
+        "P304",
+        "P308",
+        "P311",
+        "P315",
+        "P316",
+        "P317",
+        "P320",
+        "P323",
+        "P328",
+        "P329",
+        "P330"
+      ],
+      "assignment_links": [
+        "b_infection_fever_free_record"
+      ]
+    },
+    {
+      "slot_id": "b_thu_pm_hemonc_outpatient_pomr_feedback",
+      "week": "B분과 주간",
+      "weekday": "목요일",
+      "time_label": "오후 14:00 전후",
+      "title": "혈액종양 오후: 임연정 교수님 외래 참관 + POMR/노티 피드백",
+      "professors": [
+        "임연정 교수님"
+      ],
+      "site": "외래 7번방 또는 지정 진료실",
+      "bundle_role": "calendar_event + assignment_due_feedback",
+      "summary_for_card": "외래 후 POMR 피드백/노티 발표. 현재 시점 기준으로 짧고 정확하게, 날짜·수치·성장백분위·Problem list/Assessment 구분을 신경써야 함.",
+      "checklist_items": [
+        "POMR 종이 출력 또는 iPad 준비",
+        "외래 7번방 위치 확인: 6번/8번 사이 표시 없는 방",
+        "의자 부족 시 외래 없는 진료실에서 의자 확보",
+        "노티는 5~6문장 정도로 현재 시점 기준",
+        "검사 수치는 정확한 숫자로 말하기",
+        "각자 교수님께 질문 1개 준비",
+        "피드백 반영 후 유폴리오 업로드"
+      ],
+      "raw_source_refs_primary": [
+        "P335",
+        "P337",
+        "P345",
+        "P346",
+        "P347",
+        "P349",
+        "P352"
+      ],
+      "raw_source_refs_supporting": [
+        "P355",
+        "P357",
+        "P359",
+        "P362",
+        "P363",
+        "P364",
+        "P365",
+        "P366",
+        "P369",
+        "P374",
+        "P376",
+        "P380",
+        "P386",
+        "P388",
+        "P390"
+      ],
+      "assignment_links": [
+        "b_hemonc_short_pomr"
+      ]
+    },
+    {
+      "slot_id": "b_fri_am_anaphylaxis_asthma_education",
+      "week": "B분과 주간",
+      "weekday": "금요일",
+      "time_label": "오전 09:30 전후 / 일정 변동 가능",
+      "title": "금요일 오전: 아나필락시스/천식 약제 교육",
+      "professors": [
+        "교육센터 간호사/담당자"
+      ],
+      "site": "의국 또는 교육 지정 장소",
+      "bundle_role": "calendar_event + low_burden_session",
+      "summary_for_card": "네블라이저·흡입제·에피네프린 주사 체험 중심. 일정이 없어질 수도 있어 총조장/교수님 공지 확인.",
+      "checklist_items": [
+        "금요일 오전 교육 여부 확인",
+        "교육 내용과 소감 자유기록 반영 여부 확인",
+        "일정 없어도 병원 근처 대기 원칙 고려"
+      ],
+      "raw_source_refs_primary": [
+        "P392",
+        "P395",
+        "P397",
+        "P399",
+        "P400",
+        "P401",
+        "P403",
+        "P404"
+      ],
+      "raw_source_refs_supporting": [
+        "P407",
+        "P409",
+        "P411",
+        "P413",
+        "P417"
+      ],
+      "assignment_links": [
+        "b_anaphylaxis_reflection_optional"
+      ]
+    },
+    {
+      "slot_id": "b_fri_pm_neonatal_resuscitation_or_replaced",
+      "week": "B분과 주간",
+      "weekday": "금요일",
+      "time_label": "오후 / 대체 가능",
+      "title": "금요일 오후: 신생아소생술 강의 또는 의국집담회 대체",
+      "professors": [
+        "신지혜 교수님",
+        "강미현 교수님"
+      ],
+      "site": "의국 등 지정 장소",
+      "bundle_role": "calendar_event + assignment_deadline_anchor",
+      "summary_for_card": "2026 인계상 두번째 주 목요일 의국집담회 강의로 대체된 사례가 있어, 금요일 오후 고정으로 보지 말고 공지 확인 필요.",
+      "checklist_items": [
+        "신생아소생술 강의 실제 일정 확인",
+        "금요일 17:00 soft deadline으로 유폴리오 과제 전부 점검",
+        "신생아 자유기록/NBS/POMR/감염 자유기록/주간포트폴리오 제출 상태 확인"
+      ],
+      "raw_source_refs_primary": [
+        "P421",
+        "P424",
+        "P427",
+        "P429",
+        "P433"
+      ],
+      "raw_source_refs_supporting": [
+        "T003"
+      ],
+      "assignment_links": [
+        "b_neonate_nbs",
+        "b_neonate_self_study_report",
+        "b_neonate_pomr",
+        "b_infection_fever_free_record",
+        "b_weekly_portfolio"
+      ]
+    }
+  ],
+  "assignment_registry": [
+    {
+      "assignment_id": "b_hemonc_patient_status_briefing",
+      "name": "혈액종양 환자상태보고",
+      "owner_scope": "개인/배정 환자",
+      "due_relative": "월요일 오후, 교수님 지정 시간",
+      "uportfolio_target": null,
+      "format": "A4 반페이지 또는 짧은 구두 노티. 최신 인계상 당일 오후 발표/피드백.",
+      "raw_source_refs": [
+        "P012",
+        "P020",
+        "P023",
+        "P075",
+        "P087",
+        "P089",
+        "P092",
+        "P106",
+        "P109"
+      ],
+      "database_fields_to_keep": [
+        "assigned_patient",
+        "briefing_script",
+        "peer_questions",
+        "professor_questions",
+        "feedback"
+      ]
+    },
+    {
+      "assignment_id": "b_hemonc_short_pomr",
+      "name": "혈액종양 약식 POMR / 노티 발표",
+      "owner_scope": "개인/월요일 배정 환자",
+      "due_relative": "목요일 오후 피드백 후 수정 제출. 출장 등으로 마지막 주/다음 월요일로 이동 가능.",
+      "uportfolio_target": "소아청소년과 POMR/예진기록지 계열 확인 필요",
+      "format": "A4 2장 내외 약식 POMR + 현재 시점 노티형 구두 발표",
+      "raw_source_refs": [
+        "P020",
+        "P023",
+        "P092",
+        "P337",
+        "P347",
+        "P352",
+        "P359",
+        "P362",
+        "P363",
+        "P364",
+        "P365",
+        "P366",
+        "P369",
+        "P376",
+        "P380"
+      ],
+      "database_fields_to_keep": [
+        "pomr_file",
+        "print_required",
+        "feedback_required",
+        "final_upload_status",
+        "deadline_override"
+      ]
+    },
+    {
+      "assignment_id": "b_neonate_self_intro",
+      "name": "신생아 자기소개서",
+      "owner_scope": "개인",
+      "due_relative": "수요일까지 수기 제출",
+      "uportfolio_target": null,
+      "format": "자필/수기 제출",
+      "raw_source_refs": [
+        "T002",
+        "P166",
+        "P181",
+        "P209",
+        "P233",
+        "P271",
+        "P277"
+      ],
+      "database_fields_to_keep": [
+        "paper_written",
+        "submitted_to_professor",
+        "submitted_at"
+      ]
+    },
+    {
+      "assignment_id": "b_neonate_nbs",
+      "name": "New Ballard Scale",
+      "owner_scope": "개인 또는 조별 측정 후 개인 제출 확인",
+      "due_relative": "금요일 자정. 금요일 17:00 soft deadline 권장.",
+      "uportfolio_target": "신지혜 교수님 / 신생아 분과 자유기록 첨부",
+      "format": "NBS 결과지/파일 첨부",
+      "raw_source_refs": [
+        "T002",
+        "P140",
+        "P156",
+        "P166",
+        "P187",
+        "P202",
+        "P206",
+        "P232",
+        "P233",
+        "P262",
+        "P277"
+      ],
+      "database_fields_to_keep": [
+        "nbs_done",
+        "baby_context",
+        "file_ready",
+        "uploaded"
+      ]
+    },
+    {
+      "assignment_id": "b_neonate_self_study_report",
+      "name": "신생아 개인레포트/자습 레포트",
+      "owner_scope": "개인",
+      "due_relative": "금요일 자정. 금요일 17:00 soft deadline 권장.",
+      "uportfolio_target": "신지혜 교수님 / 신생아 분과 자유기록 첨부",
+      "format": "주제 2개 또는 배정 주제 파일 하나로 제출",
+      "raw_source_refs": [
+        "T002",
+        "P166",
+        "P219",
+        "P233",
+        "P246",
+        "P269"
+      ],
+      "database_fields_to_keep": [
+        "topic",
+        "draft",
+        "file_ready",
+        "uploaded"
+      ]
+    },
+    {
+      "assignment_id": "b_neonate_pomr",
+      "name": "신생아 POMR",
+      "owner_scope": "개인/POMR 아기",
+      "due_relative": "금요일 자정. 금요일 17:00 soft deadline 권장.",
+      "uportfolio_target": "신지혜 교수님 / 소아청소년과 예진기록지 첨부",
+      "format": "POMR 파일 첨부",
+      "raw_source_refs": [
+        "T002",
+        "P156",
+        "P161",
+        "P166",
+        "P202",
+        "P206",
+        "P233",
+        "P246",
+        "P277"
+      ],
+      "database_fields_to_keep": [
+        "assigned_baby",
+        "direct_exam_done",
+        "pomr_file",
+        "uploaded"
+      ]
+    },
+    {
+      "assignment_id": "b_infection_fever_free_record",
+      "name": "감염분과 자유기록/발열 접근 과제",
+      "owner_scope": "개인",
+      "due_relative": "목~금 중 교수님 안내 확인. 금요일 17:00 soft deadline 권장.",
+      "uportfolio_target": "감염 자유기록",
+      "format": "소감 + 홍창의/소아과학 발열 파트 정리 가능. 평가 반영 여부는 인계별 차이.",
+      "raw_source_refs": [
+        "P286",
+        "P295",
+        "P304",
+        "P311",
+        "P316",
+        "P424"
+      ],
+      "database_fields_to_keep": [
+        "required_confirmed",
+        "draft",
+        "uploaded"
+      ]
+    },
+    {
+      "assignment_id": "b_anaphylaxis_reflection_optional",
+      "name": "아나필락시스/천식 교육 소감",
+      "owner_scope": "개인",
+      "due_relative": "금요일 중 확인",
+      "uportfolio_target": "자유기록 계열 확인 필요",
+      "format": "들은 내용과 소감",
+      "raw_source_refs": [
+        "P401",
+        "P403",
+        "P424"
+      ],
+      "database_fields_to_keep": [
+        "required_confirmed",
+        "memo",
+        "uploaded"
+      ]
+    },
+    {
+      "assignment_id": "b_weekly_portfolio",
+      "name": "주간 포트폴리오",
+      "owner_scope": "개인",
+      "due_relative": "금요일 17:00 soft deadline, 자정 hard deadline 후보",
+      "uportfolio_target": "주간 포트폴리오",
+      "format": "유폴리오 주간 제출",
+      "raw_source_refs": [
+        "P424"
+      ],
+      "database_fields_to_keep": [
+        "draft",
+        "uploaded"
+      ]
+    }
+  ],
+  "raw_blocks": [
+    {
+      "id": "P001",
+      "kind": "paragraph",
+      "source_order": 1,
+      "marker": "## [P1 | normal] 2025 소아청소년과 분과 B(신생아/혈액종양/감염) 인계",
+      "paragraph_no": 1,
+      "style": "normal",
+      "heading": "2025 소아청소년과 분과 B(신생아/혈액종양/감염) 인계",
+      "text": "## [P1 | normal] 2025 소아청소년과 분과 B(신생아/혈액종양/감염) 인계"
+    },
+    {
+      "id": "P002",
+      "kind": "paragraph",
+      "source_order": 2,
+      "marker": "## [P2 | normal] 날짜 꼭 적기!!!!!!!! -> 업데이트 2026.05.01",
+      "paragraph_no": 2,
+      "style": "normal",
+      "heading": "날짜 꼭 적기!!!!!!!! -> 업데이트 2026.05.01",
+      "text": "## [P2 | normal] 날짜 꼭 적기!!!!!!!! -> 업데이트 2026.05.01\n*동일한 내용이라도 간단히 인수인계를 적어주세요. 새로 바뀐 것은 반드시 적어주세요.\n[월요일, 임연정교수님/혈액종양]"
+    },
+    {
+      "id": "P005",
+      "kind": "paragraph",
+      "source_order": 3,
+      "marker": "## [P5 | normal] 구성: [오전 혈액종양병동실습 1], [오후 혈액종양병동실습2]",
+      "paragraph_no": 5,
+      "style": "normal",
+      "heading": "구성: [오전 혈액종양병동실습 1], [오후 혈액종양병동실습2]",
+      "text": "## [P5 | normal] 구성: [오전 혈액종양병동실습 1], [오후 혈액종양병동실습2]\n[오전 혈액종양병동실습 1]\n[2026 1학기]"
+    },
+    {
+      "id": "P008",
+      "kind": "paragraph",
+      "source_order": 4,
+      "marker": "## [P8 | normal] 26년 5,6,7,8조 B-1)",
+      "paragraph_no": 8,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-1)",
+      "text": "## [P8 | normal] 26년 5,6,7,8조 B-1)\n- OT가 오전 9시 20분에 끝나서 병원학교 회의 참여 안했다는 이전 인계가 있긴 했으나... 우리 때는 병원학교 회의가 거의 오전 10시까지 진행되어서, OT가 늦게 끝났음에도 불구하고 참석했다. 앞 일정 늦게 끝났더라도, 혹시 모르니 병원학교 (소아동 4층) 일단 가서 회의 진행되고 있는지 직접 확인해보는 거 추천\n- 병원학교 회의 들어올 떄에는 신발 벗고 슬리퍼 신지 말고 들어오기! (슬리퍼가 앞에 있어서 신고 싶은 유혹이 들긴 하는데 신지 마세요)\n- 회진 돌기 전후로, 교수님께서 환자 설명 해주시고 케이스 배정해주시는데 환자 상황 + 질병에 대한 내용도 정말 하나하나 꼼꼼하게 설명해주시기 때문에 녹음 해두는 거 추천 (브리핑 준비할 때 유용함)"
+    },
+    {
+      "id": "P012",
+      "kind": "paragraph",
+      "source_order": 5,
+      "marker": "## [P12 | normal] 26년 5,6,7,8조 B-2)",
+      "paragraph_no": 12,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-2)",
+      "text": "## [P12 | normal] 26년 5,6,7,8조 B-2)\n의국에서 8: 20분 프테를 본 이후, 다학제회의 참가함. 혈액종양 내과 병동에 입원한 환아들 대상으로 교수님들끼리 논의하고 계심. 잘 들어보면  POMR 작성할 때 도움이 되는 내용들 있음.  일단 341병동 안쪽에 있는  병원학교 들어가서, 안에 있는 슬리퍼로 갈아신은 후 벽쪽에 있는 의자에 일렬로 앉음. (인턴 선생님들이 가장 안쪽, 우리는 문쪽과 가까운 쪽에 앉음)\n다학제회의 후 교수님 회진 돌으심. 회진이 끝난 이후에는 의국에서 EMR 보면서 교수님이 기본적인 항암, ALL, AML에 대해서 강의해주심. 교수님께서 가르쳐주시는 내용이 아주 방대하고 약자가 많고 처음 들어보는 내용이 많으므로 잘 듣고, 필기하기 이후, 환자 케이스 배정받음. 이 환자로 당일 오후에 환자상태보고해야한다. 참고로 환자상태보고는 A4 반페이지, 이 환자아 입원하게된 주요 병명 + 치료관련 특이사항들을 잘 요약해야한다."
+    },
+    {
+      "id": "P015",
+      "kind": "paragraph",
+      "source_order": 6,
+      "marker": "## [P15 | normal] 26년 5,6,7,8조 B-3)",
+      "paragraph_no": 15,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-3)",
+      "text": "## [P15 | normal] 26년 5,6,7,8조 B-3)\n프테 끝나도 원래는 병원학교 회의 참여해야하는데 우리가 돌 때는 그날 회의가 없었음. 교수님께 오전에 연락 드리니까 9시 15분에 병동(혈액종양 병동이다. 4층 안쪽에 문 들어가면 있는 곳)에 만나자고 하셨다.\n왜인지는 모르겠는데 회진 안 돌았고 외래 보는 곳으로 이동해 입원 환자들에 EMR 보면서 설명해 주셨다.\n원래 케이스는 입원 환자로 받는데 우리 조는 교수님이 목금토 출장 있으셔서 외래 환자로 케이스 배정 받았다."
+    },
+    {
+      "id": "P019",
+      "kind": "paragraph",
+      "source_order": 7,
+      "marker": "## [P19 | normal] 원래는 배정받은 환자 오후에 브리핑 해야하는데 교수님이 전 날 당직하셔서 피곤해서 퇴근해야겠다고 하셔서 브리핑 생략됨",
+      "paragraph_no": 19,
+      "style": "normal",
+      "heading": "원래는 배정받은 환자 오후에 브리핑 해야하는데 교수님이 전 날 당직하셔서 피곤해서 퇴근해야겠다고 하셔서 브리핑 생략됨",
+      "text": "## [P19 | normal] 원래는 배정받은 환자 오후에 브리핑 해야하는데 교수님이 전 날 당직하셔서 피곤해서 퇴근해야겠다고 하셔서 브리핑 생략됨"
+    },
+    {
+      "id": "P020",
+      "kind": "paragraph",
+      "source_order": 8,
+      "marker": "## [P20 | normal] 26년 9,10,11,12조 B-1)",
+      "paragraph_no": 20,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-1)",
+      "text": "## [P20 | normal] 26년 9,10,11,12조 B-1)\n소아과 의국에서 8시 20분에 프테 본 후, 그 자리에서 공통 OT들음. 원래 9시전에 끝나면 341병동 가장 안쪽에 있는 병원학교가서 다학제회의 참관해야하는데, 우리는 9시 20분에 끝나서 못 들어감. (거의 끝나가니까 밖에서 기다리라 하심)\n이후 임연정 교수님께서 스테이션에서 병동팀에게 입원 환자 전체적으로 EMR 보면서 개괄적으로 설명해주신후, 회진 돌았음. 학생들만 데리고 의국 와서 EMR 보면서 한명 한명 정말 자세하게 진단명이랑 상태, 처방 등에 대해 설명해주심. (이때 중강중간 간단한 질문하심. 중요하진 않은듯) POMR 환자 배정해주시고, 이 환자로 오후에 환자상태 보고 A4용지 반 정도 분량으로 대본써오고 발표하라고 하심. + 이 환자로 목요일에 A4 2장 분량의 약식 POMR도 써서 제출해야함. 목요일 오후에는 이 POMR에 대해 피드백해주신다고 하심."
+    },
+    {
+      "id": "P023",
+      "kind": "paragraph",
+      "source_order": 9,
+      "marker": "## [P23 | normal] 26년 9,10,11,12조 B-2)",
+      "paragraph_no": 23,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-2)",
+      "text": "## [P23 | normal] 26년 9,10,11,12조 B-2)\n의국에서 8:20 프테 본 후, 341병동 가장 안쪽에 있는 병원학교 가서 다학제회의 참관함(다학제회의는 9시에 시작). 병원학교 안에 있는 슬리퍼로 갈아신은 후 벽쪽에 있는 의자에 일렬로 앉음. 여기서 말씀해주시는 환자들이 결국 병동 회진돌고 케이스 배정받는 환자\n들이므로 잘 들으면 좋긴 한데 엄청 중요한 내용은 아님. 우리에게 요구하거나 말거는거 전혀 없으시고 그냥 앉아서 잘 지켜보기만 하면 됨.\n다학제회의 후 교수님과 함께 스테이션에 가서 병동환자 EMR 보며 설명 들음. 교수님께서 가르쳐주시는 내용이 아주 방대하고 약자가 많고 처음 들어보는 내용이 많으므로 녹음하는 걸 추천함.\n이후 병동 회진 돎. 어차피 필기 못하므로 짐 다 스테이션에 두고 올 것. 눈치껏 졸졸 따라다니면 됨.\n병동 회진 이후 의국으로 돌아가서 EMR 보며 여러가지 가르쳐주심… 환자 케이스 배정받음. 이 환자로 당일 오후에 환자상태보고하고, 이후 약식 POMR도 작성함. 그래서 이것도 녹음하는 걸 추천함... 환자상태보고는 A4 반장 이내로 짧게 준비할 것(이전 인계 참고). 약식 POMR은 원래 목요일 발표인데 이번주 목요일에는 교수님 출장으로 우리는 마지막 주로 미뤄짐. 약식 POMR 작성법은 이전 인계 참고."
+    },
+    {
+      "id": "P029",
+      "kind": "paragraph",
+      "source_order": 10,
+      "marker": "## [P29 | normal] 26년 9,10,11,12조 B-3)",
+      "paragraph_no": 29,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-3)",
+      "text": "## [P29 | normal] 26년 9,10,11,12조 B-3)\n프테 후 임연정 교수님께 오전에 연락드리니 다학제 회의가 없는 관계로 9시까지 소아 혈종 스테이션에서 입원전담이신 정은선 교수님께 환자 안내 받고 이따 오후 2시 회진 참여하라고 말씀하심.\n9시에 정은선 교수님께서 네 명의 환자 이름 알려주시고 환자 차트 리뷰하고 있으라고 말씀하심. 그 이후로 일정 없어 PK실로 내려가서 우리끼리 환자 나눔.\n[2025 2 학기]"
+    },
+    {
+      "id": "P033",
+      "kind": "paragraph",
+      "source_order": 11,
+      "marker": "## [P33 | normal] 11-14조 B)",
+      "paragraph_no": 33,
+      "style": "normal",
+      "heading": "11-14조 B)",
+      "text": "## [P33 | normal] 11-14조 B)\n- 크게 질문 안 하셨음. OT 끝나고 바로 병원학교 가서 다학제 회의 참관하고 회진 돌면 됨.\n- 다학제 회의 때는 종이 한꺼번에 모아가지고 눈치껏 끝나자마자 제출하면 좋을듯. 아니더라도 인턴쌤이 모아주심. 명단은 환자 명단이라는 뜻임.\n- 마스크 반드시 착용. 분위기는 매우 힐링됨. 다들 따스하시다ㅎㅎ"
+    },
+    {
+      "id": "P037",
+      "kind": "paragraph",
+      "source_order": 12,
+      "marker": "## [P37 | normal] 15-18조 C)",
+      "paragraph_no": 37,
+      "style": "normal",
+      "heading": "15-18조 C)",
+      "text": "## [P37 | normal] 15-18조 C)\n다학제 회의 참관하고 병동 회진 참관. 341 병원학교로 안에서 진행. 신발 벗고 안에 남는 파란색 의자 가져와서 앉기. 주시는 종이는 다시 반납해야 함.\n끝나고 스테이션 교수님 따라가서 환자 설명 듣기. POMR 환자 배정하심.\n이후 의국에서 교수님이 과제 및 공부해야 할 내용 설명해주심.\n환자 이야기 절대 하지 않기(병원 내). 모여 다니지 않기 강조하심."
+    },
+    {
+      "id": "P042",
+      "kind": "paragraph",
+      "source_order": 13,
+      "marker": "## [P42 | normal] IT chemo 시술 참관함. 4층 처치실(병원학교 쪽)에서 진행해",
+      "paragraph_no": 42,
+      "style": "normal",
+      "heading": "IT chemo 시술 참관함. 4층 처치실(병원학교 쪽)에서 진행해",
+      "text": "## [P42 | normal] IT chemo 시술 참관함. 4층 처치실(병원학교 쪽)에서 진행해"
+    },
+    {
+      "id": "P043",
+      "kind": "paragraph",
+      "source_order": 14,
+      "marker": "## [P43 | normal] 15-18조 B)",
+      "paragraph_no": 43,
+      "style": "normal",
+      "heading": "15-18조 B)",
+      "text": "## [P43 | normal] 15-18조 B)\n다학제회의 참관하고 병동 회진 참관. 교수님 회진 도실 때랑 emr 보고 설명하실 때에 가까이 가서 보기. 따로 교수님이 질문하시진 않음.\n혈종 입원환자 배정 이후 의국가서 환자 보고하는 법 설명하시고 목요일 오후에 발표하기로 함. 배정받은 환자 케이스 파악하고 공부해와서 오후 4시 외래진료실에서 질문하라고 하심. 교과서랑 강의록(cp5까지) 보라고 하심."
+    },
+    {
+      "id": "P046",
+      "kind": "paragraph",
+      "source_order": 15,
+      "marker": "## [P46 | normal] 마스크 잘 쓰기",
+      "paragraph_no": 46,
+      "style": "normal",
+      "heading": "마스크 잘 쓰기",
+      "text": "## [P46 | normal] 마스크 잘 쓰기"
+    },
+    {
+      "id": "P047",
+      "kind": "paragraph",
+      "source_order": 16,
+      "marker": "## [P47 | normal] 15-18조 A)",
+      "paragraph_no": 47,
+      "style": "normal",
+      "heading": "15-18조 A)",
+      "text": "## [P47 | normal] 15-18조 A)\n다학제 회의 참관하고 병동 회진 참관. 회의에서 언급된 환자 케이스 배정될 수 있으니 잘 듣기. 회진 돌기 전 케이스 배정해주시고 회진 돌 때 자기가 맡은 환자 잘 보라고 하심. 끝나고 아까 환자 봤을 때 외관상 어때 보였는지 물어보셨음 (스테로이드 쓰는 환아면 cushingoid appearance 등)"
+    },
+    {
+      "id": "P049",
+      "kind": "paragraph",
+      "source_order": 17,
+      "marker": "## [P49 | normal] 다학제 회의 해서 뭐가 좋을거 같냐 물어보심 (환자한테도 좋지만 의사의 오판도 줄일 수 있다고 여러 번 말씀하심)",
+      "paragraph_no": 49,
+      "style": "normal",
+      "heading": "다학제 회의 해서 뭐가 좋을거 같냐 물어보심 (환자한테도 좋지만 의사의 오판도 줄일 수 있다고 여러 번 말씀하심)",
+      "text": "## [P49 | normal] 다학제 회의 해서 뭐가 좋을거 같냐 물어보심 (환자한테도 좋지만 의사의 오판도 줄일 수 있다고 여러 번 말씀하심)\n오후에 케이스 환자 대면하고 싶다고 하면 보호자께 양해 구해주심. 근데 방문하기로 한 시간(3-4PM)에 아이들이 많이 자고 있어서 대부분 못 했음."
+    },
+    {
+      "id": "P051",
+      "kind": "paragraph",
+      "source_order": 18,
+      "marker": "## [P51 | normal] 끝나고 그날 오전에 처치실에서 하는 거 참관했음 (골수 생검, 척수강 내 화학 요법)",
+      "paragraph_no": 51,
+      "style": "normal",
+      "heading": "끝나고 그날 오전에 처치실에서 하는 거 참관했음 (골수 생검, 척수강 내 화학 요법)",
+      "text": "## [P51 | normal] 끝나고 그날 오전에 처치실에서 하는 거 참관했음 (골수 생검, 척수강 내 화학 요법)"
+    },
+    {
+      "id": "P052",
+      "kind": "paragraph",
+      "source_order": 19,
+      "marker": "## [P52 | normal] 19-21조 B)",
+      "paragraph_no": 52,
+      "style": "normal",
+      "heading": "19-21조 B)",
+      "text": "## [P52 | normal] 19-21조 B)\n병동, 무균실에서 마스크 써야하니 마스크 챙겨가기.\n9시까지 341병동 안쪽 끝에 있는 병원학교로 가서 소아청소년 완화의료 다학제회의 참관했음. 재원환자, 입원예정 환자 적힌 종이 1장 주시고 회의 끝나면 다시 달라고 하심. 교수님과 선생님들 환자 한명마다 자세히 설명하시고 의논하심. 학생에게는 질문 안하셨음.\n이후 스테이션에서 emr 보며 병동 환자 설명 들음. 질문 많이 하시지 않으셨던 것 같고, 대답 못한다고 뭐라 하시진 않았음.\n이후 교수님 따라서 병동으로 가서 회진 참관함. 너무 멀리서 보고 있으면 더 가까이 와서 보라고 하심. HSCT 후 무균실에 있는 환자가 있어서 교수님과 함께 무균실도 다녀옴. (신발 문 밖에서 벗고 신을때도 문 밖에서 신기, 신발은 신발장에 넣기. 아이패드는 스테이션에 놓고 교수님따라 쭉 들어가서 손씻고 가운 입기. 가운 입고 벗는거 잘 못해도 뭐라 하시지는 않는데 숙지해가면 좋긴 할듯)\n의국으로 자리 옮겨서 환자보고 할 환자 배정받고 환자보고 하는 법에 대하여 간략하게 설명 들음. 구두로 발표. (아이패드 보면서 읽어도 됨.) ppt 준비 안해도 되고 따로 제출할 것 없음."
+    },
+    {
+      "id": "P058",
+      "kind": "paragraph",
+      "source_order": 20,
+      "marker": "## [P58 | normal] 19-21조 A)",
+      "paragraph_no": 58,
+      "style": "normal",
+      "heading": "19-21조 A)",
+      "text": "## [P58 | normal] 19-21조 A)\n- 오후 교수님께서 pbl 수업이 있으셔서 당일 발표가 아닌, 목요일에 pomr 제출 겸 발표 하기로 함. 즉 전 조와 달리 과제가 생긴 것. 그러니 임연정 교수님 외래 전에 꼭 공부해가기… 회진 때 멀찍이 떨어져있지 말고 가까이서 보려고 노력하기…\n- 임연정 교수님 회진 돌 때 하신 질문 1) 1-10세에서 잘 나타나는 ALL 타입? 2) 백혈병이 t세포 b세포 중 더 심각한 건? 3) 기억이 안 난다ㅠ -> 우리 조는 연달은 3개 정도 질문에 답을 못 함. 그러자 교수님께서 너네는 공부 안 하는구나^^하고 더이상 질문 안 하심.\n- 이번 주 돌 때는 거의 항상 마스크 지참하기!"
+    },
+    {
+      "id": "P062",
+      "kind": "paragraph",
+      "source_order": 21,
+      "marker": "## [P62 | normal] 19-21조 C)",
+      "paragraph_no": 62,
+      "style": "normal",
+      "heading": "19-21조 C)",
+      "text": "## [P62 | normal] 19-21조 C)\n-9시에 병원학교에서 다학제 회의 후 회진 저희때는 교수님 질문 없으셨고 이후 POMR 환자배정받고, 4시에 배정받은 환자들 의무기록 보고 궁금한거 질문하라 하셨음.\n-점심 먹고 POMR 작성하다가 4시에 가서 각자 질문 한두개씩 했음. 질문 하나마다 연달아 설명하는게 많고 교수님께서 설명 중 질문하시기도 해서 1시간 넘게 걸림. 분위기는 좋았고 5시 넘어서 끝나고 퇴근함.\n------------------------------------------------------------------------------------------------\n[2025 1 학기]"
+    },
+    {
+      "id": "P067",
+      "kind": "paragraph",
+      "source_order": 22,
+      "marker": "## [P67 | normal] 1-2조 1)",
+      "paragraph_no": 67,
+      "style": "normal",
+      "heading": "1-2조 1)",
+      "text": "## [P67 | normal] 1-2조 1)\n9시까지 341병동 안쪽 끝에 있는 병원학교로 가서 소아청소년 완화의료 다학제회의 참관했음. 교수님이 환자 한명 당 자세히 설명하셨는데, 말씀하시다가 우리 보고 ‘학생들 들으라고 자세히 말하는거예요 여기 계신 선생님들은 이미 다 알고 있어요~’ 라고 말씀하심.\n이후 의국 돌아와서 emr 보며 병동 환자설명들음.이 때 엄청 질문 많이 하시는데, 대답 못한다고 뭐라 하시진 않으나 혈종 프테 내용 정도는 숙지하고 있는 게 좋을 것 같음. 병동 환자 1명, 외래 환자 1명씩 각자 정해서 오후에 간단히 발표하자고 하심.\n10시 반까지 병동으로 가서 회진 참관함. HSCT 후 무균실에 있는 환자가 있어서 교수님과 함께 무균실도 다녀옴. (신발 문 밖에서 벗고 신을때도 문 밖에서 신기, 신발은 신발장에 넣기. 아이패드는 스테이션에 놓고 교수님따라 쭉 들어가서 손씻고 가운 입기)"
+    },
+    {
+      "id": "P071",
+      "kind": "paragraph",
+      "source_order": 23,
+      "marker": "## [P71 | normal] 1-2조 2)",
+      "paragraph_no": 71,
+      "style": "normal",
+      "heading": "1-2조 2)",
+      "text": "## [P71 | normal] 1-2조 2)\n무균실 다녀왔고, HSCT 참관함. 앞조와 동일.\n[오후 혈액종양병동실습 2]\n[2026 1학기]"
+    },
+    {
+      "id": "P075",
+      "kind": "paragraph",
+      "source_order": 24,
+      "marker": "## [P75 | normal] 26년 5,6,7,8조 B-1)",
+      "paragraph_no": 75,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-1)",
+      "text": "## [P75 | normal] 26년 5,6,7,8조 B-1)\n- 브리핑 때 서로 질문하라고도 시키시지만, 서로 질문 안 하고 그냥 교수님께 질문 드려도 ㄱㅊ았음.\n- 브리핑 feedback\n: '환자 상태 좋아진 편입니다' (X) -> '환자 상태 좋아졌습니다.' (O)\n: \"최신\" NCCN guideline 기반 혹은 연구 기반으로 브리핑하거나 질문드리니까 매우매우 좋아하심\n: 교과서와 임상과의 다른 부분을 집어낸 질문도 좋아하셨음\n: ALL 환자 브리핑시) 이 환자가 어떤 risk에 해당되는지 + 그 근거 -> 그래서 어떤 치료를 했는지?, 현재 이 환자는 어떤 치료 단계에 속하는지? 이 형식으로 말하면 좋을 듯\n: 혈종때 배웠던 oncologic emergency 잘 알고 있으면 좋을 듯 (Tumor lysis syndrome 환자 케이스 있었는데, tumor lysis syndrome에 대해 아는 대로 한 번 이야기해보라고 얘기하심... 치료약이 무엇인지 + 그 원리가 무엇인지까지도 질문하심...)"
+    },
+    {
+      "id": "P083",
+      "kind": "paragraph",
+      "source_order": 25,
+      "marker": "## [P83 | normal] 26년 5,6,7,8조 B-2)",
+      "paragraph_no": 83,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-2)",
+      "text": "## [P83 | normal] 26년 5,6,7,8조 B-2)\n환자 브리핑 하고 나면 교수님이 환자에 대한 특이사항들을 알려주신다. 잘 듣고 꼭 필기하도록하자."
+    },
+    {
+      "id": "P085",
+      "kind": "paragraph",
+      "source_order": 26,
+      "marker": "## [P85 | normal] 26년 5,6,7,8조 B-3)",
+      "paragraph_no": 85,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-3)",
+      "text": "## [P85 | normal] 26년 5,6,7,8조 B-3)"
+    },
+    {
+      "id": "P086",
+      "kind": "paragraph",
+      "source_order": 27,
+      "marker": "## [P86 | normal] 원래는 배정받은 환자 오후에 브리핑 해야하는데 교수님이 전 날 당직하셔서 피곤해서 퇴근해야겠다고 하셔서 브리핑 생략됨",
+      "paragraph_no": 86,
+      "style": "normal",
+      "heading": "원래는 배정받은 환자 오후에 브리핑 해야하는데 교수님이 전 날 당직하셔서 피곤해서 퇴근해야겠다고 하셔서 브리핑 생략됨",
+      "text": "## [P86 | normal] 원래는 배정받은 환자 오후에 브리핑 해야하는데 교수님이 전 날 당직하셔서 피곤해서 퇴근해야겠다고 하셔서 브리핑 생략됨"
+    },
+    {
+      "id": "P087",
+      "kind": "paragraph",
+      "source_order": 28,
+      "marker": "## [P87 | normal] 26년 9,10,11,12조 B-1)",
+      "paragraph_no": 87,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-1)",
+      "text": "## [P87 | normal] 26년 9,10,11,12조 B-1)\n이날은 3시반에 의국에서 소아청소년암에 대한 임연정 교수님 강의가 있어서 우리조도 참석함. (간식도 주심ㅎㅎ) 강의 듣고 그 자리에서 바로 환자상태보고 했음. 서로 질문하라고도 하시고, 준비하면서 궁금했던 점도 질문하라고 하심. 굉장히 친절하게 설명해주시고, 환자 상태 보고도 한명한명 부족한 부분을 피드백해주심. 대략 5시 10분쯤 모든 일정 마무리함."
+    },
+    {
+      "id": "P089",
+      "kind": "paragraph",
+      "source_order": 29,
+      "marker": "## [P89 | normal] 26년 9,10,11,12조 B-2)",
+      "paragraph_no": 89,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-2)",
+      "text": "## [P89 | normal] 26년 9,10,11,12조 B-2)\n오후 4시에 의국 또는 외래 7번방으로 가서 담당한 환자 보고 진행함. 의국이 비어있으면 의국에서 하는데 차있으면 외래로 간다. 짧게 보고하면 되고, 피드백 주심. 발표 끝날 때마다 서로한테 궁금한거 있음 질문하라고 하는데, 발표 듣고 바로 질문을 떠올리기가 쉽지 않으므로 사전에 서로 대본 공유하고 질문 생각해 갈 것을 추천한다. 교수님께 질문하고 싶은 것도 물어보시는데, 너무 없으면 민망하므로 이것도 좀 생각해가면 좋음.\n교수님께 질문하다가 교수님이 즉석에서 과제 내주심… 우리는 바이러스 감염과 전혈구 감소의 상관관계에 대해 질문했는데 학생들이 직접 찾아보고 목요일까지 한페이지로 조사해서 카톡/문자로 제출하라 하셨음. 우리는 그날 조사, 바로 다음날 조장이 문자로 제출함."
+    },
+    {
+      "id": "P092",
+      "kind": "paragraph",
+      "source_order": 30,
+      "marker": "## [P92 | normal] 26년 9,10,11,12조 B-3)",
+      "paragraph_no": 92,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-3)",
+      "text": "## [P92 | normal] 26년 9,10,11,12조 B-3)\n2시까지 병동 스테이션으로 가서 임연정 교수님께 간단하게 환자 정보 안내받고 (근데 너무 용어가 어려워서 잘 못 알아들음) 회진 돌았음. 그 후 같이 의국으로 내려가 EMR로 환자들에 대한 교육 받음.\n질문은 많이 없으셨고 대답 못해도 괜찮고 정말 친절하게 설명해주셨음. 배정받은 4명의 환자에 대한 설명이 끝날 때마다 “배정받은 학생 이 환자에 대한 질문 있나요?”라고 물어보셨고 없어도 뭐라 안하심 (우린 대부분 질문하긴 함).\n환자 교육 이후 목요일에 POMR이랑 환자 노티하듯 짧게 발표하는 거 피드백 할 예정이라고 안내해주셨고 각 과제에 대해서도 간단히 어떻게 하길 원하시는지 설명해주심."
+    },
+    {
+      "id": "P096",
+      "kind": "paragraph",
+      "source_order": 31,
+      "marker": "## [P96 | normal] 교수님 정말 친절하시다…학생에게도 보호자에게 환아에게도 너무 스윗하시다…",
+      "paragraph_no": 96,
+      "style": "normal",
+      "heading": "교수님 정말 친절하시다…학생에게도 보호자에게 환아에게도 너무 스윗하시다…",
+      "text": "## [P96 | normal] 교수님 정말 친절하시다…학생에게도 보호자에게 환아에게도 너무 스윗하시다…\n[2025 2 학기]"
+    },
+    {
+      "id": "P098",
+      "kind": "paragraph",
+      "source_order": 32,
+      "marker": "## [P98 | normal] 11-14조 B)",
+      "paragraph_no": 98,
+      "style": "normal",
+      "heading": "11-14조 B)",
+      "text": "## [P98 | normal] 11-14조 B)\n- 외래 때 7번방에서 환자 받고 환자 내용 간략하게 들었음.\n-노티하는 법 가르쳐주심. 환자 배정되는 거에 따라 하나씩 다 설명해주심!\n-우리는 그러고 일찍 보내주심. 질문도 거의 안 하셨던 걸로 기억함. 조원 중 한 명이 아파서 그런가 걱정하시고 일찍 보내주신듯? 환자 보고는 교수님 휴가 일정으로 금요일로 잡힘."
+    },
+    {
+      "id": "P102",
+      "kind": "paragraph",
+      "source_order": 33,
+      "marker": "## [P102 | normal] 15-18 조 B)",
+      "paragraph_no": 102,
+      "style": "normal",
+      "heading": "15-18 조 B)",
+      "text": "## [P102 | normal] 15-18 조 B)\n4시에 외래진료실 7번에서 배정받은 환자 관련 교수님께 질문하는 시간 가짐. 말투는 친절하시지만 케이스 관련한 질문을 상당히 많이 하심. 그 뿐만 아니라 혈액종양 관련된 질문을 많이 하시고 대답 못한다고 바로 넘어가지 않음. 인계에 나와있는 질문야마들은 참고 정도만."
+    },
+    {
+      "id": "P104",
+      "kind": "paragraph",
+      "source_order": 34,
+      "marker": "## [P104 | normal] 15-18조 A)",
+      "paragraph_no": 104,
+      "style": "normal",
+      "heading": "15-18조 A)",
+      "text": "## [P104 | normal] 15-18조 A)\n교수님 일정 있으셔서 외래 취소됨. 환자 보고는 목요일 오후 외래 이후 진행."
+    },
+    {
+      "id": "P106",
+      "kind": "paragraph",
+      "source_order": 35,
+      "marker": "## [P106 | normal] 19-21조 B)",
+      "paragraph_no": 106,
+      "style": "normal",
+      "heading": "19-21조 B)",
+      "text": "## [P106 | normal] 19-21조 B)\n오전에 정해주신 환자 emr보고 정리해와서 보고하기. 4시에 의국에서 진행할 예정이었는데, 의국 사용중이라 의국에서 못하고 소아청소년과 외래 진료실에서 진행함. 네명 기준 한시간 조금 넘게 걸렸음. 한명씩 보고하고 끝날 때마다 질문하라고도 하시니까 질문할거 미리 정해도 좋을듯.\n질문 많이 하시고 환자보고 자체에 대해서도 피드백 많이 주심. 본인이 맡은 파트 공부는 하고 가는 게 좋을듯."
+    },
+    {
+      "id": "P109",
+      "kind": "paragraph",
+      "source_order": 36,
+      "marker": "## [P109 | normal] 환자보고 피드백 :",
+      "paragraph_no": 109,
+      "style": "normal",
+      "heading": "환자보고 피드백 :",
+      "text": "## [P109 | normal] 환자보고 피드백 :\n@ 오늘 시점으로 정리하는게 가장 편하다.\nex) 창백해보여서 시행한 혈액검사에서pancytopenia나와 골수검사 시행했고 ~로 확진돼 ~하던 중 ~ 진행되어 내원했다. (X) / OO환자 ~로 hydration하며 입원 중이다. (O)\n@ 전공의가 교수에게 진짜 노티하듯이 간단하게 해라. PI 쓰듯 시간순으로 말하는거도 좋지만, 이건 케이스 발표가 아니니까 너무 길지 않게 짧은 시간 안에 환자 정보 다 파악할 수 있게 해라.\nex) 환자 이름, 00 세 남자, ~~(C.C) 증상으로 내원했습니다. ~~(동반 증상, 과거력, 가족력, 등등 이 뒤에 말해야할 것들 중요한거만!) + 현재 어떠한 약물로 어떻게 치료중이며 입원 중 혹은 외래 f/u 동안 어떤 변화가 있었는지 언급\n-----------------------------------------------------------------------------------------------------------\n[2025 1 학기]"
+    },
+    {
+      "id": "P116",
+      "kind": "paragraph",
+      "source_order": 37,
+      "marker": "## [P116 | normal] 1-2조 1)",
+      "paragraph_no": 116,
+      "style": "normal",
+      "heading": "1-2조 1)",
+      "text": "## [P116 | normal] 1-2조 1)\n오전에 정해주신 환자 emr보고 정리해와서 보고하기. 4시에 진행했고, 임한혁교수님 수업이랑 겹쳐서 의국에서 못하고 늘봄나래 프로그램실에서 함. 서로에게 질문하라고도 하니까 서로 질문할거 미리 정해도 좋음.\n질문 정말 많이 하심,, 본인이 맡은 파트 공부는 하고 가는 게 좋을듯.\n환자보고 피드백: 전공의가 교수에게 진짜 노티하듯이 간단하게 해라. PI쓰듯 시간순으로 말하는거도 좋지만, 이건 케이스 발표가 아니니까 너무 길지 않게 짧은 시간 안에 환자 정보 다 파악할 수 있게 해라. ex) 환자 이름, 00세 남자, ~~(C.C) 증상으로 내원했습니다. ~~(동반 증상, 과거력, 가족력, 등등 이 뒤에 말해야할 것들 중요한거만!) + 현재 어떠한 약물로 어떻게 치료중이며 입원 중 혹은 외래 f/u 동안 어떤 변화가 있었는지 언급\n.1-2조 2)"
+    },
+    {
+      "id": "P121",
+      "kind": "paragraph",
+      "source_order": 38,
+      "marker": "## [P121 | normal] 앞조와 동일",
+      "paragraph_no": 121,
+      "style": "normal",
+      "heading": "앞조와 동일",
+      "text": "## [P121 | normal] 앞조와 동일\n(23년도 인계에 있던 질문 리스트 첨부합니다.)"
+    },
+    {
+      "id": "T001",
+      "kind": "table",
+      "source_order": 39,
+      "marker": "### [Table 1]",
+      "table_no": 1,
+      "heading": "Table 1",
+      "text": "### [Table 1]\n| 임연정 교수님이 물어보셨던 질문들 ☺<br>1. ALL<br>- 진단, 치료, 재발부위<br>- ALL 진단하기위한 blast cell 기준? 20% 이상<br>- ALL 종양표지자? CD19, CD10 등<br>- ALL 관해유도 항암치료제? vincristine, prednisone, L-asparaginase, anthracycline<br>- ALL에서척수강내항암제주입이필요한이유? 항암제가 BBB를통과하지못함<br>2. ITP, ATP, AML, 악성빈혈<br>- 진단, 치료법<br>- ITP 병력 청취 시 물어볼 질문, 지시할 검사,<br>- 악성빈혈의 분류? Severe한 악성빈혈의 진단기준<br>3. 초진 환자의 혈액검사 소견 (빈혈이었음) 보여준 후 다음으로 봐야할 것들이 뭔지?<br>- MCH, MCV, 간접빌리루빈이라 답했습니다<br>4. oncologic emergency 강조하신적있음!<br>5. 두혈종 진단<br>6. 소아의 목부분 midline에서나타나는결절중가장흔한것은?<br>7. 혈우병<br>- 혈우병이란 무엇인가? (전반적인 내용에 대한 답을 원하심)<br>- 치료 (응고인자보충: 얼마나, 어느정도까지, 언제까지?) / 응고인자보충중관리<br>- 억제인자가 생기는 경우 어떻게 하는지? 7a 우회인자, aPCCs, FEIBA, 최종적으로는간이식, 유전자치료<br>8. IDA<br>- . IDA oral iron therapy후 지표 회복 순서?<br>(7일후recticulocyte, 1달후hb, 3달후 ferritin등이정상치로회복) |\n| --- |\n\n[화-수요일, 신지혜&강미현&장미영교수님/신생아]\n신생아 분과는 거의 모든 일정 시작 시간이 랜덤이라 무한 대기가 많습니다.\n과제가 이것저것 있으니 노트북 가져가서 과제하는 걸 추천합니다.\n(충전기 꽂을 데 있음 (책상 밑). 조마다 이틀간 일정 달라질 수 있으니 화요일 OT 잘 들으세요)\n유폴리오는 신지혜 교수님으로 설정해서 자유기록 1개, 예진기록지 1개 제출하면 됩니다.\n** 신생아 분과에서 화-수 동안 해서 수요일/금요일까지 제출해야 하는 과제는 4가지입니다\n-자기소개서 (수요일까지 수기제출)\n-개인레포트과제, New ballard scale (자유기록에 첨부해 금요일까지 제출)\n- POMR (예진기록지에 첨부해 금요일까지 제출)"
+    },
+    {
+      "id": "T002",
+      "kind": "table",
+      "source_order": 40,
+      "marker": "### [Table 2]",
+      "table_no": 2,
+      "heading": "Table 2",
+      "text": "### [Table 2]\n| ***신생아 유폴리오 제출 정리: 금요일 자정 까지<br>수요일 설정: 신지혜 교수님, 신생아 분과- 자유기록<br>+ 자습 레포트 (주제2개->파일 하나로 제출)<br>+ NBS<br>수요일 설정: 신지혜 교수님, 소아청소년과 예진기록지<br>+ POMR |\n| --- |\n\n아래는 NICU에서 PK 대기장소(PK 책상이라고 적혀있는 곳)입니다.\n-- NICU 들어가자마자 왼쪽으로 고개 돌리면 컴퓨터 있음\n[2026 1학기]\n26년 5,6,7,8조 B-2)\nNICU 들어갈때 우리는 보통 NICU 슬리퍼 신었는데, 간호사 선생님이 앞으로 슬리퍼 직접 가져오면 좋겠다고 하신다 (개인용 크록스 추천!). 되도록이면 슬리퍼 가져오도록하자 \nPK 학생들에게 배정된 가장 안쪽 EMR 볼 수 있는  컴터 2개 있는 자리가 있는데 거기 의자 하나 갖고 와서 총 4명이 앉아서 하루 종일 자습하면된다.\n화요일 오전에는 우리는 분만이 여러번 있어서, 첫째날부터 분만을 봤던거 같다. 첫째날은 신지혜 교수님이 OT 해주시기 때문에 9시 정도에 NICU에 있으면 신지혜 교수님 오셔서 같이 분만 보러 가거나 OT 들으면된다. 그 이후에는 쭉 자습함\n화요일 오후에는 2/2 나눠서 강미현 교수님 외래 보러간다. 진료 보는 동안 학생에게 크게 관심 없으시고, 교수님께서 교대하라고 하시기 전에 질문 있냐고 물어보시니 한-두가지 정도 생각해두고 가면 된다. 퇴근은 원칙이 6시 지만, 5시 30분부터 아무도 없으면 조용히 눈치껏 일찍  퇴근해도 된다.\n수요일 오전에는 분만이 있어서, 분만 보러 가고, 이후 교수님께서 새로 태어난 아기 중에서 골라서 New ballard score 측정할 수 있게 세팅해주신다. NBS 종이 프린트해도 되지만, 아이패드에 넣어서 동그라미 치는게 과제하기 편하다. 2명이 진찰하고, 2명이 적는 것을 추천한다.\n수요일 오후에도 자습을 했다."
+    },
+    {
+      "id": "P140",
+      "kind": "paragraph",
+      "source_order": 41,
+      "marker": "## [P140 | normal] 26년 5,6,7,8조 B-1)",
+      "paragraph_no": 140,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-1)",
+      "text": "## [P140 | normal] 26년 5,6,7,8조 B-1)\n- NICU 들어갈 때 비닐 가운 말고 의료진용 가운으로 입어야 덜 더움 (NICU 실습때는 셔츠 반팔로 입고 오는 거 추천), 가운 위에 명찰차고 갈 것.\n- 신생아 진찰 청진 포함해서 자유롭게 해도 되는데, 손 잘 닦고 장갑 꼭 끼기!\n- C-sec 수술실 따뜻해서 볼레로 안 입어도 충분\n- 아이 나오고 -> 수술실에서 Apgar 점수 측정하면 -> 아이 인큐베이터 넣고 NICU의 신생아실로 이동시키려고할 때 같이 나와서 신생아실까지 같이 들어가면 됨\n화 오전) 9시까지 NICU 도착, 바로 보이는 신발장에서 실내화 갈아신고 왼쪽으로 꺾으면 가운 먼저 벗어서 사물함에 넣은 다음 일회용 의료용 가운 입고 입장. 들어가서 바로 왼쪽이 학생 대기장소, 거기서 대기하다 보면 신지혜 교수님 오셔서 오티해주심 (핑크색 수술복 입고 오심)\n화 오후) 강미현 교수님 외래, 2시부터 2명씩 감. 화 오전에 미리 문자드려서 2시에 가면 되냐고 하니까 네 하심. 신지혜 교수님께서 NICU 4명 다 비우는거 안 좋아하시니까 앞조 뒷조 잘 소통해서 비우는 시간 최소화할 것. 보통 1시간정도 하면 강미현 교수님께서 가라하심. 4시 정도에 장미영 교수님 스테이션 오시면 굳이 말안해도 알아서 회진 참관, 우리는 질문 하나씩 했었음. 설명 자세히 해주시고 스테이션에서 설명 듣고 나면 알아서 자습하거나 환자 보라 하심.\n수 오전) 전날 신지혜 교수님께서 분만 수술 언제 있을거다라고 말씀해주심. 우리는 8시 30분 시작이라 집담회 끝나고 바로 수술방 갓음 뭐 들고 수술방 가는거 별로 안 좋아하시는거 같으니까 그냥 몸만 가는거 추천. NBS 하라고 하실건데 아침에 태어난 아기라도 안정시간이 필요하고 산모께서 아기 볼시간도 있으니 속편하게 오후에 한다고 생각하자. 우리는 수 오전부터 케이스 아기 포함해서 진찰 많이했고 이때 진료환자로그도 서명받았음. 신지혜 교수님 NICU 안보이실때도 많으니 미리 받아놓는게 편하다."
+    },
+    {
+      "id": "P148",
+      "kind": "paragraph",
+      "source_order": 42,
+      "marker": "## [P148 | normal] 수 오후) NBS 하고 나선 거의 자습했음",
+      "paragraph_no": 148,
+      "style": "normal",
+      "heading": "수 오후) NBS 하고 나선 거의 자습했음",
+      "text": "## [P148 | normal] 수 오후) NBS 하고 나선 거의 자습했음\nNICU는 로테 없는 응급의학과 느낌이니까 자습할거 미리미리 다 챙겨가자."
+    },
+    {
+      "id": "P150",
+      "kind": "paragraph",
+      "source_order": 43,
+      "marker": "## [P150 | normal] 26년 5,6,7,8조 B-3)",
+      "paragraph_no": 150,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-3)",
+      "text": "## [P150 | normal] 26년 5,6,7,8조 B-3)"
+    },
+    {
+      "id": "P151",
+      "kind": "paragraph",
+      "source_order": 44,
+      "marker": "## [P151 | normal] 위랑 차이 없음",
+      "paragraph_no": 151,
+      "style": "normal",
+      "heading": "위랑 차이 없음",
+      "text": "## [P151 | normal] 위랑 차이 없음"
+    },
+    {
+      "id": "P152",
+      "kind": "paragraph",
+      "source_order": 45,
+      "marker": "## [P152 | normal] 화 오전) 신지혜 교수님 OT",
+      "paragraph_no": 152,
+      "style": "normal",
+      "heading": "화 오전) 신지혜 교수님 OT",
+      "text": "## [P152 | normal] 화 오전) 신지혜 교수님 OT"
+    },
+    {
+      "id": "P153",
+      "kind": "paragraph",
+      "source_order": 46,
+      "marker": "## [P153 | normal] 화 오후) 강미현 교수님 외래 / NICU // 장미영 교수님 회진은 오전에 하셧다고 하셔서 못 함",
+      "paragraph_no": 153,
+      "style": "normal",
+      "heading": "화 오후) 강미현 교수님 외래 / NICU // 장미영 교수님 회진은 오전에 하셧다고 하셔서 못 함",
+      "text": "## [P153 | normal] 화 오후) 강미현 교수님 외래 / NICU // 장미영 교수님 회진은 오전에 하셧다고 하셔서 못 함"
+    },
+    {
+      "id": "P154",
+      "kind": "paragraph",
+      "source_order": 47,
+      "marker": "## [P154 | normal] 수 오전) 앞에 컨퍼런스가 있어서 오전에 첫 수술 하나 있었던 c-sec 못 봄… 그냥 자습",
+      "paragraph_no": 154,
+      "style": "normal",
+      "heading": "수 오전) 앞에 컨퍼런스가 있어서 오전에 첫 수술 하나 있었던 c-sec 못 봄… 그냥 자습",
+      "text": "## [P154 | normal] 수 오전) 앞에 컨퍼런스가 있어서 오전에 첫 수술 하나 있었던 c-sec 못 봄… 그냥 자습"
+    },
+    {
+      "id": "P155",
+      "kind": "paragraph",
+      "source_order": 48,
+      "marker": "## [P155 | normal] 수 오후) New ballard 함",
+      "paragraph_no": 155,
+      "style": "normal",
+      "heading": "수 오후) New ballard 함",
+      "text": "## [P155 | normal] 수 오후) New ballard 함"
+    },
+    {
+      "id": "P156",
+      "kind": "paragraph",
+      "source_order": 49,
+      "marker": "## [P156 | normal] 26년 9,10,11,12조 B-1)",
+      "paragraph_no": 156,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-1)",
+      "text": "## [P156 | normal] 26년 9,10,11,12조 B-1)\n화 오전) NICU에 8시 45분 쯤 도착. 문 열고 들어와서 바로 보이는 신발장에서 크록스 갈아신고, 왼쪽으로. 보면, 손 씻는 곳 있고 사물함 있는데, 실습 가운 벗고 사물함 표기된 곳에 넣음. 손 씻고 사물함 중에서 일회용 의료용 가운 찾아서 입으면 됨. 노트북 같은거 챙겨서 왔고, 들어와서 왼쪽으로 돌면, EMR 보는 컴퓨터, 서랍장 모여있는 곳 있음. 거기가 PK 대기 장소. 들어와서 대기 하다 보면 신지혜 교수님 오심.(우리 조는 9시 반 쯤 시작함) OT 해주시고 개인 과제 배정해주심. 이후 EMR 보시며 환자 설명해주시고 POMR 배정해주심. 중간중간 질문 몇 개 하셨음.\n이후 NICU 돌면서 애기들 보여주심. 완전 귀여움. NICU 소개 후엔 대기하면서 공부하거나 처치 같은거 있을 때 알아서 잘 참관하라고 하심.\n카테터 종류, UAC, UVC 위치 구분하는 법? 기관지 해부학 구조 질문 장기(동,정맥 개수 등등..) NICU 돌면서 환자 상태 따라서 질문 하셨음(황달, 저체중아 기준 등) RDS CXR"
+    },
+    {
+      "id": "P160",
+      "kind": "paragraph",
+      "source_order": 50,
+      "marker": "## [P160 | normal] 청진기는 안가져와도 될듯. NICU에서는 인큐베이터에 환아별 개인 청진기 있음",
+      "paragraph_no": 160,
+      "style": "normal",
+      "heading": "청진기는 안가져와도 될듯. NICU에서는 인큐베이터에 환아별 개인 청진기 있음",
+      "text": "## [P160 | normal] 청진기는 안가져와도 될듯. NICU에서는 인큐베이터에 환아별 개인 청진기 있음"
+    },
+    {
+      "id": "P161",
+      "kind": "paragraph",
+      "source_order": 51,
+      "marker": "## [P161 | normal] 각자 맡은 POMR 아기 직접 진찰해도 된다고 말씀하심. 근데 공부 좀 하고 수요일 오후에 시간 남을때 하면 좋을듯",
+      "paragraph_no": 161,
+      "style": "normal",
+      "heading": "각자 맡은 POMR 아기 직접 진찰해도 된다고 말씀하심. 근데 공부 좀 하고 수요일 오후에 시간 남을때 하면 좋을듯",
+      "text": "## [P161 | normal] 각자 맡은 POMR 아기 직접 진찰해도 된다고 말씀하심. 근데 공부 좀 하고 수요일 오후에 시간 남을때 하면 좋을듯\n화 오후) 강미현 교수님 외래 1시 40분부터 진료 시작이었으나, 신지혜 교수님께 여쭤보니 연락 대신해주셔서 2시에 들어가라고 알려주셨음. 두 조씩 나눠서 차례대로 들어갔음. 외래 환자 많지 않아 여유롭게 진행하였으며, 중간에 궁금한거 있냐고 물어보셔서 질문 2-3개 했음. 이번 주는 장미영 교수님께서 출장가셔서 회진 일정 없었고 PK 대기 장소에서 과제하며 대기 및 NICU 구경했음.\n수 오전) 의국 회의 후 바로 C-Sec 참관하러 감. (학생 수술참관시에는 손 안 씻어도 된다고 함. 그냥 빨리 들어가기/ 오전 수술이면 바로 수술 들어가야되니까 NICU에서 필요한 것들 다 챙겨서오기) 아기 나오는거 보고 NICU에 따라와서 신생아 진찰하시는거 참관함. 다시 수술실로 돌아가서 옷 갈아입고 NICU에서 무한 대기함. 자필 자기소개서는 교수님께 제출.\n수 오후) 교수님께서 오후에 NBS 하라고 부르겠다고 하셔서 2시부터 NICU 복귀해서 대기함. NBS 부르시기 전에 POMR 배정 받은 아기 신체 진찰해보고 싶어서 간호사님께 양해 구하고 각자 아기 진찰해봄. 이후 5시까지 무한대기하다가 교수님께 연락드렸는데 아직 안했냐고 하셔서 오늘 퇴원예정인 아기 NBS 확인함. 하다가 밥시간이라 너무 울길래 다하고 혹시..안아봐도 되나요..라고 눈치봐서 물어봤는데 된다하셔서 안아봄. 좀 안아주니까 조용해지는게 진짜 귀여움…"
+    },
+    {
+      "id": "P165",
+      "kind": "paragraph",
+      "source_order": 52,
+      "marker": "## [P165 | normal] 26년 9,10,11,12조 B-2)",
+      "paragraph_no": 165,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-2)",
+      "text": "## [P165 | normal] 26년 9,10,11,12조 B-2)"
+    },
+    {
+      "id": "P166",
+      "kind": "paragraph",
+      "source_order": 53,
+      "marker": "## [P166 | normal] 화 오전) 신지혜교수님 / NICU",
+      "paragraph_no": 166,
+      "style": "normal",
+      "heading": "화 오전) 신지혜교수님 / NICU",
+      "text": "## [P166 | normal] 화 오전) 신지혜교수님 / NICU\n짐 모두 챙겨서 3층 NICU로 올라감, 신발장에서 갈색 슬리퍼(또는 개인지참 크록스)로 갈아신고 일회용 가운 환복(가장 안쪽 아래 사물함), 손 씻기, 명부 작성 후 안쪽 문으로 들어감. 들어가자마자 왼쪽에 컴퓨터와 책상이 있는데 거기에 앉아서 할 거 하고있으면 됨. 의자 부족하면 오른쪽에 쭉 가면 스테이션 있는데 말하고 가져옴.\n대기하다 보면 신지혜교수님께서 오셔서 OT하고 EMR 보면서 환자 설명해주신다 (우리는 9시에 교수님께서 바로 오셨음). 질문 몇 개 하심. 개인 레포트 주제와 POMR 환자 배정해주심.\nEMR 보며 하신 질문: endotracheal tube 위치-carina(양쪽 폐에 모두 공기가 가야 하므로) / 산소 포화도 모니터링 위치-오른 손목에 하나, 하지에 하나 / 만삭아(37wks), 저체중아(2500g) 정의 / 탯줄에서 볼 수 있는 것-동맥2개, 정맥1개 / 젖 빨기가 가능한 주수(재태연령34주)\nOT에서 과제 설명해주심. 수요일에 자필 자기소개서 제출해야 하고 NBS, 자습레포트는 금요일까지 u-folio ‘자유기록’에, 신생아 POMR은 금요일까지 u-folio ‘예진기록지’에 업로드하면 됨.\n병동 회진 돌며 아기들 보여주심.\n이후 계속 대기. 중간중간 시술있으면 교수님께서 부르셔서 가면 됨. 우리는 CSF tapping 하는거 구경했음."
+    },
+    {
+      "id": "P173",
+      "kind": "paragraph",
+      "source_order": 54,
+      "marker": "## [P173 | normal] 12:30~2시: 점심시간",
+      "paragraph_no": 173,
+      "style": "normal",
+      "heading": "12:30~2시: 점심시간",
+      "text": "## [P173 | normal] 12:30~2시: 점심시간"
+    },
+    {
+      "id": "P174",
+      "kind": "paragraph",
+      "source_order": 55,
+      "marker": "## [P174 | normal] 화 오후) 강미현교수님 / 외래, NICU",
+      "paragraph_no": 174,
+      "style": "normal",
+      "heading": "화 오후) 강미현교수님 / 외래, NICU",
+      "text": "## [P174 | normal] 화 오후) 강미현교수님 / 외래, NICU\n당일 오전에 교수님께 외래 참관 시간 확인 문자드림.\n둘씩 나눠 강미현교수님 외래 들어감. 2시부터 시작이고, 바로 들어가지 않는 조원들은 NICU에서 대기하다가 한시간 뒤에 시간 맞춰 가면 됨. 외래에서 우리에게 질문하지 않으시고, 거의 다 끝날 때쯤 궁금한거 있냐고만 물어보심.\n한시간정도 지나면 교수님께서 나가라고 하시는데 그때 교대하면 됨.\n이후 NICU로 돌아와서 대기함. 장미영교수님 회진은 없었음 (OT때 안할거라고 말씀해주셨음) 내일 C-sec 있으니 바로 의국회의 끝나고 바로 수술실로 가면 된다고 하심."
+    },
+    {
+      "id": "P179",
+      "kind": "paragraph",
+      "source_order": 56,
+      "marker": "## [P179 | normal] 5:30 퇴근",
+      "paragraph_no": 179,
+      "style": "normal",
+      "heading": "5:30 퇴근",
+      "text": "## [P179 | normal] 5:30 퇴근"
+    },
+    {
+      "id": "P180",
+      "kind": "paragraph",
+      "source_order": 57,
+      "marker": "## [P180 | normal] 수 오전) 신지혜교수님 / NICU (수술 참관)",
+      "paragraph_no": 180,
+      "style": "normal",
+      "heading": "수 오전) 신지혜교수님 / NICU (수술 참관)",
+      "text": "## [P180 | normal] 수 오전) 신지혜교수님 / NICU (수술 참관)"
+    },
+    {
+      "id": "P181",
+      "kind": "paragraph",
+      "source_order": 58,
+      "marker": "## [P181 | normal] 자필 자기소개서는 교수님 만날 때 눈치껏 드림 (우리는 의국 회의 끝나고 올라가는 길에 바로 드렸음)",
+      "paragraph_no": 181,
+      "style": "normal",
+      "heading": "자필 자기소개서는 교수님 만날 때 눈치껏 드림 (우리는 의국 회의 끝나고 올라가는 길에 바로 드렸음)",
+      "text": "## [P181 | normal] 자필 자기소개서는 교수님 만날 때 눈치껏 드림 (우리는 의국 회의 끝나고 올라가는 길에 바로 드렸음)\n의국 회의 후에 c/s 수술 있으면 참관해야 함. 수술실 인계 잘 하라고 하심.\n3층 NICU 사물함에 짐만 놓고 그림의 ‘이름없는 문’으로 들어가 신발 갈아신고 탈의실 가서 수술복으로 갈아입기. 우리는 수술복 입고 교수님이 NICU로 오라고 하셔서 NICU에서 같이 출발함. 수술실에 들어가면 헤어캡 써야 하고, 교수님(또는 전공의 선생님) 따라서 본 수술실에 들어감(얼타지 말고 바로 따라들어갈 것). 우리는 멀리 떨어져서 참관만 하는 거니까 손은 안 씻어도 됨. 산모분이 누워계신 메인 수술대가 있고, 벽에 붙어있는 신생아 케이지가 있는데, 우리는 케이지 옆에서 안 걸리적거리게 있으면 된다. 산부인과에서 c/s하고, 나온 아기를 바로 케이지 위로 옮겨 초기 처치를 하시는데, 그거 구경하면 됨. 초기 처치 이후 신생아는 NICU로 가는데, 따라가면 된다.\n이후 NICU에서 자습하며 대기. 우리는 수술이 좀 많아서(3개) 수술복 계속 입은 채로 있었음. 대기하다 전공의선생님이 수술하러 가자고 부르면 따라가면 된다. 마지막에는 1분 아프가점수, 5분 아프가점수 직접 재보라고 하셨다.\n수술 후 전공의선생님 따라 신생아관리실에 갔는데, 우리끼리 진찰해보라고 하셔서 NBS 그냥 함(전공의선생님은 우리한테 관심 x). 인계에는 한명이 NBS 하고 나머지가 기록하라는데 실제로 해보니 한명이 기록하고 나머지가 손씻고 직접 진찰하는게 더 좋았던 것 같다."
+    },
+    {
+      "id": "P186",
+      "kind": "paragraph",
+      "source_order": 59,
+      "marker": "## [P186 | normal] 12:30~2시: 점심시간",
+      "paragraph_no": 186,
+      "style": "normal",
+      "heading": "12:30~2시: 점심시간",
+      "text": "## [P186 | normal] 12:30~2시: 점심시간"
+    },
+    {
+      "id": "P187",
+      "kind": "paragraph",
+      "source_order": 60,
+      "marker": "## [P187 | normal] 수 오후) 신지혜교수님 / NICU (NBS)",
+      "paragraph_no": 187,
+      "style": "normal",
+      "heading": "수 오후) 신지혜교수님 / NICU (NBS)",
+      "text": "## [P187 | normal] 수 오후) 신지혜교수님 / NICU (NBS)\nPK 대기장소에서 할 거 하고 있었는데 신지혜교수님 오셔서 아기 있으니까 NBS 해보라고 하심. 그래서 한 번 더 했다.\nNICU 돌아다니면서 아기 진찰 및 구경은 자유롭게 해도 됨. 청진도 할 수 있음."
+    },
+    {
+      "id": "P190",
+      "kind": "paragraph",
+      "source_order": 61,
+      "marker": "## [P190 | normal] 5:30 퇴근",
+      "paragraph_no": 190,
+      "style": "normal",
+      "heading": "5:30 퇴근",
+      "text": "## [P190 | normal] 5:30 퇴근"
+    },
+    {
+      "id": "P191",
+      "kind": "paragraph",
+      "source_order": 62,
+      "marker": "## [P191 | normal] 26년 9,10,11,12조 B-3)",
+      "paragraph_no": 191,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-3)",
+      "text": "## [P191 | normal] 26년 9,10,11,12조 B-3)"
+    },
+    {
+      "id": "P192",
+      "kind": "paragraph",
+      "source_order": 63,
+      "marker": "## [P192 | normal] 화 오전) 신지혜 교수님/NICU",
+      "paragraph_no": 192,
+      "style": "normal",
+      "heading": "화 오전) 신지혜 교수님/NICU",
+      "text": "## [P192 | normal] 화 오전) 신지혜 교수님/NICU\nEMR에서 산부인과 수술장을 보니 수술이 세 개여서 급하게 갈 필요는 없다 예상되어 수술장에 미리 가지 않고 NICU로 9시까지 감. 3층 신생아 중환자실 자동문을 먼저 열고 들어가면 신발장이 보이는데 공용 슬리퍼나 가져온 크록스로 갈아신고 왼쪽에 있는 두번째 자동문을 열고 들어가면 PK 사물함이 보임. 거기다 짐과 가운을 넣고 가장 오른쪽에 있는 사물함 칸을 열어서 일회용 가운 착용 후 명부 작성하고 마지막 자동문을 열고 NICU로 들어감. 들어가서 바로 왼쪽에 흰 책상과 컴퓨터 두 대가 놓인 책상이 있는데 거기가 PK 대기 책상임. 9시 15분쯤 교수님께서 오셔서 OT 해주시면 듣고 대기하면 됨 (질문: 신생아 소생술시 고려해야 할 세 가지-만삭아인가, 자발호흡하는가, 잘우는가/경량아 및 조산아 기준/X-ray 상에 보이는 기도로 내려가는 tube-endotracheal tube)\n앉아서 기다리다보면 교수님께서 신생아 레포트 과제 주제 뽑기 하러 오심.\n기다리다보면 교수님께서 수술복으로 환복하고 PK 책상에서 대기하라고 함. 그럼 전공의 선생님이 부르실테니 그때 함께 수술실로 가면됨. 말씀해주시겠지만 가서 헤어캡, 수술 마스크, 신발 커버를 착용하면 되고 NICU에서 입던 일회용 가운은 수술복 위에 굳이 안입어도 되는 것 같음.\n수술실에서는 최대한 눈에 안 띄게 서있다가 애기 나오면 최대한 안 걸리적거리게 주변에서 처치 구경하면 됨. 인큐베이터로 옮겨지면 따라서 NICU로 가면 된다. 이후에 NICU에서 하는 처치를 구경하면 된다. (우리 조는 인계를 참고해서 이때 미리 NBS를 했는데…교수님은 우리 마음대로 했다는 사실에 약간 놀라셨던 것 같다 (수요일에 시키실 계획이셨던 것 같음)…다행히도 천사같은 전공의 선생님이 본인이 같이 계셨다고 쉴드를 쳐주셨다)\n이후 대기하고 12시반 쯤 눈치껏 밥먹으러 감."
+    },
+    {
+      "id": "P198",
+      "kind": "paragraph",
+      "source_order": 64,
+      "marker": "## [P198 | normal] 화 오후) 강미현 교수님 외래",
+      "paragraph_no": 198,
+      "style": "normal",
+      "heading": "화 오후) 강미현 교수님 외래",
+      "text": "## [P198 | normal] 화 오후) 강미현 교수님 외래\n2시부터 강미현 교수님 외래 참관. 앞조 뒷조 두 명씩 배치하였고 앞조는 교수님께서 언제 올라가라고 말씀하시니 굳이 먼저 교대하겠다고 말씀 안드려도 됨. 교수님 환자 진짜 꼼꼼하고 세심하게 보시니 그냥 앉아서 감탄하면 됨. 질문은 그냥 가볍게 “궁금한 거 있어요?”정도로 하시고 없다고 하니 그냥 넘어가셨음.\n이후부터는 NICU에서 무한 대기 및 자습하면 되는데 다른 조는 눈치껏 5시반에 갔지만 우리는 OT 때 “외래 가면 다른 한 조는 NICU에서 대기해야하는데 저번주 조는 그냥 다 가고 NICU 비우더라. 너네는 인계 똑바로 받았냐”라는 말씀을 신지혜 교수님께서 하셔서 풀로 6시까지 대기하다 감 (근데 저번주 조에게 물어보니 외래 교대 때문에 10분 일찍 내려간 것 외에 4명이 동시에 NICU를 비운 적이 없었다고 한다…그냥 NICU 있는 동안 아기들 진찰하면서 은근슬쩍 교수님께 존재를 드러내는 수밖에…그리고 4명이 다 NICU를 비우는 시간은 최소로 하도록…)\nPK 책상을 간혹 다른과 실습생들이 마음대로 사용하기도 하는 거 같은데…신지혜 교수님이 우리 자리라고 하시며 흑기사처럼 다시 자리를 되찾아 주심…"
+    },
+    {
+      "id": "P202",
+      "kind": "paragraph",
+      "source_order": 65,
+      "marker": "## [P202 | normal] 수 오전) NICU 대기",
+      "paragraph_no": 202,
+      "style": "normal",
+      "heading": "수 오전) NICU 대기",
+      "text": "## [P202 | normal] 수 오전) NICU 대기\n집답회 후 9시까지 NICU로 감. 무한 대기 및 자습하면 됨. 오늘은 C-sec 하나 예정이고 어제 이미 봤기 때문에 아마 오늘은 수술장 안 갈 것으로 예상함.\n화요일 인계에도 언급했지만 이날 C-sec한 환아가 올라왔는데 한시간 정도 후에 교수님께서 오셔서 NBS score 하라고 하셨다. 이미 했다고 말씀드리니 누가 시켰냐고 하심…암튼 개인적으로 비슷한 상황이 다시 온다면 미리 NBS 언제할지 여쭤보거나 먼저 해버렸다면 교수님이 오셔서 또 하라고 하실 때 그냥 알겠다고 말씀드리고 두 번 할 것 같음.\n무한 대기 및 자습이라 앉아있다가 때때로 돌아다니면서 아기들 구경함."
+    },
+    {
+      "id": "P206",
+      "kind": "paragraph",
+      "source_order": 66,
+      "marker": "## [P206 | normal] 수 오후) NICU 대기",
+      "paragraph_no": 206,
+      "style": "normal",
+      "heading": "수 오후) NICU 대기",
+      "text": "## [P206 | normal] 수 오후) NICU 대기\n역시나 대기하면서 자습하면 됨. 우리 조는 마지막 NICU인 만큼 아기들도 계속 보러 다니고 처치도 자유롭게 구경하러 다님 (방해 안되는 선에서). 청진도 정말 조심스럽게 손닦고 소독하고 장갑낀 후 해보았음. 그리고 강미현 교수님께서 심장 초음파 하고 계셔서 몰래 구경하다가 가까이 오라고 하셔서 가까이서 볼 수 있었음. 아기 프로브 정말 작음. 심방끼리 연결하는 신생아 구조물은? FO 등등 그냥 가볍게 화면 보면서 질문하셨는데 대답 못해도 뭐라 안하심.\n[2025 2 학기]"
+    },
+    {
+      "id": "P209",
+      "kind": "paragraph",
+      "source_order": 67,
+      "marker": "## [P209 | normal] 11-14조 B)",
+      "paragraph_no": 209,
+      "style": "normal",
+      "heading": "11-14조 B)",
+      "text": "## [P209 | normal] 11-14조 B)\n-화 오전) 전날 산부인과 EMR 확인해보고 가기(소아과 수술 확인했다가 없는줄 알았음;;ㅋㅋ). 거기 간호사선생님이 알려주시긴 하는데 우리는 넘 늦게 알려주셔서 아가 나오는 장면 못 봐서 한 번 더 참관함.\n-그리고 끝나면 바로 나오기! 교수님 OT 해주시러 대기하셨음ㅜ.ㅜ 산부인과 수술턴 기억으로 마취 때부터 들어가있었는데, 소아과 pk는 아기 나올 때부터만 들어가 있으면 된다... 교수님 안 기다리시게 빨리빨리 필요한 것만 보자.\n-화 오후) 강미현 교수님 외래 참관. 질문 하라고 하시는데 한 명당 두번씩??은 한 거 같음. 근데 교수님은 약간 없으면 빨리 보내주실 생각이셨던 듯. 없다고 하자말자 이제 나가도 된다고 하심.\n-수 오전) NBS 진행하고, 자기소개서는 뵙자말자 바로 드림.\n-수 오후) 과제하면서 있으면 되는데 장미영 교수님 계셔서 참관하려 하니까 학생들 할 거 하라 하심. 그리고... NICU 컴퓨터에서 케이스 못 옮김... 꼭 기억하고 애써 이틀 한 거 날리지 말자^^"
+    },
+    {
+      "id": "P215",
+      "kind": "paragraph",
+      "source_order": 68,
+      "marker": "## [P215 | normal] 15-18조 C)",
+      "paragraph_no": 215,
+      "style": "normal",
+      "heading": "15-18조 C)",
+      "text": "## [P215 | normal] 15-18조 C)\n화 오전) 9시부터 pk 책상에 대기. 교수님이 오티해주시고 NICU 설명, 레포트 과제, POMR 환자 배정해주심. 중간에 수술 있으면 말씀해주시고 보러 가면 된다."
+    },
+    {
+      "id": "P217",
+      "kind": "paragraph",
+      "source_order": 69,
+      "marker": "## [P217 | normal] 화 오후) 강미현 교수님 외래 참관. 1시간씩 두 팀으로 나눠서 들어감. 이후 장미영 교수님 회진 참관(NICU 내)",
+      "paragraph_no": 217,
+      "style": "normal",
+      "heading": "화 오후) 강미현 교수님 외래 참관. 1시간씩 두 팀으로 나눠서 들어감. 이후 장미영 교수님 회진 참관(NICU 내)",
+      "text": "## [P217 | normal] 화 오후) 강미현 교수님 외래 참관. 1시간씩 두 팀으로 나눠서 들어감. 이후 장미영 교수님 회진 참관(NICU 내)\n수 오전) 집담회 직후 c/s 참관. 이후 NICU 내 교수님 시술 참관, new ballard score 진행함. 여러 명이 같이 진행함. 자기소개서는 교수님 지나가실 때 드림."
+    },
+    {
+      "id": "P219",
+      "kind": "paragraph",
+      "source_order": 70,
+      "marker": "## [P219 | normal] 15-18조 B)",
+      "paragraph_no": 219,
+      "style": "normal",
+      "heading": "15-18조 B)",
+      "text": "## [P219 | normal] 15-18조 B)\n화 오전) 9시부터 그림의 pk책상에 대기하고 있으면 교수님 오셔서 책상에 있는 컴퓨터로 신생아 분과 오티해주심. 일정 어떤게 있나 오티 때에 말씀해주시고 그대로 진행됨. 이후 신생아 신체진찰 하는법 직접 보여주시고 NICU투어하면서 설명해주심. 자습레포트 주제 뽑기는 안했고 교수님이 그냥 주제 8장 주시고 알아서 나눠 가지라고 하심. 장미영 교수님 오전에 회진 오셔서 참관함. 장미영교수님 회진은 그냥  교수님이EMR 보면서만 이루어짐. 검사결과, 신생아들 관련 노티 들으시면서 EMR작성하시는거 뒤에서 구경하면 됨. PK에게 질문은 안하셨고, EMR보면서 입원중인 신생아들 관련해서 이것저것 알려주시고 가보라고 하심.\n화 오후)강미현 교수님 부재로 인해 외래참관 안함."
+    },
+    {
+      "id": "P222",
+      "kind": "paragraph",
+      "source_order": 71,
+      "marker": "## [P222 | normal] 컴퓨터 EMR로 혈종환자 보고 있으면 왜 다른과 환자 보고있냐고 뭐라하심.(안들키게 잘 보기)",
+      "paragraph_no": 222,
+      "style": "normal",
+      "heading": "컴퓨터 EMR로 혈종환자 보고 있으면 왜 다른과 환자 보고있냐고 뭐라하심.(안들키게 잘 보기)",
+      "text": "## [P222 | normal] 컴퓨터 EMR로 혈종환자 보고 있으면 왜 다른과 환자 보고있냐고 뭐라하심.(안들키게 잘 보기)\n눈치껏 12:30-2시 점심시간, 5:30 퇴근함. 산부 분만조처럼 방치된 느낌인데 일정 이외 아무도 PK에게 관심을 안가졌음.\n수 오전) 출근 이전 c-sec 있었고 신지혜 교수님이 두번째 c-sec 있으니까 수술장 들어가라고 하심. 수술복으로 갈아입고 소아수술실에서 c-sec으로 출생한 미숙아 바로 소아소생술 하는 것 참관함. 수술장에서 소생술하고 인큐베이터 넣어서 NICU 갈 때 그대로 뒤따라감. NICU에서 마저 신생아 케어하는거 뒤에서 보고있는데 교수님이 이제 관계자 아닌 사람 다 나가라고해서 나감(우리는 관계자에 속하는지 PK어디가냐고 뭐라하심). 교수님이UAC, UVC 하는거 보여주심.\n수 오후) 교수님이 신생아 올려놨으니 New ballard score 하라고 하셔서 진행함. 교수님 없이 우리끼리만 했고 한명이 (손닦고 장갑끼고) 진행하면 나머지는 결과지 체크함. 애기 신기해서 쪼물쪼물 만져봄. 장미영 교수님 3시반에 회진오셔서 동일하게 뒤에서 EMR작성하시는거 구경함.\n자기소개서는 교수님 지나가실 때 먼저 드림."
+    },
+    {
+      "id": "P227",
+      "kind": "paragraph",
+      "source_order": 72,
+      "marker": "## [P227 | normal] 15-18조 A)",
+      "paragraph_no": 227,
+      "style": "normal",
+      "heading": "15-18조 A)",
+      "text": "## [P227 | normal] 15-18조 A)\n화 오전) 학생들 다 자리에 있으면 오셔서 컴퓨터로 오티 해주심. 과제 제출할 것들, 참고할 동영상 등등 컴퓨터 안에 오티 파일 들어있음. Pomr 아기 배정해주심\n장미영 교수님 안 오셔서 회진 참관 없었고 신지혜 교수님이 NICU 간단하게 투어시켜 주심."
+    },
+    {
+      "id": "P230",
+      "kind": "paragraph",
+      "source_order": 73,
+      "marker": "## [P230 | normal] 화 오후) 강미현 교수님 외래는 두 명씩 교대해서 들어갔고 환자 한두 명 보고 나서 질문받고 올라가서 공부하라고 하심 (1시간 이내)",
+      "paragraph_no": 230,
+      "style": "normal",
+      "heading": "화 오후) 강미현 교수님 외래는 두 명씩 교대해서 들어갔고 환자 한두 명 보고 나서 질문받고 올라가서 공부하라고 하심 (1시간 이내)",
+      "text": "## [P230 | normal] 화 오후) 강미현 교수님 외래는 두 명씩 교대해서 들어갔고 환자 한두 명 보고 나서 질문받고 올라가서 공부하라고 하심 (1시간 이내)\n수 오전) 11시쯤 C-sec 있어 수술장에서 신생아 관리 참관, 교수님 지나가실 때 자소서 쓴 거 제출함."
+    },
+    {
+      "id": "P232",
+      "kind": "paragraph",
+      "source_order": 74,
+      "marker": "## [P232 | normal] 수 오후) 신생아실에 아기 올려놨으니 우리끼리 new ballard score 평가하라고 하심 (미리 여쭤볼 필요 없음)",
+      "paragraph_no": 232,
+      "style": "normal",
+      "heading": "수 오후) 신생아실에 아기 올려놨으니 우리끼리 new ballard score 평가하라고 하심 (미리 여쭤볼 필요 없음)",
+      "text": "## [P232 | normal] 수 오후) 신생아실에 아기 올려놨으니 우리끼리 new ballard score 평가하라고 하심 (미리 여쭤볼 필요 없음)"
+    },
+    {
+      "id": "P233",
+      "kind": "paragraph",
+      "source_order": 75,
+      "marker": "## [P233 | normal] 19-21조 B)",
+      "paragraph_no": 233,
+      "style": "normal",
+      "heading": "19-21조 B)",
+      "text": "## [P233 | normal] 19-21조 B)\n소아동 3 층 신생아 중환자실로 카드를 찍고 들어간다. 신발장 (산부인과 때도 쓰는 신발장)에서 본인이 준비해온 크록스 등으로 갈아 신는다. 바로 왼쪽에 있는 복도로 들어가서 ‘통제구역출입대장’이라고 출석부 파일에 날짜, 이름, 서명 적는다. (이름 가운데 O적으라고 하심. ex) 홍O동) 사물함에 있는 일회용 파란색 가운 입고 손 씻고 들어간다.\nNICU 들어가서 대기장소에 있으면 교수님들이 찾아와주심.\n의자 부족하면 상담실에서 가져오거나 간호사 선생님께 부탁드리기. 상담실 의자 2개는 꼭 남겨둬야함.\nNICU에서는 마스크 쓰고 있었음. 마스크 챙겨가기.\n신발 부족하다고 따로 가져오라고 하심. 크록스같은 신발 챙겨가야함.\n일정 진행하며POMR 아기 지정해주심. 첫째날 오후까지 다 지정해주셨음.\nPOMR 아기 진찰 적극적으로 먼저 진찰하면 좋을듯. 교수님이 왜 안하냐고 하심.\n자필 자기소개서는 신지혜 교수님이 오후에 걷어가심.\n조에서 NBS 종이 최소 1개 뽑아가기.\nNST 회의는 얘기 없으셨음.\n점심은 12:30 쯤 눈치껏 나가서 먹고 14시 전에 복귀했음.\n퇴근은 18:00에 함."
+    },
+    {
+      "id": "P246",
+      "kind": "paragraph",
+      "source_order": 76,
+      "marker": "## [P246 | normal] C-sec 생기면 바로 앞 수술실 가기 (나갈때 출입카드 필요함. 챙겨다니기)",
+      "paragraph_no": 246,
+      "style": "normal",
+      "heading": "C-sec 생기면 바로 앞 수술실 가기 (나갈때 출입카드 필요함. 챙겨다니기)",
+      "text": "## [P246 | normal] C-sec 생기면 바로 앞 수술실 가기 (나갈때 출입카드 필요함. 챙겨다니기)\n첫째날 오전) OT랑 NICU 투어 함. 레포트 주제 뽑기함. 신지혜 교수님이 부르셔서 RDS 아기에게 폐표면활성제 투여하는거 구경시켜주심. INSURE가 뭔지 물어보셨고 그외 질문은 거의 없으셨음. 장미영 교수님 NICU 회진 따라가지는 않고, EMR 보고 뭐 작성하시는데 뒤에 서있었음. 뭐 간단히 물어보시고 (RDS, TTN infantogram 소견 등) 설명해주심.\n첫째날 오후) C-sec 13:30쯤 진행되어서 제 때 못 갔음. 강미현 교수님 외래 나중에 들어가는 2명이 늦게라도 갔는데, C-sec은 이미 끝나서 신생아 소생술 하는거 구경하다가 강미현 교수님 외래 참관하러 감. (EMR로 C-sec 여부 확인해보는게 좋을듯.) 두 조로 나누어 강미현 교수님 외래 참관. 질문 시키시니 준비하면 좋을듯.\n둘째날 오전) NBS 측정 시키셔서 한명이 장갑끼고 시행하면 나머지가 같이 종이 보고 점수 매김. 교수님 지켜보고 계시지 않음.\n둘째날 오후) 신지혜 교수님이 각자 맡은 POMR 아기들 진찰 안해보냐고 하셔서 다같이 하기 한명 한명 진찰해봄. 교수님 지켜보고 계시지 않았음. 그러다가 장미영 교수님 회진 오셔서 첫째날처럼 EMR 보고 작성하시는데 뒤에 서있었음."
+    },
+    {
+      "id": "P251",
+      "kind": "paragraph",
+      "source_order": 77,
+      "marker": "## [P251 | normal] 19-21조 A)",
+      "paragraph_no": 251,
+      "style": "normal",
+      "heading": "19-21조 A)",
+      "text": "## [P251 | normal] 19-21조 A)\n신지혜 교수님께서 화요일 아침에 csec이 예정되어 있으므로 보고싶은 학생은 일찍 40분 정도에 도착할 수 있도록 다음 인계 때 전하라 하심. 그리고 신생아 진찰했으면 진료 환자 로그 사인 받기.\n크록스 꼭 챙겨가기. NICU에 신발 부족하다고 함.\n루틴한건진 모르겠으나 우리 땐 장미영 교수님 회진 2시부터 오심.\n장미영 교수님 회진 때 PPHN의 병태생리 및 치료 질문하심."
+    },
+    {
+      "id": "P256",
+      "kind": "paragraph",
+      "source_order": 78,
+      "marker": "## [P256 | normal] 19-21조 C)",
+      "paragraph_no": 256,
+      "style": "normal",
+      "heading": "19-21조 C)",
+      "text": "## [P256 | normal] 19-21조 C)"
+    },
+    {
+      "id": "P257",
+      "kind": "paragraph",
+      "source_order": 79,
+      "marker": "## [P257 | normal] 9.23화",
+      "paragraph_no": 257,
+      "style": "normal",
+      "heading": "9.23화",
+      "text": "## [P257 | normal] 9.23화\nNICU가서 9시 30분쯤 신지혜 교수님 OT 및 신생아실 쭉 둘러보며 설명 이후 대기. 미숙아, 저체중아 기준 물어보심. 참고로 크록스는 챙기면 좋긴한데 없으면 그냥 보호자용 신발장 열어서 초콜렛 색 슬리퍼 써도 됨. 옷장에 가운 놓고 파란색 가운 입고 들어가면 됨.\n오늘 C sec 있다 언제 할지 말씀해주신다고 전공의 쌤이 말해줌. 대기하다 11시 넘어서 바로 c sec 있다고 해서 수술실 가서 수술복으로 환복하고 마스크랑 머리커버 쓰고 지켜봄. 끝나고 대기하다 12시 50분쯤 점심 먹으러 감\n2시에 강미현 교수님 외래 5명이라 3, 2로 쪼개서 다녀옴. 1팀당 1시간이 안 되는 시간이었고, 중간에 질문이나 대화 일절 없이 마지막에 궁금한점 있냐 물어보심. 2팀 다녀와서 4시쯤 바로 장미영 교수님 회진 들음. 컴퓨터 앞에서 전공의, 간호사, 인턴 노티 및 설명하는거 듣고 처방내리는 식으로 30분 넘게 들으면서 서있다가 끝남. 질문 없으셨음.\n다시 대기하려자마자 5시에 바로 surfactant투여 보러오라고 교수님이 부르셨다고 인턴 쌤이 와서 참관하러 감. 아기가 워낙 작아서 기도 잡는거 전공의 쌤 2번 실패하고 신지혜 쌤이 바로 함. 분위기는 화기애애했음. 30분쯤 있다가 끝나고 대기하다 퇴근"
+    },
+    {
+      "id": "P262",
+      "kind": "paragraph",
+      "source_order": 80,
+      "marker": "## [P262 | normal] 수9.24",
+      "paragraph_no": 262,
+      "style": "normal",
+      "heading": "수9.24",
+      "text": "## [P262 | normal] 수9.24\n의국회의 후 짐 다 가지고 NICU와서 PK 책상이랑 상담실 나눠서 대기하다 10시경 신지혜 교수님이 부르셔서 New ballard score 아기한테 함. 교수님은 처음에 신생아 신체진찰 해야 할 것들 설명하고 가심. 대표가 한명이 score 테스트 하고 이후 각자 하고 싶은거 함. 아기가 크게 우는데 안아주면 금세 조용해짐.\n이후 POMR 환자 각자 맡은거 조금 보고 11시에 c sec 있다고 해서 11시에 수술실 지금 가야 하나 알아보다가 정확히 일정 안 잡혔고 오후에 생길 때 연락한다고 수술실에서 들어서 다시 대기. 점심 후 과제하며 대기하다 장미영 교수님 회진 어제랑 똑같이 서있다가 다시 대기하다 퇴근. 질문 없으셨음. 수술 결국 없었음.\n-----------------------------------------------------------------------------------------------------------\n[2025 1 학기]"
+    },
+    {
+      "id": "P267",
+      "kind": "paragraph",
+      "source_order": 81,
+      "marker": "## [P267 | normal] 1-2조 1)",
+      "paragraph_no": 267,
+      "style": "normal",
+      "heading": "1-2조 1)",
+      "text": "## [P267 | normal] 1-2조 1)\n첫날OT 의국에서 진행하냐고 여쭤봤는데 바로 NICU로 오라함. 그냥 앞으로도 바로 NICU로 가면 될 듯. 인계에 써진 대로 NICU 들어가서 대기장소에 있으면 교수님들이 찾아와주심."
+    },
+    {
+      "id": "P269",
+      "kind": "paragraph",
+      "source_order": 82,
+      "marker": "## [P269 | normal] 오전) OT랑 NICU 투어 함. 레포트 주제 뽑기함. POMR 아기 지정해주심",
+      "paragraph_no": 269,
+      "style": "normal",
+      "heading": "오전) OT랑 NICU 투어 함. 레포트 주제 뽑기함. POMR 아기 지정해주심",
+      "text": "## [P269 | normal] 오전) OT랑 NICU 투어 함. 레포트 주제 뽑기함. POMR 아기 지정해주심"
+    },
+    {
+      "id": "P270",
+      "kind": "paragraph",
+      "source_order": 83,
+      "marker": "## [P270 | normal] 오후) 강미현 교수님 외래 참관, NST 회의 참관함. 강미현 교수님 외래 두 조로 나눠서 들어갔음",
+      "paragraph_no": 270,
+      "style": "normal",
+      "heading": "오후) 강미현 교수님 외래 참관, NST 회의 참관함. 강미현 교수님 외래 두 조로 나눠서 들어갔음",
+      "text": "## [P270 | normal] 오후) 강미현 교수님 외래 참관, NST 회의 참관함. 강미현 교수님 외래 두 조로 나눠서 들어갔음"
+    },
+    {
+      "id": "P271",
+      "kind": "paragraph",
+      "source_order": 84,
+      "marker": "## [P271 | normal] 둘째날 오전) C-sec 참관함 (C-sec 있으면 교수님이 바로 수술실로 오라고 말해주심)",
+      "paragraph_no": 271,
+      "style": "normal",
+      "heading": "둘째날 오전) C-sec 참관함 (C-sec 있으면 교수님이 바로 수술실로 오라고 말해주심)",
+      "text": "## [P271 | normal] 둘째날 오전) C-sec 참관함 (C-sec 있으면 교수님이 바로 수술실로 오라고 말해주심)\n오후) C-sec 참관함. 수요일 오후까지 자필 자소서 내야됨. 일정 끝나기 전에 강미현 교수님이 다 썼냐고 하고 걷어가심. NBS 교수님이 시킬 때 하면 되는데 교수님이 지켜보고 계시진 않음. 장미영 교수님 NICU 회진 따라가지는 않고, EMR 보고 뭐 작성하시는데 뒤에 서있었음.. 뭐 간단히 물어보시고 (우리는 미숙아 기준). 질문 하나씩 준비\n.1-2조 2)\n첫 날 오전 앞조와 동일. Pk 책상이라고 인계 그림 그려져 있음. 거기 앉으면 됨. 들어갈 때 신발 갈아신기, 손 씻기, 의료진용 일회용 가운 입기, 출입명부 작성"
+    },
+    {
+      "id": "P275",
+      "kind": "paragraph",
+      "source_order": 85,
+      "marker": "## [P275 | normal] C-sec 생기면 바로 앞 수술실 가기 (나갈때 출입카드 필요함. 챙겨다니기)",
+      "paragraph_no": 275,
+      "style": "normal",
+      "heading": "C-sec 생기면 바로 앞 수술실 가기 (나갈때 출입카드 필요함. 챙겨다니기)",
+      "text": "## [P275 | normal] C-sec 생기면 바로 앞 수술실 가기 (나갈때 출입카드 필요함. 챙겨다니기)\n오후) 강미현 교수님 외래 참관, NST 회의 참관함. 전 조는 강미현 교수님 외래 두 조로 나눠서 들어갔음. 우린 2/1로 나눠서 2명 들어갔다가 교수님이 셋 다 한번에 오라해서 셋 다 참관하다가 3시에 NST 회의 들어갔고 끝나고 퇴근함."
+    },
+    {
+      "id": "P277",
+      "kind": "paragraph",
+      "source_order": 86,
+      "marker": "## [P277 | normal] 수요일 오전) NICU 무한 자습 (C-sec 있으면 교수님이 수술실로 오라고 말해주심)",
+      "paragraph_no": 277,
+      "style": "normal",
+      "heading": "수요일 오전) NICU 무한 자습 (C-sec 있으면 교수님이 수술실로 오라고 말해주심)",
+      "text": "## [P277 | normal] 수요일 오전) NICU 무한 자습 (C-sec 있으면 교수님이 수술실로 오라고 말해주심)\n수요일 오후) NICU 무한 자습. 수요일 오후까지 자필 자소서 내야됨. 전 조는 일정 끝나기 전에 강미현 교수님이 다 썼냐고 하고 걷어가심. (우린 교수님 지나다니실때 그냥 드림)\nNBS(종이 뽑아가기) 교수님이 시킬 때 하면 되는데 교수님이 지켜보고 계시진 않음. 한 명이 대표로 하고 나머지가 뒤에서 기록. 아기 만지는거 정말 말랑하고 귀여움 .. POMR 환아도 가능하면 신체진찰 직접 해보기. 신지혜 교수님께서 병동 애기들 직접 청진, 진찰도 해보길 원하셔서 적극적으로 진찰함.\n장미영 교수님 NICU 회진 따라가지는 않고, EMR 보고 뭐 작성하시는데 뒤에 서있었음.. 뭐 간단히 물어보시고 (전 조는 미숙아 기준, 우린 RSD, surfactant 치료 기준, xray 특징 등 ..) mini lecture 해주심. 질문 하나씩 준비하면 좋음.\n교수님들께서 pk에게 아무런 관심이 없으셨음. 점심은 눈치껏12시 반쯤 먹으러 나가서 2시 전에 복귀했고, 퇴근도 5시 반 넘어서 눈치껏 퇴근함.\n[목요일, 조은영교수님/감염, 임연정교수님/혈액종양]"
+    },
+    {
+      "id": "P283",
+      "kind": "paragraph",
+      "source_order": 87,
+      "marker": "## [P283 | normal] 구성: [오전 조은영교수님 외래] / [오후 임연정교수님 외래]",
+      "paragraph_no": 283,
+      "style": "normal",
+      "heading": "구성: [오전 조은영교수님 외래] / [오후 임연정교수님 외래]",
+      "text": "## [P283 | normal] 구성: [오전 조은영교수님 외래] / [오후 임연정교수님 외래]\n[오전 조은영교수님 외래]\n[2026 1학기]"
+    },
+    {
+      "id": "P286",
+      "kind": "paragraph",
+      "source_order": 88,
+      "marker": "## [P286 | normal] 26년 5,6,7,8조 B-1)",
+      "paragraph_no": 286,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-1)",
+      "text": "## [P286 | normal] 26년 5,6,7,8조 B-1)\n전날 집담회때 여쭤봐서 9시까지 외래 5번방으로 오라하심. 집담회 끝나고 카드주시면서 빵, 커피 각자 먹을거 사오라 하심. 왜 학생들은 커피 사준다 하면 왜 아아만 먹냐고 하심 ㅎㅎ.  보통 외래 환자 없음. 그래서, 12개월 남자아이 열나는 가상의 상황가지고 CPX하듯이 수업했음. 검사, 치료 세울 때 ASSESSMENT 먼저 세우고 검사, 치료계획 세우는거 강조하심. 교수님 진짜 좋으시고 유쾌하시니까 부담 갖지 말고 적극적으로 참여하면 될 듯. 전조는 홍창의 소아과학 발열 파트 요약과제 있었다는데 우리는 그냥 이부분 읽어보라고만 하시고 따로 과제는 안 내주셨음."
+    },
+    {
+      "id": "P288",
+      "kind": "paragraph",
+      "source_order": 89,
+      "marker": "## [P288 | normal] 26년 5,6,7,8조 B-2)",
+      "paragraph_no": 288,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-2)",
+      "text": "## [P288 | normal] 26년 5,6,7,8조 B-2)\n당일 잡담회 이후, 인사드리니 카드 주시고 먹고 싶은거 사서 외래 5번방으로 오라하신다. 빵 커피 각자 먹고 싶은거 사서 5번방으로 가면 교수님이 기다리고 계신다. 증례는 5살 남자아이, 발열로 내원한 케이스 가지고 mini CEX 처럼 수업했다. 논리 흐름에 따라 환자 진료하는 것을 좋아하신다. 우리 증례는 봉와직염, 폐렴 총 2가지 나왔다. 총 2시간 걸렸고 중간에 환자 오면 환자 진료하시는 모습 우리에게 보여준다."
+    },
+    {
+      "id": "P290",
+      "kind": "paragraph",
+      "source_order": 90,
+      "marker": "## [P290 | normal] 26년 5,6,7,8조 B-3)",
+      "paragraph_no": 290,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-3)",
+      "text": "## [P290 | normal] 26년 5,6,7,8조 B-3)"
+    },
+    {
+      "id": "P291",
+      "kind": "paragraph",
+      "source_order": 91,
+      "marker": "## [P291 | normal] 환자 1명 있어서 그 환자 봉와직염 외래 참관하고 교수님이 카드 줘서 커피랑 빵 사 옴 ㅎㅎ",
+      "paragraph_no": 291,
+      "style": "normal",
+      "heading": "환자 1명 있어서 그 환자 봉와직염 외래 참관하고 교수님이 카드 줘서 커피랑 빵 사 옴 ㅎㅎ",
+      "text": "## [P291 | normal] 환자 1명 있어서 그 환자 봉와직염 외래 참관하고 교수님이 카드 줘서 커피랑 빵 사 옴 ㅎㅎ"
+    },
+    {
+      "id": "P292",
+      "kind": "paragraph",
+      "source_order": 92,
+      "marker": "## [P292 | normal] 생후 50일 된 2시간 전부터 열이 나서 온 아이에 대해서 cpx 같은 거 헀음 의심질환 뭐 있고 plan 어떻게 새울건지 등",
+      "paragraph_no": 292,
+      "style": "normal",
+      "heading": "생후 50일 된 2시간 전부터 열이 나서 온 아이에 대해서 cpx 같은 거 헀음 의심질환 뭐 있고 plan 어떻게 새울건지 등",
+      "text": "## [P292 | normal] 생후 50일 된 2시간 전부터 열이 나서 온 아이에 대해서 cpx 같은 거 헀음 의심질환 뭐 있고 plan 어떻게 새울건지 등"
+    },
+    {
+      "id": "P293",
+      "kind": "paragraph",
+      "source_order": 93,
+      "marker": "## [P293 | normal] 26년 9,10,11,12조 B-1",
+      "paragraph_no": 293,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-1",
+      "text": "## [P293 | normal] 26년 9,10,11,12조 B-1\n오전 의국회의 후 의국에서 조은영 교수님께 오늘 실습조라고 말씀드리니 9시까지 외래 5번 방에서 보자고 하심. 오늘 외래가 없어서 외래 진료실에서 강의 들었음. 12개월 남아 발열로 왔다고 가정하고 질문해보자~ 라고 하셔서 조원들 함께 돌아가며 CPX하듯이 질문했음. 끝나고 나면 발열 주소로 내원한 환자에게 SOAP에 따라 진찰하는 과정 강의해주시고 피드백 주심. 이후, 환자에 대해 어떤 assessment 내리고, plan 실행할 것인지 말함. 그리고 환자가 며칠 뒤 재방문했다고 가정하고 다시 문진하는 과정 가볍게 진행함. 10시 좀 넘어서 끝났음. 편안한 분위기에서 진행됐고, 유쾌하셔서 좋았음."
+    },
+    {
+      "id": "P295",
+      "kind": "paragraph",
+      "source_order": 94,
+      "marker": "## [P295 | normal] 26년 9,10,11,12조 B-2)",
+      "paragraph_no": 295,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-2)",
+      "text": "## [P295 | normal] 26년 9,10,11,12조 B-2)\n전날 EMR 확인해보니 대기 환자가 없어서, 교수님께 혹시 학생들이 준비해야 할 것이 있는지 여쭤봤더니 모의 CPX 병력청취 시킬거고 딱히 뭐 준비할 필요 없다고 하셨음\n의국 회의 후 외래 5번방으로 가서 교수님과 같이 병력청취함(교수님이 보호자 역할), 우리 케이스는 19개월 남아였음. Problem list & Assessment & plan 도 즉석에서 같이 작성함.\n갑자기 환아 한 명이 들어와서 진료 구경함. 교수님께서 “초진이면 예진 시키려고 했는데~” 라고 말씀하셨음. 우리는 응급실 통해 온 환자라 예진 안했지만 만약을 위해 예진 준비하는 것도 좋을 듯?\n감염분과 자유기록에는 소감이랑 홍창의 발열 파트 좀 보고 적으면 좋을 것 같다고 하심. 근데 이건 평가에는 안 들어간다고 하셨음.\n교수님 진짜 좋으심."
+    },
+    {
+      "id": "P301",
+      "kind": "paragraph",
+      "source_order": 95,
+      "marker": "## [P301 | normal] 26년 9,10,11,12조 B-3)",
+      "paragraph_no": 301,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-3)",
+      "text": "## [P301 | normal] 26년 9,10,11,12조 B-3)\n조은영 교수님께 집담회 후 찾아뵙고 인사드리니 9시까지 5번방으로 오라고 하심. 외래 시간에 환자가 한 명 뿐이어서 수업 겸 모의 CPX를 함. 3가지 정도 케이스 중에서 랜덤으로 하나를 선택하시는 것 같은데 우리는 약 1개월짜리 남아가 발열로 내원하였고 교수님께서 보호자이신 case 였음. 자유롭게 CPX 질문을 하면 교수님께서 PPT로 답 띄워주시며 유쾌하고 즐거운 분위기에서 진행됨. 교수님 진짜 친절하시고 계속 잘했다고 해주시며 엄청 용기를 북돋아주시는 편. 굉장히 편하고 가벼운 분위기에서 진행되니 적극적으로 잘 참여하길. 어린 소아라면 출생 주수, 몸무게, 분만 방법 묻는 것이 중요하고 경련 여부도 물으면 좋을 것 같다. 사이사이 수업도 해주시고 진짜 재밌었음.\n[2025 2 학기]"
+    },
+    {
+      "id": "P304",
+      "kind": "paragraph",
+      "source_order": 96,
+      "marker": "## [P304 | normal] 11-14조 B)",
+      "paragraph_no": 304,
+      "style": "normal",
+      "heading": "11-14조 B)",
+      "text": "## [P304 | normal] 11-14조 B)\n- 외래에 강의해주심. 1시간 40분 정도 진행함. 물어보시는 거 족족 몰랐음.. 몰라도 뭐라고 안 하심.\n-소아 발열 환자 CPX 하는 것처럼 진행하심. 생각보다 막상 하려하면 안 나옴. 은근슬쩍 태블릿 보고 해도 괜찮은듯. 뭐라 안 하심.\n-소아과학 발열 과제 내주심. 이후 유폴리오 제출."
+    },
+    {
+      "id": "P308",
+      "kind": "paragraph",
+      "source_order": 97,
+      "marker": "## [P308 | normal] 15-18조 C)",
+      "paragraph_no": 308,
+      "style": "normal",
+      "heading": "15-18조 C)",
+      "text": "## [P308 | normal] 15-18조 C)\n외래에서 강의해주심. 환자분 안오셔서 계속 강의하심. 몰라도 뭐라고 안 하심. 소아 발열으로 온 경우 어떻게 질문해야 하는지 여쭤보심.\n이미 소아과학 발열 파트 과제 해서 안 내주심."
+    },
+    {
+      "id": "P311",
+      "kind": "paragraph",
+      "source_order": 98,
+      "marker": "## [P311 | normal] 15-18조 B)",
+      "paragraph_no": 311,
+      "style": "normal",
+      "heading": "15-18조 B)",
+      "text": "## [P311 | normal] 15-18조 B)\n의국회의 이후 9시부터 외래진료실에서 소아감염 관련 mini lecture 해주심. 듣는 도중 환자오면 끊고 진료보고 다시 환자 없을 때 이어서 진행. 강의 중  조금씩 관련 질문 하시는데 모르거나 틀려도 뭐라하지 않으심.\n소아감염으로 온 환자는 없고 다 예방접종 환자들이라 교수님이 예진 안시키심(예진 시키고 싶은데 아쉽다고 하심). 예진 안했으니까 ‘교수님이 12살 본인 아들이 열이 나서 데리고 왔어요’ 라는 설정으로 4명이서 예진해보라고 함. CPX 하는 것처럼 질문하면 교수님이 답해주시고 중간중간 계속 피드백 해주시면서 알려주심(잘 못해도 뭐라 안하시고 유쾌한 분위기로 부담없이 진행됨).\n끝날 때 감염 관련 이것저것 설명해주시고, 홍창의 소아과학 책 12장 발열에 대한 접근 읽어보고 공부하라고 하심. 검사는 안하심."
+    },
+    {
+      "id": "P315",
+      "kind": "paragraph",
+      "source_order": 99,
+      "marker": "## [P315 | normal] 15-18조 A)",
+      "paragraph_no": 315,
+      "style": "normal",
+      "heading": "15-18조 A)",
+      "text": "## [P315 | normal] 15-18조 A)"
+    },
+    {
+      "id": "P316",
+      "kind": "paragraph",
+      "source_order": 100,
+      "marker": "## [P316 | normal] 앞 조와 동일, 교과서(372-373p) 읽고 정리한 거 유폴에 과제로 제출하라고 하심",
+      "paragraph_no": 316,
+      "style": "normal",
+      "heading": "앞 조와 동일, 교과서(372-373p) 읽고 정리한 거 유폴에 과제로 제출하라고 하심",
+      "text": "## [P316 | normal] 앞 조와 동일, 교과서(372-373p) 읽고 정리한 거 유폴에 과제로 제출하라고 하심"
+    },
+    {
+      "id": "P317",
+      "kind": "paragraph",
+      "source_order": 101,
+      "marker": "## [P317 | normal] 19-21조 B)",
+      "paragraph_no": 317,
+      "style": "normal",
+      "heading": "19-21조 B)",
+      "text": "## [P317 | normal] 19-21조 B)\n의국회의 끝나고 외래 진료실에서 간단한 강의 들음. 듣다가 외래 환자 도착해서 2명씩 나눠서 외래 참관. 외래 끝나고 다시 강의 듣던 진료실로 가서 마저 들음. 질문도 가끔 하시는데 못 맞춘다고 뭐라고 하시지는 않으심. (염증의 4개 sign 등)\n외래끝나고 otoscope로 각자 귀 보게 하셨음. 귀 청소하고 가자."
+    },
+    {
+      "id": "P320",
+      "kind": "paragraph",
+      "source_order": 102,
+      "marker": "## [P320 | normal] 19-21조 A)",
+      "paragraph_no": 320,
+      "style": "normal",
+      "heading": "19-21조 A)",
+      "text": "## [P320 | normal] 19-21조 A)\n조은영 교수님 기다리면서 대기석에 앉아있었는데 다음부터는 그냥 (교수님 안 계셔도) 진료실 안에 들어와 있으라고 하심.\n진료 보시는 중간에 예진하고 싶은 사람 물어보심. 자원해서 하면 됨."
+    },
+    {
+      "id": "P323",
+      "kind": "paragraph",
+      "source_order": 103,
+      "marker": "## [P323 | normal] 19-21조 C)",
+      "paragraph_no": 323,
+      "style": "normal",
+      "heading": "19-21조 C)",
+      "text": "## [P323 | normal] 19-21조 C)\n아침 의국회의 후 조은영 교수님이 외래 방 가서 기다리라고 하셔서 가서 30분넘게 대기하니 오심. 환자오면 보고 없을 때 강의 및 설명 좀 하시고 질문하심.\n초진환자 와서 예진할 거냐 혼자 할거냐 다같이 할거냐 물어보셔서 다같이 동일한 외래방에서 교수님과 같이 질문 몇 개 던졌음. 가능하면 한명이 하면 좋을 거 같은데 환자가 적어서 예진 제대로 하면 교수님 보는 시간이 늦어져서 좀 애매하긴 함. 이후 감염병 사이트 설명하시고 11시 반경 끝.\n-----------------------------------------------------------------------------------------------------------\n[2025 1 학기]"
+    },
+    {
+      "id": "P328",
+      "kind": "paragraph",
+      "source_order": 104,
+      "marker": "## [P328 | normal] 1-2조 1)",
+      "paragraph_no": 328,
+      "style": "normal",
+      "heading": "1-2조 1)",
+      "text": "## [P328 | normal] 1-2조 1)"
+    },
+    {
+      "id": "P329",
+      "kind": "paragraph",
+      "source_order": 105,
+      "marker": "## [P329 | normal] 조은영 교수님 외래 없어서 진료실에서 간단한 강의 들음",
+      "paragraph_no": 329,
+      "style": "normal",
+      "heading": "조은영 교수님 외래 없어서 진료실에서 간단한 강의 들음",
+      "text": "## [P329 | normal] 조은영 교수님 외래 없어서 진료실에서 간단한 강의 들음"
+    },
+    {
+      "id": "P330",
+      "kind": "paragraph",
+      "source_order": 106,
+      "marker": "## [P330 | normal] 1-2조 2)",
+      "paragraph_no": 330,
+      "style": "normal",
+      "heading": "1-2조 2)",
+      "text": "## [P330 | normal] 1-2조 2)\n조은영 교수님 외래 진료실에서 간단한 강의 들음. 의국회의 끝나고 교수님에게 눈빛 보내면 알아서 따라와라 하심.\n외래 환자가 수업 중간에 1명 있었는데 병력청취하시는거, 신체진찰 하시는거 잘 보고 어떤거 하셨는지 기억하기. 환자 나가자마자 물어봄. 내가 뭘 잘하고 뭘 못했을까요 ~~?\n[오후 임연정교수님 외래]\n[2026 1학기]"
+    },
+    {
+      "id": "P335",
+      "kind": "paragraph",
+      "source_order": 107,
+      "marker": "## [P335 | normal] 26년 5,6,7,8조 B-2)",
+      "paragraph_no": 335,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-2)",
+      "text": "## [P335 | normal] 26년 5,6,7,8조 B-2)\n반팔을 꼭 입는 것을 추천한다. 환자 수가 많진 않았지만, 환자 한 명당 진료 시간이 꽤 길어 생각보다 오래 걸렸다. 총 15명 외래 보는데 3시간 30분 걸렸다. 그래서 POMR 피드백은 종이로 뽑아온 POMR을 교수님이 읽으시면서 코멘트 해주시는 방식으로 진행된다."
+    },
+    {
+      "id": "P337",
+      "kind": "paragraph",
+      "source_order": 108,
+      "marker": "## [P337 | normal] 26년 5,6,7,8조 B-1)",
+      "paragraph_no": 337,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-1)",
+      "text": "## [P337 | normal] 26년 5,6,7,8조 B-1)\n임연정 pf. 외래: 진짜 뻥 안치고 쉴 틈 없이 외래 진료 진행하심........ 환자 수가 많진 않았지만, 환자 한 명당 진료 시간이 꽤 길어 생각보다 오래 걸렸다 (12명 정도 진료 보셨던 거 같은데 2시간 넘게 진행된 듯) 환자 진료 마치시고 질환/환자에 대한 설명 해주시고 질의응답 받으셨다.\n- 임연정 pf. POMR feedback: 우리 조는 발표 안 했음.  (외래가 오래 걸리기도 했고, 외래 관련 질문들도 많이 하느라 시간이 많이 지난 상태였음) 그냥 각자 뽑아온 POMR 종이 교수님께서 읽어보시면서 코멘트 해주심\n* P. I 작성시, 날짜 누가봐도 명확하게 알아볼 수 있을 정도로 작성하기: 25. 01. 01 (X) -> 2025. 01. 01 (O)\n* P. I 작성할 때, 간략하게 작성해도 되고 서술형으로 작성해도 ㄱㅊ (뭔가 근데 서술형으로 작성하길 더 원하신 거 같았던 느낌..?)\n* P. I 작성할 때 \"C. C\"와 관련된 정보들 위주로만 내용 추려서 작성하기!!\n* 키, 몸무게 기록할 거면 성장 백분위수도 함께 기재해줄 것! (소아 환자니까)\n* Problem list에는 있는 그대로의 정보만을 기재 -> 평가/해석은 assessment에서!"
+    },
+    {
+      "id": "P345",
+      "kind": "paragraph",
+      "source_order": 109,
+      "marker": "## [P345 | normal] 26년 5,6,7,8조 B-3)",
+      "paragraph_no": 345,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-3)",
+      "text": "## [P345 | normal] 26년 5,6,7,8조 B-3)"
+    },
+    {
+      "id": "P346",
+      "kind": "paragraph",
+      "source_order": 110,
+      "marker": "## [P346 | normal] 임연정 교수님 출장이라 외래 취소, pomr 발표는 다음 주 월요일로 미뤄짐",
+      "paragraph_no": 346,
+      "style": "normal",
+      "heading": "임연정 교수님 출장이라 외래 취소, pomr 발표는 다음 주 월요일로 미뤄짐",
+      "text": "## [P346 | normal] 임연정 교수님 출장이라 외래 취소, pomr 발표는 다음 주 월요일로 미뤄짐"
+    },
+    {
+      "id": "P347",
+      "kind": "paragraph",
+      "source_order": 111,
+      "marker": "## [P347 | normal] 26년 9,10,11,12조 B-1)",
+      "paragraph_no": 347,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-1)",
+      "text": "## [P347 | normal] 26년 9,10,11,12조 B-1)\n외래 후 POMR 피드백 주신다고 하셔서 각자 POMR 복사 후 2시까지 외래 진료실 모임. 외래 7번방에서 외래 봤음.(7번방은 마킹이 안되어 있는데, 6,8번 방 사이 진료실이 7번) 의자 부족할 수 있으니 5분 정도 일찍 가서 간호사 분께 여쭤보면, 외래 없는 진료실 알려주심. 해당 진료실에서 의자 가져오면 됨. 외래는 환자 수 따라 달라지는 듯 하고 4시 반 쯤 끝났음. 이후 각자 POMR 보면서 피드백 해주셨고, 형식 중 일부 잘못된 게 있거나 해도 따뜻하게 알려주셨음. 이후 피드백 받은 대로 수정해서 제출하면 된다고 알려주심."
+    },
+    {
+      "id": "P349",
+      "kind": "paragraph",
+      "source_order": 112,
+      "marker": "## [P349 | normal] 26년 9,10,11,12조 B-2)",
+      "paragraph_no": 349,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-2)",
+      "text": "## [P349 | normal] 26년 9,10,11,12조 B-2)\n이번주엔 교수님 출장으로 일정이 없어짐.\n마지막 주 점심시간에 POMR 발표 및 피드백 주신다고 하심."
+    },
+    {
+      "id": "P352",
+      "kind": "paragraph",
+      "source_order": 113,
+      "marker": "## [P352 | normal] 26년 9,10,11,12조 B-3)",
+      "paragraph_no": 352,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-3)",
+      "text": "## [P352 | normal] 26년 9,10,11,12조 B-3)\n임연정 교수님의 오후 외래 시간이 2시부터여서 시간 맞춰 내려갔음. 월요일에 ITP, IDA, hemophilia에 대해 공부해오라고 하셨는데 딱히 관련해서 질문하시지는 않으셨음. 교수님 역시나 정말 꼼꼼하고 세심하게 진료보심…이후 바로 POMR 및 노티 구두 발표 진행. POMR 드린 후 교수님이 호명하시는 순서에 따라 노티 진행하면 됨 (POMR은 그냥 읽어보시고 발표는 안시키심). 각 발표 끝날 때마다 서로서로 질문하거나 교수님께 궁금한 거 질문하라고 하셔서 우리는 각각 교수님께 드릴 질문 하나씩 준비해감. POMR 피드백 해주신 거 토대로 수정해서 u-folio에 업로드하면 됨. 2시 외래 시작해서 다 마쳤을 때 5시였음. 큰 부담은 없으나 질문은 준비해가면 좋을 듯.\n[2025 2 학기]"
+    },
+    {
+      "id": "P355",
+      "kind": "paragraph",
+      "source_order": 114,
+      "marker": "## [P355 | normal] 11-14조 B)",
+      "paragraph_no": 355,
+      "style": "normal",
+      "heading": "11-14조 B)",
+      "text": "## [P355 | normal] 11-14조 B)\n- 교수님 휴가로 없었음."
+    },
+    {
+      "id": "P357",
+      "kind": "paragraph",
+      "source_order": 115,
+      "marker": "## [P357 | normal] 15조-18조 C)",
+      "paragraph_no": 357,
+      "style": "normal",
+      "heading": "15조-18조 C)",
+      "text": "## [P357 | normal] 15조-18조 C)\n2시부터 외래 시작해서 6시쯤 끝남. 바로 발표 진행함. 말로 노티하듯이 진행함. 신환 6명 넘게 오고 중간에 이벤트도 있어서 교수님 되게 힘들어하심. 그래서 질문도 크게 없이 끝남. 질문자만 교수님께 질문 1개씩 하고 6시 40분쯤 끝났음."
+    },
+    {
+      "id": "P359",
+      "kind": "paragraph",
+      "source_order": 116,
+      "marker": "## [P359 | normal] 15-18조 A)",
+      "paragraph_no": 359,
+      "style": "normal",
+      "heading": "15-18조 A)",
+      "text": "## [P359 | normal] 15-18조 A)\n2시부터 외래 참관해서 5시쯤 외래 마무리되고 바로 발표 진행함. 보여드리지 않고 우리가 말하는 것만 들으심.\n중간에 질문 안하시고 끝나고 서로 질문 + 발표 피드백 시키심. 대본 따로 안써왔냐고 연습해왔냐고 물어보셨고, 노티 어떻게 해야하는지 피드백해주심."
+    },
+    {
+      "id": "P362",
+      "kind": "paragraph",
+      "source_order": 117,
+      "marker": "## [P362 | normal] 앞에 PI에서 검사결과 말했으면 뒤에서 안말해도 됨 (모든 내용 다 읽을 필요 없음)",
+      "paragraph_no": 362,
+      "style": "normal",
+      "heading": "앞에 PI에서 검사결과 말했으면 뒤에서 안말해도 됨 (모든 내용 다 읽을 필요 없음)",
+      "text": "## [P362 | normal] 앞에 PI에서 검사결과 말했으면 뒤에서 안말해도 됨 (모든 내용 다 읽을 필요 없음)"
+    },
+    {
+      "id": "P363",
+      "kind": "paragraph",
+      "source_order": 118,
+      "marker": "## [P363 | normal] 검사 수치 말할때 정확히 숫자로 (Hb가 감소해있고~ X 정확한 수치로)",
+      "paragraph_no": 363,
+      "style": "normal",
+      "heading": "검사 수치 말할때 정확히 숫자로 (Hb가 감소해있고~ X 정확한 수치로)",
+      "text": "## [P363 | normal] 검사 수치 말할때 정확히 숫자로 (Hb가 감소해있고~ X 정확한 수치로)"
+    },
+    {
+      "id": "P364",
+      "kind": "paragraph",
+      "source_order": 119,
+      "marker": "## [P364 | normal] 교과서 내용은 기본 + 개발중인 약물 같은거 요즘 논문 찾아보고 오는 애들이 있으면 좋겠다",
+      "paragraph_no": 364,
+      "style": "normal",
+      "heading": "교과서 내용은 기본 + 개발중인 약물 같은거 요즘 논문 찾아보고 오는 애들이 있으면 좋겠다",
+      "text": "## [P364 | normal] 교과서 내용은 기본 + 개발중인 약물 같은거 요즘 논문 찾아보고 오는 애들이 있으면 좋겠다"
+    },
+    {
+      "id": "P365",
+      "kind": "paragraph",
+      "source_order": 120,
+      "marker": "## [P365 | normal] 인턴 때 하는 노티 처럼 5-6문장 정도로 중요한 내용만 넣어서 발표",
+      "paragraph_no": 365,
+      "style": "normal",
+      "heading": "인턴 때 하는 노티 처럼 5-6문장 정도로 중요한 내용만 넣어서 발표",
+      "text": "## [P365 | normal] 인턴 때 하는 노티 처럼 5-6문장 정도로 중요한 내용만 넣어서 발표"
+    },
+    {
+      "id": "P366",
+      "kind": "paragraph",
+      "source_order": 121,
+      "marker": "## [P366 | normal] 조원들 끼리 서로 질문하라고 하시니 미리 서로 질문 답변 공유하는 것도 좋을 듯",
+      "paragraph_no": 366,
+      "style": "normal",
+      "heading": "조원들 끼리 서로 질문하라고 하시니 미리 서로 질문 답변 공유하는 것도 좋을 듯",
+      "text": "## [P366 | normal] 조원들 끼리 서로 질문하라고 하시니 미리 서로 질문 답변 공유하는 것도 좋을 듯\n6시 넘어서도 안끝나서 의국으로 자리 옮겨 마저 진행하다 6시 반 넘어서 끝남..\nPOMR 케이스 쓸 때 진단명 잘못된 경우 있었음.(Constitutional aplastic anemia라고 되어 있었는데 idiopathic aplastic anemia였음) 원래대로 월요일 오후 질문 타임있는 상황이면 꼭 미리 파악해서 질문드리는게 좋을듯"
+    },
+    {
+      "id": "P369",
+      "kind": "paragraph",
+      "source_order": 122,
+      "marker": "## [P369 | normal] 15-18조 B)",
+      "paragraph_no": 369,
+      "style": "normal",
+      "heading": "15-18조 B)",
+      "text": "## [P369 | normal] 15-18조 B)\n2시부터 임연정 교수님 외래 참여. 외래 끝나면 EMR보면서 외래 환자들 설명해주시고 POMR 발표 시작.\n아이패드 POMR보고 발표하고 교수님은 듣기만 하심. 발표하는 환자가 다 임연정 교수님 담당 환자라 환자의 Hx, Tx 등등 자세히 알고계셔서 발표 도중 끊어가시면서 계속 질문하심.\n발표하면서 줄임말 의학용어 쓰지 말라고 하심(EOI 라고 하지 말고 end of induction이라고 해라 등등). 날짜도 몇월몇일 하지말고 몇 년도인지까지 정확히 말하라고 하심. 쓸데없는 서술어 말고 듣기 좋게 깔끔하게 해라(~검사를 하였는데 ~결과가 나왔어서 -> ~검사 상 ~결과로 ~.)\n한명 발표 끝날 때마다 너네들끼리 질문 없냐고 하심."
+    },
+    {
+      "id": "P374",
+      "kind": "paragraph",
+      "source_order": 123,
+      "marker": "## [P374 | normal] 19-21조 B)",
+      "paragraph_no": 374,
+      "style": "normal",
+      "heading": "19-21조 B)",
+      "text": "## [P374 | normal] 19-21조 B)\n임연정 교수님 학회가셔서 오전 감염 일정만 진행했음."
+    },
+    {
+      "id": "P376",
+      "kind": "paragraph",
+      "source_order": 124,
+      "marker": "## [P376 | normal] 19-21조 A)",
+      "paragraph_no": 376,
+      "style": "normal",
+      "heading": "19-21조 A)",
+      "text": "## [P376 | normal] 19-21조 A)\n임연정 교수님 외래 2시 ~ 4시까지 참여. 이후 4시~5시 30분까지 POMR 발표. 5시 30분 ~ 6시 병동 회진. 이런 스케줄이었음.\n외래 때는 교수님께서 워낙 바쁘셔셔 특이 케이스 환자마다 중간중간 설명해주시는 거 말곤 머 없음.\nPOMR 발표는 모두가 처음이라 감이 안 왔지만.. \"짧게\" \"현재 시점 기준으로 레지던트가 교수님께 노티하는 느낌으로\" \"불필요한 거 다 쳐내고\" 가 포인트인 것 같음. 발표 후 POMR 유폴리오에 제출하면 됨."
+    },
+    {
+      "id": "P380",
+      "kind": "paragraph",
+      "source_order": 125,
+      "marker": "## [P380 | normal] 19-21조 C)",
+      "paragraph_no": 380,
+      "style": "normal",
+      "heading": "19-21조 C)",
+      "text": "## [P380 | normal] 19-21조 C)\n2시에 임연정 교수님 외래보는데 가끔씩 환자 보고나서 설명해주시고 질문도 하심. 예방접종 알아가면 좋긴 했을 듯. 대답 못해도 계속 친절하심.\n외래 후 바로 그 방에서 POMR 발표함. 우리가 한 거 우리만 보고 말로만 교수님께 전달해 드리면 됨. 교수님 상당히 자세히 물어보심. 자기가 조혈모세포이식한 환자 맡았거나 특이사항 있으면 강의록 봤나까지도 물어보시니 공부하고 가능하면 강의록도 읽으면 좋을 듯. 상당히 디테일하게 원하신다. 이후 5시 넘어 퇴근.\n그리고 매차례 발표 끝나고 학생들끼리 질문하길 원하심. 발표만 들으면 솔직히 못 알아들어서 질문도 잘 못하니 준비하고 싶으면 미리 각자 거 읽어가면 좋을 듯. 우린 서로 질문 하나 없었는데 계속 친절하심.\n-----------------------------------------------------------------------------------------------------------\n[2025 1 학기]"
+    },
+    {
+      "id": "P386",
+      "kind": "paragraph",
+      "source_order": 126,
+      "marker": "## [P386 | normal] 1-2조 1)",
+      "paragraph_no": 386,
+      "style": "normal",
+      "heading": "1-2조 1)",
+      "text": "## [P386 | normal] 1-2조 1)\n임연정 교수님 외래 참관(다같이). 진료가 길어지고 바빠서 중간엔 질문 딱히 없으시고 마지막에 질문 하나씩 하기."
+    },
+    {
+      "id": "P388",
+      "kind": "paragraph",
+      "source_order": 127,
+      "marker": "## [P388 | normal] 1-2조 2)",
+      "paragraph_no": 388,
+      "style": "normal",
+      "heading": "1-2조 2)",
+      "text": "## [P388 | normal] 1-2조 2)\n앞조와 동일."
+    },
+    {
+      "id": "P390",
+      "kind": "paragraph",
+      "source_order": 128,
+      "marker": "## [P390 | normal] 혈종 외래 들어갈 때는 꼭 마스크 껴야함!!!!",
+      "paragraph_no": 390,
+      "style": "normal",
+      "heading": "혈종 외래 들어갈 때는 꼭 마스크 껴야함!!!!",
+      "text": "## [P390 | normal] 혈종 외래 들어갈 때는 꼭 마스크 껴야함!!!!\n[금요일]"
+    },
+    {
+      "id": "P392",
+      "kind": "paragraph",
+      "source_order": 129,
+      "marker": "## [P392 | normal] 구성: [오전 아나필락시스 교육], [오후 신생아소생술]",
+      "paragraph_no": 392,
+      "style": "normal",
+      "heading": "구성: [오전 아나필락시스 교육], [오후 신생아소생술]",
+      "text": "## [P392 | normal] 구성: [오전 아나필락시스 교육], [오후 신생아소생술]\n[오전 아나필락시스 교육]\n[2026 1학기]"
+    },
+    {
+      "id": "P395",
+      "kind": "paragraph",
+      "source_order": 130,
+      "marker": "## [P395 | normal] 26년 9,10,11,12조 B-2)",
+      "paragraph_no": 395,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-2)",
+      "text": "## [P395 | normal] 26년 9,10,11,12조 B-2)\n전담 간호사분이 오셔서 네블라이져등 여러 기구 쓰는 방법 설명해주시고, 실습도 진행함. 부담없이 들어도 된다."
+    },
+    {
+      "id": "P397",
+      "kind": "paragraph",
+      "source_order": 131,
+      "marker": "## [P397 | normal] 26년 9,10,11,12조 B-1)",
+      "paragraph_no": 397,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-1)",
+      "text": "## [P397 | normal] 26년 9,10,11,12조 B-1)\n우리 조는 이날 수업 다 없어져서 공강이었음."
+    },
+    {
+      "id": "P399",
+      "kind": "paragraph",
+      "source_order": 132,
+      "marker": "## [P399 | normal] 26년 5,6,7,8조 B-3)",
+      "paragraph_no": 399,
+      "style": "normal",
+      "heading": "26년 5,6,7,8조 B-3)",
+      "text": "## [P399 | normal] 26년 5,6,7,8조 B-3)"
+    },
+    {
+      "id": "P400",
+      "kind": "paragraph",
+      "source_order": 133,
+      "marker": "## [P400 | normal] 공휴일",
+      "paragraph_no": 400,
+      "style": "normal",
+      "heading": "공휴일",
+      "text": "## [P400 | normal] 공휴일"
+    },
+    {
+      "id": "P401",
+      "kind": "paragraph",
+      "source_order": 134,
+      "marker": "## [P401 | normal] 26년 9,10,11,12조 B-2)",
+      "paragraph_no": 401,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-2)",
+      "text": "## [P401 | normal] 26년 9,10,11,12조 B-2)\n9:30에 의국에서 30분정도 진행함, 들은 내용과 소감 호흡기분과 자유기록에 추가해야 함."
+    },
+    {
+      "id": "P403",
+      "kind": "paragraph",
+      "source_order": 135,
+      "marker": "## [P403 | normal] 교육센터에서 나오신 선생님이 강의해주시고, 천식 흡입제랑 아나필락시스 에피네프린 주사 체험해봄. 재밌음 ㅎㅎ",
+      "paragraph_no": 403,
+      "style": "normal",
+      "heading": "교육센터에서 나오신 선생님이 강의해주시고, 천식 흡입제랑 아나필락시스 에피네프린 주사 체험해봄. 재밌음 ㅎㅎ",
+      "text": "## [P403 | normal] 교육센터에서 나오신 선생님이 강의해주시고, 천식 흡입제랑 아나필락시스 에피네프린 주사 체험해봄. 재밌음 ㅎㅎ"
+    },
+    {
+      "id": "P404",
+      "kind": "paragraph",
+      "source_order": 136,
+      "marker": "## [P404 | normal] 26년 9,10,11,12조 B-3)",
+      "paragraph_no": 404,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 B-3)",
+      "text": "## [P404 | normal] 26년 9,10,11,12조 B-3)\n아나필락시스 교육과 신생아 소생술 교육을 이미 저번주에 마친 상태로 아무 스케줄 없었으나 양은애 교수님께서 갑자기 부를 수 있으니 멀리가지 말라고 하심. 그래서 다들 주변/집에서 대기함.\n[2025 2 학기]"
+    },
+    {
+      "id": "P407",
+      "kind": "paragraph",
+      "source_order": 137,
+      "marker": "## [P407 | normal] 11-14조 B)",
+      "paragraph_no": 407,
+      "style": "normal",
+      "heading": "11-14조 B)",
+      "text": "## [P407 | normal] 11-14조 B)\n- 아나필락시스&천식 약제 사용법 교육. 오전 9시 반에 진행했음. 일정은 그때마다 다르니 조정 잘 하기. 간호사 선생님이 해주시고 우리는 다음주가 학교 행사라 첫주 오전에 함. 재밌음ㅎㅎ"
+    },
+    {
+      "id": "P409",
+      "kind": "paragraph",
+      "source_order": 138,
+      "marker": "## [P409 | normal] 15-18조 A)",
+      "paragraph_no": 409,
+      "style": "normal",
+      "heading": "15-18조 A)",
+      "text": "## [P409 | normal] 15-18조 A)\n아나필락시스&천식 약제 사용법 교육. 교육센터에서 나오신 간호사쌤이 진행해 주시고 직접 기구 사용해봄. 1시간 안에 끝남."
+    },
+    {
+      "id": "P411",
+      "kind": "paragraph",
+      "source_order": 139,
+      "marker": "## [P411 | normal] 19-21조 A)",
+      "paragraph_no": 411,
+      "style": "normal",
+      "heading": "19-21조 A)",
+      "text": "## [P411 | normal] 19-21조 A)\n아나필락시스 교육. 노부담."
+    },
+    {
+      "id": "P413",
+      "kind": "paragraph",
+      "source_order": 140,
+      "marker": "## [P413 | normal] 19-21조 C)",
+      "paragraph_no": 413,
+      "style": "normal",
+      "heading": "19-21조 C)",
+      "text": "## [P413 | normal] 19-21조 C)\nCpx 로 김현진 교수님이라 모두가 복통 예상했고 야마 그대로의 문제 오후 2시에 주고 4시부터 우리끼리 정한 순서대로 시험봤음. 의사 환자 역할은 교수님 맘대로.\n-----------------------------------------------------------------------------------------------------------\n[2025 1 학기]"
+    },
+    {
+      "id": "P417",
+      "kind": "paragraph",
+      "source_order": 141,
+      "marker": "## [P417 | normal] 1-2조)",
+      "paragraph_no": 417,
+      "style": "normal",
+      "heading": "1-2조)",
+      "text": "## [P417 | normal] 1-2조)\n정은희교수님이 직접 진행하시는 건 아니고, 아토피 교육센터에서 나오신 선생님들이 천식 흡입기 교육해주심. 부담없는 수업.\n[오후 신생아소생술 강의]\n[2026 1학기]"
+    },
+    {
+      "id": "P421",
+      "kind": "paragraph",
+      "source_order": 142,
+      "marker": "## [P421 | normal] 26년 9,10,11,12조 공통)",
+      "paragraph_no": 421,
+      "style": "normal",
+      "heading": "26년 9,10,11,12조 공통)",
+      "text": "## [P421 | normal] 26년 9,10,11,12조 공통)\n- 두번째 주 목요일 의국집담회 강의로 대체하심, 일정은 교수님께서 미리 말씀해주심\n[2025 2 학기]"
+    },
+    {
+      "id": "P424",
+      "kind": "paragraph",
+      "source_order": 143,
+      "marker": "## [P424 | normal] 11-14조 B)",
+      "paragraph_no": 424,
+      "style": "normal",
+      "heading": "11-14조 B)",
+      "text": "## [P424 | normal] 11-14조 B)\n-강미현 교수님이 진행. 40-50분만에 끝남. 질문 없으심. 빠르게 중요한 거 말씀해주심.\n-추가로 유폴리오는 보통 금요일 5시까지 다 제출한다고 보면 됨. 교수님이 따로 말씀해주시긴 하는데, 미리미리 해서 금요일 5시까지는 다 제출하자. 신지혜 교수님 NBS, 자습레포트 : 신생아 자유과제, POMR 2개 : 소아청소년과 POMR란, 조은정교수님 발열과제: 감염 자유과제, 주간 포트폴리오 전부 5시까지!!!! 제출."
+    },
+    {
+      "id": "P427",
+      "kind": "paragraph",
+      "source_order": 144,
+      "marker": "## [P427 | normal] 15-21조 B)",
+      "paragraph_no": 427,
+      "style": "normal",
+      "heading": "15-21조 B)",
+      "text": "## [P427 | normal] 15-21조 B)\n2시 의국에서 신지혜 교수님이 진행. 듣기만 하다가 40분정도만에 끝남."
+    },
+    {
+      "id": "P429",
+      "kind": "paragraph",
+      "source_order": 145,
+      "marker": "## [P429 | normal] 19-21조 B)",
+      "paragraph_no": 429,
+      "style": "normal",
+      "heading": "19-21조 B)",
+      "text": "## [P429 | normal] 19-21조 B)\n2시에 의국에서 신지혜 교수님이 진행하심. 4-50분만에 끝내주셨음.\n-----------------------------------------------------------------------------------------------------------\n[2025 1 학기]"
+    },
+    {
+      "id": "P433",
+      "kind": "paragraph",
+      "source_order": 146,
+      "marker": "## [P433 | normal] 1-2조)",
+      "paragraph_no": 433,
+      "style": "normal",
+      "heading": "1-2조)",
+      "text": "## [P433 | normal] 1-2조)\n3명강미현 교수님께서 cpx 끝나고 바로 진행해주셨음. 크게 부담은 없었고 열심히 들으면 됐는데 바로 다음 주에 신생아 분과 도는 조는 신지혜 교수님께서 자세히 물어보셨음. 대답 잘 못하니 저번주에 교육 들은 거 아니냐고 하심..\n(23년도 인계에 있는 장미영 교수님 질문 리스트입니다)"
+    },
+    {
+      "id": "T003",
+      "kind": "table",
+      "source_order": 147,
+      "marker": "### [Table 3]",
+      "table_no": 3,
+      "heading": "Table 3",
+      "text": "### [Table 3]\n| 작년까지 장미영 교수님 질문 ☺<br>※ 참고) 이전 인계상으로는 장미영 교수님 야마가 도움은 되는데, 사실 그날 입원한 환자들 위주로 많이 질문하신다고 합니다. 입원환자 EMR도 참고한다면 좀 더 나을 것 같아요.<br>1. omphalocele과 gastroschisis 각각의 특징 및 차이점<br>2. 모유로 전달되는 바이러스 종류(HIV, HBV, HCV, HSV, Cytomegalovirus)<br>3. 미숙아망막병증 screening 하는 주수<br>4. RDS인환아 x-ray 보면서 소견 1개씩 말해보기<br>5. 아이를 찍어놓은 x-ray : infantogram<br>6. bowel과 rectum에서 공기가 관찰되는데 걸리는 정상적인 시간 : 24시간<br>7. 폐가 전체적으로 하얗게 보이는 x-ray : total white out (RDS grade 4)<br>RDS x-ray G1 : reticular, GGO pattern, G2 : aerobronchogram, G3 : 심장과 가로막의 경계가 모호, G4 : total white out<br>8. RDS가 preterm에서 호발하는 가장 큰 이유는? surfactant 부족 ->소나 돼지에서 만든 인공 surfactant를 기도 내에 주입해 준다.<br>9. x-ray 폐사진에서 alveoli에는 공기가 못 들어가고 bronchiole에만 공기가 차 있는 것? air bronchogram<br>10. 신생아 호흡곤란 환자에서 RDS와 감별해야 하는 질환은? TTN, congenital pneumonia, 선천심장기형<br>11. 신생아 호흡부전이 생기면 호흡기/중추신경계 중 어느 문제인지 감별해야 한다.<br>12. RDS 치료:양압환기 해 주고, 안되면 surfactant 투여<br>13. 계면활성제 주입 시 어디로 주입하는가? 기도에 주입<br>14. 일반적인 RDS와 TTN의감별점 : preterm(RDS), term(TTN) - 다만 반드시는 아님!<br>15. 산모가 SLE일 경우 태아에게 주는 영향? IgG 자가 항체가 생기는 질환으로 태반을 통과할 수 있어 태아에 영향<br>16. 엄마가 HBsAg(+)인 경우 출산 후 신생아에게 어떤 처치해야 하는지? A) 12시간 내 면역글로불린 근주, HBV백신접종<br>17. 태아에게 수액을 투여할 때 고려해야 할 사항(소변량, insensible loss-땀, 피부증발하는수분, ongoing loss-토, 발열, 설사 등),<br>18. 생리적 체중감소(정의, 정상체중감소범위, 체중감소 시기, 왜 감소하는지)<br>과도한 체액과 태변이 배출되 생후 첫 3-4일간체 중이 10% 정도까지 감소<br>19. 양압환기 때 사용하는 도구인 flow-inflating bag, self-inflating bag, T-piece resuscitator 한국어로 의미가 뭔지?<br>20. 신생아 Brain MRI 보는 이유<br>21. 신생아 입위관영양 적응증,<br>22. PDA 환아의 치료법 |\n| --- |\n\n(소아동 3층 구조입니다. C-sec 있어서 수술실 들어갈 때 참고하세요.)"
+    }
+  ],
+  "audit": {
+    "raw_block_count": 147,
+    "paragraph_blocks": 144,
+    "table_blocks": 3,
+    "all_schedule_refs_exist": true,
+    "all_assignment_refs_exist": true,
+    "notes": [
+      "원문은 raw_blocks.text에 보존하고, 일정/과제 객체는 raw_source_refs로만 참조한다.",
+      "정확한 날짜는 전체 일정표/실습 시작일 확정 후 week_date_map에서 채운다."
+    ]
+  }
+}

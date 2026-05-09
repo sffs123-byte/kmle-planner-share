@@ -1,0 +1,363 @@
+{
+  "meta": {
+    "id": "pediatrics-official-notice-baseline-v1",
+    "subject": "소아청소년과",
+    "source_title": "소아청소년과 공지.pdf",
+    "source_path": "~/Desktop/의학과 공부 파일/본3/소아청소년과/인계/소아청소년과 공지.pdf",
+    "source_type": "professor_official_notice_pdf",
+    "extracted_text": ".tmp/peds_handoff_20260510/소아청소년과_공지_pdftotext_layout.txt",
+    "source_priority": 1,
+    "generated_at": "2026-05-10T06:41:00+09:00",
+    "note": "교수님 작성 공지 PDF를 시간표/평가/공통규칙의 canonical source로 사용. 선배 인계는 운영 보조/주의사항 layer로만 연결."
+  },
+  "student_context": {
+    "student": "배강렬",
+    "role": "전체 조장 아님. 2번째 조 내부 체크용.",
+    "total_students": 11,
+    "group_members": [
+      "박민석",
+      "장윤서",
+      "배강렬",
+      "김단아"
+    ],
+    "working_rotation": [
+      {
+        "week": 1,
+        "division": "B",
+        "label": "신생아/혈액종양/감염"
+      },
+      {
+        "week": 2,
+        "division": "C",
+        "label": "내분비유전/소화기영양/신경"
+      },
+      {
+        "week": 3,
+        "division": "A",
+        "label": "심장/알레르기·호흡기/중환자"
+      },
+      {
+        "week": 4,
+        "division": "공통",
+        "label": "CPX/OSCE/세종/포트폴리오"
+      }
+    ],
+    "needs_confirmation": "총조장 최종 로테이션표가 다르면 week/division mapping만 교체"
+  },
+  "official_common_rules": [
+    {
+      "id": "common-orientation",
+      "weeks": [
+        1
+      ],
+      "weekday": "월요일",
+      "time": "08:40-09:00",
+      "title": "소아청소년과 실습 OT + CPX OT",
+      "place": "소아청소년과 의국",
+      "source_excerpt": "오리엔테이션: 실습 첫 주 월요일 오전 8시40분-9시 의국 (소아과 전체 실습 및 + CPX OT)"
+    },
+    {
+      "id": "common-weekly-test",
+      "weeks": [
+        1,
+        2,
+        3
+      ],
+      "weekday": "월요일",
+      "time": "08:20-08:40",
+      "title": "실습시험 Pre-test/Post-test",
+      "place": "소아청소년과 의국",
+      "source_excerpt": "실습시험: 1-3주차 월 오전 8시20분 의국 / 시험1: 1-3주차 월요일, 8:20-8:40 (20분간) 시행."
+    },
+    {
+      "id": "common-morning-conference",
+      "weeks": [
+        1,
+        2,
+        3
+      ],
+      "weekday": "수요일/목요일",
+      "time": "08:20",
+      "title": "의국집담회/아침집담회",
+      "place": "소아청소년과 의국",
+      "source_excerpt": "의국집담회: 1-3주차 수/목 오전 8시20분 의국"
+    },
+    {
+      "id": "common-portfolio-weekly",
+      "weeks": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "weekday": "금요일",
+      "time": "17:00",
+      "title": "주간 포트폴리오 제출",
+      "place": "U-Folio",
+      "source_excerpt": "주간 포트폴리오: 매주 금요일 오후 5시까지"
+    },
+    {
+      "id": "common-final-portfolio",
+      "weeks": [
+        4
+      ],
+      "weekday": "금요일",
+      "time": "17:00",
+      "title": "최종 포트폴리오 제출",
+      "place": "U-Folio / 교육담당교수",
+      "source_excerpt": "최종 포트폴리오: 4주차 금요일 오후 5시까지 교육담당교수에게 제출"
+    },
+    {
+      "id": "common-face-case-report",
+      "weeks": [
+        4
+      ],
+      "weekday": "금요일",
+      "time": "12:00",
+      "title": "대면진료증례보고서 제출(소아청소년과에서 작성 시에만)",
+      "place": "교육담당 부책임 조은영 교수",
+      "source_excerpt": "대면증례보고서: 소아청소년과에서 작성 시에만 4주차 금요일 낮 12시까지... 기한 초과 불인정"
+    }
+  ],
+  "evaluation_baseline": {
+    "score_weights": [
+      {
+        "item": "실습 시험(Pre-test/Post-Test)",
+        "weight_percent": 30
+      },
+      {
+        "item": "CPX + OSCE",
+        "weight_percent": 40,
+        "note": "PDF 표상 CPX/OSCE 합산 40"
+      },
+      {
+        "item": "외래 예진 기록 + 예진 환자 평가",
+        "weight_percent": 20
+      },
+      {
+        "item": "개인 실습 평가(소그룹 평가)",
+        "weight_percent": 10
+      },
+      {
+        "item": "대면진료증례보고서",
+        "weight_percent": "P/F"
+      },
+      {
+        "item": "포트폴리오",
+        "weight_percent": "P/F"
+      }
+    ],
+    "pretest": {
+      "frequency": "1-3주 월요일 오전 총 3회",
+      "format": "주관식 5문제(각 1점) + 객관식 5문제(각 1점)",
+      "range": {
+        "1주차": "홍창의 1장~11장: 서론, 성장과 발달, 정신, 영양, 예방, 치료원칙, 수분, 유전-대사, 면역, 신생아",
+        "2주차": "12~15장: 감염, 소화기, 호흡기, 심혈관",
+        "3주차": "16~28장: 혈액-종양, 신요로, 내분비, 신경-근육, 골격, 알레르기, 결체조직, 피부, 안과, 손상, 통일"
+      },
+      "conference_reflection": "전 주 아침 집담회의 내용이 반영된 문제가 출제될 수 있음",
+      "non_pass": "60점 미만 재평가, 재시 60점 미만 F"
+    },
+    "cpx": {
+      "topics": [
+        "발열",
+        "복통",
+        "성장/발달 지연",
+        "예방접종",
+        "황달"
+      ],
+      "timing": "4주차 공통일정",
+      "pairing": "2인 1조, 1조당 10분 평가"
+    },
+    "osce": {
+      "items": [
+        "기본 심폐소생법",
+        "환자 상태 보고"
+      ],
+      "timing": "신생아/PICU 실습 및 개인실습평가 중 시행 가능"
+    },
+    "face_patient_requirement": "외래환자 매주 1명 총 3명 + 병동실습 입원환자 1명 = 총 4건 예진/대면 기록"
+  },
+  "division_b_official_slots": [
+    {
+      "slot_id": "b_mon_0820_test_and_0840_ot_if_week1",
+      "weekday": "월요일",
+      "time": "08:20-09:00",
+      "title": "실습시험 + 1주차 OT",
+      "place": "소아청소년과 의국",
+      "professors": [],
+      "official_basis": "시험1 08:20-08:40, 1주차 OT 08:40-09:00",
+      "handoff_role": "프테 후 병원학교 회의 참여 가능성 판단 보조"
+    },
+    {
+      "slot_id": "b_mon_am_hemonc",
+      "weekday": "월요일",
+      "time": "09:00-13:00",
+      "title": "혈액종양: 소아혈액종양병동 실습 / 완화의료 다학제회의 / 회진·특수검사 참관",
+      "place": "소아동 4층 소아혈액종양병동, 09:00 병원학교",
+      "professors": [
+        "임연정 교수"
+      ],
+      "official_basis": "B분과 월 오전 표",
+      "handoff_extract_policy": "2026 1학기 최신 B-1/B-2/B-3 중 운영 행동만 상세 접기: 병원학교 확인, 마스크, 녹음, 케이스 배정, 회진 가까이 보기"
+    },
+    {
+      "slot_id": "b_mon_pm_hemonc_patient_care",
+      "weekday": "월요일",
+      "time": "14:00-18:00",
+      "title": "혈액종양: 병동 실습 / 입원환자 대면진료",
+      "place": "소아동 4층 소아혈액종양병동",
+      "professors": [
+        "임연정 교수"
+      ],
+      "official_basis": "B분과 월 오후 표",
+      "handoff_extract_policy": "환자상태보고/질문/피드백 원문은 일정 상세에 연결하되, 과거 조별 취소·출장 사례는 source archive로만 보존"
+    },
+    {
+      "slot_id": "b_tue_am_nicu_ot",
+      "weekday": "화요일",
+      "time": "09:00-13:00",
+      "title": "신생아: NICU 실습, 신생아 진찰, 분만 및 처치 참관, 동영상 시청, 레포트/자기소개 작성, 회진참여, NICU OT",
+      "place": "신생아중환자실",
+      "professors": [
+        "신지혜 교수"
+      ],
+      "official_basis": "B분과 화 오전 표",
+      "handoff_extract_policy": "NICU 입장 동선, 크록스, 가운, 명부, PK책상, 과제 배정만 체크리스트화"
+    },
+    {
+      "slot_id": "b_tue_pm_nicu_kang_outpatient",
+      "weekday": "화요일",
+      "time": "14:00-18:00",
+      "title": "신생아: NICU 실습 + 강미현 교수 외래",
+      "place": "신생아중환자실 / 외래 6번방",
+      "professors": [
+        "장미영 교수",
+        "신지혜 교수",
+        "강미현 교수"
+      ],
+      "official_basis": "B분과 화 오후 표",
+      "handoff_extract_policy": "2명씩 교대, NICU 공백 최소화, 질문 1-2개만 노출"
+    },
+    {
+      "slot_id": "b_wed_0820_conference",
+      "weekday": "수요일",
+      "time": "08:20",
+      "title": "아침집담회",
+      "place": "소아청소년과 의국",
+      "professors": [],
+      "official_basis": "공통 수/목 08:20 의국집담회",
+      "handoff_extract_policy": "집담회 후 C-sec/NICU 이동 동선 연결"
+    },
+    {
+      "slot_id": "b_wed_am_nicu_nbs",
+      "weekday": "수요일",
+      "time": "09:00-13:00",
+      "title": "신생아: NICU 실습 / New Ballard score",
+      "place": "신생아중환자실",
+      "professors": [
+        "강미현 교수",
+        "신지혜 교수"
+      ],
+      "official_basis": "B분과 수 오전 표",
+      "handoff_extract_policy": "C-sec 참관 여부는 변동 슬롯으로. NBS는 교수 지시 타이밍 우선."
+    },
+    {
+      "slot_id": "b_wed_pm_nicu",
+      "weekday": "수요일",
+      "time": "14:00-18:00",
+      "title": "신생아: NICU 실습",
+      "place": "신생아중환자실",
+      "professors": [
+        "장미영 교수",
+        "강미현 교수",
+        "신지혜 교수"
+      ],
+      "official_basis": "B분과 수 오후 표",
+      "handoff_extract_policy": "POMR 환아 진찰, NBS 보강, 장미영 교수 질문 대비를 체크리스트로만 노출"
+    },
+    {
+      "slot_id": "b_thu_0820_conference",
+      "weekday": "목요일",
+      "time": "08:20",
+      "title": "아침집담회",
+      "place": "소아청소년과 의국",
+      "professors": [],
+      "official_basis": "공통 수/목 08:20 의국집담회",
+      "handoff_extract_policy": "집담회 후 외래 이동 연결"
+    },
+    {
+      "slot_id": "b_thu_am_infection",
+      "weekday": "목요일",
+      "time": "09:00-13:00",
+      "title": "감염: 조은영 교수 외래 예진, mini-lecture(소아감염질환)",
+      "place": "외래 3번방(공식표) / 인계상 5번방 사례 다수",
+      "professors": [
+        "조은영 교수"
+      ],
+      "official_basis": "B분과 목 오전 표",
+      "handoff_extract_policy": "공식 장소는 3번방으로 저장, 인계상 5번방은 변동/확인 필요 note로 표시"
+    },
+    {
+      "slot_id": "b_thu_pm_hemonc_outpatient",
+      "weekday": "목요일",
+      "time": "14:00-18:00",
+      "title": "혈액종양: 임연정 교수 외래, 소아혈액종양질환 신환 예진",
+      "place": "외래 7번방",
+      "professors": [
+        "임연정 교수"
+      ],
+      "official_basis": "B분과 목 오후 표",
+      "handoff_extract_policy": "POMR/노티 피드백은 assignment slot으로 연결. 발표 팁은 checklist, 긴 과거 사례는 접기."
+    },
+    {
+      "slot_id": "b_fri_common_am",
+      "weekday": "금요일",
+      "time": "09:00-13:00",
+      "title": "공통: 대면진료실습/보충학습/공통강의(2주차 오전 강의 자리)",
+      "place": "의국",
+      "professors": [],
+      "official_basis": "B분과 금 오전 표 + 각주: 2주차 금 오전 아나필락시스 교육",
+      "handoff_extract_policy": "우리 1주차 B분과에서는 고정 아나필락시스 슬롯으로 잠그지 말고, 일정 변동/추후확인 슬롯으로 둠"
+    },
+    {
+      "slot_id": "b_fri_common_pm",
+      "weekday": "금요일",
+      "time": "14:00-18:00",
+      "title": "공통: 대면진료실습/보충학습/공통강의(1주차 오후 신생아 소생술 강의)",
+      "place": "의국",
+      "professors": [
+        "강미현 교수",
+        "신지혜 교수"
+      ],
+      "official_basis": "B분과 금 오후 표 + 각주: 1주차 금 오후 신생아 소생술 강의",
+      "handoff_extract_policy": "B 인계의 금요일 내용 중 신생아소생술 관련만 연결. 아나필락시스는 공통 2주차 이벤트로 이동 후보."
+    }
+  ],
+  "handoff_visibility_policy": {
+    "always_show": [
+      "공식 시간표",
+      "장소",
+      "담당교수",
+      "당일 필수 체크리스트",
+      "마감/제출 위치"
+    ],
+    "show_collapsed_detail": [
+      "2026 1학기 최신 인계의 실제 동선",
+      "교수님별 질문/피드백 포인트",
+      "과제 작성 팁"
+    ],
+    "archive_only": [
+      "2025 이전 반복 인계",
+      "개별 조의 취소/출장/공휴일 사례",
+      "감상/농담/귀여움 등 실행과 무관한 내용",
+      "서로 중복되는 장소 설명"
+    ],
+    "conflict_rule": "공식 PDF와 인계가 충돌하면 카드 기본값은 공식 PDF. 인계 내용은 '현장 변동 가능/최근 사례'로 표시."
+  },
+  "immediate_corrections_to_previous_b_plan": [
+    "금요일 오전 아나필락시스 교육은 B분과 1주차 고정 슬롯이 아니라 공식상 2주차 금요일 오전 공통강의다. B분과 DB에서는 floating/common lecture로 이동한다.",
+    "목요일 오전 조은영 교수님 외래 장소는 공식표상 외래 3번방, 인계상 5번방 사례가 많으므로 '공식 3번방 / 현장 확인 필요'로 표기한다.",
+    "B분과 인계의 32페이지 원문은 앱 메인에 풀노출하지 않는다. 최신 2026 원문만 우선 접고, 오래된 인계는 source archive 검색용으로 둔다."
+  ]
+}

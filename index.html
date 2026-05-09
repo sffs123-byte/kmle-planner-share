@@ -2402,6 +2402,7 @@
           <button class="btn btn-secondary" id="loadCanaryBtn">4월 Canary 세팅</button>
           <button class="btn btn-secondary" id="loadRespBundleBtn">호흡기 실습 불러오기</button>
           <button class="btn btn-secondary" id="loadCardioBundleBtn">심장내과 실습 불러오기</button>
+          <button class="btn btn-secondary" id="loadPedsBundleBtn">소아청소년과 실습 불러오기</button>
           <button class="btn btn-secondary" id="exportBtn">데이터 내보내기</button>
           <label class="btn btn-ghost" for="importInput">데이터 가져오기</label>
           <input id="importInput" type="file" accept="application/json" class="sr-only" />
@@ -2799,8 +2800,8 @@
 
   <script>
     const STORAGE_KEY = 'kmlePlannerState.v2';
-    const APP_VERSION = '20260428T182815Z';
-    const APP_VERSION_LABEL = '2026-04-29 03:28 KST';
+    const APP_VERSION = '20260510T074300Z';
+    const APP_VERSION_LABEL = '2026-05-10 07:43 KST';
     const STAGES = [
       { id: 'lecture', label: '강의 듣기', short: '강의', note: '강의/팟캐스트/기본 인강 소화' },
       { id: 'framework', label: '개념 틀 짜기', short: '개념틀', note: '총정리 구조, 도식, 로직 프레임 정리' },
@@ -8027,6 +8028,20 @@
       } catch (error) {
         console.error(error);
         alert('심장내과 실습 bundle 불러오기에 실패했어. 서버에서 열었는지, 파일 경로가 맞는지 확인해줘.');
+      }
+    });
+
+    byId('loadPedsBundleBtn').addEventListener('click', async () => {
+      if (location.protocol === 'file:') {
+        alert('파일로 직접 열었을 때는 자동 fetch가 막힐 수 있어. `데이터 가져오기`로 bundle 파일을 직접 선택해줘.');
+        return;
+      }
+      try {
+        await loadPlannerBundleFromUrl('./data/clerkships/bundles/pediatrics_2026_05_track_bca_content_handoff_v1.bundle.json');
+        alert('소아청소년과 실습 bundle을 불러왔어. 실습 캘린더 탭으로 이동했어.');
+      } catch (error) {
+        console.error(error);
+        alert('소아청소년과 실습 bundle 불러오기에 실패했어. 서버에서 열었는지, 파일 경로가 맞는지 확인해줘.');
       }
     });
 

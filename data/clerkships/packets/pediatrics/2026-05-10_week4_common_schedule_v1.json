@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "id": "pediatrics-week4-common-schedule-v1",
+    "source": "user-attached official timetable image: 실습 공통 일정 4주차: CPX, 세종 실습 (12인)",
+    "generated_at": "2026-05-10T06:59:00+09:00",
+    "role": "4주차 CPX/세종 공식 시간표 baseline"
+  },
+  "week4_slots": [
+    {
+      "weekday": "월요일",
+      "site": "대전",
+      "time": "09:00-13:00",
+      "title": "CPX #1",
+      "place": "대전 소아동 2층 의국",
+      "intensity": "high",
+      "score_link": ["CPX/OSCE 40%"]
+    },
+    {
+      "weekday": "월요일",
+      "site": "대전",
+      "time": "14:00-18:00",
+      "title": "CPX #2",
+      "place": "대전 소아동 2층 의국",
+      "intensity": "high",
+      "score_link": ["CPX/OSCE 40%"]
+    },
+    {
+      "weekday": "화요일",
+      "site": "세종",
+      "time": "10:00-16:00 overall",
+      "title": "세종 실습일",
+      "place": "세종 충남대병원",
+      "intensity": "medium_high",
+      "score_link": ["세종 실습", "증례토의/포트폴리오 가능"]
+    },
+    {
+      "weekday": "화요일",
+      "site": "세종",
+      "time": "09:00-13:00",
+      "title": "세종 소아청소년과 OT + NICU 참관",
+      "professors": ["김지나 교수", "이병국 교수", "윤영미 교수"],
+      "place": "세종 1층 소아청소년센터 / 세종 10층 의국 / 3층 신생아중환자실",
+      "intensity": "medium_high",
+      "score_link": ["세종 실습", "신생아/NICU 경험"]
+    },
+    {
+      "weekday": "화요일",
+      "site": "세종",
+      "time": "14:00-18:00",
+      "title": "소아신장 Mini-lecture",
+      "professors": ["민지수 교수"],
+      "place": "세종 10층 의국",
+      "intensity": "medium",
+      "score_link": ["포트폴리오/세종 실습"]
+    },
+    {
+      "weekday": "수요일",
+      "site": "세종",
+      "time": "09:00-13:00",
+      "title": "소아심장 Mini-lecture",
+      "professors": ["김지나 교수"],
+      "place": "세종 10층 의국",
+      "intensity": "medium",
+      "score_link": ["포트폴리오/세종 실습"]
+    },
+    {
+      "weekday": "수요일",
+      "site": "세종",
+      "time": "14:00-18:00",
+      "title": "CPX #3",
+      "place": "세종 10층 의국",
+      "intensity": "high",
+      "score_link": ["CPX/OSCE 40%"]
+    },
+    {
+      "weekday": "목요일",
+      "site": "세종",
+      "time": "09:00-13:00",
+      "title": "병동 증례토의",
+      "professors": ["증례 담당교수"],
+      "place": "세종 10층 의국",
+      "intensity": "high",
+      "score_link": ["세종 증례토의", "개인 실습 평가/포트폴리오"]
+    },
+    {
+      "weekday": "목요일",
+      "site": "세종",
+      "time": "14:00-18:00",
+      "title": "CPX #4",
+      "place": "세종 10층 의국",
+      "intensity": "high",
+      "score_link": ["CPX/OSCE 40%"]
+    },
+    {
+      "weekday": "금요일",
+      "site": "대전",
+      "time": "09:00-13:00",
+      "title": "CPX #5 + 대면진료증례보고서 제출",
+      "place": "대전 소아동 2층 의국",
+      "intensity": "highest",
+      "score_link": ["CPX/OSCE 40%", "대면진료증례보고서 P/F"]
+    },
+    {
+      "weekday": "금요일",
+      "site": "대전",
+      "time": "14:00-18:00",
+      "title": "소아청소년과 실습 피드백 / 재시(해당자) / 포트폴리오 제출",
+      "professors": ["조은영 교수"],
+      "place": "대전 소아동 2층 의국",
+      "intensity": "highest_deadline",
+      "score_link": ["포트폴리오 P/F", "재시/피드백"]
+    }
+  ],
+  "planning_implications": [
+    "4주차는 CPX 5개와 세종 실습이 함께 있어 국시 공부 시간을 거의 기대하기 어렵다.",
+    "CPX 5개 주제는 3주차 주말 전까지 1회독/스크립트 정리가 끝나 있어야 한다.",
+    "대면진료증례보고서가 소아에서 걸리면 금요일 12:00 제출이므로 4주차에 쓰기 시작하면 늦다.",
+    "최종 포트폴리오는 금요일 17:00 마감이므로 4주차 금요일 오전 CPX #5 전까지 대부분 정리되어 있어야 한다."
+  ]
+}
