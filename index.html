@@ -2402,7 +2402,6 @@
           <button class="btn btn-secondary" id="loadCanaryBtn">4월 Canary 세팅</button>
           <button class="btn btn-secondary" id="loadRespBundleBtn">호흡기 실습 불러오기</button>
           <button class="btn btn-secondary" id="loadCardioBundleBtn">심장내과 실습 불러오기</button>
-          <button class="btn btn-secondary" id="loadPedsBundleBtn">소아청소년과 실습 불러오기</button>
           <button class="btn btn-secondary" id="exportBtn">데이터 내보내기</button>
           <label class="btn btn-ghost" for="importInput">데이터 가져오기</label>
           <input id="importInput" type="file" accept="application/json" class="sr-only" />
@@ -2690,37 +2689,51 @@
       <div class="panel" style="padding:28px;">
         <div class="panel-header">
           <div>
-            <div class="panel-title">퀴즈/실기 도구 모음</div>
-            <div class="panel-subtitle">Anki SRS 퀴즈와 CPX 대본 공유보드를 한곳에서 연다.</div>
+            <div class="panel-title">퀴즈 모음</div>
+            <div class="panel-subtitle">Anki SRS 방식의 과목별 Pre-test 퀴즈</div>
           </div>
         </div>
         <div id="quizGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:20px;">
-          <a href="./cpx-script-board.html?v=20260429T100232Z" target="_blank" style="text-decoration:none;">
-            <div class="quiz-card" style="background:linear-gradient(135deg,#f8fbff 0%,#eef4ff 100%);border:1px solid #bfdbfe;border-radius:var(--radius-lg);padding:22px 20px;cursor:pointer;transition:box-shadow 0.18s,transform 0.18s;" onmouseover="this.style.boxShadow='0 10px 32px rgba(37,74,145,0.18)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
-              <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-                <span style="font-size:1.5rem;">📋</span>
-                <span style="font-weight:800;font-size:0.97rem;color:var(--text);">CPX 대본 공유보드</span>
-              </div>
-              <div style="color:var(--muted);font-size:0.82rem;margin-bottom:10px;">58개 세부 CC · v12 Quick Sheet 미리보기 · Supabase 실시간 공유 편집</div>
-              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                <span style="background:#dbeafe;color:#254a91;font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">CPX</span>
-                <span style="background:#f0fdf4;color:var(--green);font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">Realtime</span>
-                <span style="background:#fff7ed;color:#ea580c;font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">대본 편집</span>
-              </div>
-            </div>
-          </a>
-          <a href="./quizzes/소아청소년과_1주차_pretest_quiz.html?v=20260510T0845" target="_blank" style="text-decoration:none;">
+          <a href="./quizzes/소아청소년과_1주차_pretest_quiz.html?v=20260510T153727Z" target="_blank" style="text-decoration:none;">
             <div class="quiz-card" style="background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px 20px;cursor:pointer;transition:box-shadow 0.18s,transform 0.18s;" onmouseover="this.style.boxShadow='0 8px 28px rgba(47,109,246,0.13)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
               <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
                 <span style="font-size:1.5rem;">🧸</span>
                 <span style="font-weight:800;font-size:0.97rem;color:var(--text);">소아청소년과 1주차 Pretest</span>
               </div>
-              <div style="color:var(--muted);font-size:0.82rem;margin-bottom:10px;">actual 104문항 + 제작 drill 50문항 · strict dedup badge · IVIG 갈림길 표시</div>
+              <div style="color:var(--muted);font-size:0.82rem;margin-bottom:10px;">actual/2023/HI actual 119문항 + HI 보강 74문항 · 제작 drill 제거</div>
               <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                <span style="background:var(--primary-soft);color:var(--primary);font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">154문항</span>
+                <span style="background:var(--primary-soft);color:var(--primary);font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">193문항</span>
                 <span style="background:#f0fdf4;color:var(--green);font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">SRS</span>
-                <span style="background:#f5f3ff;color:#7c3aed;font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">actual+drill</span>
+                <span style="background:#f5f3ff;color:#7c3aed;font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">actual+HI</span>
                 <span style="background:#fff7ed;color:#ea580c;font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">중복/변형 표시</span>
+              </div>
+            </div>
+          </a>
+          <a href="./quizzes/소아_예방접종_암기퀴즈.html" target="_blank" style="text-decoration:none;">
+            <div class="quiz-card" style="background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px 20px;cursor:pointer;transition:box-shadow 0.18s,transform 0.18s;" onmouseover="this.style.boxShadow='0 8px 28px rgba(47,109,246,0.13)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                <span style="font-size:1.5rem;">💉</span>
+                <span style="font-weight:800;font-size:0.97rem;color:var(--text);">소아 예방접종 암기 SRS</span>
+              </div>
+              <div style="color:var(--muted);font-size:0.82rem;margin-bottom:10px;">생백신 구호 · 동시접종/4주 rule · 금기/주의사항 · 원본 이미지 앵커</div>
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="background:var(--primary-soft);color:var(--primary);font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">30문항</span>
+                <span style="background:#f0fdf4;color:var(--green);font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">SRS</span>
+                <span style="background:#fff7ed;color:#ea580c;font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">예방접종</span>
+              </div>
+            </div>
+          </a>
+          <a href="./quizzes/국시_필기대비_순환기_퀴즈.html" target="_blank" style="text-decoration:none;">
+            <div class="quiz-card" style="background:var(--surface-strong);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px 20px;cursor:pointer;transition:box-shadow 0.18s,transform 0.18s;" onmouseover="this.style.boxShadow='0 8px 28px rgba(47,109,246,0.13)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                <span style="font-size:1.5rem;">🫀</span>
+                <span style="font-weight:800;font-size:0.97rem;color:var(--text);">국시 필기대비 순환기 SRS</span>
+              </div>
+              <div style="color:var(--muted);font-size:0.82rem;margin-bottom:10px;">Needle/Biopsy 정의 · 진단명 기준 · Allen 하이라이트 암기 포인트</div>
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="background:var(--primary-soft);color:var(--primary);font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">180카드</span>
+                <span style="background:#f0fdf4;color:var(--green);font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">SRS</span>
+                <span style="background:#fff7ed;color:#ea580c;font-size:0.76rem;font-weight:700;padding:3px 10px;border-radius:999px;">정의+하이라이트</span>
               </div>
             </div>
           </a>
@@ -2780,7 +2793,7 @@
             </div>
           </a>
         </div>
-        <p style="color:var(--muted);font-size:0.82rem;margin-top:24px;">새 과목 퀴즈/암기 도구는 quizzes/ 폴더에 HTML 추가 후 이 목록에 카드를 추가하세요. CPX 공유보드는 루트의 cpx-script-board.html에서 관리합니다.</p>
+        <p style="color:var(--muted);font-size:0.82rem;margin-top:24px;">새 과목 퀴즈/암기 도구는 quizzes/ 폴더에 HTML 추가 후 이 목록에 카드를 추가하세요.</p>
       </div>
     </section>
 
@@ -2815,8 +2828,8 @@
 
   <script>
     const STORAGE_KEY = 'kmlePlannerState.v2';
-    const APP_VERSION = '20260510T153740Z';
-    const APP_VERSION_LABEL = '2026-05-11 00:37 KST';
+    const APP_VERSION = '20260510T161650Z';
+    const APP_VERSION_LABEL = '2026-05-11 01:16 KST';
     const STAGES = [
       { id: 'lecture', label: '강의 듣기', short: '강의', note: '강의/팟캐스트/기본 인강 소화' },
       { id: 'framework', label: '개념 틀 짜기', short: '개념틀', note: '총정리 구조, 도식, 로직 프레임 정리' },
@@ -4199,25 +4212,7 @@
     }
 
     function normalizeProfessorName(name) {
-      return String(name || '')
-        .replace(/\s*교수님\s*등\s*$/u, '')
-        .replace(/\s*교수님\s*$/u, '')
-        .replace(/\s+등\s*$/u, '')
-        .trim();
-    }
-
-    function isLikelyProfessorPersonName(name, knownNames = null) {
-      const clean = normalizeProfessorName(name)
-        .replace(/\s*교수님\s*등\s*$/u, '')
-        .replace(/\s+등\s*$/u, '')
-        .trim();
-      if (!clean) return false;
-      if (knownNames instanceof Set && knownNames.has(clean)) return true;
-      if (/\s/.test(clean)) return false;
-      if (/[0-9]/.test(clean)) return false;
-      if (/(센터|의국|병동|외래|공통|교육|치프|선생님|실습|분과|조|과제|수업|평가)/u.test(clean)) return false;
-      if (!/^[가-힣]{2,4}$/u.test(clean)) return false;
-      return true;
+      return String(name || '').replace(/\s*교수님\s*$/u, '').trim();
     }
 
     function professorAvatarText(name) {
@@ -4239,7 +4234,6 @@
       const map = new Map();
       const fixedInfo = bundle.fixed_info || {};
       const sessionList = bundle.sessions || [];
-      const knownProfessorNames = new Set((fixedInfo.professor_directory || []).map(item => normalizeProfessorName(item.name)).filter(Boolean));
       const splitNames = (value) => String(value || '').split(/[\/,]|·/g).map(name => normalizeProfessorName(name)).filter(Boolean);
 
       const ensure = (name, patch = {}) => {
@@ -4280,9 +4274,6 @@
       (fixedInfo.professor_directory || []).forEach(item => {
         ensure(item.name, {
           site: item.site || '',
-          modes: item.modes || [],
-          roles: item.roles || [],
-          sourceRefs: item.source_refs || item.sourceRefs || [],
           contactHint: item.contact_note || '개별 연락은 해당 일정의 확인 문자/조장 공지 흐름을 우선 참고',
           phone: item.phone || '',
           contactLabel: item.contact_label || '연락처',
@@ -4306,7 +4297,6 @@
 
       sessionList.forEach(session => {
         splitNames(session.professor || '').forEach(professor => {
-          if (!isLikelyProfessorPersonName(professor, knownProfessorNames)) return;
           const role = session.title?.includes('발표') ? '발표/평가' : (session.title?.includes('CPX') ? 'CPX/수업' : (session.title?.includes('외래') ? '외래' : (session.title?.includes('PCI') || session.title?.includes('시술') ? '시술/참관' : '수업')));
           ensure(professor, {
             site: session.site || '',
@@ -4560,10 +4550,6 @@
 
     function pciOutpatientGuideForBundle(bundle) {
       return bundle?.fixed_info?.pci_outpatient_guide || bundle?.analysis_appendix?.pci_outpatient_assets_v1 || null;
-    }
-
-    function assignmentSubmissionHubForBundle(bundle) {
-      return bundle?.fixed_info?.assignment_submission_hub || null;
     }
 
     function renderCopyableCardListHtml(entries, emptyMessage = '복사할 문구가 아직 없다.') {
@@ -6538,7 +6524,6 @@
       const assignmentChecklist = assignmentChecklistForWeek(weekDays);
       const bundle = bundleForWeek(weekDays);
       const fixedInfo = bundle?.fixed_info || {};
-      const assignmentSubmissionHub = assignmentSubmissionHubForBundle(bundle);
       const checklistBundleId = bundle?.meta?.clerkship_id || '';
       const checklistSummary = assignmentChecklist ? checklistProgress(checklistBundleId, assignmentChecklist) : { total: 0, done: 0 };
       const hasSejongContext = hasSejongContextForWeek(weekDays);
@@ -6567,8 +6552,7 @@
                 <button class="btn btn-small ${activeCalendarSummaryFilter === 'presentation_exam' ? 'btn-secondary' : 'btn-ghost'}" onclick="setCalendarSummaryFilter('presentation_exam')">발표·시험 ${categoryCounts.presentation_exam || 0}</button>
                 <button class="btn btn-small ${activeCalendarSummaryFilter === 'chief_admin' ? 'btn-secondary' : 'btn-ghost'}" onclick="setCalendarSummaryFilter('chief_admin')">조장·행정 ${categoryCounts.chief_admin || 0}</button>
                 ${locationGuide ? `<button class="btn btn-small btn-ghost" onclick="openCalendarLocationGuide('${weekKey}')">장소 지도 ${locationGuide.counts?.places || 0}</button>` : ''}
-                ${assignmentSubmissionHub ? `<button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'assignment_hub')">과제 제출물 허브 ${assignmentSubmissionHub.counts?.items || (assignmentSubmissionHub.items || []).length}</button>` : ''}
-                <button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'basic_info')">${escapeHtml(fixedInfo.basic_info_title || `${bundle?.meta?.subject || '실습'} 기본정보`)}</button>
+                <button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'basic_info')">심장내과 기본정보</button>
                 ${fixedInfo.evaluation_score_weights ? `<button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'evaluation_scores')">평가 비중</button>` : ''}
                 ${pciOutpatientGuideForBundle(bundle) ? `<button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'pci_outpatient')">PCI/외래 가이드</button>` : ''}
                 ${communicationGuideForBundle(bundle)?.day_notices?.length ? `<button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'day_notices')">요일별 공지</button>` : ''}
@@ -6848,101 +6832,6 @@
         `;
       }
 
-      if (panelKey === 'assignment_hub') {
-        const hub = assignmentSubmissionHubForBundle(bundle);
-        const items = Array.isArray(hub?.items) ? hub.items : [];
-        const assignments = Array.isArray(bundle?.assignments) ? bundle.assignments : [];
-        const sessions = Array.isArray(bundle?.sessions) ? bundle.sessions : [];
-        const assignmentById = (id) => assignments.find(item => item.id === id) || null;
-        const sessionById = (id) => sessions.find(item => item.id === id) || null;
-        const formatDateTimeLabel = (value) => {
-          const raw = String(value || '').trim();
-          if (!raw) return '';
-          const [datePart, timePart = ''] = raw.split('T');
-          if (!/^\d{4}-\d{2}-\d{2}$/.test(datePart)) return raw;
-          return `${formatDateLabel(parseIsoDate(datePart))}${timePart ? ` ${timePart.slice(0, 5)}` : ''}`;
-        };
-        const lineListHtml = (lines, empty = '등록된 내용이 아직 없다.') => Array.isArray(lines) && lines.length
-          ? `<ul>${lines.map(line => `<li>${escapeHtml(line)}</li>`).join('')}</ul>`
-          : `<div class="empty">${escapeHtml(empty)}</div>`;
-        const assignmentRowsHtml = (assignmentIds) => {
-          const rows = (assignmentIds || []).map(assignmentById).filter(Boolean);
-          if (!rows.length) return `<div class="reference-info-line">bundle assignment 연결 전</div>`;
-          return rows.map(assignment => `<div class="reference-info-line"><strong>${escapeHtml(assignment.name || '')}</strong>: ${escapeHtml(formatDateTimeLabel(assignment.hard_deadline) || assignment.raw_deadline || '마감 확인')}${assignment.format ? ` · ${escapeHtml(assignment.format)}` : ''}</div>`).join('');
-        };
-        const linkedSessionsHtml = (sessionIds) => {
-          const rows = (sessionIds || []).map(sessionById).filter(Boolean);
-          if (!rows.length) return `<div class="reference-info-line">연결 일정 정리 중</div>`;
-          return rows.slice(0, 5).map(session => `<div class="reference-info-line"><strong>${escapeHtml(formatDateLabel(parseIsoDate(session.date)))}</strong>: ${escapeHtml(session.time_label || '')} · ${escapeHtml(session.title || '')}</div>`).join('');
-        };
-        const priorityBorder = (priority) => priority === '최상' ? '#dc2626' : (priority === '상' ? '#d97706' : '#2563eb');
-        return `
-          <div class="detail-screen-panel">
-            <div class="detail-screen-head">
-              <button class="detail-screen-back" onclick="openCalendarSummaryDetail('${weekKey}')">← 종합으로</button>
-              <button class="detail-screen-close" onclick="closeCalendarDetailScreen()" aria-label="닫기">✕</button>
-            </div>
-            <div class="detail-screen-body">
-              <div class="detail-screen-hero">
-                <div class="badge-row">
-                  <span class="calendar-mini-chip">제출물 ${items.length}</span>
-                  <span class="calendar-mini-chip">최상 ${hub?.counts?.critical || items.filter(item => item.priority === '최상').length}</span>
-                  <span class="calendar-mini-chip">U-Folio ${hub?.counts?.u_folio_items || 0}</span>
-                </div>
-                <div class="detail-screen-title">${escapeHtml(hub?.title || '과제 제출물 허브')}</div>
-                <div class="detail-screen-summary">${escapeHtml(hub?.subtitle || '제출물 기준으로 마감과 제출 경로를 정리한다.')}</div>
-              </div>
-              <div class="detail-screen-section">
-                <h4>운영 원칙</h4>
-                ${lineListHtml(hub?.operating_rule || [])}
-              </div>
-              <div class="detail-screen-stack">
-                ${items.map(item => `
-                  <article class="detail-screen-section" style="border-left:4px solid ${priorityBorder(item.priority)};">
-                    <div class="badge-row" style="margin-bottom:8px; gap:6px;">
-                      <span class="calendar-mini-chip">${escapeHtml(item.category || '제출물')}</span>
-                      <span class="calendar-mini-chip">${escapeHtml(item.week_scope || '전 기간')}</span>
-                      <span class="calendar-mini-chip">${escapeHtml(item.priority || '우선순위')}</span>
-                      ${item.needs_confirmation ? `<span class="calendar-mini-chip" style="background:#fff7ed; color:#9a3412; border-color:#fdba74;">확인 필요</span>` : ''}
-                    </div>
-                    <div class="item-title" style="font-size:17px; margin-bottom:4px;">${escapeHtml(item.title || '제출물')}</div>
-                    <div class="item-meta" style="margin-bottom:12px;">${escapeHtml(item.deadline_label || '마감 확인')} · ${escapeHtml(item.score_link || '')}</div>
-                    <div class="reference-info-grid" style="margin-top:0;">
-                      <div class="reference-info-card">
-                        <h5>마감 / 제출 경로</h5>
-                        <div class="reference-info-list">
-                          ${assignmentRowsHtml(item.assignment_ids || [])}
-                          ${item.submission_route ? `<div class="reference-info-line"><strong>제출/확인</strong>: ${escapeHtml(item.submission_route)}</div>` : ''}
-                          ${item.start_rule ? `<div class="reference-info-line"><strong>시작 기준</strong>: ${escapeHtml(item.start_rule)}</div>` : ''}
-                        </div>
-                      </div>
-                      <div class="reference-info-card">
-                        <h5>연결 일정</h5>
-                        <div class="reference-info-list">${linkedSessionsHtml(item.linked_session_ids || [])}</div>
-                      </div>
-                    </div>
-                    <div class="detail-screen-stack" style="margin-top:12px; gap:10px;">
-                      <div class="detail-screen-section" style="margin-top:0; background:rgba(255,255,255,0.6);">
-                        <h4>필수 재료</h4>
-                        ${lineListHtml(item.must_collect || [])}
-                      </div>
-                      <div class="detail-screen-section" style="margin-top:0; background:rgba(255,255,255,0.6);">
-                        <h4>위험 포인트</h4>
-                        ${lineListHtml(item.risk || [])}
-                      </div>
-                      <div class="detail-screen-section" style="margin-top:0; background:rgba(255,255,255,0.6);">
-                        <h4>다음 행동</h4>
-                        ${lineListHtml(item.next_actions || [])}
-                      </div>
-                    </div>
-                  </article>
-                `).join('')}
-              </div>
-            </div>
-          </div>
-        `;
-      }
-
       if (panelKey === 'evaluation_scores') {
         const evalGuide = fixedInfo.evaluation_score_weights || {};
         const items = Array.isArray(evalGuide.items) ? evalGuide.items : [];
@@ -6961,8 +6850,8 @@
                   <span class="calendar-mini-chip">평가항목 ${items.length}</span>
                   <span class="calendar-mini-chip">CPX 각 6점</span>
                 </div>
-                <div class="detail-screen-title">${escapeHtml(evalGuide.title || `${bundle?.meta?.subject || '실습'} 평가 비중`)}</div>
-                <div class="detail-screen-summary">${escapeHtml(evalGuide.source_pdf || fixedInfo.primary_source || '공식 자료')} ${evalGuide.source_page ? `${evalGuide.source_page}페이지` : ''} · 비율(%) 숫자만 반영, 지식/술기/태도 세부점수는 제외.</div>
+                <div class="detail-screen-title">심장내과 평가 비중</div>
+                <div class="detail-screen-summary">${escapeHtml(evalGuide.source_pdf || '1-6. 심장내과.pdf')} ${evalGuide.source_page ? `${evalGuide.source_page}페이지` : ''} · 비율(%) 숫자만 반영, 지식/술기/태도 세부점수는 제외.</div>
               </div>
               <div class="detail-screen-stack">
                 <div class="detail-screen-section">
@@ -7002,10 +6891,9 @@
                   <span class="calendar-mini-chip">교수님 ${professorDirectory.length}</span>
                   <span class="calendar-mini-chip">본원 ${(grouped['본원'] || []).length}</span>
                   <span class="calendar-mini-chip">세종 ${(grouped['세종'] || []).length}</span>
-                  ${Object.entries(grouped).filter(([site]) => !['본원', '세종'].includes(site)).map(([site, rows]) => `<span class="calendar-mini-chip">${escapeHtml(site)} ${rows.length}</span>`).join('')}
                 </div>
-              <div class="detail-screen-title">교수님</div>
-              <div class="detail-screen-summary">이름, 운영 위치, 연결 수업, 연락 경로를 표처럼 정돈해서 본다.</div>
+                <div class="detail-screen-title">교수님</div>
+                <div class="detail-screen-summary">이름, 운영 위치, 연결 수업, 연락 경로를 표처럼 정돈해서 본다.</div>
               </div>
               <div class="detail-screen-stack">
                 ${Object.entries(grouped).map(([site, rows]) => `
@@ -7133,12 +7021,10 @@
         `;
       }
 
-      const contacts = Array.isArray(fixedInfo.core_contacts) && fixedInfo.core_contacts.length
-        ? fixedInfo.core_contacts
-        : [
-            fixedInfo['심장내과 의국'] ? { label: '심장내과 의국', value: fixedInfo['심장내과 의국'] } : null,
-            fixedInfo['오스키 센터'] ? { label: '오스키센터', value: fixedInfo['오스키 센터'] } : null,
-          ].filter(Boolean);
+      const contacts = [
+        fixedInfo['심장내과 의국'] ? { label: '심장내과 의국', value: fixedInfo['심장내과 의국'] } : null,
+        fixedInfo['오스키 센터'] ? { label: '오스키센터', value: fixedInfo['오스키 센터'] } : null,
+      ].filter(Boolean);
       const principals = [
         fixedInfo['책임교수'] ? `책임교수: ${fixedInfo['책임교수']}` : null,
         Array.isArray(fixedInfo['부책임교수']) && fixedInfo['부책임교수'].length ? `부책임교수: ${fixedInfo['부책임교수'].join(', ')}` : null,
@@ -7158,11 +7044,10 @@
                 ${contacts.length ? `<span class="calendar-mini-chip">연락처 ${contacts.length}</span>` : ''}
                 ${principals.length ? `<span class="calendar-mini-chip">교수진 ${principals.length}</span>` : ''}
               </div>
-              <div class="detail-screen-title">${escapeHtml(fixedInfo.basic_info_title || `${bundle?.meta?.subject || '실습'} 기본정보`)}</div>
+              <div class="detail-screen-title">심장내과 기본정보</div>
               <div class="detail-screen-summary">${calendarBoardRangeLabel(weekDays)} · 실습 중 자주 찾는 연락처와 기본 운영 정보를 한곳에 묶어둔다.</div>
               <div class="detail-filter-row">
                 ${bundleLocationGuide(bundle) ? `<button class="btn btn-small btn-ghost" onclick="openCalendarLocationGuide('${weekKey}')">장소 지도 보기</button>` : ''}
-                ${assignmentSubmissionHubForBundle(bundle) ? `<button class="btn btn-small btn-secondary" onclick="openCalendarReferencePanel('${weekKey}', 'assignment_hub')">과제 제출물 허브</button>` : ''}
                 <button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'professors')">교수님</button>
                 <button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'group_rules')">조 운영 규칙</button>
                 ${hasSejongContextForWeek(weekDays) ? `<button class="btn btn-small btn-ghost" onclick="openCalendarReferencePanel('${weekKey}', 'sejong_notes')">세종 운영 메모</button>` : ''}
@@ -7181,7 +7066,7 @@
               <div class="reference-info-card">
                 <h5>핵심 연락처</h5>
                 <div class="reference-info-list">
-                ${contacts.length ? contacts.map(item => `<div class="reference-info-line"><strong>${escapeHtml(item.label)}</strong>: ${escapeHtml(item.value || item.phone || '')}${item.note ? ` · ${escapeHtml(item.note)}` : ''}</div>`).join('') : `<div class="reference-info-line">등록된 연락처가 없다.</div>`}
+                  ${contacts.length ? contacts.map(item => `<div class="reference-info-line"><strong>${escapeHtml(item.label)}</strong>: ${escapeHtml(item.value)}</div>`).join('') : `<div class="reference-info-line">등록된 연락처가 없다.</div>`}
                 </div>
               </div>
             </div>
@@ -7245,7 +7130,7 @@
                 <span class="calendar-mini-chip">이미지 ${locationGuide.counts?.images || 0}</span>
                 <span class="calendar-mini-chip">캠퍼스 ${locationGuide.counts?.campuses || 0}</span>
               </div>
-              <div class="detail-screen-title">${escapeHtml(locationGuide.title || `${bundle?.meta?.subject || '실습'} 장소 지도`)}</div>
+              <div class="detail-screen-title">심장내과 장소 지도</div>
               <div class="detail-screen-summary">${calendarBoardRangeLabel(weekDays)} · 본원/세종 장소 설명과 이미지 파일을 한 화면에서 본다.</div>
             </div>
             <div class="detail-screen-stack">
@@ -8174,20 +8059,6 @@
       }
     });
 
-    byId('loadPedsBundleBtn').addEventListener('click', async () => {
-      if (location.protocol === 'file:') {
-        alert('파일로 직접 열었을 때는 자동 fetch가 막힐 수 있어. `데이터 가져오기`로 bundle 파일을 직접 선택해줘.');
-        return;
-      }
-      try {
-        await loadPlannerBundleFromUrl('./data/clerkships/bundles/pediatrics_2026_05_track_bca_content_handoff_v1.bundle.json');
-        alert('소아청소년과 실습 bundle을 불러왔어. 실습 캘린더 탭으로 이동했어.');
-      } catch (error) {
-        console.error(error);
-        alert('소아청소년과 실습 bundle 불러오기에 실패했어. 서버에서 열었는지, 파일 경로가 맞는지 확인해줘.');
-      }
-    });
-
     byId('calendarPrevBtn').addEventListener('click', () => {
       calendarMonthCursor = offsetDate(startOfWeek(calendarMonthCursor), -7);
       selectedWeekKey = weekKeyFromDate(calendarMonthCursor);
@@ -8360,6 +8231,6 @@
       });
     }
   </script>
-  <script type="module" src="./sync.js?v=20260510T125800Z"></script>
+  <script type="module" src="./sync.js"></script>
 </body>
 </html>
