@@ -3,7 +3,7 @@
     "clerkship_id": "pediatrics-2026-05-track-bca",
     "subject": "소아청소년과",
     "track": "2026-05 B→C→A rotation",
-    "generated_at": "2026-05-10T08:40:00+09:00",
+    "generated_at": "2026-05-10T12:58:00+09:00",
     "content_source": {
       "subject": "소아청소년과 실습",
       "purpose": "평가 점수 방어 + 수면 방어 + 국시 공부 시간 확보",
@@ -672,6 +672,268 @@
         }
       ]
     },
+    "assignment_submission_hub": {
+      "title": "소아청소년과 과제 제출물 허브",
+      "subtitle": "제출물 기준으로 마감, 제출처, 확보할 재료, 위험 포인트를 한 화면에 묶는다.",
+      "source": "공식 PDF 평가 구조 + 2026 B/C/A 인계 + 현재 bundle assignment",
+      "counts": {
+        "items": 7,
+        "critical": 4,
+        "u_folio_items": 4
+      },
+      "operating_rule": [
+        "금요일 17:00 계열 마감은 당일 오후가 아니라 목요일 밤 기준으로 닫는다.",
+        "외래 3건과 병동 1건은 기회가 생긴 날 바로 확보한다. 뒤 주차로 미루면 CPX 주간과 충돌한다.",
+        "교수님/전공의 피드백을 받은 항목은 같은 날 U-Folio/포트폴리오에 반영한다.",
+        "공식 PDF의 평가 축은 유지하되, 시간·방·제출 방식은 최신 인계와 당일 안내를 우선한다."
+      ],
+      "items": [
+        {
+          "id": "u_folio_portfolios",
+          "title": "U-Folio 주간/최종 포트폴리오",
+          "category": "U-Folio",
+          "week_scope": "1~4주차",
+          "priority": "최상",
+          "assignment_ids": [
+            "peds-week1-portfolio",
+            "peds-week2-portfolio",
+            "peds-week3-portfolio",
+            "peds-final-portfolio"
+          ],
+          "linked_session_ids": [
+            "peds-w1-fri-common-portfolio",
+            "peds-w2-fri-common-anaphylaxis",
+            "peds-w3-fri-common-buffer",
+            "peds-w4-fri-cpx5-deadlines"
+          ],
+          "deadline_label": "매주 금 17:00, 최종 6/5(금) 17:00",
+          "submission_route": "U-Folio/포트폴리오 시스템. 현장승인·자유기록·주간소감 누락 여부를 금요일 오전에 먼저 확인.",
+          "start_rule": "화요일 밤부터 해당 주 소재를 3줄씩 쌓고, 목요일 밤에 거의 완성한다.",
+          "score_link": "포트폴리오 P/F 또는 감점 리스크. CPX보다 늦게 해결하려 하면 4주차에 무너진다.",
+          "must_collect": [
+            "그 주 분과별 핵심 경험 2~3개",
+            "교수님/전공의 피드백 받은 항목",
+            "현장승인 필요한 자유기록",
+            "금요일 제출 전 캡처/상태 확인"
+          ],
+          "risk": [
+            "금요일 오후에 시작하면 제출 버튼/현장승인/소감 정리 중 하나가 빠질 수 있음",
+            "4주차 최종 포트폴리오는 CPX #5와 같은 날이라 목요일 밤까지 닫아야 함"
+          ],
+          "next_actions": [
+            "각 주 화요일 밤: 이번 주 포트폴리오 소재 3개 적기",
+            "목요일 밤: 제출 문장 완성",
+            "금요일 오전: 업로드/현장승인/최종 저장 확인"
+          ]
+        },
+        {
+          "id": "outpatient_three_cases",
+          "title": "외래환자 예진 3건",
+          "category": "예진/외래",
+          "week_scope": "1~3주차",
+          "priority": "최상",
+          "assignment_ids": [
+            "peds-outpatient-3-cases"
+          ],
+          "linked_session_ids": [
+            "peds-w2-mon-endo-am",
+            "peds-w2-wed-gi-am",
+            "peds-w3-mon-allergy-pm",
+            "peds-w3-thu-yang-outpatient"
+          ],
+          "deadline_label": "3주차 금 5/29(금) 17:00 전까지 3건 확보",
+          "submission_route": "외래 예진기록지/피드백. 당일 교수님 또는 전공의 안내에 따라 사진·업로드·피드백 여부 확인.",
+          "start_rule": "초진/신환이 보이는 외래에서 바로 1건 잡는다. ‘다음 외래에서 하지’ 금지.",
+          "score_link": "외래/입원 예진 20% 축. 3건 숫자 확보가 먼저고, 완성도는 피드백 반영으로 올린다.",
+          "must_collect": [
+            "환자 기본정보와 주호소",
+            "문진/신체진찰 핵심 양성·음성 소견",
+            "assessment와 감별 2~3개",
+            "교수님 피드백 한 줄"
+          ],
+          "risk": [
+            "초진이 없거나 환자 수가 적으면 해당 날 예진 확보가 안 됨",
+            "3주차 후반으로 밀리면 CPX 준비와 충돌"
+          ],
+          "next_actions": [
+            "외래 들어가기 전 예진 가능 여부 먼저 확인",
+            "진료 직후 10분 안에 기록 초안 작성",
+            "피드백 받은 표현을 같은 날 정리"
+          ]
+        },
+        {
+          "id": "hemonc_pomr",
+          "title": "B분과 혈액종양 환자상태보고 + 혈종 POMR",
+          "category": "B분과/혈종",
+          "week_scope": "1주차",
+          "priority": "상",
+          "assignment_ids": [
+            "peds-b-hemonc-patient-briefing",
+            "peds-b-hemonc-pomr"
+          ],
+          "linked_session_ids": [
+            "peds-w1-mon-hemonc-briefing",
+            "peds-w1-thu-hemonc-pomr"
+          ],
+          "deadline_label": "월 오후 환자상태보고, 목/금까지 POMR 피드백 반영",
+          "submission_route": "임연정 교수님 피드백 후 U-Folio/포트폴리오 반영. 제출 인정 방식은 당일 확인.",
+          "start_rule": "월 점심부터 배정 환자를 짧은 노티형으로 정리하고, 수요일 밤 POMR 초안까지 만든다.",
+          "score_link": "개인 실습 평가 + 환자상태보고/OSCE형 사고 + POMR 소재.",
+          "must_collect": [
+            "진단명과 치료 단계",
+            "오늘 수치/문제점",
+            "질문 1개",
+            "POMR problem list와 plan"
+          ],
+          "risk": [
+            "PI 발표처럼 길어지면 환자상태보고의 목적이 흐려짐",
+            "목요일 피드백 전 초안이 없으면 금요일 포트폴리오가 같이 밀림"
+          ],
+          "next_actions": [
+            "월 점심: 환자 한 줄 요약",
+            "월 오후: 질문 1개 포함해 짧게 보고",
+            "수요일 밤: POMR 초안",
+            "목/금: 피드백 반영"
+          ]
+        },
+        {
+          "id": "neonate_bundle",
+          "title": "B분과 신생아 과제 묶음",
+          "category": "B분과/NICU",
+          "week_scope": "1주차",
+          "priority": "상",
+          "assignment_ids": [
+            "peds-b-neonate-bundle"
+          ],
+          "linked_session_ids": [
+            "peds-w1-tue-nicu-ot",
+            "peds-w1-wed-nbs-pomr"
+          ],
+          "deadline_label": "1주차 금 5/15(금) 17:00 전 정리",
+          "submission_route": "NICU 과제 안내 기준. 자기소개서/NBS/자습레포트/신생아 POMR을 U-Folio·포트폴리오와 연결.",
+          "start_rule": "화요일 NICU OT에서 과제 항목을 받은 즉시 체크리스트화한다.",
+          "score_link": "포트폴리오 P/F + 신생아 분과 개인평가 + 예진/입원 환자 소재 후보.",
+          "must_collect": [
+            "NICU OT에서 받은 과제명",
+            "NBS/자습레포트 주제",
+            "배정 환아 정보",
+            "직접 진찰 가능 여부"
+          ],
+          "risk": [
+            "NICU 대기 시간이 길어 보여도 실제 과제명 확인을 놓치면 금요일에 복구가 어려움",
+            "네 명이 동시에 NICU를 비우면 운영 리스크"
+          ],
+          "next_actions": [
+            "화요일 OT 직후 과제명 1줄씩 확정",
+            "수요일 NBS/POMR 초안",
+            "금요일 포트폴리오 반영"
+          ]
+        },
+        {
+          "id": "infection_inpatient_pomr",
+          "title": "감염 병동 POMR / 병동실습 입원환자 1건",
+          "category": "C분과/감염",
+          "week_scope": "2주차",
+          "priority": "최상",
+          "assignment_ids": [
+            "peds-inpatient-ward-case",
+            "peds-c-infection-pomr"
+          ],
+          "linked_session_ids": [
+            "peds-w2-tue-infection-ward-am",
+            "peds-w2-tue-infection-ward-pm"
+          ],
+          "deadline_label": "2주차 화요일 확보, 5/22(금) 17:00 전 제출 목표",
+          "submission_route": "김경민 교수님 감염 병동 POMR/예진기록지. POMR vs 예진기록지 인정 방식은 전날/당일 확인.",
+          "start_rule": "월요일에 시간·장소 확인, 화요일 오전에 환자 1건을 반드시 확보한다.",
+          "score_link": "공식 외래/입원 예진 20% 축의 핵심 안전판. 병동 1건을 여기서 확정하는 전략.",
+          "must_collect": [
+            "입원환자 진단명",
+            "문진/진찰 직접 반영",
+            "Problem list",
+            "항생제/검사 plan 근거",
+            "교수님 피드백"
+          ],
+          "risk": [
+            "전날 확인을 안 하면 화요일 오전 회진/환자 배정 타이밍을 놓칠 수 있음",
+            "앞조 자료상 UTI/APN/발열 환자가 많아 이쪽 quick review 필요"
+          ],
+          "next_actions": [
+            "월 점심: 교수님께 화요일 시간·장소 확인",
+            "화 오전: EMR 진단명 먼저 보기",
+            "화 오후: SOAP/POMR 초안",
+            "금 전: 피드백 반영 제출"
+          ]
+        },
+        {
+          "id": "a_division_tasks",
+          "title": "A분과 개인평가 / 호흡기·심장·PICU 과제",
+          "category": "A분과",
+          "week_scope": "3주차",
+          "priority": "상",
+          "assignment_ids": [
+            "peds-a-division-tasks"
+          ],
+          "linked_session_ids": [
+            "peds-w3-fri-common-buffer"
+          ],
+          "deadline_label": "3주차 금 5/29(금) 17:00 전 부족분 정리",
+          "submission_route": "A분과 인계 추가 확인 필요. 개인평가, POMR/외래 기록, 아나필락시스/심장/PICU 소재를 포트폴리오에 연결.",
+          "start_rule": "3주차 월요일 A분과 시작 때 교수님/전공의에게 과제 형태를 바로 확인한다.",
+          "score_link": "개인 실습 평가 10% + 외래 예진 부족분 보충 + 4주차 CPX 전 마지막 buffer.",
+          "must_collect": [
+            "호흡기/알레르기 과제 여부",
+            "심장 외래/심초음파 소감",
+            "PICU/중환자 실습 소감",
+            "부족 예진 0 만들기"
+          ],
+          "risk": [
+            "A분과 과제를 skeleton으로만 두면 3주차 금요일에 CPX 준비와 같이 터짐",
+            "부족 예진이 남으면 4주차에 회수 불가"
+          ],
+          "next_actions": [
+            "3주차 월요일: 과제 형태 확인",
+            "수요일: 부족 예진/기록 체크",
+            "금요일: A분과 제출물과 CPX 준비 분리해서 마감"
+          ],
+          "needs_confirmation": true
+        },
+        {
+          "id": "face_case_report",
+          "title": "대면진료증례보고서",
+          "category": "최종 제출",
+          "week_scope": "3~4주차",
+          "priority": "최상",
+          "assignment_ids": [
+            "peds-face-case-report"
+          ],
+          "linked_session_ids": [
+            "peds-w4-thu-case-cpx4",
+            "peds-w4-fri-cpx5-deadlines"
+          ],
+          "deadline_label": "6/5(금) 12:00 hard deadline",
+          "submission_route": "조은영 교수님/공지 기준 제출. CPX #5와 같은 날이라 전날 밤까지 사실상 완성해야 함.",
+          "start_rule": "3주차 목~금에 증례 후보와 구조를 먼저 잡고, 4주차 목요일에는 최종 문장만 손본다.",
+          "score_link": "P/F 또는 감점 리스크. CPX/최종 포트폴리오와 같은 주라 운영 리스크가 가장 큼.",
+          "must_collect": [
+            "대면진료 환자/증례 후보",
+            "진단·감별·치료 흐름",
+            "교수님 피드백 또는 수업 연결점",
+            "제출용 문체로 정리한 최종본"
+          ],
+          "risk": [
+            "금요일 오전 CPX #5 전후로 작성하면 품질과 제출 안정성이 모두 떨어짐",
+            "목요일 밤에 미완이면 세종/CPX 피로와 겹쳐 복구 난도 최상"
+          ],
+          "next_actions": [
+            "3주차 목/금: 증례 후보 선정",
+            "3주차 주말: 구조 초안",
+            "4주차 목요일: 최종본 완성",
+            "6/5 금 12:00 제출 확인"
+          ]
+        }
+      ]
+    },
     "primary_source_policy": [
       "1. 교수님/총조장 최신 공지 또는 당일 직접 안내",
       "2. 최신 2026 인계의 실제 시간·동선·방 번호",
@@ -696,11 +958,44 @@
       }
     },
     "evaluation_score_weights": {
-      "Pre-test/Post-test": "30% — 1~3주차 월요일 3회가 핵심, 4주차는 정규 프테가 아니라 재시/피드백 주간으로 해석",
-      "CPX/OSCE": "40% — 평가는 4주차이나 3주차 전까지 스크립트/체크리스트 1회독 필요",
-      "외래/입원 예진": "20% — 외래 3건 + 병동실습 입원환자 1건",
-      "개인 실습 평가": "10% — 환자 파악, 질환 이해, POMR, 침상토론, 태도",
-      "포트폴리오/대면진료증례보고서": "P/F 또는 감점 리스크 — 금요일 마감 우선 표시"
+      "title": "소아청소년과 평가 비중",
+      "source_pdf": "소아청소년과 공지.pdf",
+      "items": [
+        {
+          "label": "Pre-test/Post-test",
+          "points": 30,
+          "display_note": "1~3주차 월요일 3회가 핵심"
+        },
+        {
+          "label": "CPX/OSCE",
+          "points": 40,
+          "display_note": "평가는 4주차, 준비는 3주차 전 완료 권장"
+        },
+        {
+          "label": "외래/입원 예진",
+          "points": 20,
+          "display_note": "외래 3건 + 병동실습 입원환자 1건"
+        },
+        {
+          "label": "개인 실습 평가",
+          "points": 10,
+          "display_note": "환자 파악, 질환 이해, POMR, 침상토론, 태도"
+        }
+      ],
+      "cpx_breakdown": [
+        {
+          "label": "CPX/OSCE",
+          "points": 40
+        },
+        {
+          "label": "포트폴리오/대면진료증례보고서",
+          "points": 0
+        }
+      ],
+      "notes": [
+        "포트폴리오/대면진료증례보고서는 P/F 또는 감점 리스크로 별도 관리한다.",
+        "4주차는 국시 공부 주간이 아니라 CPX/증례/제출 마감 주간으로 본다."
+      ]
     },
     "operating_principles": [
       "앱 메인 카드는 clean slot만 노출하고 원문/근거는 접기 상세와 packet으로 보존한다.",

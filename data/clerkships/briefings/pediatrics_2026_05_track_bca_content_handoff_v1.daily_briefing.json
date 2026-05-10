@@ -1,7 +1,7 @@
 {
   "meta": {
     "bundle_id": "pediatrics-2026-05-track-bca",
-    "generated_at": "2026-05-10T08:40:00+09:00"
+    "generated_at": "2026-05-10T12:58:00+09:00"
   },
   "briefing_rule": "각 날짜는 일정 → 점수 연결 → 오늘 반드시 확보할 것 순서로 요약한다.",
   "days": {
