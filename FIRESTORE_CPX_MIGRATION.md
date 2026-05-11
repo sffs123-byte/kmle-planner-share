@@ -81,6 +81,17 @@ cpxBoards/gangryeol-main/scripts/{ccId}
 - Firestore Rules deployed: `cloud.firestore` release points to owner-email ruleset
 - `cpx-script-board-firestore.html`에 Firebase web config 삽입 완료
 
+## 2026-05-11 추가 진행 상태
+- Firestore Rules 확인 완료: `cloud.firestore` release가 `sffs123@gmail.com` owner-email ruleset을 가리킨다.
+- Mac mini의 OpenClaw / OpenAI Atlas / Google Chrome 프로필을 다시 좁혀 검색했지만, authoritative Local Storage key `cpx-script-board-state.v1`는 발견되지 않았다.
+  - 발견된 것은 대부분 cached HTML/JS, Service Worker cache, History, File System cache, 또는 새 Firestore 페이지 접속으로 생긴 `cpx-script-device.v1`뿐이다.
+- 그래서 우선 `cpx-script-board-firestore.html` 안의 seed-data snapshot을 Firestore에 서버 OAuth로 직접 적재했다.
+  - Board doc: `cpxBoards/gangryeol-main`
+  - Script docs: `cpxBoards/gangryeol-main/scripts/{ccId}`
+  - Count: 58 scripts + 1 board doc = 59 writes
+  - Commit time: `2026-05-11T05:23:31.190884Z`
+  - Local backup: `.tmp/cpx-script-board-firestore-seed-backup-20260511T142329.json`
+
 ## 남은 blocker
 CLI/API로 Google provider를 켜려고 했지만 Identity Toolkit API가 `BILLING_NOT_ENABLED` / `CONFIGURATION_NOT_FOUND`로 막혔다.
 무료 Firebase Auth 자체는 콘솔에서 가능하므로 아래만 수동 또는 로그인 브라우저에서 처리하면 된다.
@@ -91,4 +102,4 @@ CLI/API로 Google provider를 켜려고 했지만 Identity Toolkit API가 `BILLI
 4. Support email: `sffs123@gmail.com`
 5. Authorized domains에 `sffs123-byte.github.io`가 없으면 추가
 
-이후 GitHub Pages에 `cpx-script-board-firestore.html`를 올리고, 현재 CPX 대본을 보유한 브라우저에서 접속해 `Firestore 전체 이주`를 누르면 localStorage의 현 상태가 Firestore로 올라간다.
+이후 GitHub Pages에서 `cpx-script-board-firestore.html`를 열고 Google 로그인하면, 이미 Firestore에 올라간 seed snapshot을 읽을 수 있다. 단, seed 이후에 Supabase/localStorage에만 남은 미동기화 편집본이 따로 있었다면, 그 편집본은 아직 별도 복구가 필요하다.
