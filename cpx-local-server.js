@@ -17,7 +17,7 @@ const SHARED_PASSWORD = process.env.CPX_BOARD_PASSWORD || process.env.CPX_LOCAL_
 const MAX_BODY_BYTES = 25 * 1024 * 1024;
 const PRESENCE_TTL_MS = 30_000;
 const A4_USER_ID = 'gangryeol-cpx-a4-editor';
-const A4_REQUIRED_CLIENT_BUILD = process.env.CPX_A4_REQUIRED_CLIENT_BUILD || 'a4-localdb-settingsfix-20260512-1548';
+const A4_REQUIRED_CLIENT_BUILD = process.env.CPX_A4_REQUIRED_CLIENT_BUILD || 'a4-localdb-tablefix-20260512-1608';
 
 fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
 const db = new DatabaseSync(DB_PATH);
