@@ -16,6 +16,8 @@ const DEFAULT_USER_ID = 'gangryeol-cpx-scripts';
 const SHARED_PASSWORD = process.env.CPX_BOARD_PASSWORD || process.env.CPX_LOCAL_PASSWORD || '';
 const MAX_BODY_BYTES = 25 * 1024 * 1024;
 const PRESENCE_TTL_MS = 30_000;
+const A4_USER_ID = 'gangryeol-cpx-a4-editor';
+const A4_REQUIRED_CLIENT_BUILD = process.env.CPX_A4_REQUIRED_CLIENT_BUILD || 'a4-localdb-settingsfix-20260512-1548';
 
 fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
 const db = new DatabaseSync(DB_PATH);
@@ -166,6 +168,26 @@ function normalizeNickname(value) {
   return String(value || '').trim().replace(/\s+/g, ' ').slice(0, 32);
 }
 
+function normalizeStudentNo(value) {
+  return String(value || '').replace(/[^0-9A-Za-z]/g, '').trim();
+}
+
+function hashStudentNo(value) {
+  let h = 2166136261;
+  for (const ch of normalizeStudentNo(value)) {
+    h ^= ch.charCodeAt(0);
+    h = Math.imul(h, 16777619);
+  }
+  return (h >>> 0).toString(36);
+}
+
+function maskStudent(value) {
+  const s = normalizeStudentNo(value);
+  if (!s) return '';
+  if (s.length <= 4) return `${s[0] || ''}***`;
+  return `${s.slice(0, 4)}****`;
+}
+
 function stableUserId(nickname) {
   return `user_${hash(`cpx-user:${nickname}`).slice(0, 20)}`;
 }
@@ -296,16 +318,29 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === '/api/login' && req.method === 'POST') {
       const raw = await readBody(req);
       const body = raw ? JSON.parse(raw) : {};
-      const nickname = normalizeNickname(body.nickname || body.name || body.studentNo || '');
-      if (!nickname) return json(res, 400, { error: 'nickname required' });
+      const studentNo = normalizeStudentNo(body.studentNo || '');
+      const nickname = normalizeNickname(body.nickname || body.name || (studentNo ? maskStudent(studentNo) : ''));
+      if (!nickname && !studentNo) return json(res, 400, { error: 'nickname or studentNo required' });
       if (!SHARED_PASSWORD) return json(res, 503, { error: 'server password is not configured' });
       if (!timingSafePassword(body.password)) return json(res, 401, { error: 'wrong password' });
       const at = nowIso();
-      const userId = stableUserId(nickname);
+      const userId = studentNo ? `stu_${hashStudentNo(studentNo)}` : stableUserId(nickname);
+      const displayName = nickname || maskStudent(studentNo) || userId;
       const token = crypto.randomBytes(32).toString('base64url');
-      upsertUserStmt.run(userId, nickname, at, at);
+      upsertUserStmt.run(userId, displayName, at, at);
       insertSessionStmt.run(tokenHash(token), userId, at, at);
-      return json(res, 200, { ok: true, token, user: { userId, nickname }, boardUserId: DEFAULT_USER_ID });
+      return json(res, 200, {
+        ok: true,
+        token,
+        user: {
+          id: userId,
+          userId,
+          nickname: displayName,
+          studentMasked: studentNo ? maskStudent(studentNo) : undefined,
+          token,
+        },
+        boardUserId: DEFAULT_USER_ID,
+      });
     }
 
     if (url.pathname === '/api/me' && req.method === 'GET') {
@@ -343,13 +378,13 @@ const server = http.createServer(async (req, res) => {
       upsertPresenceStmt.run(
         boardUserId,
         auth.userId,
-        auth.nickname,
-        body.cc_id ?? body.ccId ?? null,
-        body.field_key ?? body.fieldKey ?? null,
+        normalizeNickname(body.nickname || body.name || auth.nickname),
+        body.cc_id == null && body.ccId == null ? null : String(body.cc_id ?? body.ccId),
+        body.field_key == null && body.fieldKey == null ? null : String(body.field_key ?? body.fieldKey),
         status,
         at
       );
-      const event = { users: activePresence(boardUserId), changed: { user_id: auth.userId, nickname: auth.nickname, status, cc_id: body.cc_id ?? body.ccId ?? null, field_key: body.field_key ?? body.fieldKey ?? null, updated_at: at } };
+      const event = { users: activePresence(boardUserId), changed: { user_id: auth.userId, nickname: normalizeNickname(body.nickname || body.name || auth.nickname), status, cc_id: body.cc_id == null && body.ccId == null ? null : String(body.cc_id ?? body.ccId), field_key: body.field_key == null && body.fieldKey == null ? null : String(body.field_key ?? body.fieldKey), updated_at: at } };
       broadcast(boardUserId, 'presence', event);
       return json(res, 200, { ok: true, ...event.changed });
     }
@@ -367,8 +402,11 @@ const server = http.createServer(async (req, res) => {
       const state = body.state_json ?? body.state ?? null;
       if (!state || typeof state !== 'object') return json(res, 400, { error: 'state_json object required' });
       const updatedAt = body.updated_at || state.updatedAt || new Date().toISOString();
-      const updatedBy = auth.nickname || body.updated_by || state.updatedBy || null;
+      const updatedBy = body.updated_by || state.updatedBy || auth.nickname || null;
       const stateVersion = body.state_version || body.stateVersion || state.stateVersion || 'cpx-script-board.local.v1';
+      if (userId === A4_USER_ID && stateVersion === 'cpx-a4-state.v2' && state.clientBuild !== A4_REQUIRED_CLIENT_BUILD) {
+        return json(res, 409, { error: 'client update required; reload the Vercel CPX editor', required_client_build: A4_REQUIRED_CLIENT_BUILD });
+      }
       state.updatedBy = updatedBy;
       state.updatedByUserId = auth.userId;
       const stateText = JSON.stringify(state);
