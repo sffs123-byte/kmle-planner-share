@@ -1,6 +1,7 @@
 # Local test artifacts
 *.DS_Store
 *.log
+.local/
 
 # User-exported planner backups
 planner-backup-*.json
