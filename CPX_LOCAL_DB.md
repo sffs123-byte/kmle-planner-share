@@ -56,7 +56,7 @@ curl 'http://127.0.0.1:8797/api/export?user_id=gangryeol-cpx-scripts' > cpx-back
 /api/events?user_id=gangryeol-cpx-scripts&token=...
 ```
 
-The server uses SSE. When one browser saves, other open browsers pull the new state and re-render.
+The server uses SSE. When one browser saves, other open browsers pull the new state and re-render. The browser also keeps a 2.5-second polling fallback for state/presence so GitHub Pages + quick tunnel still syncs even if SSE is delayed/buffered.
 
 Presence/soft lock:
 

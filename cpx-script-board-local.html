@@ -127,7 +127,7 @@ const deviceId = getDeviceId();
 let state = loadState();
 let selectedId = state.selectedId || '12';
 let filter = '';
-let eventSource = null, pushTimer = null, presenceTimer = null, remoteApplying = false;
+let eventSource = null, pushTimer = null, presenceTimer = null, pollTimer = null, remoteApplying = false;
 let auth = loadAuth();
 let presenceUsers = [];
 let activeFieldKey = null;
@@ -146,6 +146,14 @@ function renderPresenceOnly(){ renderList(); renderLockBanner(); }
 async function updatePresence(status='editing', fieldKey=activeFieldKey){ if(!auth?.token) return; try{ await apiFetch('/api/presence', {method:'POST', headers:{'content-type':'application/json'}, body:JSON.stringify({user_id:USER_ID, cc_id:selectedId, field_key:fieldKey, status})}); }catch(e){ console.error(e); } }
 function touchPresence(fieldKey){ activeFieldKey=fieldKey; updatePresence('editing', fieldKey); }
 function startPresenceHeartbeat(){ clearInterval(presenceTimer); presenceTimer=setInterval(()=>{ if(activeFieldKey && auth?.token) updatePresence('editing', activeFieldKey); }, 10000); }
+function startBackgroundPolling(){
+  clearInterval(pollTimer);
+  pollTimer=setInterval(()=>{
+    if(!auth?.token) return;
+    pullPresence().catch(e=>console.error(e));
+    pullRemote(false).catch(e=>console.error(e));
+  }, 2500);
+}
 function defaultState(){ return { topics: SEED.topics, categories: SEED.categories, scripts: structuredClone(SEED.scripts), selectedId:'12', updatedAt: new Date().toISOString(), updatedBy: deviceId }; }
 function loadState(){ try{ const raw=localStorage.getItem(STATE_KEY); if(raw) return {...defaultState(), ...JSON.parse(raw)}; }catch{} return defaultState(); }
 function saveLocal(){ state.selectedId=selectedId; state.updatedAt=new Date().toISOString(); state.updatedBy=deviceId; localStorage.setItem(STATE_KEY, JSON.stringify(state)); }
@@ -233,7 +241,7 @@ async function initAuth(){
       toast(`${data.user.nickname}님으로 로그인했어`);
     }catch(err){ console.error(err); showLogin('이름 또는 공유 비밀번호를 확인해줘'); }
   });
-  document.getElementById('logoutBtn').addEventListener('click',()=>{ updatePresence('idle', null); saveAuth(null); if(eventSource) eventSource.close(); showLogin('로그아웃했어'); });
+  document.getElementById('logoutBtn').addEventListener('click',()=>{ updatePresence('idle', null); saveAuth(null); if(eventSource) eventSource.close(); clearInterval(pollTimer); showLogin('로그아웃했어'); });
   if(!auth?.token){ showLogin(); return; }
   try{
     const res=await apiFetch('/api/me', {cache:'no-store'});
@@ -259,6 +267,7 @@ async function initLocalDb(){
     eventSource.onopen = ()=>setSync('Local DB 연결됨','on');
     eventSource.onerror = ()=>setSync('Local DB 재연결 중','');
     startPresenceHeartbeat();
+    startBackgroundPolling();
     updatePresence('viewing', null);
   }catch(e){ console.error(e); setSync('Local DB 오류','err'); toast('로컬 DB 서버 연결 실패'); }
 }
