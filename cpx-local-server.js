@@ -14,10 +14,11 @@ const HOST = process.env.HOST || process.env.CPX_LOCAL_HOST || '127.0.0.1';
 const DB_PATH = process.env.CPX_DB_PATH || path.join(ROOT, '.local', 'cpx-local.sqlite');
 const DEFAULT_USER_ID = 'gangryeol-cpx-scripts';
 const SHARED_PASSWORD = process.env.CPX_BOARD_PASSWORD || process.env.CPX_LOCAL_PASSWORD || '';
+const INITIAL_STUDENT_PASSWORD = process.env.CPX_INITIAL_PASSWORD || 'cnu2026';
 const MAX_BODY_BYTES = 25 * 1024 * 1024;
 const PRESENCE_TTL_MS = 30_000;
 const A4_USER_ID = 'gangryeol-cpx-a4-editor';
-const A4_REQUIRED_CLIENT_BUILD = process.env.CPX_A4_REQUIRED_CLIENT_BUILD || 'a4-localdb-quotefix-20260512-1628';
+const A4_REQUIRED_CLIENT_BUILD = process.env.CPX_A4_REQUIRED_CLIENT_BUILD || 'a4-localdb-authfix-20260512-1658';
 
 fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
 const db = new DatabaseSync(DB_PATH);
@@ -66,6 +67,17 @@ db.exec(`
   );
 `);
 
+const userColumns = new Set(db.prepare('PRAGMA table_info(users)').all().map(row => row.name));
+const ensureUserColumn = (name, ddl) => {
+  if (!userColumns.has(name)) db.exec(`ALTER TABLE users ADD COLUMN ${name} ${ddl}`);
+};
+ensureUserColumn('student_no', 'TEXT');
+ensureUserColumn('student_masked', 'TEXT');
+ensureUserColumn('password_hash', 'TEXT');
+ensureUserColumn('password_salt', 'TEXT');
+ensureUserColumn('password_changed', 'INTEGER NOT NULL DEFAULT 0');
+db.exec('CREATE UNIQUE INDEX IF NOT EXISTS idx_users_student_no ON users(student_no) WHERE student_no IS NOT NULL');
+
 const getStateStmt = db.prepare('SELECT user_id, state_json, state_version, updated_by, updated_at FROM board_state WHERE user_id = ?');
 const upsertStateStmt = db.prepare(`
   INSERT INTO board_state (user_id, state_json, state_version, updated_by, updated_at)
@@ -81,13 +93,27 @@ const insertHistoryStmt = db.prepare(`
   VALUES (?, ?, ?, ?, ?)
 `);
 const upsertUserStmt = db.prepare(`
-  INSERT INTO users (user_id, nickname, created_at, last_seen_at)
-  VALUES (?, ?, ?, ?)
+  INSERT INTO users (user_id, nickname, created_at, last_seen_at, student_no, student_masked, password_hash, password_salt, password_changed)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
   ON CONFLICT(user_id) DO UPDATE SET nickname = excluded.nickname, last_seen_at = excluded.last_seen_at
 `);
+const createOrUpdateStudentUserStmt = db.prepare(`
+  INSERT INTO users (user_id, nickname, created_at, last_seen_at, student_no, student_masked, password_hash, password_salt, password_changed)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+  ON CONFLICT(user_id) DO UPDATE SET
+    nickname = excluded.nickname,
+    last_seen_at = excluded.last_seen_at,
+    student_no = COALESCE(users.student_no, excluded.student_no),
+    student_masked = COALESCE(users.student_masked, excluded.student_masked),
+    password_hash = COALESCE(users.password_hash, excluded.password_hash),
+    password_salt = COALESCE(users.password_salt, excluded.password_salt),
+    password_changed = users.password_changed
+`);
+const getUserStmt = db.prepare('SELECT user_id, nickname, student_no, student_masked, password_hash, password_salt, password_changed FROM users WHERE user_id = ?');
+const setUserPasswordStmt = db.prepare('UPDATE users SET password_hash = ?, password_salt = ?, password_changed = ?, last_seen_at = ? WHERE user_id = ?');
 const insertSessionStmt = db.prepare('INSERT INTO sessions (token_hash, user_id, created_at, last_seen_at) VALUES (?, ?, ?, ?)');
 const getSessionStmt = db.prepare(`
-  SELECT sessions.token_hash, users.user_id, users.nickname
+  SELECT sessions.token_hash, users.user_id, users.nickname, users.student_masked, users.password_changed
   FROM sessions JOIN users ON users.user_id = sessions.user_id
   WHERE sessions.token_hash = ?
 `);
@@ -164,6 +190,19 @@ function hash(value) {
 
 function tokenHash(token) { return hash(`cpx-session:${token}`); }
 
+function makePasswordRecord(password, salt = crypto.randomBytes(16).toString('hex')) {
+  const passwordHash = crypto.pbkdf2Sync(String(password || ''), salt, 120000, 32, 'sha256').toString('hex');
+  return { passwordHash, salt };
+}
+
+function verifyPassword(password, row) {
+  if (!row?.password_hash || !row?.password_salt) return false;
+  const { passwordHash } = makePasswordRecord(password, row.password_salt);
+  const a = Buffer.from(passwordHash, 'hex');
+  const b = Buffer.from(String(row.password_hash), 'hex');
+  return a.length === b.length && crypto.timingSafeEqual(a, b);
+}
+
 function normalizeNickname(value) {
   return String(value || '').trim().replace(/\s+/g, ' ').slice(0, 32);
 }
@@ -192,6 +231,10 @@ function stableUserId(nickname) {
   return `user_${hash(`cpx-user:${nickname}`).slice(0, 20)}`;
 }
 
+function stableStudentUserId(studentNo) {
+  return `stu_${hashStudentNo(studentNo)}`;
+}
+
 function timingSafePassword(input) {
   if (!SHARED_PASSWORD) return false;
   const a = Buffer.from(String(input || ''));
@@ -215,7 +258,19 @@ function requireAuth(req, url) {
   const at = nowIso();
   touchSessionStmt.run(at, th);
   touchUserStmt.run(at, row.user_id);
-  return { userId: row.user_id, nickname: row.nickname, tokenHash: th };
+  return { userId: row.user_id, nickname: row.nickname, studentMasked: row.student_masked, passwordChanged: !!row.password_changed, mustChangePassword: row.password_changed === 0, tokenHash: th };
+}
+
+function publicUser(row, token, extra = {}) {
+  return {
+    id: row.user_id,
+    userId: row.user_id,
+    nickname: row.nickname,
+    studentMasked: row.student_masked || undefined,
+    token,
+    mustChangePassword: row.password_changed === 0,
+    ...extra,
+  };
 }
 
 function publicRow(row) {
@@ -321,31 +376,65 @@ const server = http.createServer(async (req, res) => {
       const studentNo = normalizeStudentNo(body.studentNo || '');
       const nickname = normalizeNickname(body.nickname || body.name || (studentNo ? maskStudent(studentNo) : ''));
       if (!nickname && !studentNo) return json(res, 400, { error: 'nickname or studentNo required' });
-      if (!SHARED_PASSWORD) return json(res, 503, { error: 'server password is not configured' });
-      if (!timingSafePassword(body.password)) return json(res, 401, { error: 'wrong password' });
       const at = nowIso();
-      const userId = studentNo ? `stu_${hashStudentNo(studentNo)}` : stableUserId(nickname);
+      let userRow = null;
+      let userId = studentNo ? stableStudentUserId(studentNo) : stableUserId(nickname);
       const displayName = nickname || maskStudent(studentNo) || userId;
+
+      if (studentNo) {
+        userRow = getUserStmt.get(userId);
+        if (!userRow) {
+          if (String(body.password || '') !== INITIAL_STUDENT_PASSWORD) return json(res, 401, { error: '처음 비밀번호는 cnu2026입니다.' });
+          const rec = makePasswordRecord(INITIAL_STUDENT_PASSWORD);
+          createOrUpdateStudentUserStmt.run(userId, displayName, at, at, studentNo, maskStudent(studentNo), rec.passwordHash, rec.salt, 0);
+          userRow = getUserStmt.get(userId);
+        } else if (!userRow.password_hash || !userRow.password_salt) {
+          if (String(body.password || '') !== INITIAL_STUDENT_PASSWORD) return json(res, 401, { error: '처음 비밀번호는 cnu2026입니다.' });
+          const rec = makePasswordRecord(INITIAL_STUDENT_PASSWORD);
+          setUserPasswordStmt.run(rec.passwordHash, rec.salt, 0, at, userId);
+          createOrUpdateStudentUserStmt.run(userId, displayName, at, at, studentNo, maskStudent(studentNo), rec.passwordHash, rec.salt, 0);
+          userRow = getUserStmt.get(userId);
+        } else if (!verifyPassword(body.password, userRow)) {
+          return json(res, 401, { error: '비밀번호가 맞지 않습니다.' });
+        } else {
+          createOrUpdateStudentUserStmt.run(userId, userRow.nickname || displayName, at, at, studentNo, maskStudent(studentNo), userRow.password_hash, userRow.password_salt, userRow.password_changed || 0);
+          userRow = getUserStmt.get(userId);
+        }
+      } else {
+        if (!SHARED_PASSWORD) return json(res, 503, { error: 'server password is not configured' });
+        if (!timingSafePassword(body.password)) return json(res, 401, { error: 'wrong password' });
+        upsertUserStmt.run(userId, displayName, at, at, null, null, null, null, 1);
+        userRow = getUserStmt.get(userId);
+      }
+
       const token = crypto.randomBytes(32).toString('base64url');
-      upsertUserStmt.run(userId, displayName, at, at);
       insertSessionStmt.run(tokenHash(token), userId, at, at);
       return json(res, 200, {
         ok: true,
         token,
-        user: {
-          id: userId,
-          userId,
-          nickname: displayName,
-          studentMasked: studentNo ? maskStudent(studentNo) : undefined,
-          token,
-        },
+        user: publicUser(userRow, token),
+        mustChangePassword: userRow.password_changed === 0,
         boardUserId: DEFAULT_USER_ID,
       });
     }
 
     if (url.pathname === '/api/me' && req.method === 'GET') {
       const auth = requireAuth(req, url);
-      return json(res, 200, { ok: true, user: { userId: auth.userId, nickname: auth.nickname } });
+      return json(res, 200, { ok: true, user: { id: auth.userId, userId: auth.userId, nickname: auth.nickname, studentMasked: auth.studentMasked || undefined, mustChangePassword: auth.mustChangePassword } });
+    }
+
+    if (url.pathname === '/api/change-password' && req.method === 'POST') {
+      const auth = requireAuth(req, url);
+      const raw = await readBody(req);
+      const body = raw ? JSON.parse(raw) : {};
+      const newPassword = String(body.newPassword || body.password || '');
+      if (newPassword.length < 4) return json(res, 400, { error: '비밀번호는 4자 이상으로 해주세요.' });
+      if (newPassword === INITIAL_STUDENT_PASSWORD) return json(res, 400, { error: '초기 비밀번호 cnu2026 말고 개인 비밀번호로 바꿔주세요.' });
+      const at = nowIso();
+      const rec = makePasswordRecord(newPassword);
+      setUserPasswordStmt.run(rec.passwordHash, rec.salt, 1, at, auth.userId);
+      const row = getUserStmt.get(auth.userId);
+      return json(res, 200, { ok: true, user: publicUser(row, bearerToken(req, url), { mustChangePassword: false }) });
     }
 
     if (url.pathname === '/api/state' && req.method === 'GET') {
@@ -404,6 +493,9 @@ const server = http.createServer(async (req, res) => {
       const updatedAt = body.updated_at || state.updatedAt || new Date().toISOString();
       const updatedBy = body.updated_by || state.updatedBy || auth.nickname || null;
       const stateVersion = body.state_version || body.stateVersion || state.stateVersion || 'cpx-script-board.local.v1';
+      if (userId === A4_USER_ID && auth.mustChangePassword) {
+        return json(res, 403, { error: 'password change required before saving' });
+      }
       if (userId === A4_USER_ID && stateVersion === 'cpx-a4-state.v2' && state.clientBuild !== A4_REQUIRED_CLIENT_BUILD) {
         return json(res, 409, { error: 'client update required; reload the Vercel CPX editor', required_client_build: A4_REQUIRED_CLIENT_BUILD });
       }
