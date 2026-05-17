@@ -165,7 +165,7 @@ CURATED_MANUAL_CARD_IMAGES = {
     "PEDS2-2023PDF-029": [
         {
             "src": "assets/peds_pretest2_full/PEDS2-2023PDF-029__front_crop__hsv_gingivostomatitis_perioral.png",
-            "caption": "원문 사진 crop: HSV 잇몸구내염 의심 입주위 병변",
+            "caption": "원문 병변 사진 crop",
             "kind": "manual_front_crop",
             "front_visible": True,
             "curated_id": "manual_hsv_gingivostomatitis_crop_20260517",
@@ -264,6 +264,10 @@ CURATED_CARD_FIXES.setdefault("PEDS2-2023PDF-029", {}).update({
 CURATED_CARD_FIXES.update({'PEDS2-HI2-031': {'answer': '소아: 폐 하부 병변·초감염 결핵·치유 시 석회화 / 성인: 폐첨 또는 쇄골상부 병변·재감염/재활성화 결핵·치유 시 섬유화', 'uncertain': False}, 'PEDS2-HI2-032': {'answer': 'Chest X-ray와 TST; 정상/활동성 결핵 배제 시 isoniazid 예방치료', 'uncertain': False}, 'PEDS2-HI2-034': {'answer': '이소니아지드 9개월 복용', 'uncertain': False}, 'PEDS2-HI2-037': {'answer': 'Isoniazid + Rifampicin + Pyrazinamide + Ethambutol 2개월 후 Isoniazid + Rifampicin 4개월', 'uncertain': False}, 'PEDS2-HI2-065': {'answer': '기관루 동반 식도폐쇄', 'uncertain': False}, 'PEDS2-HI2-078': {'answer': '니스타틴', 'uncertain': False}, 'PEDS2-HI2-081': {'answer': '경과관찰', 'uncertain': False}, 'PEDS2-HI2-087': {'answer': '부비동염; Streptococcus pneumoniae', 'uncertain': False}, 'PEDS2-HI2-088': {'answer': '크룹; Parainfluenza virus', 'uncertain': False}, 'PEDS2-HI2-090': {'answer': '에피네프린', 'uncertain': False}, 'PEDS2-HI2-091': {'answer': '수액치료', 'uncertain': False}, 'PEDS2-HI2-093': {'answer': '바이러스성 폐렴', 'uncertain': False}, 'PEDS2-HI2-094': {'answer': '암피실린-설박탐', 'uncertain': False}, 'PEDS2-HI2-095': {'answer': '마이코플라즈마 폐렴', 'uncertain': False}, 'PEDS2-HI2-101': {'answer': 'ICS + LABA', 'uncertain': False}, 'PEDS2-HI2-102': {'answer': '흡입형 속효성 β2 항진제(SABA)', 'uncertain': False}, 'PEDS2-HI2-104': {'answer': 'A: Formoterol / B: Budesonide-Formoterol 복합제', 'uncertain': False}, 'PEDS2-2025-19to23-Q3-SOURCEVAR': {'answer': '4번', 'uncertain': False}})
 # END RESPIRATORY_ANSWER_AUDIT_FIXES_20260517
 
+# BEGIN CARDIOVASCULAR_ANSWER_AUDIT_FIXES_20260517
+CURATED_CARD_FIXES.update({'PEDS2-HI2-108': {'answer': '태아 순환: 태반 산소공급, 정맥관·난원공·동맥관을 통한 병렬 순환 / 출생 후: 폐혈관저항 감소·체혈관저항 증가, 동맥관·난원공·정맥관 폐쇄', 'uncertain': False}, 'PEDS2-HI2-113': {'answer': '도약맥박: PDA, 대동맥판 역류, 동정맥 샛길 / 맥박 약화: 심장눌림증, 좌심실 유출로 협착, 심근병증', 'uncertain': False}, 'PEDS2-HI2-114': {'answer': 'VSD > ASD > PDA > TOF > PS', 'uncertain': False}, 'PEDS2-HI2-116': {'answer': '생리적 폐동맥 분지 협착 잡음, 스틸 심잡음, 정맥 잡음; 무해성 아님: 이완기 잡음, 강도 3도 이상 잡음', 'uncertain': False}, 'PEDS2-HI2-118': {'answer': '정맥 잡음(venous hum)', 'uncertain': False}, 'PEDS2-HI2-119': {'answer': '생리적 폐동맥 분지 협착 잡음', 'uncertain': False}, 'PEDS2-HI2-124': {'answer': 'Adenosine 정주', 'uncertain': False}, 'PEDS2-HI2-132': {'answer': '작은 결손은 생후 1~2년 또는 2년간 30~50% 자연폐쇄; 큰 결손은 심부전·폐동맥고혈압, 잦은 호흡기 감염, Eisenmenger syndrome·감염성 심내막염·대동맥판 역류가 생길 수 있음', 'uncertain': False}, 'PEDS2-HI2-135': {'answer': '좌상흉골연 수축기 박출성 잡음, 고정성 넓은 S2 분열, 좌하흉골연 rumbling mid-diastolic murmur', 'uncertain': False}, 'PEDS2-HI2-141': {'answer': 'CXR: 폐동맥 팽대/확장; 진단: 폐동맥판 협착', 'uncertain': False}, 'PEDS2-HI2-142': {'answer': '경과관찰', 'uncertain': False}, 'PEDS2-HI2-143': {'answer': '대동맥판 협착(AS)', 'uncertain': False}, 'PEDS2-HI2-146': {'answer': 'CXR snowman sign; 총폐정맥환류이상(TAPVR)', 'uncertain': False}, 'PEDS2-HI2-147': {'answer': '무릎-가슴 자세, morphine, 산소/안정, 필요 시 propranolol·ketamine·phenylephrine, 탈수/산증 교정', 'uncertain': False}, 'PEDS2-HI2-151': {'answer': '5일 이상 발열 + 비화농성 양측 결막충혈, 입술/구강 변화, 다양한 발진, 비화농성 경부림프절 비대, 손발 변화 중 4개 이상', 'uncertain': False}, 'PEDS2-HI2-153': {'answer': '인두결막열, 성홍열, 홍역, EBV 감염, 스티븐스-존슨 증후군, 독성 쇼크 증후군, 특발 소아 관절염 등', 'uncertain': False}})
+# END CARDIOVASCULAR_ANSWER_AUDIT_FIXES_20260517
+
 # Official 2-week pretest scope from 교수님 공지 PDF:
 # 2주차 = 12~15장: 감염, 소화기, 호흡기, 심혈관.
 # Some all-HI-bank cards are retained even when they look mixed/out-of-scope;
@@ -325,6 +329,76 @@ def fmt(text: object) -> str:
 def pill(text: str, style: str = "") -> str:
     base = "display:inline-block;border-radius:999px;padding:2px 8px;margin:2px 4px 2px 0;font-size:11px;font-weight:900;line-height:1.35;"
     return f'<span style="{base}{style}">{e(text)}</span>'
+
+
+def is_markdown_table_line(line: str) -> bool:
+    s = str(line or "").strip()
+    return s.count("|") >= 2 and len(s.replace("|", "").strip()) > 0
+
+
+def split_markdown_table_row(line: str) -> list[str]:
+    s = str(line or "").strip()
+    if s.startswith("|"):
+        s = s[1:]
+    if s.endswith("|"):
+        s = s[:-1]
+    return [cell.strip() for cell in s.split("|")]
+
+
+def is_markdown_table_separator(cells: list[str]) -> bool:
+    if not cells:
+        return False
+    return all(re.fullmatch(r":?-{2,}:?", re.sub(r"\s+", "", cell or "")) for cell in cells)
+
+
+def render_markdown_table(lines: list[str]) -> str:
+    rows = [split_markdown_table_row(line) for line in lines if is_markdown_table_line(line)]
+    rows = [row for row in rows if any(cell for cell in row)]
+    if len(rows) < 2:
+        return f"<p>{fmt('\n'.join(lines))}</p>"
+    headers = rows[0]
+    body_rows = rows[1:]
+    if body_rows and is_markdown_table_separator(body_rows[0]):
+        body_rows = body_rows[1:]
+    col_count = max(len(headers), *(len(row) for row in body_rows)) if body_rows else len(headers)
+    headers = headers + [""] * (col_count - len(headers))
+    body_rows = [row + [""] * (col_count - len(row)) for row in body_rows]
+    thead = "".join(f"<th>{fmt(cell)}</th>" for cell in headers)
+    tbody = "".join("<tr>" + "".join(f"<td>{fmt(cell)}</td>" for cell in row) + "</tr>" for row in body_rows)
+    return f"<div class='tutor-table-wrap'><table class='tutor-md-table'><thead><tr>{thead}</tr></thead><tbody>{tbody}</tbody></table></div>"
+
+
+def format_tutor_body(text: object) -> str:
+    raw = normalize_multiline(text)
+    if not raw:
+        return ""
+    parts: list[str] = []
+    text_lines: list[str] = []
+    table_lines: list[str] = []
+
+    def flush_text() -> None:
+        nonlocal text_lines
+        chunk = "\n".join(text_lines).strip()
+        if chunk:
+            parts.append(f"<p>{fmt(chunk)}</p>")
+        text_lines = []
+
+    def flush_table() -> None:
+        nonlocal table_lines
+        if table_lines:
+            parts.append(render_markdown_table(table_lines))
+        table_lines = []
+
+    for line in raw.split("\n"):
+        if is_markdown_table_line(line):
+            flush_text()
+            table_lines.append(line)
+        else:
+            flush_table()
+            text_lines.append(line)
+    flush_table()
+    flush_text()
+    return "".join(parts)
 
 
 def official_unit_signal_text(card: dict) -> str:
@@ -481,6 +555,14 @@ def mask_hi_front(raw: str) -> str:
     front = re.sub(r"(정답\s*[:：])\s*[^\n]+", r"\1 [답 숨김]", front)
     # Hide direct answer after a question mark on the same line, common in HI source.
     front = re.sub(r"([?？])\s{1,}([^\n①②③④⑤]{1,80})(?=\n|$)", r"\1 [답 숨김]", front)
+    # Hide HI short-answer labels where the answer follows a colon, e.g.
+    # "(1) 원인균 : Bordetella pertussis" or "(2) 치료 약제 : Erythromycin".
+    answer_label = r"(?:원인균|원인|병원체|진단|치료\s*약제|치료제|약제|항생제|치료|검사|처치|소견)"
+    front = re.sub(
+        rf"(?im)^(\s*(?:\(?\d+\)?|[①-⑤])?\s*[^\n:：]{{0,45}}{answer_label}[^\n:：]{{0,45}}\s*[:：])\s*(?!\[답 숨김\])\S[^\n]*$",
+        r"\1 [답 숨김]",
+        front,
+    )
     # Hide answer-only dash lines after stems.
     front = re.sub(r"(?m)^\s*[-·]\s*([^\n]{2,100})$", r"- [답 숨김]", front)
     return front
@@ -578,9 +660,9 @@ def format_tutor_html(text: object) -> str:
         first = lines[0].strip()
         if re.match(r"^[🧭🔎👣🧠📊✅🎯]", first):
             body = "\n".join(lines[1:]).strip()
-            blocks.append(f"<section class='tutor-section'><h4>{e(first)}</h4><p>{fmt(body)}</p></section>")
+            blocks.append(f"<section class='tutor-section'><h4>{e(first)}</h4>{format_tutor_body(body)}</section>")
         else:
-            blocks.append(f"<p>{fmt(block)}</p>")
+            blocks.append(format_tutor_body(block))
     return "".join(blocks)
 
 
@@ -733,6 +815,37 @@ def unit_study_axis(unit: str) -> str:
     }.get(unit, "문제 stem의 trigger를 먼저 잡고 정답 단어로 잠근다.")
 
 
+def render_hi_study_items(lines: list[str], ordered: bool = False) -> str:
+    parts: list[str] = []
+    text_items: list[str] = []
+    table_lines: list[str] = []
+    tag = "ol" if ordered else "ul"
+
+    def flush_text() -> None:
+        nonlocal text_items
+        if text_items:
+            parts.append(f"<{tag}>" + "".join(f"<li>{e(x)}</li>" for x in text_items) + f"</{tag}>")
+        text_items = []
+
+    def flush_table() -> None:
+        nonlocal table_lines
+        if table_lines:
+            parts.append(render_markdown_table(table_lines))
+        table_lines = []
+
+    for line in lines:
+        if is_markdown_table_line(line):
+            flush_text()
+            table_lines.append(line)
+        else:
+            flush_table()
+            if str(line or "").strip():
+                text_items.append(str(line).strip())
+    flush_table()
+    flush_text()
+    return "".join(parts)
+
+
 def build_hi_study_parts(cards: list[dict]) -> list[dict]:
     hi_cards = [c for c in cards if c.get("layer") == "hi156"]
     groups: dict[tuple[str, str], list[dict]] = {}
@@ -821,13 +934,13 @@ def build_hi_study_parts(cards: list[dict]) -> list[dict]:
 <h4>👣 시험장 사고 흐름</h4>
 <ol><li>먼저 단원 축을 잡는다: {e(chapter)}.</li><li>stem에서 사진/나이/기간/검사/소견 trigger를 하나 고른다.</li><li>그 trigger를 아래 lock line 중 하나와 연결한다.</li><li>답이 원문 확인 필요인 카드는 외우기보다 원문 crop/해설을 같이 확인한다.</li></ol>
 <h4>🧠 쉽게 이해하기</h4>
-<ul>{''.join(f'<li>{e(x)}</li>' for x in easy_lines)}</ul>
+{render_hi_study_items(easy_lines)}
 <h4>📊 감별/오답 제거</h4>
-<ul>{''.join(f'<li>{e(x)}</li>' for x in diff_lines)}</ul>
+{render_hi_study_items(diff_lines)}
 <h4>✅ 3초 Lock line</h4>
 {''.join(f'<div class="hi-lock">{e(x)}</div>' for x in lock_lines)}
 <h4>🎯 암기 확인 퀴즈</h4>
-<ul>{''.join(f'<li>{e(x)}</li>' for x in quiz_lines)}</ul>
+{render_hi_study_items(quiz_lines)}
 <h4>문항 펼쳐보기</h4>
 <p class="hi-part-bottom-note">문항을 누르면 답/lock line이 바로 아래에서 펼쳐집니다. 따로 뒤로가기 하지 않아도 이 파트 안에서 확인할 수 있습니다.</p>
 {''.join(card_minis)}
@@ -1299,6 +1412,12 @@ body.peds-pretest2-full-bg .main, body.peds-pretest2-full-bg .quiz-header {{ pos
 body.peds-pretest2-full-bg .card, body.peds-pretest2-full-bg .quiz-card {{ box-shadow: 0 18px 44px rgba(2,6,23,.24); }}
 body.peds-pretest2-full-bg .tutor-section {{ margin: 12px 0; padding: 10px 12px; background: rgba(255,255,255,.62); border: 1px solid rgba(124,58,237,.14); border-radius: 10px; }}
 body.peds-pretest2-full-bg .tutor-section h4 {{ margin: 0 0 7px; font-size: 15px; color: #581c87; }}
+body.peds-pretest2-full-bg .tutor-section p {{ margin: 0 0 8px; }}
+body.peds-pretest2-full-bg .tutor-table-wrap {{ width:100%; overflow-x:auto; margin:8px 0; border-radius:10px; border:1px solid rgba(124,58,237,.18); background:#fff; }}
+body.peds-pretest2-full-bg table.tutor-md-table {{ width:100%; border-collapse:collapse; min-width:420px; font-size:13px; line-height:1.55; }}
+body.peds-pretest2-full-bg .tutor-md-table th {{ background:#ede9fe; color:#4c1d95; font-weight:950; text-align:left; padding:8px 10px; border:1px solid #ddd6fe; white-space:nowrap; }}
+body.peds-pretest2-full-bg .tutor-md-table td {{ color:#1f2937; padding:8px 10px; border:1px solid #e9d5ff; vertical-align:top; }}
+body.peds-pretest2-full-bg .tutor-md-table tr:nth-child(even) td {{ background:#faf5ff; }}
 body.peds-pretest2-full-bg .source-images img {{ max-height: 520px; object-fit: contain; }}
 body.peds-pretest2-full-bg::before, body.peds-pretest2-full-bg::after {{ display:none !important; content:none !important; }}
 body.peds-pretest2-full-bg .mobile-review-start, body.peds-pretest2-full-bg .review-hero, body.peds-pretest2-full-bg .card-grid, body.peds-pretest2-full-bg .sidebar .sb-quiz-btns, body.peds-pretest2-full-bg .sidebar .sb-item {{ display:none !important; }}
