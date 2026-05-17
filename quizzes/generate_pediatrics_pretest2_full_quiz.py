@@ -157,6 +157,22 @@ CURATED_ANSWER_ONLY_IMAGES = {
     ("PEDS2-2025-15to18-Q1", "non_hi_qimg_038"),  # original capture has checked/circled answer
 }
 
+# Manual source-image recoveries for source-variant cards that are not covered
+# by the automatic non-HI candidate linker. The HSV source crop contains the
+# written answer, so the committed asset is a tight front-safe clinical-photo
+# crop made from that source image.
+CURATED_MANUAL_CARD_IMAGES = {
+    "PEDS2-2023PDF-029": [
+        {
+            "src": "assets/peds_pretest2_full/PEDS2-2023PDF-029__front_crop__hsv_gingivostomatitis_perioral.png",
+            "caption": "원문 사진 crop: HSV 잇몸구내염 의심 입주위 병변",
+            "kind": "manual_front_crop",
+            "front_visible": True,
+            "curated_id": "manual_hsv_gingivostomatitis_crop_20260517",
+        }
+    ]
+}
+
 # Embedded HI images are front-visible by default only when they are clean
 # diagnostic material (CXR/ECG/US/lesion photo). These embedded pages contain
 # diagnosis/treatment tables, labeled murmur diagrams, or annotated teaching
@@ -234,6 +250,19 @@ CURATED_CARD_FIXES.update({'PEDS2-2025-15to18-Q1': {'question': '객Q. 2세 여�
 # BEGIN DIGESTIVE_ANSWER_AUDIT_FIXES_20260517
 CURATED_CARD_FIXES.update({'PEDS2-2026-5to8-Q7': {'answer': '만성복통 alarm symptom: 야간 각성 복통, 지속적 우상복부/우하복부 통증 또는 국소 압통, 연하곤란, 혈변/위장관 실혈, 의미 있는 담즙성·주기적·지속적 구토, 만성 중증/야간 설사, 발열, 체중감소/성장속도 감소, 사춘기 지연, IBD/소화성궤양 가족력 등에서 2개 이상', 'uncertain': False}, 'PEDS2-2025-19to23-Q2': {'answer': '중증 탈수로 보이면 등장성 IV 수액(0.9% 생리식염수 등)을 우선 투여한다. 중등도 이하 탈수는 ORS 50–100 mL/kg를 3–4시간에 투여한다.', 'uncertain': False}, 'PEDS2-2023PDF-035': {'answer': '중간창자 꼬임(midgut volvulus)', 'uncertain': False}, 'PEDS2-HI2-043': {'answer': '로타바이러스 백신', 'uncertain': False}, 'PEDS2-HI2-044': {'answer': '바이러스 위장관염; 가장 흔한 바이러스는 로타바이러스', 'uncertain': False}, 'PEDS2-HI2-045': {'answer': '로타바이러스', 'uncertain': False}, 'PEDS2-HI2-046': {'answer': 'Salmonella typhi; ceftriaxone 또는 3세대 cephalosporin', 'uncertain': False}, 'PEDS2-HI2-047': {'answer': '수유모의 항원 제한 식사', 'uncertain': False}, 'PEDS2-HI2-048': {'answer': '젖당 제한 식이', 'uncertain': False}, 'PEDS2-HI2-056': {'answer': '만성복통 red flag: 야간 각성 복통, 지속적 RUQ/RLQ 통증 또는 국소 압통, 연하곤란, 혈변/위장관 실혈, 의미 있는 구토, 야간/중증 설사, 발열, 체중감소/성장속도 감소, 사춘기 지연, IBD/소화성궤양 가족력 등에서 4개 이상', 'uncertain': False}, 'PEDS2-HI2-057': {'answer': '복부초음파', 'uncertain': False}, 'PEDS2-HI2-059': {'answer': '장중첩증; 복부초음파', 'uncertain': False}, 'PEDS2-HI2-060': {'answer': '연소 용종 의심; 대장내시경', 'uncertain': False}, 'PEDS2-HI2-062': {'answer': '메켈 게실; 99mTc-pertechnetate scan(메켈 스캔)', 'uncertain': False}, 'PEDS2-HI2-069': {'answer': '전해질 및 수분 공급 후 수술적 치료', 'uncertain': False}, 'PEDS2-HI2-073': {'answer': '비타민 D', 'uncertain': False}, 'PEDS2-HI2-076': {'answer': '아연', 'uncertain': False}, 'PEDS2-HI2-077': {'answer': '아연', 'uncertain': False}})
 # END DIGESTIVE_ANSWER_AUDIT_FIXES_20260517
+
+CURATED_CARD_FIXES.setdefault("PEDS2-2023PDF-029", {}).update({
+    "question": "객Q. 다음 구강/입주위 병변 사진을 보고 가장 가능성이 큰 진단은?",
+    "display_question": "객Q. 다음 구강/입주위 병변 사진을 보고 가장 가능성이 큰 진단은?",
+    "answer": "헤르페스 잇몸구내염, herpetic gingivostomatitis",
+    "explanation": "2023PDF 원문에는 HSV 잇몸구내염 사진/증례가 있었고, FULL 병합 과정에서 이미지가 누락되었다. 답이 적힌 원문 캡처에서 글자 없는 병변 사진만 crop해 front에 복원했다.",
+    "enhanced_explanation": "🧭 Big picture\n소아가 발열, 보챔, 섭취 저하와 함께 입술 주변 또는 구강 점막의 다발성 수포·궤양 병변을 보이면 단순포진바이러스에 의한 헤르페스 잇몸구내염을 생각한다.\n\n🔎 핵심 단서\n- 입주위/구강 수포와 궤양성 병변\n- 통증 때문에 잘 먹지 못함, 침 흘림 가능\n- 원인: HSV, 흔히 HSV-1\n- 치료: 증상 완화와 수분 보충, 필요한 경우 acyclovir\n\n👣 시험장 사고 흐름\n1단계: 병변 위치가 입안/입주위인지 본다.\n2단계: 손발 병변이 같이 있으면 수족구병을 먼저 생각한다.\n3단계: 손발보다 입주위·잇몸·구강 궤양이 중심이고 통증/섭취 저하가 강하면 HSV 잇몸구내염으로 간다.\n\n✅ 3초 Lock line\n소아 + 입주위/구강 다발 수포·궤양 + 못 먹음 = 헤르페스 잇몸구내염.",
+    "uncertain": False,
+})
+
+# BEGIN RESPIRATORY_ANSWER_AUDIT_FIXES_20260517
+CURATED_CARD_FIXES.update({'PEDS2-HI2-031': {'answer': '소아: 폐 하부 병변·초감염 결핵·치유 시 석회화 / 성인: 폐첨 또는 쇄골상부 병변·재감염/재활성화 결핵·치유 시 섬유화', 'uncertain': False}, 'PEDS2-HI2-032': {'answer': 'Chest X-ray와 TST; 정상/활동성 결핵 배제 시 isoniazid 예방치료', 'uncertain': False}, 'PEDS2-HI2-034': {'answer': '이소니아지드 9개월 복용', 'uncertain': False}, 'PEDS2-HI2-037': {'answer': 'Isoniazid + Rifampicin + Pyrazinamide + Ethambutol 2개월 후 Isoniazid + Rifampicin 4개월', 'uncertain': False}, 'PEDS2-HI2-065': {'answer': '기관루 동반 식도폐쇄', 'uncertain': False}, 'PEDS2-HI2-078': {'answer': '니스타틴', 'uncertain': False}, 'PEDS2-HI2-081': {'answer': '경과관찰', 'uncertain': False}, 'PEDS2-HI2-087': {'answer': '부비동염; Streptococcus pneumoniae', 'uncertain': False}, 'PEDS2-HI2-088': {'answer': '크룹; Parainfluenza virus', 'uncertain': False}, 'PEDS2-HI2-090': {'answer': '에피네프린', 'uncertain': False}, 'PEDS2-HI2-091': {'answer': '수액치료', 'uncertain': False}, 'PEDS2-HI2-093': {'answer': '바이러스성 폐렴', 'uncertain': False}, 'PEDS2-HI2-094': {'answer': '암피실린-설박탐', 'uncertain': False}, 'PEDS2-HI2-095': {'answer': '마이코플라즈마 폐렴', 'uncertain': False}, 'PEDS2-HI2-101': {'answer': 'ICS + LABA', 'uncertain': False}, 'PEDS2-HI2-102': {'answer': '흡입형 속효성 β2 항진제(SABA)', 'uncertain': False}, 'PEDS2-HI2-104': {'answer': 'A: Formoterol / B: Budesonide-Formoterol 복합제', 'uncertain': False}, 'PEDS2-2025-19to23-Q3-SOURCEVAR': {'answer': '4번', 'uncertain': False}})
+# END RESPIRATORY_ANSWER_AUDIT_FIXES_20260517
 
 # Official 2-week pretest scope from 교수님 공지 PDF:
 # 2주차 = 12~15장: 감염, 소화기, 호흡기, 심혈관.
@@ -432,6 +461,15 @@ def apply_curated_card_fixes(card: dict) -> None:
     extra_tags = ["curated-front-fix"]
     if card.get("same_as_hi"):
         extra_tags.append("HI-duplicate")
+    manual_images = CURATED_MANUAL_CARD_IMAGES.get(str(card.get("id", "")), [])
+    if manual_images:
+        existing_srcs = {str(img.get("src", "")) for img in card.get("images", []) or []}
+        for img in manual_images:
+            if img.get("src") not in existing_srcs:
+                card.setdefault("images", []).append(dict(img))
+                existing_srcs.add(str(img.get("src", "")))
+        card["has_image"] = bool(card.get("images"))
+        extra_tags.append("manual-image-restored")
     card["tags"] = list(dict.fromkeys(card.get("tags", []) + extra_tags))
 
 
