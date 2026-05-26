@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>소아 Pretest 제작 프로토콜</title>
+  <style>
+    :root{
+      --bg:#f8fafc; --ink:#111827; --muted:#64748b; --card:#ffffff;
+      --line:#e2e8f0; --blue:#2563eb; --violet:#7c3aed; --red:#dc2626;
+      --green:#16a34a; --amber:#d97706; --slate:#334155;
+      --shadow:0 18px 50px rgba(15,23,42,.08);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:linear-gradient(180deg,#eff6ff 0,#f8fafc 340px);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Arial,sans-serif;line-height:1.65}
+    a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+    .wrap{max-width:1180px;margin:0 auto;padding:28px 18px 72px}
+    .hero{display:grid;grid-template-columns:1.3fr .7fr;gap:20px;align-items:stretch;margin:8px 0 22px}
+    .panel{background:rgba(255,255,255,.9);border:1px solid rgba(226,232,240,.9);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px}
+    .hero h1{font-size:clamp(30px,4vw,54px);line-height:1.08;margin:0 0 14px;letter-spacing:-.05em}
+    .hero p{margin:0;color:#475569;font-size:17px}.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.badge{display:inline-flex;align-items:center;gap:6px;border:1px solid #dbeafe;background:#eff6ff;color:#1e40af;border-radius:999px;padding:6px 10px;font-weight:700;font-size:13px}.badge.red{background:#fef2f2;border-color:#fecaca;color:#991b1b}.badge.green{background:#ecfdf5;border-color:#bbf7d0;color:#166534}.badge.dark{background:#0f172a;color:#e2e8f0;border-color:#334155}.quick h2{margin:0 0 12px;font-size:20px}.quick ol{margin:0;padding-left:22px}.quick li{margin:6px 0;font-weight:650}.nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 26px}.nav a{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 13px;color:#334155;font-weight:700;box-shadow:0 6px 18px rgba(15,23,42,.04)}
+    section{margin:22px 0}.section-title{display:flex;align-items:center;gap:10px;margin:0 0 12px}.section-title h2{font-size:26px;margin:0;letter-spacing:-.035em}.num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--violet));color:#fff;font-weight:900}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{grid-column:span 4;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 10px 30px rgba(15,23,42,.05)}.card.wide{grid-column:span 6}.card.full{grid-column:1/-1}.card h3{margin:0 0 8px;font-size:18px}.card p,.card ul,.card ol{margin-top:8px;margin-bottom:0;color:#475569}.card li{margin:5px 0}.callout{border-left:5px solid var(--blue);background:#eff6ff;border-radius:16px;padding:14px 16px;margin:12px 0;color:#1e3a8a}.callout.warn{border-color:var(--amber);background:#fffbeb;color:#78350f}.callout.danger{border-color:var(--red);background:#fef2f2;color:#7f1d1d}.callout.ok{border-color:var(--green);background:#ecfdf5;color:#14532d}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:720px}th,td{text-align:left;border-bottom:1px solid var(--line);padding:11px 12px;vertical-align:top}th{background:#f1f5f9;color:#334155;font-size:13px}td{color:#334155}tr:last-child td{border-bottom:0}.timeline{display:grid;gap:10px}.step{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}.dot{display:grid;place-items:center;width:38px;height:38px;border-radius:14px;background:#e0e7ff;color:#3730a3;font-weight:900}.step-body{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px}.step-body h3{margin:0 0 4px;font-size:17px}.step-body p{margin:0;color:#475569}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#f1f5f9;border:1px solid #cbd5e1;border-radius:8px;padding:2px 6px;color:#334155}.footer{margin-top:32px;color:#64748b;text-align:center;font-size:13px}.two{columns:2;column-gap:28px}.checklist label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed #e2e8f0}.checklist input{margin-top:6px}.small{font-size:13px;color:#64748b}.pill{display:inline-block;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:800}.p4{background:#fee2e2;color:#991b1b}.p3{background:#dbeafe;color:#1e40af}.p2{background:#ede9fe;color:#5b21b6}.p1{background:#dcfce7;color:#166534}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;word-break:break-all}.copy{border:0;background:#111827;color:white;border-radius:12px;padding:9px 12px;font-weight:800;cursor:pointer}.copy:active{transform:translateY(1px)}
+    @media (max-width:860px){.hero{grid-template-columns:1fr}.card,.card.wide{grid-column:1/-1}.two{columns:1}.wrap{padding:18px 12px 56px}.panel{padding:18px}.hero h1{font-size:34px}table{min-width:640px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="panel">
+        <h1>소아 Pretest 제작 프로토콜</h1>
+        <p>1·2·3주차 pretest 퀴즈를 만들 때 사용한 방식. 핵심은 문제 수 맞추기가 아니라 <b>source trace, uncertain 보존, 이미지 누설 방지, Allen 근거, live QC</b>까지 닫는 것이다.</p>
+        <div class="badge-row">
+          <span class="badge">Source-first</span>
+          <span class="badge red">Uncertain 보존</span>
+          <span class="badge green">이미지 front/answer 분리</span>
+          <span class="badge dark">GitHub Pages 배포</span>
+        </div>
+      </div>
+      <div class="panel quick">
+        <h2>한 줄 결론</h2>
+        <ol>
+          <li>source inventory 먼저 만든다.</li>
+          <li>현재 deck에 audit layer를 덧씌운다.</li>
+          <li>불완전 복기는 삭제하지 않는다.</li>
+          <li>이미지는 답 누설 여부로 front/answer 분리한다.</li>
+          <li>HTML 재생성 후 live QC까지 본다.</li>
+        </ol>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="#pipeline">제작 순서</a><a href="#sources">Source hierarchy</a><a href="#cards">카드화 규칙</a><a href="#images">이미지</a><a href="#allen">Allen 해설</a><a href="#qc">QC Gate</a><a href="#peds3">3주차 실제 상태</a><a href="#links">링크/파일</a>
+    </nav>
+
+    <section id="pipeline">
+      <div class="section-title"><span class="num">1</span><h2>표준 제작 순서</h2></div>
+      <div class="timeline">
+        <div class="step"><div class="dot">1</div><div class="step-body"><h3>Source inventory</h3><p>소아 폴더 전체에서 pretest, 프테, HI, 야마, 2023, 2025, 2026 파일을 찾고 파일별 문항 수·이미지 수·우선순위를 기록한다.</p></div></div>
+        <div class="step"><div class="dot">2</div><div class="step-body"><h3>현재 deck 스냅샷</h3><p>JSON 카드 수, source 분포, uncertain 수, 이미지 수, 단원 분포를 먼저 찍는다. 기존 deck은 함부로 버리지 않는다.</p></div></div>
+        <div class="step"><div class="dot">3</div><div class="step-body"><h3>Coverage audit</h3><p>최신 2026 → 2025 누적 → 2023 PDF → HI/Yama 순서로 현재 deck에 포함/부분/누락/수동확인/이미지 필요를 판정한다.</p></div></div>
+        <div class="step"><div class="dot">4</div><div class="step-body"><h3>누락·variant 반영</h3><p>같은 답이라도 stem, 선지, 이미지가 다르면 variant로 보존한다. 기존 ID 안정성은 유지하고 append 중심으로 처리한다.</p></div></div>
+        <div class="step"><div class="dot">5</div><div class="step-body"><h3>Uncertain 재분류</h3><p>원문에서 확정 가능한 것은 정답을 확정하고, 불완전 복기는 추정 답안을 붙이되 uncertain/source note를 유지한다.</p></div></div>
+        <div class="step"><div class="dot">6</div><div class="step-body"><h3>이미지 audit</h3><p>front-safe, answer-only, exclude로 나눈다. 정답·진단명·해설이 보이는 crop은 앞면 금지.</p></div></div>
+        <div class="step"><div class="dot">7</div><div class="step-body"><h3>Allen 근거 해설</h3><p>Allen corpus를 고정하고 batch로 나눠 allen_answer, allen_explanation, allen_refs, confidence를 붙인다.</p></div></div>
+        <div class="step"><div class="dot">8</div><div class="step-body"><h3>Generate → QC → Push</h3><p>generator로 HTML 재생성, JSON/DOM/live/mobile/image QC를 통과한 뒤 GitHub Pages에 push한다.</p></div></div>
+        <div class="step"><div class="dot">9</div><div class="step-body"><h3>10분팩</h3><p>deck과 별도로 시험 직전용 10분팩을 만든다. 최신 exact 문항, high-yield lock, hard-uncertain 답 고정 금지 목록을 담는다.</p></div></div>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="section-title"><span class="num">2</span><h2>Source hierarchy</h2></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>우선순위</th><th>Source</th><th>역할</th><th>처리 원칙</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill p4">P4</span></td><td>최신 2026 복기 docx</td><td>가장 최신 실제 복기</td><td>앞쪽 최신 10문항/조별 최신 문항을 최우선 반영</td></tr>
+          <tr><td><span class="pill p4">P4 보조</span></td><td>2026 짧은 복기 docx</td><td>최신 변형·짧은 단서</td><td>불완전해도 버리지 않고 source-faithful variant로 보존</td></tr>
+          <tr><td><span class="pill p3">P3</span></td><td>2025 누적 복기 docx</td><td>반복 stem/변형 확인</td><td>최신 문항과 겹치면 보강 근거로 사용</td></tr>
+          <tr><td><span class="pill p3">P3</span></td><td>2023 pretest PDF</td><td>PDF 원본/이미지/선지 확인</td><td>page/column/source line을 raw anchor로 남김</td></tr>
+          <tr><td><span class="pill p2">P2</span></td><td>HI / 야마 PDF</td><td>full bank 후보</td><td>범위 밖처럼 보여도 삭제하지 않고 범위외/확인 처리</td></tr>
+          <tr><td><span class="pill p2">P2</span></td><td>의국회의/PN 후보</td><td>시험 후보</td><td>확정 카드와 분리, 10분팩 후보 block으로 관리</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="cards">
+      <div class="section-title"><span class="num">3</span><h2>카드화 규칙</h2></div>
+      <div class="grid">
+        <div class="card wide"><h3>Core rule</h3><ul><li>문제 1개 = 카드 1개.</li><li>stem/선지/이미지가 다르면 같은 답이라도 variant로 보존.</li><li>불완전 복기 문항은 삭제하지 않고 uncertain으로 남김.</li><li>기존 카드 번호/ID 안정성 유지.</li></ul></div>
+        <div class="card wide"><h3>불완전 복기 처리</h3><ul><li><span class="kbd">uncertain: true</span></li><li><span class="kbd">answer: 추정 답안...</span> 또는 원문 확인 필요</li><li><span class="kbd">raw_anchor</span>, <span class="kbd">source</span>, <span class="kbd">needs_original_source</span> 유지</li><li>시험 직전에는 답 고정 금지 목록으로 따로 관리</li></ul></div>
+        <div class="card full"><div class="callout danger"><b>금지:</b> 원문이 불완전하다고 카드를 삭제하거나, 이미지/선지 확인이 필요한 답을 확정처럼 보여주는 것.</div></div>
+      </div>
+    </section>
+
+    <section id="images">
+      <div class="section-title"><span class="num">4</span><h2>이미지 원칙</h2></div>
+      <div class="grid">
+        <div class="card"><h3>Front-safe</h3><p>문제 풀이 자체에 필요한 CXR, EEG, MRI, 피부 병변, 갑상샘 스캔 등. 답/진단명/체크 표시가 없어야 한다.</p></div>
+        <div class="card"><h3>Answer-only</h3><p>정답 표시, 해설, 진단명, 답 체크가 포함된 원문 crop. 뒷면/해설 참고용으로만 표시한다.</p></div>
+        <div class="card"><h3>Exclude</h3><p>다른 문제 이미지, 오염 crop, 답 누설이 심한 캡처, 텍스트로 이미 충분한 screenshot.</p></div>
+        <div class="card full"><h3>3주차 실제 반영</h3><p>최종 v7 기준 image refs 8개. front-safe 4개, answer-only 4개로 분리했다.</p></div>
+      </div>
+    </section>
+
+    <section id="allen">
+      <div class="section-title"><span class="num">5</span><h2>Allen PDF 기준 해설</h2></div>
+      <div class="panel">
+        <p>Allen source corpus를 <span class="kbd">Needle - 소아과/source/pages/*.md</span> 65쪽으로 고정하고, 309문항을 30문항 × 10 batch + 잔여 9문항으로 나누어 해설을 붙였다.</p>
+        <div class="grid">
+          <div class="card"><h3>필드</h3><ul><li>allen_answer</li><li>allen_explanation</li><li>allen_refs</li><li>allen_confidence</li><li>allen_needs_original_source</li><li>allen_notes</li></ul></div>
+          <div class="card"><h3>판정</h3><ul><li>high: Allen 근거가 직접적</li><li>medium: 근거는 있으나 원문 복기 보정 필요</li><li>low: 원문/이미지 확인 필요</li></ul></div>
+          <div class="card"><h3>주의</h3><p>low confidence 또는 needs_original_source 문항은 시험 직전 확정답처럼 고정하지 않는다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="qc">
+      <div class="section-title"><span class="num">6</span><h2>QC Gate</h2></div>
+      <div class="grid">
+        <div class="card wide checklist">
+          <h3>로컬 QC</h3>
+          <label><input type="checkbox"> JSON parse 통과</label>
+          <label><input type="checkbox"> card id 중복 0</label>
+          <label><input type="checkbox"> data count = HTML QUIZ_DATA count</label>
+          <label><input type="checkbox"> generator py_compile 통과</label>
+          <label><input type="checkbox"> front answer leakage 0</label>
+          <label><input type="checkbox"> self-answer box 0</label>
+        </div>
+        <div class="card wide checklist">
+          <h3>Live QC</h3>
+          <label><input type="checkbox"> GitHub Pages fetch 200</label>
+          <label><input type="checkbox"> DOM card count 일치</label>
+          <label><input type="checkbox"> storage prefix 새 버전 확인</label>
+          <label><input type="checkbox"> 이미지 asset 200 / natural size 확인</label>
+          <label><input type="checkbox"> mobile viewport overflow false</label>
+          <label><input type="checkbox"> 새 정답/교정 문자열 live 반영</label>
+        </div>
+      </div>
+    </section>
+
+    <section id="peds3">
+      <div class="section-title"><span class="num">7</span><h2>소아 3주차 실제 최종 상태</h2></div>
+      <div class="grid">
+        <div class="card"><h3>Cards</h3><p><b>309문항</b><br><span class="small">초기 299 + 2026 5·8조 계열 10문항 보강</span></p></div>
+        <div class="card"><h3>Uncertain</h3><p><b>117문항</b><br><span class="small">추정답/원문확인 표시 유지</span></p></div>
+        <div class="card"><h3>Images</h3><p><b>8 refs</b><br><span class="small">front-safe 4, answer-only 4</span></p></div>
+        <div class="card"><h3>Allen</h3><p><b>309/309</b><br><span class="small">Allen answer/explanation 필드 반영</span></p></div>
+        <div class="card wide"><h3>단원 분포</h3><p>혈액·종양 81, 내분비 65, 신경·근육 62, 신요로 42, 알레르기 27, 기타/골격/피부/집담회 등.</p></div>
+        <div class="card wide"><h3>마지막 교정</h3><p>고열 + LE/nitrite positive + WBC many 문항은 acute cystitis가 아니라 <b>acute pyelonephritis(APN)</b>로 교정.</p></div>
+      </div>
+    </section>
+
+    <section id="links">
+      <div class="section-title"><span class="num">8</span><h2>링크 / 파일</h2></div>
+      <div class="grid">
+        <div class="card wide"><h3>Live quiz</h3><p><a href="./소아청소년과_3주차_pretest_quiz.html">소아청소년과 3주차 Pretest Quiz</a></p><p class="small">동일 GitHub Pages repo 안의 현재 quiz HTML.</p></div>
+        <div class="card wide"><h3>Source files</h3><ul class="mono"><li>quizzes/data/pediatrics_pretest3_cards.json</li><li>quizzes/generate_pediatrics_pretest3_quiz.py</li><li>quizzes/소아청소년과_3주차_pretest_quiz.html</li></ul></div>
+        <div class="card full"><h3>다음번 복사용 runbook</h3><pre id="runbook" class="mono" style="white-space:pre-wrap;background:#0f172a;color:#e2e8f0;border-radius:16px;padding:16px;overflow:auto">1. source inventory 생성
+2. 현재 deck count/source/uncertain/image 상태 스냅샷
+3. 최신 2026 source 우선 반영
+4. 2025/2023/HI/Yama coverage audit
+5. 누락 append, 기존 id 안정성 유지
+6. uncertain은 삭제하지 않고 추정답+표시
+7. 이미지 front-safe/answer-only 분류
+8. Allen 근거 해설 batch 반영
+9. generator 재생성
+10. JSON/DOM/live/image/mobile QC 후 10분팩 생성</pre><button class="copy" onclick="copyRunbook()">Runbook 복사</button></div>
+      </div>
+    </section>
+
+    <div class="footer">Built for 강렬 · Updated 2026-05-26 · kmle-planner-share GitHub Pages</div>
+  </div>
+  <script>
+    function copyRunbook(){
+      const text=document.getElementById('runbook').innerText;
+      navigator.clipboard.writeText(text).then(()=>{
+        const btn=document.querySelector('.copy');
+        const old=btn.textContent; btn.textContent='복사 완료';
+        setTimeout(()=>btn.textContent=old,1200);
+      });
+    }
+  </script>
+</body>
+</html>
