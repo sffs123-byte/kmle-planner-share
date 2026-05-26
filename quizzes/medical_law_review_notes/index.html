@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>의료법규 복습 노트 | KMLE Planner</title>
+<style>
+  :root { --bg:#0f172a; --card:#1e293b; --accent:#3b82f6; --text:#e2e8f0; --muted:#94a3b8; --green:#22c55e; --orange:#f59e0b; --red:#ef4444; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+  .container { max-width:720px; margin:0 auto; padding:20px 16px; }
+  h1 { font-size:1.5rem; font-weight:700; margin-bottom:4px; }
+  .subtitle { color:var(--muted); font-size:0.85rem; margin-bottom:24px; }
+  .stats { display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; }
+  .stat { background:var(--card); border-radius:12px; padding:12px 16px; flex:1; min-width:100px; text-align:center; }
+  .stat-num { font-size:1.4rem; font-weight:700; color:var(--accent); }
+  .stat-label { font-size:0.75rem; color:var(--muted); margin-top:2px; }
+  .core-list { display:flex; flex-direction:column; gap:10px; }
+  .core-card { background:var(--card); border-radius:12px; padding:16px; cursor:pointer; transition:all 0.2s; border-left:4px solid var(--accent); text-decoration:none; color:var(--text); display:block; }
+  .core-card:hover { transform:translateX(4px); border-left-color:var(--green); }
+  .core-card:active { transform:scale(0.98); }
+  .core-title { font-size:1rem; font-weight:600; margin-bottom:4px; }
+  .core-meta { font-size:0.8rem; color:var(--muted); }
+  .core-tags { display:flex; gap:6px; margin-top:8px; flex-wrap:wrap; }
+  .tag { background:rgba(59,130,246,0.15); color:var(--accent); font-size:0.7rem; padding:2px 8px; border-radius:99px; }
+  .tag.hot { background:rgba(239,68,68,0.15); color:var(--red); }
+  .tag.warm { background:rgba(245,158,11,0.15); color:var(--orange); }
+  .footer { text-align:center; margin-top:32px; color:var(--muted); font-size:0.75rem; }
+  /* Markdown viewer */
+  .viewer { display:none; }
+  .viewer.active { display:block; }
+  .back-btn { background:var(--card); color:var(--accent); border:none; padding:8px 16px; border-radius:8px; cursor:pointer; font-size:0.85rem; margin-bottom:16px; }
+  .md-content { background:var(--card); border-radius:12px; padding:20px; line-height:1.7; font-size:0.9rem; overflow-x:auto; }
+  .md-content h1 { font-size:1.3rem; color:var(--accent); margin:20px 0 12px; border-bottom:1px solid rgba(59,130,246,0.3); padding-bottom:8px; }
+  .md-content h2 { font-size:1.1rem; color:var(--green); margin:18px 0 10px; }
+  .md-content h3 { font-size:0.95rem; color:var(--orange); margin:14px 0 8px; }
+  .md-content table { width:100%; border-collapse:collapse; margin:12px 0; font-size:0.8rem; }
+  .md-content th, .md-content td { border:1px solid rgba(148,163,184,0.2); padding:6px 10px; text-align:left; }
+  .md-content th { background:rgba(59,130,246,0.1); font-weight:600; }
+  .md-content blockquote { border-left:3px solid var(--accent); padding-left:12px; color:var(--muted); margin:10px 0; }
+  .md-content code { background:rgba(59,130,246,0.1); padding:1px 4px; border-radius:3px; font-size:0.85em; }
+  .md-content ul, .md-content ol { padding-left:20px; }
+  .md-content li { margin:4px 0; }
+  .md-content strong { color:#f1f5f9; }
+  .md-content hr { border:none; border-top:1px solid rgba(148,163,184,0.2); margin:16px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div id="home">
+    <h1>의료법규 복습 노트</h1>
+    <p class="subtitle">KMLE Planner | 13개 법령 · 66개 토픽 · 495문항 커버</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label">Core 노트</div></div>
+      <div class="stat"><div class="stat-num">495</div><div class="stat-label">문항 커버</div></div>
+      <div class="stat"><div class="stat-num">66</div><div class="stat-label">Switch Map</div></div>
+    </div>
+    <div class="core-list" id="coreList"></div>
+    <div class="footer">Built by Jarvis · 2026-05-27</div>
+  </div>
+  <div id="viewer" class="viewer">
+    <button class="back-btn" onclick="goHome()">&larr; 목록으로</button>
+    <div class="md-content" id="mdContent"></div>
+  </div>
+</div>
+<script>
+const CORES = [
+  {id:"core1", file:"Core1_보건의료기본법_review_note.md", title:"Core 1 — 보건의료기본법", q:26, topics:7, tags:["기본법","계획주기","위원회"]},
+  {id:"core2", file:"Core2_의료법_의료인_review_note.md", title:"Core 2 — 의료법(의료인)", q:99, topics:13, tags:["최다출제","진단서","면허","처방전"], hot:true},
+  {id:"core3", file:"Core3_의료법_의료기관_review_note.md", title:"Core 3 — 의료법(의료기관)", q:73, topics:8, tags:["개설","광고","행정처분"], hot:true},
+  {id:"core4", file:"Core4_응급의료법_review_note.md", title:"Core 4 — 응급의료법", q:25, topics:6, tags:["면책","거부금지","구급차"]},
+  {id:"core5", file:"Core5_감염병_검역_AIDS_review_note.md", title:"Core 5 — 감염병+검역+AIDS", q:105, topics:11, tags:["신고체계","잠복기","1~4급"], hot:true},
+  {id:"core6", file:"Core6_건강보험_지역보건_review_note.md", title:"Core 6 — 건강보험+지역보건", q:51, topics:7, tags:["공단vs심평원","이의신청","보건소"]},
+  {id:"core7", file:"Core7_마약류관리법_review_note.md", title:"Core 7 — 마약류관리법", q:50, topics:5, tags:["마약vs향정vs대마","저장기준","취급자"], warm:true},
+  {id:"core8", file:"Core8_건강증진_혈액_연명의료_review_note.md", title:"Core 8 — 건강증진+혈액+연명의료", q:66, topics:9, tags:["금연","헌혈","연명의료절차"], warm:true}
+];
+const list = document.getElementById('coreList');
+CORES.forEach(c => {
+  const a = document.createElement('a');
+  a.className = 'core-card';
+  a.href = '#';
+  a.onclick = e => { e.preventDefault(); loadNote(c.file); };
+  a.innerHTML = `<div class="core-title">${c.title}</div>
+    <div class="core-meta">문제 ${c.q}개 · 토픽 ${c.topics}개</div>
+    <div class="core-tags">${c.tags.map(t=>`<span class="tag${c.hot?' hot':c.warm?' warm':''}">${t}</span>`).join('')}</div>`;
+  list.appendChild(a);
+});
+function goHome() {
+  document.getElementById('home').style.display = 'block';
+  document.getElementById('viewer').classList.remove('active');
+  window.scrollTo(0,0);
+}
+async function loadNote(file) {
+  document.getElementById('home').style.display = 'none';
+  const viewer = document.getElementById('viewer');
+  viewer.classList.add('active');
+  document.getElementById('mdContent').innerHTML = '<p style="color:var(--muted)">로딩 중...</p>';
+  try {
+    const res = await fetch(file);
+    const md = await res.text();
+    document.getElementById('mdContent').innerHTML = renderMd(md);
+  } catch(e) {
+    document.getElementById('mdContent').innerHTML = '<p style="color:var(--red)">파일 로드 실패: '+file+'</p>';
+  }
+  window.scrollTo(0,0);
+}
+function renderMd(md) {
+  let html = md
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+    .replace(/^---$/gm, '<hr>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/`(.+?)`/g, '<code>$1</code>');
+  // Tables
+  html = html.replace(/((?:\|.+\|(?:\n|$))+)/g, (match) => {
+    const rows = match.trim().split('\n').filter(r => r.trim());
+    if (rows.length < 2) return match;
+    let table = '<table>';
+    rows.forEach((row, i) => {
+      if (row.match(/^\|[\s-:|]+\|$/)) return;
+      const cells = row.split('|').filter((c,j,a) => j > 0 && j < a.length);
+      const tag = i === 0 ? 'th' : 'td';
+      table += '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
+    });
+    table += '</table>';
+    return table;
+  });
+  // Lists
+  html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
+  html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
+  // Paragraphs
+  html = html.replace(/\n\n/g, '</p><p>');
+  html = '<p>' + html + '</p>';
+  html = html.replace(/<p>\s*(<h[123]>)/g, '$1').replace(/(<\/h[123]>)\s*<\/p>/g, '$1');
+  html = html.replace(/<p>\s*(<table>)/g, '$1').replace(/(<\/table>)\s*<\/p>/g, '$1');
+  html = html.replace(/<p>\s*(<ul>)/g, '$1').replace(/(<\/ul>)\s*<\/p>/g, '$1');
+  html = html.replace(/<p>\s*(<blockquote>)/g, '$1').replace(/(<\/blockquote>)\s*<\/p>/g, '$1');
+  html = html.replace(/<p>\s*(<hr>)/g, '$1').replace(/(<hr>)\s*<\/p>/g, '$1');
+  html = html.replace(/<p>\s*<\/p>/g, '');
+  return html;
+}
+</script>
+</body>
+</html>
