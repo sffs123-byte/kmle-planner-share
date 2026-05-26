@@ -24,6 +24,10 @@ button { font-family:inherit; } .app { min-height:100vh; display:grid; grid-temp
 .sec { margin-top:12px; border:1px solid #e2e8f0; background:#fff; border-radius:16px; padding:13px; } .sec h4 { margin:0 0 8px; color:#334155; } .sec ul { margin:0; padding-left:20px; } .sec li { margin:5px 0; line-height:1.55; } .lock { background:#111827; color:#fef3c7; border-radius:14px; padding:12px; margin-top:12px; font-weight:950; }
 .sourcebtn { border:1px solid #cbd5e1; background:#fff; border-radius:12px; padding:10px 12px; font-weight:900; cursor:pointer; } .srcimg { display:none; margin-top:10px; } .srcimg.show { display:block; } .srcimg img { max-width:100%; border-radius:14px; border:1px solid #e2e8f0; }
 .gradebar { position:fixed; left:0; right:0; bottom:0; background:rgba(15,23,42,.96); border-top:1px solid rgba(255,255,255,.12); display:none; gap:8px; padding:12px max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left)); z-index:101; } .gradebar.show { display:flex; } .gradebar button { flex:1; border:0; border-radius:14px; padding:13px 8px; font-weight:950; cursor:pointer; } .again { background:#fecaca; color:#7f1d1d; } .hard { background:#fed7aa; color:#7c2d12; } .good { background:#bbf7d0; color:#14532d; } .easy { background:#bfdbfe; color:#1e3a8a; }
+html.law-quiz-isolated, body.law-quiz-isolated { min-height:100%; overflow:hidden !important; background:#0f172a !important; }
+body.law-quiz-isolated .app { display:none !important; }
+body.law-quiz-isolated .quiz.active { display:block !important; position:fixed !important; inset:0 !important; z-index:1000 !important; }
+body.law-quiz-isolated .gradebar.show { display:flex !important; z-index:1001 !important; }
 @media(max-width:820px) { .app { display:block; } .sidebar { position:relative; height:auto; } .hero { grid-template-columns:1fr; } .main { padding:14px; } .question { font-size:20px; } }
 </style>
 </head>
@@ -75,14 +79,30 @@ function startSequential(unit=currentUnit){queue=cardsForUnit(unit).map(c=>c.id)
 function startRandom(unit=currentUnit){queue=shuffle(cardsForUnit(unit).map(c=>c.id)); idx=0; showQuiz();}
 function startWeak(){const s=state(); let weak=CARDS.filter(c=>!s[c.id]||s[c.id].grade==='again'||s[c.id].grade==='hard').map(c=>c.id); queue=weak.length?shuffle(weak):shuffle(CARDS.map(c=>c.id)); idx=0; showQuiz();}
 function startFrom(id){queue=[id,...CARDS.filter(c=>c.id!==id && (currentUnit==='all'||c.unit===currentUnit)).map(c=>c.id)]; idx=0; showQuiz();}
-function showQuiz(){$('quiz').classList.add('active'); document.body.style.overflow='hidden'; renderCurrent();}
-function exitQuiz(){$('quiz').classList.remove('active'); $('gradebar').classList.remove('show'); document.body.style.overflow=''; updateStats(); renderList();}
+function enterIsolatedQuizPage(){
+  document.documentElement.classList.add('law-quiz-isolated');
+  document.body.classList.add('law-quiz-isolated');
+  if(!document.body.dataset.lawScrollY) document.body.dataset.lawScrollY=String(window.scrollY||0);
+  try { if(location.hash!=='#quiz') history.pushState({lawQuiz:true},'', '#quiz'); } catch(err) {}
+  setTimeout(()=>{ const quiz=$('quiz'); if(quiz) quiz.scrollTop=0; window.scrollTo(0,0); },0);
+}
+function leaveIsolatedQuizPage(){
+  document.documentElement.classList.remove('law-quiz-isolated');
+  document.body.classList.remove('law-quiz-isolated');
+  const y=parseInt(document.body.dataset.lawScrollY||'0',10);
+  delete document.body.dataset.lawScrollY;
+  try { if(location.hash==='#quiz') history.replaceState(null,'',location.pathname + location.search); } catch(err) {}
+  setTimeout(()=>window.scrollTo(0, Number.isFinite(y)?y:0),0);
+}
+function showQuiz(){enterIsolatedQuizPage(); $('quiz').classList.add('active'); document.body.style.overflow='hidden'; renderCurrent();}
+function exitQuiz(){$('quiz').classList.remove('active'); $('gradebar').classList.remove('show'); document.body.style.overflow=''; leaveIsolatedQuizPage(); updateStats(); renderList();}
 function renderCurrent(){current=CARDS.find(c=>c.id===queue[idx]); if(!current){exitQuiz(); return;} $('quizTitle').textContent=`${idx+1} / ${queue.length} · ${current.unitLabel}`; const hot=current.priority==='P4'?'hot':''; $('quizCard').innerHTML=`<div class="qmeta"><span class="badge ${hot}">${current.priority} · ${current.priorityLabel}</span><span class="badge">${current.sourceTopic}</span><span class="badge">원본 ${current.page}p</span></div><div class="question">${current.question}</div><button class="reveal" onclick="revealAnswer()">정답 보기</button><div class="answer" id="answerBox">${answerHtml(current)}</div>`; $('gradebar').classList.remove('show');}
 function listHtml(items){return '<ul>'+items.map(x=>`<li>${x}</li>`).join('')+'</ul>';}
 function answerHtml(c){return `<div class="answer-final"><h3>정답</h3><div>${c.answer}</div></div><div class="sec"><h4>🧭 Big picture</h4><p>${c.bigPicture}</p></div><div class="sec"><h4>🔎 핵심 단서</h4>${listHtml(c.triggers)}</div><div class="sec"><h4>👣 시험장 사고 흐름</h4>${listHtml(c.flow)}</div><div class="sec"><h4>📊 함정/오답 제거</h4>${listHtml(c.pitfalls)}</div><div class="lock">✅ 3초 Lock line: ${c.lock}</div><div class="sec"><h4>🎯 암기 확인</h4><p>${c.memoryCheck}</p></div><div class="sec"><h4>📖 원본 이미지 가이드</h4><p><b>시각 분석:</b> ${c.visualNote}</p><p>원본 이미지는 답 누수 가능성이 있어 정답 확인 뒤에만 엽니다.</p><button class="sourcebtn" onclick="toggleSource()">원본 ${c.page}p 보기</button><div class="srcimg" id="srcimg"><img src="${c.sourceAsset}" alt="source page"></div></div>`}
 function revealAnswer(){$('answerBox').classList.add('show'); $('gradebar').classList.add('show');}
 function toggleSource(){$('srcimg').classList.toggle('show');}
 function grade(g){const s=state(); s[current.id]={grade:g, at:Date.now(), count:(s[current.id]?.count||0)+1}; saveState(s); idx++; if(idx>=queue.length){alert('세트 완료'); exitQuiz();} else renderCurrent();}
+window.addEventListener('popstate',()=>{ if($('quiz').classList.contains('active') && location.hash!=='#quiz') exitQuiz(); });
 renderNav(); updateStats(); renderList();
 </script>
 </body>
