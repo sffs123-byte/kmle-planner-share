@@ -1,7 +1,7 @@
 {
-  "serverUrl": "https://invoice-lay-encounter-elliott.trycloudflare.com/api/interpret",
-  "healthUrl": "https://invoice-lay-encounter-elliott.trycloudflare.com/health",
-  "updatedAt": "2026-05-27T08:33:54Z",
+  "serverUrl": "https://exactly-numeric-smell-sequence.trycloudflare.com/api/interpret",
+  "healthUrl": "https://exactly-numeric-smell-sequence.trycloudflare.com/health",
+  "updatedAt": "2026-05-27T14:22:20Z",
   "source": "mac-mini-allens-helper-launchagent",
   "note": "Bridge token is intentionally not published. Extension stores token locally."
 }
