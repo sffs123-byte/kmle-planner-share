@@ -1,7 +1,7 @@
 {
-  "serverUrl": "https://suppliers-drag-neck-inputs.trycloudflare.com/api/interpret",
-  "healthUrl": "https://suppliers-drag-neck-inputs.trycloudflare.com/health",
-  "updatedAt": "2026-05-27T06:25:28Z",
+  "serverUrl": "https://invoice-lay-encounter-elliott.trycloudflare.com/api/interpret",
+  "healthUrl": "https://invoice-lay-encounter-elliott.trycloudflare.com/health",
+  "updatedAt": "2026-05-27T08:33:54Z",
   "source": "mac-mini-allens-helper-launchagent",
   "note": "Bridge token is intentionally not published. Extension stores token locally."
 }
