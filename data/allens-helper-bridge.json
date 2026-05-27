@@ -1,7 +1,7 @@
 {
   "serverUrl": "https://exactly-numeric-smell-sequence.trycloudflare.com/api/interpret",
   "healthUrl": "https://exactly-numeric-smell-sequence.trycloudflare.com/health",
-  "updatedAt": "2026-05-27T14:22:20Z",
+  "updatedAt": "2026-05-27T14:24:52Z",
   "source": "mac-mini-allens-helper-launchagent",
   "note": "Bridge token is intentionally not published. Extension stores token locally."
 }
