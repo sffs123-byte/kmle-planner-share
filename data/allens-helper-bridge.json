@@ -1,7 +1,7 @@
 {
   "serverUrl": "https://livestock-marketplace-ahead-forms.trycloudflare.com/api/interpret",
   "healthUrl": "https://livestock-marketplace-ahead-forms.trycloudflare.com/health",
-  "updatedAt": "2026-05-27T04:15:36Z",
+  "updatedAt": "2026-05-27T04:19:56Z",
   "source": "mac-mini-allens-helper-launchagent",
   "note": "Bridge token is intentionally not published. Extension stores token locally."
 }
