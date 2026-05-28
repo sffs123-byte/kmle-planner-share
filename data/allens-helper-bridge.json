@@ -1,7 +1,7 @@
 {
-  "serverUrl": "https://equipment-lonely-empirical-affects.trycloudflare.com/api/interpret",
-  "healthUrl": "https://equipment-lonely-empirical-affects.trycloudflare.com/health",
-  "updatedAt": "2026-05-27T14:33:24Z",
+  "serverUrl": "https://gem-delegation-miniature-leaders.trycloudflare.com/api/interpret",
+  "healthUrl": "https://gem-delegation-miniature-leaders.trycloudflare.com/health",
+  "updatedAt": "2026-05-28T07:08:07Z",
   "source": "mac-mini-allens-helper-launchagent",
   "note": "Bridge token is intentionally not published. Extension stores token locally."
 }
