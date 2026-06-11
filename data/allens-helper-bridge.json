@@ -1,7 +1,7 @@
 {
-  "serverUrl": "https://phi-connectors-noble-composition.trycloudflare.com/api/interpret",
-  "healthUrl": "https://phi-connectors-noble-composition.trycloudflare.com/health",
-  "updatedAt": "2026-06-11T00:40:57Z",
+  "serverUrl": "https://manner-citations-guided-pierre.trycloudflare.com/api/interpret",
+  "healthUrl": "https://manner-citations-guided-pierre.trycloudflare.com/health",
+  "updatedAt": "2026-06-11T10:38:35Z",
   "source": "mac-mini-allens-helper-launchagent",
   "note": "Bridge token is intentionally not published. Extension stores token locally."
 }
