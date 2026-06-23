@@ -1,6 +1,6 @@
 {
   "version": "cpx-reference-assets.v1",
-  "generatedAt": "2026-06-23T14:47:38.109003+00:00",
+  "generatedAt": "2026-06-23T18:20:04.340978+00:00",
   "notes": {
     "hankeut": "한끝 PDF는 CC별 page image stack으로 렌더링한다.",
     "team4": "4조 Word 파일은 Quick Look HTML을 우선 사용한다. Word AppleScript PDF export는 이 Mac에서 멈춤 현상이 있어 보조 루트로 둔다."
@@ -92,7 +92,7 @@
         {
           "key": "breast_pain_mass",
           "label": "4조 유방통/유방덩이",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/34. 유방통,유방덩이_4조.docx",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/9.여성/38.유방통,유방덩이.docx",
           "renderMode": "quicklook-html",
           "html": "assets/cpx-references/team4/38/breast_pain_mass/Preview.html"
         }
@@ -196,11 +196,18 @@
       },
       "team4": [
         {
-          "key": "vaginal_discharge_bleeding",
-          "label": "4조 질분비물/질출혈",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/39. 질분비물_질출혈.docx",
+          "key": "vaginal_discharge",
+          "label": "4조 질분비물",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/9.여성/39.1-질분비물.docx",
           "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/39/vaginal_discharge_bleeding/Preview.html"
+          "html": "assets/cpx-references/team4/39/vaginal_discharge/Preview.html"
+        },
+        {
+          "key": "vaginal_bleeding",
+          "label": "4조 질출혈",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/9.여성/39.2-질출혈.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/39/vaginal_bleeding/Preview.html"
         }
       ]
     },
@@ -288,16 +295,16 @@
       },
       "team4": [
         {
-          "key": "menstrual_disorder",
-          "label": "4조 월경이상(무월경)",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/33-1. 월경이상(무월경)_4조.docx",
+          "key": "amenorrhea",
+          "label": "4조 무월경/월경이상",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/9.여성/40.1 무월경.docx",
           "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/40/menstrual_disorder/Preview.html"
+          "html": "assets/cpx-references/team4/40/amenorrhea/Preview.html"
         },
         {
           "key": "dysmenorrhea",
           "label": "4조 월경통",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/33-2. 월경통_4조.docx",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/9.여성/40.2 월경통.docx",
           "renderMode": "quicklook-html",
           "html": "assets/cpx-references/team4/40/dysmenorrhea/Preview.html"
         }
@@ -382,7 +389,7 @@
         {
           "key": "prenatal_care",
           "label": "4조 산전진찰",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/24. 산전진찰_4조.docx",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/9.여성/41.산전진찰.docx",
           "renderMode": "quicklook-html",
           "html": "assets/cpx-references/team4/41/prenatal_care/Preview.html"
         }

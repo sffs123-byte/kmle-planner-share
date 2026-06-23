@@ -27,6 +27,7 @@ REFERENCE_ITEMS = [
             {
                 "key": "breast_pain_mass",
                 "label": "4조 유방통/유방덩이",
+                "path": "참고 대본/9.여성/38.유방통,유방덩이.docx",
                 "tokens": ["유방통", "유방덩이", "4조"],
             }
         ],
@@ -39,9 +40,16 @@ REFERENCE_ITEMS = [
         "bookPages": [388, 399],
         "team4": [
             {
-                "key": "vaginal_discharge_bleeding",
-                "label": "4조 질분비물/질출혈",
-                "tokens": ["질분비물", "질출혈"],
+                "key": "vaginal_discharge",
+                "label": "4조 질분비물",
+                "path": "참고 대본/9.여성/39.1-질분비물.docx",
+                "tokens": ["질분비물"],
+            },
+            {
+                "key": "vaginal_bleeding",
+                "label": "4조 질출혈",
+                "path": "참고 대본/9.여성/39.2-질출혈.docx",
+                "tokens": ["질출혈"],
             }
         ],
     },
@@ -53,13 +61,15 @@ REFERENCE_ITEMS = [
         "bookPages": [400, 409],
         "team4": [
             {
-                "key": "menstrual_disorder",
-                "label": "4조 월경이상(무월경)",
+                "key": "amenorrhea",
+                "label": "4조 무월경/월경이상",
+                "path": "참고 대본/9.여성/40.1 무월경.docx",
                 "tokens": ["월경이상", "무월경", "4조"],
             },
             {
                 "key": "dysmenorrhea",
                 "label": "4조 월경통",
+                "path": "참고 대본/9.여성/40.2 월경통.docx",
                 "tokens": ["월경통", "4조"],
             },
         ],
@@ -74,6 +84,7 @@ REFERENCE_ITEMS = [
             {
                 "key": "prenatal_care",
                 "label": "4조 산전진찰",
+                "path": "참고 대본/9.여성/41.산전진찰.docx",
                 "tokens": ["산전진찰", "4조"],
             }
         ],
@@ -207,9 +218,13 @@ def render_hankeut_pages(source_pdf: Path, item: dict, output_root: Path, dpi: i
     }
 
 
-def find_team4_docx(team4_root: Path, tokens: list[str]) -> Path | None:
-    wanted = [normalize(token) for token in tokens]
-    candidates = sorted(team4_root.glob("*.docx"))
+def find_team4_docx(team4_root: Path, spec: dict) -> Path | None:
+    if spec.get("path"):
+        candidate = team4_root / spec["path"]
+        if candidate.exists():
+            return candidate
+    wanted = [normalize(token) for token in spec["tokens"]]
+    candidates = sorted(team4_root.rglob("*.docx"))
     for path in candidates:
         name = normalize(path.name)
         if all(token in name for token in wanted):
@@ -234,13 +249,24 @@ def render_quicklook_html(source_docx: Path, output_dir: Path) -> Path:
     html = output_dir / "Preview.html"
     if not html.exists():
         raise RuntimeError(f"Quick Look preview HTML missing for {source_docx}")
+    inject_quicklook_fit(html)
     return html
+
+
+def inject_quicklook_fit(html: Path) -> None:
+    text = html.read_text(encoding="utf-8")
+    if "cpx-ql-fit" in text:
+        return
+    fit = """<style id="cpx-ql-fit">html{background:#fff}body{margin:0!important;overflow-x:auto;transform-origin:0 0}.cpx-ql-fit-note{display:none}</style><script id="cpx-ql-fit-script">(()=>{function fit(){const meta=document.querySelector('meta[name="viewport"]')?.content||'';const m=meta.match(/width\\s*=\\s*(\\d+)/i);const base=m?Number(m[1]):Math.max(900,document.body?.scrollWidth||1224);const scale=Math.min(1,Math.max(.42,(window.innerWidth-8)/base));if(document.body){document.body.style.zoom=String(scale);document.body.classList.add('cpx-ql-fitted')}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fit,{once:true});else fit();window.addEventListener('resize',fit,{passive:true})})();</script>"""
+    if "</head>" not in text:
+        raise RuntimeError(f"Preview HTML has no head close tag: {html}")
+    html.write_text(text.replace("</head>", fit + "</head>", 1), encoding="utf-8")
 
 
 def render_team4_sources(team4_root: Path, item: dict, output_root: Path) -> list[dict]:
     rendered = []
     for spec in item["team4"]:
-        source_docx = find_team4_docx(team4_root, spec["tokens"])
+        source_docx = find_team4_docx(team4_root, spec)
         if not source_docx:
             rendered.append(
                 {
@@ -276,7 +302,7 @@ def build(args: argparse.Namespace) -> dict:
     if not team4_root.exists():
         raise FileNotFoundError(team4_root)
 
-    output_root.mkdir(parents=True, exist_ok=True)
+    clean_dir(output_root)
     items = {}
     for item in REFERENCE_ITEMS:
         hankeut = None if args.skip_hankeut else render_hankeut_pages(source_pdf, item, output_root, args.dpi, args.quality)
