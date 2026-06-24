@@ -579,7 +579,7 @@ function renderGrid(){
 }
 
 let referenceManifestPromise=null,referenceManifest=null,referenceCurrentDocId='',referenceTeam4LoadedKey='',referenceLazyObserver=null,referenceResizeTimer=null;
-const REFERENCE_ASSET_VERSION='cpx-ref-source-preserved-20260624';
+const REFERENCE_ASSET_VERSION='cpx-ref-source-preserved-all-20260625';
 function referenceViewportEnabled(){return window.matchMedia&&window.matchMedia('(min-width:900px)').matches}
 function referenceShell(){return $('referenceShell')}
 function referenceAssetUrl(path,bust=false){const p=String(path||'');if(!p||/^(?:data:|blob:|file:)/i.test(p))return p;if(/^https?:/i.test(p)){if(!bust)return p;const u=new URL(p);u.searchParams.set('v',REFERENCE_ASSET_VERSION);return u.href}if(location.protocol==='file:')return p;const u=new URL('/'+p.replace(/^\.?\//,''),location.origin);if(bust)u.searchParams.set('v',REFERENCE_ASSET_VERSION);return u.href}

@@ -1,20 +1,932 @@
 {
-  "version": "cpx-reference-assets.v1",
-  "generatedAt": "2026-06-24T14:14:16.583927+00:00",
+  "version": "cpx-reference-assets.v2.all-cc-source-preserved",
+  "generatedAt": "2026-06-24T15:46:56.153491+00:00",
   "notes": {
-    "hankeut": "한끝 PDF는 CC별 발췌 PDF로 렌더링해 원본 모양을 보존한다.",
-    "team4": "4조 Word 파일은 Quick Look HTML을 사용해 표, 색, 첨부 이미지를 보존한다. Word PDF export는 안정성 확인 전까지 보조 경로로 둔다."
+    "hankeut": "한끝 PDF는 CC별 PDF 발췌본을 iframe PDF 뷰어로 표시해 원본 모양을 보존한다.",
+    "team4": "4조 Word 파일은 Quick Look HTML을 사용해 표, 색, 첨부 이미지를 보존한다. Word PDF export는 안정성 확인 전까지 보조 경로로 둔다.",
+    "scope": "공통/합본 대본은 제외하고 CC별 개별 자료만 연결한다."
   },
   "items": {
+    "1": {
+      "docId": "1",
+      "title": "01. 급성 복통",
+      "hankeut": {
+        "title": "급성 복통",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc01.pdf",
+        "sourceFileTitle": "cc01.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC01",
+        "pdf": "assets/cpx-references/hankeut/1/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "acute_abdominal_pain",
+          "label": "4조 급성복통",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/21. 급성복통_4조.docx",
+          "sourceFileTitle": "21. 급성복통_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/1/acute_abdominal_pain/Preview.html"
+        }
+      ]
+    },
+    "2": {
+      "docId": "2",
+      "title": "02. 소화불량 만성 복통",
+      "hankeut": {
+        "title": "소화불량/만성복통",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc02.pdf",
+        "sourceFileTitle": "cc02.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC02",
+        "pdf": "assets/cpx-references/hankeut/2/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "dyspepsia_chronic_abdominal_pain",
+          "label": "4조 소화불량/만성복통",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/27. 소화불량만성복통_4조.docx",
+          "sourceFileTitle": "27. 소화불량만성복통_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/2/dyspepsia_chronic_abdominal_pain/Preview.html"
+        }
+      ]
+    },
+    "3": {
+      "docId": "3",
+      "title": "03. 토혈",
+      "hankeut": {
+        "title": "토혈",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc03.pdf",
+        "sourceFileTitle": "cc03.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC03",
+        "pdf": "assets/cpx-references/hankeut/3/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "hematemesis",
+          "label": "4조 토혈",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/43. 토혈_4조.docx",
+          "sourceFileTitle": "43. 토혈_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/3/hematemesis/Preview.html"
+        }
+      ]
+    },
+    "4": {
+      "docId": "4",
+      "title": "04. 혈변",
+      "hankeut": {
+        "title": "혈변",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc04.pdf",
+        "sourceFileTitle": "cc04.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC04",
+        "pdf": "assets/cpx-references/hankeut/4/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "hematochezia",
+          "label": "4조 혈변",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/1.소화기/4.혈변.docx",
+          "sourceFileTitle": "4.혈변.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/4/hematochezia/Preview.html"
+        }
+      ]
+    },
+    "5": {
+      "docId": "5",
+      "title": "05. 구토",
+      "hankeut": {
+        "title": "구토",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc05.pdf",
+        "sourceFileTitle": "cc05.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC05",
+        "pdf": "assets/cpx-references/hankeut/5/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "vomiting",
+          "label": "4조 구토",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/7. 구토_4조.docx",
+          "sourceFileTitle": "7. 구토_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/5/vomiting/Preview.html"
+        }
+      ]
+    },
+    "6": {
+      "docId": "6",
+      "title": "06-1. 배변 이상(변비)",
+      "hankeut": {
+        "title": "배변 이상(변비)",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc06.pdf",
+        "sourceFileTitle": "cc06.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC06",
+        "pdf": "assets/cpx-references/hankeut/6/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "constipation",
+          "label": "4조 배변이상(변비)",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/20-1. 배변이상(변비)_4조.docx",
+          "sourceFileTitle": "20-1. 배변이상(변비)_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/6/constipation/Preview.html"
+        }
+      ]
+    },
+    "6-2": {
+      "docId": "6-2",
+      "title": "06-2. 배변 이상(설사)",
+      "hankeut": {
+        "title": "배변 이상(설사)",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc06.pdf",
+        "sourceFileTitle": "cc06.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC06",
+        "pdf": "assets/cpx-references/hankeut/6-2/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "diarrhea",
+          "label": "4조 배변이상(설사)",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/20-2. 배변이상(설사)_4조.docx",
+          "sourceFileTitle": "20-2. 배변이상(설사)_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/6-2/diarrhea/Preview.html"
+        }
+      ]
+    },
+    "7": {
+      "docId": "7",
+      "title": "07. 황달",
+      "hankeut": {
+        "title": "황달",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc07.pdf",
+        "sourceFileTitle": "cc07.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC07",
+        "pdf": "assets/cpx-references/hankeut/7/excerpt.pdf",
+        "pageCount": 10
+      },
+      "team4": []
+    },
+    "8": {
+      "docId": "8",
+      "title": "08. 가슴 통증",
+      "hankeut": {
+        "title": "가슴 통증",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc08.pdf",
+        "sourceFileTitle": "cc08.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC08",
+        "pdf": "assets/cpx-references/hankeut/8/excerpt.pdf",
+        "pageCount": 11
+      },
+      "team4": [
+        {
+          "key": "chest_pain",
+          "label": "4조 가슴통증",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/1. 가슴통증_4조.docx",
+          "sourceFileTitle": "1. 가슴통증_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/8/chest_pain/Preview.html"
+        }
+      ]
+    },
+    "9": {
+      "docId": "9",
+      "title": "09. 실신",
+      "hankeut": {
+        "title": "실신",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc09.pdf",
+        "sourceFileTitle": "cc09.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC09",
+        "pdf": "assets/cpx-references/hankeut/9/excerpt.pdf",
+        "pageCount": 11
+      },
+      "team4": [
+        {
+          "key": "syncope",
+          "label": "4조 실신",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/30. 실신_4조.docx",
+          "sourceFileTitle": "30. 실신_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/9/syncope/Preview.html"
+        }
+      ]
+    },
+    "10": {
+      "docId": "10",
+      "title": "10. 두근거림",
+      "hankeut": {
+        "title": "두근거림",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc10.pdf",
+        "sourceFileTitle": "cc10.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC10",
+        "pdf": "assets/cpx-references/hankeut/10/excerpt.pdf",
+        "pageCount": 12
+      },
+      "team4": [
+        {
+          "key": "palpitation",
+          "label": "4조 두근거림",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/13. 두근거림_4조.docx",
+          "sourceFileTitle": "13. 두근거림_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/10/palpitation/Preview.html"
+        }
+      ]
+    },
+    "11": {
+      "docId": "11",
+      "title": "11. 고혈압",
+      "hankeut": {
+        "title": "고혈압",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_순환기.pdf",
+        "sourceFileTitle": "총론_순환기.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "23-28",
+        "pdf": "assets/cpx-references/hankeut/11/excerpt.pdf",
+        "pageCount": 6
+      },
+      "team4": [
+        {
+          "key": "hypertension",
+          "label": "4조 고혈압",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/5. 고혈압_4조.docx",
+          "sourceFileTitle": "5. 고혈압_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/11/hypertension/Preview.html"
+        }
+      ]
+    },
+    "12": {
+      "docId": "12",
+      "title": "12. 이상지질혈증",
+      "hankeut": {
+        "title": "이상지질혈증",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_순환기.pdf",
+        "sourceFileTitle": "총론_순환기.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "29-34",
+        "pdf": "assets/cpx-references/hankeut/12/excerpt.pdf",
+        "pageCount": 6
+      },
+      "team4": [
+        {
+          "key": "dyslipidemia",
+          "label": "4조 이상지질혈증",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/37. 이상지질혈증_4조.docx",
+          "sourceFileTitle": "37. 이상지질혈증_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/12/dyslipidemia/Preview.html"
+        }
+      ]
+    },
+    "13": {
+      "docId": "13",
+      "title": "13. 기침",
+      "hankeut": {
+        "title": "기침",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc13.pdf",
+        "sourceFileTitle": "cc13.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC13",
+        "pdf": "assets/cpx-references/hankeut/13/excerpt.pdf",
+        "pageCount": 7
+      },
+      "team4": [
+        {
+          "key": "cough",
+          "label": "4조 기침",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/11. 기침_4조.docx",
+          "sourceFileTitle": "11. 기침_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/13/cough/Preview.html"
+        }
+      ]
+    },
+    "14": {
+      "docId": "14",
+      "title": "14. 콧물 코막힘",
+      "hankeut": {
+        "title": "콧물/코막힘",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc14.pdf",
+        "sourceFileTitle": "cc14.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC14",
+        "pdf": "assets/cpx-references/hankeut/14/excerpt.pdf",
+        "pageCount": 7
+      },
+      "team4": [
+        {
+          "key": "rhinorrhea_nasal_obstruction",
+          "label": "4조 콧물/코막힘",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/42. 콧물, 코막힘_4조.docx",
+          "sourceFileTitle": "42. 콧물, 코막힘_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/14/rhinorrhea_nasal_obstruction/Preview.html"
+        }
+      ]
+    },
+    "15": {
+      "docId": "15",
+      "title": "15. 객혈",
+      "hankeut": {
+        "title": "객혈",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc15.pdf",
+        "sourceFileTitle": "cc15.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC15",
+        "pdf": "assets/cpx-references/hankeut/15/excerpt.pdf",
+        "pageCount": 7
+      },
+      "team4": [
+        {
+          "key": "hemoptysis",
+          "label": "4조 객혈",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/3. 객혈_4조.docx",
+          "sourceFileTitle": "3. 객혈_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/15/hemoptysis/Preview.html"
+        }
+      ]
+    },
+    "16": {
+      "docId": "16",
+      "title": "16. 호흡곤란",
+      "hankeut": {
+        "title": "호흡곤란",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc16.pdf",
+        "sourceFileTitle": "cc16.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC16",
+        "pdf": "assets/cpx-references/hankeut/16/excerpt.pdf",
+        "pageCount": 9
+      },
+      "team4": [
+        {
+          "key": "dyspnea",
+          "label": "4조 호흡곤란",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/3.호흡기/16.호흡곤란.docx",
+          "sourceFileTitle": "16.호흡곤란.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/16/dyspnea/Preview.html"
+        }
+      ]
+    },
+    "17": {
+      "docId": "17",
+      "title": "17-1. 소변량 변화 - 다뇨증",
+      "hankeut": {
+        "title": "소변량 변화 - 다뇨증",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc17.pdf",
+        "sourceFileTitle": "cc17.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC17",
+        "pdf": "assets/cpx-references/hankeut/17/excerpt.pdf",
+        "pageCount": 9
+      },
+      "team4": [
+        {
+          "key": "urine_volume_change",
+          "label": "4조 소변량변화",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/26. 소변량변화_4조.docx",
+          "sourceFileTitle": "26. 소변량변화_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/17/urine_volume_change/Preview.html"
+        }
+      ]
+    },
+    "17-2": {
+      "docId": "17-2",
+      "title": "17-2. 소변량 변화 - 핍뇨",
+      "hankeut": {
+        "title": "소변량 변화 - 핍뇨",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc17.pdf",
+        "sourceFileTitle": "cc17.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC17",
+        "pdf": "assets/cpx-references/hankeut/17-2/excerpt.pdf",
+        "pageCount": 9
+      },
+      "team4": [
+        {
+          "key": "urine_volume_change",
+          "label": "4조 소변량변화",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/26. 소변량변화_4조.docx",
+          "sourceFileTitle": "26. 소변량변화_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/17-2/urine_volume_change/Preview.html"
+        }
+      ]
+    },
+    "18": {
+      "docId": "18",
+      "title": "18. 붉은색 소변",
+      "hankeut": {
+        "title": "붉은색 소변",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc18.pdf",
+        "sourceFileTitle": "cc18.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC18",
+        "pdf": "assets/cpx-references/hankeut/18/excerpt.pdf",
+        "pageCount": 9
+      },
+      "team4": [
+        {
+          "key": "red_urine",
+          "label": "4조 붉은색 소변",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/23. 붉은색 소변_4조.docx",
+          "sourceFileTitle": "23. 붉은색 소변_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/18/red_urine/Preview.html"
+        }
+      ]
+    },
+    "19": {
+      "docId": "19",
+      "title": "19-1. 배뇨 이상/소변찔끔증 - 배뇨 이상",
+      "hankeut": {
+        "title": "배뇨 이상/소변찔끔증 - 배뇨 이상",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc19.pdf",
+        "sourceFileTitle": "cc19.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC19",
+        "pdf": "assets/cpx-references/hankeut/19/excerpt.pdf",
+        "pageCount": 10
+      },
+      "team4": [
+        {
+          "key": "voiding_dysfunction_incontinence",
+          "label": "4조 배뇨이상/소변찔끔증",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/19. 배뇨이상, 소변찔끔증_4조.docx",
+          "sourceFileTitle": "19. 배뇨이상, 소변찔끔증_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/19/voiding_dysfunction_incontinence/Preview.html"
+        }
+      ]
+    },
+    "19-2": {
+      "docId": "19-2",
+      "title": "19-2. 배뇨 이상/소변찔끔증 - 소변찔끔증",
+      "hankeut": {
+        "title": "배뇨 이상/소변찔끔증 - 소변찔끔증",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc19.pdf",
+        "sourceFileTitle": "cc19.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC19",
+        "pdf": "assets/cpx-references/hankeut/19-2/excerpt.pdf",
+        "pageCount": 10
+      },
+      "team4": [
+        {
+          "key": "voiding_dysfunction_incontinence",
+          "label": "4조 배뇨이상/소변찔끔증",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/19. 배뇨이상, 소변찔끔증_4조.docx",
+          "sourceFileTitle": "19. 배뇨이상, 소변찔끔증_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/19-2/voiding_dysfunction_incontinence/Preview.html"
+        }
+      ]
+    },
+    "20": {
+      "docId": "20",
+      "title": "20. 발열",
+      "hankeut": {
+        "title": "발열",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc20.pdf",
+        "sourceFileTitle": "cc20.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC20",
+        "pdf": "assets/cpx-references/hankeut/20/excerpt.pdf",
+        "pageCount": 7
+      },
+      "team4": [
+        {
+          "key": "fever",
+          "label": "4조 발열",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/18. 발열_4조.docx",
+          "sourceFileTitle": "18. 발열_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/20/fever/Preview.html"
+        }
+      ]
+    },
+    "21": {
+      "docId": "21",
+      "title": "21. 쉽게 멍이 듦",
+      "hankeut": {
+        "title": "쉽게 멍이 듦",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc21.pdf",
+        "sourceFileTitle": "cc21.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC21",
+        "pdf": "assets/cpx-references/hankeut/21/excerpt.pdf",
+        "pageCount": 7
+      },
+      "team4": [
+        {
+          "key": "easy_bruising",
+          "label": "4조 쉽게 멍이 듦",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/29. 쉽게 멍이 듦_4조.docx",
+          "sourceFileTitle": "29. 쉽게 멍이 듦_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/21/easy_bruising/Preview.html"
+        }
+      ]
+    },
+    "22": {
+      "docId": "22",
+      "title": "22. 피로",
+      "hankeut": {
+        "title": "피로",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc22.pdf",
+        "sourceFileTitle": "cc22.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC22",
+        "pdf": "assets/cpx-references/hankeut/22/excerpt.pdf",
+        "pageCount": 7
+      },
+      "team4": [
+        {
+          "key": "fatigue",
+          "label": "4조 피로",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/44. 피로_4조.docx",
+          "sourceFileTitle": "44. 피로_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/22/fatigue/Preview.html"
+        }
+      ]
+    },
+    "23": {
+      "docId": "23",
+      "title": "23. 체중 감소",
+      "hankeut": {
+        "title": "체중 감소",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc23.pdf",
+        "sourceFileTitle": "cc23.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC23",
+        "pdf": "assets/cpx-references/hankeut/23/excerpt.pdf",
+        "pageCount": 7
+      },
+      "team4": [
+        {
+          "key": "weight_loss",
+          "label": "4조 체중감소",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/40. 체중감소_4조.docx",
+          "sourceFileTitle": "40. 체중감소_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/23/weight_loss/Preview.html"
+        }
+      ]
+    },
+    "24": {
+      "docId": "24",
+      "title": "24. 체중 증가 비만",
+      "hankeut": {
+        "title": "체중 증가/비만",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc24.pdf",
+        "sourceFileTitle": "cc24.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC24",
+        "pdf": "assets/cpx-references/hankeut/24/excerpt.pdf",
+        "pageCount": 10
+      },
+      "team4": [
+        {
+          "key": "weight_gain_obesity",
+          "label": "4조 체중증가/비만",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/41. 체중증가,비만_4조.docx",
+          "sourceFileTitle": "41. 체중증가,비만_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/24/weight_gain_obesity/Preview.html"
+        }
+      ]
+    },
+    "25": {
+      "docId": "25",
+      "title": "25. 관절 통증 부기",
+      "hankeut": {
+        "title": "관절 통증/부기",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc25.pdf",
+        "sourceFileTitle": "cc25.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC25",
+        "pdf": "assets/cpx-references/hankeut/25/excerpt.pdf",
+        "pageCount": 10
+      },
+      "team4": [
+        {
+          "key": "joint_pain_swelling",
+          "label": "4조 관절통증",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/6. 관절통증.docx",
+          "sourceFileTitle": "6. 관절통증.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/25/joint_pain_swelling/Preview.html"
+        }
+      ]
+    },
+    "26": {
+      "docId": "26",
+      "title": "26. 목 허리 통증",
+      "hankeut": {
+        "title": "목/허리 통증",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc26.pdf",
+        "sourceFileTitle": "cc26.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC26",
+        "pdf": "assets/cpx-references/hankeut/26/excerpt.pdf",
+        "pageCount": 10
+      },
+      "team4": [
+        {
+          "key": "neck_back_pain",
+          "label": "4조 목통증/허리통증",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/16. 목통증,허리통증_4조.docx",
+          "sourceFileTitle": "16. 목통증,허리통증_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/26/neck_back_pain/Preview.html"
+        }
+      ]
+    },
+    "27": {
+      "docId": "27",
+      "title": "27. 피부 발진",
+      "hankeut": {
+        "title": "피부 발진",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc27.pdf",
+        "sourceFileTitle": "cc27.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC27",
+        "pdf": "assets/cpx-references/hankeut/27/excerpt.pdf",
+        "pageCount": 12
+      },
+      "team4": [
+        {
+          "key": "skin_rash",
+          "label": "4조 피부 발진",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/45. 피부 발진_4조.docx",
+          "sourceFileTitle": "45. 피부 발진_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/27/skin_rash/Preview.html"
+        }
+      ]
+    },
+    "28": {
+      "docId": "28",
+      "title": "28. 기분 저하 우울",
+      "hankeut": {
+        "title": "기분 저하/우울",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc28.pdf",
+        "sourceFileTitle": "cc28.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC28",
+        "pdf": "assets/cpx-references/hankeut/28/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "depressed_mood",
+          "label": "4조 기분 변화",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/9. 기분 변화_4조.docx",
+          "sourceFileTitle": "9. 기분 변화_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/28/depressed_mood/Preview.html"
+        }
+      ]
+    },
+    "29": {
+      "docId": "29",
+      "title": "29. 불안",
+      "hankeut": {
+        "title": "불안",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc29.pdf",
+        "sourceFileTitle": "cc29.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC29",
+        "pdf": "assets/cpx-references/hankeut/29/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "anxiety",
+          "label": "4조 불안",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/22. 불안_4조.docx",
+          "sourceFileTitle": "22. 불안_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/29/anxiety/Preview.html"
+        }
+      ]
+    },
+    "30": {
+      "docId": "30",
+      "title": "30. 수면 장애",
+      "hankeut": {
+        "title": "수면 장애",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc30.pdf",
+        "sourceFileTitle": "cc30.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC30",
+        "pdf": "assets/cpx-references/hankeut/30/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "sleep_disorder",
+          "label": "4조 수면장애",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/28. 수면장애_4조.docx",
+          "sourceFileTitle": "28. 수면장애_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/30/sleep_disorder/Preview.html"
+        }
+      ]
+    },
+    "31": {
+      "docId": "31",
+      "title": "31. 기억력 저하 치매",
+      "hankeut": {
+        "title": "기억력 저하/치매",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc31.pdf",
+        "sourceFileTitle": "cc31.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC31",
+        "pdf": "assets/cpx-references/hankeut/31/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "memory_loss",
+          "label": "4조 기억력저하",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/10. 기억력저하_4조.docx",
+          "sourceFileTitle": "10. 기억력저하_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/31/memory_loss/Preview.html"
+        }
+      ]
+    },
+    "32": {
+      "docId": "32",
+      "title": "32. 어지럼증",
+      "hankeut": {
+        "title": "어지럼증",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc32.pdf",
+        "sourceFileTitle": "cc32.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC32",
+        "pdf": "assets/cpx-references/hankeut/32/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "dizziness",
+          "label": "4조 어지럼",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/31. 어지럼_4조.docx",
+          "sourceFileTitle": "31. 어지럼_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/32/dizziness/Preview.html"
+        }
+      ]
+    },
+    "33": {
+      "docId": "33",
+      "title": "33. 두통",
+      "hankeut": {
+        "title": "두통",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc33.pdf",
+        "sourceFileTitle": "cc33.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC33",
+        "pdf": "assets/cpx-references/hankeut/33/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "headache",
+          "label": "4조 두통",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/14. 두통_4조.docx",
+          "sourceFileTitle": "14. 두통_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/33/headache/Preview.html"
+        }
+      ]
+    },
+    "34": {
+      "docId": "34",
+      "title": "34. 경련",
+      "hankeut": {
+        "title": "경련",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc34.pdf",
+        "sourceFileTitle": "cc34.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC34",
+        "pdf": "assets/cpx-references/hankeut/34/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "seizure",
+          "label": "4조 경련",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/4. 경련_4조.docx",
+          "sourceFileTitle": "4. 경련_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/34/seizure/Preview.html"
+        }
+      ]
+    },
+    "35": {
+      "docId": "35",
+      "title": "35. 사지 무력 저림",
+      "hankeut": {
+        "title": "사지 무력/저림",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc35.pdf",
+        "sourceFileTitle": "cc35.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC35",
+        "pdf": "assets/cpx-references/hankeut/35/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "weakness_sensory_change",
+          "label": "4조 근력/감각이상",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/8. 근력_감각이상_4조.docx",
+          "sourceFileTitle": "8. 근력_감각이상_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/35/weakness_sensory_change/Preview.html"
+        }
+      ]
+    },
+    "36": {
+      "docId": "36",
+      "title": "36. 의식 변화",
+      "hankeut": {
+        "title": "의식 변화",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc36.pdf",
+        "sourceFileTitle": "cc36.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC36",
+        "pdf": "assets/cpx-references/hankeut/36/excerpt.pdf",
+        "pageCount": 8
+      },
+      "team4": [
+        {
+          "key": "altered_mental_status",
+          "label": "4조 의식장애",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/36. 의식장애_4조.docx",
+          "sourceFileTitle": "36. 의식장애_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/36/altered_mental_status/Preview.html"
+        }
+      ]
+    },
+    "37": {
+      "docId": "37",
+      "title": "37. 떨림",
+      "hankeut": {
+        "title": "떨림/운동이상",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc37.pdf",
+        "sourceFileTitle": "cc37.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC37",
+        "pdf": "assets/cpx-references/hankeut/37/excerpt.pdf",
+        "pageCount": 14
+      },
+      "team4": [
+        {
+          "key": "tremor_movement_disorder",
+          "label": "4조 떨림/운동이상",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/15. 떨림,운동이상.docx",
+          "sourceFileTitle": "15. 떨림,운동이상.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/37/tremor_movement_disorder/Preview.html"
+        }
+      ]
+    },
     "38": {
       "docId": "38",
       "title": "38. 유방 통증 멍울",
       "hankeut": {
         "title": "유방통/유방덩이",
-        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc38.pdf",
+        "sourceFileTitle": "cc38.pdf",
         "renderMode": "pdf-excerpt",
-        "pdfPageRange": "2-11",
-        "bookPageRange": "378-387",
+        "pdfPageRange": "CC38",
         "pdf": "assets/cpx-references/hankeut/38/excerpt.pdf",
         "pageCount": 10
       },
@@ -34,12 +946,12 @@
       "title": "39. 질분비물 질출혈",
       "hankeut": {
         "title": "질분비물/질출혈",
-        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc39.pdf",
+        "sourceFileTitle": "cc39.pdf",
         "renderMode": "pdf-excerpt",
-        "pdfPageRange": "12-23",
-        "bookPageRange": "388-399",
+        "pdfPageRange": "CC39",
         "pdf": "assets/cpx-references/hankeut/39/excerpt.pdf",
-        "pageCount": 12
+        "pageCount": 10
       },
       "team4": [
         {
@@ -57,10 +969,10 @@
       "title": "40. 월경 이상 월경통",
       "hankeut": {
         "title": "월경 이상/월경통",
-        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc40.pdf",
+        "sourceFileTitle": "cc40.pdf",
         "renderMode": "pdf-excerpt",
-        "pdfPageRange": "24-33",
-        "bookPageRange": "400-409",
+        "pdfPageRange": "CC40",
         "pdf": "assets/cpx-references/hankeut/40/excerpt.pdf",
         "pageCount": 10
       },
@@ -88,12 +1000,12 @@
       "title": "41. 산전 진찰",
       "hankeut": {
         "title": "산전 진찰",
-        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc41.pdf",
+        "sourceFileTitle": "cc41.pdf",
         "renderMode": "pdf-excerpt",
-        "pdfPageRange": "34-42",
-        "bookPageRange": "410-418",
+        "pdfPageRange": "CC41",
         "pdf": "assets/cpx-references/hankeut/41/excerpt.pdf",
-        "pageCount": 9
+        "pageCount": 10
       },
       "team4": [
         {
@@ -111,12 +1023,12 @@
       "title": "42. 성장 발달",
       "hankeut": {
         "title": "성장/발달지연",
-        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc42.pdf",
+        "sourceFileTitle": "cc42.pdf",
         "renderMode": "pdf-excerpt",
-        "pdfPageRange": "43-56",
-        "bookPageRange": "419-432",
+        "pdfPageRange": "CC42",
         "pdf": "assets/cpx-references/hankeut/42/excerpt.pdf",
-        "pageCount": 14
+        "pageCount": 10
       },
       "team4": [
         {
@@ -134,12 +1046,12 @@
       "title": "43. 예방접종",
       "hankeut": {
         "title": "예방접종",
-        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc43.pdf",
+        "sourceFileTitle": "cc43.pdf",
         "renderMode": "pdf-excerpt",
-        "pdfPageRange": "57-64",
-        "bookPageRange": "433-440",
+        "pdfPageRange": "CC43",
         "pdf": "assets/cpx-references/hankeut/43/excerpt.pdf",
-        "pageCount": 8
+        "pageCount": 14
       },
       "team4": [
         {
@@ -149,6 +1061,129 @@
           "sourceFileTitle": "32. 예방접종_4조.docx",
           "renderMode": "quicklook-html",
           "html": "assets/cpx-references/team4/43/immunization/Preview.html"
+        }
+      ]
+    },
+    "44": {
+      "docId": "44",
+      "title": "44. 음주 금연 상담",
+      "hankeut": {
+        "title": "음주/금연 상담",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc44.pdf",
+        "sourceFileTitle": "cc44.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC44",
+        "pdf": "assets/cpx-references/hankeut/44/excerpt.pdf",
+        "pageCount": 7
+      },
+      "team4": [
+        {
+          "key": "alcohol_smoking_counseling",
+          "label": "4조 음주/금연 상담",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/35. 음주 상담, 금연 상담_4조.docx",
+          "sourceFileTitle": "35. 음주 상담, 금연 상담_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/44/alcohol_smoking_counseling/Preview.html"
+        }
+      ]
+    },
+    "45": {
+      "docId": "45",
+      "title": "45. 약물 오남용",
+      "hankeut": {
+        "title": "약물 오남용",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc45.pdf",
+        "sourceFileTitle": "cc45.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC45",
+        "pdf": "assets/cpx-references/hankeut/45/excerpt.pdf",
+        "pageCount": 7
+      },
+      "team4": [
+        {
+          "key": "substance_abuse",
+          "label": "4조 물질오남용",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/17. 물질오남용_4조.docx",
+          "sourceFileTitle": "17. 물질오남용_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/45/substance_abuse/Preview.html"
+        }
+      ]
+    },
+    "46": {
+      "docId": "46",
+      "title": "46. 나쁜 소식 전달",
+      "hankeut": {
+        "title": "나쁜 소식 전달",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc46.pdf",
+        "sourceFileTitle": "cc46.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC46",
+        "pdf": "assets/cpx-references/hankeut/46/excerpt.pdf",
+        "pageCount": 7
+      },
+      "team4": [
+        {
+          "key": "breaking_bad_news",
+          "label": "4조 나쁜 소식 전하기",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/12. 나쁜 소식 전하기_4조.docx",
+          "sourceFileTitle": "12. 나쁜 소식 전하기_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/46/breaking_bad_news/Preview.html"
+        }
+      ]
+    },
+    "47": {
+      "docId": "47",
+      "title": "47. 가정폭력 성폭력",
+      "hankeut": {
+        "title": "가정폭력/성폭력",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc47.pdf",
+        "sourceFileTitle": "cc47.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC47",
+        "pdf": "assets/cpx-references/hankeut/47/excerpt.pdf",
+        "pageCount": 7
+      },
+      "team4": [
+        {
+          "key": "domestic_violence",
+          "label": "4조 가정폭력",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/2-1. 가정폭력_4조.docx",
+          "sourceFileTitle": "2-1. 가정폭력_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/47/domestic_violence/Preview.html"
+        },
+        {
+          "key": "sexual_violence",
+          "label": "4조 성폭력",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/2-2. 성폭력_4조.docx",
+          "sourceFileTitle": "2-2. 성폭력_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/47/sexual_violence/Preview.html"
+        }
+      ]
+    },
+    "48": {
+      "docId": "48",
+      "title": "48. 자살 사고 시도",
+      "hankeut": {
+        "title": "자살 사고/시도",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_cc/cc48.pdf",
+        "sourceFileTitle": "cc48.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "CC48",
+        "pdf": "assets/cpx-references/hankeut/48/excerpt.pdf",
+        "pageCount": 10
+      },
+      "team4": [
+        {
+          "key": "suicide",
+          "label": "4조 자살",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/38. 자살_4조.docx",
+          "sourceFileTitle": "38. 자살_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/48/suicide/Preview.html"
         }
       ]
     }
