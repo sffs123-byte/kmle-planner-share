@@ -2,9 +2,7 @@
 from __future__ import annotations
 
 import argparse
-import html
 import json
-import re
 import shutil
 import subprocess
 import unicodedata
@@ -152,90 +150,33 @@ def image_size(path: Path) -> dict[str, int] | None:
     return None
 
 
-def clean_hankeut_text(text: str) -> str:
-    text = text.replace("\r\n", "\n").replace("\r", "\n").replace("\x0c", "\n\n")
-    cleaned = []
-    for line in text.splitlines():
-        stripped = line.strip()
-        stripped = stripped.replace("白", "").strip()
-        if not stripped:
-            cleaned.append("")
-            continue
-        anchored = False
-        for anchor in ("질분비물검사를", "산전 진찰은", "보통키가", "예방접종수첩"):
-            if anchor in stripped:
-                stripped = stripped[stripped.index(anchor):]
-                anchored = True
-                break
-        if stripped in {"-", "’", "L", "습"}:
-            continue
-        if not anchored and re.search(r"(코엔트|팹먄|펜란|l장/발달지연|de\|ay)", stripped):
-            continue
-        if any(token in stripped for token in ("虹", "＼", "円", "땝", "l정")):
-            continue
-        if re.fullmatch(r"\d+\s+한 권으로 끝내는 CPX 총론", stripped):
-            continue
-        if re.fullmatch(r"산부/여성/소아.*\d+", stripped):
-            continue
-        cleaned.append(stripped)
-    text = "\n".join(cleaned)
-    text = re.sub(r"\n{3,}", "\n\n", text).strip()
-    return text
-
-
-def write_hankeut_html(path: Path, title: str, text: str) -> None:
-    body = html.escape(text)
-    path.write_text(
-        f"""<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{html.escape(title)}</title>
-<style>
-:root{{color-scheme:light}}
-html,body{{margin:0;background:#fff;color:#172033;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}}
-body{{padding:20px}}
-.hankeut-doc{{display:grid;gap:12px}}
-.hankeut-title{{font-size:17px;font-weight:950;line-height:1.25;margin:0;color:#172033}}
-.hankeut-note{{font-size:12px;font-weight:850;color:#66758f;border-bottom:1px solid #e1e8f2;padding-bottom:10px}}
-.hankeut-text{{margin:0;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-family:inherit;font-size:15px;line-height:1.7;color:#26354d}}
-@media(max-width:520px){{body{{padding:14px}}.hankeut-text{{font-size:13px}}}}
-</style>
-</head>
-<body>
-<article class="hankeut-doc">
-<h1 class="hankeut-title">{html.escape(title)}</h1>
-<div class="hankeut-note">한끝 PDF 텍스트 발췌 · 이미지 제외</div>
-<pre class="hankeut-text">{body}</pre>
-</article>
-</body>
-</html>
-""",
-        encoding="utf-8",
-    )
-
-
-def render_hankeut_text(source_pdf: Path, item: dict, output_root: Path) -> dict:
+def render_hankeut_pdf_excerpt(source_pdf: Path, item: dict, output_root: Path) -> dict:
     doc_id = item["docId"]
     out_dir = output_root / "hankeut" / doc_id
     clean_dir(out_dir)
     start, end = item["pdfPages"]
-    result = run(["pdftotext", "-raw", "-enc", "UTF-8", "-f", str(start), "-l", str(end), str(source_pdf), "-"])
-    extracted = clean_hankeut_text(result.stdout)
-    html_path = out_dir / "content.html"
-    write_hankeut_html(html_path, item["hankeutTitle"], extracted)
+    scratch = out_dir / "_pages"
+    clean_dir(scratch)
+    pattern = scratch / "page-%03d.pdf"
+    run(["pdfseparate", "-f", str(start), "-l", str(end), str(source_pdf), str(pattern)])
+    parts = []
+    for pdf_page in range(start, end + 1):
+        part = scratch / f"page-{pdf_page:03d}.pdf"
+        if not part.exists():
+            raise FileNotFoundError(f"Split PDF page missing: {part}")
+        parts.append(part)
+    pdf_path = out_dir / "excerpt.pdf"
+    run(["pdfunite", *(str(part) for part in parts), str(pdf_path)])
+    shutil.rmtree(scratch)
 
     return {
         "title": item["hankeutTitle"],
         "source": str(source_pdf),
-        "renderMode": "text-html",
+        "renderMode": "pdf-excerpt",
         "pdfPageRange": f"{start}-{end}",
         "bookPageRange": f"{item['bookPages'][0]}-{item['bookPages'][1]}",
-        "html": rel(html_path),
-        "textStats": {
-            "characters": len(extracted),
-        },
+        "pdf": rel(pdf_path),
+        "pageCount": end - start + 1,
     }
 
 
@@ -284,49 +225,6 @@ def inject_quicklook_fit(html: Path) -> None:
     html.write_text(text.replace("</head>", fit + "</head>", 1), encoding="utf-8")
 
 
-def inject_pandoc_reference_fit(html_path: Path) -> None:
-    text = html_path.read_text(encoding="utf-8")
-    if "cpx-pandoc-reference-fit" in text:
-        return
-    fit = """<style id="cpx-pandoc-reference-fit">
-html,body{margin:0!important;background:#fff!important;color:#172033!important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important}
-body{max-width:none!important;padding:16px!important;font-size:14px!important;line-height:1.48!important}
-p{margin:.38em 0!important}
-table{width:100%!important;display:table!important;border-collapse:collapse!important;margin:12px 0!important;font-size:13px!important;table-layout:auto!important}
-thead,tbody{border:0!important}
-th,td{border:1px solid #d7dfec!important;padding:5px 7px!important;vertical-align:top!important}
-th{background:#eef5ff!important;font-weight:900!important}
-ol,ul{padding-left:1.25em!important;margin:.35em 0!important}
-li>p{margin:.15em 0!important}
-img{max-width:100%!important;height:auto!important}
-h1,h2,h3,h4{line-height:1.25!important;margin:.8em 0 .4em!important}
-</style>"""
-    if "</head>" not in text:
-        raise RuntimeError(f"Pandoc HTML has no head close tag: {html_path}")
-    html_path.write_text(text.replace("</head>", fit + "</head>", 1), encoding="utf-8")
-
-
-def render_docx_html(source_docx: Path, output_dir: Path) -> Path:
-    clean_dir(output_dir)
-    html_path = output_dir / "content.html"
-    run(
-        [
-            "pandoc",
-            str(source_docx),
-            "-f",
-            "docx",
-            "-t",
-            "html5",
-            "--standalone",
-            f"--extract-media={output_dir}",
-            "-o",
-            str(html_path),
-        ]
-    )
-    inject_pandoc_reference_fit(html_path)
-    return html_path
-
-
 def render_team4_sources(team4_root: Path, item: dict, output_root: Path) -> list[dict]:
     rendered = []
     for spec in item["team4"]:
@@ -342,18 +240,14 @@ def render_team4_sources(team4_root: Path, item: dict, output_root: Path) -> lis
             )
             continue
         out_dir = output_root / "team4" / item["docId"] / spec["key"]
-        if shutil.which("pandoc"):
-            html = render_docx_html(source_docx, out_dir)
-            render_mode = "docx-html"
-        else:
-            html = render_quicklook_html(source_docx, out_dir)
-            render_mode = "quicklook-html"
+        html = render_quicklook_html(source_docx, out_dir)
         rendered.append(
             {
                 "key": spec["key"],
                 "label": spec["label"],
                 "source": str(source_docx),
-                "renderMode": render_mode,
+                "sourceFileTitle": source_docx.name,
+                "renderMode": "quicklook-html",
                 "html": rel(html),
             }
         )
@@ -374,7 +268,7 @@ def build(args: argparse.Namespace) -> dict:
     clean_dir(output_root)
     items = {}
     for item in REFERENCE_ITEMS:
-        hankeut = None if args.skip_hankeut else render_hankeut_text(source_pdf, item, output_root)
+        hankeut = None if args.skip_hankeut else render_hankeut_pdf_excerpt(source_pdf, item, output_root)
         team4 = [] if args.skip_team4 else render_team4_sources(team4_root, item, output_root)
         items[item["docId"]] = {
             "docId": item["docId"],
@@ -387,8 +281,8 @@ def build(args: argparse.Namespace) -> dict:
         "version": "cpx-reference-assets.v1",
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "notes": {
-            "hankeut": "한끝 PDF는 이미지 페이지 스택이 아니라 CC별 연속 텍스트 HTML로 렌더링한다.",
-            "team4": "4조 Word 파일은 pandoc HTML을 우선 사용하고, pandoc이 없을 때만 Quick Look HTML로 대체한다.",
+            "hankeut": "한끝 PDF는 CC별 발췌 PDF로 렌더링해 원본 모양을 보존한다.",
+            "team4": "4조 Word 파일은 Quick Look HTML을 사용해 표, 색, 첨부 이미지를 보존한다. Word PDF export는 안정성 확인 전까지 보조 경로로 둔다.",
         },
         "items": items,
     }

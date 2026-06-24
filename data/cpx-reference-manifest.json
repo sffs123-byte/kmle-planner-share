@@ -1,9 +1,9 @@
 {
   "version": "cpx-reference-assets.v1",
-  "generatedAt": "2026-06-24T11:54:29.684141+00:00",
+  "generatedAt": "2026-06-24T14:14:16.583927+00:00",
   "notes": {
-    "hankeut": "한끝 PDF는 이미지 페이지 스택이 아니라 CC별 연속 텍스트 HTML로 렌더링한다.",
-    "team4": "4조 Word 파일은 pandoc HTML을 우선 사용하고, pandoc이 없을 때만 Quick Look HTML로 대체한다."
+    "hankeut": "한끝 PDF는 CC별 발췌 PDF로 렌더링해 원본 모양을 보존한다.",
+    "team4": "4조 Word 파일은 Quick Look HTML을 사용해 표, 색, 첨부 이미지를 보존한다. Word PDF export는 안정성 확인 전까지 보조 경로로 둔다."
   },
   "items": {
     "38": {
@@ -12,21 +12,20 @@
       "hankeut": {
         "title": "유방통/유방덩이",
         "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
-        "renderMode": "text-html",
+        "renderMode": "pdf-excerpt",
         "pdfPageRange": "2-11",
         "bookPageRange": "378-387",
-        "html": "assets/cpx-references/hankeut/38/content.html",
-        "textStats": {
-          "characters": 8107
-        }
+        "pdf": "assets/cpx-references/hankeut/38/excerpt.pdf",
+        "pageCount": 10
       },
       "team4": [
         {
           "key": "breast_pain_mass",
           "label": "4조 유방통/유방덩이",
           "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/34. 유방통,유방덩이_4조.docx",
-          "renderMode": "docx-html",
-          "html": "assets/cpx-references/team4/38/breast_pain_mass/content.html"
+          "sourceFileTitle": "34. 유방통,유방덩이_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/38/breast_pain_mass/Preview.html"
         }
       ]
     },
@@ -36,21 +35,20 @@
       "hankeut": {
         "title": "질분비물/질출혈",
         "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
-        "renderMode": "text-html",
+        "renderMode": "pdf-excerpt",
         "pdfPageRange": "12-23",
         "bookPageRange": "388-399",
-        "html": "assets/cpx-references/hankeut/39/content.html",
-        "textStats": {
-          "characters": 10247
-        }
+        "pdf": "assets/cpx-references/hankeut/39/excerpt.pdf",
+        "pageCount": 12
       },
       "team4": [
         {
           "key": "vaginal_discharge_bleeding",
           "label": "4조 질분비물/질출혈",
           "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/39. 질분비물_질출혈.docx",
-          "renderMode": "docx-html",
-          "html": "assets/cpx-references/team4/39/vaginal_discharge_bleeding/content.html"
+          "sourceFileTitle": "39. 질분비물_질출혈.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/39/vaginal_discharge_bleeding/Preview.html"
         }
       ]
     },
@@ -60,28 +58,28 @@
       "hankeut": {
         "title": "월경 이상/월경통",
         "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
-        "renderMode": "text-html",
+        "renderMode": "pdf-excerpt",
         "pdfPageRange": "24-33",
         "bookPageRange": "400-409",
-        "html": "assets/cpx-references/hankeut/40/content.html",
-        "textStats": {
-          "characters": 7804
-        }
+        "pdf": "assets/cpx-references/hankeut/40/excerpt.pdf",
+        "pageCount": 10
       },
       "team4": [
         {
           "key": "amenorrhea",
           "label": "4조 무월경/월경이상",
           "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/33-1. 월경이상(무월경)_4조.docx",
-          "renderMode": "docx-html",
-          "html": "assets/cpx-references/team4/40/amenorrhea/content.html"
+          "sourceFileTitle": "33-1. 월경이상(무월경)_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/40/amenorrhea/Preview.html"
         },
         {
           "key": "dysmenorrhea",
           "label": "4조 월경통",
           "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/33-2. 월경통_4조.docx",
-          "renderMode": "docx-html",
-          "html": "assets/cpx-references/team4/40/dysmenorrhea/content.html"
+          "sourceFileTitle": "33-2. 월경통_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/40/dysmenorrhea/Preview.html"
         }
       ]
     },
@@ -91,21 +89,20 @@
       "hankeut": {
         "title": "산전 진찰",
         "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
-        "renderMode": "text-html",
+        "renderMode": "pdf-excerpt",
         "pdfPageRange": "34-42",
         "bookPageRange": "410-418",
-        "html": "assets/cpx-references/hankeut/41/content.html",
-        "textStats": {
-          "characters": 7612
-        }
+        "pdf": "assets/cpx-references/hankeut/41/excerpt.pdf",
+        "pageCount": 9
       },
       "team4": [
         {
           "key": "prenatal_care",
           "label": "4조 산전진찰",
           "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/24. 산전진찰_4조.docx",
-          "renderMode": "docx-html",
-          "html": "assets/cpx-references/team4/41/prenatal_care/content.html"
+          "sourceFileTitle": "24. 산전진찰_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/41/prenatal_care/Preview.html"
         }
       ]
     },
@@ -115,21 +112,20 @@
       "hankeut": {
         "title": "성장/발달지연",
         "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
-        "renderMode": "text-html",
+        "renderMode": "pdf-excerpt",
         "pdfPageRange": "43-56",
         "bookPageRange": "419-432",
-        "html": "assets/cpx-references/hankeut/42/content.html",
-        "textStats": {
-          "characters": 12092
-        }
+        "pdf": "assets/cpx-references/hankeut/42/excerpt.pdf",
+        "pageCount": 14
       },
       "team4": [
         {
           "key": "growth_development_delay",
           "label": "4조 성장/발달지연",
           "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/25. 성장,발달지연_4조.docx",
-          "renderMode": "docx-html",
-          "html": "assets/cpx-references/team4/42/growth_development_delay/content.html"
+          "sourceFileTitle": "25. 성장,발달지연_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/42/growth_development_delay/Preview.html"
         }
       ]
     },
@@ -139,21 +135,20 @@
       "hankeut": {
         "title": "예방접종",
         "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
-        "renderMode": "text-html",
+        "renderMode": "pdf-excerpt",
         "pdfPageRange": "57-64",
         "bookPageRange": "433-440",
-        "html": "assets/cpx-references/hankeut/43/content.html",
-        "textStats": {
-          "characters": 6398
-        }
+        "pdf": "assets/cpx-references/hankeut/43/excerpt.pdf",
+        "pageCount": 8
       },
       "team4": [
         {
           "key": "immunization",
           "label": "4조 예방접종",
           "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/32. 예방접종_4조.docx",
-          "renderMode": "docx-html",
-          "html": "assets/cpx-references/team4/43/immunization/content.html"
+          "sourceFileTitle": "32. 예방접종_4조.docx",
+          "renderMode": "quicklook-html",
+          "html": "assets/cpx-references/team4/43/immunization/Preview.html"
         }
       ]
     }
