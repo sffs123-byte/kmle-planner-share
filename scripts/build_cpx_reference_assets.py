@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import argparse
+import html
 import json
+import re
 import shutil
 import subprocess
 import unicodedata
@@ -27,7 +29,7 @@ REFERENCE_ITEMS = [
             {
                 "key": "breast_pain_mass",
                 "label": "4조 유방통/유방덩이",
-                "path": "참고 대본/9.여성/38.유방통,유방덩이.docx",
+                "path": "34. 유방통,유방덩이_4조.docx",
                 "tokens": ["유방통", "유방덩이", "4조"],
             }
         ],
@@ -40,16 +42,10 @@ REFERENCE_ITEMS = [
         "bookPages": [388, 399],
         "team4": [
             {
-                "key": "vaginal_discharge",
-                "label": "4조 질분비물",
-                "path": "참고 대본/9.여성/39.1-질분비물.docx",
-                "tokens": ["질분비물"],
-            },
-            {
-                "key": "vaginal_bleeding",
-                "label": "4조 질출혈",
-                "path": "참고 대본/9.여성/39.2-질출혈.docx",
-                "tokens": ["질출혈"],
+                "key": "vaginal_discharge_bleeding",
+                "label": "4조 질분비물/질출혈",
+                "path": "39. 질분비물_질출혈.docx",
+                "tokens": ["질분비물", "질출혈"],
             }
         ],
     },
@@ -63,13 +59,13 @@ REFERENCE_ITEMS = [
             {
                 "key": "amenorrhea",
                 "label": "4조 무월경/월경이상",
-                "path": "참고 대본/9.여성/40.1 무월경.docx",
+                "path": "33-1. 월경이상(무월경)_4조.docx",
                 "tokens": ["월경이상", "무월경", "4조"],
             },
             {
                 "key": "dysmenorrhea",
                 "label": "4조 월경통",
-                "path": "참고 대본/9.여성/40.2 월경통.docx",
+                "path": "33-2. 월경통_4조.docx",
                 "tokens": ["월경통", "4조"],
             },
         ],
@@ -84,7 +80,7 @@ REFERENCE_ITEMS = [
             {
                 "key": "prenatal_care",
                 "label": "4조 산전진찰",
-                "path": "참고 대본/9.여성/41.산전진찰.docx",
+                "path": "24. 산전진찰_4조.docx",
                 "tokens": ["산전진찰", "4조"],
             }
         ],
@@ -99,6 +95,7 @@ REFERENCE_ITEMS = [
             {
                 "key": "growth_development_delay",
                 "label": "4조 성장/발달지연",
+                "path": "25. 성장,발달지연_4조.docx",
                 "tokens": ["성장", "발달지연", "4조"],
             }
         ],
@@ -113,6 +110,7 @@ REFERENCE_ITEMS = [
             {
                 "key": "immunization",
                 "label": "4조 예방접종",
+                "path": "32. 예방접종_4조.docx",
                 "tokens": ["예방접종", "4조"],
             }
         ],
@@ -154,67 +152,90 @@ def image_size(path: Path) -> dict[str, int] | None:
     return None
 
 
-def render_hankeut_pages(source_pdf: Path, item: dict, output_root: Path, dpi: int, quality: int) -> dict:
+def clean_hankeut_text(text: str) -> str:
+    text = text.replace("\r\n", "\n").replace("\r", "\n").replace("\x0c", "\n\n")
+    cleaned = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        stripped = stripped.replace("白", "").strip()
+        if not stripped:
+            cleaned.append("")
+            continue
+        anchored = False
+        for anchor in ("질분비물검사를", "산전 진찰은", "보통키가", "예방접종수첩"):
+            if anchor in stripped:
+                stripped = stripped[stripped.index(anchor):]
+                anchored = True
+                break
+        if stripped in {"-", "’", "L", "습"}:
+            continue
+        if not anchored and re.search(r"(코엔트|팹먄|펜란|l장/발달지연|de\|ay)", stripped):
+            continue
+        if any(token in stripped for token in ("虹", "＼", "円", "땝", "l정")):
+            continue
+        if re.fullmatch(r"\d+\s+한 권으로 끝내는 CPX 총론", stripped):
+            continue
+        if re.fullmatch(r"산부/여성/소아.*\d+", stripped):
+            continue
+        cleaned.append(stripped)
+    text = "\n".join(cleaned)
+    text = re.sub(r"\n{3,}", "\n\n", text).strip()
+    return text
+
+
+def write_hankeut_html(path: Path, title: str, text: str) -> None:
+    body = html.escape(text)
+    path.write_text(
+        f"""<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{html.escape(title)}</title>
+<style>
+:root{{color-scheme:light}}
+html,body{{margin:0;background:#fff;color:#172033;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}}
+body{{padding:20px}}
+.hankeut-doc{{display:grid;gap:12px}}
+.hankeut-title{{font-size:17px;font-weight:950;line-height:1.25;margin:0;color:#172033}}
+.hankeut-note{{font-size:12px;font-weight:850;color:#66758f;border-bottom:1px solid #e1e8f2;padding-bottom:10px}}
+.hankeut-text{{margin:0;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font-family:inherit;font-size:15px;line-height:1.7;color:#26354d}}
+@media(max-width:520px){{body{{padding:14px}}.hankeut-text{{font-size:13px}}}}
+</style>
+</head>
+<body>
+<article class="hankeut-doc">
+<h1 class="hankeut-title">{html.escape(title)}</h1>
+<div class="hankeut-note">한끝 PDF 텍스트 발췌 · 이미지 제외</div>
+<pre class="hankeut-text">{body}</pre>
+</article>
+</body>
+</html>
+""",
+        encoding="utf-8",
+    )
+
+
+def render_hankeut_text(source_pdf: Path, item: dict, output_root: Path) -> dict:
     doc_id = item["docId"]
     out_dir = output_root / "hankeut" / doc_id
     clean_dir(out_dir)
-    prefix = out_dir / "page"
     start, end = item["pdfPages"]
-    run(
-        [
-            "pdftoppm",
-            "-jpeg",
-            "-jpegopt",
-            f"quality={quality}",
-            "-r",
-            str(dpi),
-            "-f",
-            str(start),
-            "-l",
-            str(end),
-            str(source_pdf),
-            str(prefix),
-        ]
-    )
-
-    pages = []
-    book_start = item["bookPages"][0]
-    for pdf_page in range(start, end + 1):
-        produced = next(
-            (
-                candidate
-                for candidate in (
-                    out_dir / f"page-{pdf_page}.jpg",
-                    out_dir / f"page-{pdf_page:02}.jpg",
-                    out_dir / f"page-{pdf_page:03}.jpg",
-                    out_dir / f"page-{pdf_page:04}.jpg",
-                )
-                if candidate.exists()
-            ),
-            None,
-        )
-        final = out_dir / f"p{pdf_page:03}.jpg"
-        if produced:
-            produced.rename(final)
-        if not final.exists():
-            raise FileNotFoundError(f"Rendered PDF page missing: {final}")
-        dims = image_size(final) or {}
-        pages.append(
-            {
-                "pdfPage": pdf_page,
-                "bookPage": book_start + (pdf_page - start),
-                "image": rel(final),
-                **dims,
-            }
-        )
+    result = run(["pdftotext", "-raw", "-enc", "UTF-8", "-f", str(start), "-l", str(end), str(source_pdf), "-"])
+    extracted = clean_hankeut_text(result.stdout)
+    html_path = out_dir / "content.html"
+    write_hankeut_html(html_path, item["hankeutTitle"], extracted)
 
     return {
         "title": item["hankeutTitle"],
         "source": str(source_pdf),
-        "renderMode": "page-image-stack",
+        "renderMode": "text-html",
         "pdfPageRange": f"{start}-{end}",
         "bookPageRange": f"{item['bookPages'][0]}-{item['bookPages'][1]}",
-        "pages": pages,
+        "html": rel(html_path),
+        "textStats": {
+            "characters": len(extracted),
+        },
     }
 
 
@@ -263,6 +284,49 @@ def inject_quicklook_fit(html: Path) -> None:
     html.write_text(text.replace("</head>", fit + "</head>", 1), encoding="utf-8")
 
 
+def inject_pandoc_reference_fit(html_path: Path) -> None:
+    text = html_path.read_text(encoding="utf-8")
+    if "cpx-pandoc-reference-fit" in text:
+        return
+    fit = """<style id="cpx-pandoc-reference-fit">
+html,body{margin:0!important;background:#fff!important;color:#172033!important;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important}
+body{max-width:none!important;padding:16px!important;font-size:14px!important;line-height:1.48!important}
+p{margin:.38em 0!important}
+table{width:100%!important;display:table!important;border-collapse:collapse!important;margin:12px 0!important;font-size:13px!important;table-layout:auto!important}
+thead,tbody{border:0!important}
+th,td{border:1px solid #d7dfec!important;padding:5px 7px!important;vertical-align:top!important}
+th{background:#eef5ff!important;font-weight:900!important}
+ol,ul{padding-left:1.25em!important;margin:.35em 0!important}
+li>p{margin:.15em 0!important}
+img{max-width:100%!important;height:auto!important}
+h1,h2,h3,h4{line-height:1.25!important;margin:.8em 0 .4em!important}
+</style>"""
+    if "</head>" not in text:
+        raise RuntimeError(f"Pandoc HTML has no head close tag: {html_path}")
+    html_path.write_text(text.replace("</head>", fit + "</head>", 1), encoding="utf-8")
+
+
+def render_docx_html(source_docx: Path, output_dir: Path) -> Path:
+    clean_dir(output_dir)
+    html_path = output_dir / "content.html"
+    run(
+        [
+            "pandoc",
+            str(source_docx),
+            "-f",
+            "docx",
+            "-t",
+            "html5",
+            "--standalone",
+            f"--extract-media={output_dir}",
+            "-o",
+            str(html_path),
+        ]
+    )
+    inject_pandoc_reference_fit(html_path)
+    return html_path
+
+
 def render_team4_sources(team4_root: Path, item: dict, output_root: Path) -> list[dict]:
     rendered = []
     for spec in item["team4"]:
@@ -278,13 +342,18 @@ def render_team4_sources(team4_root: Path, item: dict, output_root: Path) -> lis
             )
             continue
         out_dir = output_root / "team4" / item["docId"] / spec["key"]
-        html = render_quicklook_html(source_docx, out_dir)
+        if shutil.which("pandoc"):
+            html = render_docx_html(source_docx, out_dir)
+            render_mode = "docx-html"
+        else:
+            html = render_quicklook_html(source_docx, out_dir)
+            render_mode = "quicklook-html"
         rendered.append(
             {
                 "key": spec["key"],
                 "label": spec["label"],
                 "source": str(source_docx),
-                "renderMode": "quicklook-html",
+                "renderMode": render_mode,
                 "html": rel(html),
             }
         )
@@ -305,7 +374,7 @@ def build(args: argparse.Namespace) -> dict:
     clean_dir(output_root)
     items = {}
     for item in REFERENCE_ITEMS:
-        hankeut = None if args.skip_hankeut else render_hankeut_pages(source_pdf, item, output_root, args.dpi, args.quality)
+        hankeut = None if args.skip_hankeut else render_hankeut_text(source_pdf, item, output_root)
         team4 = [] if args.skip_team4 else render_team4_sources(team4_root, item, output_root)
         items[item["docId"]] = {
             "docId": item["docId"],
@@ -318,8 +387,8 @@ def build(args: argparse.Namespace) -> dict:
         "version": "cpx-reference-assets.v1",
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "notes": {
-            "hankeut": "한끝 PDF는 CC별 page image stack으로 렌더링한다.",
-            "team4": "4조 Word 파일은 Quick Look HTML을 우선 사용한다. Word AppleScript PDF export는 이 Mac에서 멈춤 현상이 있어 보조 루트로 둔다.",
+            "hankeut": "한끝 PDF는 이미지 페이지 스택이 아니라 CC별 연속 텍스트 HTML로 렌더링한다.",
+            "team4": "4조 Word 파일은 pandoc HTML을 우선 사용하고, pandoc이 없을 때만 Quick Look HTML로 대체한다.",
         },
         "items": items,
     }

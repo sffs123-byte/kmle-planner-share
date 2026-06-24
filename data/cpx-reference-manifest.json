@@ -1,9 +1,9 @@
 {
   "version": "cpx-reference-assets.v1",
-  "generatedAt": "2026-06-23T18:20:04.340978+00:00",
+  "generatedAt": "2026-06-24T11:54:29.684141+00:00",
   "notes": {
-    "hankeut": "한끝 PDF는 CC별 page image stack으로 렌더링한다.",
-    "team4": "4조 Word 파일은 Quick Look HTML을 우선 사용한다. Word AppleScript PDF export는 이 Mac에서 멈춤 현상이 있어 보조 루트로 둔다."
+    "hankeut": "한끝 PDF는 이미지 페이지 스택이 아니라 CC별 연속 텍스트 HTML로 렌더링한다.",
+    "team4": "4조 Word 파일은 pandoc HTML을 우선 사용하고, pandoc이 없을 때만 Quick Look HTML로 대체한다."
   },
   "items": {
     "38": {
@@ -12,89 +12,21 @@
       "hankeut": {
         "title": "유방통/유방덩이",
         "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
-        "renderMode": "page-image-stack",
+        "renderMode": "text-html",
         "pdfPageRange": "2-11",
         "bookPageRange": "378-387",
-        "pages": [
-          {
-            "pdfPage": 2,
-            "bookPage": 378,
-            "image": "assets/cpx-references/hankeut/38/p002.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 3,
-            "bookPage": 379,
-            "image": "assets/cpx-references/hankeut/38/p003.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 4,
-            "bookPage": 380,
-            "image": "assets/cpx-references/hankeut/38/p004.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 5,
-            "bookPage": 381,
-            "image": "assets/cpx-references/hankeut/38/p005.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 6,
-            "bookPage": 382,
-            "image": "assets/cpx-references/hankeut/38/p006.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 7,
-            "bookPage": 383,
-            "image": "assets/cpx-references/hankeut/38/p007.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 8,
-            "bookPage": 384,
-            "image": "assets/cpx-references/hankeut/38/p008.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 9,
-            "bookPage": 385,
-            "image": "assets/cpx-references/hankeut/38/p009.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 10,
-            "bookPage": 386,
-            "image": "assets/cpx-references/hankeut/38/p010.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 11,
-            "bookPage": 387,
-            "image": "assets/cpx-references/hankeut/38/p011.jpg",
-            "width": 795,
-            "height": 1149
-          }
-        ]
+        "html": "assets/cpx-references/hankeut/38/content.html",
+        "textStats": {
+          "characters": 8107
+        }
       },
       "team4": [
         {
           "key": "breast_pain_mass",
           "label": "4조 유방통/유방덩이",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/9.여성/38.유방통,유방덩이.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/38/breast_pain_mass/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/34. 유방통,유방덩이_4조.docx",
+          "renderMode": "docx-html",
+          "html": "assets/cpx-references/team4/38/breast_pain_mass/content.html"
         }
       ]
     },
@@ -104,110 +36,21 @@
       "hankeut": {
         "title": "질분비물/질출혈",
         "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
-        "renderMode": "page-image-stack",
+        "renderMode": "text-html",
         "pdfPageRange": "12-23",
         "bookPageRange": "388-399",
-        "pages": [
-          {
-            "pdfPage": 12,
-            "bookPage": 388,
-            "image": "assets/cpx-references/hankeut/39/p012.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 13,
-            "bookPage": 389,
-            "image": "assets/cpx-references/hankeut/39/p013.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 14,
-            "bookPage": 390,
-            "image": "assets/cpx-references/hankeut/39/p014.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 15,
-            "bookPage": 391,
-            "image": "assets/cpx-references/hankeut/39/p015.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 16,
-            "bookPage": 392,
-            "image": "assets/cpx-references/hankeut/39/p016.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 17,
-            "bookPage": 393,
-            "image": "assets/cpx-references/hankeut/39/p017.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 18,
-            "bookPage": 394,
-            "image": "assets/cpx-references/hankeut/39/p018.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 19,
-            "bookPage": 395,
-            "image": "assets/cpx-references/hankeut/39/p019.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 20,
-            "bookPage": 396,
-            "image": "assets/cpx-references/hankeut/39/p020.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 21,
-            "bookPage": 397,
-            "image": "assets/cpx-references/hankeut/39/p021.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 22,
-            "bookPage": 398,
-            "image": "assets/cpx-references/hankeut/39/p022.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 23,
-            "bookPage": 399,
-            "image": "assets/cpx-references/hankeut/39/p023.jpg",
-            "width": 795,
-            "height": 1149
-          }
-        ]
+        "html": "assets/cpx-references/hankeut/39/content.html",
+        "textStats": {
+          "characters": 10247
+        }
       },
       "team4": [
         {
-          "key": "vaginal_discharge",
-          "label": "4조 질분비물",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/9.여성/39.1-질분비물.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/39/vaginal_discharge/Preview.html"
-        },
-        {
-          "key": "vaginal_bleeding",
-          "label": "4조 질출혈",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/9.여성/39.2-질출혈.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/39/vaginal_bleeding/Preview.html"
+          "key": "vaginal_discharge_bleeding",
+          "label": "4조 질분비물/질출혈",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/39. 질분비물_질출혈.docx",
+          "renderMode": "docx-html",
+          "html": "assets/cpx-references/team4/39/vaginal_discharge_bleeding/content.html"
         }
       ]
     },
@@ -217,96 +60,28 @@
       "hankeut": {
         "title": "월경 이상/월경통",
         "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
-        "renderMode": "page-image-stack",
+        "renderMode": "text-html",
         "pdfPageRange": "24-33",
         "bookPageRange": "400-409",
-        "pages": [
-          {
-            "pdfPage": 24,
-            "bookPage": 400,
-            "image": "assets/cpx-references/hankeut/40/p024.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 25,
-            "bookPage": 401,
-            "image": "assets/cpx-references/hankeut/40/p025.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 26,
-            "bookPage": 402,
-            "image": "assets/cpx-references/hankeut/40/p026.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 27,
-            "bookPage": 403,
-            "image": "assets/cpx-references/hankeut/40/p027.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 28,
-            "bookPage": 404,
-            "image": "assets/cpx-references/hankeut/40/p028.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 29,
-            "bookPage": 405,
-            "image": "assets/cpx-references/hankeut/40/p029.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 30,
-            "bookPage": 406,
-            "image": "assets/cpx-references/hankeut/40/p030.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 31,
-            "bookPage": 407,
-            "image": "assets/cpx-references/hankeut/40/p031.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 32,
-            "bookPage": 408,
-            "image": "assets/cpx-references/hankeut/40/p032.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 33,
-            "bookPage": 409,
-            "image": "assets/cpx-references/hankeut/40/p033.jpg",
-            "width": 795,
-            "height": 1149
-          }
-        ]
+        "html": "assets/cpx-references/hankeut/40/content.html",
+        "textStats": {
+          "characters": 7804
+        }
       },
       "team4": [
         {
           "key": "amenorrhea",
           "label": "4조 무월경/월경이상",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/9.여성/40.1 무월경.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/40/amenorrhea/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/33-1. 월경이상(무월경)_4조.docx",
+          "renderMode": "docx-html",
+          "html": "assets/cpx-references/team4/40/amenorrhea/content.html"
         },
         {
           "key": "dysmenorrhea",
           "label": "4조 월경통",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/9.여성/40.2 월경통.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/40/dysmenorrhea/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/33-2. 월경통_4조.docx",
+          "renderMode": "docx-html",
+          "html": "assets/cpx-references/team4/40/dysmenorrhea/content.html"
         }
       ]
     },
@@ -316,82 +91,21 @@
       "hankeut": {
         "title": "산전 진찰",
         "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
-        "renderMode": "page-image-stack",
+        "renderMode": "text-html",
         "pdfPageRange": "34-42",
         "bookPageRange": "410-418",
-        "pages": [
-          {
-            "pdfPage": 34,
-            "bookPage": 410,
-            "image": "assets/cpx-references/hankeut/41/p034.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 35,
-            "bookPage": 411,
-            "image": "assets/cpx-references/hankeut/41/p035.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 36,
-            "bookPage": 412,
-            "image": "assets/cpx-references/hankeut/41/p036.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 37,
-            "bookPage": 413,
-            "image": "assets/cpx-references/hankeut/41/p037.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 38,
-            "bookPage": 414,
-            "image": "assets/cpx-references/hankeut/41/p038.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 39,
-            "bookPage": 415,
-            "image": "assets/cpx-references/hankeut/41/p039.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 40,
-            "bookPage": 416,
-            "image": "assets/cpx-references/hankeut/41/p040.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 41,
-            "bookPage": 417,
-            "image": "assets/cpx-references/hankeut/41/p041.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 42,
-            "bookPage": 418,
-            "image": "assets/cpx-references/hankeut/41/p042.jpg",
-            "width": 795,
-            "height": 1149
-          }
-        ]
+        "html": "assets/cpx-references/hankeut/41/content.html",
+        "textStats": {
+          "characters": 7612
+        }
       },
       "team4": [
         {
           "key": "prenatal_care",
           "label": "4조 산전진찰",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/참고 대본/9.여성/41.산전진찰.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/41/prenatal_care/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/24. 산전진찰_4조.docx",
+          "renderMode": "docx-html",
+          "html": "assets/cpx-references/team4/41/prenatal_care/content.html"
         }
       ]
     },
@@ -401,117 +115,21 @@
       "hankeut": {
         "title": "성장/발달지연",
         "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
-        "renderMode": "page-image-stack",
+        "renderMode": "text-html",
         "pdfPageRange": "43-56",
         "bookPageRange": "419-432",
-        "pages": [
-          {
-            "pdfPage": 43,
-            "bookPage": 419,
-            "image": "assets/cpx-references/hankeut/42/p043.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 44,
-            "bookPage": 420,
-            "image": "assets/cpx-references/hankeut/42/p044.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 45,
-            "bookPage": 421,
-            "image": "assets/cpx-references/hankeut/42/p045.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 46,
-            "bookPage": 422,
-            "image": "assets/cpx-references/hankeut/42/p046.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 47,
-            "bookPage": 423,
-            "image": "assets/cpx-references/hankeut/42/p047.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 48,
-            "bookPage": 424,
-            "image": "assets/cpx-references/hankeut/42/p048.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 49,
-            "bookPage": 425,
-            "image": "assets/cpx-references/hankeut/42/p049.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 50,
-            "bookPage": 426,
-            "image": "assets/cpx-references/hankeut/42/p050.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 51,
-            "bookPage": 427,
-            "image": "assets/cpx-references/hankeut/42/p051.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 52,
-            "bookPage": 428,
-            "image": "assets/cpx-references/hankeut/42/p052.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 53,
-            "bookPage": 429,
-            "image": "assets/cpx-references/hankeut/42/p053.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 54,
-            "bookPage": 430,
-            "image": "assets/cpx-references/hankeut/42/p054.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 55,
-            "bookPage": 431,
-            "image": "assets/cpx-references/hankeut/42/p055.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 56,
-            "bookPage": 432,
-            "image": "assets/cpx-references/hankeut/42/p056.jpg",
-            "width": 795,
-            "height": 1149
-          }
-        ]
+        "html": "assets/cpx-references/hankeut/42/content.html",
+        "textStats": {
+          "characters": 12092
+        }
       },
       "team4": [
         {
           "key": "growth_development_delay",
           "label": "4조 성장/발달지연",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/25. 성장,발달지연_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/42/growth_development_delay/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/25. 성장,발달지연_4조.docx",
+          "renderMode": "docx-html",
+          "html": "assets/cpx-references/team4/42/growth_development_delay/content.html"
         }
       ]
     },
@@ -521,75 +139,21 @@
       "hankeut": {
         "title": "예방접종",
         "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
-        "renderMode": "page-image-stack",
+        "renderMode": "text-html",
         "pdfPageRange": "57-64",
         "bookPageRange": "433-440",
-        "pages": [
-          {
-            "pdfPage": 57,
-            "bookPage": 433,
-            "image": "assets/cpx-references/hankeut/43/p057.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 58,
-            "bookPage": 434,
-            "image": "assets/cpx-references/hankeut/43/p058.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 59,
-            "bookPage": 435,
-            "image": "assets/cpx-references/hankeut/43/p059.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 60,
-            "bookPage": 436,
-            "image": "assets/cpx-references/hankeut/43/p060.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 61,
-            "bookPage": 437,
-            "image": "assets/cpx-references/hankeut/43/p061.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 62,
-            "bookPage": 438,
-            "image": "assets/cpx-references/hankeut/43/p062.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 63,
-            "bookPage": 439,
-            "image": "assets/cpx-references/hankeut/43/p063.jpg",
-            "width": 795,
-            "height": 1149
-          },
-          {
-            "pdfPage": 64,
-            "bookPage": 440,
-            "image": "assets/cpx-references/hankeut/43/p064.jpg",
-            "width": 795,
-            "height": 1149
-          }
-        ]
+        "html": "assets/cpx-references/hankeut/43/content.html",
+        "textStats": {
+          "characters": 6398
+        }
       },
       "team4": [
         {
           "key": "immunization",
           "label": "4조 예방접종",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/32. 예방접종_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/43/immunization/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/32. 예방접종_4조.docx",
+          "renderMode": "docx-html",
+          "html": "assets/cpx-references/team4/43/immunization/content.html"
         }
       ]
     }
