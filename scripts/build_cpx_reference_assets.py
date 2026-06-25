@@ -17,7 +17,69 @@ DEFAULT_TEAM4_ROOT = Path(
     "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본"
 )
 SYSTEM_PDFS = {
+    "digestive": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_소화기.pdf"),
     "circulation": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_순환기.pdf"),
+    "respiratory": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_호흡기.pdf"),
+    "kidney_urinary": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_신장비뇨.pdf"),
+    "general": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_전신.pdf"),
+    "msk_skin": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_관절근골피부.pdf"),
+    "neuropsych": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_정신신경.pdf"),
+    "obgyn_peds": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf"),
+    "counseling": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_상담.pdf"),
+}
+
+HANKEUT_EXCERPT_OVERRIDES = {
+    "1": {"sourcePdf": "digestive", "pdfPages": [4, 12], "bookPages": [74, 82]},
+    "2": {"sourcePdf": "digestive", "pdfPages": [13, 20], "bookPages": [83, 90]},
+    "3": {"sourcePdf": "digestive", "pdfPages": [21, 26], "bookPages": [91, 96]},
+    "4": {"sourcePdf": "digestive", "pdfPages": [27, 33], "bookPages": [97, 103]},
+    "5": {"sourcePdf": "digestive", "pdfPages": [34, 39], "bookPages": [104, 109]},
+    "6": {"sourcePdf": "digestive", "pdfPages": [40, 51], "bookPages": [110, 121]},
+    "6-2": {"sourcePdf": "digestive", "pdfPages": [40, 51], "bookPages": [110, 121]},
+    "7": {"sourcePdf": "digestive", "pdfPages": [52, 58], "bookPages": [122, 128]},
+    "8": {"sourcePdf": "circulation", "pdfPages": [2, 8], "bookPages": [130, 136]},
+    "9": {"sourcePdf": "circulation", "pdfPages": [9, 15], "bookPages": [137, 143]},
+    "10": {"sourcePdf": "circulation", "pdfPages": [16, 22], "bookPages": [144, 150]},
+    "11": {"sourcePdf": "circulation", "pdfPages": [23, 28], "bookPages": [151, 156]},
+    "12": {"sourcePdf": "circulation", "pdfPages": [29, 34], "bookPages": [157, 162]},
+    "13": {"sourcePdf": "respiratory", "pdfPages": [1, 7], "bookPages": [164, 170]},
+    "14": {"sourcePdf": "respiratory", "pdfPages": [8, 14], "bookPages": [171, 177]},
+    "15": {"sourcePdf": "respiratory", "pdfPages": [15, 21], "bookPages": [178, 184]},
+    "16": {"sourcePdf": "respiratory", "pdfPages": [22, 30], "bookPages": [185, 192]},
+    "17": {"sourcePdf": "kidney_urinary", "pdfPages": [1, 10], "bookPages": [194, 203]},
+    "17-2": {"sourcePdf": "kidney_urinary", "pdfPages": [1, 10], "bookPages": [194, 203]},
+    "18": {"sourcePdf": "kidney_urinary", "pdfPages": [11, 18], "bookPages": [204, 211]},
+    "19": {"sourcePdf": "kidney_urinary", "pdfPages": [19, 28], "bookPages": [212, 219]},
+    "19-2": {"sourcePdf": "kidney_urinary", "pdfPages": [19, 28], "bookPages": [212, 219]},
+    "20": {"sourcePdf": "general", "pdfPages": [3, 9], "bookPages": [223, 229]},
+    "21": {"sourcePdf": "general", "pdfPages": [10, 16], "bookPages": [230, 236]},
+    "22": {"sourcePdf": "general", "pdfPages": [17, 24], "bookPages": [237, 244]},
+    "23": {"sourcePdf": "general", "pdfPages": [25, 31], "bookPages": [245, 251]},
+    "24": {"sourcePdf": "general", "pdfPages": [32, 38], "bookPages": [252, 258]},
+    "25": {"sourcePdf": "msk_skin", "pdfPages": [2, 12], "bookPages": [260, 270]},
+    "26": {"sourcePdf": "msk_skin", "pdfPages": [13, 24], "bookPages": [271, 282]},
+    "27": {"sourcePdf": "msk_skin", "pdfPages": [25, 32], "bookPages": [283, 290]},
+    "28": {"sourcePdf": "neuropsych", "pdfPages": [2, 8], "bookPages": [292, 298]},
+    "29": {"sourcePdf": "neuropsych", "pdfPages": [9, 15], "bookPages": [299, 305]},
+    "30": {"sourcePdf": "neuropsych", "pdfPages": [16, 24], "bookPages": [306, 314]},
+    "31": {"sourcePdf": "neuropsych", "pdfPages": [25, 34], "bookPages": [315, 324]},
+    "32": {"sourcePdf": "neuropsych", "pdfPages": [35, 42], "bookPages": [325, 332]},
+    "33": {"sourcePdf": "neuropsych", "pdfPages": [43, 50], "bookPages": [333, 340]},
+    "34": {"sourcePdf": "neuropsych", "pdfPages": [51, 57], "bookPages": [341, 347]},
+    "35": {"sourcePdf": "neuropsych", "pdfPages": [58, 67], "bookPages": [348, 357]},
+    "36": {"sourcePdf": "neuropsych", "pdfPages": [68, 76], "bookPages": [358, 366]},
+    "37": {"sourcePdf": "neuropsych", "pdfPages": [77, 85], "bookPages": [367, 375]},
+    "38": {"sourcePdf": "obgyn_peds", "pdfPages": [2, 11], "bookPages": [378, 387]},
+    "39": {"sourcePdf": "obgyn_peds", "pdfPages": [12, 23], "bookPages": [388, 399]},
+    "40": {"sourcePdf": "obgyn_peds", "pdfPages": [24, 33], "bookPages": [400, 409]},
+    "41": {"sourcePdf": "obgyn_peds", "pdfPages": [34, 42], "bookPages": [410, 418]},
+    "42": {"sourcePdf": "obgyn_peds", "pdfPages": [43, 56], "bookPages": [419, 432]},
+    "43": {"sourcePdf": "obgyn_peds", "pdfPages": [57, 64], "bookPages": [433, 440]},
+    "44": {"sourcePdf": "counseling", "pdfPages": [2, 9], "bookPages": [442, 449]},
+    "45": {"sourcePdf": "counseling", "pdfPages": [10, 16], "bookPages": [450, 456]},
+    "46": {"sourcePdf": "counseling", "pdfPages": [17, 24], "bookPages": [457, 464]},
+    "47": {"sourcePdf": "counseling", "pdfPages": [25, 31], "bookPages": [465, 471]},
+    "48": {"sourcePdf": "counseling", "pdfPages": [32, 38], "bookPages": [472, 478]},
 }
 
 
@@ -466,15 +528,16 @@ def pdf_page_count(path: Path) -> int | None:
 
 
 def resolve_hankeut_source_pdf(default_source_pdf: Path, cc_pdf_root: Path, item: dict) -> Path:
-    if item.get("ccPdf"):
-        return cc_pdf_root / item["ccPdf"]
     source_pdf = item.get("sourcePdf")
     if source_pdf:
         return SYSTEM_PDFS.get(source_pdf, Path(source_pdf))
+    if item.get("ccPdf"):
+        return cc_pdf_root / item["ccPdf"]
     return default_source_pdf
 
 
 def render_hankeut_pdf_excerpt(source_pdf: Path, cc_pdf_root: Path, item: dict, output_root: Path) -> dict:
+    item = {**item, **HANKEUT_EXCERPT_OVERRIDES.get(str(item["docId"]), {})}
     doc_id = item["docId"]
     out_dir = output_root / "hankeut" / doc_id
     clean_dir(out_dir)
@@ -556,12 +619,18 @@ def render_quicklook_html(source_docx: Path, output_dir: Path) -> Path:
 
 def inject_quicklook_fit(html: Path) -> None:
     text = html.read_text(encoding="utf-8")
-    if "cpx-ql-fit" in text:
+    readable = """<style id="cpx-ql-readable-text">html{background:#fff}</style><script id="cpx-ql-readable-script">(()=>{function rgb(v){const m=String(v||'').match(/rgba?\\(([^)]+)\\)/i);if(!m)return null;const p=m[1].split(',').map(x=>Number(String(x).trim()));return{r:p[0]||0,g:p[1]||0,b:p[2]||0,a:p.length>3?p[3]:1}}function lum(c){return(c.r*299+c.g*587+c.b*114)/255000}function bg(el){for(let n=el;n;n=n.parentElement){const c=rgb(getComputedStyle(n).backgroundColor);if(c&&c.a>.15)return c}return{r:255,g:255,b:255,a:1}}function fix(){document.querySelectorAll('body *').forEach(el=>{const cs=getComputedStyle(el),fg=rgb(cs.color),b=bg(el);if(!fg)return;if((fg.a<.68||lum(fg)>.72)&&lum(b)>.74){el.style.color='#243044';el.style.webkitTextFillColor='#243044'}})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fix,{once:true});else fix();setTimeout(fix,250)})();</script>"""
+    if "cpx-ql-fit" in text and "cpx-ql-readable-text" in text:
         return
     fit = """<style id="cpx-ql-fit">html{background:#fff}body{margin:0!important;overflow-x:auto;transform-origin:0 0}.cpx-ql-fit-note{display:none}</style><script id="cpx-ql-fit-script">(()=>{function fit(){const meta=document.querySelector('meta[name="viewport"]')?.content||'';const m=meta.match(/width\\s*=\\s*(\\d+)/i);const base=m?Number(m[1]):Math.max(900,document.body?.scrollWidth||1224);const scale=Math.min(1,Math.max(.42,(window.innerWidth-8)/base));if(document.body){document.body.style.zoom=String(scale);document.body.classList.add('cpx-ql-fitted')}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fit,{once:true});else fit();window.addEventListener('resize',fit,{passive:true})})();</script>"""
     if "</head>" not in text:
         raise RuntimeError(f"Preview HTML has no head close tag: {html}")
-    html.write_text(text.replace("</head>", fit + "</head>", 1), encoding="utf-8")
+    insert = ""
+    if "cpx-ql-fit" not in text:
+        insert += fit
+    if "cpx-ql-readable-text" not in text:
+        insert += readable
+    html.write_text(text.replace("</head>", insert + "</head>", 1), encoding="utf-8")
 
 
 def render_team4_sources(team4_root: Path, item: dict, output_root: Path) -> list[dict]:
