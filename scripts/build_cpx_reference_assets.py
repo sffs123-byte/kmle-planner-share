@@ -71,7 +71,8 @@ HANKEUT_EXCERPT_OVERRIDES = {
     "36": {"sourcePdf": "neuropsych", "pdfPages": [68, 76], "bookPages": [358, 366]},
     "37": {"sourcePdf": "neuropsych", "pdfPages": [77, 85], "bookPages": [367, 375]},
     "38": {"sourcePdf": "obgyn_peds", "pdfPages": [2, 11], "bookPages": [378, 387]},
-    "39": {"sourcePdf": "obgyn_peds", "pdfPages": [12, 23], "bookPages": [388, 399]},
+    "39-1": {"sourcePdf": "obgyn_peds", "pdfPages": [12, 23], "bookPages": [388, 399]},
+    "39-2": {"sourcePdf": "obgyn_peds", "pdfPages": [12, 23], "bookPages": [388, 399]},
     "40": {"sourcePdf": "obgyn_peds", "pdfPages": [24, 33], "bookPages": [400, 409]},
     "41": {"sourcePdf": "obgyn_peds", "pdfPages": [34, 42], "bookPages": [410, 418]},
     "42": {"sourcePdf": "obgyn_peds", "pdfPages": [43, 56], "bookPages": [419, 432]},
@@ -386,8 +387,17 @@ REFERENCE_ITEMS = [
         ],
     },
     {
-        "docId": "39",
-        "title": "39. 질분비물 질출혈",
+        "docId": "39-1",
+        "title": "39-1. 질 분비물",
+        "hankeutTitle": "질분비물/질출혈",
+        "ccPdf": "cc39.pdf",
+        "team4": [
+            team4("vaginal_discharge_bleeding", "4조 질분비물/질출혈", "39. 질분비물_질출혈.docx", ["질분비물", "질출혈"])
+        ],
+    },
+    {
+        "docId": "39-2",
+        "title": "39-2. 질 출혈",
         "hankeutTitle": "질분비물/질출혈",
         "ccPdf": "cc39.pdf",
         "team4": [

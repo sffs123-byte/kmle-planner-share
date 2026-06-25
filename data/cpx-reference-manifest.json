@@ -1,6 +1,6 @@
 {
   "version": "cpx-reference-assets.v2.all-cc-source-preserved",
-  "generatedAt": "2026-06-25T08:26:03.265116+00:00",
+  "generatedAt": "2026-06-25T09:04:30.713395+00:00",
   "notes": {
     "hankeut": "한끝 PDF는 CC별 PDF 발췌본을 iframe PDF 뷰어로 표시해 원본 모양을 보존한다.",
     "team4": "4조 자료는 사용자가 Word에서 직접 내보낸 PDF를 우선 사용해 표, 색, 첨부 이미지를 보존한다. PDF가 없는 일부 항목만 Quick Look HTML로 보조 표시한다.",
@@ -1020,16 +1020,16 @@
         }
       ]
     },
-    "39": {
-      "docId": "39",
-      "title": "39. 질분비물 질출혈",
+    "39-1": {
+      "docId": "39-1",
+      "title": "39-1. 질 분비물",
       "hankeut": {
         "title": "질분비물/질출혈",
         "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
         "sourceFileTitle": "총론_산부여성소아.pdf",
         "renderMode": "pdf-excerpt",
         "pdfPageRange": "12-23",
-        "pdf": "assets/cpx-references/hankeut/39/excerpt.pdf",
+        "pdf": "assets/cpx-references/hankeut/39-1/excerpt.pdf",
         "pageCount": 12,
         "bookPageRange": "388-399"
       },
@@ -1040,7 +1040,32 @@
           "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/39. 질분비물_질출혈.pdf",
           "sourceFileTitle": "39. 질분비물_질출혈.pdf",
           "renderMode": "pdf-source",
-          "pdf": "assets/cpx-references/team4/39/vaginal_discharge_bleeding/source.pdf",
+          "pdf": "assets/cpx-references/team4/39-1/vaginal_discharge_bleeding/source.pdf",
+          "pageCount": 6
+        }
+      ]
+    },
+    "39-2": {
+      "docId": "39-2",
+      "title": "39-2. 질 출혈",
+      "hankeut": {
+        "title": "질분비물/질출혈",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_산부여성소아.pdf",
+        "sourceFileTitle": "총론_산부여성소아.pdf",
+        "renderMode": "pdf-excerpt",
+        "pdfPageRange": "12-23",
+        "pdf": "assets/cpx-references/hankeut/39-2/excerpt.pdf",
+        "pageCount": 12,
+        "bookPageRange": "388-399"
+      },
+      "team4": [
+        {
+          "key": "vaginal_discharge_bleeding",
+          "label": "4조 질분비물/질출혈",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/39. 질분비물_질출혈.pdf",
+          "sourceFileTitle": "39. 질분비물_질출혈.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/39-2/vaginal_discharge_bleeding/source.pdf",
           "pageCount": 6
         }
       ]
