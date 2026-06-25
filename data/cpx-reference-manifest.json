@@ -1,9 +1,9 @@
 {
   "version": "cpx-reference-assets.v2.all-cc-source-preserved",
-  "generatedAt": "2026-06-25T07:03:00.079641+00:00",
+  "generatedAt": "2026-06-25T08:26:03.265116+00:00",
   "notes": {
     "hankeut": "한끝 PDF는 CC별 PDF 발췌본을 iframe PDF 뷰어로 표시해 원본 모양을 보존한다.",
-    "team4": "4조 Word 파일은 Quick Look HTML을 사용해 표, 색, 첨부 이미지를 보존한다. Word PDF export는 안정성 확인 전까지 보조 경로로 둔다.",
+    "team4": "4조 자료는 사용자가 Word에서 직접 내보낸 PDF를 우선 사용해 표, 색, 첨부 이미지를 보존한다. PDF가 없는 일부 항목만 Quick Look HTML로 보조 표시한다.",
     "scope": "공통/합본 대본은 제외하고 CC별 개별 자료만 연결한다."
   },
   "items": {
@@ -24,10 +24,11 @@
         {
           "key": "acute_abdominal_pain",
           "label": "4조 급성복통",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/21. 급성복통_4조.docx",
-          "sourceFileTitle": "21. 급성복통_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/1/acute_abdominal_pain/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/21. 급성복통_4조.pdf",
+          "sourceFileTitle": "21. 급성복통_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/1/acute_abdominal_pain/source.pdf",
+          "pageCount": 14
         }
       ]
     },
@@ -48,10 +49,11 @@
         {
           "key": "dyspepsia_chronic_abdominal_pain",
           "label": "4조 소화불량/만성복통",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/27. 소화불량만성복통_4조.docx",
-          "sourceFileTitle": "27. 소화불량만성복통_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/2/dyspepsia_chronic_abdominal_pain/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/27. 소화불량만성복통_4조.pdf",
+          "sourceFileTitle": "27. 소화불량만성복통_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/2/dyspepsia_chronic_abdominal_pain/source.pdf",
+          "pageCount": 9
         }
       ]
     },
@@ -72,10 +74,11 @@
         {
           "key": "hematemesis",
           "label": "4조 토혈",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/43. 토혈_4조.docx",
-          "sourceFileTitle": "43. 토혈_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/3/hematemesis/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/43. 토혈_4조.pdf",
+          "sourceFileTitle": "43. 토혈_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/3/hematemesis/source.pdf",
+          "pageCount": 4
         }
       ]
     },
@@ -120,10 +123,11 @@
         {
           "key": "vomiting",
           "label": "4조 구토",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/7. 구토_4조.docx",
-          "sourceFileTitle": "7. 구토_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/5/vomiting/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/7. 구토_4조.pdf",
+          "sourceFileTitle": "7. 구토_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/5/vomiting/source.pdf",
+          "pageCount": 5
         }
       ]
     },
@@ -144,10 +148,11 @@
         {
           "key": "constipation",
           "label": "4조 배변이상(변비)",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/20-1. 배변이상(변비)_4조.docx",
-          "sourceFileTitle": "20-1. 배변이상(변비)_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/6/constipation/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/20-1. 배변이상(변비)_4조.pdf",
+          "sourceFileTitle": "20-1. 배변이상(변비)_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/6/constipation/source.pdf",
+          "pageCount": 4
         }
       ]
     },
@@ -168,10 +173,11 @@
         {
           "key": "diarrhea",
           "label": "4조 배변이상(설사)",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/20-2. 배변이상(설사)_4조.docx",
-          "sourceFileTitle": "20-2. 배변이상(설사)_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/6-2/diarrhea/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/20-2. 배변이상(설사)_4조.pdf",
+          "sourceFileTitle": "20-2. 배변이상(설사)_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/6-2/diarrhea/source.pdf",
+          "pageCount": 5
         }
       ]
     },
@@ -207,10 +213,11 @@
         {
           "key": "chest_pain",
           "label": "4조 가슴통증",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/1. 가슴통증_4조.docx",
-          "sourceFileTitle": "1. 가슴통증_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/8/chest_pain/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/1. 가슴통증_4조.pdf",
+          "sourceFileTitle": "1. 가슴통증_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/8/chest_pain/source.pdf",
+          "pageCount": 6
         }
       ]
     },
@@ -231,10 +238,11 @@
         {
           "key": "syncope",
           "label": "4조 실신",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/30. 실신_4조.docx",
-          "sourceFileTitle": "30. 실신_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/9/syncope/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/30. 실신_4조.pdf",
+          "sourceFileTitle": "30. 실신_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/9/syncope/source.pdf",
+          "pageCount": 5
         }
       ]
     },
@@ -255,10 +263,11 @@
         {
           "key": "palpitation",
           "label": "4조 두근거림",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/13. 두근거림_4조.docx",
-          "sourceFileTitle": "13. 두근거림_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/10/palpitation/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/13. 두근거림_4조.pdf",
+          "sourceFileTitle": "13. 두근거림_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/10/palpitation/source.pdf",
+          "pageCount": 7
         }
       ]
     },
@@ -279,10 +288,11 @@
         {
           "key": "hypertension",
           "label": "4조 고혈압",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/5. 고혈압_4조.docx",
-          "sourceFileTitle": "5. 고혈압_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/11/hypertension/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/5. 고혈압_4조.pdf",
+          "sourceFileTitle": "5. 고혈압_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/11/hypertension/source.pdf",
+          "pageCount": 6
         }
       ]
     },
@@ -303,10 +313,11 @@
         {
           "key": "dyslipidemia",
           "label": "4조 이상지질혈증",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/37. 이상지질혈증_4조.docx",
-          "sourceFileTitle": "37. 이상지질혈증_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/12/dyslipidemia/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/37. 이상지질혈증_4조.pdf",
+          "sourceFileTitle": "37. 이상지질혈증_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/12/dyslipidemia/source.pdf",
+          "pageCount": 8
         }
       ]
     },
@@ -327,10 +338,11 @@
         {
           "key": "cough",
           "label": "4조 기침",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/11. 기침_4조.docx",
-          "sourceFileTitle": "11. 기침_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/13/cough/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/11. 기침_4조.pdf",
+          "sourceFileTitle": "11. 기침_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/13/cough/source.pdf",
+          "pageCount": 5
         }
       ]
     },
@@ -351,10 +363,11 @@
         {
           "key": "rhinorrhea_nasal_obstruction",
           "label": "4조 콧물/코막힘",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/42. 콧물, 코막힘_4조.docx",
-          "sourceFileTitle": "42. 콧물, 코막힘_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/14/rhinorrhea_nasal_obstruction/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/42. 콧물, 코막힘_4조.pdf",
+          "sourceFileTitle": "42. 콧물, 코막힘_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/14/rhinorrhea_nasal_obstruction/source.pdf",
+          "pageCount": 4
         }
       ]
     },
@@ -375,10 +388,11 @@
         {
           "key": "hemoptysis",
           "label": "4조 객혈",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/3. 객혈_4조.docx",
-          "sourceFileTitle": "3. 객혈_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/15/hemoptysis/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/3. 객혈_4조.pdf",
+          "sourceFileTitle": "3. 객혈_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/15/hemoptysis/source.pdf",
+          "pageCount": 4
         }
       ]
     },
@@ -423,10 +437,11 @@
         {
           "key": "urine_volume_change",
           "label": "4조 소변량변화",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/26. 소변량변화_4조.docx",
-          "sourceFileTitle": "26. 소변량변화_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/17/urine_volume_change/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/26. 소변량변화_4조.pdf",
+          "sourceFileTitle": "26. 소변량변화_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/17/urine_volume_change/source.pdf",
+          "pageCount": 7
         }
       ]
     },
@@ -447,10 +462,11 @@
         {
           "key": "urine_volume_change",
           "label": "4조 소변량변화",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/26. 소변량변화_4조.docx",
-          "sourceFileTitle": "26. 소변량변화_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/17-2/urine_volume_change/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/26. 소변량변화_4조.pdf",
+          "sourceFileTitle": "26. 소변량변화_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/17-2/urine_volume_change/source.pdf",
+          "pageCount": 7
         }
       ]
     },
@@ -471,10 +487,11 @@
         {
           "key": "red_urine",
           "label": "4조 붉은색 소변",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/23. 붉은색 소변_4조.docx",
-          "sourceFileTitle": "23. 붉은색 소변_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/18/red_urine/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/23. 붉은색 소변_4조.pdf",
+          "sourceFileTitle": "23. 붉은색 소변_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/18/red_urine/source.pdf",
+          "pageCount": 10
         }
       ]
     },
@@ -495,10 +512,11 @@
         {
           "key": "voiding_dysfunction_incontinence",
           "label": "4조 배뇨이상/소변찔끔증",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/19. 배뇨이상, 소변찔끔증_4조.docx",
-          "sourceFileTitle": "19. 배뇨이상, 소변찔끔증_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/19/voiding_dysfunction_incontinence/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/19. 배뇨이상, 소변찔끔증_4조.pdf",
+          "sourceFileTitle": "19. 배뇨이상, 소변찔끔증_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/19/voiding_dysfunction_incontinence/source.pdf",
+          "pageCount": 7
         }
       ]
     },
@@ -519,10 +537,11 @@
         {
           "key": "voiding_dysfunction_incontinence",
           "label": "4조 배뇨이상/소변찔끔증",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/19. 배뇨이상, 소변찔끔증_4조.docx",
-          "sourceFileTitle": "19. 배뇨이상, 소변찔끔증_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/19-2/voiding_dysfunction_incontinence/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/19. 배뇨이상, 소변찔끔증_4조.pdf",
+          "sourceFileTitle": "19. 배뇨이상, 소변찔끔증_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/19-2/voiding_dysfunction_incontinence/source.pdf",
+          "pageCount": 7
         }
       ]
     },
@@ -543,10 +562,11 @@
         {
           "key": "fever",
           "label": "4조 발열",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/18. 발열_4조.docx",
-          "sourceFileTitle": "18. 발열_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/20/fever/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/18. 발열_4조.pdf",
+          "sourceFileTitle": "18. 발열_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/20/fever/source.pdf",
+          "pageCount": 6
         }
       ]
     },
@@ -567,10 +587,11 @@
         {
           "key": "easy_bruising",
           "label": "4조 쉽게 멍이 듦",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/29. 쉽게 멍이 듦_4조.docx",
-          "sourceFileTitle": "29. 쉽게 멍이 듦_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/21/easy_bruising/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/29. 쉽게 멍이 듦_4조.pdf",
+          "sourceFileTitle": "29. 쉽게 멍이 듦_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/21/easy_bruising/source.pdf",
+          "pageCount": 6
         }
       ]
     },
@@ -591,10 +612,11 @@
         {
           "key": "fatigue",
           "label": "4조 피로",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/44. 피로_4조.docx",
-          "sourceFileTitle": "44. 피로_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/22/fatigue/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/44. 피로_4조.pdf",
+          "sourceFileTitle": "44. 피로_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/22/fatigue/source.pdf",
+          "pageCount": 5
         }
       ]
     },
@@ -615,10 +637,11 @@
         {
           "key": "weight_loss",
           "label": "4조 체중감소",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/40. 체중감소_4조.docx",
-          "sourceFileTitle": "40. 체중감소_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/23/weight_loss/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/40. 체중감소_4조.pdf",
+          "sourceFileTitle": "40. 체중감소_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/23/weight_loss/source.pdf",
+          "pageCount": 6
         }
       ]
     },
@@ -639,10 +662,11 @@
         {
           "key": "weight_gain_obesity",
           "label": "4조 체중증가/비만",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/41. 체중증가,비만_4조.docx",
-          "sourceFileTitle": "41. 체중증가,비만_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/24/weight_gain_obesity/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/41. 체중증가,비만_4조.pdf",
+          "sourceFileTitle": "41. 체중증가,비만_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/24/weight_gain_obesity/source.pdf",
+          "pageCount": 6
         }
       ]
     },
@@ -663,10 +687,11 @@
         {
           "key": "joint_pain_swelling",
           "label": "4조 관절통증",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/6. 관절통증.docx",
-          "sourceFileTitle": "6. 관절통증.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/25/joint_pain_swelling/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/6. 관절통증.pdf",
+          "sourceFileTitle": "6. 관절통증.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/25/joint_pain_swelling/source.pdf",
+          "pageCount": 9
         }
       ]
     },
@@ -687,10 +712,11 @@
         {
           "key": "neck_back_pain",
           "label": "4조 목통증/허리통증",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/16. 목통증,허리통증_4조.docx",
-          "sourceFileTitle": "16. 목통증,허리통증_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/26/neck_back_pain/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/16. 목통증,허리통증_4조.pdf",
+          "sourceFileTitle": "16. 목통증,허리통증_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/26/neck_back_pain/source.pdf",
+          "pageCount": 5
         }
       ]
     },
@@ -711,10 +737,11 @@
         {
           "key": "skin_rash",
           "label": "4조 피부 발진",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/45. 피부 발진_4조.docx",
-          "sourceFileTitle": "45. 피부 발진_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/27/skin_rash/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/45. 피부 발진_4조.pdf",
+          "sourceFileTitle": "45. 피부 발진_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/27/skin_rash/source.pdf",
+          "pageCount": 8
         }
       ]
     },
@@ -735,10 +762,11 @@
         {
           "key": "depressed_mood",
           "label": "4조 기분 변화",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/9. 기분 변화_4조.docx",
-          "sourceFileTitle": "9. 기분 변화_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/28/depressed_mood/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/9. 기분 변화_4조.pdf",
+          "sourceFileTitle": "9. 기분 변화_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/28/depressed_mood/source.pdf",
+          "pageCount": 6
         }
       ]
     },
@@ -759,10 +787,11 @@
         {
           "key": "anxiety",
           "label": "4조 불안",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/22. 불안_4조.docx",
-          "sourceFileTitle": "22. 불안_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/29/anxiety/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/22. 불안_4조.pdf",
+          "sourceFileTitle": "22. 불안_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/29/anxiety/source.pdf",
+          "pageCount": 5
         }
       ]
     },
@@ -783,10 +812,11 @@
         {
           "key": "sleep_disorder",
           "label": "4조 수면장애",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/28. 수면장애_4조.docx",
-          "sourceFileTitle": "28. 수면장애_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/30/sleep_disorder/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/28. 수면장애_4조.pdf",
+          "sourceFileTitle": "28. 수면장애_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/30/sleep_disorder/source.pdf",
+          "pageCount": 7
         }
       ]
     },
@@ -807,10 +837,11 @@
         {
           "key": "memory_loss",
           "label": "4조 기억력저하",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/10. 기억력저하_4조.docx",
-          "sourceFileTitle": "10. 기억력저하_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/31/memory_loss/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/10. 기억력저하_4조.pdf",
+          "sourceFileTitle": "10. 기억력저하_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/31/memory_loss/source.pdf",
+          "pageCount": 5
         }
       ]
     },
@@ -831,10 +862,11 @@
         {
           "key": "dizziness",
           "label": "4조 어지럼",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/31. 어지럼_4조.docx",
-          "sourceFileTitle": "31. 어지럼_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/32/dizziness/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/31. 어지럼_4조.pdf",
+          "sourceFileTitle": "31. 어지럼_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/32/dizziness/source.pdf",
+          "pageCount": 9
         }
       ]
     },
@@ -855,10 +887,11 @@
         {
           "key": "headache",
           "label": "4조 두통",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/14. 두통_4조.docx",
-          "sourceFileTitle": "14. 두통_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/33/headache/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/14. 두통_4조.pdf",
+          "sourceFileTitle": "14. 두통_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/33/headache/source.pdf",
+          "pageCount": 5
         }
       ]
     },
@@ -879,10 +912,11 @@
         {
           "key": "seizure",
           "label": "4조 경련",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/4. 경련_4조.docx",
-          "sourceFileTitle": "4. 경련_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/34/seizure/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/4. 경련_4조.pdf",
+          "sourceFileTitle": "4. 경련_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/34/seizure/source.pdf",
+          "pageCount": 6
         }
       ]
     },
@@ -903,10 +937,11 @@
         {
           "key": "weakness_sensory_change",
           "label": "4조 근력/감각이상",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/8. 근력_감각이상_4조.docx",
-          "sourceFileTitle": "8. 근력_감각이상_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/35/weakness_sensory_change/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/8. 근력_감각이상_4조.pdf",
+          "sourceFileTitle": "8. 근력_감각이상_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/35/weakness_sensory_change/source.pdf",
+          "pageCount": 7
         }
       ]
     },
@@ -927,10 +962,11 @@
         {
           "key": "altered_mental_status",
           "label": "4조 의식장애",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/36. 의식장애_4조.docx",
-          "sourceFileTitle": "36. 의식장애_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/36/altered_mental_status/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/36. 의식장애_4조.pdf",
+          "sourceFileTitle": "36. 의식장애_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/36/altered_mental_status/source.pdf",
+          "pageCount": 7
         }
       ]
     },
@@ -951,10 +987,11 @@
         {
           "key": "tremor_movement_disorder",
           "label": "4조 떨림/운동이상",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/15. 떨림,운동이상.docx",
-          "sourceFileTitle": "15. 떨림,운동이상.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/37/tremor_movement_disorder/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/15. 떨림,운동이상.pdf",
+          "sourceFileTitle": "15. 떨림,운동이상.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/37/tremor_movement_disorder/source.pdf",
+          "pageCount": 7
         }
       ]
     },
@@ -975,10 +1012,11 @@
         {
           "key": "breast_pain_mass",
           "label": "4조 유방통/유방덩이",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/34. 유방통,유방덩이_4조.docx",
-          "sourceFileTitle": "34. 유방통,유방덩이_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/38/breast_pain_mass/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/34. 유방통,유방덩이_4조.pdf",
+          "sourceFileTitle": "34. 유방통,유방덩이_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/38/breast_pain_mass/source.pdf",
+          "pageCount": 10
         }
       ]
     },
@@ -999,10 +1037,11 @@
         {
           "key": "vaginal_discharge_bleeding",
           "label": "4조 질분비물/질출혈",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/39. 질분비물_질출혈.docx",
-          "sourceFileTitle": "39. 질분비물_질출혈.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/39/vaginal_discharge_bleeding/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/39. 질분비물_질출혈.pdf",
+          "sourceFileTitle": "39. 질분비물_질출혈.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/39/vaginal_discharge_bleeding/source.pdf",
+          "pageCount": 6
         }
       ]
     },
@@ -1023,18 +1062,20 @@
         {
           "key": "amenorrhea",
           "label": "4조 무월경/월경이상",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/33-1. 월경이상(무월경)_4조.docx",
-          "sourceFileTitle": "33-1. 월경이상(무월경)_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/40/amenorrhea/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/33-1. 월경이상(무월경)_4조.pdf",
+          "sourceFileTitle": "33-1. 월경이상(무월경)_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/40/amenorrhea/source.pdf",
+          "pageCount": 12
         },
         {
           "key": "dysmenorrhea",
           "label": "4조 월경통",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/33-2. 월경통_4조.docx",
-          "sourceFileTitle": "33-2. 월경통_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/40/dysmenorrhea/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/33-2. 월경통_4조.pdf",
+          "sourceFileTitle": "33-2. 월경통_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/40/dysmenorrhea/source.pdf",
+          "pageCount": 8
         }
       ]
     },
@@ -1055,10 +1096,11 @@
         {
           "key": "prenatal_care",
           "label": "4조 산전진찰",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/24. 산전진찰_4조.docx",
-          "sourceFileTitle": "24. 산전진찰_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/41/prenatal_care/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/24. 산전진찰_4조.pdf",
+          "sourceFileTitle": "24. 산전진찰_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/41/prenatal_care/source.pdf",
+          "pageCount": 9
         }
       ]
     },
@@ -1079,10 +1121,11 @@
         {
           "key": "growth_development_delay",
           "label": "4조 성장/발달지연",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/25. 성장,발달지연_4조.docx",
-          "sourceFileTitle": "25. 성장,발달지연_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/42/growth_development_delay/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/25. 성장,발달지연_4조.pdf",
+          "sourceFileTitle": "25. 성장,발달지연_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/42/growth_development_delay/source.pdf",
+          "pageCount": 8
         }
       ]
     },
@@ -1103,10 +1146,11 @@
         {
           "key": "immunization",
           "label": "4조 예방접종",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/32. 예방접종_4조.docx",
-          "sourceFileTitle": "32. 예방접종_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/43/immunization/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/32. 예방접종_4조.pdf",
+          "sourceFileTitle": "32. 예방접종_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/43/immunization/source.pdf",
+          "pageCount": 7
         }
       ]
     },
@@ -1127,10 +1171,11 @@
         {
           "key": "alcohol_smoking_counseling",
           "label": "4조 음주/금연 상담",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/35. 음주 상담, 금연 상담_4조.docx",
-          "sourceFileTitle": "35. 음주 상담, 금연 상담_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/44/alcohol_smoking_counseling/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/35. 음주 상담, 금연 상담_4조.pdf",
+          "sourceFileTitle": "35. 음주 상담, 금연 상담_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/44/alcohol_smoking_counseling/source.pdf",
+          "pageCount": 5
         }
       ]
     },
@@ -1151,10 +1196,11 @@
         {
           "key": "substance_abuse",
           "label": "4조 물질오남용",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/17. 물질오남용_4조.docx",
-          "sourceFileTitle": "17. 물질오남용_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/45/substance_abuse/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/17. 물질오남용_4조.pdf",
+          "sourceFileTitle": "17. 물질오남용_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/45/substance_abuse/source.pdf",
+          "pageCount": 6
         }
       ]
     },
@@ -1175,10 +1221,11 @@
         {
           "key": "breaking_bad_news",
           "label": "4조 나쁜 소식 전하기",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/12. 나쁜 소식 전하기_4조.docx",
-          "sourceFileTitle": "12. 나쁜 소식 전하기_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/46/breaking_bad_news/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/12. 나쁜 소식 전하기_4조.pdf",
+          "sourceFileTitle": "12. 나쁜 소식 전하기_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/46/breaking_bad_news/source.pdf",
+          "pageCount": 6
         }
       ]
     },
@@ -1199,18 +1246,20 @@
         {
           "key": "domestic_violence",
           "label": "4조 가정폭력",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/2-1. 가정폭력_4조.docx",
-          "sourceFileTitle": "2-1. 가정폭력_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/47/domestic_violence/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/2-1. 가정폭력_4조.pdf",
+          "sourceFileTitle": "2-1. 가정폭력_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/47/domestic_violence/source.pdf",
+          "pageCount": 4
         },
         {
           "key": "sexual_violence",
           "label": "4조 성폭력",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/2-2. 성폭력_4조.docx",
-          "sourceFileTitle": "2-2. 성폭력_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/47/sexual_violence/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/2-2. 성폭력_4조.pdf",
+          "sourceFileTitle": "2-2. 성폭력_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/47/sexual_violence/source.pdf",
+          "pageCount": 4
         }
       ]
     },
@@ -1231,10 +1280,11 @@
         {
           "key": "suicide",
           "label": "4조 자살",
-          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/38. 자살_4조.docx",
-          "sourceFileTitle": "38. 자살_4조.docx",
-          "renderMode": "quicklook-html",
-          "html": "assets/cpx-references/team4/48/suicide/Preview.html"
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/38. 자살_4조.pdf",
+          "sourceFileTitle": "38. 자살_4조.pdf",
+          "renderMode": "pdf-source",
+          "pdf": "assets/cpx-references/team4/48/suicide/source.pdf",
+          "pageCount": 4
         }
       ]
     }

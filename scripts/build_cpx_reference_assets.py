@@ -16,6 +16,7 @@ DEFAULT_CC_PDF_ROOT = Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_c
 DEFAULT_TEAM4_ROOT = Path(
     "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본"
 )
+DEFAULT_TEAM4_PDF_ROOT = DEFAULT_TEAM4_ROOT / "PDF 변환본_2026-06-25"
 SYSTEM_PDFS = {
     "digestive": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_소화기.pdf"),
     "circulation": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_순환기.pdf"),
@@ -596,6 +597,30 @@ def find_team4_docx(team4_root: Path, spec: dict) -> Path | None:
     return None
 
 
+def find_team4_pdf(team4_pdf_root: Path, spec: dict) -> Path | None:
+    if not team4_pdf_root.exists():
+        return None
+    if spec.get("path"):
+        expected_name = Path(spec["path"]).with_suffix(".pdf").name
+        wanted_name = normalize(expected_name)
+        for candidate in sorted(team4_pdf_root.glob("*.pdf")):
+            if normalize(candidate.name) == wanted_name:
+                return candidate
+    wanted = [normalize(token) for token in spec["tokens"]]
+    for path in sorted(team4_pdf_root.glob("*.pdf")):
+        name = normalize(path.name)
+        if all(token in name for token in wanted):
+            return path
+    return None
+
+
+def render_team4_pdf(source_pdf: Path, output_dir: Path) -> Path:
+    clean_dir(output_dir)
+    pdf = output_dir / "source.pdf"
+    shutil.copy2(source_pdf, pdf)
+    return pdf
+
+
 def render_quicklook_html(source_docx: Path, output_dir: Path) -> Path:
     clean_dir(output_dir)
     scratch = output_dir / "_ql"
@@ -633,9 +658,25 @@ def inject_quicklook_fit(html: Path) -> None:
     html.write_text(text.replace("</head>", insert + "</head>", 1), encoding="utf-8")
 
 
-def render_team4_sources(team4_root: Path, item: dict, output_root: Path) -> list[dict]:
+def render_team4_sources(team4_root: Path, team4_pdf_root: Path, item: dict, output_root: Path) -> list[dict]:
     rendered = []
     for spec in item["team4"]:
+        out_dir = output_root / "team4" / item["docId"] / spec["key"]
+        source_pdf = find_team4_pdf(team4_pdf_root, spec)
+        if source_pdf:
+            pdf = render_team4_pdf(source_pdf, out_dir)
+            rendered.append(
+                {
+                    "key": spec["key"],
+                    "label": spec["label"],
+                    "source": str(source_pdf),
+                    "sourceFileTitle": unicodedata.normalize("NFC", source_pdf.name),
+                    "renderMode": "pdf-source",
+                    "pdf": rel(pdf),
+                    "pageCount": pdf_page_count(pdf),
+                }
+            )
+            continue
         source_docx = find_team4_docx(team4_root, spec)
         if not source_docx:
             rendered.append(
@@ -647,7 +688,6 @@ def render_team4_sources(team4_root: Path, item: dict, output_root: Path) -> lis
                 }
             )
             continue
-        out_dir = output_root / "team4" / item["docId"] / spec["key"]
         html = render_quicklook_html(source_docx, out_dir)
         rendered.append(
             {
@@ -666,6 +706,7 @@ def build(args: argparse.Namespace) -> dict:
     source_pdf = args.source_pdf.expanduser().resolve()
     cc_pdf_root = args.cc_pdf_root.expanduser().resolve()
     team4_root = args.team4_root.expanduser().resolve()
+    team4_pdf_root = args.team4_pdf_root.expanduser().resolve()
     output_root = args.output_root.expanduser().resolve()
     manifest_path = args.manifest.expanduser().resolve()
 
@@ -681,7 +722,7 @@ def build(args: argparse.Namespace) -> dict:
     items = {}
     for item in REFERENCE_ITEMS:
         hankeut = None if args.skip_hankeut else render_hankeut_pdf_excerpt(source_pdf, cc_pdf_root, item, output_root)
-        team4 = [] if args.skip_team4 else render_team4_sources(team4_root, item, output_root)
+        team4 = [] if args.skip_team4 else render_team4_sources(team4_root, team4_pdf_root, item, output_root)
         items[item["docId"]] = {
             "docId": item["docId"],
             "title": item["title"],
@@ -694,7 +735,7 @@ def build(args: argparse.Namespace) -> dict:
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "notes": {
             "hankeut": "한끝 PDF는 CC별 PDF 발췌본을 iframe PDF 뷰어로 표시해 원본 모양을 보존한다.",
-            "team4": "4조 Word 파일은 Quick Look HTML을 사용해 표, 색, 첨부 이미지를 보존한다. Word PDF export는 안정성 확인 전까지 보조 경로로 둔다.",
+            "team4": "4조 자료는 사용자가 Word에서 직접 내보낸 PDF를 우선 사용해 표, 색, 첨부 이미지를 보존한다. PDF가 없는 일부 항목만 Quick Look HTML로 보조 표시한다.",
             "scope": "공통/합본 대본은 제외하고 CC별 개별 자료만 연결한다.",
         },
         "items": items,
@@ -709,6 +750,7 @@ def main() -> None:
     parser.add_argument("--source-pdf", type=Path, default=DEFAULT_SOURCE_PDF)
     parser.add_argument("--cc-pdf-root", type=Path, default=DEFAULT_CC_PDF_ROOT)
     parser.add_argument("--team4-root", type=Path, default=DEFAULT_TEAM4_ROOT)
+    parser.add_argument("--team4-pdf-root", type=Path, default=DEFAULT_TEAM4_PDF_ROOT)
     parser.add_argument("--output-root", type=Path, default=REPO_ROOT / "assets" / "cpx-references")
     parser.add_argument("--manifest", type=Path, default=REPO_ROOT / "data" / "cpx-reference-manifest.json")
     parser.add_argument("--dpi", type=int, default=140)
