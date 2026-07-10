@@ -111,6 +111,18 @@ db.exec(`
     PRIMARY KEY(board_user_id, user_id),
     FOREIGN KEY(user_id) REFERENCES users(user_id)
   );
+  CREATE TABLE IF NOT EXISTS presence_tabs (
+    board_user_id TEXT NOT NULL,
+    user_id TEXT NOT NULL,
+    client_session_id TEXT NOT NULL,
+    nickname TEXT NOT NULL,
+    cc_id TEXT,
+    field_key TEXT,
+    status TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    PRIMARY KEY(board_user_id, user_id, client_session_id),
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
+  );
   CREATE TABLE IF NOT EXISTS cloud_events (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     event_type TEXT NOT NULL,
@@ -204,6 +216,7 @@ db.exec(`
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL,
     updated_by TEXT,
+    client_session_id TEXT,
     PRIMARY KEY(board_user_id, user_id),
     FOREIGN KEY(user_id) REFERENCES users(user_id)
   );
@@ -244,6 +257,11 @@ const ensureHistoryColumn = (name, ddl) => {
 // destructively prune the old 43GB archive until we explicitly do a backed-up
 // cleanup pass. New writes below set history_kind to auto/manual/checkpoint.
 ensureHistoryColumn('history_kind', "TEXT NOT NULL DEFAULT 'legacy'");
+const personalOverlayColumns = new Set(db.prepare('PRAGMA table_info(a4_personal_overlays)').all().map(row => row.name));
+const ensurePersonalOverlayColumn = (name, ddl) => {
+  if (!personalOverlayColumns.has(name)) db.exec(`ALTER TABLE a4_personal_overlays ADD COLUMN ${name} ${ddl}`);
+};
+ensurePersonalOverlayColumn('client_session_id', 'TEXT');
 db.exec('CREATE TABLE IF NOT EXISTS server_meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)');
 const getMetaStmt = db.prepare('SELECT value FROM server_meta WHERE key = ?');
 const setMetaStmt = db.prepare('INSERT INTO server_meta (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value');
@@ -315,26 +333,27 @@ const insertGoogleRegistrationStmt = db.prepare(`
 `);
 const insertAuthAuditStmt = db.prepare('INSERT INTO a4_auth_audit (event_type, google_sub, user_id, student_no, created_at, detail_json) VALUES (?, ?, ?, ?, ?, ?)');
 const getPersonalOverlayStmt = db.prepare(`
-  SELECT board_user_id, user_id, overlay_json, base_state_updated_at, state_version, created_at, updated_at, updated_by
+  SELECT board_user_id, user_id, overlay_json, base_state_updated_at, state_version, created_at, updated_at, updated_by, client_session_id
   FROM a4_personal_overlays
   WHERE board_user_id = ? AND user_id = ?
 `);
 const upsertPersonalOverlayStmt = db.prepare(`
-  INSERT INTO a4_personal_overlays (board_user_id, user_id, overlay_json, base_state_updated_at, state_version, created_at, updated_at, updated_by)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  INSERT INTO a4_personal_overlays (board_user_id, user_id, overlay_json, base_state_updated_at, state_version, created_at, updated_at, updated_by, client_session_id)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
   ON CONFLICT(board_user_id, user_id) DO UPDATE SET
     overlay_json = excluded.overlay_json,
     base_state_updated_at = excluded.base_state_updated_at,
     state_version = excluded.state_version,
     updated_at = excluded.updated_at,
-    updated_by = excluded.updated_by
+    updated_by = excluded.updated_by,
+    client_session_id = excluded.client_session_id
 `);
 const touchSessionStmt = db.prepare('UPDATE sessions SET last_seen_at = ? WHERE token_hash = ?');
 const touchUserStmt = db.prepare('UPDATE users SET last_seen_at = ? WHERE user_id = ?');
 const upsertPresenceStmt = db.prepare(`
-  INSERT INTO presence (board_user_id, user_id, nickname, cc_id, field_key, status, updated_at)
-  VALUES (?, ?, ?, ?, ?, ?, ?)
-  ON CONFLICT(board_user_id, user_id) DO UPDATE SET
+  INSERT INTO presence_tabs (board_user_id, user_id, client_session_id, nickname, cc_id, field_key, status, updated_at)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  ON CONFLICT(board_user_id, user_id, client_session_id) DO UPDATE SET
     nickname = excluded.nickname,
     cc_id = excluded.cc_id,
     field_key = excluded.field_key,
@@ -342,12 +361,12 @@ const upsertPresenceStmt = db.prepare(`
     updated_at = excluded.updated_at
 `);
 const listPresenceStmt = db.prepare(`
-  SELECT board_user_id, user_id, nickname, cc_id, field_key, status, updated_at
-  FROM presence
+  SELECT board_user_id, user_id, client_session_id, nickname, cc_id, field_key, status, updated_at
+  FROM presence_tabs
   WHERE board_user_id = ? AND status != 'idle' AND updated_at >= ?
   ORDER BY updated_at DESC
 `);
-const prunePresenceStmt = db.prepare('DELETE FROM presence WHERE updated_at < ? OR status = \'idle\'');
+const prunePresenceStmt = db.prepare('DELETE FROM presence_tabs WHERE updated_at < ? OR status = \'idle\'');
 const insertCloudEventStmt = db.prepare(`
   INSERT INTO cloud_events (event_type, rel_path, target_path, actor_id, actor_name, size_bytes, created_at, detail_json)
   VALUES (?, ?, ?, ?, ?, ?, ?, ?)
@@ -1275,6 +1294,14 @@ function normalizeNickname(value) {
   return String(value || '').trim().replace(/\s+/g, ' ').slice(0, 32);
 }
 
+function normalizeClientSessionId(value) {
+  return String(value || '').trim().replace(/[^\w:.-]/g, '').slice(0, 96);
+}
+
+function presenceClientSessionId(value) {
+  return normalizeClientSessionId(value) || 'legacy';
+}
+
 function normalizeStudentNo(value) {
   return String(value || '').replace(/[^0-9A-Za-z]/g, '').trim();
 }
@@ -1549,6 +1576,20 @@ function personalOverlayFromRow(row) {
   return parseJsonObject(row.overlay_json, 'personal overlay');
 }
 
+function personalOverlaySessionConflict(current, metadata = {}, summary = { hasChanges: true }) {
+  if (!current?.updated_at || !summary?.hasChanges) return null;
+  const baseOverlayUpdatedAt = String(metadata.baseOverlayUpdatedAt || '').trim();
+  if (baseOverlayUpdatedAt && baseOverlayUpdatedAt === String(current.updated_at || '')) return null;
+  const incomingSessionId = normalizeClientSessionId(metadata.clientSessionId);
+  const currentSessionId = normalizeClientSessionId(current.client_session_id);
+  if (incomingSessionId && currentSessionId && incomingSessionId === currentSessionId) return null;
+  return {
+    updated_at: current.updated_at,
+    updated_by: current.updated_by || null,
+    client_session_id: currentSessionId || null,
+  };
+}
+
 function savePersonalOverlay(boardUserId, auth, masterRow, incomingState, metadata = {}) {
   const masterState = parseJsonObject(masterRow.state_json, 'stored state_json');
   const updatedAt = String(metadata.updatedAt || incomingState.updatedAt || nowIso());
@@ -1561,6 +1602,14 @@ function savePersonalOverlay(boardUserId, auth, masterRow, incomingState, metada
     clientBuild: metadata.clientBuild || incomingState.clientBuild || null,
     previousOverlay: personalOverlayFromRow(current),
   });
+  const summary = overlaySummary(overlay);
+  const conflict = !metadata.force && personalOverlaySessionConflict(current, metadata, summary);
+  if (conflict) {
+    throw Object.assign(new Error('같은 계정의 다른 탭에서 더 최신 개인 대본이 저장되었습니다. 최신 내용을 확인한 뒤 다시 저장해주세요.'), {
+      statusCode: 409,
+      conflict,
+    });
+  }
   upsertPersonalOverlayStmt.run(
     boardUserId,
     auth.userId,
@@ -1569,10 +1618,11 @@ function savePersonalOverlay(boardUserId, auth, masterRow, incomingState, metada
     metadata.stateVersion || masterRow.state_version || null,
     current?.created_at || updatedAt,
     updatedAt,
-    updatedBy
+    updatedBy,
+    normalizeClientSessionId(metadata.clientSessionId) || null
   );
   clearStateResponseCache(boardUserId);
-  return { overlay, summary: overlaySummary(overlay), updatedAt, updatedBy };
+  return { overlay, summary, updatedAt, updatedBy };
 }
 
 function latestIso(a, b) {
@@ -2400,16 +2450,18 @@ const server = http.createServer(async (req, res) => {
       const boardUserId = body.user_id || body.userId || DEFAULT_USER_ID;
       const at = nowIso();
       const status = body.status === 'idle' ? 'idle' : (body.status || 'editing');
+      const clientSessionId = presenceClientSessionId(body.client_session_id ?? body.clientSessionId ?? body.tab_session_id ?? body.tabSessionId);
       upsertPresenceStmt.run(
         boardUserId,
         auth.userId,
+        clientSessionId,
         normalizeNickname(body.nickname || body.name || auth.nickname),
         body.cc_id == null && body.ccId == null ? null : String(body.cc_id ?? body.ccId),
         body.field_key == null && body.fieldKey == null ? null : String(body.field_key ?? body.fieldKey),
         status,
         at
       );
-      const event = { users: activePresence(boardUserId), changed: { user_id: auth.userId, nickname: normalizeNickname(body.nickname || body.name || auth.nickname), status, cc_id: body.cc_id == null && body.ccId == null ? null : String(body.cc_id ?? body.ccId), field_key: body.field_key == null && body.fieldKey == null ? null : String(body.field_key ?? body.fieldKey), updated_at: at } };
+      const event = { users: activePresence(boardUserId), changed: { user_id: auth.userId, client_session_id: clientSessionId, nickname: normalizeNickname(body.nickname || body.name || auth.nickname), status, cc_id: body.cc_id == null && body.ccId == null ? null : String(body.cc_id ?? body.ccId), field_key: body.field_key == null && body.fieldKey == null ? null : String(body.field_key ?? body.fieldKey), updated_at: at } };
       broadcast(boardUserId, 'presence', event);
       return json(res, 200, { ok: true, ...event.changed });
     }
@@ -2428,6 +2480,8 @@ const server = http.createServer(async (req, res) => {
       if (!docId) return json(res, 400, { error: 'doc_id required' });
       const nextText = String(body.text ?? body.doc_text ?? body.docText ?? '');
       const baseText = String(body.base_text ?? body.baseText ?? '');
+      const clientSessionId = normalizeClientSessionId(body.client_session_id ?? body.clientSessionId ?? body.save_event?.clientSessionId ?? body.saveEvent?.clientSessionId);
+      const baseOverlayUpdatedAt = String(body.base_overlay_updated_at ?? body.baseOverlayUpdatedAt ?? '').trim();
       const personalized = isPersonalizedA4Board(userId);
       if (!personalized) {
         const blockers = docEditBlockers(userId, docId, auth.userId);
@@ -2485,6 +2539,7 @@ const server = http.createServer(async (req, res) => {
         updatedBy,
         actorId: auth.userId,
         deviceId: saveEvent.deviceId || saveEvent.device_id || null,
+        clientSessionId,
         scope: 'doc_patch',
         mergeMode: merged.mode,
       };
@@ -2501,8 +2556,11 @@ const server = http.createServer(async (req, res) => {
           stateVersion,
           saveEvent: state.saveEvent,
           clientBuild: state.clientBuild,
+          clientSessionId,
+          baseOverlayUpdatedAt,
+          force: !!body.force,
         });
-        const event = { user_id: userId, state_version: stateVersion, updated_by: updatedBy, updated_by_user_id: auth.userId, updated_at: updatedAt, doc_id: docId, scope: 'personal_doc_patch', merge_mode: merged.mode, personalized: true, audience_user_id: auth.userId };
+        const event = { user_id: userId, state_version: stateVersion, updated_by: updatedBy, updated_by_user_id: auth.userId, updated_by_session_id: clientSessionId || null, updated_at: updatedAt, doc_id: docId, scope: 'personal_doc_patch', merge_mode: merged.mode, personalized: true, audience_user_id: auth.userId };
         broadcast(userId, 'state', event);
         return json(res, 200, {
           ok: true,
@@ -2511,7 +2569,7 @@ const server = http.createServer(async (req, res) => {
           doc_meta: state.settings.docMeta[docId],
           save_event_id: state.saveEvent.id,
           history_saved: false,
-          personal_overlay: saved.summary,
+          personal_overlay: { ...saved.summary, updatedAt: saved.updatedAt },
           op_count: merged.opCount || 0,
         });
       }
@@ -2540,6 +2598,8 @@ const server = http.createServer(async (req, res) => {
       const updatedAt = body.updated_at || state.updatedAt || new Date().toISOString();
       const updatedBy = body.updated_by || state.updatedBy || auth.nickname || null;
       const stateVersion = body.state_version || body.stateVersion || state.stateVersion || 'cpx-script-board.local.v1';
+      const clientSessionId = normalizeClientSessionId(body.client_session_id ?? body.clientSessionId ?? state.saveEvent?.clientSessionId ?? state.saveEvent?.client_session_id);
+      const baseOverlayUpdatedAt = String(body.base_overlay_updated_at ?? body.baseOverlayUpdatedAt ?? '').trim();
       const eventDocId = state?.saveEvent?.docId == null ? '' : String(state.saveEvent.docId);
       const personalized = isPersonalizedA4Board(userId);
       if (eventDocId && !personalized) {
@@ -2557,6 +2617,7 @@ const server = http.createServer(async (req, res) => {
         if (!masterRow) return json(res, 404, { error: 'state not found', user_id: userId });
         const masterState = parseJsonObject(masterRow.state_json, 'stored state_json');
         a4PersonalStateShapeGuard(masterState, state);
+        if (state.saveEvent && typeof state.saveEvent === 'object') state.saveEvent.clientSessionId = state.saveEvent.clientSessionId || clientSessionId || null;
         const ownProfile = state?.settings?.profiles?.[auth.userId];
         const ownNickname = normalizeNickname(ownProfile?.nickname || '');
         if (ownNickname && ownNickname !== auth.nickname) setUserNicknameStmt.run(ownNickname, updatedAt, auth.userId);
@@ -2586,12 +2647,16 @@ const server = http.createServer(async (req, res) => {
           stateVersion,
           saveEvent: state.saveEvent,
           clientBuild: state.clientBuild,
+          clientSessionId,
+          baseOverlayUpdatedAt,
+          force: !!body.force,
         });
         const event = {
           user_id: userId,
           state_version: stateVersion,
           updated_by: updatedBy,
           updated_by_user_id: auth.userId,
+          updated_by_session_id: clientSessionId || null,
           updated_at: updatedAt,
           scope: 'personal_state',
           personalized: true,
@@ -2602,7 +2667,7 @@ const server = http.createServer(async (req, res) => {
         return json(res, 200, {
           ok: true,
           ...event,
-          personal_overlay: saved.summary,
+          personal_overlay: { ...saved.summary, updatedAt: saved.updatedAt },
           history_saved: historySaved,
           history_kind: historySaved ? historyKind : 'skipped',
           history_prune: historyPrune,
