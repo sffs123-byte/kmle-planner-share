@@ -91,7 +91,7 @@ async function prepare(page, port, file, source) {
   assert.deepEqual(errors, [], `${file}: page errors`);
 }
 
-async function exercise(browser, port, file, source, targetNeedle, expectedTables, label) {
+async function exercise(browser, port, file, source, targetNeedle, expectedTables, label, expectQuoted = false) {
   const context = await browser.newContext({ viewport: { width: 1440, height: 1100 } });
   const page = await context.newPage();
   await prepare(page, port, file, source);
@@ -104,22 +104,42 @@ async function exercise(browser, port, file, source, targetNeedle, expectedTable
     if (!chosen) throw new Error('target table not found');
     openTableEditor(chosen[0]);
     const edit = activeTableEdit;
-    if (!edit?.sourceLocator) throw new Error('source locator missing: ' + JSON.stringify({
+    if (!edit?.sourceLocator) {
+      const sourceBlocks = tableSourceBlocks(sourceBefore);
+      const nearest = sourceBlocks.find(block => String(block.raw || '').includes(targetNeedle || ''));
+      const chosenRaw = String(edit?.raw || '');
+      const nearestRaw = String(nearest?.raw || '');
+      let firstDiff = -1;
+      for (let i = 0; i < Math.max(chosenRaw.length, nearestRaw.length); i++) {
+        if (chosenRaw[i] !== nearestRaw[i]) { firstDiff = i; break; }
+      }
+      throw new Error('source locator missing: ' + JSON.stringify({
       sourceChars: sourceBefore.length,
-      sourceBlocks: tableSourceBlocks(sourceBefore).map(block => block.raw.length),
+      sourceBlocks: sourceBlocks.map(block => block.raw.length),
       registryTables: registry.map(([, info]) => ({ chars: String(info.raw || '').length, occurrence: info.occurrence })),
       chosenChars: String(edit?.raw || '').length,
       chosenOccurrence: edit?.occurrence,
       exactInSource: sourceBefore.includes(String(edit?.raw || '')),
+      firstDiff,
+      chosenAtDiff: chosenRaw.slice(Math.max(0, firstDiff - 12), firstDiff + 20),
+      sourceAtDiff: nearestRaw.slice(Math.max(0, firstDiff - 12), firstDiff + 20),
     }));
+    }
 
     const driftLines = String(edit.raw).split('\n');
     const driftRow = Math.max(2, driftLines.length - 1);
     driftLines[driftRow] = driftLines[driftRow].replace(/\|\s*$/, '<br>동시변경 |');
     const driftRaw = driftLines.join('\n');
     if (driftRaw === edit.raw) throw new Error('failed to create stale table raw');
-    const driftedSource = sourceBefore.replace(edit.raw, driftRaw);
-    if (driftedSource === sourceBefore) throw new Error('table raw not found in source');
+    const sourceBlocksBefore = tableSourceBlocks(sourceBefore);
+    const targetBlock = sourceBlocksBefore[edit.sourceLocator.ordinal];
+    if (!targetBlock || normalizeTableBlockText(targetBlock.raw) !== normalizeTableBlockText(edit.raw)) {
+      throw new Error('locator did not resolve the selected source block');
+    }
+    const sourceBlockBefore = sourceBefore.slice(targetBlock.start, targetBlock.end);
+    const driftedSource = sourceBefore.slice(0, targetBlock.start)
+      + tableSourceBlockReplacement(targetBlock, driftRaw)
+      + sourceBefore.slice(targetBlock.end);
 
     let changed = false;
     for (let r = 1; r < edit.model.length && !changed; r++) {
@@ -140,14 +160,23 @@ async function exercise(browser, port, file, source, targetNeedle, expectedTable
     docs['48'] = driftedSource;
     $('applyTableEditor').click();
     const sourceAfter = $('sourceText').value;
+    const sourceBlocksAfter = tableSourceBlocks(sourceAfter);
+    const targetAfter = sourceBlocksAfter[edit.sourceLocator.ordinal];
+    const untouchedBlocks = sourceBlocksBefore.every((block, ordinal) => (
+      ordinal === edit.sourceLocator.ordinal
+        || normalizeTableBlockText(sourceBlocksAfter[ordinal]?.raw) === normalizeTableBlockText(block.raw)
+    ));
     return {
-      validBlocksBefore: tableSourceBlocks(sourceBefore).length,
-      validBlocksAfter: tableSourceBlocks(sourceAfter).length,
+      validBlocksBefore: sourceBlocksBefore.length,
+      validBlocksAfter: sourceBlocksAfter.length,
       rawPipeMarkersBefore: (sourceBefore.match(/^\|\|\|$/gm) || []).length,
       rawPipeMarkersAfter: (sourceAfter.match(/^\|\|\|$/gm) || []).length,
       locatorOrdinal: edit.sourceLocator.ordinal,
       previewMethod: preview.method,
       markerCount: sourceAfter.split(marker).length - 1,
+      quotePrefixBefore: /^\s*>\s*\|/m.test(sourceBlockBefore),
+      quotePrefixAfter: /^\s*>\s*\|/m.test(sourceAfter.slice(targetAfter?.start || 0, targetAfter?.end || 0)),
+      untouchedBlocks,
       modalHidden: $('tableModal').classList.contains('hidden'),
       errorShown: /표 원본 위치를 찾지 못/.test($('docStatus')?.textContent || ''),
     };
@@ -158,6 +187,11 @@ async function exercise(browser, port, file, source, targetNeedle, expectedTable
   assert.equal(result.rawPipeMarkersAfter, result.rawPipeMarkersBefore, `${file}/${label}: ||| marker changed`);
   assert.match(result.previewMethod, /^locator-(?:anchor|rebase)$/, `${file}/${label}: stale raw did not use locator rebase`);
   assert.equal(result.markerCount, 1, `${file}/${label}: edited table was not applied exactly once`);
+  assert.equal(result.untouchedBlocks, true, `${file}/${label}: neighboring table changed`);
+  if (expectQuoted) {
+    assert.equal(result.quotePrefixBefore, true, `${file}/${label}: fixture target was not a quoted table`);
+    assert.equal(result.quotePrefixAfter, true, `${file}/${label}: quote prefix was not preserved`);
+  }
   assert.equal(result.modalHidden, true, `${file}/${label}: modal stayed open after apply`);
   assert.equal(result.errorShown, false, `${file}/${label}: missing-source error was shown`);
   await context.close();
@@ -172,7 +206,10 @@ async function main() {
     const results = [];
     for (const file of ['index.html', 'cpx-a4-editor-local.html']) {
       results.push(await exercise(browser, opened.port, file, SYNTHETIC, '두번째 표', 2, 'synthetic'));
-      if (actual) results.push(await exercise(browser, opened.port, file, actual, '', 1, 'actual-doc48'));
+      if (actual) {
+        results.push(await exercise(browser, opened.port, file, actual, '“죽고 싶어요”', 4, 'actual-doc48-cc', true));
+        results.push(await exercise(browser, opened.port, file, actual, '자살의 위험 요인', 4, 'actual-doc48-risk', true));
+      }
     }
     console.log(JSON.stringify({ ok: true, actualDoc48: !!actual, results }, null, 2));
   } finally {
