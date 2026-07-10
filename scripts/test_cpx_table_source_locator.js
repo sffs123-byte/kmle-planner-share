@@ -155,6 +155,7 @@ async function exercise(browser, port, file, source, targetNeedle, expectedTable
     if (!changed) throw new Error('editable data cell not found');
     edit.selected = [];
     const replacement = modelToMarkdown(edit.model);
+    const directPreview = replaceTableEditSource(sourceBefore, edit.raw, replacement, edit.occurrence);
     const preview = replaceTableEditSourceRebased(driftedSource, edit, replacement);
     $('sourceText').value = driftedSource;
     docs['48'] = driftedSource;
@@ -172,6 +173,9 @@ async function exercise(browser, port, file, source, targetNeedle, expectedTable
       rawPipeMarkersBefore: (sourceBefore.match(/^\|\|\|$/gm) || []).length,
       rawPipeMarkersAfter: (sourceAfter.match(/^\|\|\|$/gm) || []).length,
       locatorOrdinal: edit.sourceLocator.ordinal,
+      directMethod: directPreview.method,
+      directMarkerCount: directPreview.text.split(marker).length - 1,
+      directQuotePrefix: /^\s*>\s*\|/m.test(directPreview.text.slice(edit.sourceLocator.start, edit.sourceLocator.start + replacement.length + 32)),
       previewMethod: preview.method,
       markerCount: sourceAfter.split(marker).length - 1,
       quotePrefixBefore: /^\s*>\s*\|/m.test(sourceBlockBefore),
@@ -185,11 +189,15 @@ async function exercise(browser, port, file, source, targetNeedle, expectedTable
   assert.equal(result.validBlocksBefore, expectedTables, `${file}/${label}: ||| was counted as a table`);
   assert.equal(result.validBlocksAfter, expectedTables, `${file}/${label}: table count changed`);
   assert.equal(result.rawPipeMarkersAfter, result.rawPipeMarkersBefore, `${file}/${label}: ||| marker changed`);
+  assert.match(result.directMethod, /^(?:exact|normalized)$/, `${file}/${label}: direct source replacement failed`);
+  assert.equal(result.directMarkerCount, 1, `${file}/${label}: direct source replacement did not edit exactly once`);
   assert.match(result.previewMethod, /^locator-(?:anchor|rebase)$/, `${file}/${label}: stale raw did not use locator rebase`);
   assert.equal(result.markerCount, 1, `${file}/${label}: edited table was not applied exactly once`);
   assert.equal(result.untouchedBlocks, true, `${file}/${label}: neighboring table changed`);
   if (expectQuoted) {
     assert.equal(result.quotePrefixBefore, true, `${file}/${label}: fixture target was not a quoted table`);
+    assert.equal(result.directMethod, 'normalized', `${file}/${label}: quoted table did not use normalized source lookup`);
+    assert.equal(result.directQuotePrefix, true, `${file}/${label}: direct replacement lost the quote prefix`);
     assert.equal(result.quotePrefixAfter, true, `${file}/${label}: quote prefix was not preserved`);
   }
   assert.equal(result.modalHidden, true, `${file}/${label}: modal stayed open after apply`);
