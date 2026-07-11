@@ -34,16 +34,29 @@ python3 - "$PROJECT_DIR" "$URL" "$BUILD" <<'PY'
 from pathlib import Path
 import re, sys
 project=Path(sys.argv[1]); url=sys.argv[2]; build=sys.argv[3]
-targets=[project/name for name in ['index.html','cpx-a4-editor-local.html','kuksi_board.html'] if (project/name).is_file()]
-if not targets:
-    raise SystemExit(f'no CPX editor HTML targets found in {project}')
-for p in targets:
-    s=p.read_text(encoding='utf-8')
+targets=[]
+for name in ['index.html','cpx-a4-editor-local.html','kuksi_board.html']:
+    p=project/name
+    try:
+        s=p.read_text(encoding='utf-8')
+    except FileNotFoundError:
+        # The staging directory can be replaced while another verified build is
+        # being synchronized. A disappearing optional target must not abort the
+        # URL rotation for the editor files that are still present.
+        continue
     current_build=re.search(r"CLIENT_BUILD='([^']+)'", s)
     effective_build=build or (current_build.group(1) if current_build else 'a4-localdb-auto-url')
     s=re.sub(r"CLIENT_BUILD='[^']+'", f"CLIENT_BUILD='{effective_build}'", s, count=1)
-    s=re.sub(r"const DEFAULT_LOCAL_API_BASE='[^']*';[^\n]*", f"const DEFAULT_LOCAL_API_BASE='{url}'; // CPX Local DB quick tunnel; updated automatically by cpx_localdb_tunnel_manager.", s, count=1)
-    p.write_text(s, encoding='utf-8')
+    s,replaced=re.subn(r"const DEFAULT_LOCAL_API_BASE='[^']*';[^\n]*", f"const DEFAULT_LOCAL_API_BASE='{url}'; // CPX Local DB quick tunnel; updated automatically by cpx_localdb_tunnel_manager.", s, count=1)
+    if replaced != 1:
+        raise SystemExit(f'missing DEFAULT_LOCAL_API_BASE marker in {p}')
+    try:
+        p.write_text(s, encoding='utf-8')
+    except FileNotFoundError:
+        continue
+    targets.append(p)
+if not targets:
+    raise SystemExit(f'no CPX editor HTML targets found in {project}')
 PY
 cd "$PROJECT_DIR"
 echo "Deploying CPX local DB client: $URL build=$BUILD"
