@@ -216,6 +216,36 @@
         "sourceFileTitle": "01_01_급성복통_p004-007.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/1/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/1/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/1/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/1/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 4,
+            "image": "assets/cpx-references/checklist/1/pages/page-004.jpg",
+            "pdfPage": 4,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 4,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -383,6 +413,36 @@
         "sourceFileTitle": "02_02_소화불량_만성복통_p008-011.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/2/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/2/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/2/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/2/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 4,
+            "image": "assets/cpx-references/checklist/2/pages/page-004.jpg",
+            "pdfPage": 4,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 4,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -499,6 +559,29 @@
         "sourceFileTitle": "03_03_토혈_p012-014.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/3/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/3/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/3/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/3/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -609,6 +692,29 @@
         "sourceFileTitle": "04_04_혈변_p015-017.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/4/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/4/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/4/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/4/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -732,6 +838,29 @@
         "sourceFileTitle": "05_05_구토_p018-020.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/5/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/5/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/5/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/5/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -896,6 +1025,29 @@
         "sourceFileTitle": "06_06-1_배변이상_변비_p021-023.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/6/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/6/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/6/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/6/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -1006,6 +1158,29 @@
         "sourceFileTitle": "08_07_황달_p027-029.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/7/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/7/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/7/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/7/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -1144,6 +1319,29 @@
         "sourceFileTitle": "09_08_가슴통증_p030-032.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/8/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/8/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/8/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/8/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -1275,6 +1473,29 @@
         "sourceFileTitle": "10_09_실신_p033-035.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/9/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/9/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/9/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/9/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -1420,6 +1641,29 @@
         "sourceFileTitle": "11_10_두근거림_p036-038.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/10/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/10/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/10/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/10/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -1550,6 +1794,29 @@
         "sourceFileTitle": "12_11_고혈압_p039-041.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/11/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/11/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/11/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/11/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -1694,6 +1961,29 @@
         "sourceFileTitle": "13_12_이상지질혈증_p042-044.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/12/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/12/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/12/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/12/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -1825,6 +2115,29 @@
         "sourceFileTitle": "14_13_기침_p045-047.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/13/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/13/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/13/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/13/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -1949,6 +2262,29 @@
         "sourceFileTitle": "15_14_콧물_코막힘_p048-050.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/14/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/14/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/14/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/14/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -2073,6 +2409,29 @@
         "sourceFileTitle": "16_15_객혈_p051-053.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/15/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/15/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/15/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/15/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -2165,6 +2524,29 @@
         "sourceFileTitle": "17_16_호흡곤란_p054-056.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/16/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/16/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/16/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/16/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -2334,6 +2716,29 @@
         "sourceFileTitle": "18_17-1_소변량변화_다뇨증_p057-059.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/17/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/17/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/17/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/17/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -2508,6 +2913,29 @@
         "sourceFileTitle": "20_18_붉은색소변_p063-065.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/18/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/18/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/18/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/18/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -2669,6 +3097,29 @@
         "sourceFileTitle": "21_19_배뇨이상_소변찔끔증_p066-068.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/19/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/19/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/19/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/19/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -2807,6 +3258,29 @@
         "sourceFileTitle": "22_20_발열_p069-071.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/20/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/20/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/20/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/20/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -2945,6 +3419,36 @@
         "sourceFileTitle": "23_21_쉽게멍이듦_p072-075.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/21/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/21/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/21/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/21/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 4,
+            "image": "assets/cpx-references/checklist/21/pages/page-004.jpg",
+            "pdfPage": 4,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 4,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -3084,6 +3588,29 @@
         "sourceFileTitle": "24_22_피로_p076-078.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/22/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/22/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/22/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/22/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -3222,6 +3749,29 @@
         "sourceFileTitle": "25_23_체중감소_p079-081.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/23/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/23/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/23/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/23/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -3360,6 +3910,29 @@
         "sourceFileTitle": "26_24_체중증가_비만_p082-084.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/24/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/24/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/24/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/24/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -3551,6 +4124,29 @@
         "sourceFileTitle": "27_25_관절통증_부기_p085-087.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/25/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/25/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/25/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/25/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -3722,6 +4318,50 @@
         "sourceFileTitle": "28_26-1_목통증_p088-090.pdf + 29_26-2_허리통증_p091-093.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/26/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/26/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/26/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/26/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 4,
+            "image": "assets/cpx-references/checklist/26/pages/page-004.jpg",
+            "pdfPage": 4,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 5,
+            "image": "assets/cpx-references/checklist/26/pages/page-005.jpg",
+            "pdfPage": 5,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 6,
+            "image": "assets/cpx-references/checklist/26/pages/page-006.jpg",
+            "pdfPage": 6,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 6,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -3882,6 +4522,29 @@
         "sourceFileTitle": "30_27_피부발진_p094-096.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/27/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/27/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/27/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/27/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -4020,6 +4683,29 @@
         "sourceFileTitle": "31_28_기분변화_p097-099.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/28/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/28/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/28/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/28/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -4151,6 +4837,29 @@
         "sourceFileTitle": "32_29_불안_p100-102.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/29/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/29/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/29/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/29/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -4312,6 +5021,29 @@
         "sourceFileTitle": "33_30_수면장애_p103-105.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/30/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/30/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/30/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/30/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -4467,6 +5199,29 @@
         "sourceFileTitle": "34_31_기억력저하_p106-108.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/31/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/31/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/31/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/31/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -4634,6 +5389,29 @@
         "sourceFileTitle": "35_32_어지럼_p109-111.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/32/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/32/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/32/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/32/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -4773,6 +5551,29 @@
         "sourceFileTitle": "36_33_두통_p112-114.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/33/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/33/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/33/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/33/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -4911,6 +5712,29 @@
         "sourceFileTitle": "37_34_경련_p115-117.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/34/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/34/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/34/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/34/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -5080,6 +5904,29 @@
         "sourceFileTitle": "38_35_근력_감각이상_p118-120.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/35/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/35/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/35/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/35/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -5241,6 +6088,29 @@
         "sourceFileTitle": "39_36_의식장애_p121-123.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/36/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/36/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/36/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/36/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -5402,6 +6272,29 @@
         "sourceFileTitle": "40_37_떨림_운동이상_p124-126.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/37/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/37/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/37/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/37/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -5592,6 +6485,29 @@
         "sourceFileTitle": "41_38_유방통_유방덩이_p127-129.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/38/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/38/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/38/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/38/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -5767,6 +6683,29 @@
         "sourceFileTitle": "46_41_산전진찰_p142-144.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/41/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/41/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/41/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/41/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -5975,6 +6914,29 @@
         "sourceFileTitle": "47_42_성장_발달지연_p145-147.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/42/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/42/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/42/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/42/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -6128,6 +7090,29 @@
         "sourceFileTitle": "48_43_예방접종_p148-150.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/43/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/43/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/43/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/43/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -6267,6 +7252,43 @@
         "sourceFileTitle": "49_44-1_음주상담_p151-153.pdf + 50_44-2_금연상담_p154-155.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/44/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/44/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/44/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/44/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 4,
+            "image": "assets/cpx-references/checklist/44/pages/page-004.jpg",
+            "pdfPage": 4,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 5,
+            "image": "assets/cpx-references/checklist/44/pages/page-005.jpg",
+            "pdfPage": 5,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 5,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -6405,6 +7427,22 @@
         "sourceFileTitle": "51_45_물질오남용_p156-157.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/45/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/45/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/45/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 2,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -6551,6 +7589,22 @@
         "sourceFileTitle": "52_46_나쁜소식전하기_p158-159.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/46/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/46/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/46/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 2,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -6714,6 +7768,43 @@
         "sourceFileTitle": "53_47-1_가정폭력_p160-161.pdf + 54_47-2_성폭력_p162-164.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/47/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/47/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/47/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/47/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 4,
+            "image": "assets/cpx-references/checklist/47/pages/page-004.jpg",
+            "pdfPage": 4,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 5,
+            "image": "assets/cpx-references/checklist/47/pages/page-005.jpg",
+            "pdfPage": 5,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 5,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -6838,6 +7929,36 @@
         "sourceFileTitle": "55_48_자살_p165-168.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/48/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/48/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/48/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/48/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 4,
+            "image": "assets/cpx-references/checklist/48/pages/page-004.jpg",
+            "pdfPage": 4,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 4,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -7009,6 +8130,29 @@
         "sourceFileTitle": "07_06-2_배변이상_설사_p024-026.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/6-2/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/6-2/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/6-2/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/6-2/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -7178,6 +8322,29 @@
         "sourceFileTitle": "19_17-2_소변량변화_핍뇨_p060-062.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/17-2/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/17-2/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/17-2/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/17-2/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -7339,6 +8506,29 @@
         "sourceFileTitle": "21_19_배뇨이상_소변찔끔증_p066-068.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/19-2/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/19-2/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/19-2/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/19-2/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -7517,6 +8707,29 @@
         "sourceFileTitle": "42_39-1_질분비물_p130-132.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/39-1/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/39-1/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/39-1/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/39-1/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -7695,6 +8908,29 @@
         "sourceFileTitle": "43_39-2_질출혈_p133-135.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/39-2/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/39-2/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/39-2/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/39-2/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -7899,6 +9135,29 @@
         "sourceFileTitle": "44_40-1_월경이상_p136-138.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/40-1/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/40-1/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/40-1/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/40-1/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
@@ -8075,6 +9334,29 @@
         "sourceFileTitle": "45_40-2_월경통_p139-141.pdf",
         "renderMode": "pdf-checklist",
         "pdf": "assets/cpx-references/checklist/40-2/checklist.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/checklist/40-2/pages/page-001.jpg",
+            "pdfPage": 1,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/checklist/40-2/pages/page-002.jpg",
+            "pdfPage": 2,
+            "width": 681,
+            "height": 983
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/checklist/40-2/pages/page-003.jpg",
+            "pdfPage": 3,
+            "width": 681,
+            "height": 983
+          }
+        ],
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }

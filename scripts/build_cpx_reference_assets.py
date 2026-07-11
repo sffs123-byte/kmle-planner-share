@@ -20,6 +20,8 @@ DEFAULT_TEAM4_PDF_ROOT = DEFAULT_TEAM4_ROOT / "PDF 변환본_2026-06-25"
 DEFAULT_CHECKLIST_ROOT = Path(
     "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/한끝/체크리스트_CC별_분할_20260708"
 )
+CHECKLIST_IMAGE_DPI = 120
+CHECKLIST_IMAGE_QUALITY = 82
 SYSTEM_PDFS = {
     "digestive": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_소화기.pdf"),
     "circulation": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_순환기.pdf"),
@@ -616,17 +618,24 @@ def render_pdf_page_images(
     *,
     dpi: int,
     quality: int,
+    progressive: bool = False,
+    optimize: bool = False,
     pdf_page_start: int | None = None,
     book_page_start: int | None = None,
 ) -> list[dict]:
     clean_dir(pages_dir)
     prefix = pages_dir / "page"
+    jpeg_options = [f"quality={quality}"]
+    if progressive:
+        jpeg_options.append("progressive=y")
+    if optimize:
+        jpeg_options.append("optimize=y")
     run(
         [
             "pdftoppm",
             "-jpeg",
             "-jpegopt",
-            f"quality={quality}",
+            ",".join(jpeg_options),
             "-r",
             str(dpi),
             str(pdf_path),
@@ -867,6 +876,14 @@ def render_checklist_source(checklist_root: Path, item: dict, output_root: Path)
         shutil.copy2(sources[0], pdf)
     else:
         run(["pdfunite", *(str(source) for source in sources), str(pdf)])
+    pages = render_pdf_page_images(
+        pdf,
+        out_dir / "pages",
+        dpi=CHECKLIST_IMAGE_DPI,
+        quality=CHECKLIST_IMAGE_QUALITY,
+        progressive=True,
+        optimize=True,
+    )
     cc_label = "+".join(ccs)
     title = item["title"].split(".", 1)[-1].strip()
     return {
@@ -877,6 +894,7 @@ def render_checklist_source(checklist_root: Path, item: dict, output_root: Path)
         "sourceFileTitle": " + ".join(source.name for source in sources),
         "renderMode": "pdf-checklist",
         "pdf": rel(pdf),
+        "pages": pages,
         "pageCount": pdf_page_count(pdf),
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트",
     }
