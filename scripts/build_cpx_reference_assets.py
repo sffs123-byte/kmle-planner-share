@@ -17,6 +17,9 @@ DEFAULT_TEAM4_ROOT = Path(
     "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본"
 )
 DEFAULT_TEAM4_PDF_ROOT = DEFAULT_TEAM4_ROOT / "PDF 변환본_2026-06-25"
+DEFAULT_CHECKLIST_ROOT = Path(
+    "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/한끝/체크리스트_CC별_분할_20260708"
+)
 SYSTEM_PDFS = {
     "digestive": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_소화기.pdf"),
     "circulation": Path("/Users/sffs123gmail.com/.openclaw/workspace/총론_순환기.pdf"),
@@ -43,15 +46,15 @@ HANKEUT_EXCERPT_OVERRIDES = {
     "10": {"sourcePdf": "circulation", "pdfPages": [16, 22], "bookPages": [144, 150]},
     "11": {"sourcePdf": "circulation", "pdfPages": [23, 28], "bookPages": [151, 156]},
     "12": {"sourcePdf": "circulation", "pdfPages": [29, 34], "bookPages": [157, 162]},
-    "13": {"sourcePdf": "respiratory", "pdfPages": [1, 7], "bookPages": [164, 170]},
-    "14": {"sourcePdf": "respiratory", "pdfPages": [8, 14], "bookPages": [171, 177]},
-    "15": {"sourcePdf": "respiratory", "pdfPages": [15, 21], "bookPages": [178, 184]},
-    "16": {"sourcePdf": "respiratory", "pdfPages": [22, 30], "bookPages": [185, 192]},
-    "17": {"sourcePdf": "kidney_urinary", "pdfPages": [1, 10], "bookPages": [194, 203]},
-    "17-2": {"sourcePdf": "kidney_urinary", "pdfPages": [1, 10], "bookPages": [194, 203]},
-    "18": {"sourcePdf": "kidney_urinary", "pdfPages": [11, 18], "bookPages": [204, 211]},
-    "19": {"sourcePdf": "kidney_urinary", "pdfPages": [19, 28], "bookPages": [212, 219]},
-    "19-2": {"sourcePdf": "kidney_urinary", "pdfPages": [19, 28], "bookPages": [212, 219]},
+    "13": {"sourcePdf": "respiratory", "pdfPages": [2, 8], "bookPages": [164, 170]},
+    "14": {"sourcePdf": "respiratory", "pdfPages": [9, 15], "bookPages": [171, 177]},
+    "15": {"sourcePdf": "respiratory", "pdfPages": [16, 22], "bookPages": [178, 184]},
+    "16": {"sourcePdf": "respiratory", "pdfPages": [23, 30], "bookPages": [185, 192]},
+    "17": {"sourcePdf": "kidney_urinary", "pdfPages": [2, 11], "bookPages": [194, 203]},
+    "17-2": {"sourcePdf": "kidney_urinary", "pdfPages": [2, 11], "bookPages": [194, 203]},
+    "18": {"sourcePdf": "kidney_urinary", "pdfPages": [12, 19], "bookPages": [204, 211]},
+    "19": {"sourcePdf": "kidney_urinary", "pdfPages": [20, 28], "bookPages": [212, 220]},
+    "19-2": {"sourcePdf": "kidney_urinary", "pdfPages": [20, 28], "bookPages": [212, 220]},
     "20": {"sourcePdf": "general", "pdfPages": [3, 9], "bookPages": [223, 229]},
     "21": {"sourcePdf": "general", "pdfPages": [10, 16], "bookPages": [230, 236]},
     "22": {"sourcePdf": "general", "pdfPages": [17, 24], "bookPages": [237, 244]},
@@ -92,6 +95,63 @@ def team4(key: str, label: str, path: str, tokens: list[str] | None = None) -> d
         "path": path,
         "tokens": tokens or [label.replace("4조", "").strip()],
     }
+
+
+CHECKLIST_CC_BY_DOC = {
+    "1": ["01"],
+    "2": ["02"],
+    "3": ["03"],
+    "4": ["04"],
+    "5": ["05"],
+    "6": ["06-1"],
+    "6-2": ["06-2"],
+    "7": ["07"],
+    "8": ["08"],
+    "9": ["09"],
+    "10": ["10"],
+    "11": ["11"],
+    "12": ["12"],
+    "13": ["13"],
+    "14": ["14"],
+    "15": ["15"],
+    "16": ["16"],
+    "17": ["17-1"],
+    "17-2": ["17-2"],
+    "18": ["18"],
+    "19": ["19"],
+    "19-2": ["19"],
+    "20": ["20"],
+    "21": ["21"],
+    "22": ["22"],
+    "23": ["23"],
+    "24": ["24"],
+    "25": ["25"],
+    "26": ["26-1", "26-2"],
+    "27": ["27"],
+    "28": ["28"],
+    "29": ["29"],
+    "30": ["30"],
+    "31": ["31"],
+    "32": ["32"],
+    "33": ["33"],
+    "34": ["34"],
+    "35": ["35"],
+    "36": ["36"],
+    "37": ["37"],
+    "38": ["38"],
+    "39-1": ["39-1"],
+    "39-2": ["39-2"],
+    "40-1": ["40-1"],
+    "40-2": ["40-2"],
+    "41": ["41"],
+    "42": ["42"],
+    "43": ["43"],
+    "44": ["44-1", "44-2"],
+    "45": ["45"],
+    "46": ["46"],
+    "47": ["47-1", "47-2"],
+    "48": ["48"],
+}
 
 
 REFERENCE_ITEMS = [
@@ -149,7 +209,7 @@ REFERENCE_ITEMS = [
         "title": "07. 황달",
         "hankeutTitle": "황달",
         "ccPdf": "cc07.pdf",
-        "team4": [],
+        "team4": [team4("jaundice", "4조 황달", "7. 황달_4조.docx", ["황달", "4조"])],
     },
     {
         "docId": "8",
@@ -214,7 +274,7 @@ REFERENCE_ITEMS = [
         "title": "16. 호흡곤란",
         "hankeutTitle": "호흡곤란",
         "ccPdf": "cc16.pdf",
-        "team4": [team4("dyspnea", "4조 호흡곤란", "참고 대본/3.호흡기/16.호흡곤란.docx", ["호흡곤란"])],
+        "team4": [],
     },
     {
         "docId": "17",
@@ -405,12 +465,24 @@ REFERENCE_ITEMS = [
         ],
     },
     {
-        "docId": "40",
-        "title": "40. 월경 이상 월경통",
+        "docId": "40-1",
+        "title": "40-1. 월경 이상",
         "hankeutTitle": "월경 이상/월경통",
-        "ccPdf": "cc40.pdf",
+        "sourcePdf": "obgyn_peds",
+        "pdfPages": [24, 33],
+        "bookPages": [400, 409],
         "team4": [
             team4("amenorrhea", "4조 무월경/월경이상", "33-1. 월경이상(무월경)_4조.docx", ["월경이상", "무월경", "4조"]),
+        ],
+    },
+    {
+        "docId": "40-2",
+        "title": "40-2. 월경통",
+        "hankeutTitle": "월경 이상/월경통",
+        "sourcePdf": "obgyn_peds",
+        "pdfPages": [24, 33],
+        "bookPages": [400, 409],
+        "team4": [
             team4("dysmenorrhea", "4조 월경통", "33-2. 월경통_4조.docx", ["월경통", "4조"]),
         ],
     },
@@ -538,6 +610,49 @@ def pdf_page_count(path: Path) -> int | None:
     return None
 
 
+def render_pdf_page_images(
+    pdf_path: Path,
+    pages_dir: Path,
+    *,
+    dpi: int,
+    quality: int,
+    pdf_page_start: int | None = None,
+    book_page_start: int | None = None,
+) -> list[dict]:
+    clean_dir(pages_dir)
+    prefix = pages_dir / "page"
+    run(
+        [
+            "pdftoppm",
+            "-jpeg",
+            "-jpegopt",
+            f"quality={quality}",
+            "-r",
+            str(dpi),
+            str(pdf_path),
+            str(prefix),
+        ]
+    )
+    images = sorted(pages_dir.glob("page-*.jpg"), key=lambda p: int(p.stem.rsplit("-", 1)[1]))
+    pages: list[dict] = []
+    for index, src in enumerate(images, start=1):
+        dst = pages_dir / f"page-{index:03d}.jpg"
+        if src != dst:
+            src.replace(dst)
+        size = image_size(dst) or {}
+        entry = {
+            "index": index,
+            "image": rel(dst),
+            "pdfPage": (pdf_page_start + index - 1) if pdf_page_start else index,
+            "width": size.get("width"),
+            "height": size.get("height"),
+        }
+        if book_page_start:
+            entry["bookPage"] = book_page_start + index - 1
+        pages.append({k: v for k, v in entry.items() if v is not None})
+    return pages
+
+
 def resolve_hankeut_source_pdf(default_source_pdf: Path, cc_pdf_root: Path, item: dict) -> Path:
     source_pdf = item.get("sourcePdf")
     if source_pdf:
@@ -547,7 +662,7 @@ def resolve_hankeut_source_pdf(default_source_pdf: Path, cc_pdf_root: Path, item
     return default_source_pdf
 
 
-def render_hankeut_pdf_excerpt(source_pdf: Path, cc_pdf_root: Path, item: dict, output_root: Path) -> dict:
+def render_hankeut_pdf_excerpt(source_pdf: Path, cc_pdf_root: Path, item: dict, output_root: Path, *, dpi: int, quality: int) -> dict:
     item = {**item, **HANKEUT_EXCERPT_OVERRIDES.get(str(item["docId"]), {})}
     doc_id = item["docId"]
     out_dir = output_root / "hankeut" / doc_id
@@ -578,14 +693,25 @@ def render_hankeut_pdf_excerpt(source_pdf: Path, cc_pdf_root: Path, item: dict, 
             page_range = item["ccPdf"].removesuffix(".pdf").upper()
 
     page_count = pdf_page_count(pdf_path)
+    pdf_page_start = item.get("pdfPages", [None])[0] if item.get("pdfPages") else None
+    book_page_start = item.get("bookPages", [None])[0] if item.get("bookPages") else None
+    pages = render_pdf_page_images(
+        pdf_path,
+        out_dir / "pages",
+        dpi=dpi,
+        quality=quality,
+        pdf_page_start=pdf_page_start,
+        book_page_start=book_page_start,
+    )
 
     result = {
         "title": item["hankeutTitle"],
         "source": str(source),
         "sourceFileTitle": source.name,
-        "renderMode": "pdf-excerpt",
+        "renderMode": "image-excerpt",
         "pdfPageRange": page_range,
         "pdf": rel(pdf_path),
+        "pages": pages,
         "pageCount": page_count,
     }
     if item.get("bookPages"):
@@ -624,11 +750,12 @@ def find_team4_pdf(team4_pdf_root: Path, spec: dict) -> Path | None:
     return None
 
 
-def render_team4_pdf(source_pdf: Path, output_dir: Path) -> Path:
+def render_team4_pdf(source_pdf: Path, output_dir: Path, *, dpi: int, quality: int) -> tuple[Path, list[dict]]:
     clean_dir(output_dir)
     pdf = output_dir / "source.pdf"
     shutil.copy2(source_pdf, pdf)
-    return pdf
+    pages = render_pdf_page_images(pdf, output_dir / "pages", dpi=dpi, quality=quality)
+    return pdf, pages
 
 
 def render_quicklook_html(source_docx: Path, output_dir: Path) -> Path:
@@ -668,21 +795,30 @@ def inject_quicklook_fit(html: Path) -> None:
     html.write_text(text.replace("</head>", insert + "</head>", 1), encoding="utf-8")
 
 
-def render_team4_sources(team4_root: Path, team4_pdf_root: Path, item: dict, output_root: Path) -> list[dict]:
+def render_team4_sources(
+    team4_root: Path,
+    team4_pdf_root: Path,
+    item: dict,
+    output_root: Path,
+    *,
+    dpi: int,
+    quality: int,
+) -> list[dict]:
     rendered = []
     for spec in item["team4"]:
         out_dir = output_root / "team4" / item["docId"] / spec["key"]
         source_pdf = find_team4_pdf(team4_pdf_root, spec)
         if source_pdf:
-            pdf = render_team4_pdf(source_pdf, out_dir)
+            pdf, pages = render_team4_pdf(source_pdf, out_dir, dpi=dpi, quality=quality)
             rendered.append(
                 {
                     "key": spec["key"],
                     "label": spec["label"],
                     "source": str(source_pdf),
                     "sourceFileTitle": unicodedata.normalize("NFC", source_pdf.name),
-                    "renderMode": "pdf-source",
+                    "renderMode": "image-source",
                     "pdf": rel(pdf),
+                    "pages": pages,
                     "pageCount": pdf_page_count(pdf),
                 }
             )
@@ -712,11 +848,46 @@ def render_team4_sources(team4_root: Path, team4_pdf_root: Path, item: dict, out
     return rendered
 
 
+def find_checklist_pdf(checklist_root: Path, cc: str) -> Path:
+    matches = sorted(checklist_root.glob(f"*_{cc}_*.pdf"))
+    if not matches:
+        raise FileNotFoundError(f"Checklist PDF for {cc} not found under {checklist_root}")
+    return matches[0]
+
+
+def render_checklist_source(checklist_root: Path, item: dict, output_root: Path) -> dict | None:
+    ccs = CHECKLIST_CC_BY_DOC.get(str(item["docId"]))
+    if not ccs:
+        return None
+    sources = [find_checklist_pdf(checklist_root, cc) for cc in ccs]
+    out_dir = output_root / "checklist" / item["docId"]
+    clean_dir(out_dir)
+    pdf = out_dir / "checklist.pdf"
+    if len(sources) == 1:
+        shutil.copy2(sources[0], pdf)
+    else:
+        run(["pdfunite", *(str(source) for source in sources), str(pdf)])
+    cc_label = "+".join(ccs)
+    title = item["title"].split(".", 1)[-1].strip()
+    return {
+        "key": "checklist",
+        "label": f"체크리스트 {cc_label}",
+        "title": title,
+        "source": " / ".join(str(source) for source in sources),
+        "sourceFileTitle": " + ".join(source.name for source in sources),
+        "renderMode": "pdf-checklist",
+        "pdf": rel(pdf),
+        "pageCount": pdf_page_count(pdf),
+        "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트",
+    }
+
+
 def build(args: argparse.Namespace) -> dict:
     source_pdf = args.source_pdf.expanduser().resolve()
     cc_pdf_root = args.cc_pdf_root.expanduser().resolve()
     team4_root = args.team4_root.expanduser().resolve()
     team4_pdf_root = args.team4_pdf_root.expanduser().resolve()
+    checklist_root = args.checklist_root.expanduser().resolve()
     output_root = args.output_root.expanduser().resolve()
     manifest_path = args.manifest.expanduser().resolve()
 
@@ -727,26 +898,47 @@ def build(args: argparse.Namespace) -> dict:
         raise FileNotFoundError(cc_pdf_root)
     if not team4_root.exists():
         raise FileNotFoundError(team4_root)
+    if not args.skip_checklist and not checklist_root.exists():
+        raise FileNotFoundError(checklist_root)
 
     clean_dir(output_root)
     items = {}
     for item in REFERENCE_ITEMS:
-        hankeut = None if args.skip_hankeut else render_hankeut_pdf_excerpt(source_pdf, cc_pdf_root, item, output_root)
-        team4 = [] if args.skip_team4 else render_team4_sources(team4_root, team4_pdf_root, item, output_root)
+        hankeut = None if args.skip_hankeut else render_hankeut_pdf_excerpt(
+            source_pdf,
+            cc_pdf_root,
+            item,
+            output_root,
+            dpi=args.dpi,
+            quality=args.quality,
+        )
+        team4 = [] if args.skip_team4 else render_team4_sources(
+            team4_root,
+            team4_pdf_root,
+            item,
+            output_root,
+            dpi=args.dpi,
+            quality=args.quality,
+        )
+        checklist = None if args.skip_checklist else render_checklist_source(checklist_root, item, output_root)
         items[item["docId"]] = {
             "docId": item["docId"],
             "title": item["title"],
             "hankeut": hankeut,
             "team4": team4,
+            "checklist": checklist,
         }
 
     manifest = {
-        "version": "cpx-reference-assets.v2.all-cc-source-preserved",
+        "version": "cpx-reference-assets.v6.single-slot-checklist",
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "notes": {
-            "hankeut": "한끝 PDF는 CC별 PDF 발췌본을 iframe PDF 뷰어로 표시해 원본 모양을 보존한다.",
-            "team4": "4조 자료는 사용자가 Word에서 직접 내보낸 PDF를 우선 사용해 표, 색, 첨부 이미지를 보존한다. PDF가 없는 일부 항목만 Quick Look HTML로 보조 표시한다.",
+            "hankeut": "한끝 PDF는 원본 PDF와 페이지 이미지 대체 렌더를 함께 보존한다. 핸드폰을 제외한 기기는 PDF 프레임으로 표시한다.",
+            "team4": "4조 자료는 원본 PDF와 페이지 이미지 대체 렌더를 함께 보존한다. 핸드폰을 제외한 기기는 PDF 프레임으로 표시한다.",
+            "checklist": "의학과 공부 파일/자료/한끝/체크리스트ocred.pdf를 CC별로 자른 체크리스트 PDF를 오른쪽 단일 참고 슬롯에 연결한다.",
+            "singleSlot": "보기 모드 참고자료는 오른쪽 슬롯 하나에서 한끝, 체크리스트, 1부 대본을 순환 표시한다.",
             "scope": "공통/합본 대본은 제외하고 CC별 개별 자료만 연결한다.",
+            "split40": "40-1 월경 이상과 40-2 월경통은 기존 40번 한끝 발췌본을 공유하고 4조 대본은 무월경/월경통으로 분리한다.",
         },
         "items": items,
     }
@@ -761,12 +953,14 @@ def main() -> None:
     parser.add_argument("--cc-pdf-root", type=Path, default=DEFAULT_CC_PDF_ROOT)
     parser.add_argument("--team4-root", type=Path, default=DEFAULT_TEAM4_ROOT)
     parser.add_argument("--team4-pdf-root", type=Path, default=DEFAULT_TEAM4_PDF_ROOT)
+    parser.add_argument("--checklist-root", type=Path, default=DEFAULT_CHECKLIST_ROOT)
     parser.add_argument("--output-root", type=Path, default=REPO_ROOT / "assets" / "cpx-references")
     parser.add_argument("--manifest", type=Path, default=REPO_ROOT / "data" / "cpx-reference-manifest.json")
     parser.add_argument("--dpi", type=int, default=140)
     parser.add_argument("--quality", type=int, default=82)
     parser.add_argument("--skip-hankeut", action="store_true")
     parser.add_argument("--skip-team4", action="store_true")
+    parser.add_argument("--skip-checklist", action="store_true")
     args = parser.parse_args()
     manifest = build(args)
     print(json.dumps({"ok": True, "items": list(manifest["items"].keys()), "manifest": str(args.manifest)}, ensure_ascii=False))
