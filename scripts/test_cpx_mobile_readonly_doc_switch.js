@@ -1,6 +1,7 @@
 const { chromium } = require('playwright');
 
 const files = ['index.html', 'cpx-a4-editor-local.html'];
+const baseUrl = String(process.env.CPX_BASE_URL || 'http://127.0.0.1:8766').replace(/\/$/, '');
 
 async function runCase(browser, file, mobile) {
   const page = await browser.newPage({
@@ -8,7 +9,7 @@ async function runCase(browser, file, mobile) {
     isMobile: mobile,
     hasTouch: mobile,
   });
-  await page.goto(`http://127.0.0.1:8766/${file}`, { waitUntil: 'domcontentloaded' });
+  await page.goto(`${baseUrl}/${file}?mobile-readonly-switch-test=${Date.now()}`, { waitUntil: 'domcontentloaded' });
   const result = await page.evaluate(async ({ mobile }) => {
     document.querySelector('#work')?.classList.remove('hidden');
     document.body.classList.toggle('mobile-read-mode', mobile);
