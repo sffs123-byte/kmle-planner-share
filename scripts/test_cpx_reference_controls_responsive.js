@@ -1,8 +1,8 @@
-const { chromium } = require('playwright');
+const { chromium, webkit } = require('playwright');
 
 const files = ['index.html', 'cpx-a4-editor-local.html'];
 const baseUrl = String(process.env.CPX_BASE_URL || 'http://127.0.0.1:8766').replace(/\/$/, '');
-const desktopWidths = [700, 820, 899, 1130];
+const desktopWidths = [700, 820, 899, 900, 1024, 1130, 1200];
 
 async function prepareReference(page) {
   return page.evaluate(() => {
@@ -10,6 +10,9 @@ async function prepareReference(page) {
     document.querySelector('#work')?.classList.remove('hidden');
     document.body.dataset.activeView = 'work';
     current = { id: '1', title: '반응형 참고자료 시험' };
+    const source = docs[String(current.id)] || seed.docs?.[String(current.id)] || '';
+    const textarea = document.querySelector('#sourceText');
+    if (textarea) textarea.value = source;
     referenceManifest = {
       items: {
         1: {
@@ -19,11 +22,20 @@ async function prepareReference(page) {
     };
     applyMobileMode();
     document.body.classList.add('view-mode');
+    renderDoc();
     const shell = referenceShell();
     shell.dataset.slotOpen = '0';
     syncReferenceComparisonVisibility();
     ensureReferenceSlotUi();
     updateReferenceControls();
+    const paper = document.querySelector('.doc-wrap > .paper');
+    const beforePaper = paper ? {
+      offsetWidth: paper.offsetWidth,
+      offsetHeight: paper.offsetHeight,
+      visualWidth: paper.getBoundingClientRect().width,
+      visualHeight: paper.getBoundingClientRect().height,
+      bodyScrollHeight: paper.querySelector('.doc-body')?.scrollHeight || 0,
+    } : null;
     const button = document.querySelector('#referenceRightBtn');
     const rect = button.getBoundingClientRect();
     return {
@@ -31,6 +43,7 @@ async function prepareReference(page) {
       compact: document.body.classList.contains('reference-compact-viewport'),
       mobileRead: document.body.classList.contains('mobile-read-mode'),
       available: shell.classList.contains('reference-available'),
+      beforePaper,
       buttonDisplay: getComputedStyle(button).display,
       buttonRect: { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom },
       label: button.textContent.trim(),
@@ -39,10 +52,15 @@ async function prepareReference(page) {
 }
 
 (async () => {
-  const browser = await chromium.launch({ headless: true });
-  try {
-    for (const file of files) {
-      for (const width of desktopWidths) {
+  const engines = [
+    ['chromium', chromium],
+    ['webkit', webkit],
+  ];
+  for (const [engineName, engine] of engines) {
+    const browser = await engine.launch({ headless: true });
+    try {
+      for (const file of files) {
+        for (const width of desktopWidths) {
         const page = await browser.newPage({ viewport: { width, height: 780 } });
         await page.goto(`${baseUrl}/${file}?reference-responsive-test=${Date.now()}`, { waitUntil: 'domcontentloaded' });
         const initial = await prepareReference(page);
@@ -65,6 +83,9 @@ async function prepareReference(page) {
           const rect = panel.getBoundingClientRect();
           const close = document.querySelector('#referenceCloseBtn');
           const frame = panel.querySelector('iframe[data-ref-pdf-path]');
+          const paper = document.querySelector('.doc-wrap > .paper, .doc-wrap > .ref-paper-slot > .paper');
+          const slot = paper?.parentElement?.classList.contains('ref-paper-slot') ? paper.parentElement : null;
+          const paperRect = paper?.getBoundingClientRect();
           return {
             ready: shell.classList.contains('reference-ready'),
             locked: document.body.classList.contains('reference-scroll-lock'),
@@ -76,6 +97,19 @@ async function prepareReference(page) {
             frameSrc: frame?.getAttribute('src') || '',
             viewportWidth: window.innerWidth,
             overflow: document.documentElement.scrollWidth - window.innerWidth,
+            paper: paper ? {
+              hasSlot: !!slot,
+              offsetWidth: paper.offsetWidth,
+              offsetHeight: paper.offsetHeight,
+              visualWidth: paperRect.width,
+              visualHeight: paperRect.height,
+              scale: paper.offsetWidth ? paperRect.width / paper.offsetWidth : 1,
+              slotWidth: slot?.getBoundingClientRect().width || 0,
+              slotHeight: slot?.getBoundingClientRect().height || 0,
+              bodyScrollHeight: paper.querySelector('.doc-body')?.scrollHeight || 0,
+              zoom: getComputedStyle(paper).zoom,
+              transform: getComputedStyle(paper).transform,
+            } : null,
           };
         });
         const compactOutOfBounds = width < 900
@@ -90,6 +124,18 @@ async function prepareReference(page) {
         if (width < 900 && opened.panelPosition !== 'fixed') {
           throw new Error(`${file} ${width}px compact reference is not a drawer: ${JSON.stringify(opened)}`);
         }
+        if (width >= 900) {
+          const before = initial.beforePaper;
+          const paper = opened.paper;
+          if (!before || !paper || !paper.hasSlot || paper.zoom !== '1' || paper.transform === 'none'
+            || paper.scale >= 0.995 || Math.abs(paper.offsetWidth - before.offsetWidth) > 1
+            || Math.abs(paper.offsetHeight - before.offsetHeight) > 1
+            || Math.abs(paper.bodyScrollHeight - before.bodyScrollHeight) > 1
+            || Math.abs(paper.slotWidth - paper.visualWidth) > 2
+            || Math.abs(paper.slotHeight - paper.visualHeight) > 2) {
+            throw new Error(`${file} ${width}px desktop A4 transform footprint failed: ${JSON.stringify({ before, opened })}`);
+          }
+        }
         if (process.env.CPX_REFERENCE_SCREENSHOT && file === 'index.html' && width === 700) {
           await page.screenshot({ path: process.env.CPX_REFERENCE_SCREENSHOT, fullPage: false });
         }
@@ -102,7 +148,7 @@ async function prepareReference(page) {
         if (closed.ready || closed.launcher === 'none') {
           throw new Error(`${file} ${width}px reference close failed: ${JSON.stringify(closed)}`);
         }
-        console.log(`${file} ${width}px desktop reference PASS (${initial.compact ? 'drawer' : 'wide'})`);
+        console.log(`${engineName} ${file} ${width}px desktop reference PASS (${initial.compact ? 'drawer' : 'wide'})`);
         await page.close();
       }
 
@@ -116,11 +162,12 @@ async function prepareReference(page) {
       if (state.enabled || state.available || !state.mobileRead || state.buttonDisplay !== 'none') {
         throw new Error(`${file} mobile reference controls regressed: ${JSON.stringify(state)}`);
       }
-      console.log(`${file} 390px touch mobile reference hidden PASS`);
+      console.log(`${engineName} ${file} 390px touch mobile reference hidden PASS`);
       await mobile.close();
     }
-  } finally {
-    await browser.close();
+    } finally {
+      await browser.close();
+    }
   }
 })().catch(error => {
   console.error(error);
