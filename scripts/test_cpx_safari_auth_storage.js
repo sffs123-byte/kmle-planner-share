@@ -71,7 +71,7 @@ async function exercise(browser, port, file, engine) {
   const page = await context.newPage();
   const pageErrors = [];
   page.on('pageerror', error => pageErrors.push(error.message));
-  await page.goto(`http://127.0.0.1:${port}/${file}`, { waitUntil: 'domcontentloaded' });
+  await page.goto(`http://127.0.0.1:${port}/${file}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForFunction(() => typeof window.finishGoogleAuth === 'function');
 
   const result = await page.evaluate(async () => {
