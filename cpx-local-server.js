@@ -447,6 +447,26 @@ function text(res, status, body, contentType = 'text/plain; charset=utf-8') {
   res.end(body);
 }
 
+function imageData(res, asset) {
+  const value = String(asset?.dataUrl || '');
+  const match = value.match(/^data:([^;,]+)?(;base64)?,([\s\S]*)$/i);
+  if (!match) return json(res, 404, { error: 'image data not found' });
+  let body;
+  try {
+    body = match[2] ? Buffer.from(match[3], 'base64') : Buffer.from(decodeURIComponent(match[3]), 'utf8');
+  } catch {
+    return json(res, 500, { error: 'stored image data is invalid' });
+  }
+  res.writeHead(200, {
+    'content-type': match[1] || 'application/octet-stream',
+    'content-length': body.length,
+    'access-control-allow-origin': '*',
+    'cache-control': 'private, max-age=300',
+    'x-content-type-options': 'nosniff',
+  });
+  res.end(body);
+}
+
 function readBody(req) {
   return new Promise((resolve, reject) => {
     const declaredSize = Number(req.headers['content-length'] || 0);
@@ -1576,6 +1596,36 @@ function personalOverlayFromRow(row) {
   return parseJsonObject(row.overlay_json, 'personal overlay');
 }
 
+function hydrateRemoteCollections(incomingState, effectiveState) {
+  const incomingSettings = incomingState?.settings;
+  const incomingAssets = incomingSettings?.imageAssets;
+  if (!incomingSettings) return incomingState;
+  const effectiveSettings = effectiveState?.settings || {};
+  let changed = false;
+  let nextSettings = incomingSettings;
+  if (incomingAssets && typeof incomingAssets === 'object' && !Array.isArray(incomingAssets)) {
+    const effectiveAssets = effectiveSettings.imageAssets || {};
+    const hydrated = {};
+    for (const [id, asset] of Object.entries(incomingAssets)) {
+      if (asset?.remoteData === true && !asset?.dataUrl) {
+        const full = effectiveAssets[id];
+        if (!full?.dataUrl) throw Object.assign(new Error('이미지 원본을 다시 불러온 뒤 저장해주세요.'), { statusCode: 409 });
+        hydrated[id] = full;
+        changed = true;
+      } else {
+        hydrated[id] = asset;
+      }
+    }
+    if (changed) nextSettings = { ...nextSettings, imageAssets: hydrated };
+  }
+  if (incomingState?.tableStylesRemoteCompacted === true) {
+    const incomingStyles = incomingSettings.tableStyles && typeof incomingSettings.tableStyles === 'object' ? incomingSettings.tableStyles : {};
+    nextSettings = { ...nextSettings, tableStyles: { ...(effectiveSettings.tableStyles || {}), ...incomingStyles } };
+    changed = true;
+  }
+  return changed ? { ...incomingState, settings: nextSettings } : incomingState;
+}
+
 function personalOverlaySessionConflict(current, metadata = {}, summary = { hasChanges: true }) {
   if (!current?.updated_at || !summary?.hasChanges) return null;
   const baseOverlayUpdatedAt = String(metadata.baseOverlayUpdatedAt || '').trim();
@@ -1595,12 +1645,15 @@ function savePersonalOverlay(boardUserId, auth, masterRow, incomingState, metada
   const updatedAt = String(metadata.updatedAt || incomingState.updatedAt || nowIso());
   const updatedBy = metadata.updatedBy || auth.nickname || auth.userId;
   const current = getPersonalOverlayStmt.get(boardUserId, auth.userId);
-  const overlay = buildPersonalOverlay(masterState, incomingState, {
+  const previousOverlay = personalOverlayFromRow(current);
+  const effectiveState = applyPersonalOverlay(masterState, previousOverlay);
+  const hydratedIncomingState = hydrateRemoteCollections(incomingState, effectiveState);
+  const overlay = buildPersonalOverlay(masterState, hydratedIncomingState, {
     updatedAt,
     updatedBy,
     saveEvent: metadata.saveEvent || incomingState.saveEvent || null,
     clientBuild: metadata.clientBuild || incomingState.clientBuild || null,
-    previousOverlay: personalOverlayFromRow(current),
+    previousOverlay,
   });
   const summary = overlaySummary(overlay);
   const conflict = !metadata.force && personalOverlaySessionConflict(current, metadata, summary);
@@ -1631,24 +1684,52 @@ function latestIso(a, b) {
   return bMs >= aMs ? (b || a || null) : (a || b || null);
 }
 
-function personalizedStateRow(masterRow, authUserId) {
-  if (!masterRow || !authUserId || !isPersonalizedA4Board(masterRow.user_id)) return masterRow;
-  const overlayRow = getPersonalOverlayStmt.get(masterRow.user_id, authUserId);
+function compactImageAssetsForTransport(state) {
+  const settings = state?.settings && typeof state.settings === 'object' ? state.settings : {};
+  const imageAssets = settings.imageAssets && typeof settings.imageAssets === 'object' ? settings.imageAssets : {};
+  const manifest = {};
+  for (const [id, assetValue] of Object.entries(imageAssets)) {
+    const asset = assetValue && typeof assetValue === 'object' ? assetValue : {};
+    if (/^data:/i.test(String(asset.dataUrl || ''))) {
+      const { dataUrl, ...meta } = asset;
+      manifest[id] = { ...meta, id: meta.id || id, remoteData: true };
+    } else {
+      manifest[id] = asset;
+    }
+  }
+  state.settings = { ...settings, imageAssets: manifest };
+  state.imageAssetsRemote = true;
+  if (settings.tableStyles && typeof settings.tableStyles === 'object') {
+    const compactStyles = {};
+    for (const [key, value] of Object.entries(settings.tableStyles)) {
+      if (key.length < 240 && !key.includes('\n')) compactStyles[key] = value;
+    }
+    state.settings.tableStyles = compactStyles;
+    state.tableStylesRemoteCompacted = true;
+  }
+  return imageAssets;
+}
+
+function personalizedStateRow(masterRow, authUserId, { compactImages = false } = {}) {
+  if (!masterRow) return masterRow;
   const masterState = parseJsonObject(masterRow.state_json, 'stored state_json');
-  const overlay = personalOverlayFromRow(overlayRow);
-  const state = applyPersonalOverlay(masterState, overlay);
+  const personalized = !!authUserId && isPersonalizedA4Board(masterRow.user_id);
+  const overlayRow = personalized ? getPersonalOverlayStmt.get(masterRow.user_id, authUserId) : null;
+  const state = personalized ? applyPersonalOverlay(masterState, personalOverlayFromRow(overlayRow)) : masterState;
   const updatedAt = latestIso(masterRow.updated_at, overlayRow?.updated_at);
   const overlayWins = overlayRow?.updated_at && updatedAt === overlayRow.updated_at;
+  const imageAssets = compactImages ? compactImageAssetsForTransport(state) : null;
   return {
     ...masterRow,
     state_json: JSON.stringify(state),
     updated_at: updatedAt || masterRow.updated_at,
     updated_by: overlayWins ? (overlayRow.updated_by || masterRow.updated_by) : masterRow.updated_by,
+    image_assets: imageAssets,
   };
 }
 
-function stateCacheKey(userId, authUserId = '') {
-  return `${String(userId || DEFAULT_USER_ID)}\u0000${String(authUserId || '')}`;
+function stateCacheKey(userId, authUserId = '', variant = 'full') {
+  return `${String(userId || DEFAULT_USER_ID)}\u0000${String(authUserId || '')}\u0000${variant}`;
 }
 
 function pruneStateResponseCache(now = Date.now()) {
@@ -1660,19 +1741,20 @@ function pruneStateResponseCache(now = Date.now()) {
   }
 }
 
-function stateRowPayloadForUser(userId, authUserId = '') {
+function stateRowPayloadForUser(userId, authUserId = '', { compactImages = false } = {}) {
   const key = String(userId || DEFAULT_USER_ID);
-  const cacheKey = stateCacheKey(key, isPersonalizedA4Board(key) ? authUserId : '');
+  const cacheKey = stateCacheKey(key, isPersonalizedA4Board(key) ? authUserId : '', compactImages ? 'compact-images' : 'full');
   const now = Date.now();
   pruneStateResponseCache(now);
   const cached = stateResponseCache.get(cacheKey);
   if (cached && cached.expiresAt > now) return cached;
   const masterRow = getStateStmt.get(key);
-  const row = personalizedStateRow(masterRow, authUserId);
+  const row = personalizedStateRow(masterRow, authUserId, { compactImages });
   const payload = {
     found: !!row,
     status: row ? 200 : 404,
     body: row ? stateRowJsonBody(row) : JSON.stringify({ error: 'state not found', user_id: key }),
+    imageAssets: row?.image_assets || null,
     expiresAt: now + STATE_RESPONSE_CACHE_MS,
   };
   if (STATE_RESPONSE_CACHE_MAX_ENTRIES > 0) stateResponseCache.set(cacheKey, payload);
@@ -2426,8 +2508,21 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === '/api/state' && req.method === 'GET') {
       const auth = requireAuth(req, url);
       const userId = safeUserId(url);
-      const payload = stateRowPayloadForUser(userId, auth.userId);
+      const compactImages = url.searchParams.get('compact_images') === '1';
+      const payload = stateRowPayloadForUser(userId, auth.userId, { compactImages });
       return jsonRaw(res, payload.status, payload.body);
+    }
+
+    if (url.pathname === '/api/image-asset' && req.method === 'GET') {
+      const auth = requireAuth(req, url);
+      const userId = safeUserId(url);
+      const assetId = String(url.searchParams.get('asset_id') || '').trim();
+      if (!assetId || assetId.length > 160) return json(res, 400, { error: 'asset_id required' });
+      const payload = stateRowPayloadForUser(userId, auth.userId, { compactImages: true });
+      if (!payload.found) return json(res, payload.status, { error: 'state not found', user_id: userId });
+      const asset = payload.imageAssets?.[assetId];
+      if (!asset?.dataUrl) return json(res, 404, { error: 'image asset not found' });
+      return imageData(res, asset);
     }
 
     if (url.pathname === '/api/export' && req.method === 'GET') {
