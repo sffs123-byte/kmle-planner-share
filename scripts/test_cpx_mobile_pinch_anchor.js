@@ -88,4 +88,3 @@ function closeEnough(actual, expected, tolerance = 2.5) {
   console.error(error);
   process.exit(1);
 });
-
