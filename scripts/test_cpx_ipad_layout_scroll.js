@@ -64,16 +64,17 @@ async function openSeedDoc(page, id = '42') {
   }, id);
 }
 
-async function prepareReference(page, kind) {
-  return page.evaluate(async requestedKind => {
+async function prepareReference(page, kind, docId = '42') {
+  return page.evaluate(async ({ requestedKind, docId }) => {
     document.querySelector('#gate')?.classList.add('hidden');
     if (!referenceManifest) {
       referenceManifest = await fetch('data/cpx-reference-manifest.json').then(response => response.json());
     }
-    const item = referenceManifest?.items?.['1'] || null;
-    if (!item) throw new Error('reference manifest item 1 missing');
-    current = { id: '1', title: '급성 복통' };
-    const source = docs['1'] || seed.docs?.['1'] || '';
+    const item = referenceManifest?.items?.[String(docId)] || null;
+    if (!item) throw new Error(`reference manifest item ${docId} missing`);
+    const title = seed.items?.find?.(entry => String(entry.id) === String(docId))?.title || `CC ${docId}`;
+    current = { id: String(docId), title };
+    const source = docs[String(docId)] || seed.docs?.[String(docId)] || '';
     const textarea = document.querySelector('#sourceText');
     if (textarea) textarea.value = source;
     document.querySelector('#home')?.classList.add('hidden');
@@ -82,6 +83,24 @@ async function prepareReference(page, kind) {
     document.body.classList.add('view-mode');
     renderDoc();
     applyMobileMode();
+    const layoutFingerprint = () => {
+      const wrap = document.querySelector('.doc-wrap');
+      const papers = [...wrap.querySelectorAll(':scope > .paper')];
+      return {
+        wrapClientWidth: wrap.clientWidth,
+        wrapScrollWidth: wrap.scrollWidth,
+        paperCount: papers.length,
+        papers: papers.map(paper => ({
+          offsetWidth: paper.offsetWidth,
+          visualWidth: paper.getBoundingClientRect().width,
+          zoom: getComputedStyle(paper).zoom,
+          bodyScrollHeight: paper.querySelector('.doc-body')?.scrollHeight || 0,
+          bodyClientHeight: paper.querySelector('.doc-body')?.clientHeight || 0,
+        })),
+      };
+    };
+    const before = layoutFingerprint();
+    history.replaceState({}, '', `/doc/${encodeURIComponent(docId)}`);
     const shell = referenceShell();
     shell.dataset.refType = requestedKind;
     shell.dataset.slotOpen = '1';
@@ -99,6 +118,7 @@ async function prepareReference(page, kind) {
       await new Promise(resolve => setTimeout(resolve, 50));
     }
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    const after = layoutFingerprint();
     const main = shell.querySelector('.doc-wrap');
     const mainPapers = [...main.querySelectorAll(':scope > .paper')];
     main.scrollTop = main.scrollHeight;
@@ -119,6 +139,7 @@ async function prepareReference(page, kind) {
     return {
       enabled: referenceViewportEnabled(),
       mobileRead: document.body.classList.contains('mobile-read-mode'),
+      layout: { before, after },
       main: {
         overflowY: getComputedStyle(main).overflowY,
         touchAction: getComputedStyle(main).touchAction,
@@ -140,7 +161,7 @@ async function prepareReference(page, kind) {
       canReachBottom: body.scrollHeight <= body.clientHeight + body.scrollTop + 2,
       firstImageSrc: images[0]?.currentSrc || images[0]?.src || '',
     };
-  }, kind);
+  }, { requestedKind: kind, docId });
 }
 
 (async () => {
@@ -154,7 +175,8 @@ async function prepareReference(page, kind) {
       for (const file of files) {
         for (const spec of [
           { name: 'portrait', width: 820, height: 1180 },
-          { name: 'landscape', width: 1180, height: 820 },
+          { name: 'landscape-1180', width: 1180, height: 820 },
+          { name: 'landscape-1024', width: 1024, height: 768 },
         ]) {
           const page = await browser.newPage({
             viewport: { width: spec.width, height: spec.height },
@@ -167,12 +189,13 @@ async function prepareReference(page, kind) {
           await page.waitForFunction(() => typeof renderDoc === 'function' && typeof referenceViewportEnabled === 'function');
           const doc = await openSeedDoc(page, '42');
           const multiPageDoc = await openSeedDoc(page, '40-1');
-          const reference = spec.name === 'landscape' ? {
-            hankeut: await prepareReference(page, 'hankeut'),
-            checklist: await prepareReference(page, 'checklist'),
+          const isLandscape = spec.name.startsWith('landscape');
+          const reference = isLandscape ? {
+            hankeut: await prepareReference(page, 'hankeut', '42'),
+            checklist: await prepareReference(page, 'checklist', '42'),
           } : null;
           console.log(JSON.stringify({ engineName, file, spec: spec.name, doc, multiPageDoc, reference }));
-          if (spec.name === 'landscape') {
+          if (isLandscape) {
             if (doc.stage.clientHeight > spec.height + 2 || !doc.lastVisibleAtMax) {
               throw new Error(`${engineName} ${file} iPad A4 bottom is clipped: ${JSON.stringify(doc)}`);
             }
@@ -180,6 +203,13 @@ async function prepareReference(page, kind) {
               throw new Error(`${engineName} ${file} iPad multi-page A4 bottom is clipped: ${JSON.stringify(multiPageDoc)}`);
             }
             for (const [kind, state] of Object.entries(reference)) {
+              if (state.layout.before.paperCount !== state.layout.after.paperCount
+                || state.layout.after.papers.some((paper, index) => Math.abs(paper.offsetWidth - state.layout.before.papers[index].offsetWidth) > 1
+                  || Math.abs(paper.visualWidth - state.layout.before.papers[index].visualWidth) > 1
+                  || Math.abs(paper.bodyScrollHeight - state.layout.before.papers[index].bodyScrollHeight) > 1
+                  || paper.zoom !== '1')) {
+                throw new Error(`${engineName} ${file} iPad A4 reflowed after opening ${kind}: ${JSON.stringify(state.layout)}`);
+              }
               if (!state.main.canReachBottom || !state.main.lastVisibleAtMax || state.main.overflowY === 'hidden' || state.main.touchAction !== 'pan-y') {
                 throw new Error(`${engineName} ${file} iPad main A4 comparison scroll failed: ${JSON.stringify(state.main)}`);
               }
