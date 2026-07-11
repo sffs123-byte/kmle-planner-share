@@ -573,7 +573,7 @@ const APP_STATE_MODE='global-v2', BLOCKED_REMOTE_STATE_MODE_RE=/^split-v\d+/i;
 function remoteStateRequiresNewClient(st){return BLOCKED_REMOTE_STATE_MODE_RE.test(String(st?.stateMode||''))}
 function showStateModeBlocked(st){const msg='새 split 저장 구조로 전환된 상태입니다. 기존 편집기는 저장하지 않고 새 버전으로 새로고침해야 합니다.';try{if($('syncState'))$('syncState').textContent='업데이트 필요';if($('docStatus'))$('docStatus').textContent=msg;toast(msg)}catch{}console.warn('[state-mode-blocked]',st?.stateMode,st?.clientBuild)}
 const DOC_RESET_VERSION='metabolic-template-reset-20260515-v2', DOC_RESET_BUILD='metabolic-template-reset-20260515-v2', DOC_RESET_KEEP_IDS=new Set(['19']);
-const DEFAULT_LOCAL_API_BASE='https://blowing-curious-producer-railroad.trycloudflare.com'; // CPX Local DB quick tunnel; updated automatically by cpx_localdb_tunnel_manager.
+const DEFAULT_LOCAL_API_BASE='https://species-recent-entered-ambient.trycloudflare.com'; // CPX Local DB quick tunnel; updated automatically by cpx_localdb_tunnel_manager.
 const API_PARAM_BASE=new URLSearchParams(location.search).get('api')||'';
 const STORED_API_BASE=localStorage.getItem('cpxA4LocalApiBase')||'';
 const LOCAL_API_BASE=(API_PARAM_BASE||(/trycloudflare.com/i.test(STORED_API_BASE)?'':STORED_API_BASE)||DEFAULT_LOCAL_API_BASE).replace(/\/+$/,'');
