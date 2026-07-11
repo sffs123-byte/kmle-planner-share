@@ -95,6 +95,7 @@ function seedDatabase(dbPath) {
       flowAssets: {},
       docMeta: {},
       quizFieldOverrides: {},
+      quizProgress: {},
       comments: {},
       profiles: {},
       communityPosts: {},
@@ -249,6 +250,21 @@ async function main() {
     fullA.docs['2'] = 'user-a-doc-2';
     fullA.settings['2:page:0'] = { fontSize: 12 };
     fullA.settings.tableStyles.personal = { width: 222 };
+    fullA.settings.quizFieldOverrides['42'] = {
+      fields: { C: 'User A personal quiz answer' },
+      detached: { C: true },
+      updatedAt: '2026-07-11T00:02:00.000Z',
+      updatedById: 'google-a',
+    };
+    fullA.settings.quizProgress['case:9:42-1'] = {
+      reviews: 2,
+      know: 1,
+      miss: 1,
+      weak: true,
+      dueAt: '2026-07-11T00:12:00.000Z',
+      lastAt: '2026-07-11T00:02:00.000Z',
+      updatedAt: '2026-07-11T00:02:00.000Z',
+    };
     fullA.settings.imageAssets.personal = { name: 'personal.png', dataUrl: 'data:image/png;base64,cGVyc29uYWw=' };
     fullA.settings.communityPosts.post1 = {
       id: 'post1',
@@ -284,11 +300,15 @@ async function main() {
     assert.equal(finalA.json.state_json.docs['2'], 'user-a-doc-2');
     assert.equal(finalA.json.state_json.settings['2:page:0'].fontSize, 12);
     assert.equal(finalA.json.state_json.settings.tableStyles.personal.width, 222);
+    assert.equal(finalA.json.state_json.settings.quizFieldOverrides['42'].fields.C, 'User A personal quiz answer');
+    assert.equal(finalA.json.state_json.settings.quizProgress['case:9:42-1'].reviews, 2);
     assert.equal(finalA.json.state_json.settings.imageAssets.personal.name, 'personal.png');
     assert.equal(finalB.json.state_json.docs['1'], 'master-1');
     assert.equal(finalB.json.state_json.docs['2'], 'master-2');
     assert.equal(finalB.json.state_json.settings['2:page:0'], undefined);
     assert.equal(finalB.json.state_json.settings.tableStyles.personal, undefined);
+    assert.equal(finalB.json.state_json.settings.quizFieldOverrides['42'], undefined);
+    assert.equal(finalB.json.state_json.settings.quizProgress['case:9:42-1'], undefined);
     assert.equal(finalB.json.state_json.settings.imageAssets.personal, undefined);
     assert.equal(finalB.json.state_json.settings.communityPosts.post1.body, 'shared post');
 
@@ -323,6 +343,8 @@ async function main() {
     assert.deepEqual(central.docs, master.docs);
     assert.equal(central.settings['2:page:0'], undefined);
     assert.equal(central.settings.tableStyles.personal, undefined);
+    assert.equal(central.settings.quizFieldOverrides['42'], undefined);
+    assert.equal(central.settings.quizProgress['case:9:42-1'], undefined);
     assert.equal(central.settings.communityPosts.post1.body, 'shared post');
     assert.equal(overlayCount, 1);
 
