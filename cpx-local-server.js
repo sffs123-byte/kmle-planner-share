@@ -13,6 +13,8 @@ const {
   FORMAT: PERSONAL_OVERLAY_FORMAT,
   applyPersonalOverlay,
   buildPersonalOverlay,
+  findForeignMasterDocumentCopy,
+  normalizeDocumentIds,
   overlaySummary,
 } = require('./cpx-personal-overlay');
 
@@ -1654,7 +1656,16 @@ function savePersonalOverlay(boardUserId, auth, masterRow, incomingState, metada
     saveEvent: metadata.saveEvent || incomingState.saveEvent || null,
     clientBuild: metadata.clientBuild || incomingState.clientBuild || null,
     previousOverlay,
+    allowedDocIds: metadata.allowedDocIds,
   });
+  const foreignCopy = findForeignMasterDocumentCopy(masterState, overlay, metadata.allowedDocIds);
+  if (foreignCopy && !metadata.allowForeignDocumentCopy) {
+    throw Object.assign(new Error(`다른 CC 원문이 ${foreignCopy.docId}에 그대로 들어가려 해 저장을 중단했습니다. 새로고침 후 현재 CC만 다시 저장해주세요.`), {
+      statusCode: 409,
+      code: 'foreign_personal_overlay_document_copy',
+      foreignCopy,
+    });
+  }
   const summary = overlaySummary(overlay);
   const conflict = !metadata.force && personalOverlaySessionConflict(current, metadata, summary);
   if (conflict) {
@@ -2653,6 +2664,7 @@ const server = http.createServer(async (req, res) => {
           clientBuild: state.clientBuild,
           clientSessionId,
           baseOverlayUpdatedAt,
+          allowedDocIds: [docId],
           force: !!body.force,
         });
         const event = { user_id: userId, state_version: stateVersion, updated_by: updatedBy, updated_by_user_id: auth.userId, updated_by_session_id: clientSessionId || null, updated_at: updatedAt, doc_id: docId, scope: 'personal_doc_patch', merge_mode: merged.mode, personalized: true, audience_user_id: auth.userId };
@@ -2696,6 +2708,13 @@ const server = http.createServer(async (req, res) => {
       const clientSessionId = normalizeClientSessionId(body.client_session_id ?? body.clientSessionId ?? state.saveEvent?.clientSessionId ?? state.saveEvent?.client_session_id);
       const baseOverlayUpdatedAt = String(body.base_overlay_updated_at ?? body.baseOverlayUpdatedAt ?? '').trim();
       const eventDocId = state?.saveEvent?.docId == null ? '' : String(state.saveEvent.docId);
+      const personalOverlayDocIds = normalizeDocumentIds(
+        eventDocId,
+        body.doc_patch_ids,
+        body.docPatchIds,
+        state.doc_patch_ids,
+        state.docPatchIds
+      );
       const personalized = isPersonalizedA4Board(userId);
       if (eventDocId && !personalized) {
         const blockers = docEditBlockers(userId, eventDocId, auth.userId);
@@ -2744,6 +2763,7 @@ const server = http.createServer(async (req, res) => {
           clientBuild: state.clientBuild,
           clientSessionId,
           baseOverlayUpdatedAt,
+          allowedDocIds: personalOverlayDocIds,
           force: !!body.force,
         });
         const event = {
@@ -2791,7 +2811,11 @@ const server = http.createServer(async (req, res) => {
     return serveStatic(req, res, url);
   } catch (err) {
     const status = err.statusCode || 500;
-    return json(res, status, { error: err.message || String(err) });
+    return json(res, status, {
+      error: err.message || String(err),
+      ...(err.code ? { code: err.code } : {}),
+      ...(err.foreignCopy ? { foreign_copy: err.foreignCopy } : {}),
+    });
   }
 });
 

@@ -20,6 +20,21 @@ function hasOwn(value, key) {
   return Object.prototype.hasOwnProperty.call(value, key);
 }
 
+function normalizeDocumentIds(...values) {
+  const ids = [];
+  const add = value => {
+    if (Array.isArray(value)) {
+      value.forEach(add);
+      return;
+    }
+    if (value == null) return;
+    const id = String(value).trim();
+    if (id && !ids.includes(id)) ids.push(id);
+  };
+  values.forEach(add);
+  return ids;
+}
+
 function buildCollectionPatch(masterValue, incomingValue) {
   const master = object(masterValue);
   const incoming = object(incomingValue);
@@ -45,10 +60,14 @@ function buildPersonalOverlay(masterState, incomingState, metadata = {}) {
   const incomingDocs = object(incoming.docs);
   const masterSettings = object(master.settings);
   const incomingSettings = object(incoming.settings);
-  const docs = {};
+  const docs = { ...object(previousOverlay.docs) };
+  const allowedDocIds = normalizeDocumentIds(metadata.allowedDocIds);
 
-  for (const [docId, text] of Object.entries(incomingDocs)) {
-    if (!hasOwn(masterDocs, docId) || String(text ?? '') !== String(masterDocs[docId] ?? '')) docs[docId] = String(text ?? '');
+  for (const docId of allowedDocIds) {
+    if (!hasOwn(incomingDocs, docId)) continue;
+    const text = String(incomingDocs[docId] ?? '');
+    if (!hasOwn(masterDocs, docId) || text !== String(masterDocs[docId] ?? '')) docs[docId] = text;
+    else delete docs[docId];
   }
 
   const settingValues = {};
@@ -86,6 +105,23 @@ function buildPersonalOverlay(masterState, incomingState, metadata = {}) {
     saveEvent: metadata.saveEvent || incoming.saveEvent || null,
     clientBuild: metadata.clientBuild || incoming.clientBuild || null,
   };
+}
+
+function findForeignMasterDocumentCopy(masterState, overlayValue, docIds = []) {
+  const masterDocs = object(object(masterState).docs);
+  const overlayDocs = object(object(overlayValue).docs);
+  const ids = normalizeDocumentIds(docIds);
+  for (const docId of ids) {
+    if (!hasOwn(overlayDocs, docId)) continue;
+    const text = String(overlayDocs[docId] ?? '');
+    if (text.length < 1024) continue;
+    for (const [masterDocId, masterText] of Object.entries(masterDocs)) {
+      if (String(masterDocId) !== String(docId) && text === String(masterText ?? '')) {
+        return { docId: String(docId), masterDocId: String(masterDocId), length: text.length };
+      }
+    }
+  }
+  return null;
 }
 
 function applyPersonalOverlay(masterState, overlayValue) {
@@ -141,7 +177,9 @@ module.exports = {
   FORMAT,
   SHARED_SETTING_KEYS,
   COLLECTION_SETTING_KEYS,
+  normalizeDocumentIds,
   applyPersonalOverlay,
   buildPersonalOverlay,
+  findForeignMasterDocumentCopy,
   overlaySummary,
 };

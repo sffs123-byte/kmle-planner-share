@@ -4,6 +4,7 @@
     { "source": "/memo", "destination": "/index.html" },
     { "source": "/casebook", "destination": "/index.html" },
     { "source": "/cpx_cloud", "destination": "/index.html" },
-    { "source": "/ppi", "destination": "/index.html" }
+    { "source": "/ppi", "destination": "/index.html" },
+    { "source": "/bugs", "destination": "/index.html" }
   ]
 }

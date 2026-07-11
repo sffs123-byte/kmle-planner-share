@@ -2,6 +2,7 @@ const { chromium } = require('playwright');
 
 const files = ['index.html', 'cpx-a4-editor-local.html'];
 const widths = [320, 390];
+const baseUrl = String(process.env.CPX_BASE_URL || 'http://127.0.0.1:8766').replace(/\/$/, '');
 
 function overlap(a, b) {
   return Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left)) > 0
@@ -15,7 +16,7 @@ function overlap(a, b) {
     for (const file of files) {
       for (const width of widths) {
         const page = await browser.newPage({ viewport: { width, height: 844 }, isMobile: true, hasTouch: true });
-        await page.goto(`http://127.0.0.1:8766/${file}`, { waitUntil: 'domcontentloaded' });
+        await page.goto(`${baseUrl}/${file}`, { waitUntil: 'domcontentloaded' });
         await page.evaluate(() => {
           document.body.classList.add('mobile-capable', 'mobile-read-mode');
           document.body.dataset.activeView = 'home';
@@ -68,7 +69,7 @@ function overlap(a, b) {
         await page.close();
       }
       const desktop = await browser.newPage({ viewport: { width: 1024, height: 768 } });
-      await desktop.goto(`http://127.0.0.1:8766/${file}`, { waitUntil: 'domcontentloaded' });
+      await desktop.goto(`${baseUrl}/${file}`, { waitUntil: 'domcontentloaded' });
       await desktop.evaluate(() => {
         document.body.classList.remove('mobile-capable', 'mobile-read-mode');
         document.body.dataset.activeView = 'home';

@@ -73,10 +73,14 @@ async function prepareReference(page, kind) {
     const item = referenceManifest?.items?.['1'] || null;
     if (!item) throw new Error('reference manifest item 1 missing');
     current = { id: '1', title: '급성 복통' };
+    const source = docs['1'] || seed.docs?.['1'] || '';
+    const textarea = document.querySelector('#sourceText');
+    if (textarea) textarea.value = source;
     document.querySelector('#home')?.classList.add('hidden');
     document.querySelector('#work')?.classList.remove('hidden');
     document.body.dataset.activeView = 'work';
     document.body.classList.add('view-mode');
+    renderDoc();
     applyMobileMode();
     const shell = referenceShell();
     shell.dataset.refType = requestedKind;
@@ -95,6 +99,12 @@ async function prepareReference(page, kind) {
       await new Promise(resolve => setTimeout(resolve, 50));
     }
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    const main = shell.querySelector('.doc-wrap');
+    const mainPapers = [...main.querySelectorAll(':scope > .paper')];
+    main.scrollTop = main.scrollHeight;
+    await new Promise(resolve => requestAnimationFrame(resolve));
+    const mainRect = main.getBoundingClientRect();
+    const lastMainRect = mainPapers.at(-1)?.getBoundingClientRect();
     const frame = body.querySelector('iframe[data-ref-pdf-path]');
     const images = [...body.querySelectorAll('.reference-page img')];
     body.scrollTop = body.scrollHeight;
@@ -109,6 +119,16 @@ async function prepareReference(page, kind) {
     return {
       enabled: referenceViewportEnabled(),
       mobileRead: document.body.classList.contains('mobile-read-mode'),
+      main: {
+        overflowY: getComputedStyle(main).overflowY,
+        touchAction: getComputedStyle(main).touchAction,
+        clientHeight: main.clientHeight,
+        scrollHeight: main.scrollHeight,
+        scrollTop: main.scrollTop,
+        paperCount: mainPapers.length,
+        canReachBottom: main.scrollHeight <= main.clientHeight + main.scrollTop + 2,
+        lastVisibleAtMax: !!lastMainRect && lastMainRect.bottom <= mainRect.bottom + 2,
+      },
       pdfFrame: !!frame,
       imageCount: images.length,
       canvasPageCount: body.querySelectorAll('.reference-pdf-canvas-page').length,
@@ -160,6 +180,9 @@ async function prepareReference(page, kind) {
               throw new Error(`${engineName} ${file} iPad multi-page A4 bottom is clipped: ${JSON.stringify(multiPageDoc)}`);
             }
             for (const [kind, state] of Object.entries(reference)) {
+              if (!state.main.canReachBottom || !state.main.lastVisibleAtMax || state.main.overflowY === 'hidden' || state.main.touchAction !== 'pan-y') {
+                throw new Error(`${engineName} ${file} iPad main A4 comparison scroll failed: ${JSON.stringify(state.main)}`);
+              }
               if (state.pdfFrame || state.canvasPageCount < 2 || !state.canReachBottom || !state.lastCanvasRendered) {
                 throw new Error(`${engineName} ${file} iPad ${kind} scroll failed: ${JSON.stringify(state)}`);
               }

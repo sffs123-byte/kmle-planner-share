@@ -13,11 +13,31 @@
     error: '',
     selected: new Set(),
     dragging: false,
+    root: null,
+    mode: '',
   };
   const AUTH_WAIT_MS = 5000;
   const AUTH_WAIT_INTERVAL_MS = 120;
+  const CLOUD_FETCH_TIMEOUT_MS = 10000;
+  let loadRequestId = 0;
 
   function byId(id) { return document.getElementById(id); }
+  function activeRoot() {
+    return state.root && document.documentElement.contains(state.root) ? state.root : null;
+  }
+  function cloudEl(id) {
+    const root = activeRoot();
+    return root ? root.querySelector(`#${id}`) : byId(id);
+  }
+  function setActiveRoot(root, mode) {
+    if (!root) return;
+    state.root = root;
+    state.mode = mode || '';
+  }
+  function cloudPageVisible() {
+    const page = byId('cloudPage');
+    return !!(page && !page.classList.contains('hidden'));
+  }
   function esc(value) {
     return String(value ?? '').replace(/[&<>"']/g, ch => ({
       '&': '&amp;',
@@ -90,10 +110,10 @@
     return new Promise(resolve => setTimeout(resolve, ms));
   }
   function renderCloudMessage(title, body) {
-    const list = byId('cpxCloudList');
-    const usage = byId('cpxCloudUsage');
-    const sub = byId('cpxCloudSub');
-    const fill = byId('cpxCloudFill');
+    const list = cloudEl('cpxCloudList');
+    const usage = cloudEl('cpxCloudUsage');
+    const sub = cloudEl('cpxCloudSub');
+    const fill = cloudEl('cpxCloudFill');
     if (fill) fill.style.width = '0%';
     if (usage) usage.textContent = title;
     if (sub) sub.textContent = body || title;
@@ -167,19 +187,50 @@
   function bindCloudControls(root, mode) {
     if (!root || root.dataset.cloudBound === '1') return;
     root.dataset.cloudBound = '1';
-    byId('cpxCloudClose')?.addEventListener('click', closeCloud);
-    byId('cpxCloudRetry')?.addEventListener('click', () => loadCloud(state.path || '/', { skipEnsure: mode === 'page' }));
-    byId('cpxCloudDownloadSelected')?.addEventListener('click', downloadSelected);
-    byId('cpxCloudMoveSelected')?.addEventListener('click', moveSelected);
-    byId('cpxCloudClearSelection')?.addEventListener('click', clearSelection);
-    byId('cpxCloudNewFolder')?.addEventListener('click', createFolder);
-    byId('cpxCloudUpload')?.addEventListener('click', () => byId('cpxCloudFileInput')?.click());
-    byId('cpxCloudFileInput')?.addEventListener('change', uploadSelectedFiles);
+    const find = id => root.querySelector(`#${id}`);
+    find('cpxCloudClose')?.addEventListener('click', closeCloud);
+    find('cpxCloudRetry')?.addEventListener('click', () => {
+      setActiveRoot(root, mode);
+      void loadCloud(state.path || '/', { skipEnsure: mode === 'page' });
+    });
+    find('cpxCloudDownloadSelected')?.addEventListener('click', () => {
+      setActiveRoot(root, mode);
+      downloadSelected();
+    });
+    find('cpxCloudMoveSelected')?.addEventListener('click', () => {
+      setActiveRoot(root, mode);
+      moveSelected();
+    });
+    find('cpxCloudClearSelection')?.addEventListener('click', () => {
+      setActiveRoot(root, mode);
+      clearSelection();
+    });
+    find('cpxCloudNewFolder')?.addEventListener('click', () => {
+      setActiveRoot(root, mode);
+      createFolder();
+    });
+    find('cpxCloudUpload')?.addEventListener('click', () => find('cpxCloudFileInput')?.click());
+    find('cpxCloudFileInput')?.addEventListener('change', event => {
+      setActiveRoot(root, mode);
+      uploadSelectedFiles(event);
+    });
     const win = root.querySelector('.cpxCloudWindow') || root;
-    win.addEventListener('dragenter', handleDragOver);
-    win.addEventListener('dragover', handleDragOver);
-    win.addEventListener('dragleave', handleDragLeave);
-    win.addEventListener('drop', handleDrop);
+    win.addEventListener('dragenter', event => {
+      setActiveRoot(root, mode);
+      handleDragOver(event);
+    });
+    win.addEventListener('dragover', event => {
+      setActiveRoot(root, mode);
+      handleDragOver(event);
+    });
+    win.addEventListener('dragleave', event => {
+      setActiveRoot(root, mode);
+      handleDragLeave(event);
+    });
+    win.addEventListener('drop', event => {
+      setActiveRoot(root, mode);
+      handleDrop(event);
+    });
   }
 
   function ensureModal() {
@@ -225,7 +276,9 @@
     if (nav) {
       if (nav.dataset.cloudBound !== '1') {
         nav.dataset.cloudBound = '1';
-        nav.addEventListener('click', openCloud);
+        if (!nav.getAttribute('onclick')) {
+          nav.addEventListener('click', typeof window.showCloudWorkspace === 'function' ? navigateCloudPage : openCloud);
+        }
       }
       return;
     }
@@ -246,9 +299,9 @@
 
   function renderStatus() {
     const status = state.status || {};
-    const fill = byId('cpxCloudFill');
-    const usage = byId('cpxCloudUsage');
-    const sub = byId('cpxCloudSub');
+    const fill = cloudEl('cpxCloudFill');
+    const usage = cloudEl('cpxCloudUsage');
+    const sub = cloudEl('cpxCloudSub');
     if (!fill || !usage || !sub) return;
     const capacity = Number(status.capacityBytes || 0);
     const used = Number(status.usedBytes || 0);
@@ -270,7 +323,7 @@
   }
 
   function renderCrumbs() {
-    const el = byId('cpxCloudCrumbs');
+    const el = cloudEl('cpxCloudCrumbs');
     if (!el) return;
     const parts = String(state.path || '/').split('/').filter(Boolean);
     let acc = '';
@@ -306,9 +359,9 @@
   }
   function renderSelectionControls() {
     const paths = visibleSelectedPaths();
-    const dl = byId('cpxCloudDownloadSelected');
-    const move = byId('cpxCloudMoveSelected');
-    const clear = byId('cpxCloudClearSelection');
+    const dl = cloudEl('cpxCloudDownloadSelected');
+    const move = cloudEl('cpxCloudMoveSelected');
+    const clear = cloudEl('cpxCloudClearSelection');
     if (!dl || !move || !clear) return;
     dl.classList.toggle('cpxCloudHidden', !paths.length);
     move.classList.toggle('cpxCloudHidden', !paths.length);
@@ -328,7 +381,7 @@
   }
 
   function renderList() {
-    const list = byId('cpxCloudList');
+    const list = cloudEl('cpxCloudList');
     if (!list) return;
     pruneSelection();
     if (state.error) {
@@ -384,27 +437,59 @@
     document.querySelectorAll('.cpxCloudWindow').forEach(win => win.classList.toggle('isDragging', state.dragging));
   }
 
+  function prepareSurfaceForLoad(opts) {
+    const options = opts || {};
+    if (options.skipEnsure) return;
+    if (state.mode === 'page' || cloudPageVisible()) {
+      const page = ensurePage();
+      if (page) {
+        setActiveRoot(page, 'page');
+        return;
+      }
+    }
+    const modal = ensureModal();
+    setActiveRoot(modal, 'modal');
+  }
+
   async function requestJson(path, options) {
-    const response = await fetch(apiPath(path), {
-      ...options,
-      headers: apiHeaders(options && options.headers ? options.headers : {}),
-    });
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
-    return data;
+    const fetchOptions = { ...(options || {}) };
+    const timeoutMs = Number(fetchOptions.timeoutMs || CLOUD_FETCH_TIMEOUT_MS);
+    delete fetchOptions.timeoutMs;
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const response = await fetch(apiPath(path), {
+        ...fetchOptions,
+        signal: fetchOptions.signal || controller.signal,
+        headers: apiHeaders(fetchOptions.headers || {}),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
+      return data;
+    } catch (error) {
+      if (error?.name === 'AbortError') {
+        throw new Error('클라우드 연결 시간이 초과되었습니다. 다시 불러오기를 눌러주세요.');
+      }
+      throw error;
+    } finally {
+      clearTimeout(timer);
+    }
   }
 
   async function loadCloud(path, opts) {
-    if (!opts || !opts.skipEnsure) ensureModal();
+    const requestId = ++loadRequestId;
+    prepareSurfaceForLoad(opts);
     state.busy = true;
     state.error = '';
     try {
       const data = await requestJson(`/api/cloud/list?path=${encodeURIComponent(path || '/')}`);
+      if (requestId !== loadRequestId) return;
       state.path = data.path || path || '/';
       state.entries = data.entries || [];
       state.status = data.status || null;
       pruneSelection();
     } catch (error) {
+      if (requestId !== loadRequestId) return;
       state.entries = [];
       state.error = error.message || String(error);
       try {
@@ -413,13 +498,19 @@
         state.status = { mounted: false, capacityBytes: 300 * 1024 * 1024 * 1024, maxFileBytes: 200 * 1024 * 1024, seedFolders: [] };
       }
     } finally {
+      if (requestId !== loadRequestId) return;
       state.busy = false;
       renderAll();
     }
   }
 
   async function openCloud() {
+    if (cloudPageVisible() && byId(PAGE_MOUNT_ID)) {
+      await openCloudPage();
+      return;
+    }
     const modal = ensureModal();
+    setActiveRoot(modal, 'modal');
     modal.classList.remove('hidden');
     renderCloudMessage('클라우드 연결 준비 중', '잠시만 기다려주세요.');
     if (!await waitForTokenReady()) {
@@ -432,10 +523,12 @@
   }
 
   async function openCloudPage() {
-    if (!ensurePage()) {
+    const page = ensurePage();
+    if (!page) {
       openCloud();
       return;
     }
+    setActiveRoot(page, 'page');
     renderCloudMessage('클라우드 연결 준비 중', '잠시만 기다려주세요.');
     if (!await waitForTokenReady()) {
       renderCloudMessage('로그인 확인 필요', '홈 화면에서 로그인 상태가 확인되면 다시 불러오기를 눌러주세요. 계속 비어 있으면 페이지를 새로고침해주세요.');
@@ -448,6 +541,10 @@
 
   function closeCloud() {
     byId(MODAL_ID)?.classList.add('hidden');
+    if (state.mode === 'modal') {
+      state.root = null;
+      state.mode = '';
+    }
   }
 
   async function createFolder() {
