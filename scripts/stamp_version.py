@@ -33,9 +33,10 @@ def stamp_repo(repo_dir: Path) -> tuple[str, str]:
         index_text,
         count=1,
     )
-    if app_count != 1 or label_count != 1:
-        raise RuntimeError('index.html version markers not found exactly once')
-    index_path.write_text(index_text, encoding='utf-8')
+    if (app_count, label_count) == (1, 1):
+        index_path.write_text(index_text, encoding='utf-8')
+    elif (app_count, label_count) != (0, 0):
+        raise RuntimeError('index.html version markers must both be present exactly once or both be absent')
 
     service_worker_text = service_worker_path.read_text(encoding='utf-8')
     service_worker_text, sw_count = re.subn(
