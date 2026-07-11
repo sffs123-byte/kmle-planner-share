@@ -3467,4 +3467,118 @@ body.history-compare-onepage-pdf .history-subcell{font-size:8px!important;line-h
 body[data-active-view="cloudPage"] .cloud-head-actions{margin-right:136px}
 @media(max-width:760px){body[data-active-view="cloudPage"] .cloud-head-actions{margin-right:54px}}
 </style>
+<style id="cpx-mobile-memo-navigator-style">
+.mobile-memo-navigator,.mobile-memo-sheet{display:none}
+@media(max-width:760px){
+  .community-page.memo-mode{padding:8px;background:#f4f7fb}
+  .community-page.memo-mode .community-shell{border-radius:20px;overflow:visible}
+  .community-page.memo-mode .community-page-head{position:relative;display:flex;padding:10px 12px;border-radius:20px 20px 0 0;background:#fff}
+  .community-page.memo-mode .community-page-head .community-title,.community-page.memo-mode .community-head-actions,.community-page.memo-mode .community-topbar,.community-page.memo-mode .community-stats,.community-page.memo-mode .community-sidebar,.community-page.memo-mode .community-feed-head{display:none!important}
+  .community-page.memo-mode .community-back{min-height:40px;padding:8px 11px}
+  .mobile-memo-navigator{position:sticky;top:0;z-index:32;display:grid;gap:8px;padding:10px 12px 12px;border-top:1px solid #edf2f8;border-bottom:1px solid #dbe4f1;background:rgba(255,255,255,.97);box-shadow:0 10px 24px rgba(37,74,145,.08)}
+  .mobile-memo-stepper{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:8px;align-items:stretch}
+  .mobile-memo-step,.mobile-memo-current,.mobile-memo-tab{appearance:none;border:1px solid #d5e0ef;background:#fff;color:#17355f;min-height:44px;border-radius:14px;font-weight:950;cursor:pointer}
+  .mobile-memo-step{font-size:20px;line-height:1}.mobile-memo-step:disabled{opacity:.32;cursor:default}
+  .mobile-memo-current{min-width:0;padding:7px 10px;text-align:left;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
+  .mobile-memo-current-copy{min-width:0}.mobile-memo-current-title{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;letter-spacing:-.025em}.mobile-memo-current-meta{display:block;margin-top:2px;color:#718096;font-size:10px;font-weight:850}.mobile-memo-current-chevron{font-size:13px;color:#31598e}
+  .mobile-memo-tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:4px;border-radius:15px;background:#edf2f8}
+  .mobile-memo-tab{min-height:40px;border:0;background:transparent;color:#65748a;box-shadow:none}.mobile-memo-tab.active{background:#fff;color:#17355f;box-shadow:0 4px 12px rgba(37,74,145,.10)}
+  .community-page.memo-mode .community-layout{display:block!important;min-height:0!important;height:auto!important}
+  .community-page.memo-mode .community-main,.community-page.memo-mode .community-detail{border:0!important;padding:12px!important;max-height:none!important;background:#f7f9fc}
+  .community-page.memo-mode.mobile-memo-tab-memo .community-detail{display:none!important}
+  .community-page.memo-mode.mobile-memo-tab-feed .community-main{display:none!important}
+  .community-page.memo-mode.mobile-memo-tab-feed .community-detail{display:flex!important;min-height:calc(100dvh - 190px);flex-direction:column}
+  .community-page.memo-mode .memo-card{min-height:calc(100dvh - 190px);border-radius:20px;box-shadow:none}
+  .community-page.memo-mode .memo-card-head{position:static;padding:14px 14px 11px}
+  .community-page.memo-mode .memo-card-head h2{font-size:24px}.community-page.memo-mode .memo-card-head-actions{width:100%;justify-content:space-between}
+  .community-page.memo-mode .memo-editor{min-height:calc(100dvh - 390px);padding:16px;font-size:14px}
+  .community-page.memo-mode .memo-chat-head{margin-bottom:10px}.community-page.memo-mode .memo-chat-scroll{min-height:180px;max-height:none;overflow:visible}
+  .community-page.memo-mode .memo-chat-composer{bottom:0;padding:10px 0 calc(4px + env(safe-area-inset-bottom));background:#f7f9fc}
+  .mobile-memo-sheet.open{position:fixed;inset:0;z-index:2147483000;display:grid;align-items:end}
+  .mobile-memo-sheet-backdrop{position:absolute;inset:0;border:0;background:rgba(15,23,42,.48)}
+  .mobile-memo-sheet-panel{position:relative;z-index:1;display:flex;flex-direction:column;width:100%;max-height:min(72dvh,680px);padding:14px 14px calc(14px + env(safe-area-inset-bottom));border-radius:24px 24px 0 0;background:#f8fafc;box-shadow:0 -24px 70px rgba(15,23,42,.24)}
+  .mobile-memo-sheet-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.mobile-memo-sheet-head h2{margin:0;font-size:20px;letter-spacing:-.035em;color:#172033}.mobile-memo-sheet-close{appearance:none;width:44px;height:44px;border:1px solid #d7e0ec;border-radius:50%;background:#fff;color:#26364f;font-size:20px;font-weight:900}
+  .mobile-memo-sheet-search{width:100%;min-height:46px;border:1px solid #cbd8e8;border-radius:15px;background:#fff;padding:11px 13px;font-size:16px;outline:none}.mobile-memo-sheet-search:focus{border-color:#31598e;box-shadow:0 0 0 3px rgba(49,89,142,.13)}
+  .mobile-memo-sheet-list{display:grid;gap:7px;margin-top:10px;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+  .mobile-memo-option{appearance:none;width:100%;min-height:52px;border:1px solid #dbe4f1;border-radius:15px;background:#fff;padding:9px 11px;text-align:left;color:#243653;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}.mobile-memo-option.active{border-color:#31598e;background:#edf3ff}.mobile-memo-option strong{display:block;font-size:13px;line-height:1.25}.mobile-memo-option span{display:block;margin-top:3px;color:#718096;font-size:10px;font-weight:850}.mobile-memo-option-count{font-size:11px!important;color:#31598e!important;white-space:nowrap}
+  body.mobile-memo-sheet-open{overflow:hidden!important}
+}
+</style>
+<script id="cpx-mobile-memo-navigator">
+(()=>{
+  let mobileMemoTab='memo',mobileMemoQuery='';
+  const mobileViewport=()=>window.matchMedia('(max-width:760px)').matches;
+  const topicRows=()=>Array.isArray(seed?.topics)?seed.topics:[];
+  const currentTopic=()=>communityState?.ccId?communityTopicById(communityState.ccId):null;
+  function ensureMobileMemoUi(){
+    const page=document.getElementById('communityPage'),layout=page?.querySelector('.community-layout');
+    if(!page||!layout)return;
+    if(!document.getElementById('mobileMemoNavigator')){
+      const nav=document.createElement('section');
+      nav.id='mobileMemoNavigator';nav.className='mobile-memo-navigator';nav.setAttribute('aria-label','CC 메모 탐색');
+      nav.innerHTML=`<div class="mobile-memo-stepper"><button id="mobileMemoPrev" class="mobile-memo-step" type="button" aria-label="이전 CC">‹</button><button id="mobileMemoCurrent" class="mobile-memo-current" type="button" aria-haspopup="dialog"><span class="mobile-memo-current-copy"><strong id="mobileMemoCurrentTitle" class="mobile-memo-current-title">CC 선택</strong><small id="mobileMemoCurrentMeta" class="mobile-memo-current-meta">목록 열기</small></span><span class="mobile-memo-current-chevron">▼</span></button><button id="mobileMemoNext" class="mobile-memo-step" type="button" aria-label="다음 CC">›</button></div><div class="mobile-memo-tabs" role="tablist" aria-label="메모장과 피드"><button id="mobileMemoTabMemo" class="mobile-memo-tab active" type="button" role="tab" aria-selected="true">메모장</button><button id="mobileMemoTabFeed" class="mobile-memo-tab" type="button" role="tab" aria-selected="false">피드</button></div>`;
+      layout.parentNode.insertBefore(nav,layout);
+      nav.querySelector('#mobileMemoPrev').addEventListener('click',()=>moveMobileMemo(-1));
+      nav.querySelector('#mobileMemoNext').addEventListener('click',()=>moveMobileMemo(1));
+      nav.querySelector('#mobileMemoCurrent').addEventListener('click',openMobileMemoSheet);
+      nav.querySelector('#mobileMemoTabMemo').addEventListener('click',()=>setMobileMemoTab('memo'));
+      nav.querySelector('#mobileMemoTabFeed').addEventListener('click',()=>setMobileMemoTab('feed'));
+    }
+    if(!document.getElementById('mobileMemoSheet')){
+      const sheet=document.createElement('div');sheet.id='mobileMemoSheet';sheet.className='mobile-memo-sheet';sheet.setAttribute('aria-hidden','true');
+      sheet.innerHTML=`<button class="mobile-memo-sheet-backdrop" type="button" tabindex="-1" aria-label="선택창 닫기"></button><section class="mobile-memo-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="mobileMemoSheetTitle"><header class="mobile-memo-sheet-head"><h2 id="mobileMemoSheetTitle">CC 항목 선택</h2><button class="mobile-memo-sheet-close" type="button" aria-label="닫기">×</button></header><input id="mobileMemoSheetSearch" class="mobile-memo-sheet-search" type="search" inputmode="search" autocomplete="off" placeholder="CC 번호·제목으로 찾기"><div id="mobileMemoSheetList" class="mobile-memo-sheet-list" role="listbox"></div></section>`;
+      page.appendChild(sheet);
+      sheet.querySelector('.mobile-memo-sheet-backdrop').addEventListener('click',closeMobileMemoSheet);
+      sheet.querySelector('.mobile-memo-sheet-close').addEventListener('click',closeMobileMemoSheet);
+      sheet.querySelector('#mobileMemoSheetSearch').addEventListener('input',e=>{mobileMemoQuery=e.target.value||'';renderMobileMemoOptions()});
+    }
+  }
+  function setMobileMemoTab(tab){
+    mobileMemoTab=tab==='feed'?'feed':'memo';
+    const page=document.getElementById('communityPage');if(!page)return;
+    page.classList.toggle('mobile-memo-tab-memo',mobileMemoTab==='memo');page.classList.toggle('mobile-memo-tab-feed',mobileMemoTab==='feed');
+    const memo=document.getElementById('mobileMemoTabMemo'),feed=document.getElementById('mobileMemoTabFeed');
+    memo?.classList.toggle('active',mobileMemoTab==='memo');feed?.classList.toggle('active',mobileMemoTab==='feed');
+    memo?.setAttribute('aria-selected',String(mobileMemoTab==='memo'));feed?.setAttribute('aria-selected',String(mobileMemoTab==='feed'));
+    if(mobileViewport())page.querySelector('.community-layout')?.scrollIntoView({block:'start'});
+  }
+  function selectMobileMemo(id){
+    communityState.ccId=id?String(id):null;communityState.selectedId=null;renderCommunityPage();closeMobileMemoSheet();
+  }
+  function moveMobileMemo(delta){
+    const rows=topicRows(),idx=rows.findIndex(t=>String(t.id)===String(communityState.ccId||''));
+    const next=Math.max(0,Math.min(rows.length-1,(idx<0?0:idx+delta)));if(rows[next])selectMobileMemo(rows[next].id);
+  }
+  function renderMobileMemoOptions(){
+    const list=document.getElementById('mobileMemoSheetList');if(!list)return;
+    const q=mobileMemoQuery.trim().toLowerCase(),rows=topicRows().filter(t=>!q||[t.id,t.title,t.cat,t.group].join(' ').toLowerCase().includes(q));
+    const globalMatch=!q||'전체 공통 피드'.includes(q);
+    list.innerHTML=(globalMatch?`<button class="mobile-memo-option ${communityState.ccId?'':'active'}" type="button" role="option" aria-selected="${String(!communityState.ccId)}" data-mobile-memo-id=""><span><strong>전체/공통 피드</strong><span>모든 CC의 공통 의견</span></span><span class="mobile-memo-option-count">피드 ${communityGlobalFeedback().length}</span></button>`:'')+rows.map(t=>`<button class="mobile-memo-option ${String(communityState.ccId||'')===String(t.id)?'active':''}" type="button" role="option" aria-selected="${String(String(communityState.ccId||'')===String(t.id))}" data-mobile-memo-id="${esc(String(t.id))}"><span><strong>${esc(t.title)}</strong><span>${esc(t.cat||t.group||'CC')} · ${communityMemoSaved(t.id)?'저장됨':'기본 틀'}</span></span><span class="mobile-memo-option-count">피드 ${communityMemoFeedCount(t.id)}</span></button>`).join('');
+    list.querySelectorAll('[data-mobile-memo-id]').forEach(btn=>btn.addEventListener('click',()=>selectMobileMemo(btn.dataset.mobileMemoId||null)));
+    list.querySelector('.mobile-memo-option.active')?.scrollIntoView({block:'center'});
+  }
+  function openMobileMemoSheet(){
+    if(!mobileViewport())return;ensureMobileMemoUi();mobileMemoQuery='';
+    const sheet=document.getElementById('mobileMemoSheet'),search=document.getElementById('mobileMemoSheetSearch');if(!sheet)return;
+    sheet.classList.add('open');sheet.setAttribute('aria-hidden','false');document.body.classList.add('mobile-memo-sheet-open');if(search)search.value='';renderMobileMemoOptions();setTimeout(()=>search?.focus(),40);
+  }
+  function closeMobileMemoSheet(){const sheet=document.getElementById('mobileMemoSheet');sheet?.classList.remove('open');sheet?.setAttribute('aria-hidden','true');document.body.classList.remove('mobile-memo-sheet-open');document.getElementById('mobileMemoCurrent')?.focus()}
+  function syncMobileMemoUi(){
+    ensureMobileMemoUi();const rows=topicRows(),topic=currentTopic(),idx=topic?rows.findIndex(t=>String(t.id)===String(topic.id)):-1;
+    const title=document.getElementById('mobileMemoCurrentTitle'),meta=document.getElementById('mobileMemoCurrentMeta'),prev=document.getElementById('mobileMemoPrev'),next=document.getElementById('mobileMemoNext');
+    if(title)title.textContent=topic?topic.title:'전체/공통 피드';if(meta)meta.textContent=topic?`${idx+1} / ${rows.length} · 눌러서 항목 변경`:`공통 피드 · 눌러서 항목 변경`;
+    if(prev)prev.disabled=idx<=0;if(next)next.disabled=rows.length===0||idx===rows.length-1;
+    setMobileMemoTab(mobileMemoTab);
+  }
+  const baseRender=window.renderCommunityPage;
+  if(typeof baseRender==='function'){
+    const wrapped=function(...args){const out=baseRender.apply(this,args);syncMobileMemoUi();return out};window.renderCommunityPage=wrapped;renderCommunityPage=wrapped;
+  }
+  const baseBoard=window.openCommunityBoard;if(typeof baseBoard==='function'){const wrapped=function(...args){mobileMemoTab='memo';return baseBoard.apply(this,args)};window.openCommunityBoard=wrapped;openCommunityBoard=wrapped}
+  const basePost=window.openCommunityPost;if(typeof basePost==='function'){const wrapped=function(...args){mobileMemoTab='feed';return basePost.apply(this,args)};window.openCommunityPost=wrapped;openCommunityPost=wrapped}
+  const baseComposer=window.openCommunityComposer;if(typeof baseComposer==='function'){const wrapped=function(...args){mobileMemoTab='feed';return baseComposer.apply(this,args)};window.openCommunityComposer=wrapped;openCommunityComposer=wrapped}
+  window.addEventListener('resize',syncMobileMemoUi);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('mobileMemoSheet')?.classList.contains('open'))closeMobileMemoSheet()});
+  ensureMobileMemoUi();syncMobileMemoUi();
+})();
+</script>
 </body></html>
