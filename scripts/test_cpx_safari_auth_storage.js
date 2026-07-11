@@ -44,6 +44,18 @@ async function exercise(browser, port, file, engine) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   await context.route('**/api/**', async route => {
     const url = new URL(route.request().url());
+    if (url.pathname === '/api/events') {
+      await route.fulfill({
+        status: 200,
+        contentType: 'text/event-stream; charset=utf-8',
+        headers: {
+          'cache-control': 'no-cache',
+          connection: 'keep-alive',
+        },
+        body: ': test event stream\n\n',
+      });
+      return;
+    }
     if (url.pathname === '/api/image-asset') {
       const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=', 'base64');
       await route.fulfill({ status: 200, contentType: 'image/png', body: png });
@@ -148,8 +160,7 @@ async function exercise(browser, port, file, engine) {
   assert.equal(afterReload.token, 'safari-session-token', `${file}: session auth did not survive reload`);
   assert.equal(afterReload.gateHidden, true, `${file}: reload returned to login gate`);
   assert.equal(afterReload.homeHidden, false, `${file}: reload did not return home`);
-  const unexpectedPageErrors = pageErrors.filter(message => !/EventSource's response has a MIME type/.test(message));
-  assert.deepEqual(unexpectedPageErrors, [], `${file}: page errors`);
+  assert.deepEqual(pageErrors, [], `${file}: page errors`);
 
   await context.close();
   return { engine, file, sessionFallback: true, reload: true, compactTableStyles: true, lazyImage: true };
