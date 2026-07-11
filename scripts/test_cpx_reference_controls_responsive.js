@@ -82,6 +82,9 @@ async function prepareReference(page) {
           const panel = document.querySelector('#team4RefPanel');
           const rect = panel.getBoundingClientRect();
           const close = document.querySelector('#referenceCloseBtn');
+          const closeRect = close?.getBoundingClientRect();
+          const slider = document.querySelector('.slider-rail');
+          const sliderRect = slider?.getBoundingClientRect();
           const frame = panel.querySelector('iframe[data-ref-pdf-path]');
           const paper = document.querySelector('.doc-wrap > .paper, .doc-wrap > .ref-paper-slot > .paper');
           const slot = paper?.parentElement?.classList.contains('ref-paper-slot') ? paper.parentElement : null;
@@ -93,6 +96,8 @@ async function prepareReference(page) {
             panelPosition: getComputedStyle(panel).position,
             panelRect: { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom },
             closeDisplay: close ? getComputedStyle(close).display : 'missing',
+            closeRect: closeRect ? { left: closeRect.left, right: closeRect.right, top: closeRect.top, bottom: closeRect.bottom, width: closeRect.width, height: closeRect.height } : null,
+            sliderRect: sliderRect ? { left: sliderRect.left, right: sliderRect.right, top: sliderRect.top, bottom: sliderRect.bottom, display: getComputedStyle(slider).display } : null,
             framePath: frame?.dataset.refPdfPath || '',
             frameSrc: frame?.getAttribute('src') || '',
             viewportWidth: window.innerWidth,
@@ -123,6 +128,16 @@ async function prepareReference(page) {
         }
         if (width < 900 && opened.panelPosition !== 'fixed') {
           throw new Error(`${file} ${width}px compact reference is not a drawer: ${JSON.stringify(opened)}`);
+        }
+        if (!opened.closeRect || opened.closeRect.width < 43.5 || opened.closeRect.height < 43.5) {
+          throw new Error(`${file} ${width}px reference close target is smaller than 44px: ${JSON.stringify(opened.closeRect)}`);
+        }
+        if (opened.sliderRect?.display !== 'none'
+          && opened.closeRect.right > opened.sliderRect.left
+          && opened.closeRect.left < opened.sliderRect.right
+          && opened.closeRect.bottom > opened.sliderRect.top
+          && opened.closeRect.top < opened.sliderRect.bottom) {
+          throw new Error(`${file} ${width}px reference close overlaps size controls: ${JSON.stringify({ close: opened.closeRect, slider: opened.sliderRect })}`);
         }
         if (width >= 900) {
           const before = initial.beforePaper;
