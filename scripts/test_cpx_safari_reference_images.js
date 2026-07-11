@@ -5,7 +5,8 @@ const path = require('path');
 const files = ['index.html', 'cpx-a4-editor-local.html'];
 const baseUrl = String(process.env.CPX_BASE_URL || 'http://127.0.0.1:8766').replace(/\/$/, '');
 const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'cpx-reference-manifest.json'), 'utf8'));
-const fixture = manifest.items['1'];
+const itemKey = String(process.env.CPX_REFERENCE_ITEM || '1');
+const fixture = manifest.items[itemKey];
 const expectedPages = {
   hankeut: fixture?.hankeut?.pages?.length || 0,
   checklist: fixture?.checklist?.pages?.length || 0,
@@ -13,7 +14,7 @@ const expectedPages = {
 };
 
 if (!fixture || Object.values(expectedPages).some(count => count < 2)) {
-  throw new Error(`reference item 1 is incomplete: ${JSON.stringify(expectedPages)}`);
+  throw new Error(`reference item ${itemKey} is incomplete: ${JSON.stringify(expectedPages)}`);
 }
 
 async function prepareReference(page) {
@@ -86,6 +87,11 @@ async function runEngine(engine, browserType) {
     for (const file of files) {
       const errors = [];
       const page = await browser.newPage({ viewport: { width: 1130, height: 780 } });
+      await page.route('**/api/auth/google/challenge', route => route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ challengeId: 'reference-test', nonce: 'reference-test' }),
+      }));
       page.on('pageerror', error => errors.push(`pageerror: ${error.message}`));
       page.on('console', message => {
         const url = message.location().url || '';
@@ -128,7 +134,7 @@ async function runEngine(engine, browserType) {
       if (errors.length) {
         throw new Error(`${engine} ${file} browser errors: ${errors.join(' | ')}`);
       }
-      console.log(`${file} ${engine} ${expectedMode} PASS (한끝 ${expectedPages.hankeut} · 체크 ${expectedPages.checklist} · 4조 ${expectedPages.team4})`);
+      console.log(`${file} ${engine} ${expectedMode} PASS (${itemKey}: 한끝 ${expectedPages.hankeut} · 체크 ${expectedPages.checklist} · 4조 ${expectedPages.team4})`);
       await page.close();
     }
   } finally {
