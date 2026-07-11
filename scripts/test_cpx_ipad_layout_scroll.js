@@ -92,8 +92,12 @@ async function prepareReference(page, kind, docId = '42') {
         paperCount: papers.length,
         papers: papers.map(paper => ({
           offsetWidth: paper.offsetWidth,
+          offsetHeight: paper.offsetHeight,
           visualWidth: paper.getBoundingClientRect().width,
+          visualHeight: paper.getBoundingClientRect().height,
           zoom: getComputedStyle(paper).zoom,
+          bodyOffsetWidth: paper.querySelector('.doc-body')?.offsetWidth || 0,
+          bodyVisualWidth: paper.querySelector('.doc-body')?.getBoundingClientRect().width || 0,
           bodyScrollHeight: paper.querySelector('.doc-body')?.scrollHeight || 0,
           bodyClientHeight: paper.querySelector('.doc-body')?.clientHeight || 0,
         })),
@@ -117,6 +121,8 @@ async function prepareReference(page, kind, docId = '42') {
       if (body?.querySelector?.('.reference-pdf-canvas-page[data-rendered="1"]')) break;
       await new Promise(resolve => setTimeout(resolve, 50));
     }
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    syncReferenceFitScale();
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     const after = layoutFingerprint();
     const main = shell.querySelector('.doc-wrap');
@@ -165,10 +171,11 @@ async function prepareReference(page, kind, docId = '42') {
 }
 
 (async () => {
+  const requestedEngines = new Set(String(process.env.CPX_ENGINES || 'chromium,webkit').split(',').map(value => value.trim()).filter(Boolean));
   const engines = [
     ['chromium', chromium],
     ['webkit', webkit],
-  ];
+  ].filter(([name]) => requestedEngines.has(name));
   for (const [engineName, engine] of engines) {
     const browser = await engine.launch({ headless: true });
     try {
@@ -205,9 +212,11 @@ async function prepareReference(page, kind, docId = '42') {
             for (const [kind, state] of Object.entries(reference)) {
               if (state.layout.before.paperCount !== state.layout.after.paperCount
                 || state.layout.after.papers.some((paper, index) => Math.abs(paper.offsetWidth - state.layout.before.papers[index].offsetWidth) > 1
-                  || Math.abs(paper.visualWidth - state.layout.before.papers[index].visualWidth) > 1
+                  || Math.abs(paper.offsetHeight - state.layout.before.papers[index].offsetHeight) > 1
                   || Math.abs(paper.bodyScrollHeight - state.layout.before.papers[index].bodyScrollHeight) > 1
-                  || paper.zoom !== '1')) {
+                  || paper.zoom !== '1'
+                  || Math.abs((paper.visualWidth / Math.max(1, paper.offsetWidth)) - (paper.bodyVisualWidth / Math.max(1, paper.bodyOffsetWidth))) > .015
+                  || paper.visualWidth > state.layout.after.wrapClientWidth + 2)) {
                 throw new Error(`${engineName} ${file} iPad A4 reflowed after opening ${kind}: ${JSON.stringify(state.layout)}`);
               }
               if (!state.main.canReachBottom || !state.main.lastVisibleAtMax || state.main.overflowY === 'hidden' || state.main.touchAction !== 'pan-y') {
