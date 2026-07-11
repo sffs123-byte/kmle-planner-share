@@ -760,7 +760,7 @@ function renderGrid(){
 }
 
 let referenceManifestPromise=null,referenceManifest=null,referenceCurrentDocId='',referenceTeam4LoadedKey='',referenceLazyObserver=null,referenceResizeTimer=null,referencePdfRefreshTimer=null,referencePdfLoadSeq=0,referenceSetupSeq=0;
-const REFERENCE_ASSET_VERSION='cpx-ref-quiz-hankeut-fix-20260709T0100KST';
+const REFERENCE_ASSET_VERSION='cpx-ref-safari-pages-20260711T1430KST';
 function referenceIsMacSafari(){const ua=String(navigator.userAgent||''),vendor=String(navigator.vendor||''),platform=String(navigator.platform||''),mac=/(?:Macintosh|Mac OS X)/i.test(ua)||/^Mac/i.test(platform),touchMac=mac&&/Macintosh/i.test(ua)&&Number(navigator.maxTouchPoints||0)>1,otherBrowser=/(?:Chrome|CriOS|Chromium|Edg|EdgiOS|OPR|OPiOS|FxiOS)/i.test(ua);return !!(mac&&!touchMac&&/AppleWebKit/i.test(ua)&&/Safari/i.test(ua)&&!otherBrowser&&/Apple/i.test(vendor))}
 function referenceViewportEnabled(){const s=viewportSize(),desktopInput=!!(window.matchMedia?.('(pointer: fine)').matches||!isCoarsePointer());return desktopInput?s.w>=560&&s.h>=420:!!(window.matchMedia&&window.matchMedia('(min-width:900px)').matches&&s.w>=s.h&&!isMobileViewport())}
 function syncReferenceViewportMode(){const s=viewportSize(),enabled=referenceViewportEnabled();document.body.classList.toggle('reference-compact-viewport',enabled&&s.w<900);return enabled}

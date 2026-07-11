@@ -87,6 +87,11 @@ async function runEngine(engine, browserType) {
     for (const file of files) {
       const errors = [];
       const page = await browser.newPage({ viewport: { width: 1130, height: 780 } });
+      await page.route(/\.pdf(?:[?#]|$)/i, route => route.fulfill({
+        status: 200,
+        contentType: 'application/pdf',
+        body: '%PDF-1.4\n%%EOF\n',
+      }));
       await page.route('**/api/auth/google/challenge', route => route.fulfill({
         status: 200,
         contentType: 'application/json',
@@ -103,6 +108,7 @@ async function runEngine(engine, browserType) {
       });
       await page.goto(`${baseUrl}/${file}?safari-reference-images=${Date.now()}`, {
         waitUntil: 'domcontentloaded',
+        timeout: 60000,
       });
       await prepareReference(page);
 
