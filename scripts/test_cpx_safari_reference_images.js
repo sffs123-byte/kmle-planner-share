@@ -1,41 +1,20 @@
 const { chromium, webkit } = require('playwright');
+const fs = require('fs');
+const path = require('path');
 
 const files = ['index.html', 'cpx-a4-editor-local.html'];
 const baseUrl = String(process.env.CPX_BASE_URL || 'http://127.0.0.1:8766').replace(/\/$/, '');
-const placeholderPage = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1190'%20height='1720'%20viewBox='0%200%201190%201720'%3E%3Crect%20width='1190'%20height='1720'%20fill='white'/%3E%3C/svg%3E";
-
-function pages(count, startBookPage = null) {
-  return Array.from({ length: count }, (_, index) => ({
-    index: index + 1,
-    image: placeholderPage,
-    pdfPage: index + 1,
-    bookPage: startBookPage == null ? undefined : startBookPage + index,
-    width: 1190,
-    height: 1720,
-  }));
-}
-
-const fixture = {
-  hankeut: {
-    title: '한끝 9쪽 시험 자료',
-    pdf: 'assets/cpx-references/hankeut/1/excerpt.pdf',
-    pages: pages(9, 74),
-    pageCount: 9,
-  },
-  checklist: {
-    title: '체크리스트 4쪽 시험 자료',
-    pdf: 'assets/cpx-references/hankeut/1/excerpt.pdf',
-    pages: pages(4),
-    pageCount: 4,
-  },
-  team4: [{
-    key: 'acute_abdominal_pain',
-    label: '4조 3쪽 시험 자료',
-    pdf: 'assets/cpx-references/team4/1/acute_abdominal_pain/source.pdf',
-    pages: pages(3),
-    pageCount: 3,
-  }],
+const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'cpx-reference-manifest.json'), 'utf8'));
+const fixture = manifest.items['1'];
+const expectedPages = {
+  hankeut: fixture?.hankeut?.pages?.length || 0,
+  checklist: fixture?.checklist?.pages?.length || 0,
+  team4: fixture?.team4?.[0]?.pages?.length || 0,
 };
+
+if (!fixture || Object.values(expectedPages).some(count => count < 2)) {
+  throw new Error(`reference item 1 is incomplete: ${JSON.stringify(expectedPages)}`);
+}
 
 async function prepareReference(page) {
   await page.evaluate((item) => {
@@ -124,10 +103,10 @@ async function runEngine(engine, browserType) {
       const expectedMode = engine === 'webkit' ? 'images' : 'iframe';
       const expectedSafari = engine === 'webkit';
       const results = [];
-      await waitForSlot(page, 'hankeut', expectedMode, 9);
+      await waitForSlot(page, 'hankeut', expectedMode, expectedPages.hankeut);
       results.push(await slotSnapshot(page, 'hankeut'));
-      results.push(await switchSlot(page, 'checklist', expectedMode, 4));
-      results.push(await switchSlot(page, 'team4', expectedMode, 3));
+      results.push(await switchSlot(page, 'checklist', expectedMode, expectedPages.checklist));
+      results.push(await switchSlot(page, 'team4', expectedMode, expectedPages.team4));
 
       for (const result of results) {
         if (result.macSafari !== expectedSafari) {
@@ -138,8 +117,8 @@ async function runEngine(engine, browserType) {
             throw new Error(`${engine} ${file} ${result.kind} native iframe changed: ${JSON.stringify(result)}`);
           }
         } else {
-          const expectedPages = result.kind === 'hankeut' ? 9 : result.kind === 'checklist' ? 4 : 3;
-          if (result.iframeCount !== 0 || result.pageCount !== expectedPages || result.eagerImages < 2
+          const expectedCount = expectedPages[result.kind];
+          if (result.iframeCount !== 0 || result.pageCount !== expectedCount || result.eagerImages < 2
             || result.zoomButtons !== 2 || !result.originalPdf.includes('.pdf') || result.scrollHeight <= result.clientHeight
             || result.scrollTop <= 0) {
             throw new Error(`${engine} ${file} ${result.kind} image stack failed: ${JSON.stringify(result)}`);
@@ -149,7 +128,7 @@ async function runEngine(engine, browserType) {
       if (errors.length) {
         throw new Error(`${engine} ${file} browser errors: ${errors.join(' | ')}`);
       }
-      console.log(`${file} ${engine} ${expectedMode} PASS (한끝 9 · 체크 4 · 4조 3)`);
+      console.log(`${file} ${engine} ${expectedMode} PASS (한끝 ${expectedPages.hankeut} · 체크 ${expectedPages.checklist} · 4조 ${expectedPages.team4})`);
       await page.close();
     }
   } finally {
