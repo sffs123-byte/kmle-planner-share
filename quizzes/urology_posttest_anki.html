@@ -1,0 +1,3926 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>비뇨의학과 포테 최신 기출 Anki</title>
+<style>
+:root {
+    --bg: #1e2030;
+    --card-bg: #232640;
+    --card-border: #363a5c;
+    --accent: #89b4fa;
+    --accent2: #7c8ec4;
+    --text: #cdd6f4;
+    --text-dim: #8892b3;
+    --green: #94e2d5;
+    --orange: #f9e2af;
+    --red: #f38ba8;
+    --blue: #89b4fa;
+    --sidebar-bg: #181a2a;
+    --sidebar-w: 260px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+    position: fixed; left: 0; top: 0; bottom: 0;
+    width: var(--sidebar-w);
+    background: var(--sidebar-bg);
+    overflow-y: auto;
+    z-index: 100;
+    border-right: 1px solid var(--card-border);
+    transition: transform 0.3s;
+    padding: 16px 0;
+}
+.sidebar.collapsed { transform: translateX(calc(-1 * var(--sidebar-w) + 40px)); }
+.sidebar.collapsed .sb-inner { opacity: 0; pointer-events: none; }
+.sb-toggle {
+    position: absolute; right: 8px; top: 8px;
+    background: var(--accent); border: none; color: #fff;
+    width: 28px; height: 28px; border-radius: 50%;
+    cursor: pointer; font-size: 14px; z-index: 101;
+}
+.sb-inner { padding: 8px 12px; transition: opacity 0.2s; }
+.sb-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--accent); }
+.sb-item {
+    padding: 6px 8px; margin: 2px 0;
+    border-radius: 6px; cursor: pointer;
+    font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    color: var(--text-dim);
+}
+.sb-item:hover { background: var(--card-border); color: var(--text); }
+
+/* Progress bar */
+.progress-wrap { margin: 12px 0; }
+.progress-bar { height: 6px; background: #333; border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--green); transition: width 0.3s; }
+.progress-label { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+
+/* Quiz start buttons */
+.sb-quiz-btns { margin-top: 16px; display:flex; flex-direction:column; gap:8px; }
+.sb-quiz-btns button {
+    padding: 10px; border: none; border-radius: 8px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    color: #fff;
+}
+.btn-review { background: var(--green); }
+.btn-reset { background: var(--accent); }
+
+/* ── Main content ── */
+.main {
+    margin-left: var(--sidebar-w);
+    padding: 24px;
+    transition: margin-left 0.3s;
+}
+.main.expanded { margin-left: 40px; }
+
+/* ── Card grid ── */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 20px;
+}
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+.card.done { opacity: 0.5; }
+.card-header {
+    padding: 14px 16px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid var(--card-border);
+}
+.card-num {
+    background: var(--accent);
+    color: #fff; font-weight: 700; font-size: 14px;
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+.card-title { font-size: 14px; font-weight: 600; flex: 1; }
+.edit-btn, .copy-btn {
+    background: none; border: none; cursor: pointer; font-size: 16px;
+    opacity: 0.5; transition: opacity 0.2s;
+}
+.edit-btn:hover, .copy-btn:hover { opacity: 1; }
+
+/* Edit toolbar (image hint) */
+.edit-toolbar {
+    display: flex; gap: 4px; padding: 5px 10px;
+    background: #dce0e8; border: 1px solid #bcc0cc;
+    border-radius: 6px; margin-bottom: 6px;
+    flex-wrap: wrap; align-items: center;
+}
+.edit-toolbar span { font-size: 11px; color: #6c6f85; }
+
+/* Contenteditable active state */
+.answer-area[contenteditable="true"],
+.answer-area .editing {
+    outline: 2px dashed #1e66f5 !important;
+    border-radius: 4px;
+}
+.card-body { padding: 12px 16px; }
+
+/* Toggle buttons */
+.toggle-btn {
+    display: block; width: 100%;
+    padding: 10px; margin: 6px 0;
+    background: var(--card-border); border: none; border-radius: 8px;
+    color: var(--text); font-size: 13px; cursor: pointer;
+    text-align: center;
+}
+.toggle-btn:hover { background: #2e3358; }
+.guide-btn { background: #2a3050; }
+
+/* Answer area */
+.answer-area {
+    background: #eff1f5;
+    color: #4c4f69;
+    border-radius: 8px; padding: 14px; margin: 8px 0;
+    font-size: 13px; line-height: 1.7;
+}
+.answer-area table {
+    width: 100%; border-collapse: collapse; margin: 8px 0;
+}
+.answer-area th, .answer-area td {
+    border: 1px solid #bcc0cc; padding: 6px 8px; font-size: 12px; text-align: left;
+    color: #4c4f69;
+}
+.answer-area th { background: #dce0e8; font-weight: 600; color: #4c4f69; }
+.answer-area h4 { color: #1e66f5; margin: 10px 0 6px; font-size: 14px; }
+.answer-area h5 { color: #df8e1d; margin: 8px 0 4px; font-size: 13px; }
+.answer-area b { color: #333; }
+.answer-area img { max-width: 100%; border-radius: 6px; }
+
+/* Guide area */
+.guide-area {
+    background: #171928;
+    border-radius: 8px; padding: 10px; margin: 8px 0;
+}
+.guide-area img { max-width: 100%; border-radius: 6px; }
+
+/* Done button */
+.done-btn {
+    display: inline-block;
+    padding: 6px 16px; margin-top: 8px;
+    background: transparent; border: 2px solid var(--green);
+    border-radius: 20px; color: var(--green);
+    font-size: 13px; cursor: pointer;
+}
+.done-btn.checked { background: var(--green); color: #fff; }
+
+/* Save button */
+.save-btn {
+    display: block; margin: 8px auto 0;
+    padding: 8px 24px; background: var(--green);
+    border: none; border-radius: 8px;
+    color: #fff; font-size: 14px; cursor: pointer;
+}
+
+/* ── Quiz Mode ── */
+.quiz-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: var(--bg);
+    z-index: 200;
+    overflow-y: auto;
+}
+.quiz-overlay.active { display: flex; flex-direction: column; }
+.quiz-header {
+    position: sticky; top: 0;
+    background: var(--sidebar-bg);
+    padding: 12px 20px;
+    display: flex; align-items: center; gap: 16px;
+    border-bottom: 1px solid var(--card-border);
+    flex-wrap: wrap;
+    z-index: 201;
+}
+.quiz-header .stat { font-size: 14px; }
+.quiz-header .back-btn {
+    background: var(--accent); border: none; color: #fff;
+    padding: 6px 14px; border-radius: 6px; cursor: pointer;
+    font-size: 13px;
+}
+.quiz-card {
+    max-width: 800px; width: 100%;
+    margin: 40px auto; padding: 24px;
+}
+.quiz-q {
+    font-size: 20px; font-weight: 700;
+    margin-bottom: 20px;
+    display: flex; flex-direction: column; gap: 12px;
+}
+.quiz-q-top {
+    display: flex; align-items: center; gap: 8px; width: 100%;
+}
+.quiz-q-actions { margin-left: auto; display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.quiz-q-text { width: 100%; line-height: 1.62; overflow-wrap: anywhere; }
+.quiz-q .card-num { width: 40px; height: 40px; font-size: 18px; }
+.quiz-answer {
+    background: #eff1f5; color: #4c4f69; border-radius: 12px; padding: 20px;
+    font-size: 14px; line-height: 1.8;
+    display: none;
+}
+.quiz-answer.visible { display: block; }
+.quiz-answer table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+.quiz-answer th, .quiz-answer td { border: 1px solid #bcc0cc; padding: 6px 8px; font-size: 12px; text-align: left; color: #4c4f69; }
+.quiz-answer th { background: #dce0e8; font-weight: 600; color: #4c4f69; }
+.quiz-answer h4 { color: #1e66f5; margin: 10px 0 6px; }
+.quiz-answer h5 { color: #df8e1d; margin: 8px 0 4px; }
+.quiz-answer b { color: #333; }
+.quiz-answer img { max-width: 100%; border-radius: 6px; }
+.quiz-guide {
+    margin-top: 16px;
+    max-height: 50vh;
+    overflow-y: auto;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 8px;
+}
+.quiz-guide img { max-width: 100%; border-radius: 6px; }
+
+.quiz-answer .rating-btns {
+    position: sticky;
+    bottom: 0;
+    background: #eff1f5;
+    padding: 16px 0 8px;
+    z-index: 10;
+}
+
+.show-answer-btn {
+    display: block; margin: 20px auto;
+    padding: 14px 40px; background: var(--accent);
+    border: none; border-radius: 10px;
+    color: #fff; font-size: 16px; font-weight: 600;
+    cursor: pointer;
+}
+
+.self-grade-box {
+    margin: 18px 0 10px;
+    padding: 16px;
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    background: rgba(30, 30, 46, 0.7);
+}
+.self-grade-label {
+    display: flex; justify-content: space-between; align-items: center; gap: 10px;
+    color: var(--text); font-weight: 700; font-size: 14px; margin-bottom: 8px;
+}
+.self-grade-label small { color: var(--text-dim); font-weight: 500; }
+.self-answer-input {
+    width: 100%; min-height: 130px; resize: vertical;
+    border: 1px solid var(--card-border); border-radius: 12px;
+    background: #eff1f5; color: #4c4f69;
+    padding: 12px 14px; font-size: 15px; line-height: 1.7;
+    font-family: inherit;
+}
+.self-answer-input:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+.self-grade-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.self-grade-actions button {
+    border: none; border-radius: 9px; padding: 9px 13px;
+    font-size: 13px; font-weight: 700; cursor: pointer;
+}
+.grade-btn { background: var(--accent); color: #fff; }
+.grade-clear-btn { background: transparent; color: var(--text-dim); border: 1px solid var(--card-border) !important; }
+.grade-result {
+    display: none; margin-top: 12px; padding: 12px 14px;
+    border-radius: 12px; background: #eff1f5; color: #4c4f69;
+    font-size: 13px; line-height: 1.65;
+}
+.grade-result.visible { display: block; }
+.grade-result.good { border-left: 5px solid #40a02b; }
+.grade-result.partial { border-left: 5px solid #df8e1d; }
+.grade-result.weak { border-left: 5px solid #d20f39; }
+.grade-result h4 { margin: 0 0 6px; color: #1e66f5; font-size: 15px; }
+.grade-result ul { margin: 6px 0 0 18px; padding: 0; }
+.grade-result .muted { color: #6c6f85; font-size: 12px; margin-top: 8px; }
+
+/* Rating buttons */
+.rating-btns {
+    display: flex; gap: 10px; justify-content: center;
+    margin-top: 20px; flex-wrap: wrap;
+}
+.rating-btns button {
+    padding: 10px 20px; border: none; border-radius: 8px;
+    font-size: 14px; font-weight: 600; cursor: pointer; color: #fff;
+    min-width: 100px;
+}
+.btn-again { background: #f38ba8; color: #1e2030; }
+.btn-hard { background: #f9e2af; color: #1e2030; }
+.btn-good { background: #94e2d5; color: #1e2030; }
+.btn-master { background: #a6e3a1; color: #1e2030; }
+.btn-tomorrow { background: #89b4fa; color: #1e2030; }
+
+/* Waiting screen */
+.waiting-screen {
+    text-align: center; padding: 60px 20px;
+    font-size: 18px;
+}
+.waiting-screen .countdown { font-size: 48px; font-weight: 700; color: var(--accent); margin: 20px 0; }
+.waiting-screen button {
+    padding: 12px 30px; background: var(--orange);
+    border: none; border-radius: 8px;
+    color: #333; font-size: 16px; font-weight: 600; cursor: pointer;
+}
+
+/* Session complete */
+.session-complete {
+    text-align: center; padding: 60px 20px;
+}
+.session-complete h2 { font-size: 28px; margin-bottom: 16px; }
+.session-complete .bonus-btn {
+    margin-top: 20px; padding: 14px 30px;
+    background: var(--orange); border: none; border-radius: 8px;
+    color: #333; font-size: 16px; font-weight: 600; cursor: pointer;
+}
+
+/* Undo button */
+.undo-btn {
+    background: transparent; border: 1px solid var(--text-dim);
+    color: var(--text-dim); padding: 4px 10px; border-radius: 4px;
+    cursor: pointer; font-size: 12px;
+}
+.undo-btn:disabled { opacity: 0.3; cursor: default; }
+
+/* editing mode */
+.editing { outline: 2px dashed var(--accent) !important; min-height: 100px; }
+
+/* ── Drawing / Apple Pencil Mode ── */
+.draw-btn {
+    background: none; border: none; cursor: pointer; font-size: 16px;
+    opacity: 0.5; transition: opacity 0.2s;
+}
+.draw-btn:hover { opacity: 1; }
+
+.draw-canvas-wrap {
+    position: relative;
+    display: none;
+}
+.draw-canvas-wrap.active {
+    display: block;
+}
+.draw-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 10;
+    touch-action: none;
+    cursor: crosshair;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+.answer-area { position: relative; }
+.answer-area.draw-active {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    overflow: visible;
+}
+/* Block all selection in entire page when drawing */
+body.drawing-active {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+body.drawing-active * {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+/* Draw toolbar */
+.draw-toolbar {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    background: #dce0e8;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    border: 1px solid #bcc0cc;
+    position: relative; z-index: 20;
+}
+.draw-toolbar.active { display: flex; }
+
+.draw-toolbar .tool-btn {
+    width: 32px; height: 32px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background: #eff1f5;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.15s, background 0.15s;
+    color: #4c4f69;
+}
+.draw-toolbar .tool-btn.active {
+    border-color: #1e66f5;
+    background: #ccd0da;
+}
+.draw-toolbar .tool-btn:hover { background: #ccd0da; }
+
+.draw-toolbar .color-dot {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s;
+}
+.draw-toolbar .color-dot:hover { transform: scale(1.2); }
+.draw-toolbar .color-dot.active { border-color: #4c4f69; transform: scale(1.2); }
+
+.draw-toolbar .divider {
+    width: 1px; height: 24px;
+    background: #bcc0cc;
+    margin: 0 4px;
+}
+
+.draw-toolbar .size-slider {
+    width: 60px; height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #9ca0b0;
+    border-radius: 2px;
+    outline: none;
+}
+.draw-toolbar .size-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    background: #1e66f5;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.draw-toolbar .size-label {
+    font-size: 11px; color: #6c6f85; min-width: 28px; text-align: center;
+}
+
+.draw-toolbar .draw-undo-btn,
+.draw-toolbar .draw-redo-btn {
+    padding: 4px 8px;
+    background: #5c5f77;
+    color: #fff;
+    border: none; border-radius: 6px;
+    font-size: 11px;
+    cursor: pointer;
+    min-width: 30px;
+}
+.draw-toolbar .draw-undo-btn:disabled,
+.draw-toolbar .draw-redo-btn:disabled {
+    opacity: 0.3; cursor: default;
+}
+
+.draw-toolbar .clear-all-btn {
+    padding: 4px 10px;
+    background: #e64553;
+    color: #fff;
+    border: none; border-radius: 6px;
+    font-size: 11px; font-weight: 600;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+/* ── Image Crop Tool ── */
+.img-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 8px 0;
+}
+.img-wrapper img {
+    display: block;
+    max-width: 100%;
+    border-radius: 6px;
+}
+.crop-btn {
+    position: absolute; top: 8px; right: 8px;
+    background: rgba(30,32,48,0.85); border: 1px solid var(--accent);
+    color: var(--accent); width: 34px; height: 34px;
+    border-radius: 8px; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.2s;
+    z-index: 5;
+}
+.img-wrapper:hover .crop-btn { opacity: 1; }
+.crop-btn:hover { background: var(--accent); color: #1e2030; }
+
+.crop-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 500;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+}
+.crop-toolbar {
+    display: flex; gap: 10px; margin-bottom: 12px;
+}
+.crop-toolbar button {
+    padding: 8px 20px; border: none; border-radius: 8px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+}
+.crop-toolbar .crop-confirm { background: var(--green); color: #1e2030; }
+.crop-toolbar .crop-cancel { background: #555; color: #eee; }
+.crop-toolbar .crop-reset { background: var(--orange); color: #1e2030; }
+.crop-container {
+    position: relative;
+    max-width: 90vw; max-height: 75vh;
+    overflow: hidden;
+    cursor: crosshair;
+    border-radius: 8px;
+}
+.crop-container img {
+    display: block;
+    max-width: 90vw; max-height: 75vh;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+.crop-selection {
+    position: absolute;
+    border: 2px solid var(--accent);
+    background: rgba(137,180,250,0.15);
+    pointer-events: none;
+    display: none;
+}
+.crop-dim {
+    position: absolute; inset: 0;
+    pointer-events: none;
+}
+
+/* floating mobile toggle */
+.sb-mobile-toggle {
+    display: none;
+    position: fixed; left: 10px; top: 10px;
+    background: var(--accent); border: none; color: #fff;
+    width: 36px; height: 36px; border-radius: 50%;
+    cursor: pointer; font-size: 18px; z-index: 200;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    align-items: center; justify-content: center;
+}
+.mobile-review-start {
+    display: none;
+    position: fixed; left: 56px; top: 10px; z-index: 10050;
+    min-height: 36px; padding: 0 14px;
+    background: var(--green); border: none; color: #fff;
+    border-radius: 999px; cursor: pointer;
+    font-size: 13px; font-weight: 800;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+body.quiz-mode-active .mobile-review-start { display: none !important; }
+.review-hero {
+    margin: 0 0 20px;
+    padding: 18px 18px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(137,180,250,.20), rgba(166,227,161,.14));
+    border: 1px solid rgba(137,180,250,.30);
+    box-shadow: 0 12px 32px rgba(0,0,0,.18);
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+}
+.review-hero-title { font-size: 18px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.review-hero-sub { font-size: 13px; color: var(--text-dim); line-height: 1.55; }
+.review-hero-btn {
+    border: none; border-radius: 999px;
+    padding: 13px 20px;
+    background: var(--green); color: #fff;
+    font-size: 15px; font-weight: 900;
+    cursor: pointer; white-space: nowrap;
+    box-shadow: 0 8px 22px rgba(64,160,43,.24);
+}
+.review-hero-btn:active, .mobile-review-start:active, .btn-review:active { transform: translateY(1px); }
+.sb-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+}
+.sb-overlay.active { display: block; }
+
+/* responsive */
+@media (max-width: 1100px) {
+    .sb-mobile-toggle { display: flex; }
+    .mobile-review-start { display: inline-flex; align-items: center; justify-content: center; }
+    .sidebar {
+        transform: translateX(-100%);
+        z-index: 150;
+    }
+    .sidebar.mobile-open {
+        transform: translateX(0) !important;
+    }
+    .sidebar.mobile-open.collapsed { transform: translateX(0) !important; }
+    .sidebar .sb-toggle { display: none; }
+    .main { margin-left: 0 !important; padding: 12px; padding-top: 56px; }
+}
+@media (max-width: 768px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .review-hero { flex-direction: column; align-items: stretch; margin-top: 2px; }
+    .review-hero-btn { width: 100%; min-height: 48px; }
+    .quiz-header { padding: 8px 10px; gap: 6px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .quiz-header .back-btn { flex: 0 0 auto; padding: 7px 10px; font-size: 12px; }
+    .quiz-header .stat { flex: 0 0 auto; font-size: 12px; }
+    .quiz-card { margin: 10px auto 24px; padding: 12px; }
+    .quiz-q { font-size: 16px; gap: 10px; margin-bottom: 12px; }
+    .quiz-q .card-num { width: 34px; height: 34px; font-size: 15px; }
+    .quiz-q-text { font-size: 16px; line-height: 1.62; }
+    .quiz-answer { padding: 12px; font-size: 13px; line-height: 1.72; }
+    .show-answer-btn { width: 100%; margin: 14px auto; min-height: 48px; }
+    .rating-btns { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .rating-btns button { width: 100%; min-width: 0; padding: 11px 8px; font-size: 13px; }
+}
+</style>
+<link rel="icon" href="data:,">
+<style id="urology-posttest-theme">
+.urology-front h3{margin:10px 0 12px;color:#cdd6f4;font-size:1.18rem}
+.urology-front p{margin:7px 0;line-height:1.65}.urology-front .subq{padding-left:8px;border-left:3px solid #89b4fa}
+.deck-chip{display:inline-block;padding:3px 8px;margin-right:4px;border-radius:999px;background:#313244;color:#89b4fa;font-size:.76rem;font-weight:700}
+.urology-answer h3{color:#1e66f5;margin-bottom:12px}.urology-answer p,.urology-answer li{line-height:1.6}
+.urology-answer ul{padding-left:22px;margin:8px 0}.lock-line{margin-top:16px;padding:13px 15px;border-left:5px solid #df8e1d;background:#fff4d6;border-radius:8px;color:#5c3a00}
+.urology-guide{padding:4px}.urology-guide h4{color:#89b4fa}.urology-guide p{line-height:1.55;margin:8px 0}
+@media(max-width:640px){.urology-front h3{font-size:1.06rem}.urology-answer{font-size:.95rem}}
+</style>
+</head>
+<body>
+
+<!-- Mobile sidebar toggle -->
+<button class="sb-mobile-toggle" id="sbMobileToggle" onclick="toggleMobileSidebar()">☰</button>
+<button class="mobile-review-start" id="btnReviewMobile" data-start-review="1" onclick="startReview()">복습 시작</button>
+<div class="sb-overlay" id="sbOverlay" onclick="toggleMobileSidebar()"></div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <button class="sb-toggle" onclick="toggleSidebar()">☰</button>
+    <div class="sb-inner">
+        <div class="sb-title">비뇨의학과 포테 최신 기출 Anki</div>
+        <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+            <div class="progress-label" id="progressLabel">0 / 15 완료</div>
+        </div>
+        <div class="sb-quiz-btns">
+            <button class="btn-review" id="btnReview" data-start-review="1" onclick="startReview()">복습 시작 (0개)</button>
+            <button class="btn-reset" id="btnReset" onclick="handleResetTap()">전체 다시 풀기<br><small>[3연타 시 초기화]</small></button>
+        </div>
+        <div style="margin-top:12px;">
+            <div class="sb-item" onclick="scrollToCard('URO-POST-20260703-01')">1. 최신 5조 변형 8점혈뇨 원인질환71세 남자가 35갑년의…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-02')">2. 최신 5조 변형 5점혈뇨의 진단과 표준평가1번 환자에서 가…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-03')">3. 최신 5조 변형 6점요역동학검사Uroflowmetry, f…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-04')">4. 최신 5조 변형 6점PSA 파생지표59세 남자의 PSA가…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-05')">5. 최신 5조 변형 4점PI-RADSPI-RADS 1–5의 의…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-06')">6. 최신 5조 변형 6점요실금요실금을 복압성, 절박성, 복합성…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-07')">7. 최신 5조 변형 8점과민성방광72세 여자가 4개월간 urg…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-08')">8. 최신 5조 변형 7점방광내시경과 비정형 요세포방광내시경의…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-09')">9. 최신 5조 변형 8점BPH 약물치료전립선비대증에 사용하는…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-10')">10. 최신 5조 변형 6점상부요관결석과 URS좌측 상부요관에 7…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-11')">11. 최신 5조 변형 6점큰 양측 신결석양측 신장에 2.2 cm…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-12')">12. 최신 5조 변형 7점국소 GG2 전립선암61세, PSA 6…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-13')">13. 최신 5조 변형 8점고위험 및 전이성 전립선암1. 73세,…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-14')">14. 최신 5조 변형 7점BCG failure와 조기 방광적출술…</div>
+<div class="sb-item" onclick="scrollToCard('URO-POST-20260703-15')">15. 최신 5조 변형 8점급성 음낭통증14세 남아가 수면 중 갑…</div>
+        </div>
+    </div>
+</div>
+
+<!-- Main card view -->
+<div class="main" id="mainContent">
+    <div class="review-hero" id="reviewHero">
+        <div>
+            <div class="review-hero-title">랜덤 복습 시작</div>
+            <div class="review-hero-sub">사이드바가 접혀도 여기서 바로 시작됩니다. 순서 힌트 없이 랜덤으로 나옵니다.</div>
+        </div>
+        <button class="review-hero-btn" id="btnReviewHero" data-start-review="1" onclick="startReview()">복습 시작</button>
+    </div>
+    <div class="card-grid">
+
+        <div class="card" id="card-URO-POST-20260703-01">
+            <div class="card-header">
+                <span class="card-num">1</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>혈뇨 원인질환</h3><p>71세 남자가 35갑년의 흡연력이 있으며 통증 없는 육안적 혈뇨로 내원하였다. 혈뇨의 원인질환을 신장·신우, 요관, 방광, 요도, 전립선으로 나누어 각각 4가지 이상 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-01')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-01')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-01')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-01')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-01" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-01"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-01"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>각 장기에서 대표 원인 4개 이상: 신장·신우, 요관, 방광, 요도, 전립선 각 1.5점, 전체 구조 0.5점.</li><li>예시: RCC·신우암·결석·사구체신염·신우신염 / 요관암·결석·요관염·손상·협착 / 방광암·방광염·결석·출혈성 방광염·외상 / 요도염·손상·요도암·협착·결석 / BPH·전립선염·전립선암·기구조작 후 출혈·정맥성 출혈.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>혈뇨 원인은 신장·신우 → 요관 → 방광 → 요도 → 전립선 순서로 각각 5개.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-01" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-01" style="display:none" onclick="saveEdit('URO-POST-20260703-01')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-01')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-01" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-01" onclick="toggleDone('URO-POST-20260703-01')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-02">
+            <div class="card-header">
+                <span class="card-num">2</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>5점</span></div><h3>혈뇨의 진단과 표준평가</h3><p>1번 환자에서 가장 의심되는 진단과 그 근거 3가지를 쓰고, 상부·하부요로를 평가하는 표준검사 2가지를 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-02')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-02')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-02')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-02')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-02" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-02"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-02"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>방광 요로상피암 1점.</li><li>고령, 흡연력, 무통성 육안적 혈뇨 각 0.5점.</li><li>CT urography 1.25점, cystoscopy 1.25점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>고령 흡연자의 무통성 육안적 혈뇨 = 방광암 우선, CT urography + cystoscopy.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-02" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-02" style="display:none" onclick="saveEdit('URO-POST-20260703-02')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-02')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-02" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-02" onclick="toggleDone('URO-POST-20260703-02')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-03">
+            <div class="card-header">
+                <span class="card-num">3</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>요역동학검사</h3><p>Uroflowmetry, filling cystometry, pressure-flow study, pelvic floor EMG가 각각 무엇을 평가하는지 쓰시오. 낮은 요류만으로 방광출구폐색과 배뇨근 저활동을 구분할 수 없는 이유도 한 줄로 설명하시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-03')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-03')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-03')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-03')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-03" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-03"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-03"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Uroflowmetry: Qmax와 요류곡선 1점.</li><li>Filling cystometry: 감각·용적·compliance·detrusor overactivity 1.5점.</li><li>Pressure-flow: BOO와 detrusor underactivity 감별 1.5점.</li><li>EMG: 외괄약근·골반저 협응과 dyssynergia 1점.</li><li>낮은 flow는 폐색과 낮은 배뇨근압 모두에서 발생 가능 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>Flow는 흐름, cystometry는 저장, pressure-flow는 폐색 대 근력, EMG는 협응.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-03" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-03" style="display:none" onclick="saveEdit('URO-POST-20260703-03')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-03')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-03" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-03" onclick="toggleDone('URO-POST-20260703-03')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-04">
+            <div class="card-header">
+                <span class="card-num">4</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>PSA 파생지표</h3><p>59세 남자의 PSA가 1년 전 3.1 ng/mL에서 6.0 ng/mL로 상승하였다. 전립선 용적은 32 mL이고 free PSA는 0.6 ng/mL이다.</p>
+<p class='subq'>1. PSA velocity를 계산하고 의미를 쓰시오.</p>
+<p class='subq'>2. PSA density를 계산하고 의미를 쓰시오.</p>
+<p class='subq'>3. Free/total PSA ratio를 계산하고 의미를 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-04')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-04')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-04')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-04')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-04" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-04"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-04"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Velocity: `(6.0−3.1)/1 = 2.9 ng/mL/년`, 빠른 상승이나 단독 생검기준은 아님 2점.</li><li>Density: `6.0/32 = 0.1875 ng/mL/cc`, 0.15 전후보다 높아 의심 증가 2점.</li><li>Free/total: `0.6/6.0 = 10%`, 낮아 암 가능성 증가 2점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>Velocity는 속도, density는 PSA/부피, free ratio는 낮을수록 암 가능성이 높다.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-04" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-04" style="display:none" onclick="saveEdit('URO-POST-20260703-04')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-04')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-04" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-04" onclick="toggleDone('URO-POST-20260703-04')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-05">
+            <div class="card-header">
+                <span class="card-num">5</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>4점</span></div><h3>PI-RADS</h3><p>PI-RADS 1–5의 의미를 임상적으로 유의한 전립선암의 존재 가능성에 따라 간단히 쓰고, PI-RADS 4 병변에서 고려할 다음 검사를 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-05')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-05')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-05')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-05')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-05" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-05"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-05"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>1 매우 낮음, 2 낮음, 3 애매, 4 높음, 5 매우 높음 2.5점.</li><li>PI-RADS 4에서 MRI-targeted biopsy와 systematic biopsy 고려 1.5점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>PI-RADS 1에서 5로 갈수록 유의암 가능성이 증가하며, 4–5는 표적+체계적 생검을 고려한다.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-05" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-05" style="display:none" onclick="saveEdit('URO-POST-20260703-05')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-05')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-05" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-05" onclick="toggleDone('URO-POST-20260703-05')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-06">
+            <div class="card-header">
+                <span class="card-num">6</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>요실금</h3><p>요실금을 복압성, 절박성, 복합성, 범람성으로 나누어 각각의 정의와 발생기전을 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-06')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-06')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-06')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-06')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-06" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-06"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-06"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>복압성: 복압상승 시 누출, 요도 과이동·괄약근부전 1.5점.</li><li>절박성: urgency와 누출, detrusor overactivity 1.5점.</li><li>복합성: 두 증상·기전 병존 1.5점.</li><li>범람성: 과팽창 방광에서 누출, BOO·detrusor underactivity 1.5점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>복압성·절박성·복합성·범람성: 상황, urgency, 병존, 과팽창으로 구분한다.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-06" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-06" style="display:none" onclick="saveEdit('URO-POST-20260703-06')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-06')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-06" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-06" onclick="toggleDone('URO-POST-20260703-06')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-07">
+            <div class="card-header">
+                <span class="card-num">7</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>과민성방광</h3><p>72세 여자가 4개월간 urgency, frequency, nocturia와 화장실에 도착하기 전 요누출을 호소한다. 요검사는 정상이고 PVR은 25 mL이다.</p>
+<p class='subq'>1. 가장 가능성 높은 진단과 진단 정의를 쓰시오.</p>
+<p class='subq'>2. 감별진단 3가지를 쓰시오.</p>
+<p class='subq'>3. 1차 행동치료 4가지와 약물군 2가지를 쓰시오.</p>
+<p class='subq'>4. 항무스카린제의 주의·금기 3가지와 노인에서 β3 agonist를 선호할 수 있는 이유를 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-07')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-07')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-07')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-07')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-07" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-07"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-07"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Wet OAB/urgency urinary incontinence와 정의 2점.</li><li>UTI, 다뇨, 방광자극질환, BOO·신경인성방광 중 3개 1.5점.</li><li>방광훈련, timed voiding, pelvic floor, 카페인·저녁수분 조절, 체중·변비교정 중 4개 1.5점.</li><li>Antimuscarinic과 β3 agonist 1점.</li><li>폐쇄각녹내장, 위배출저하, 요폐·높은 PVR 1점.</li><li>노인에서 항콜린성 인지부담이 적음 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>OAB는 urgency가 핵심. 1차 행동치료, 약은 antimuscarinic 또는 beta-3 agonist.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-07" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-07" style="display:none" onclick="saveEdit('URO-POST-20260703-07')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-07')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-07" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-07" onclick="toggleDone('URO-POST-20260703-07')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-08">
+            <div class="card-header">
+                <span class="card-num">8</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>7점</span></div><h3>방광내시경과 비정형 요세포</h3><p>방광내시경의 적응증을 5가지 이상 쓰시오. 반복 요세포검사에서도 atypical/suspicious urothelial cells가 확인되지만 일반 방광내시경에서 명확한 종괴가 보이지 않는 남성 환자에서 추가검사 4가지 이상과 각 목적을 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-08')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-08')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-08')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-08')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-08" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-08"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-08"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>혈뇨, 영상상 종괴, suspicious cytology, 방광암 추적, 난치성 UTI/LUTS, 협착·결석·이물 중 5개 2.5점.</li><li>반복 cytology 0.5점.</li><li>CT urography로 상부요로 평가 1점.</li><li>enhanced cystoscopy 또는 mapping/random biopsy로 occult CIS 탐색 1.5점.</li><li>prostatic urethral biopsy 1점.</li><li>각 검사 목적을 연결하면 0.5점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>Atypical cytology → repeat cytology + cystoscopy + CT urography; 지속되면 occult CIS를 찾는다.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-08" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-08" style="display:none" onclick="saveEdit('URO-POST-20260703-08')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-08')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-08" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-08" onclick="toggleDone('URO-POST-20260703-08')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-09">
+            <div class="card-header">
+                <span class="card-num">9</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>BPH 약물치료</h3><p>전립선비대증에 사용하는 약제군 5개를 쓰고, 각 약제군의 기전·대표약·주요 부작용을 한 가지 이상 쓰시오. 전립선 용적 48 mL, PSA 2.2 ng/mL인 환자에서 권장되는 기본 병용요법도 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-09')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-09')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-09')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-09')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-09" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-09"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-09"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>α1 blocker, 5-ARI, antimuscarinic, β3 agonist, PDE5 inhibitor 각 약제군의 기전·예시·부작용이 맞으면 각 1.2점, 총 6점.</li><li>α1 blocker + 5-ARI 병용 2점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>빠른 증상은 alpha blocker, 진행 억제는 5-ARI; 큰 전립선은 둘을 병용한다.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-09" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-09" style="display:none" onclick="saveEdit('URO-POST-20260703-09')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-09')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-09" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-09" onclick="toggleDone('URO-POST-20260703-09')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-10">
+            <div class="card-header">
+                <span class="card-num">10</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>상부요관결석과 URS</h3><p>좌측 상부요관에 7 mm 결석이 있으나 통증은 NSAID로 조절되고, 발열·요로감염·신기능저하는 없으며 발견 후 10일이 지났다.</p>
+<p class='subq'>1. 우선 치료전략과 추적 중 즉시 개입해야 할 경고소견을 쓰시오.</p>
+<p class='subq'>2. URS/fURS의 실질적 핵심 금기 2개와 상대적·사전교정 항목 2개를 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-10')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-10')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-10')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-10')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-10" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-10"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-10"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>경과관찰·추적, 진통, 선택적 MET 1.5점.</li><li>감염·발열, 난치성 통증, 신기능악화·무뇨, 지속폐색·배출실패 중 3개 1.5점.</li><li>핵심 금기: untreated UTI/urosepsis, anesthesia 불가 2점.</li><li>상대항목: 출혈위험 미교정, 심한 협착·접근곤란, 중증 자세·마취위험 중 2개 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>안정된 6–7 mm 요관석은 관찰 가능; 감염·난치통·신기능 악화·무뇨면 즉시 개입한다.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-10" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-10" style="display:none" onclick="saveEdit('URO-POST-20260703-10')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-10')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-10" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-10" onclick="toggleDone('URO-POST-20260703-10')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-11">
+            <div class="card-header">
+                <span class="card-num">11</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>큰 양측 신결석</h3><p>양측 신장에 2.2 cm와 2.8 cm 결석이 있고 BMI는 34이다. 비조영 CT에서 낮은 HU를 보이며 지속적인 산성뇨가 있어 요산석이 의심된다.</p>
+<p class='subq'>1. 크기와 체형을 고려한 표준 적극적 치료를 쓰시오.</p>
+<p class='subq'>2. 요산석 특성 때문에 추가로 고려할 수 있는 비수술 치료와 모니터링을 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-11')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-11')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-11')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-11')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-11" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-11"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-11"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>&gt;2 cm·비만을 고려한 staged PCNL 3점.</li><li>순수 요산석 확인 후 potassium citrate urine alkalinization, pH 약 7.0–7.2, 영상·pH 추적 2점.</li><li>감염·폐색·실패 시 PCNL 지연 금지 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>&gt;2 cm 신결석은 PCNL, 순수 요산석은 potassium citrate 용해요법을 고려한다.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-11" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-11" style="display:none" onclick="saveEdit('URO-POST-20260703-11')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-11')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-11" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-11" onclick="toggleDone('URO-POST-20260703-11')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-12">
+            <div class="card-header">
+                <span class="card-num">12</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>7점</span></div><h3>국소 GG2 전립선암</h3><p>61세, PSA 6.2 ng/mL, Gleason 3+4, Grade group 2, cT2a, 기대여명 20년이다.</p>
+<p class='subq'>1. 표준 확정치료 2가지를 쓰시오.</p>
+<p class='subq'>2. Active surveillance를 고려할 수 있는 추가조건 4가지를 쓰고, 현재 정보만으로 이를 자동 선택할 수 없는 이유를 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-12')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-12')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-12')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-12')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-12" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-12"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-12"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Radical prostatectomy와 radiotherapy 각 1.5점, 총 3점.</li><li>AS 조건: 낮은 pattern 4, PSA &lt;10, 낮은 PSA density, cT2a 이하, 적은 positive core·침범률, MRI상 낮은 병변량 중 4개 3점.</li><li>core 수·pattern 4 비율이 없고 기대여명이 길어 자동 AS 불가 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>국소 GG2는 RP 또는 RT가 표준; AS는 낮은 pattern 4·병변량을 갖춘 선별 환자만.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-12" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-12" style="display:none" onclick="saveEdit('URO-POST-20260703-12')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-12')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-12" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-12" onclick="toggleDone('URO-POST-20260703-12')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-13">
+            <div class="card-header">
+                <span class="card-num">13</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>고위험 및 전이성 전립선암</h3><p class='subq'>1. 73세, PSA 48 ng/mL, Grade group 4, cT3b, conventional imaging상 M0인 환자의 표준치료를 쓰시오.</p>
+<p class='subq'>2. 76세, PSA 280 ng/mL, Grade group 5, 광범위 골전이와 간전이가 있는 de novo M1c high-volume mHSPC 환자의 권장 전신치료 조합을 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-13')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-13')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-13')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-13')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-13" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-13"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-13"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>cT3b M0: external-beam RT + long-term ADT 2–3년 4점.</li><li>M1c high-volume: ADT + ARPI 2점; docetaxel-fit이면 darolutamide 또는 abiraterone을 포함한 triplet 2점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>cT3b M0는 RT + ADT 2–3년; M1c high-volume은 ADT + ARPI, fit하면 triplet.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-13" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-13" style="display:none" onclick="saveEdit('URO-POST-20260703-13')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-13')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-13" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-13" onclick="toggleDone('URO-POST-20260703-13')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-14">
+            <div class="card-header">
+                <span class="card-num">14</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>7점</span></div><h3>BCG failure와 조기 방광적출술</h3><p>TUR-BT와 re-TURBT 후 T1 high-grade urothelial carcinoma와 CIS가 확인되었다.</p>
+<p class='subq'>1. BCG 주입의 목적을 쓰시오.</p>
+<p class='subq'>2. BCG-refractory, resistant, relapsing, unresponsive를 구분하시오.</p>
+<p class='subq'>3. Early radical cystectomy 적응증을 3가지 이상 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-14')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-14')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-14')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-14')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-14" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-14"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-14"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>BCG 목적: 재발·진행 억제 1점.</li><li>Refractory 1점, resistant 1점, relapsing 1점.</li><li>Unresponsive: refractory 전부 + adequate BCG 후 Ta/T1 HG 6개월 또는 CIS 12개월 이내 1.5점.</li><li>Early cystectomy: BCG-unresponsive, persistent T1 HG, T1 HG+CIS/very-high-risk, LVI·variant, prostatic urethral involvement·광범위 종양 중 3개 1.5점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>BCG-unresponsive는 refractory 전부 + adequate BCG 후 papillary HG 6개월/CIS 12개월 이내 재발.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-14" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-14" style="display:none" onclick="saveEdit('URO-POST-20260703-14')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-14')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-14" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-14" onclick="toggleDone('URO-POST-20260703-14')">✓ 완료</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-URO-POST-20260703-15">
+            <div class="card-header">
+                <span class="card-num">15</span>
+                <div class="card-title"><div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>급성 음낭통증</h3><p>14세 남아가 수면 중 갑자기 시작한 우측 음낭통증과 구토로 내원했으며 발병 3시간이 지났다.</p>
+<p class='subq'>1. 고환염전과 부고환염·부고환고환염을 발병양상, 동반증상, 고환위치, cremasteric reflex, Prehn sign, 요검사, Doppler 혈류로 비교하시오.</p>
+<p class='subq'>2. 고환염전이 강하게 의심될 때의 치료 원칙을 쓰시오.</p></div></div>
+                <button class="draw-btn" onclick="toggleDraw('URO-POST-20260703-15')" title="필기 모드">🍎</button>
+                <button class="edit-btn" onclick="toggleEdit('URO-POST-20260703-15')" title="편집">✏️</button>
+                <button class="copy-btn" onclick="copyQA('URO-POST-20260703-15')" title="문제+답 복사">📋</button>
+            </div>
+            <div class="card-body">
+                <button class="toggle-btn" onclick="toggleAnswer('URO-POST-20260703-15')">정답 보기 ▼</button>
+                <div class="answer-area" id="ans-URO-POST-20260703-15" style="display:none">
+                    <div class="draw-toolbar" id="draw-toolbar-URO-POST-20260703-15"></div>
+                    <div style="position:relative;">
+                        <div class="answer-content" id="ans-content-URO-POST-20260703-15"><section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Torsion: 갑작스런 통증, 구토, high-riding/horizontal, cremasteric reflex 소실, Prehn 음성 경향, 정상 UA, Doppler 저혈류 중 5개 3점.</li><li>Epididymitis: 점진적, 발열·요증상, reflex 보존, Prehn 호전 가능, pyuria, Doppler 고혈류 중 4개 2점.</li><li>강한 의심에서 영상으로 지연하지 않음 1점.</li><li>즉시 exploration, detorsion, bilateral orchiopexy 2점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>갑작스런 통증·구토·high-riding·cremasteric reflex 소실이면 검사보다 수술이 먼저다.</div></section></div>
+                        <canvas class="draw-canvas" id="draw-canvas-URO-POST-20260703-15" style="display:none;"></canvas>
+                    </div>
+                    <button class="save-btn" id="save-URO-POST-20260703-15" style="display:none" onclick="saveEdit('URO-POST-20260703-15')">💾 저장</button>
+                </div>
+                <button class="toggle-btn guide-btn" onclick="toggleGuide('URO-POST-20260703-15')">📖 Study Guide</button>
+                <div class="guide-area" id="guide-URO-POST-20260703-15" style="display:none">
+                    <!-- guide images loaded dynamically -->
+                </div>
+                <button class="done-btn" id="done-URO-POST-20260703-15" onclick="toggleDone('URO-POST-20260703-15')">✓ 완료</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quiz overlay -->
+<div class="quiz-overlay" id="quizOverlay">
+    <div class="quiz-header" id="quizHeader">
+        <button class="back-btn" onclick="exitQuiz()">← 카드 뷰</button>
+        <span class="stat" id="statRed">🔴 0</span>
+        <span class="stat" id="statOrange">🟠 0</span>
+        <span class="stat" id="statGreen">🟢 0</span>
+        <span class="stat" id="statMaster">😊 0</span>
+        <span class="stat" id="statBlue">🔵 0</span>
+        <button class="undo-btn" id="undoBtn" onclick="undoLast()" disabled>↩ 되돌리기</button>
+    </div>
+    <div id="quizBody"></div>
+</div>
+
+<script>
+// ── Data ──
+const QUIZ_DATA = {
+"URO-POST-20260703-01": { num: `1`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>혈뇨 원인질환</h3><p>71세 남자가 35갑년의 흡연력이 있으며 통증 없는 육안적 혈뇨로 내원하였다. 혈뇨의 원인질환을 신장·신우, 요관, 방광, 요도, 전립선으로 나누어 각각 4가지 이상 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>각 장기에서 대표 원인 4개 이상: 신장·신우, 요관, 방광, 요도, 전립선 각 1.5점, 전체 구조 0.5점.</li><li>예시: RCC·신우암·결석·사구체신염·신우신염 / 요관암·결석·요관염·손상·협착 / 방광암·방광염·결석·출혈성 방광염·외상 / 요도염·손상·요도암·협착·결석 / BPH·전립선염·전립선암·기구조작 후 출혈·정맥성 출혈.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>혈뇨 원인은 신장·신우 → 요관 → 방광 → 요도 → 전립선 순서로 각각 5개.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 1–2 중 혈뇨 원인</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-02": { num: `2`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>5점</span></div><h3>혈뇨의 진단과 표준평가</h3><p>1번 환자에서 가장 의심되는 진단과 그 근거 3가지를 쓰고, 상부·하부요로를 평가하는 표준검사 2가지를 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>방광 요로상피암 1점.</li><li>고령, 흡연력, 무통성 육안적 혈뇨 각 0.5점.</li><li>CT urography 1.25점, cystoscopy 1.25점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>고령 흡연자의 무통성 육안적 혈뇨 = 방광암 우선, CT urography + cystoscopy.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 1–2 중 진단·표준평가</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-03": { num: `3`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>요역동학검사</h3><p>Uroflowmetry, filling cystometry, pressure-flow study, pelvic floor EMG가 각각 무엇을 평가하는지 쓰시오. 낮은 요류만으로 방광출구폐색과 배뇨근 저활동을 구분할 수 없는 이유도 한 줄로 설명하시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Uroflowmetry: Qmax와 요류곡선 1점.</li><li>Filling cystometry: 감각·용적·compliance·detrusor overactivity 1.5점.</li><li>Pressure-flow: BOO와 detrusor underactivity 감별 1.5점.</li><li>EMG: 외괄약근·골반저 협응과 dyssynergia 1점.</li><li>낮은 flow는 폐색과 낮은 배뇨근압 모두에서 발생 가능 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>Flow는 흐름, cystometry는 저장, pressure-flow는 폐색 대 근력, EMG는 협응.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 3</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-04": { num: `4`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>PSA 파생지표</h3><p>59세 남자의 PSA가 1년 전 3.1 ng/mL에서 6.0 ng/mL로 상승하였다. 전립선 용적은 32 mL이고 free PSA는 0.6 ng/mL이다.</p>
+<p class='subq'>1. PSA velocity를 계산하고 의미를 쓰시오.</p>
+<p class='subq'>2. PSA density를 계산하고 의미를 쓰시오.</p>
+<p class='subq'>3. Free/total PSA ratio를 계산하고 의미를 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Velocity: \`(6.0−3.1)/1 = 2.9 ng/mL/년\`, 빠른 상승이나 단독 생검기준은 아님 2점.</li><li>Density: \`6.0/32 = 0.1875 ng/mL/cc\`, 0.15 전후보다 높아 의심 증가 2점.</li><li>Free/total: \`0.6/6.0 = 10%\`, 낮아 암 가능성 증가 2점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>Velocity는 속도, density는 PSA/부피, free ratio는 낮을수록 암 가능성이 높다.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 4–5 중 PSA 지표</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-05": { num: `5`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>4점</span></div><h3>PI-RADS</h3><p>PI-RADS 1–5의 의미를 임상적으로 유의한 전립선암의 존재 가능성에 따라 간단히 쓰고, PI-RADS 4 병변에서 고려할 다음 검사를 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>1 매우 낮음, 2 낮음, 3 애매, 4 높음, 5 매우 높음 2.5점.</li><li>PI-RADS 4에서 MRI-targeted biopsy와 systematic biopsy 고려 1.5점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>PI-RADS 1에서 5로 갈수록 유의암 가능성이 증가하며, 4–5는 표적+체계적 생검을 고려한다.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 4–5 중 PI-RADS</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-06": { num: `6`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>요실금</h3><p>요실금을 복압성, 절박성, 복합성, 범람성으로 나누어 각각의 정의와 발생기전을 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>복압성: 복압상승 시 누출, 요도 과이동·괄약근부전 1.5점.</li><li>절박성: urgency와 누출, detrusor overactivity 1.5점.</li><li>복합성: 두 증상·기전 병존 1.5점.</li><li>범람성: 과팽창 방광에서 누출, BOO·detrusor underactivity 1.5점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>복압성·절박성·복합성·범람성: 상황, urgency, 병존, 과팽창으로 구분한다.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 6–7 중 요실금</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-07": { num: `7`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>과민성방광</h3><p>72세 여자가 4개월간 urgency, frequency, nocturia와 화장실에 도착하기 전 요누출을 호소한다. 요검사는 정상이고 PVR은 25 mL이다.</p>
+<p class='subq'>1. 가장 가능성 높은 진단과 진단 정의를 쓰시오.</p>
+<p class='subq'>2. 감별진단 3가지를 쓰시오.</p>
+<p class='subq'>3. 1차 행동치료 4가지와 약물군 2가지를 쓰시오.</p>
+<p class='subq'>4. 항무스카린제의 주의·금기 3가지와 노인에서 β3 agonist를 선호할 수 있는 이유를 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Wet OAB/urgency urinary incontinence와 정의 2점.</li><li>UTI, 다뇨, 방광자극질환, BOO·신경인성방광 중 3개 1.5점.</li><li>방광훈련, timed voiding, pelvic floor, 카페인·저녁수분 조절, 체중·변비교정 중 4개 1.5점.</li><li>Antimuscarinic과 β3 agonist 1점.</li><li>폐쇄각녹내장, 위배출저하, 요폐·높은 PVR 1점.</li><li>노인에서 항콜린성 인지부담이 적음 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>OAB는 urgency가 핵심. 1차 행동치료, 약은 antimuscarinic 또는 beta-3 agonist.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 6–7 중 OAB</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-08": { num: `8`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>7점</span></div><h3>방광내시경과 비정형 요세포</h3><p>방광내시경의 적응증을 5가지 이상 쓰시오. 반복 요세포검사에서도 atypical/suspicious urothelial cells가 확인되지만 일반 방광내시경에서 명확한 종괴가 보이지 않는 남성 환자에서 추가검사 4가지 이상과 각 목적을 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>혈뇨, 영상상 종괴, suspicious cytology, 방광암 추적, 난치성 UTI/LUTS, 협착·결석·이물 중 5개 2.5점.</li><li>반복 cytology 0.5점.</li><li>CT urography로 상부요로 평가 1점.</li><li>enhanced cystoscopy 또는 mapping/random biopsy로 occult CIS 탐색 1.5점.</li><li>prostatic urethral biopsy 1점.</li><li>각 검사 목적을 연결하면 0.5점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>Atypical cytology → repeat cytology + cystoscopy + CT urography; 지속되면 occult CIS를 찾는다.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 8</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-09": { num: `9`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>BPH 약물치료</h3><p>전립선비대증에 사용하는 약제군 5개를 쓰고, 각 약제군의 기전·대표약·주요 부작용을 한 가지 이상 쓰시오. 전립선 용적 48 mL, PSA 2.2 ng/mL인 환자에서 권장되는 기본 병용요법도 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>α1 blocker, 5-ARI, antimuscarinic, β3 agonist, PDE5 inhibitor 각 약제군의 기전·예시·부작용이 맞으면 각 1.2점, 총 6점.</li><li>α1 blocker + 5-ARI 병용 2점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>빠른 증상은 alpha blocker, 진행 억제는 5-ARI; 큰 전립선은 둘을 병용한다.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 9</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-10": { num: `10`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>상부요관결석과 URS</h3><p>좌측 상부요관에 7 mm 결석이 있으나 통증은 NSAID로 조절되고, 발열·요로감염·신기능저하는 없으며 발견 후 10일이 지났다.</p>
+<p class='subq'>1. 우선 치료전략과 추적 중 즉시 개입해야 할 경고소견을 쓰시오.</p>
+<p class='subq'>2. URS/fURS의 실질적 핵심 금기 2개와 상대적·사전교정 항목 2개를 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>경과관찰·추적, 진통, 선택적 MET 1.5점.</li><li>감염·발열, 난치성 통증, 신기능악화·무뇨, 지속폐색·배출실패 중 3개 1.5점.</li><li>핵심 금기: untreated UTI/urosepsis, anesthesia 불가 2점.</li><li>상대항목: 출혈위험 미교정, 심한 협착·접근곤란, 중증 자세·마취위험 중 2개 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>안정된 6–7 mm 요관석은 관찰 가능; 감염·난치통·신기능 악화·무뇨면 즉시 개입한다.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 10–11 중 상부요관석·URS</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-11": { num: `11`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>큰 양측 신결석</h3><p>양측 신장에 2.2 cm와 2.8 cm 결석이 있고 BMI는 34이다. 비조영 CT에서 낮은 HU를 보이며 지속적인 산성뇨가 있어 요산석이 의심된다.</p>
+<p class='subq'>1. 크기와 체형을 고려한 표준 적극적 치료를 쓰시오.</p>
+<p class='subq'>2. 요산석 특성 때문에 추가로 고려할 수 있는 비수술 치료와 모니터링을 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>&gt;2 cm·비만을 고려한 staged PCNL 3점.</li><li>순수 요산석 확인 후 potassium citrate urine alkalinization, pH 약 7.0–7.2, 영상·pH 추적 2점.</li><li>감염·폐색·실패 시 PCNL 지연 금지 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>&gt;2 cm 신결석은 PCNL, 순수 요산석은 potassium citrate 용해요법을 고려한다.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 10–11 중 큰 신결석</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-12": { num: `12`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>7점</span></div><h3>국소 GG2 전립선암</h3><p>61세, PSA 6.2 ng/mL, Gleason 3+4, Grade group 2, cT2a, 기대여명 20년이다.</p>
+<p class='subq'>1. 표준 확정치료 2가지를 쓰시오.</p>
+<p class='subq'>2. Active surveillance를 고려할 수 있는 추가조건 4가지를 쓰고, 현재 정보만으로 이를 자동 선택할 수 없는 이유를 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Radical prostatectomy와 radiotherapy 각 1.5점, 총 3점.</li><li>AS 조건: 낮은 pattern 4, PSA &lt;10, 낮은 PSA density, cT2a 이하, 적은 positive core·침범률, MRI상 낮은 병변량 중 4개 3점.</li><li>core 수·pattern 4 비율이 없고 기대여명이 길어 자동 AS 불가 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>국소 GG2는 RP 또는 RT가 표준; AS는 낮은 pattern 4·병변량을 갖춘 선별 환자만.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 12–13 중 국소 GG2</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-13": { num: `13`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>고위험 및 전이성 전립선암</h3><p class='subq'>1. 73세, PSA 48 ng/mL, Grade group 4, cT3b, conventional imaging상 M0인 환자의 표준치료를 쓰시오.</p>
+<p class='subq'>2. 76세, PSA 280 ng/mL, Grade group 5, 광범위 골전이와 간전이가 있는 de novo M1c high-volume mHSPC 환자의 권장 전신치료 조합을 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>cT3b M0: external-beam RT + long-term ADT 2–3년 4점.</li><li>M1c high-volume: ADT + ARPI 2점; docetaxel-fit이면 darolutamide 또는 abiraterone을 포함한 triplet 2점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>cT3b M0는 RT + ADT 2–3년; M1c high-volume은 ADT + ARPI, fit하면 triplet.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 12–13 중 고위험·전이성 전립선암</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-14": { num: `14`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>7점</span></div><h3>BCG failure와 조기 방광적출술</h3><p>TUR-BT와 re-TURBT 후 T1 high-grade urothelial carcinoma와 CIS가 확인되었다.</p>
+<p class='subq'>1. BCG 주입의 목적을 쓰시오.</p>
+<p class='subq'>2. BCG-refractory, resistant, relapsing, unresponsive를 구분하시오.</p>
+<p class='subq'>3. Early radical cystectomy 적응증을 3가지 이상 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>BCG 목적: 재발·진행 억제 1점.</li><li>Refractory 1점, resistant 1점, relapsing 1점.</li><li>Unresponsive: refractory 전부 + adequate BCG 후 Ta/T1 HG 6개월 또는 CIS 12개월 이내 1.5점.</li><li>Early cystectomy: BCG-unresponsive, persistent T1 HG, T1 HG+CIS/very-high-risk, LVI·variant, prostatic urethral involvement·광범위 종양 중 3개 1.5점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>BCG-unresponsive는 refractory 전부 + adequate BCG 후 papillary HG 6개월/CIS 12개월 이내 재발.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 14</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` },
+"URO-POST-20260703-15": { num: `15`, q: `<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>급성 음낭통증</h3><p>14세 남아가 수면 중 갑자기 시작한 우측 음낭통증과 구토로 내원했으며 발병 3시간이 지났다.</p>
+<p class='subq'>1. 고환염전과 부고환염·부고환고환염을 발병양상, 동반증상, 고환위치, cremasteric reflex, Prehn sign, 요검사, Doppler 혈류로 비교하시오.</p>
+<p class='subq'>2. 고환염전이 강하게 의심될 때의 치료 원칙을 쓰시오.</p></div>`, a: `<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Torsion: 갑작스런 통증, 구토, high-riding/horizontal, cremasteric reflex 소실, Prehn 음성 경향, 정상 UA, Doppler 저혈류 중 5개 3점.</li><li>Epididymitis: 점진적, 발열·요증상, reflex 보존, Prehn 호전 가능, pyuria, Doppler 고혈류 중 4개 2점.</li><li>강한 의심에서 영상으로 지연하지 않음 1점.</li><li>즉시 exploration, detorsion, bilateral orchiopexy 2점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>갑작스런 통증·구토·high-riding·cremasteric reflex 소실이면 검사보다 수술이 먼저다.</div></section>`, g: `<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 15</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>` }
+};
+const ALL_IDS = ["URO-POST-20260703-01", "URO-POST-20260703-02", "URO-POST-20260703-03", "URO-POST-20260703-04", "URO-POST-20260703-05", "URO-POST-20260703-06", "URO-POST-20260703-07", "URO-POST-20260703-08", "URO-POST-20260703-09", "URO-POST-20260703-10", "URO-POST-20260703-11", "URO-POST-20260703-12", "URO-POST-20260703-13", "URO-POST-20260703-14", "URO-POST-20260703-15"];
+
+const STORAGE_PREFIX = "urology_posttest_20260703_";
+const RANDOMIZE_REVIEW = false;
+const SRS_KEY = STORAGE_PREFIX + 'srs_v1';
+const HIST_KEY = STORAGE_PREFIX + 'hist_v1';
+const EDITS_KEY = STORAGE_PREFIX + 'edits_v1';
+const USER_ANS_KEY = STORAGE_PREFIX + 'user_answers_v1';
+const QUIZ_SESSION_KEY = STORAGE_PREFIX + 'quiz_session_v1';
+
+// ── SRS State ──
+let srs = JSON.parse(localStorage.getItem(SRS_KEY) || '{}');
+let history = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+let edits = JSON.parse(localStorage.getItem(EDITS_KEY) || '{}');
+let userAnswers = JSON.parse(localStorage.getItem(USER_ANS_KEY) || '{}');
+let doneSet = new Set();
+let queue = [];
+let pending = [];
+let bonusMode = false;
+let bonusSrs = {};
+let waitTimer = null;
+let activeQuizCardId = null;
+let resumeQuizUiState = null;
+
+function saveSrs() { localStorage.setItem(SRS_KEY, JSON.stringify(srs)); }
+function saveHist() { localStorage.setItem(HIST_KEY, JSON.stringify(history)); }
+function saveEdits() { localStorage.setItem(EDITS_KEY, JSON.stringify(edits)); }
+function saveUserAnswers() { localStorage.setItem(USER_ANS_KEY, JSON.stringify(userAnswers)); }
+
+function sanitizeQuizQueue(ids) {
+    const out = [];
+    const seen = new Set();
+    (ids || []).forEach(id => {
+        if (!QUIZ_DATA[id] || seen.has(id)) return;
+        seen.add(id);
+        out.push(id);
+    });
+    return out;
+}
+
+function sanitizeQuizPending(items, blockedIds = new Set()) {
+    const out = [];
+    const seen = new Set();
+    (items || []).forEach(item => {
+        if (!item || !QUIZ_DATA[item.id] || blockedIds.has(item.id) || seen.has(item.id)) return;
+        const dueTime = Number(item.dueTime || 0);
+        if (!Number.isFinite(dueTime) || dueTime <= 0) return;
+        seen.add(item.id);
+        out.push({ id: item.id, dueTime });
+    });
+    out.sort(sortByDueThenOrder);
+    return out;
+}
+
+function loadQuizSession() {
+    try {
+        const raw = localStorage.getItem(QUIZ_SESSION_KEY);
+        if (!raw) return null;
+        const data = JSON.parse(raw);
+        if (!data || typeof data !== 'object') return null;
+        return data;
+    } catch (err) {
+        console.warn('Failed to load quiz session', err);
+        return null;
+    }
+}
+
+function clearQuizSession() {
+    activeQuizCardId = null;
+    resumeQuizUiState = null;
+    localStorage.removeItem(QUIZ_SESSION_KEY);
+}
+
+function saveQuizSession() {
+    const hasState = Boolean(activeQuizCardId) || queue.length > 0 || pending.length > 0;
+    if (!hasState) {
+        clearQuizSession();
+        return;
+    }
+
+    if (activeQuizCardId) {
+        const userAnswerEl = document.getElementById('quizUserAnswer');
+        if (userAnswerEl) {
+            userAnswers[activeQuizCardId] = userAnswerEl.value;
+            saveUserAnswers();
+        }
+    }
+
+    const answerEl = document.getElementById('quizAnswer');
+    const guideEl = document.getElementById('quizGuide');
+    const payload = {
+        version: 1,
+        currentId: activeQuizCardId || null,
+        queue: sanitizeQuizQueue(queue),
+        pending: sanitizeQuizPending(pending, new Set(activeQuizCardId ? [activeQuizCardId] : [])),
+        bonusMode: Boolean(bonusMode),
+        bonusSrs: bonusMode ? bonusSrs : {},
+        answerVisible: Boolean(answerEl && answerEl.classList.contains('visible')),
+        guideVisible: Boolean(guideEl && guideEl.style.display !== 'none'),
+        savedAt: Date.now()
+    };
+    localStorage.setItem(QUIZ_SESSION_KEY, JSON.stringify(payload));
+}
+
+function resumeSavedQuizIfAny() {
+    const saved = loadQuizSession();
+    if (!saved) return;
+    startQuizWith(saved.queue || [], {
+        pending: saved.pending || [],
+        restoreCurrentId: saved.currentId || null,
+        restoreState: saved,
+        bonusMode: Boolean(saved.bonusMode),
+        bonusSrs: saved.bonusSrs || {}
+    });
+}
+
+// ── Card View Functions ──
+function toggleAnswer(id) {
+    const el = document.getElementById('ans-' + id);
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+function toggleGuide(id) {
+    const el = document.getElementById('guide-' + id);
+    if (el.style.display === 'none') {
+        el.style.display = 'block';
+        if (!el.dataset.loaded) {
+            el.innerHTML = QUIZ_DATA[id].g;
+            el.dataset.loaded = '1';
+        }
+    } else {
+        el.style.display = 'none';
+    }
+}
+
+function toggleDone(id) {
+    const btn = document.getElementById('done-' + id);
+    const card = document.getElementById('card-' + id);
+    if (doneSet.has(id)) {
+        doneSet.delete(id);
+        btn.classList.remove('checked');
+        btn.textContent = '✓ 완료';
+        card.classList.remove('done');
+    } else {
+        doneSet.add(id);
+        btn.classList.add('checked');
+        btn.textContent = '✓ 완료됨';
+        card.classList.add('done');
+    }
+    updateProgress();
+}
+
+function updateProgress() {
+    const n = doneSet.size;
+    const total = ALL_IDS.length;
+    document.getElementById('progressFill').style.width = (n/total*100) + '%';
+    document.getElementById('progressLabel').textContent = n + ' / ' + total + ' 완료';
+}
+
+function scrollToCard(id) {
+    document.getElementById('card-' + id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── Image Insert (drag, drop, paste) ──
+function readAndInsertImage(file, targetEl) {
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+        targetEl.focus();
+        const imgHtml = '<img src="' + ev.target.result + '" style="max-width:100%;height:auto;border-radius:4px;margin:6px 0;display:block">';
+        document.execCommand('insertHTML', false, imgHtml);
+    };
+    reader.readAsDataURL(file);
+}
+
+function enableImageDrop(el) {
+    if (el._imgDropEnabled) return; // prevent double-binding
+    el._imgDropEnabled = true;
+    el.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'copy';
+    });
+    el.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+        files.forEach(file => readAndInsertImage(file, el));
+    });
+    el.addEventListener('paste', (e) => {
+        const items = Array.from(e.clipboardData.items || []).filter(i => i.type.startsWith('image/'));
+        if (items.length === 0) return;
+        e.preventDefault();
+        items.forEach(item => {
+            const file = item.getAsFile();
+            if (file) readAndInsertImage(file, el);
+        });
+    });
+}
+
+function showEditToolbar(container, targetEl, toolbarId) {
+    removeEditToolbar(toolbarId);
+    const tb = document.createElement('div');
+    tb.id = 'edit-toolbar-' + toolbarId;
+    tb.className = 'edit-toolbar';
+    tb.innerHTML = '<span>✏️ 편집 중 &nbsp;|&nbsp; 📷 이미지: 드래그 또는 붙여넣기(Ctrl+V)</span>';
+    const wrapper = targetEl.parentNode;
+    if (wrapper && wrapper.parentNode === container) {
+        container.insertBefore(tb, wrapper);
+    } else {
+        container.insertBefore(tb, container.firstChild);
+    }
+}
+function removeEditToolbar(toolbarId) {
+    const el = document.getElementById('edit-toolbar-' + toolbarId);
+    if (el) el.remove();
+}
+
+// ── Edit Mode ──
+function toggleEdit(id) {
+    const content = document.getElementById('ans-content-' + id);
+    const saveBtn = document.getElementById('save-' + id);
+    const ansArea = document.getElementById('ans-' + id);
+    ansArea.style.display = 'block';
+
+    const canvas = document.getElementById('draw-canvas-' + id);
+    if (content.contentEditable === 'true') {
+        content.contentEditable = 'false';
+        content.classList.remove('editing');
+        removeEditToolbar(id);
+        saveBtn.style.display = 'none';
+        if (canvas) showStaticDraw(id);
+    } else {
+        if (canvas) canvas.style.display = 'none';
+        showEditToolbar(ansArea, content, id);
+        content.contentEditable = 'true';
+        content.classList.add('editing');
+        enableImageDrop(content);
+        saveBtn.style.display = 'block';
+        content.focus();
+    }
+}
+
+function saveEdit(id) {
+    const content = document.getElementById('ans-content-' + id);
+    content.contentEditable = 'false';
+    content.classList.remove('editing');
+    removeEditToolbar(id);
+    document.getElementById('save-' + id).style.display = 'none';
+    edits[id] = content.innerHTML;
+    saveEdits();
+}
+
+function stripHtml(value) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = String(value || '');
+    return (tmp.innerText || tmp.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+// ── Copy Q&A for AI ──
+function copyQA(id) {
+    const card = document.getElementById('card-' + id);
+    const data = QUIZ_DATA[id] || { num: id, q: '', a: '' };
+    const q = card?.querySelector('.card-title')?.textContent || stripHtml(data.q || '');
+    const num = card?.querySelector('.card-num')?.textContent || data.num || id;
+    const ansEl = document.getElementById('ans-content-' + id) || document.getElementById('quizAnsContent');
+    const a = ansEl ? (ansEl.innerText || ansEl.textContent) : stripHtml(edits[id] || data.a || '');
+    const text = `Q${num}. ${q}
+
+${a}`;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = card?.querySelector('.copy-btn') || document.querySelector('.quiz-card .copy-btn');
+        if (btn) { btn.textContent = '✅'; setTimeout(() => btn.textContent = '📋', 1500); }
+    }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
+        const btn = card?.querySelector('.copy-btn') || document.querySelector('.quiz-card .copy-btn');
+        if (btn) { btn.textContent = '✅'; setTimeout(() => btn.textContent = '📋', 1500); }
+    });
+}
+
+// Apply saved edits on load
+function applyEdits() {
+    for (const id in edits) {
+        const el = document.getElementById('ans-content-' + id);
+        if (el) el.innerHTML = edits[id];
+    }
+}
+
+// ── Sidebar ──
+function toggleSidebar() {
+    const sb = document.getElementById('sidebar');
+    const main = document.getElementById('mainContent');
+    sb.classList.toggle('collapsed');
+    main.classList.toggle('expanded');
+    localStorage.setItem('sb_collapsed', sb.classList.contains('collapsed'));
+}
+function toggleMobileSidebar() {
+    const sb = document.getElementById('sidebar');
+    const overlay = document.getElementById('sbOverlay');
+    const btn = document.getElementById('sbMobileToggle');
+    const isOpen = sb.classList.toggle('mobile-open');
+    overlay.classList.toggle('active', isOpen);
+    btn.textContent = isOpen ? '✕' : '☰';
+}
+
+// ── Quiz Mode ──
+function getSrs(id) {
+    if (!srs[id]) srs[id] = { greenStreak: 0, redCount: 0, lastRating: null, mastered: false, nextReview: 0 };
+    return srs[id];
+}
+
+function cardOrder(id) {
+    const data = QUIZ_DATA[id] || {};
+    const n = Number(data.num);
+    return Number.isFinite(n) ? n : ALL_IDS.indexOf(id) + 1;
+}
+
+function sortByDueThenOrder(a, b) {
+    return a.dueTime - b.dueTime || cardOrder(a.id) - cardOrder(b.id);
+}
+
+function getStudyPlan() {
+    const now = Date.now();
+    const due = [];
+    const future = [];
+    const fresh = [];
+
+    ALL_IDS.forEach(id => {
+        const s = getSrs(id);
+        if (s.mastered) return;
+
+        const nextReview = Number(s.nextReview || 0);
+        const hasSchedule = Number.isFinite(nextReview) && nextReview > 0;
+        const hasSeen = Boolean(s.lastRating) || Number(s.redCount || 0) > 0 || Number(s.greenStreak || 0) > 0;
+
+        if (hasSchedule) {
+            const item = { id, dueTime: nextReview };
+            if (nextReview <= now) due.push(item);
+            else future.push(item);
+        } else if (!hasSeen) {
+            fresh.push(id);
+        }
+    });
+
+    due.sort(sortByDueThenOrder);
+    future.sort(sortByDueThenOrder);
+    fresh.sort((a, b) => cardOrder(a) - cardOrder(b));
+
+    return {
+        dueIds: due.map(item => item.id),
+        futurePending: future,
+        freshIds: fresh
+    };
+}
+
+function getReviewDue() {
+    return getStudyPlan().dueIds;
+}
+
+function updateReviewBtn() {
+    const plan = getStudyPlan();
+    const count = plan.dueIds.length + plan.freshIds.length;
+    const label = '복습 시작 (' + count + '개)';
+    const btn = document.getElementById('btnReview');
+    if (btn) btn.textContent = label;
+    const mobileBtn = document.getElementById('btnReviewMobile');
+    if (mobileBtn) mobileBtn.textContent = label;
+    const heroBtn = document.getElementById('btnReviewHero');
+    if (heroBtn) heroBtn.textContent = label;
+}
+
+function shuffledCopy(ids) {
+    const arr = [...ids];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+function startReview() {
+    const plan = getStudyPlan();
+    // Queue rule: due cards first, then unseen cards. Some focused memory decks opt into shuffle.
+    // Future scheduled cards stay in pending and jump ahead only when their time arrives.
+    const reviewIds = [...plan.dueIds, ...plan.freshIds];
+    startQuizWith(RANDOMIZE_REVIEW ? shuffledCopy(reviewIds) : reviewIds, { pending: plan.futurePending });
+}
+
+let _lastStartTouch = 0;
+function startReviewFromEvent(ev) {
+    const target = ev.target && ev.target.closest ? ev.target.closest('[data-start-review]') : null;
+    if (!target) return;
+    ev.preventDefault();
+    ev.stopPropagation();
+    if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+    if (ev.type === 'click' && Date.now() - _lastStartTouch < 450) return;
+    if (ev.type === 'touchend') _lastStartTouch = Date.now();
+    startReview();
+}
+
+let _resetTaps = 0, _resetTimer = null;
+function handleResetTap() {
+    _resetTaps++;
+    clearTimeout(_resetTimer);
+    const btn = document.getElementById('btnReset');
+    if (_resetTaps === 1) {
+        if (btn) btn.innerHTML = '전체 다시 풀기<br><small style="color:var(--orange)">2번 더 누르면 초기화</small>';
+    } else if (_resetTaps === 2) {
+        if (btn) btn.innerHTML = '전체 다시 풀기<br><small style="color:var(--red)">⚠️ 한 번 더!</small>';
+    } else if (_resetTaps >= 3) {
+        _resetTaps = 0;
+        if (btn) btn.innerHTML = '전체 다시 풀기<br><small>[3연타 시 초기화]</small>';
+        doResetQuiz();
+        return;
+    }
+    _resetTimer = setTimeout(() => {
+        _resetTaps = 0;
+        const b = document.getElementById('btnReset');
+        if (b) b.innerHTML = '전체 다시 풀기<br><small>[3연타 시 초기화]</small>';
+    }, 1000);
+}
+function doResetQuiz() {
+    srs = {};
+    history = [];
+    ALL_IDS.forEach(id => { srs[id] = { greenStreak: 0, redCount: 0, nextReview: null, mastered: false, lastRating: null }; });
+    saveSrs();
+    saveHist();
+    startQuizWith([...ALL_IDS]);
+}
+
+function startQuizWith(ids, options = {}) {
+    bonusMode = Boolean(options.bonusMode);
+    bonusSrs = bonusMode && options.bonusSrs && typeof options.bonusSrs === 'object' ? options.bonusSrs : {};
+    const queued = new Set();
+    queue = [];
+    const restoreCurrentId = options.restoreCurrentId;
+    if (restoreCurrentId && QUIZ_DATA[restoreCurrentId] && !queued.has(restoreCurrentId)) {
+        queued.add(restoreCurrentId);
+        queue.push(restoreCurrentId);
+    }
+    ids.forEach(id => {
+        if (!QUIZ_DATA[id] || queued.has(id)) return;
+        queued.add(id);
+        queue.push(id);
+    });
+    pending = [];
+    (options.pending || []).forEach(item => {
+        if (!item || !QUIZ_DATA[item.id] || queued.has(item.id)) return;
+        const dueTime = Number(item.dueTime || 0);
+        if (Number.isFinite(dueTime) && dueTime > 0) pending.push({ id: item.id, dueTime });
+    });
+    pending.sort(sortByDueThenOrder);
+    resumeQuizUiState = options.restoreState || null;
+    activeQuizCardId = null;
+    document.body.classList.add('quiz-mode-active');
+    document.getElementById('quizOverlay').classList.add('active');
+    saveQuizSession();
+    showNextCard();
+}
+
+function exitQuiz() {
+    if (waitTimer) { clearInterval(waitTimer); waitTimer = null; }
+    document.body.classList.remove('quiz-mode-active');
+    document.getElementById('quizOverlay').classList.remove('active');
+    saveQuizSession();
+    updateReviewBtn();
+}
+
+function showNextCard() {
+    if (waitTimer) { clearInterval(waitTimer); waitTimer = null; }
+    const now = Date.now();
+
+    // Move due pending cards to front of queue
+    const dueCards = pending.filter(p => p.dueTime <= now).sort(sortByDueThenOrder);
+    pending = pending.filter(p => p.dueTime > now);
+
+    for (const dc of dueCards.reverse()) {
+        queue.unshift(dc.id);
+    }
+
+    updateStats();
+
+    if (queue.length > 0) {
+        const nextId = queue.shift();
+        activeQuizCardId = nextId;
+        saveQuizSession();
+        renderQuizCard(nextId);
+    } else if (pending.length > 0) {
+        activeQuizCardId = null;
+        renderWaiting();
+    } else {
+        activeQuizCardId = null;
+        renderComplete();
+    }
+}
+
+function renderQuizCard(id) {
+    const data = QUIZ_DATA[id];
+    const s = getSrs(id);
+
+    // Read answer from page DOM (includes edits)
+    const ansHtml = document.getElementById('ans-content-' + id)?.innerHTML || edits[id] || data.a;
+    // Read guide: try page DOM first, fall back to QUIZ_DATA
+    let guideHtml = '';
+    const guideEl = document.getElementById('guide-' + id);
+    if (guideEl && guideEl.dataset.loaded) {
+        guideHtml = guideEl.innerHTML;
+    } else {
+        guideHtml = data.g || '';
+    }
+
+    let badge = '';
+    if (bonusMode) badge = '<span style="background:rgba(255,212,59,.2);color:#ffd43b;padding:1px 6px;border-radius:4px;font-size:11px;font-weight:700">⭐ 추가퀴즈</span>';
+    else if (s.mastered) badge = '<span style="background:rgba(255,212,59,.2);color:#ffd43b;padding:1px 6px;border-radius:4px;font-size:11px;font-weight:700">😊 숙달</span>';
+    else if (s.redCount >= 2) badge = '<span style="background:rgba(255,107,107,.2);color:#ff6b6b;padding:1px 6px;border-radius:4px;font-size:11px;font-weight:700">🤬 어려움</span>';
+
+    const curStreak = bonusMode ? 0 : s.greenStreak;
+    const greenLabel = curStreak >= 1 ? '🟢 숙달<br><small>내일</small>' : '🟢 보통<br><small>10분</small>';
+
+    const guideSection = guideHtml.trim() ? `
+        <button class="guide-btn" onclick="toggleQuizGuide()" style="width:100%;text-align:left;background:transparent;border:none;border-top:1px solid var(--card-border);padding:8px 14px;color:#cc5de8;font-size:12px;cursor:pointer;">📖 Study Guide 보기</button>
+        <div class="quiz-guide" id="quizGuide" style="display:none;">${guideHtml}</div>` : '';
+
+    document.getElementById('quizBody').innerHTML = `
+        <div class="quiz-card">
+            <div class="quiz-q">
+                <div class="quiz-q-top">
+                    <span class="card-num">Q${data.num}</span>
+                    ${badge}
+                    <div class="quiz-q-actions">
+                        <button class="draw-btn" onclick="toggleQuizDraw('${id}')" title="필기 모드">🍎</button>
+                        <button class="edit-btn" onclick="toggleQuizEdit('${id}')" title="편집">✏️</button>
+                        <button class="copy-btn" onclick="copyQA('${id}')" title="문제+답 복사">📋</button>
+                    </div>
+                </div>
+                <div class="quiz-q-text">${data.q}</div>
+            </div>
+
+            <div class="self-grade-box">
+                <div class="self-grade-label">
+                    <span>✍️ 내 답안 먼저 써보기</span>
+                    <small>자동저장 · 수정된 정답 기준 채점</small>
+                </div>
+                <textarea class="self-answer-input" id="quizUserAnswer" placeholder="정답 보기 전에 기억나는 대로 적어봐. 예: 핵심 진단 기준, 수치, 치료 순서..."></textarea>
+                <div class="self-grade-actions">
+                    <button class="grade-btn" onclick="gradeUserAnswer('${id}')">내 답 채점</button>
+                    <button class="grade-clear-btn" onclick="clearUserAnswer('${id}')">답안 지우기</button>
+                </div>
+                <div class="grade-result" id="gradeResult"></div>
+            </div>
+            <button class="show-answer-btn" id="showAnsBtn" onclick="showQuizAnswer('${id}')">정답 보기 ▼</button>
+            <div class="quiz-answer" id="quizAnswer">
+                <div class="draw-toolbar" id="draw-toolbar-quiz"></div>
+                <div style="position:relative;">
+                    <div id="quizAnsContent">${ansHtml}</div>
+                    <canvas class="draw-canvas" id="draw-canvas-quiz" style="display:none;"></canvas>
+                </div>
+                ${guideSection}
+                <div class="rating-btns" id="ratingBtns" style="display:none;">
+                    <button class="btn-again" onclick="rate('${id}','r')">🔴 다시<br><small>1분</small></button>
+                    <button class="btn-hard" onclick="rate('${id}','o')">🟠 어려움<br><small>5분</small></button>
+                    <button class="btn-good" onclick="rate('${id}','g')">${greenLabel}</button>
+                    <button class="btn-tomorrow" onclick="rate('${id}','b')">🔵 내일<br><small>1일</small></button>
+                </div>
+            </div>
+        </div>
+    `;
+    const userAnswerEl = document.getElementById('quizUserAnswer');
+    if (userAnswerEl) {
+        userAnswerEl.value = userAnswers[id] || '';
+        userAnswerEl.addEventListener('input', () => {
+            userAnswers[id] = userAnswerEl.value;
+            saveUserAnswers();
+            saveQuizSession();
+        });
+    }
+    const restoreState = resumeQuizUiState && resumeQuizUiState.currentId === id ? resumeQuizUiState : null;
+    resumeQuizUiState = null;
+    if (restoreState && restoreState.answerVisible) {
+        document.getElementById('quizAnswer').classList.add('visible');
+        document.getElementById('showAnsBtn').style.display = 'none';
+        const rr = document.getElementById('ratingBtns');
+        if (rr) rr.style.display = 'flex';
+        if (restoreState.guideVisible) {
+            const g = document.getElementById('quizGuide');
+            const btn = g?.previousElementSibling;
+            if (g) g.style.display = 'block';
+            if (btn) btn.textContent = '📖 Study Guide 닫기';
+        }
+        setTimeout(() => showQuizStaticDraw(id), 30);
+    }
+    updateStats();
+    saveQuizSession();
+}
+
+function showQuizAnswer(id) {
+    document.getElementById('quizAnswer').classList.add('visible');
+    document.getElementById('showAnsBtn').style.display = 'none';
+    const rr = document.getElementById('ratingBtns');
+    if (rr) rr.style.display = 'flex';
+    setTimeout(() => showQuizStaticDraw(id), 30);
+    saveQuizSession();
+}
+
+function toggleQuizGuide() {
+    const g = document.getElementById('quizGuide');
+    const btn = g?.previousElementSibling;
+    if (!g) return;
+    if (g.style.display === 'none') {
+        g.style.display = 'block';
+        if (btn) btn.textContent = '📖 Study Guide 닫기';
+    } else {
+        g.style.display = 'none';
+        if (btn) btn.textContent = '📖 Study Guide 보기';
+    }
+    saveQuizSession();
+}
+
+const GRADE_STOPWORDS = new Set([
+    '그리고','그러나','또는','혹은','대한','대해','설명','나열','정의','경우','대표','기준','치료','진단','소견','증상','환자','상태','검사','시행','사용','필요','있음','없음','이상','이하','미만','초과','관련','각각','각각의','대표적','흔한','이후','이전','통해','위해','한다','되는','있는','없는','으로','에서','에게','까지','부터','보다','만큼','같은','때문','중심','전체','기본','주요','가능','고려','확인','진행','유지','조절','추가','감소','증가','정답','수정','문제','and','or','with','without','the','of','in','to','for','as','by','is','are','be','on','at','from','than','then','that','this'
+]);
+const SUB_DIGITS = { '₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9' };
+
+function escapeHtmlText(value) {
+    return String(value || '').replace(/[&<>"']/g, ch => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[ch]));
+}
+
+function normalizeGradeText(text) {
+    return String(text || '')
+        .normalize('NFKC')
+        .replace(/[₀₁₂₃₄₅₆₇₈₉]/g, ch => SUB_DIGITS[ch] || ch)
+        .replace(/[≥]/g, '>=')
+        .replace(/[≤]/g, '<=')
+        .replace(/[–—]/g, '-')
+        .replace(/㎜/g, 'mm')
+        .replace(/㎎/g, 'mg')
+        .replace(/㎗/g, 'dl')
+        .replace(/\bdepol\b/g, 'depolarization')
+        .replace(/\brepol\b/g, 'repolarization')
+        .replace(/\bvent\b/g, 'ventricular')
+        .replace(/\bventricle\b/g, 'ventricular')
+        .replace(/\batr\b/g, 'atrial')
+        .replace(/\bat\b/g, 'atrial')
+        .replace(/심실/g, 'ventricular')
+        .replace(/심방/g, 'atrial')
+        .replace(/탈분극/g, 'depolarization')
+        .replace(/재분극/g, 'repolarization')
+        .replace(/포함하여|포함하는/g, '포함')
+        .replace(/\s+/g, ' ')
+        .toLowerCase();
+}
+
+function compactGradeText(text) {
+    return normalizeGradeText(text).replace(/[^a-z0-9가-힣]/g, '');
+}
+
+function normalizeGradeToken(token) {
+    return String(token || '')
+        .replace(/(로의|에서의|에서|까지|부터|으로|로|와|과|을|를|은|는|이|가|의)$/g, '')
+        .replace(/포함하여|포함하는/g, '포함');
+}
+
+function extractGradeTokens(text) {
+    const normalized = normalizeGradeText(text);
+    const tokens = normalized.match(/[a-z0-9가-힣][a-z0-9가-힣+/#%.-]*/g) || [];
+    return tokens.map(normalizeGradeToken).filter(token =>
+        token.length >= 2 &&
+        !GRADE_STOPWORDS.has(token) &&
+        !/^[0-9]+$/.test(token)
+    );
+}
+
+function extractGradeLabelTokens(text) {
+    const normalized = normalizeGradeText(text);
+    const tokens = normalized.match(/[a-z0-9가-힣][a-z0-9가-힣+/#%.-]*/g) || [];
+    return tokens.map(normalizeGradeToken).filter(token =>
+        (token.length >= 2 || /^[pqrst]$/.test(token)) &&
+        !GRADE_STOPWORDS.has(token) &&
+        !/^[0-9]+$/.test(token)
+    );
+}
+
+function levenshteinDistance(a, b) {
+    if (Math.abs(a.length - b.length) > 2) return 99;
+    const dp = Array.from({ length: a.length + 1 }, () => new Array(b.length + 1).fill(0));
+    for (let i = 0; i <= a.length; i++) dp[i][0] = i;
+    for (let j = 0; j <= b.length; j++) dp[0][j] = j;
+    for (let i = 1; i <= a.length; i++) {
+        for (let j = 1; j <= b.length; j++) {
+            const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+            dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
+        }
+    }
+    return dp[a.length][b.length];
+}
+
+function findTypoHint(term, userTokens) {
+    const target = compactGradeText(term);
+    if (target.length < 4) return null;
+    const threshold = target.length >= 8 ? 2 : 1;
+    let best = null;
+    let bestDist = 99;
+    for (const rawToken of userTokens) {
+        const token = compactGradeText(rawToken);
+        if (!token || token === target || token[0] !== target[0]) continue;
+        const dist = levenshteinDistance(token, target);
+        if (dist < bestDist) { bestDist = dist; best = rawToken; }
+    }
+    return bestDist <= threshold ? best : null;
+}
+
+function cleanGradeLine(text) {
+    return String(text || '')
+        .replace(/ /g, ' ')
+        .replace(/^[\s\-•·]+/, '')
+        .replace(/^\(?\d+[.)]\s*/, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function textWithLineBreaks(el) {
+    const clone = el.cloneNode(true);
+    clone.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
+    return clone.textContent || '';
+}
+
+function parseGradeItem(text) {
+    const cleaned = cleanGradeLine(text);
+    if (!cleaned || cleaned.length < 3) return null;
+    const parts = cleaned.split(/[:：]/);
+    let label = '';
+    let detail = cleaned;
+    if (parts.length >= 2) {
+        const candidate = cleanGradeLine(parts.shift());
+        const candidateTokens = extractGradeLabelTokens(candidate);
+        if (candidate.length <= 60 && candidateTokens.length > 0 && candidateTokens.length <= 10) {
+            label = candidate;
+            detail = cleanGradeLine(parts.join(':'));
+        }
+    }
+    const labelTokens = extractGradeLabelTokens(label);
+    const detailTokens = extractGradeTokens(detail);
+    const allTokens = extractGradeTokens(cleaned);
+    if (labelTokens.length === 0 && allTokens.length < 2) return null;
+    return { text: cleaned, label, detail, labelTokens, detailTokens, allTokens };
+}
+
+function dedupeGradeItems(items) {
+    const out = [];
+    const seen = new Set();
+    items.forEach(item => {
+        if (!item) return;
+        const key = compactGradeText(item.label || item.text);
+        const detailKey = compactGradeText(item.detail || '');
+        const combined = key + '|' + detailKey;
+        if (!key || seen.has(combined)) return;
+        seen.add(combined);
+        out.push(item);
+    });
+    return out;
+}
+
+function extractGradeItemsFromNode(node) {
+    if (!node) return [];
+    const raw = [];
+
+    node.querySelectorAll('tr').forEach(row => {
+        const cells = Array.from(row.querySelectorAll('td,th')).map(cell => cleanGradeLine(textWithLineBreaks(cell))).filter(Boolean);
+        if (cells.length < 2 || row.querySelectorAll('td').length === 0) return;
+        raw.push(cells.join(': '));
+    });
+
+    node.querySelectorAll('p,li').forEach(el => {
+        textWithLineBreaks(el).split('\n').map(cleanGradeLine).filter(Boolean).forEach(line => raw.push(line));
+    });
+
+    let items = dedupeGradeItems(raw.map(parseGradeItem));
+    if (items.length === 0) {
+        items = dedupeGradeItems(extractGradeTokens(node.textContent).map(token => parseGradeItem(token)));
+    }
+    return items.slice(0, 48);
+}
+
+function buildUserAnswerMap(text) {
+    const lines = String(text || '').split(/\n+/).map(cleanGradeLine).filter(Boolean);
+    const labeled = [];
+    let current = null;
+    lines.forEach(line => {
+        const item = parseGradeItem(line);
+        if (item && item.labelTokens.length > 0 && /[:：]/.test(line)) {
+            current = { label: item.label, labelTokens: item.labelTokens, detail: item.detail || '', detailTokens: extractGradeTokens(item.detail || '') };
+            labeled.push(current);
+        } else if (current) {
+            current.detail = cleanGradeLine((current.detail ? current.detail + ' ' : '') + line);
+            current.detailTokens = extractGradeTokens(current.detail);
+        }
+    });
+    return labeled;
+}
+
+function labelSimilarity(target, candidate) {
+    const targetTokens = target.labelTokens || [];
+    const candidateTokens = candidate.labelTokens || [];
+    if (targetTokens.length === 0 || candidateTokens.length === 0) return 0;
+    const targetCompact = compactGradeText(target.label);
+    const candidateCompact = compactGradeText(candidate.label);
+    if (targetCompact && candidateCompact && targetCompact === candidateCompact) return 1;
+    if (targetCompact && candidateCompact && candidateCompact.includes(targetCompact)) return 0.95;
+    if (targetCompact && candidateCompact && targetCompact.startsWith(candidateCompact) && candidateTokens.length >= 2) return 0.98;
+    const targetText = targetTokens.map(compactGradeText).join(' ');
+    const candidateText = candidateTokens.map(compactGradeText).join(' ');
+    if (targetCompact && candidateCompact && targetCompact.includes(candidateCompact) && candidateTokens.length >= 2) {
+        const candidateHits = candidateTokens.filter(token => targetText.includes(compactGradeText(token))).length;
+        if (candidateHits === candidateTokens.length) return 0.9;
+    }
+    const hits = targetTokens.filter(token => candidateText.includes(compactGradeText(token))).length;
+    return hits / Math.max(1, targetTokens.length);
+}
+
+function findBestUserItem(answerItem, userItems) {
+    let best = null;
+    let score = 0;
+    userItems.forEach(item => {
+        const s = labelSimilarity(answerItem, item);
+        if (s > score) { score = s; best = item; }
+    });
+    return score >= 0.67 ? best : null;
+}
+
+function tokenCovered(token, contextCompact, contextTokens) {
+    const compact = compactGradeText(token);
+    if (!compact) return false;
+    if (contextCompact.includes(compact)) return true;
+    return Boolean(findTypoHint(token, contextTokens || []));
+}
+
+function specialItemCovered(answerItem, matched) {
+    const label = compactGradeText(answerItem.label || '');
+    const detail = compactGradeText(matched && matched.detail || '');
+    if (label.includes('printerval')) {
+        const hasPStart = detail.includes('pwave') && detail.includes('시작');
+        const hasQrsStart = detail.includes('qrscomplex') && detail.includes('시작');
+        return hasPStart && hasQrsStart;
+    }
+    if (label.includes('qtinterval')) {
+        const hasQrsStart = detail.includes('qrscomplex') && detail.includes('시작');
+        const hasTEnd = detail.includes('twave') && (detail.includes('끝') || detail.includes('종료'));
+        return hasQrsStart && hasTEnd;
+    }
+    return false;
+}
+
+function scoreGradeItem(answerItem, typedCompact, userTokens, userItems) {
+    if (answerItem.labelTokens.length > 0) {
+        const matched = findBestUserItem(answerItem, userItems);
+        if (!matched) {
+            return { ok: false, reason: 'missing-label', item: answerItem, missingTokens: answerItem.detailTokens.slice(0, 4) };
+        }
+        if (specialItemCovered(answerItem, matched)) return { ok: true, reason: 'endpoint-equivalent', item: answerItem, missingTokens: [] };
+        const detailTokens = answerItem.detailTokens.length ? answerItem.detailTokens : answerItem.allTokens.filter(t => !answerItem.labelTokens.map(compactGradeText).includes(compactGradeText(t)));
+        if (detailTokens.length === 0) return { ok: true, reason: 'label-only', item: answerItem, missingTokens: [] };
+        const contextCompact = compactGradeText(matched.detail || '');
+        const contextTokens = extractGradeTokens(matched.detail || '');
+        const covered = detailTokens.filter(token => tokenCovered(token, contextCompact, contextTokens));
+        const ratio = covered.length / Math.max(1, detailTokens.length);
+        const threshold = detailTokens.length <= 2 ? 0.75 : 0.6;
+        return { ok: ratio >= threshold, reason: 'detail', item: answerItem, missingTokens: detailTokens.filter(token => !covered.includes(token)).slice(0, 4), ratio };
+    }
+
+    const tokens = answerItem.allTokens;
+    const covered = tokens.filter(token => tokenCovered(token, typedCompact, userTokens));
+    const ratio = covered.length / Math.max(1, tokens.length);
+    return { ok: ratio >= 0.65, reason: 'global', item: answerItem, missingTokens: tokens.filter(token => !covered.includes(token)).slice(0, 4), ratio };
+}
+
+function gradeUserAnswer(id) {
+    const input = document.getElementById('quizUserAnswer');
+    const result = document.getElementById('gradeResult');
+    const answerNode = document.getElementById('quizAnsContent');
+    if (!input || !result) return;
+
+    const typed = input.value.trim();
+    userAnswers[id] = input.value;
+    saveUserAnswers();
+
+    if (!typed) {
+        result.className = 'grade-result visible weak';
+        result.innerHTML = '<h4>먼저 답을 적어줘</h4><div>정답 보기 전에 네 답안을 2-3줄이라도 적으면 빠진 핵심을 잡아줄게.</div>';
+        return;
+    }
+
+    const items = extractGradeItemsFromNode(answerNode);
+    if (items.length === 0) {
+        result.className = 'grade-result visible partial';
+        result.innerHTML = '<h4>채점 기준을 읽지 못했어</h4><div>정답을 한 번 열거나, 정답 편집 내용을 저장한 뒤 다시 눌러줘.</div>';
+        return;
+    }
+
+    const typedCompact = compactGradeText(typed);
+    const userTokens = Array.from(new Set(extractGradeTokens(typed)));
+    const userItems = buildUserAnswerMap(typed);
+    const scored = items.map(item => scoreGradeItem(item, typedCompact, userTokens, userItems));
+    const passed = scored.filter(s => s.ok);
+    const missingItems = scored.filter(s => !s.ok);
+
+    const score = passed.length / Math.max(1, scored.length);
+    const level = score >= 0.85 ? 'good' : (score >= 0.65 ? 'partial' : 'weak');
+    const title = level === 'good' ? '대체로 맞았어' : (level === 'partial' ? '방향은 맞는데 보완 필요' : '핵심이 많이 빠졌어');
+    const pct = Math.round(score * 100);
+
+    let html = '<h4>' + title + '</h4>';
+    html += '<div>항목별 커버율 약 <b>' + pct + '%</b> · 맞춘 항목 ' + passed.length + '개 / 기준 ' + scored.length + '개</div>';
+    if (missingItems.length) {
+        html += '<div style="margin-top:8px"><b>빠진 항목/정의</b></div><ul>' + missingItems.slice(0, 8).map(s => {
+            const label = s.item.label || s.item.text;
+            const miss = s.missingTokens && s.missingTokens.length ? ' <span style="color:#6c6f85">(' + s.missingTokens.map(escapeHtmlText).join(', ') + ')</span>' : '';
+            return '<li>' + escapeHtmlText(label) + miss + '</li>';
+        }).join('') + '</ul>';
+    }
+
+    const typoHints = [];
+    items.forEach(item => item.allTokens.forEach(token => {
+        const hint = findTypoHint(token, userTokens);
+        if (hint && compactGradeText(hint) !== compactGradeText(token)) typoHints.push({ expected: token, typed: hint });
+    }));
+    if (typoHints.length) {
+        html += '<div style="margin-top:8px"><b>오타/표기 의심</b></div><ul>' + typoHints.slice(0, 5).map(t => '<li>' + escapeHtmlText(t.typed) + ' → ' + escapeHtmlText(t.expected) + '</li>').join('') + '</ul>';
+    }
+    if (!missingItems.length && !typoHints.length) {
+        html += '<div style="margin-top:8px">큰 구멍은 안 보여. 이제 정답을 열어서 표현/수치만 최종 확인하면 돼.</div>';
+    }
+    html += '<div class="muted">자동 채점은 정답의 항목별 정의 묶음을 기준으로 비교해. 수정한 정답도 즉시 반영돼.</div>';
+    result.className = 'grade-result visible ' + level;
+    result.innerHTML = html;
+}
+
+function clearUserAnswer(id) {
+    const input = document.getElementById('quizUserAnswer');
+    const result = document.getElementById('gradeResult');
+    if (input) input.value = '';
+    delete userAnswers[id];
+    saveUserAnswers();
+    if (result) { result.className = 'grade-result'; result.innerHTML = ''; }
+}
+
+function toggleQuizEdit(id) {
+    const content = document.getElementById('quizAnsContent');
+    const quizAnswer = document.getElementById('quizAnswer');
+    if (!content || !quizAnswer) return;
+    if (content.contentEditable === 'true') {
+        content.contentEditable = 'false';
+        content.classList.remove('editing');
+        removeEditToolbar('quiz-' + id);
+        edits[id] = content.innerHTML;
+        saveEdits();
+        // Sync card view
+        const cardContent = document.getElementById('ans-content-' + id);
+        if (cardContent) cardContent.innerHTML = edits[id];
+        setTimeout(() => showQuizStaticDraw(id), 30);
+    } else {
+        if (!quizAnswer.classList.contains('visible')) quizAnswer.classList.add('visible');
+        showEditToolbar(quizAnswer, content, 'quiz-' + id);
+        content.contentEditable = 'true';
+        content.classList.add('editing');
+        enableImageDrop(content);
+        content.focus();
+    }
+}
+
+function rate(id, rating) {
+    const s = getSrs(id);
+    const now = Date.now();
+    const MIN = 60000;
+
+    if (bonusMode) {
+        if (!bonusSrs[id]) bonusSrs[id] = { greenStreak: 0 };
+        const bs = bonusSrs[id];
+        let interval;
+        if (rating === 'r') { interval = 1 * MIN; bs.greenStreak = 0; }
+        else if (rating === 'o') { interval = 5 * MIN; bs.greenStreak = 0; }
+        else if (rating === 'g') { bs.greenStreak++; if (bs.greenStreak >= 2) interval = 0; else interval = 10 * MIN; }
+        else if (rating === 'b') { interval = 0; }
+        if (interval > 0) pending.push({ id, dueTime: now + interval });
+        updateStats(); showNextCard();
+        return;
+    }
+
+    // Save to undo history
+    history.push({
+        id,
+        prev: JSON.parse(JSON.stringify(s)),
+        pendingSnapshot: JSON.parse(JSON.stringify(pending)),
+        queueSnapshot: [...queue]
+    });
+    if (history.length > 20) history.shift();
+    saveHist();
+    document.getElementById('undoBtn').disabled = false;
+
+    let newLastRating = rating;
+    let interval;
+
+    if (rating === 'r') {
+        interval = 1 * MIN; s.redCount++; s.greenStreak = 0;
+    } else if (rating === 'o') {
+        interval = 5 * MIN; s.greenStreak = 0;
+    } else if (rating === 'g') {
+        interval = 10 * MIN; s.greenStreak++;
+        if (s.greenStreak >= 2) {
+            s.mastered = true;
+            interval = 24 * 60 * MIN;
+            newLastRating = 'master';
+        }
+    } else if (rating === 'b') {
+        interval = 24 * 60 * MIN;
+    }
+
+    s.nextReview = now + interval;
+    s.lastRating = newLastRating;
+
+    // Re-queue if not mastered/tomorrow
+    if (rating === 'r' || rating === 'o' || (rating === 'g' && !s.mastered)) {
+        pending.push({ id, dueTime: now + interval });
+    }
+
+    saveSrs(); showNextCard();
+}
+
+function undoLast() {
+    if (history.length === 0) return;
+    const entry = history.pop();
+    srs[entry.id] = entry.prev;
+    pending = entry.pendingSnapshot;
+    queue = entry.queueSnapshot;
+    queue.unshift(entry.id);
+    saveSrs();
+    saveHist();
+    document.getElementById('undoBtn').disabled = history.length === 0;
+    showNextCard();
+}
+
+function updateStats() {
+    let red = 0, orange = 0, green = 0, master = 0, blue = 0;
+    ALL_IDS.forEach(id => {
+        const s = srs[id];
+        if (!s || !s.lastRating) return;
+        const lr = s.lastRating;
+        if (lr === 'r' || lr === 'red') red++;
+        else if (lr === 'o' || lr === 'orange') orange++;
+        else if (lr === 'g' || lr === 'green') green++;
+        else if (lr === 'master' || lr === 'mastered') master++;
+        else if (lr === 'b' || lr === 'blue') blue++;
+    });
+    const el = document.getElementById('statRed'); if (el) el.textContent = '🔴 ' + red;
+    const el2 = document.getElementById('statOrange'); if (el2) el2.textContent = '🟠 ' + orange;
+    const el3 = document.getElementById('statGreen'); if (el3) el3.textContent = '🟢 ' + green;
+    const el4 = document.getElementById('statMaster'); if (el4) el4.textContent = '😊 ' + master;
+    const el5 = document.getElementById('statBlue'); if (el5) el5.textContent = '🔵 ' + blue;
+}
+
+function renderWaiting() {
+    if (waitTimer) { clearInterval(waitTimer); waitTimer = null; }
+    const body = document.getElementById('quizBody');
+    const minDue = Math.min(...pending.map(p => p.dueTime));
+    const waitCount = pending.length;
+    saveQuizSession();
+
+    function tick() {
+        const sec = Math.max(0, Math.ceil((minDue - Date.now()) / 1000));
+        if (sec <= 0) {
+            clearInterval(waitTimer); waitTimer = null;
+            showNextCard();
+            return;
+        }
+        body.innerHTML = `
+            <div class="waiting-screen">
+                <p>다음 카드까지 대기 중... (⏳ ${waitCount}개 대기)</p>
+                <div class="countdown">${sec}초</div>
+                <button onclick="skipWait()">⚡ 바로보기</button>
+            </div>
+        `;
+    }
+    tick();
+    waitTimer = setInterval(tick, 1000);
+}
+
+function skipWait() {
+    if (waitTimer) { clearInterval(waitTimer); waitTimer = null; }
+    if (pending.length === 0) return;
+    pending.sort(sortByDueThenOrder);
+    const next = pending.shift();
+    if (next) { queue.unshift(next.id); showNextCard(); }
+}
+
+function renderComplete() {
+    clearQuizSession();
+    const masteredIds = ALL_IDS.filter(id => srs[id] && srs[id].mastered);
+    const bonusSection = bonusMode
+        ? '<p style="color:var(--green);margin-top:12px;font-size:16px">🌟 추가 퀴즈 완료!</p>'
+        : (masteredIds.length > 0
+            ? `<p style="margin-top:16px"><button class="bonus-btn" onclick="startBonus()">⭐ 추가 퀴즈 (숙달 ${masteredIds.length}장)</button></p>`
+            : '');
+    document.getElementById('quizBody').innerHTML = `
+        <div class="session-complete">
+            <h2>${bonusMode ? '⭐ 추가 퀴즈 완료!' : '🎉 세션 완료!'}</h2>
+            <p>숙달 카드: ${masteredIds.length} / ${ALL_IDS.length}</p>
+            ${bonusSection}
+            <p style="margin-top:16px"><button class="back-btn" onclick="exitQuiz()" style="font-size:16px;padding:12px 24px;">← 카드 뷰로 돌아가기</button></p>
+        </div>
+    `;
+}
+
+function startBonus() {
+    bonusMode = true;
+    bonusSrs = {};
+    const masteredIds = ALL_IDS.filter(id => srs[id] && srs[id].mastered);
+    queue = [...masteredIds];
+    pending = [];
+    for (let i = queue.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [queue[i], queue[j]] = [queue[j], queue[i]];
+    }
+    showNextCard();
+}
+
+// ── Image drag & paste support in edit mode ──
+document.addEventListener('paste', function(e) {
+    const active = document.activeElement;
+    if (!active || active.contentEditable !== 'true') return;
+    const items = e.clipboardData.items;
+    for (const item of items) {
+        if (item.type.startsWith('image/')) {
+            e.preventDefault();
+            const blob = item.getAsFile();
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                const img = document.createElement('img');
+                img.src = ev.target.result;
+                img.style.maxWidth = '100%';
+                img.style.borderRadius = '6px';
+                const sel = window.getSelection();
+                if (sel.rangeCount) {
+                    sel.getRangeAt(0).insertNode(img);
+                }
+            };
+            reader.readAsDataURL(blob);
+            break;
+        }
+    }
+});
+
+document.addEventListener('drop', function(e) {
+    const target = e.target.closest('[contenteditable="true"]');
+    if (!target) return;
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    for (const file of files) {
+        if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                const img = document.createElement('img');
+                img.src = ev.target.result;
+                img.style.maxWidth = '100%';
+                img.style.borderRadius = '6px';
+                target.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+});
+
+document.addEventListener('dragover', function(e) {
+    if (e.target.closest('[contenteditable="true"]')) {
+        e.preventDefault();
+    }
+});
+
+// ── Drawing / Apple Pencil Mode (Stroke-based) ──
+const DRAW_KEY = STORAGE_PREFIX + 'draw_v2';
+let drawData = JSON.parse(localStorage.getItem(DRAW_KEY) || '{}');
+// drawData[cardId] = [ { mode:'pen'|'highlighter', color, size, points:[{x,y},...] }, ... ]
+function saveDrawData() { localStorage.setItem(DRAW_KEY, JSON.stringify(drawData)); }
+
+const PEN_COLORS = ['#e64553','#1e66f5','#4c4f69','#40a02b','#fe640b'];
+const HL_COLORS = ['#df8e1d','#e64553','#179299','#1e66f5','#40a02b'];
+
+let activeDrawId = null; // card id currently in draw mode (or 'quiz')
+let drawCtx = null;
+let drawMode = 'pen';
+let drawColor = PEN_COLORS[0];
+let drawSize = 2;
+let isDrawing = false;
+let currentStroke = null; // { mode, color, size, points }
+let canvasW = 0, canvasH = 0; // logical (CSS) size for current canvas
+const DRAW_CANVAS_EXTRA_RIGHT = 24;
+const DRAW_CANVAS_EXTRA_BOTTOM = 96;
+let drawStartTime = 0;
+let activeResizeRect = null; // { cardId, strokeIdx }
+let resizeDragHandle = null; // 'tl'|'tr'|'bl'|'br'
+let longPressTimer = null;
+let shapeSnapTimer = null;
+let shapeSnapMode = null; // 'line'|'rect' during live shape
+let shapeSnapData = null; // line: {startX,startY}, rect: {x,y,w,h,handle}
+
+// ── Laser pointer pen (temporary glowing strokes) ──
+let laserStrokes = []; // temporary strokes that vanish after 1s idle
+let laserFadeTimer = null;
+function startLaserFade() {
+    if (laserFadeTimer) clearTimeout(laserFadeTimer);
+    laserFadeTimer = setTimeout(() => {
+        laserStrokes = [];
+        redrawCurrent();
+    }, 1000);
+}
+function renderLaserStrokes(ctx) {
+    if (laserStrokes.length === 0) return;
+    ctx.save();
+    ctx.shadowColor = '#ff0000';
+    ctx.shadowBlur = 12;
+    ctx.strokeStyle = '#ff0000';
+    ctx.globalAlpha = 0.9;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.lineWidth = 3;
+    laserStrokes.forEach(s => {
+        if (!s.points || s.points.length < 2) return;
+        ctx.beginPath();
+        ctx.moveTo(s.points[0].x, s.points[0].y);
+        for (let i = 1; i < s.points.length; i++) ctx.lineTo(s.points[i].x, s.points[i].y);
+        ctx.stroke();
+    });
+    // Outer glow
+    ctx.shadowColor = '#ff3333';
+    ctx.shadowBlur = 24;
+    ctx.globalAlpha = 0.4;
+    ctx.lineWidth = 8;
+    laserStrokes.forEach(s => {
+        if (!s.points || s.points.length < 2) return;
+        ctx.beginPath();
+        ctx.moveTo(s.points[0].x, s.points[0].y);
+        for (let i = 1; i < s.points.length; i++) ctx.lineTo(s.points[i].x, s.points[i].y);
+        ctx.stroke();
+    });
+    ctx.restore();
+}
+let selectedStrokes = null; // { cardId, indices:[], bbox:{x,y,w,h} }
+let isMovingSelection = false;
+let moveStartPos = null;
+let selectionPath = [];
+
+// ── Undo / Redo stacks (per card) ──
+let drawUndoStack = {};  // cardId -> [snapshot, ...]
+let drawRedoStack = {};  // cardId -> [snapshot, ...]
+function pushDrawUndo(cid) {
+    if (!cid) return;
+    if (!drawUndoStack[cid]) drawUndoStack[cid] = [];
+    drawUndoStack[cid].push(JSON.parse(JSON.stringify(getStrokes(cid))));
+    if (drawUndoStack[cid].length > 50) drawUndoStack[cid].shift();
+    drawRedoStack[cid] = [];
+    updateUndoRedoBtns();
+}
+function drawUndo() {
+    const cid = realDrawId();
+    if (!cid || !drawUndoStack[cid] || drawUndoStack[cid].length === 0) return;
+    if (!drawRedoStack[cid]) drawRedoStack[cid] = [];
+    drawRedoStack[cid].push(JSON.parse(JSON.stringify(getStrokes(cid))));
+    drawData[cid] = drawUndoStack[cid].pop();
+    saveDrawData();
+    activeResizeRect = null;
+    selectedStrokes = null;
+    redrawCurrent();
+    updateUndoRedoBtns();
+}
+function drawRedo() {
+    const cid = realDrawId();
+    if (!cid || !drawRedoStack[cid] || drawRedoStack[cid].length === 0) return;
+    if (!drawUndoStack[cid]) drawUndoStack[cid] = [];
+    drawUndoStack[cid].push(JSON.parse(JSON.stringify(getStrokes(cid))));
+    drawData[cid] = drawRedoStack[cid].pop();
+    saveDrawData();
+    activeResizeRect = null;
+    selectedStrokes = null;
+    redrawCurrent();
+    updateUndoRedoBtns();
+}
+function updateUndoRedoBtns() {
+    const cid = realDrawId();
+    document.querySelectorAll('.draw-undo-btn').forEach(b => b.disabled = !cid || !drawUndoStack[cid] || drawUndoStack[cid].length === 0);
+    document.querySelectorAll('.draw-redo-btn').forEach(b => b.disabled = !cid || !drawRedoStack[cid] || drawRedoStack[cid].length === 0);
+}
+
+// ── Get the real card id (handles 'quiz' proxy) ──
+function realDrawId() {
+    return activeDrawId === 'quiz' ? quizDrawCardId : activeDrawId;
+}
+function getStrokes(cardId) {
+    if (!drawData[cardId]) drawData[cardId] = [];
+    return drawData[cardId];
+}
+
+// ── Apply stroke style (shared) ──
+function applyStrokeStyle(ctx, s) {
+    if (s.mode === 'pen') {
+        ctx.strokeStyle = s.color;
+        ctx.lineWidth = s.size;
+        ctx.globalAlpha = 1.0;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+    } else {
+        ctx.strokeStyle = s.color;
+        ctx.lineWidth = s.size * 6;
+        ctx.globalAlpha = 0.35;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+    }
+}
+
+function clampPressure(v) {
+    return Math.max(0.08, Math.min(1, Number.isFinite(v) ? v : 0.55));
+}
+
+function normalizePointerPressure(e) {
+    let p = (typeof e.pressure === 'number') ? e.pressure : 0;
+    // iPad Safari/WKWebView may expose stylus force on touch-like events.
+    if ((!p || p < 0.01) && typeof e.webkitForce === 'number') p = Math.min(1, e.webkitForce);
+    // Mouse and some browsers report 0 on pointerdown; use a neutral pressure.
+    if (!p || p < 0.01) p = (e.pointerType === 'pen') ? 0.48 : 0.55;
+    return clampPressure(p);
+}
+
+function pointPressure(pt) {
+    return clampPressure(pt && typeof pt.p === 'number' ? pt.p : 0.55);
+}
+
+function catmullRom(p0, p1, p2, p3, t, key) {
+    const v0 = (p0 && typeof p0[key] === 'number') ? p0[key] : p1[key];
+    const v1 = (p1 && typeof p1[key] === 'number') ? p1[key] : 0;
+    const v2 = (p2 && typeof p2[key] === 'number') ? p2[key] : v1;
+    const v3 = (p3 && typeof p3[key] === 'number') ? p3[key] : v2;
+    const t2 = t * t;
+    const t3 = t2 * t;
+    return 0.5 * ((2 * v1) + (-v0 + v2) * t + (2*v0 - 5*v1 + 4*v2 - v3) * t2 + (-v0 + 3*v1 - 3*v2 + v3) * t3);
+}
+
+function buildSmoothPenPoints(points) {
+    if (!points || points.length <= 2) return (points || []).map(pt => ({ x: pt.x, y: pt.y, p: pointPressure(pt) }));
+    const steps = points.length > 180 ? 3 : 5;
+    const out = [];
+    for (let i = 0; i < points.length - 1; i++) {
+        const p0 = points[Math.max(0, i - 1)];
+        const p1 = points[i];
+        const p2 = points[i + 1];
+        const p3 = points[Math.min(points.length - 1, i + 2)];
+        for (let s = 0; s < steps; s++) {
+            const t = s / steps;
+            out.push({
+                x: catmullRom(p0, p1, p2, p3, t, 'x'),
+                y: catmullRom(p0, p1, p2, p3, t, 'y'),
+                p: clampPressure(catmullRom(p0, {...p1, p: pointPressure(p1)}, {...p2, p: pointPressure(p2)}, p3 ? {...p3, p: pointPressure(p3)} : p3, t, 'p'))
+            });
+        }
+    }
+    const last = points[points.length - 1];
+    out.push({ x: last.x, y: last.y, p: pointPressure(last) });
+    return out;
+}
+
+function penBrushWidth(stroke, pt, idx, count) {
+    const base = Math.max(1, stroke.size || 2);
+    const pressureWidth = base * (0.55 + pointPressure(pt) * 1.75);
+    if (count < 8) return pressureWidth;
+    const phase = idx / Math.max(1, count - 1);
+    const edge = Math.min(phase, 1 - phase);
+    const taper = Math.max(0.34, Math.min(1, edge / 0.10));
+    return Math.max(0.45, pressureWidth * taper);
+}
+
+function drawSmoothedPenStroke(ctx, stroke) {
+    if (!stroke.points || stroke.points.length < 2) return;
+    const pts = buildSmoothPenPoints(stroke.points);
+    if (pts.length < 2) return;
+    ctx.save();
+    ctx.strokeStyle = stroke.color;
+    ctx.globalAlpha = 1.0;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    for (let i = 1; i < pts.length; i++) {
+        const a = pts[i - 1], b = pts[i];
+        if (Math.hypot(b.x - a.x, b.y - a.y) < 0.05) continue;
+        ctx.lineWidth = (penBrushWidth(stroke, a, i - 1, pts.length) + penBrushWidth(stroke, b, i, pts.length)) / 2;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+    }
+    ctx.restore();
+}
+
+// ── Render all strokes onto canvas ──
+function renderStrokes(ctx, strokes, w, h) {
+    ctx.clearRect(0, 0, w, h);
+    for (const s of strokes) {
+        if (s.type === 'rect') {
+            ctx.beginPath();
+            ctx.rect(s.x, s.y, s.w, s.h);
+            applyStrokeStyle(ctx, s);
+            ctx.stroke();
+            ctx.globalAlpha = 1.0;
+        } else if (s.type === 'line') {
+            if (!s.points || s.points.length < 2) continue;
+            ctx.beginPath();
+            ctx.moveTo(s.points[0].x, s.points[0].y);
+            ctx.lineTo(s.points[1].x, s.points[1].y);
+            applyStrokeStyle(ctx, s);
+            ctx.stroke();
+            ctx.globalAlpha = 1.0;
+        } else {
+            if (!s.points || s.points.length < 2) continue;
+            if (s.mode === 'pen') {
+                drawSmoothedPenStroke(ctx, s);
+            } else {
+                ctx.beginPath();
+                ctx.moveTo(s.points[0].x, s.points[0].y);
+                for (let i = 1; i < s.points.length; i++) {
+                    ctx.lineTo(s.points[i].x, s.points[i].y);
+                }
+                applyStrokeStyle(ctx, s);
+                ctx.stroke();
+                ctx.globalAlpha = 1.0;
+            }
+        }
+    }
+}
+
+// ── Resize handles for rectangles ──
+function getRectHandles(s) {
+    return {
+        tl: { x: s.x, y: s.y },
+        tr: { x: s.x + s.w, y: s.y },
+        bl: { x: s.x, y: s.y + s.h },
+        br: { x: s.x + s.w, y: s.y + s.h }
+    };
+}
+function drawResizeHandles(ctx, s) {
+    const handles = getRectHandles(s);
+    ctx.globalAlpha = 1.0;
+    ctx.lineWidth = 1.5;
+    for (const h of Object.values(handles)) {
+        ctx.fillStyle = '#1e66f5';
+        ctx.fillRect(h.x - 6, h.y - 6, 12, 12);
+        ctx.strokeStyle = '#fff';
+        ctx.strokeRect(h.x - 6, h.y - 6, 12, 12);
+    }
+}
+function pointInRect(pos, s) {
+    const x1 = Math.min(s.x, s.x + s.w), x2 = Math.max(s.x, s.x + s.w);
+    const y1 = Math.min(s.y, s.y + s.h), y2 = Math.max(s.y, s.y + s.h);
+    return pos.x >= x1 && pos.x <= x2 && pos.y >= y1 && pos.y <= y2;
+}
+
+// ── Hit-test: is point (px,py) near any segment of stroke? ──
+function strokeHitTest(stroke, px, py, threshold) {
+    const r = threshold + (stroke.mode === 'highlighter' ? stroke.size * 3 : (stroke.mode === 'pen' ? stroke.size * 1.25 : stroke.size / 2));
+    if (stroke.type === 'rect') {
+        const x1 = stroke.x, y1 = stroke.y, x2 = stroke.x + stroke.w, y2 = stroke.y + stroke.h;
+        if (distToSegment(px, py, x1, y1, x2, y1) < r) return true;
+        if (distToSegment(px, py, x2, y1, x2, y2) < r) return true;
+        if (distToSegment(px, py, x2, y2, x1, y2) < r) return true;
+        if (distToSegment(px, py, x1, y2, x1, y1) < r) return true;
+        return false;
+    }
+    if (stroke.type === 'line') {
+        const pts = stroke.points;
+        if (!pts || pts.length < 2) return false;
+        return distToSegment(px, py, pts[0].x, pts[0].y, pts[1].x, pts[1].y) < r;
+    }
+    const pts = stroke.points;
+    if (!pts) return false;
+    for (let i = 0; i < pts.length - 1; i++) {
+        if (distToSegment(px, py, pts[i].x, pts[i].y, pts[i+1].x, pts[i+1].y) < r) return true;
+    }
+    return false;
+}
+function distToSegment(px, py, x1, y1, x2, y2) {
+    const dx = x2 - x1, dy = y2 - y1;
+    const lenSq = dx*dx + dy*dy;
+    let t = lenSq === 0 ? 0 : Math.max(0, Math.min(1, ((px-x1)*dx + (py-y1)*dy) / lenSq));
+    const cx = x1 + t*dx, cy = y1 + t*dy;
+    return Math.sqrt((px-cx)*(px-cx) + (py-cy)*(py-cy));
+}
+
+// ── Segment-segment intersection ──
+function segCross(ox, oy, ax, ay, bx, by) {
+    return (ax - ox) * (by - oy) - (ay - oy) * (bx - ox);
+}
+function segmentsIntersect(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2) {
+    const d1 = segCross(bx1, by1, bx2, by2, ax1, ay1);
+    const d2 = segCross(bx1, by1, bx2, by2, ax2, ay2);
+    const d3 = segCross(ax1, ay1, ax2, ay2, bx1, by1);
+    const d4 = segCross(ax1, ay1, ax2, ay2, bx2, by2);
+    if (((d1 > 0 && d2 < 0) || (d1 < 0 && d2 > 0)) &&
+        ((d3 > 0 && d4 < 0) || (d3 < 0 && d4 > 0))) return true;
+    return false;
+}
+
+// ── Get segments from any stroke type ──
+function getStrokeSegments(stroke) {
+    if (stroke.type === 'rect') {
+        const x1 = stroke.x, y1 = stroke.y, x2 = stroke.x + stroke.w, y2 = stroke.y + stroke.h;
+        return [
+            {x1, y1, x2, y2: y1}, {x1: x2, y1, x2, y2},
+            {x1: x2, y1: y2, x2: x1, y2}, {x1, y1: y2, x2: x1, y2: y1}
+        ];
+    }
+    const pts = stroke.points || [];
+    const segs = [];
+    for (let i = 0; i < pts.length - 1; i++) {
+        segs.push({x1: pts[i].x, y1: pts[i].y, x2: pts[i+1].x, y2: pts[i+1].y});
+    }
+    return segs;
+}
+
+// ── Does a selection path intersect a stroke? ──
+function strokeIntersectsPath(stroke, path) {
+    // Point proximity check (catches thick strokes)
+    const thresh = 4;
+    for (let k = 0; k < path.length; k += 3) {
+        if (strokeHitTest(stroke, path[k].x, path[k].y, thresh)) return true;
+    }
+    // Segment intersection check
+    const strokeSegs = getStrokeSegments(stroke);
+    for (let i = 0; i < path.length - 1; i++) {
+        for (const seg of strokeSegs) {
+            if (segmentsIntersect(path[i].x, path[i].y, path[i+1].x, path[i+1].y,
+                seg.x1, seg.y1, seg.x2, seg.y2)) return true;
+        }
+    }
+    return false;
+}
+
+function pointInPolygon(pt, poly) {
+    if (!poly || poly.length < 3) return false;
+    let inside = false;
+    for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+        const xi = poly[i].x, yi = poly[i].y;
+        const xj = poly[j].x, yj = poly[j].y;
+        const intersects = ((yi > pt.y) !== (yj > pt.y)) &&
+            (pt.x < (xj - xi) * (pt.y - yi) / ((yj - yi) || 0.000001) + xi);
+        if (intersects) inside = !inside;
+    }
+    return inside;
+}
+
+function strokeInsidePath(stroke, path) {
+    const pts = [];
+    if (stroke.type === 'rect') {
+        const x1 = stroke.x, y1 = stroke.y, x2 = stroke.x + stroke.w, y2 = stroke.y + stroke.h;
+        pts.push({ x: x1, y: y1 }, { x: x2, y: y1 }, { x: x2, y: y2 }, { x: x1, y: y2 }, { x: (x1 + x2) / 2, y: (y1 + y2) / 2 });
+    } else if (stroke.points && stroke.points.length) {
+        pts.push(...stroke.points);
+        const bbox = computeSelectionBBox([stroke], [0]);
+        pts.push({ x: bbox.x + bbox.w / 2, y: bbox.y + bbox.h / 2 });
+    }
+    return pts.some(p => pointInPolygon(p, path));
+}
+
+function strokeSelectedByLasso(stroke, path) {
+    return strokeIntersectsPath(stroke, path) || strokeInsidePath(stroke, path);
+}
+
+// ── Bounding box of selected strokes ──
+function computeSelectionBBox(strokes, indices) {
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const idx of indices) {
+        const s = strokes[idx];
+        if (s.type === 'rect') {
+            minX = Math.min(minX, s.x, s.x + s.w); minY = Math.min(minY, s.y, s.y + s.h);
+            maxX = Math.max(maxX, s.x, s.x + s.w); maxY = Math.max(maxY, s.y, s.y + s.h);
+        } else if (s.points) {
+            for (const p of s.points) {
+                minX = Math.min(minX, p.x); minY = Math.min(minY, p.y);
+                maxX = Math.max(maxX, p.x); maxY = Math.max(maxY, p.y);
+            }
+        }
+    }
+    const pad = 10;
+    return { x: minX - pad, y: minY - pad, w: maxX - minX + pad * 2, h: maxY - minY + pad * 2 };
+}
+
+// ── Draw selection UI ──
+function drawSelectionBox() {
+    if (!selectedStrokes || !drawCtx) return;
+    const b = selectedStrokes.bbox;
+    drawCtx.save();
+    drawCtx.setLineDash([6, 4]);
+    drawCtx.strokeStyle = '#4c4f69';
+    drawCtx.lineWidth = 1.5;
+    drawCtx.globalAlpha = 1.0;
+    drawCtx.strokeRect(b.x, b.y, b.w, b.h);
+    drawCtx.restore();
+}
+function drawSelectionLine() {
+    if (!selectionPath.length || !drawCtx) return;
+    drawCtx.save();
+    drawCtx.setLineDash([4, 4]);
+    drawCtx.strokeStyle = '#000';
+    drawCtx.lineWidth = 1.5;
+    drawCtx.globalAlpha = 0.7;
+    drawCtx.beginPath();
+    drawCtx.moveTo(selectionPath[0].x, selectionPath[0].y);
+    for (let i = 1; i < selectionPath.length; i++) drawCtx.lineTo(selectionPath[i].x, selectionPath[i].y);
+    drawCtx.stroke();
+    drawCtx.restore();
+}
+
+// ── Move selected strokes by delta ──
+function moveSelectedStrokes(dx, dy) {
+    if (!selectedStrokes) return;
+    const cid = selectedStrokes.cardId;
+    const strokes = getStrokes(cid);
+    for (const idx of selectedStrokes.indices) {
+        const s = strokes[idx];
+        if (s.type === 'rect') { s.x += dx; s.y += dy; }
+        else if (s.points) { for (const p of s.points) { p.x += dx; p.y += dy; } }
+    }
+    selectedStrokes.bbox.x += dx;
+    selectedStrokes.bbox.y += dy;
+}
+
+// ── Shape snap: convert freehand to shape at 2s mark ──
+function triggerShapeSnap() {
+    if (!currentStroke || currentStroke.points.length < 5) return;
+    const pts = currentStroke.points;
+    const startPt = pts[0];
+    const endPt = pts[pts.length - 1];
+    const startEndDist = Math.sqrt((endPt.x - startPt.x) ** 2 + (endPt.y - startPt.y) ** 2);
+    let pathLen = 0;
+    for (let i = 1; i < pts.length; i++) {
+        pathLen += Math.sqrt((pts[i].x - pts[i-1].x) ** 2 + (pts[i].y - pts[i-1].y) ** 2);
+    }
+    if (pathLen <= 0) return;
+
+    if (startEndDist < pathLen / 10) {
+        // Rectangle
+        let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+        for (const p of pts) {
+            minX = Math.min(minX, p.x); minY = Math.min(minY, p.y);
+            maxX = Math.max(maxX, p.x); maxY = Math.max(maxY, p.y);
+        }
+        shapeSnapMode = 'rect';
+        shapeSnapData = { x: minX, y: minY, w: maxX - minX, h: maxY - minY, handle: 'br' };
+        // Find closest corner to current finger
+        const cp = endPt;
+        const corners = { tl: {x: minX, y: minY}, tr: {x: maxX, y: minY}, bl: {x: minX, y: maxY}, br: {x: maxX, y: maxY} };
+        let best = 'br', bestD = Infinity;
+        for (const [k, h] of Object.entries(corners)) {
+            const d = Math.sqrt((cp.x - h.x) ** 2 + (cp.y - h.y) ** 2);
+            if (d < bestD) { bestD = d; best = k; }
+        }
+        shapeSnapData.handle = best;
+    } else {
+        // Horizontal line
+        const avgY = (startPt.y + endPt.y) / 2;
+        shapeSnapMode = 'line';
+        shapeSnapData = { startX: startPt.x, startY: avgY, endX: endPt.x };
+    }
+    currentStroke = null; // switch from freehand to shape mode
+    // Immediate visual feedback
+    const cid = realDrawId();
+    renderStrokes(drawCtx, getStrokes(cid), canvasW, canvasH);
+    drawLiveShape();
+}
+
+// ── Draw live shape preview while dragging ──
+function drawLiveShape() {
+    if (!shapeSnapData || !drawCtx) return;
+    const style = { mode: drawMode, color: drawColor, size: drawSize };
+    if (shapeSnapMode === 'line') {
+        drawCtx.beginPath();
+        drawCtx.moveTo(shapeSnapData.startX, shapeSnapData.startY);
+        drawCtx.lineTo(shapeSnapData.endX, shapeSnapData.startY);
+        applyStrokeStyle(drawCtx, style);
+        drawCtx.stroke();
+        drawCtx.globalAlpha = 1.0;
+    } else if (shapeSnapMode === 'rect') {
+        const d = shapeSnapData;
+        drawCtx.beginPath();
+        drawCtx.rect(d.x, d.y, d.w, d.h);
+        applyStrokeStyle(drawCtx, style);
+        drawCtx.stroke();
+        drawCtx.globalAlpha = 1.0;
+        drawResizeHandles(drawCtx, d);
+    }
+}
+
+// ── Toolbar builder (shared for card & quiz) ──
+function buildDrawToolbar(tbId) {
+    const tb = document.getElementById(tbId);
+    if (!tb || tb.dataset.built) return;
+    tb.dataset.built = '1';
+
+    const penBtn = mkToolBtn('🖊️', 'pen');
+    const hlBtn = mkToolBtn('🖍️', 'highlighter');
+    const eraserBtn = mkToolBtn('🧹', 'eraser');
+    const laserBtn = mkToolBtn('🔴', 'laser');
+    const moveBtn = mkToolBtn('☩', 'move');
+    tb.appendChild(penBtn);
+    tb.appendChild(hlBtn);
+    tb.appendChild(eraserBtn);
+    tb.appendChild(laserBtn);
+    tb.appendChild(moveBtn);
+    tb.appendChild(mkDivider());
+
+    const palette = document.createElement('span');
+    palette.className = 'draw-palette';
+    palette.style.display = 'flex';
+    palette.style.gap = '4px';
+    palette.style.alignItems = 'center';
+    PEN_COLORS.forEach((c, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'color-dot' + (i === 0 ? ' active' : '');
+        dot.style.background = c;
+        dot.dataset.color = c;
+        dot.onclick = () => {
+            drawColor = dot.dataset.color;
+            palette.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+        };
+        palette.appendChild(dot);
+    });
+    tb.appendChild(palette);
+    tb.appendChild(mkDivider());
+
+    const sizeLabel = document.createElement('span');
+    sizeLabel.className = 'size-label';
+    sizeLabel.textContent = '2px';
+    const slider = document.createElement('input');
+    slider.type = 'range';
+    slider.className = 'size-slider';
+    slider.min = '1';
+    slider.max = '12';
+    slider.value = '2';
+    slider.oninput = () => { drawSize = parseInt(slider.value); sizeLabel.textContent = drawSize + 'px'; };
+    tb.appendChild(slider);
+    tb.appendChild(sizeLabel);
+    tb.appendChild(mkDivider());
+
+    // Undo / Redo buttons
+    const undoBtn = document.createElement('button');
+    undoBtn.className = 'draw-undo-btn';
+    undoBtn.textContent = '↩';
+    undoBtn.title = '되돌리기';
+    undoBtn.disabled = true;
+    undoBtn.onclick = () => drawUndo();
+    tb.appendChild(undoBtn);
+
+    const redoBtn = document.createElement('button');
+    redoBtn.className = 'draw-redo-btn';
+    redoBtn.textContent = '↪';
+    redoBtn.title = '앞으로';
+    redoBtn.disabled = true;
+    redoBtn.onclick = () => drawRedo();
+    tb.appendChild(redoBtn);
+    tb.appendChild(mkDivider());
+
+    const clearBtn = document.createElement('button');
+    clearBtn.className = 'clear-all-btn';
+    clearBtn.textContent = '전체 지우기';
+    clearBtn.onclick = () => {
+        const cid = realDrawId();
+        if (cid && getStrokes(cid).length > 0) {
+            pushDrawUndo(cid);
+            drawData[cid] = [];
+            activeResizeRect = null;
+            selectedStrokes = null;
+            saveDrawData();
+            redrawCurrent();
+        }
+    };
+    tb.appendChild(clearBtn);
+
+    const zoomResetBtn = document.createElement('button');
+    zoomResetBtn.className = 'clear-all-btn';
+    zoomResetBtn.style.background = '#5c5f77';
+    zoomResetBtn.textContent = '🔍 1×';
+    zoomResetBtn.title = '확대/축소 초기화';
+    zoomResetBtn.onclick = () => {
+        currentZoomScale = 1;
+        currentZoomTX = 0;
+        currentZoomTY = 0;
+        const container = getZoomContainer();
+        if (container) container.style.transform = '';
+    };
+    tb.appendChild(zoomResetBtn);
+
+    penBtn.classList.add('active');
+    function setTool(tool) {
+        drawMode = tool;
+        // Clear selection when switching tools
+        selectedStrokes = null;
+        selectionPath = [];
+        isMovingSelection = false;
+        [penBtn, hlBtn, eraserBtn, laserBtn, moveBtn].forEach(b => b.classList.remove('active'));
+        if (tool === 'pen') { penBtn.classList.add('active'); updatePaletteColors(PEN_COLORS, palette); }
+        else if (tool === 'highlighter') { hlBtn.classList.add('active'); updatePaletteColors(HL_COLORS, palette); }
+        else if (tool === 'laser') { laserBtn.classList.add('active'); }
+        else if (tool === 'move') { moveBtn.classList.add('active'); }
+        else { eraserBtn.classList.add('active'); }
+        redrawCurrent();
+    }
+    penBtn.onclick = () => setTool('pen');
+    hlBtn.onclick = () => setTool('highlighter');
+    eraserBtn.onclick = () => setTool('eraser');
+    laserBtn.onclick = () => setTool('laser');
+    moveBtn.onclick = () => setTool('move');
+}
+
+function updatePaletteColors(colors, palette) {
+    const dots = palette.querySelectorAll('.color-dot');
+    dots.forEach((dot, i) => { dot.style.background = colors[i]; dot.dataset.color = colors[i]; });
+    drawColor = colors[0];
+    dots.forEach(d => d.classList.remove('active'));
+    if (dots[0]) dots[0].classList.add('active');
+}
+
+function mkToolBtn(emoji, tool) {
+    const btn = document.createElement('button');
+    btn.className = 'tool-btn';
+    btn.textContent = emoji;
+    btn.title = tool;
+    return btn;
+}
+function mkDivider() {
+    const d = document.createElement('span');
+    d.className = 'divider';
+    return d;
+}
+
+// ── Redraw current active canvas ──
+function redrawCurrent() {
+    if (!drawCtx) return;
+    const cid = realDrawId();
+    renderStrokes(drawCtx, getStrokes(cid), canvasW, canvasH);
+    // Draw laser strokes on top
+    renderLaserStrokes(drawCtx);
+    // Draw resize handles if active on this card
+    if (activeResizeRect && activeResizeRect.cardId === cid) {
+        const rs = getStrokes(cid)[activeResizeRect.strokeIdx];
+        if (rs && rs.type === 'rect') {
+            drawResizeHandles(drawCtx, rs);
+        } else {
+            activeResizeRect = null;
+        }
+    }
+    // Draw selection box if active
+    if (selectedStrokes && selectedStrokes.cardId === cid) {
+        drawSelectionBox();
+    }
+}
+
+// ── Setup canvas helper ──
+function setupCanvas(canvas, contentEl) {
+    const rect = contentEl.getBoundingClientRect();
+    const parent = canvas.parentElement;
+    const dpr = window.devicePixelRatio || 1;
+    canvasW = Math.ceil(rect.width + DRAW_CANVAS_EXTRA_RIGHT);
+    canvasH = Math.ceil(rect.height + DRAW_CANVAS_EXTRA_BOTTOM);
+    canvas.width = canvasW * dpr;
+    canvas.height = canvasH * dpr;
+    canvas.style.width = canvasW + 'px';
+    canvas.style.height = canvasH + 'px';
+    if (parent) {
+        parent.style.position = 'relative';
+        parent.style.minHeight = canvasH + 'px';
+    }
+    canvas.style.display = 'block';
+    drawCtx = canvas.getContext('2d');
+    drawCtx.scale(dpr, dpr);
+    canvas.onpointerdown = handlePointerDown;
+    canvas.onpointermove = handlePointerMove;
+    canvas.onpointerup = handlePointerUp;
+    canvas.onpointerleave = handlePointerUp;
+    canvas.ondblclick = (e) => e.preventDefault();
+    canvas.onselectstart = (e) => e.preventDefault();
+    canvas.oncontextmenu = (e) => e.preventDefault();
+    canvas.ontouchstart = (e) => { if (e.touches.length < 2) e.preventDefault(); };
+}
+
+// ── Card view toggle ──
+function toggleDraw(id) {
+    const canvas = document.getElementById('draw-canvas-' + id);
+    const toolbar = document.getElementById('draw-toolbar-' + id);
+    const ansArea = document.getElementById('ans-' + id);
+    ansArea.style.display = 'block';
+
+    if (canvas.style.display === 'none' || !canvas.style.display) {
+        activeDrawId = id;
+        buildDrawToolbar('draw-toolbar-' + id);
+        toolbar.classList.add('active');
+        ansArea.classList.add('draw-active');
+        document.body.classList.add('drawing-active');
+        const content = document.getElementById('ans-content-' + id);
+        setupCanvas(canvas, content);
+        canvas.style.pointerEvents = 'auto';
+        renderStrokes(drawCtx, getStrokes(id), canvasW, canvasH);
+        updateUndoRedoBtns();
+    } else {
+        saveDrawData();
+        canvas.style.display = 'none';
+        toolbar.classList.remove('active');
+        ansArea.classList.remove('draw-active');
+        document.body.classList.remove('drawing-active');
+        activeResizeRect = null;
+        selectedStrokes = null;
+        shapeSnapMode = null;
+        shapeSnapData = null;
+        // Re-render as static (no pointer events)
+        showStaticDraw(id);
+        activeDrawId = null;
+        drawCtx = null;
+    }
+}
+
+// ── Pointer events ──
+function getDrawPos(e) {
+    const canvas = e.target;
+    const rect = canvas.getBoundingClientRect();
+    // When zoomed, rect is scaled but canvas logical size stays the same
+    // Divide by zoom ratio to convert screen coords → logical coords
+    const scaleX = canvas.offsetWidth / rect.width;
+    const scaleY = canvas.offsetHeight / rect.height;
+    return {
+        x: (e.clientX - rect.left) * scaleX,
+        y: (e.clientY - rect.top) * scaleY,
+        p: normalizePointerPressure(e)
+    };
+}
+
+// ── Pinch-to-Zoom + Pan ──
+let activePointers = new Map(); // pointerId -> { type, x, y }
+let pinchStartDist = 0;
+let pinchStartScale = 1;
+let pinchStartMidX = 0, pinchStartMidY = 0;
+let pinchStartTX = 0, pinchStartTY = 0;
+let currentZoomScale = 1;
+let currentZoomTX = 0, currentZoomTY = 0; // translate in px
+// Touch input is fully blocked from drawing (Apple Pencil / mouse only)
+
+function getZoomContainer() {
+    if (!activeDrawId) return null;
+    const canvasId = activeDrawId === 'quiz' ? 'draw-canvas-quiz' : 'draw-canvas-' + activeDrawId;
+    const canvas = document.getElementById(canvasId);
+    return canvas ? canvas.parentElement : null;
+}
+
+function applyZoom() {
+    const container = getZoomContainer();
+    if (container) {
+        container.style.transformOrigin = '0 0';
+        container.style.transform = `translate(${currentZoomTX}px, ${currentZoomTY}px) scale(${currentZoomScale})`;
+    }
+}
+
+function pinchDist(a, b) {
+    const dx = a.x - b.x, dy = a.y - b.y;
+    return Math.sqrt(dx * dx + dy * dy);
+}
+function pinchMid(a, b) {
+    return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+}
+
+function handlePointerDown(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    activePointers.set(e.pointerId, { type: e.pointerType, x: e.clientX, y: e.clientY });
+
+    // Touch input → only used for pinch-to-zoom, never for drawing
+    if (e.pointerType === 'touch') {
+        const touchPtrs = [...activePointers.entries()].filter(([,v]) => v.type === 'touch');
+        if (touchPtrs.length === 2) {
+            // Cancel any in-progress drawing
+            if (isDrawing) {
+                isDrawing = false;
+                currentStroke = null;
+                if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
+                if (shapeSnapTimer) { clearTimeout(shapeSnapTimer); shapeSnapTimer = null; }
+                redrawCurrent();
+            }
+            pinchStartDist = pinchDist(touchPtrs[0][1], touchPtrs[1][1]);
+            pinchStartScale = currentZoomScale;
+            const mid = pinchMid(touchPtrs[0][1], touchPtrs[1][1]);
+            pinchStartMidX = mid.x;
+            pinchStartMidY = mid.y;
+            pinchStartTX = currentZoomTX;
+            pinchStartTY = currentZoomTY;
+        }
+        return; // touch never draws
+    }
+
+    // pen (Apple Pencil) or mouse → draw
+    drawStart(e);
+}
+
+function handlePointerMove(e) {
+    e.preventDefault();
+    if (activePointers.has(e.pointerId)) {
+        activePointers.get(e.pointerId).x = e.clientX;
+        activePointers.get(e.pointerId).y = e.clientY;
+    }
+
+    // Touch → only pinch zoom + pan
+    if (e.pointerType === 'touch') {
+        const touchPtrs = [...activePointers.entries()].filter(([,v]) => v.type === 'touch');
+        if (touchPtrs.length === 2 && pinchStartDist > 0) {
+            e.preventDefault();
+            const dist = pinchDist(touchPtrs[0][1], touchPtrs[1][1]);
+            const newScale = Math.max(0.5, Math.min(5, pinchStartScale * (dist / pinchStartDist)));
+            const mid = pinchMid(touchPtrs[0][1], touchPtrs[1][1]);
+            // Pan: follow finger midpoint movement
+            const panDX = mid.x - pinchStartMidX;
+            const panDY = mid.y - pinchStartMidY;
+            // Zoom around pinch center: adjust translate so pinch center stays fixed
+            const container = getZoomContainer();
+            if (container) {
+                const rect = container.parentElement.getBoundingClientRect();
+                // Pinch center relative to container's parent
+                const cx = pinchStartMidX - rect.left;
+                const cy = pinchStartMidY - rect.top;
+                // New translate = old translate + pan + zoom-center correction
+                currentZoomTX = pinchStartTX + panDX + (cx - pinchStartTX) * (1 - newScale / pinchStartScale);
+                currentZoomTY = pinchStartTY + panDY + (cy - pinchStartTY) * (1 - newScale / pinchStartScale);
+            }
+            currentZoomScale = newScale;
+            applyZoom();
+        }
+        return;
+    }
+
+    drawMove(e);
+}
+
+function handlePointerUp(e) {
+    activePointers.delete(e.pointerId);
+    const touchCount = [...activePointers.values()].filter(p => p.type === 'touch').length;
+    if (touchCount < 2) pinchStartDist = 0;
+
+    // Touch never triggers drawEnd
+    if (e.pointerType === 'touch') return;
+
+    drawEnd(e);
+}
+
+function drawStart(e) {
+    e.preventDefault();
+    const pos = getDrawPos(e);
+    drawStartTime = Date.now();
+
+    // ── Check resize handle click first ──
+    if (activeResizeRect) {
+        const cid = realDrawId();
+        const strokes = getStrokes(cid);
+        const rs = strokes[activeResizeRect.strokeIdx];
+        if (rs && rs.type === 'rect') {
+            const handles = getRectHandles(rs);
+            for (const [key, h] of Object.entries(handles)) {
+                if (Math.abs(pos.x - h.x) < 14 && Math.abs(pos.y - h.y) < 14) {
+                    pushDrawUndo(cid);
+                    resizeDragHandle = key;
+                    isDrawing = true;
+                    return;
+                }
+            }
+        }
+        activeResizeRect = null;
+        redrawCurrent();
+    }
+
+    isDrawing = true;
+
+    // ── Move tool ──
+    if (drawMode === 'move') {
+        // If tapping inside existing selection → start move drag
+        if (selectedStrokes && selectedStrokes.cardId === realDrawId()) {
+            const b = selectedStrokes.bbox;
+            if (pos.x >= b.x && pos.x <= b.x + b.w && pos.y >= b.y && pos.y <= b.y + b.h) {
+                pushDrawUndo(realDrawId());
+                isMovingSelection = true;
+                moveStartPos = pos;
+                return;
+            }
+        }
+        // Otherwise start new lasso selection
+        selectedStrokes = null;
+        selectionPath = [pos];
+        return;
+    }
+
+    if (drawMode === 'laser') {
+        if (laserFadeTimer) clearTimeout(laserFadeTimer);
+        currentStroke = { mode: 'laser', color: '#ff1a1a', size: 3, points: [pos] };
+        return;
+    }
+
+    if (drawMode === 'eraser') {
+        eraseAt(pos.x, pos.y);
+    } else {
+        currentStroke = { mode: drawMode, color: drawColor, size: drawSize, points: [pos] };
+
+        // ── Long-press timer: 1s on existing rect → activate resize ──
+        if (longPressTimer) clearTimeout(longPressTimer);
+        longPressTimer = setTimeout(() => {
+            longPressTimer = null;
+            const cid = realDrawId();
+            const strokes = getStrokes(cid);
+            for (let i = strokes.length - 1; i >= 0; i--) {
+                if (strokes[i].type === 'rect' && pointInRect(pos, strokes[i])) {
+                    activeResizeRect = { cardId: cid, strokeIdx: i };
+                    currentStroke = null;
+                    isDrawing = false;
+                    if (shapeSnapTimer) { clearTimeout(shapeSnapTimer); shapeSnapTimer = null; }
+                    redrawCurrent();
+                    return;
+                }
+            }
+        }, 1000);
+
+        // ── Shape snap timer: 2s → convert to line/rect ──
+        if (shapeSnapTimer) clearTimeout(shapeSnapTimer);
+        shapeSnapTimer = setTimeout(() => {
+            shapeSnapTimer = null;
+            triggerShapeSnap();
+        }, 2000);
+    }
+}
+
+function drawMove(e) {
+    if (!isDrawing || !drawCtx) return;
+    e.preventDefault();
+    const pos = getDrawPos(e);
+
+    // ── Move tool: drag selection or draw lasso ──
+    if (drawMode === 'move') {
+        if (isMovingSelection && moveStartPos) {
+            const dx = pos.x - moveStartPos.x;
+            const dy = pos.y - moveStartPos.y;
+            moveSelectedStrokes(dx, dy);
+            moveStartPos = pos;
+            redrawCurrent();
+            drawSelectionBox();
+        } else {
+            selectionPath.push(pos);
+            const cid = realDrawId();
+            renderStrokes(drawCtx, getStrokes(cid), canvasW, canvasH);
+            drawSelectionLine();
+        }
+        return;
+    }
+
+    // Cancel long-press if finger moved
+    if (longPressTimer && currentStroke && currentStroke.points.length > 0) {
+        const s = currentStroke.points[0];
+        if (Math.abs(pos.x - s.x) > 8 || Math.abs(pos.y - s.y) > 8) {
+            clearTimeout(longPressTimer);
+            longPressTimer = null;
+        }
+    }
+
+    // ── Resize drag ──
+    if (resizeDragHandle && activeResizeRect) {
+        const cid = realDrawId();
+        const rs = getStrokes(cid)[activeResizeRect.strokeIdx];
+        if (rs) {
+            const h = resizeDragHandle;
+            if (h === 'tl') { rs.w += rs.x - pos.x; rs.h += rs.y - pos.y; rs.x = pos.x; rs.y = pos.y; }
+            else if (h === 'tr') { rs.w = pos.x - rs.x; rs.h += rs.y - pos.y; rs.y = pos.y; }
+            else if (h === 'bl') { rs.w += rs.x - pos.x; rs.x = pos.x; rs.h = pos.y - rs.y; }
+            else if (h === 'br') { rs.w = pos.x - rs.x; rs.h = pos.y - rs.y; }
+            redrawCurrent();
+        }
+        return;
+    }
+
+    // ── Live shape mode (after 2s snap) ──
+    if (shapeSnapMode) {
+        const cid = realDrawId();
+        if (shapeSnapMode === 'line') {
+            shapeSnapData.endX = pos.x;
+        } else if (shapeSnapMode === 'rect') {
+            const d = shapeSnapData;
+            const h = d.handle;
+            if (h === 'tl') { d.w += d.x - pos.x; d.h += d.y - pos.y; d.x = pos.x; d.y = pos.y; }
+            else if (h === 'tr') { d.w = pos.x - d.x; d.h += d.y - pos.y; d.y = pos.y; }
+            else if (h === 'bl') { d.w += d.x - pos.x; d.x = pos.x; d.h = pos.y - d.y; }
+            else if (h === 'br') { d.w = pos.x - d.x; d.h = pos.y - d.y; }
+        }
+        renderStrokes(drawCtx, getStrokes(cid), canvasW, canvasH);
+        drawLiveShape();
+        return;
+    }
+
+    if (drawMode === 'laser' && currentStroke) {
+        currentStroke.points.push(pos);
+        redrawCurrent();
+        // Draw current laser stroke live
+        drawCtx.save();
+        drawCtx.shadowColor = '#ff0000';
+        drawCtx.shadowBlur = 12;
+        drawCtx.strokeStyle = '#ff0000';
+        drawCtx.globalAlpha = 0.9;
+        drawCtx.lineCap = 'round';
+        drawCtx.lineJoin = 'round';
+        drawCtx.lineWidth = 3;
+        drawCtx.beginPath();
+        if (currentStroke.points.length > 0) drawCtx.moveTo(currentStroke.points[0].x, currentStroke.points[0].y);
+        for (let i = 1; i < currentStroke.points.length; i++) drawCtx.lineTo(currentStroke.points[i].x, currentStroke.points[i].y);
+        drawCtx.stroke();
+        drawCtx.restore();
+        return;
+    }
+
+    if (drawMode === 'eraser') {
+        eraseAt(pos.x, pos.y);
+    } else if (currentStroke) {
+        currentStroke.points.push(pos);
+        const cid = realDrawId();
+        renderStrokes(drawCtx, getStrokes(cid), canvasW, canvasH);
+        drawSingleStroke(drawCtx, currentStroke);
+    }
+}
+
+function drawEnd(e) {
+    if (!isDrawing) return;
+    isDrawing = false;
+    if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
+    if (shapeSnapTimer) { clearTimeout(shapeSnapTimer); shapeSnapTimer = null; }
+
+    // ── Move tool end ──
+    if (drawMode === 'move') {
+        if (isMovingSelection) {
+            isMovingSelection = false;
+            moveStartPos = null;
+            saveDrawData();
+            redrawCurrent();
+            if (selectedStrokes) drawSelectionBox();
+        } else if (selectionPath.length >= 2) {
+            // Find strokes intersecting the lasso path
+            const cid = realDrawId();
+            const strokes = getStrokes(cid);
+            const indices = [];
+            for (let i = 0; i < strokes.length; i++) {
+                if (strokeSelectedByLasso(strokes[i], selectionPath)) indices.push(i);
+            }
+            if (indices.length > 0) {
+                selectedStrokes = { cardId: cid, indices, bbox: computeSelectionBBox(strokes, indices) };
+            } else {
+                selectedStrokes = null;
+            }
+            selectionPath = [];
+            redrawCurrent();
+            if (selectedStrokes) drawSelectionBox();
+        }
+        return;
+    }
+
+    // ── Finish resize drag ──
+    if (resizeDragHandle) {
+        resizeDragHandle = null;
+        saveDrawData();
+        redrawCurrent();
+        return;
+    }
+
+    // ── Finish live shape ──
+    if (shapeSnapMode) {
+        const cid = realDrawId();
+        pushDrawUndo(cid);
+        if (shapeSnapMode === 'line') {
+            const lineStroke = {
+                mode: drawMode, color: drawColor, size: drawSize,
+                type: 'line',
+                points: [{ x: shapeSnapData.startX, y: shapeSnapData.startY },
+                         { x: shapeSnapData.endX || shapeSnapData.startX + 20, y: shapeSnapData.startY }]
+            };
+            getStrokes(cid).push(lineStroke);
+        } else if (shapeSnapMode === 'rect') {
+            const d = shapeSnapData;
+            const rectStroke = {
+                mode: drawMode, color: drawColor, size: drawSize,
+                type: 'rect', x: d.x, y: d.y, w: d.w, h: d.h
+            };
+            getStrokes(cid).push(rectStroke);
+            activeResizeRect = { cardId: cid, strokeIdx: getStrokes(cid).length - 1 };
+        }
+        shapeSnapMode = null;
+        shapeSnapData = null;
+        saveDrawData();
+        redrawCurrent();
+        return;
+    }
+
+    // ── Laser stroke end → add to temporary list, start fade timer ──
+    if (drawMode === 'laser' && currentStroke && currentStroke.points.length >= 2) {
+        laserStrokes.push(currentStroke);
+        currentStroke = null;
+        startLaserFade();
+        redrawCurrent();
+        return;
+    }
+
+    // ── Normal stroke end ──
+    if (drawMode !== 'eraser' && drawMode !== 'laser' && currentStroke && currentStroke.points.length >= 2) {
+        const cid = realDrawId();
+        pushDrawUndo(cid);
+        getStrokes(cid).push(currentStroke);
+        saveDrawData();
+    }
+    currentStroke = null;
+    redrawCurrent();
+}
+
+function drawSingleStroke(ctx, s) {
+    if (!s.points || s.points.length < 2) return;
+    if (s.mode === 'pen') {
+        drawSmoothedPenStroke(ctx, s);
+        return;
+    }
+    ctx.beginPath();
+    ctx.moveTo(s.points[0].x, s.points[0].y);
+    for (let i = 1; i < s.points.length; i++) ctx.lineTo(s.points[i].x, s.points[i].y);
+    applyStrokeStyle(ctx, s);
+    ctx.stroke();
+    ctx.globalAlpha = 1.0;
+}
+
+function eraseAt(px, py) {
+    const cid = realDrawId();
+    const strokes = getStrokes(cid);
+    // Precise eraser: erase only strokes directly under the pen/mouse point.
+    const threshold = 0.75;
+    for (let i = strokes.length - 1; i >= 0; i--) {
+        if (strokeHitTest(strokes[i], px, py, threshold)) {
+            pushDrawUndo(cid);
+            // If erasing the active resize rect, clear it
+            if (activeResizeRect && activeResizeRect.cardId === cid && activeResizeRect.strokeIdx === i) {
+                activeResizeRect = null;
+            } else if (activeResizeRect && activeResizeRect.cardId === cid && activeResizeRect.strokeIdx > i) {
+                activeResizeRect.strokeIdx--; // adjust index after splice
+            }
+            strokes.splice(i, 1);
+            saveDrawData();
+            redrawCurrent();
+            return;
+        }
+    }
+}
+
+// ── Show saved strokes as static (non-interactive) overlay ──
+function renderStaticDrawOnCanvas(canvas, content, strokes) {
+    if (!canvas || !content) return false;
+    if (!strokes || strokes.length === 0) {
+        canvas.style.display = 'none';
+        canvas.style.pointerEvents = 'none';
+        return false;
+    }
+    const rect = content.getBoundingClientRect();
+    const parent = canvas.parentElement;
+    const dpr = window.devicePixelRatio || 1;
+    const w = Math.ceil(rect.width + DRAW_CANVAS_EXTRA_RIGHT);
+    const h = Math.ceil(rect.height + DRAW_CANVAS_EXTRA_BOTTOM);
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    if (parent) {
+        parent.style.position = 'relative';
+        parent.style.minHeight = h + 'px';
+    }
+    canvas.style.display = 'block';
+    canvas.style.pointerEvents = 'none';
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    renderStrokes(ctx, strokes, w, h);
+    return true;
+}
+
+function showStaticDraw(id) {
+    return renderStaticDrawOnCanvas(
+        document.getElementById('draw-canvas-' + id),
+        document.getElementById('ans-content-' + id),
+        drawData[id]
+    );
+}
+
+function showQuizStaticDraw(id) {
+    return renderStaticDrawOnCanvas(
+        document.getElementById('draw-canvas-quiz'),
+        document.getElementById('quizAnsContent'),
+        drawData[id]
+    );
+}
+
+// ── Quiz draw ──
+let quizDrawCardId = null;
+function toggleQuizDraw(id) {
+    const canvas = document.getElementById('draw-canvas-quiz');
+    const toolbar = document.getElementById('draw-toolbar-quiz');
+
+    if (canvas.style.display === 'none' || !canvas.style.display || canvas.style.pointerEvents === 'none') {
+        quizDrawCardId = id;
+        activeDrawId = 'quiz';
+        buildDrawToolbar('draw-toolbar-quiz');
+        toolbar.classList.add('active');
+        const content = document.getElementById('quizAnsContent');
+        const quizAns = document.getElementById('quizAnswer');
+        if (quizAns) quizAns.classList.add('draw-active');
+        document.body.classList.add('drawing-active');
+        setupCanvas(canvas, content);
+        canvas.style.pointerEvents = 'auto';
+        renderStrokes(drawCtx, getStrokes(id), canvasW, canvasH);
+        updateUndoRedoBtns();
+    } else {
+        saveDrawData();
+        canvas.style.display = 'none';
+        toolbar.classList.remove('active');
+        const quizAns = document.getElementById('quizAnswer');
+        if (quizAns) quizAns.classList.remove('draw-active');
+        document.body.classList.remove('drawing-active');
+        const finishedId = quizDrawCardId;
+        activeDrawId = null;
+        drawCtx = null;
+        if (finishedId) setTimeout(() => showQuizStaticDraw(finishedId), 30);
+    }
+}
+
+// ── Indicators ──
+function showDrawIndicators() {
+    ALL_IDS.forEach(id => {
+        const btn = document.querySelector('#card-' + id + ' .draw-btn');
+        if (btn) {
+            const has = drawData[id] && drawData[id].length > 0;
+            btn.style.opacity = has ? '1' : '';
+            btn.textContent = has ? '🍎✨' : '🍎';
+        }
+    });
+}
+
+// ── Restore static drawings when answer toggled open ──
+const origToggleAnswer = toggleAnswer;
+toggleAnswer = function(id) {
+    origToggleAnswer(id);
+    const ansEl = document.getElementById('ans-' + id);
+    if (ansEl.style.display !== 'none' && drawData[id] && drawData[id].length > 0 && activeDrawId !== id) {
+        setTimeout(() => showStaticDraw(id), 50);
+    }
+};
+
+// ── Image Crop Tool ──
+const CROP_EDITS_KEY = STORAGE_PREFIX + 'crop_edits_v1';
+const CROP_ORIG_KEY = STORAGE_PREFIX + 'crop_orig_v1';
+let cropEdits = JSON.parse(localStorage.getItem(CROP_EDITS_KEY) || '{}');
+let cropOriginals = JSON.parse(localStorage.getItem(CROP_ORIG_KEY) || '{}');
+function saveCropEdits() { localStorage.setItem(CROP_EDITS_KEY, JSON.stringify(cropEdits)); }
+function saveCropOriginals() { localStorage.setItem(CROP_ORIG_KEY, JSON.stringify(cropOriginals)); }
+
+let cropState = null; // { imgEl, startX, startY, selection }
+
+function wrapGuideImages() {
+    // Wrap all guide-area and quiz-guide images with crop button
+    document.querySelectorAll('.guide-area img, .quiz-guide img').forEach(img => {
+        if (img.parentElement.classList.contains('img-wrapper')) return;
+        // Remember original src for restoration
+        if (!img.dataset.originalSrc) img.dataset.originalSrc = img.src;
+        const wrapper = document.createElement('div');
+        wrapper.className = 'img-wrapper';
+        img.parentElement.insertBefore(wrapper, img);
+        wrapper.appendChild(img);
+
+        const btn = document.createElement('button');
+        btn.className = 'crop-btn';
+        btn.textContent = '✂️';
+        btn.title = '이미지 자르기';
+        btn.onclick = function(e) {
+            e.stopPropagation();
+            openCropTool(img);
+        };
+        wrapper.appendChild(btn);
+    });
+}
+
+function openCropTool(imgEl) {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'crop-overlay';
+    overlay.id = 'cropOverlay';
+
+    const toolbar = document.createElement('div');
+    toolbar.className = 'crop-toolbar';
+    toolbar.innerHTML = `
+        <button class="crop-confirm" id="cropConfirm" disabled>✂️ 자르기</button>
+        <button class="crop-reset" id="cropReset">↺ 원본 복원</button>
+        <button class="crop-cancel" id="cropCancel">✕ 취소</button>
+    `;
+
+    const container = document.createElement('div');
+    container.className = 'crop-container';
+    container.id = 'cropContainer';
+
+    const img = document.createElement('img');
+    img.src = imgEl.src;
+    img.id = 'cropImage';
+    img.draggable = false;
+
+    const selection = document.createElement('div');
+    selection.className = 'crop-selection';
+    selection.id = 'cropSelection';
+
+    container.appendChild(img);
+    container.appendChild(selection);
+    overlay.appendChild(toolbar);
+    overlay.appendChild(container);
+    document.body.appendChild(overlay);
+
+    // State
+    cropState = { imgEl, selection, container, img, overlay, dragging: false, sx: 0, sy: 0 };
+
+    // Events
+    container.addEventListener('mousedown', cropMouseDown);
+    container.addEventListener('mousemove', cropMouseMove);
+    container.addEventListener('mouseup', cropMouseUp);
+
+    // Touch support
+    container.addEventListener('touchstart', cropTouchStart, { passive: false });
+    container.addEventListener('touchmove', cropTouchMove, { passive: false });
+    container.addEventListener('touchend', cropTouchEnd);
+
+    document.getElementById('cropConfirm').addEventListener('click', cropConfirm);
+    document.getElementById('cropCancel').addEventListener('click', cropCancel);
+    document.getElementById('cropReset').addEventListener('click', function() { cropReset(imgEl); });
+
+    // ESC to cancel
+    overlay._escHandler = function(e) { if (e.key === 'Escape') cropCancel(); };
+    document.addEventListener('keydown', overlay._escHandler);
+}
+
+function getContainerPos(e) {
+    const rect = cropState.container.getBoundingClientRect();
+    return {
+        x: Math.max(0, Math.min(e.clientX - rect.left, rect.width)),
+        y: Math.max(0, Math.min(e.clientY - rect.top, rect.height))
+    };
+}
+
+function cropMouseDown(e) {
+    e.preventDefault();
+    const pos = getContainerPos(e);
+    cropState.dragging = true;
+    cropState.sx = pos.x;
+    cropState.sy = pos.y;
+    cropState.selection.style.display = 'none';
+    document.getElementById('cropConfirm').disabled = true;
+}
+
+function cropMouseMove(e) {
+    if (!cropState || !cropState.dragging) return;
+    const pos = getContainerPos(e);
+    const x = Math.min(cropState.sx, pos.x);
+    const y = Math.min(cropState.sy, pos.y);
+    const w = Math.abs(pos.x - cropState.sx);
+    const h = Math.abs(pos.y - cropState.sy);
+    const sel = cropState.selection;
+    sel.style.display = 'block';
+    sel.style.left = x + 'px';
+    sel.style.top = y + 'px';
+    sel.style.width = w + 'px';
+    sel.style.height = h + 'px';
+}
+
+function cropMouseUp(e) {
+    if (!cropState || !cropState.dragging) return;
+    cropState.dragging = false;
+    const sel = cropState.selection;
+    const w = parseInt(sel.style.width);
+    const h = parseInt(sel.style.height);
+    if (w > 10 && h > 10) {
+        document.getElementById('cropConfirm').disabled = false;
+    }
+}
+
+// Touch handlers
+function cropTouchStart(e) {
+    e.preventDefault();
+    const touch = e.touches[0];
+    cropMouseDown({ clientX: touch.clientX, clientY: touch.clientY, preventDefault: () => {} });
+}
+function cropTouchMove(e) {
+    e.preventDefault();
+    const touch = e.touches[0];
+    cropMouseMove({ clientX: touch.clientX, clientY: touch.clientY });
+}
+function cropTouchEnd(e) {
+    cropMouseUp(e);
+}
+
+function cropConfirm() {
+    if (!cropState) return;
+    const sel = cropState.selection;
+    const img = cropState.img;
+    const imgRect = img.getBoundingClientRect();
+    const containerRect = cropState.container.getBoundingClientRect();
+
+    // Calculate scale between displayed image and natural size
+    const scaleX = img.naturalWidth / img.width;
+    const scaleY = img.naturalHeight / img.height;
+
+    // Offset of image within container (if centered)
+    const imgOffsetX = img.offsetLeft;
+    const imgOffsetY = img.offsetTop;
+
+    const cropX = (parseInt(sel.style.left) - imgOffsetX) * scaleX;
+    const cropY = (parseInt(sel.style.top) - imgOffsetY) * scaleY;
+    const cropW = parseInt(sel.style.width) * scaleX;
+    const cropH = parseInt(sel.style.height) * scaleY;
+
+    // Use canvas to crop
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.max(1, Math.round(cropW));
+    canvas.height = Math.max(1, Math.round(cropH));
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, Math.round(cropX), Math.round(cropY), Math.round(cropW), Math.round(cropH), 0, 0, canvas.width, canvas.height);
+
+    const newSrc = canvas.toDataURL('image/png');
+
+    // Apply to the original image
+    cropState.imgEl.src = newSrc;
+
+    // Save crop edit (identify by image index in parent)
+    const parent = cropState.imgEl.closest('.guide-area, .quiz-guide');
+    if (parent) {
+        const cardEl = parent.closest('.card, .quiz-card');
+        if (cardEl) {
+            const cardId = cardEl.id.replace('card-', '');
+            const imgs = parent.querySelectorAll('img');
+            const idx = Array.from(imgs).indexOf(cropState.imgEl);
+            // Save original BEFORE first crop (so we can always restore)
+            if (!cropOriginals[cardId]) cropOriginals[cardId] = {};
+            if (!cropOriginals[cardId][idx]) {
+                cropOriginals[cardId][idx] = cropState.imgEl.dataset.originalSrc || cropState.img.src;
+            }
+            saveCropOriginals();
+            if (!cropEdits[cardId]) cropEdits[cardId] = {};
+            cropEdits[cardId][idx] = newSrc;
+            saveCropEdits();
+        }
+    }
+
+    closeCropOverlay();
+}
+
+function cropCancel() {
+    closeCropOverlay();
+}
+
+function cropReset(imgEl) {
+    const parent = imgEl.closest('.guide-area, .quiz-guide');
+    if (parent) {
+        const cardEl = parent.closest('.card, .quiz-card');
+        if (cardEl) {
+            const cardId = cardEl.id.replace('card-', '');
+            const imgs = parent.querySelectorAll('img');
+            const idx = Array.from(imgs).indexOf(imgEl);
+
+            // 1) Try saved original first
+            if (cropOriginals[cardId] && cropOriginals[cardId][idx]) {
+                imgEl.src = cropOriginals[cardId][idx];
+                delete cropOriginals[cardId][idx];
+                if (Object.keys(cropOriginals[cardId]).length === 0) delete cropOriginals[cardId];
+                saveCropOriginals();
+            } else {
+                // 2) Fallback: re-parse from QUIZ_DATA
+                const data = QUIZ_DATA[cardId];
+                if (data) {
+                    const temp = document.createElement('div');
+                    temp.innerHTML = data.g;
+                    const origImgs = temp.querySelectorAll('img');
+                    if (origImgs[idx]) imgEl.src = origImgs[idx].src;
+                }
+            }
+            // Remove saved crop
+            if (cropEdits[cardId]) {
+                delete cropEdits[cardId][idx];
+                if (Object.keys(cropEdits[cardId]).length === 0) delete cropEdits[cardId];
+                saveCropEdits();
+            }
+        }
+    }
+    closeCropOverlay();
+}
+
+function closeCropOverlay() {
+    const overlay = document.getElementById('cropOverlay');
+    if (overlay) {
+        document.removeEventListener('keydown', overlay._escHandler);
+        overlay.remove();
+    }
+    cropState = null;
+}
+
+function applyCropEdits() {
+    // Apply saved crop edits to guide images
+    for (const cardId in cropEdits) {
+        const guideEl = document.getElementById('guide-' + cardId);
+        if (guideEl && guideEl.dataset.loaded) {
+            const imgs = guideEl.querySelectorAll('img');
+            for (const idx in cropEdits[cardId]) {
+                if (imgs[idx]) imgs[idx].src = cropEdits[cardId][idx];
+            }
+        }
+    }
+}
+
+// Observe guide areas being opened to apply crops and wrap images
+const guideObserver = new MutationObserver(function(mutations) {
+    mutations.forEach(function(m) {
+        if (m.type === 'childList' || m.type === 'attributes') {
+            setTimeout(() => {
+                wrapGuideImages();
+                applyCropEdits();
+            }, 50);
+        }
+    });
+});
+
+// ── Init ──
+window.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('click', startReviewFromEvent, true);
+    document.addEventListener('touchend', startReviewFromEvent, true);
+    window.addEventListener('pagehide', saveQuizSession);
+    window.addEventListener('beforeunload', saveQuizSession);
+    applyEdits();
+    updateReviewBtn();
+    showDrawIndicators();
+
+    // Restore sidebar state
+    if (localStorage.getItem('sb_collapsed') === 'true') {
+        document.getElementById('sidebar').classList.add('collapsed');
+        document.getElementById('mainContent').classList.add('expanded');
+    }
+
+    // Observe all guide areas for content changes (lazy loading)
+    document.querySelectorAll('.guide-area').forEach(el => {
+        guideObserver.observe(el, { childList: true, subtree: true });
+    });
+
+    // Also observe quiz body for quiz mode guide images
+    guideObserver.observe(document.getElementById('quizBody'), { childList: true, subtree: true });
+
+    resumeSavedQuizIfAny();
+});
+</script>
+</body>
+</html>

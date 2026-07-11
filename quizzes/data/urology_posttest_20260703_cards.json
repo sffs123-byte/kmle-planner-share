@@ -1,0 +1,152 @@
+[
+  {
+    "id": "URO-POST-20260703-01",
+    "num": 1,
+    "title": "혈뇨 원인질환",
+    "points": 8,
+    "source": "최신 5조 문제 1–2 중 혈뇨 원인",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>혈뇨 원인질환</h3><p>71세 남자가 35갑년의 흡연력이 있으며 통증 없는 육안적 혈뇨로 내원하였다. 혈뇨의 원인질환을 신장·신우, 요관, 방광, 요도, 전립선으로 나누어 각각 4가지 이상 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>각 장기에서 대표 원인 4개 이상: 신장·신우, 요관, 방광, 요도, 전립선 각 1.5점, 전체 구조 0.5점.</li><li>예시: RCC·신우암·결석·사구체신염·신우신염 / 요관암·결석·요관염·손상·협착 / 방광암·방광염·결석·출혈성 방광염·외상 / 요도염·손상·요도암·협착·결석 / BPH·전립선염·전립선암·기구조작 후 출혈·정맥성 출혈.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>혈뇨 원인은 신장·신우 → 요관 → 방광 → 요도 → 전립선 순서로 각각 5개.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 1–2 중 혈뇨 원인</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-02",
+    "num": 2,
+    "title": "혈뇨의 진단과 표준평가",
+    "points": 5,
+    "source": "최신 5조 문제 1–2 중 진단·표준평가",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>5점</span></div><h3>혈뇨의 진단과 표준평가</h3><p>1번 환자에서 가장 의심되는 진단과 그 근거 3가지를 쓰고, 상부·하부요로를 평가하는 표준검사 2가지를 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>방광 요로상피암 1점.</li><li>고령, 흡연력, 무통성 육안적 혈뇨 각 0.5점.</li><li>CT urography 1.25점, cystoscopy 1.25점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>고령 흡연자의 무통성 육안적 혈뇨 = 방광암 우선, CT urography + cystoscopy.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 1–2 중 진단·표준평가</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-03",
+    "num": 3,
+    "title": "요역동학검사",
+    "points": 6,
+    "source": "최신 5조 문제 3",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>요역동학검사</h3><p>Uroflowmetry, filling cystometry, pressure-flow study, pelvic floor EMG가 각각 무엇을 평가하는지 쓰시오. 낮은 요류만으로 방광출구폐색과 배뇨근 저활동을 구분할 수 없는 이유도 한 줄로 설명하시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Uroflowmetry: Qmax와 요류곡선 1점.</li><li>Filling cystometry: 감각·용적·compliance·detrusor overactivity 1.5점.</li><li>Pressure-flow: BOO와 detrusor underactivity 감별 1.5점.</li><li>EMG: 외괄약근·골반저 협응과 dyssynergia 1점.</li><li>낮은 flow는 폐색과 낮은 배뇨근압 모두에서 발생 가능 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>Flow는 흐름, cystometry는 저장, pressure-flow는 폐색 대 근력, EMG는 협응.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 3</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-04",
+    "num": 4,
+    "title": "PSA 파생지표",
+    "points": 6,
+    "source": "최신 5조 문제 4–5 중 PSA 지표",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>PSA 파생지표</h3><p>59세 남자의 PSA가 1년 전 3.1 ng/mL에서 6.0 ng/mL로 상승하였다. 전립선 용적은 32 mL이고 free PSA는 0.6 ng/mL이다.</p>\n<p class='subq'>1. PSA velocity를 계산하고 의미를 쓰시오.</p>\n<p class='subq'>2. PSA density를 계산하고 의미를 쓰시오.</p>\n<p class='subq'>3. Free/total PSA ratio를 계산하고 의미를 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Velocity: `(6.0−3.1)/1 = 2.9 ng/mL/년`, 빠른 상승이나 단독 생검기준은 아님 2점.</li><li>Density: `6.0/32 = 0.1875 ng/mL/cc`, 0.15 전후보다 높아 의심 증가 2점.</li><li>Free/total: `0.6/6.0 = 10%`, 낮아 암 가능성 증가 2점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>Velocity는 속도, density는 PSA/부피, free ratio는 낮을수록 암 가능성이 높다.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 4–5 중 PSA 지표</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-05",
+    "num": 5,
+    "title": "PI-RADS",
+    "points": 4,
+    "source": "최신 5조 문제 4–5 중 PI-RADS",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>4점</span></div><h3>PI-RADS</h3><p>PI-RADS 1–5의 의미를 임상적으로 유의한 전립선암의 존재 가능성에 따라 간단히 쓰고, PI-RADS 4 병변에서 고려할 다음 검사를 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>1 매우 낮음, 2 낮음, 3 애매, 4 높음, 5 매우 높음 2.5점.</li><li>PI-RADS 4에서 MRI-targeted biopsy와 systematic biopsy 고려 1.5점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>PI-RADS 1에서 5로 갈수록 유의암 가능성이 증가하며, 4–5는 표적+체계적 생검을 고려한다.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 4–5 중 PI-RADS</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-06",
+    "num": 6,
+    "title": "요실금",
+    "points": 6,
+    "source": "최신 5조 문제 6–7 중 요실금",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>요실금</h3><p>요실금을 복압성, 절박성, 복합성, 범람성으로 나누어 각각의 정의와 발생기전을 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>복압성: 복압상승 시 누출, 요도 과이동·괄약근부전 1.5점.</li><li>절박성: urgency와 누출, detrusor overactivity 1.5점.</li><li>복합성: 두 증상·기전 병존 1.5점.</li><li>범람성: 과팽창 방광에서 누출, BOO·detrusor underactivity 1.5점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>복압성·절박성·복합성·범람성: 상황, urgency, 병존, 과팽창으로 구분한다.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 6–7 중 요실금</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-07",
+    "num": 7,
+    "title": "과민성방광",
+    "points": 8,
+    "source": "최신 5조 문제 6–7 중 OAB",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>과민성방광</h3><p>72세 여자가 4개월간 urgency, frequency, nocturia와 화장실에 도착하기 전 요누출을 호소한다. 요검사는 정상이고 PVR은 25 mL이다.</p>\n<p class='subq'>1. 가장 가능성 높은 진단과 진단 정의를 쓰시오.</p>\n<p class='subq'>2. 감별진단 3가지를 쓰시오.</p>\n<p class='subq'>3. 1차 행동치료 4가지와 약물군 2가지를 쓰시오.</p>\n<p class='subq'>4. 항무스카린제의 주의·금기 3가지와 노인에서 β3 agonist를 선호할 수 있는 이유를 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Wet OAB/urgency urinary incontinence와 정의 2점.</li><li>UTI, 다뇨, 방광자극질환, BOO·신경인성방광 중 3개 1.5점.</li><li>방광훈련, timed voiding, pelvic floor, 카페인·저녁수분 조절, 체중·변비교정 중 4개 1.5점.</li><li>Antimuscarinic과 β3 agonist 1점.</li><li>폐쇄각녹내장, 위배출저하, 요폐·높은 PVR 1점.</li><li>노인에서 항콜린성 인지부담이 적음 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>OAB는 urgency가 핵심. 1차 행동치료, 약은 antimuscarinic 또는 beta-3 agonist.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 6–7 중 OAB</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-08",
+    "num": 8,
+    "title": "방광내시경과 비정형 요세포",
+    "points": 7,
+    "source": "최신 5조 문제 8",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>7점</span></div><h3>방광내시경과 비정형 요세포</h3><p>방광내시경의 적응증을 5가지 이상 쓰시오. 반복 요세포검사에서도 atypical/suspicious urothelial cells가 확인되지만 일반 방광내시경에서 명확한 종괴가 보이지 않는 남성 환자에서 추가검사 4가지 이상과 각 목적을 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>혈뇨, 영상상 종괴, suspicious cytology, 방광암 추적, 난치성 UTI/LUTS, 협착·결석·이물 중 5개 2.5점.</li><li>반복 cytology 0.5점.</li><li>CT urography로 상부요로 평가 1점.</li><li>enhanced cystoscopy 또는 mapping/random biopsy로 occult CIS 탐색 1.5점.</li><li>prostatic urethral biopsy 1점.</li><li>각 검사 목적을 연결하면 0.5점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>Atypical cytology → repeat cytology + cystoscopy + CT urography; 지속되면 occult CIS를 찾는다.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 8</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-09",
+    "num": 9,
+    "title": "BPH 약물치료",
+    "points": 8,
+    "source": "최신 5조 문제 9",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>BPH 약물치료</h3><p>전립선비대증에 사용하는 약제군 5개를 쓰고, 각 약제군의 기전·대표약·주요 부작용을 한 가지 이상 쓰시오. 전립선 용적 48 mL, PSA 2.2 ng/mL인 환자에서 권장되는 기본 병용요법도 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>α1 blocker, 5-ARI, antimuscarinic, β3 agonist, PDE5 inhibitor 각 약제군의 기전·예시·부작용이 맞으면 각 1.2점, 총 6점.</li><li>α1 blocker + 5-ARI 병용 2점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>빠른 증상은 alpha blocker, 진행 억제는 5-ARI; 큰 전립선은 둘을 병용한다.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 9</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-10",
+    "num": 10,
+    "title": "상부요관결석과 URS",
+    "points": 6,
+    "source": "최신 5조 문제 10–11 중 상부요관석·URS",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>상부요관결석과 URS</h3><p>좌측 상부요관에 7 mm 결석이 있으나 통증은 NSAID로 조절되고, 발열·요로감염·신기능저하는 없으며 발견 후 10일이 지났다.</p>\n<p class='subq'>1. 우선 치료전략과 추적 중 즉시 개입해야 할 경고소견을 쓰시오.</p>\n<p class='subq'>2. URS/fURS의 실질적 핵심 금기 2개와 상대적·사전교정 항목 2개를 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>경과관찰·추적, 진통, 선택적 MET 1.5점.</li><li>감염·발열, 난치성 통증, 신기능악화·무뇨, 지속폐색·배출실패 중 3개 1.5점.</li><li>핵심 금기: untreated UTI/urosepsis, anesthesia 불가 2점.</li><li>상대항목: 출혈위험 미교정, 심한 협착·접근곤란, 중증 자세·마취위험 중 2개 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>안정된 6–7 mm 요관석은 관찰 가능; 감염·난치통·신기능 악화·무뇨면 즉시 개입한다.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 10–11 중 상부요관석·URS</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-11",
+    "num": 11,
+    "title": "큰 양측 신결석",
+    "points": 6,
+    "source": "최신 5조 문제 10–11 중 큰 신결석",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>6점</span></div><h3>큰 양측 신결석</h3><p>양측 신장에 2.2 cm와 2.8 cm 결석이 있고 BMI는 34이다. 비조영 CT에서 낮은 HU를 보이며 지속적인 산성뇨가 있어 요산석이 의심된다.</p>\n<p class='subq'>1. 크기와 체형을 고려한 표준 적극적 치료를 쓰시오.</p>\n<p class='subq'>2. 요산석 특성 때문에 추가로 고려할 수 있는 비수술 치료와 모니터링을 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>&gt;2 cm·비만을 고려한 staged PCNL 3점.</li><li>순수 요산석 확인 후 potassium citrate urine alkalinization, pH 약 7.0–7.2, 영상·pH 추적 2점.</li><li>감염·폐색·실패 시 PCNL 지연 금지 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>&gt;2 cm 신결석은 PCNL, 순수 요산석은 potassium citrate 용해요법을 고려한다.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 10–11 중 큰 신결석</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-12",
+    "num": 12,
+    "title": "국소 GG2 전립선암",
+    "points": 7,
+    "source": "최신 5조 문제 12–13 중 국소 GG2",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>7점</span></div><h3>국소 GG2 전립선암</h3><p>61세, PSA 6.2 ng/mL, Gleason 3+4, Grade group 2, cT2a, 기대여명 20년이다.</p>\n<p class='subq'>1. 표준 확정치료 2가지를 쓰시오.</p>\n<p class='subq'>2. Active surveillance를 고려할 수 있는 추가조건 4가지를 쓰고, 현재 정보만으로 이를 자동 선택할 수 없는 이유를 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Radical prostatectomy와 radiotherapy 각 1.5점, 총 3점.</li><li>AS 조건: 낮은 pattern 4, PSA &lt;10, 낮은 PSA density, cT2a 이하, 적은 positive core·침범률, MRI상 낮은 병변량 중 4개 3점.</li><li>core 수·pattern 4 비율이 없고 기대여명이 길어 자동 AS 불가 1점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>국소 GG2는 RP 또는 RT가 표준; AS는 낮은 pattern 4·병변량을 갖춘 선별 환자만.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 12–13 중 국소 GG2</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-13",
+    "num": 13,
+    "title": "고위험 및 전이성 전립선암",
+    "points": 8,
+    "source": "최신 5조 문제 12–13 중 고위험·전이성 전립선암",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>고위험 및 전이성 전립선암</h3><p class='subq'>1. 73세, PSA 48 ng/mL, Grade group 4, cT3b, conventional imaging상 M0인 환자의 표준치료를 쓰시오.</p>\n<p class='subq'>2. 76세, PSA 280 ng/mL, Grade group 5, 광범위 골전이와 간전이가 있는 de novo M1c high-volume mHSPC 환자의 권장 전신치료 조합을 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>cT3b M0: external-beam RT + long-term ADT 2–3년 4점.</li><li>M1c high-volume: ADT + ARPI 2점; docetaxel-fit이면 darolutamide 또는 abiraterone을 포함한 triplet 2점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>cT3b M0는 RT + ADT 2–3년; M1c high-volume은 ADT + ARPI, fit하면 triplet.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 12–13 중 고위험·전이성 전립선암</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-14",
+    "num": 14,
+    "title": "BCG failure와 조기 방광적출술",
+    "points": 7,
+    "source": "최신 5조 문제 14",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>7점</span></div><h3>BCG failure와 조기 방광적출술</h3><p>TUR-BT와 re-TURBT 후 T1 high-grade urothelial carcinoma와 CIS가 확인되었다.</p>\n<p class='subq'>1. BCG 주입의 목적을 쓰시오.</p>\n<p class='subq'>2. BCG-refractory, resistant, relapsing, unresponsive를 구분하시오.</p>\n<p class='subq'>3. Early radical cystectomy 적응증을 3가지 이상 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>BCG 목적: 재발·진행 억제 1점.</li><li>Refractory 1점, resistant 1점, relapsing 1점.</li><li>Unresponsive: refractory 전부 + adequate BCG 후 Ta/T1 HG 6개월 또는 CIS 12개월 이내 1.5점.</li><li>Early cystectomy: BCG-unresponsive, persistent T1 HG, T1 HG+CIS/very-high-risk, LVI·variant, prostatic urethral involvement·광범위 종양 중 3개 1.5점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>BCG-unresponsive는 refractory 전부 + adequate BCG 후 papillary HG 6개월/CIS 12개월 이내 재발.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 14</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  },
+  {
+    "id": "URO-POST-20260703-15",
+    "num": 15,
+    "title": "급성 음낭통증",
+    "points": 8,
+    "source": "최신 5조 문제 15",
+    "q": "<div class='urology-front'><div><span class='deck-chip'>최신 5조 변형</span> <span class='deck-chip'>8점</span></div><h3>급성 음낭통증</h3><p>14세 남아가 수면 중 갑자기 시작한 우측 음낭통증과 구토로 내원했으며 발병 3시간이 지났다.</p>\n<p class='subq'>1. 고환염전과 부고환염·부고환고환염을 발병양상, 동반증상, 고환위치, cremasteric reflex, Prehn sign, 요검사, Doppler 혈류로 비교하시오.</p>\n<p class='subq'>2. 고환염전이 강하게 의심될 때의 치료 원칙을 쓰시오.</p></div>",
+    "a": "<section class='urology-answer'><h3>핵심 정답 · 채점 포인트</h3><ul><li>Torsion: 갑작스런 통증, 구토, high-riding/horizontal, cremasteric reflex 소실, Prehn 음성 경향, 정상 UA, Doppler 저혈류 중 5개 3점.</li><li>Epididymitis: 점진적, 발열·요증상, reflex 보존, Prehn 호전 가능, pyuria, Doppler 고혈류 중 4개 2점.</li><li>강한 의심에서 영상으로 지연하지 않음 1점.</li><li>즉시 exploration, detorsion, bilateral orchiopexy 2점.</li></ul><div class='lock-line'><strong>3초 잠금문장</strong><br>갑작스런 통증·구토·high-riding·cremasteric reflex 소실이면 검사보다 수술이 먼저다.</div></section>",
+    "g": "<section class='urology-guide'><h4>출처와 공부법</h4><p><strong>최신 5조 문제 15</strong></p><p>앞면을 보고 먼저 답안 목차를 적은 뒤 공개하세요. 공개 후 빠진 항목만 확인하고 SRS 난이도를 선택합니다.</p><p>현행 교정 반영: 큰 전립선의 5-ARI 병용, 결석 강제수액 금지, 염전 수술 지연 금지, 최신 BCG window.</p></section>"
+  }
+]
