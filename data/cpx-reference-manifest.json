@@ -8078,6 +8078,269 @@
         "pageCount": 3,
         "scope": "병력청취/신체진찰/환자교육/PPI/알고리즘 전체 체크리스트"
       }
+    },
+    "44-1": {
+      "docId": "44-1",
+      "title": "44-1. 음주 상담",
+      "hankeut": {
+        "title": "음주/금연 상담 공통",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_상담.pdf",
+        "sourceFileTitle": "총론_상담.pdf",
+        "renderMode": "image-excerpt",
+        "pdfPageRange": "2-9",
+        "pdf": "assets/cpx-references/hankeut/44/excerpt.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/hankeut/44/pages/page-001.jpg",
+            "pdfPage": 2,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 442
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/hankeut/44/pages/page-002.jpg",
+            "pdfPage": 3,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 443
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/hankeut/44/pages/page-003.jpg",
+            "pdfPage": 4,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 444
+          },
+          {
+            "index": 4,
+            "image": "assets/cpx-references/hankeut/44/pages/page-004.jpg",
+            "pdfPage": 5,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 445
+          },
+          {
+            "index": 5,
+            "image": "assets/cpx-references/hankeut/44/pages/page-005.jpg",
+            "pdfPage": 6,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 446
+          },
+          {
+            "index": 6,
+            "image": "assets/cpx-references/hankeut/44/pages/page-006.jpg",
+            "pdfPage": 7,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 447
+          },
+          {
+            "index": 7,
+            "image": "assets/cpx-references/hankeut/44/pages/page-007.jpg",
+            "pdfPage": 8,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 448
+          },
+          {
+            "index": 8,
+            "image": "assets/cpx-references/hankeut/44/pages/page-008.jpg",
+            "pdfPage": 9,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 449
+          }
+        ],
+        "pageCount": 8,
+        "bookPageRange": "442-449",
+        "sharedFrom": "44. 음주 금연 상담"
+      },
+      "team4": [
+        {
+          "key": "alcohol_counseling",
+          "label": "4조 음주 상담",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/35. 음주 상담, 금연 상담_4조.pdf",
+          "sourceFileTitle": "35-1. 음주 상담_4조.pdf + 공통 비교표",
+          "renderMode": "image-source",
+          "pdf": "assets/cpx-references/team4/44-1/alcohol_counseling/source.pdf",
+          "pages": [
+            {
+              "index": 1,
+              "image": "assets/cpx-references/team4/44/alcohol_smoking_counseling/pages/page-001.jpg",
+              "pdfPage": 1,
+              "width": 1158,
+              "height": 1638
+            },
+            {
+              "index": 2,
+              "image": "assets/cpx-references/team4/44/alcohol_smoking_counseling/pages/page-004.jpg",
+              "pdfPage": 2,
+              "width": 1158,
+              "height": 1638
+            },
+            {
+              "index": 3,
+              "image": "assets/cpx-references/team4/44/alcohol_smoking_counseling/pages/page-005.jpg",
+              "pdfPage": 3,
+              "width": 1158,
+              "height": 1638
+            }
+          ],
+          "pageCount": 3,
+          "splitFrom": "44. 음주 금연 상담"
+        }
+      ],
+      "checklist": {
+        "key": "checklist",
+        "label": "체크리스트 44-1",
+        "title": "음주 상담",
+        "source": "체크리스트_CC별_분할_20260708/49_44-1_음주상담_p151-153.pdf",
+        "sourceFileTitle": "49_44-1_음주상담_p151-153.pdf",
+        "renderMode": "pdf-checklist",
+        "pdf": "assets/cpx-references/checklist/44-1/checklist.pdf",
+        "pageCount": 3,
+        "scope": "병력청취/신체진찰/환자교육/PPI 체크리스트",
+        "splitFrom": "44. 음주 금연 상담"
+      }
+    },
+    "44-2": {
+      "docId": "44-2",
+      "title": "44-2. 금연 상담",
+      "hankeut": {
+        "title": "음주/금연 상담 공통",
+        "source": "/Users/sffs123gmail.com/.openclaw/workspace/총론_상담.pdf",
+        "sourceFileTitle": "총론_상담.pdf",
+        "renderMode": "image-excerpt",
+        "pdfPageRange": "2-9",
+        "pdf": "assets/cpx-references/hankeut/44/excerpt.pdf",
+        "pages": [
+          {
+            "index": 1,
+            "image": "assets/cpx-references/hankeut/44/pages/page-001.jpg",
+            "pdfPage": 2,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 442
+          },
+          {
+            "index": 2,
+            "image": "assets/cpx-references/hankeut/44/pages/page-002.jpg",
+            "pdfPage": 3,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 443
+          },
+          {
+            "index": 3,
+            "image": "assets/cpx-references/hankeut/44/pages/page-003.jpg",
+            "pdfPage": 4,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 444
+          },
+          {
+            "index": 4,
+            "image": "assets/cpx-references/hankeut/44/pages/page-004.jpg",
+            "pdfPage": 5,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 445
+          },
+          {
+            "index": 5,
+            "image": "assets/cpx-references/hankeut/44/pages/page-005.jpg",
+            "pdfPage": 6,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 446
+          },
+          {
+            "index": 6,
+            "image": "assets/cpx-references/hankeut/44/pages/page-006.jpg",
+            "pdfPage": 7,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 447
+          },
+          {
+            "index": 7,
+            "image": "assets/cpx-references/hankeut/44/pages/page-007.jpg",
+            "pdfPage": 8,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 448
+          },
+          {
+            "index": 8,
+            "image": "assets/cpx-references/hankeut/44/pages/page-008.jpg",
+            "pdfPage": 9,
+            "width": 795,
+            "height": 1149,
+            "bookPage": 449
+          }
+        ],
+        "pageCount": 8,
+        "bookPageRange": "442-449",
+        "sharedFrom": "44. 음주 금연 상담"
+      },
+      "team4": [
+        {
+          "key": "smoking_counseling",
+          "label": "4조 금연 상담",
+          "source": "/Users/sffs123gmail.com/Desktop/의학과 공부 파일/자료/4조 실기 연습/CPX 대본/PDF 변환본_2026-06-25/35. 음주 상담, 금연 상담_4조.pdf",
+          "sourceFileTitle": "35-2. 금연 상담_4조.pdf + 공통 비교표",
+          "renderMode": "image-source",
+          "pdf": "assets/cpx-references/team4/44-2/smoking_counseling/source.pdf",
+          "pages": [
+            {
+              "index": 1,
+              "image": "assets/cpx-references/team4/44/alcohol_smoking_counseling/pages/page-002.jpg",
+              "pdfPage": 1,
+              "width": 1158,
+              "height": 1638
+            },
+            {
+              "index": 2,
+              "image": "assets/cpx-references/team4/44/alcohol_smoking_counseling/pages/page-003.jpg",
+              "pdfPage": 2,
+              "width": 1158,
+              "height": 1638
+            },
+            {
+              "index": 3,
+              "image": "assets/cpx-references/team4/44/alcohol_smoking_counseling/pages/page-004.jpg",
+              "pdfPage": 3,
+              "width": 1158,
+              "height": 1638
+            },
+            {
+              "index": 4,
+              "image": "assets/cpx-references/team4/44/alcohol_smoking_counseling/pages/page-005.jpg",
+              "pdfPage": 4,
+              "width": 1158,
+              "height": 1638
+            }
+          ],
+          "pageCount": 4,
+          "splitFrom": "44. 음주 금연 상담"
+        }
+      ],
+      "checklist": {
+        "key": "checklist",
+        "label": "체크리스트 44-2",
+        "title": "금연 상담",
+        "source": "체크리스트_CC별_분할_20260708/50_44-2_금연상담_p154-155.pdf",
+        "sourceFileTitle": "50_44-2_금연상담_p154-155.pdf",
+        "renderMode": "pdf-checklist",
+        "pdf": "assets/cpx-references/checklist/44-2/checklist.pdf",
+        "pageCount": 2,
+        "scope": "병력청취/환자교육/PPI 체크리스트",
+        "splitFrom": "44. 음주 금연 상담"
+      }
     }
   }
 }
