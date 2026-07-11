@@ -26,7 +26,9 @@ function actualDoc42() {
     if (typeof text !== 'string' || !text.includes('아이 이름, 생년월일이 언제인가요?')) {
       throw new Error('actual doc 42 question table not found');
     }
-    return text;
+    // The current central doc may already contain the desired break. Remove only
+    // this fixture break so the test can exercise inserting it again.
+    return text.replace(/\s*<br\s*\/?\s*>\s*(관계가 어떻게 되나요\?)/i, ', $1');
   } finally {
     db.close();
   }
