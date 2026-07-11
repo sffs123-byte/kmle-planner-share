@@ -36,6 +36,10 @@ async function testRedirectHandler() {
   assert.match(ok.body, /cpxGoogleRedirectCredential\.v1/);
   assert.doesNotMatch(ok.body, new RegExp(credential.replaceAll('.', '\\.')));
   assert.match(ok.body, /location\.replace\('\/\?google_redirect=1'\)/);
+  const encodedHandoff = ok.body.match(/atob\(("[A-Za-z0-9+/=]+")\)/)?.[1];
+  assert.ok(encodedHandoff, 'redirect handoff payload missing');
+  const handoffValue = Buffer.from(JSON.parse(encodedHandoff), 'base64').toString('utf8');
+  assert.deepEqual(JSON.parse(handoffValue).credential, credential);
 
   const badCsrf = mockResponse();
   await redirectHandler({
@@ -48,7 +52,7 @@ async function testRedirectHandler() {
   const wrongMethod = mockResponse();
   await redirectHandler({ method: 'GET', headers: {} }, wrongMethod);
   assert.equal(wrongMethod.statusCode, 405);
-  return { csrf: true, noStore: true, credentialNotInUrl: true };
+  return { csrf: true, noStore: true, credentialNotInUrl: true, handoffValue };
 }
 
 function serveRoot() {
@@ -81,7 +85,7 @@ async function launch(engine) {
   }
 }
 
-async function exercise(browser, engine, port, file) {
+async function exercise(browser, engine, port, file, handoffValue) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const loginBodies = [];
   let challengeRequests = 0;
@@ -156,7 +160,7 @@ async function exercise(browser, engine, port, file) {
     assert.equal(config.hasCallback, false, `${file}: redirect path retained popup callback`);
     const storedChallenge = await page.evaluate(() => sessionStorage.getItem(GOOGLE_REDIRECT_CHALLENGE_KEY));
     assert.equal(storedChallenge, 'challenge-1', `${file}: redirect challenge not stored`);
-    await page.evaluate(() => sessionStorage.setItem(GOOGLE_REDIRECT_CREDENTIAL_KEY, 'header.payload.signature'));
+    await page.evaluate(value => sessionStorage.setItem(GOOGLE_REDIRECT_CREDENTIAL_KEY, value), handoffValue);
     await page.reload({ waitUntil: 'domcontentloaded' });
   } else {
     assert.equal(config.uxMode, 'popup', `${file}: Chromium popup UX changed`);
@@ -190,7 +194,7 @@ async function main() {
     for (const engine of ['chromium', 'webkit']) {
       const browser = await launch(engine);
       try {
-        for (const file of FILES) results.push(await exercise(browser, engine, opened.port, file));
+        for (const file of FILES) results.push(await exercise(browser, engine, opened.port, file, endpoint.handoffValue));
       } finally {
         await browser.close();
       }
