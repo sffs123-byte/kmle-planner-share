@@ -57,11 +57,16 @@ def render_cards(rows: list[dict]) -> list[dict]:
             + html.escape(row["lock"])
             + "</div></section>"
         )
+        source_note = row.get(
+            "source_note",
+            "원문은 2026 기출 24개 조의 출제 빈도 분석을 압축한 자료입니다. "
+            "‘현행 교정’ 표시는 원문 암기축과 실제 임상 원칙이 충돌할 수 있는 지점입니다.",
+        )
         guide = (
             "<section class='urology-guide'><h4>출처와 공부법</h4>"
             f"<p><strong>비뇨의학과 포테 COMPACT · {html.escape(row['tier'])}급 · {html.escape(row['frequency'])}</strong></p>"
             "<p>앞면의 번호만 먼저 적고 답을 공개하세요. S급부터 회전하고, A급 다음 B급, C급 순서로 내려갑니다.</p>"
-            "<p>원문은 2026 기출 24개 조의 출제 빈도 분석을 압축한 자료입니다. ‘현행 교정’ 표시는 원문 암기축과 실제 임상 원칙이 충돌할 수 있는 지점입니다.</p>"
+            f"<p>{html.escape(source_note)}</p>"
             "</section>"
         )
         cards.append(
@@ -99,10 +104,10 @@ def add_theme(document: str) -> str:
 
 def main() -> None:
     rows = json.loads(DATA.read_text(encoding="utf-8"))
-    if len(rows) != 24:
-        raise ValueError(f"expected 24 COMPACT topics, got {len(rows)}")
-    if [row["num"] for row in rows] != list(range(1, 25)):
-        raise ValueError("topic numbers must be exactly 1..24")
+    if len(rows) != 26:
+        raise ValueError(f"expected 24 COMPACT topics plus 2 new recall topics, got {len(rows)}")
+    if [row["num"] for row in rows] != list(range(1, 27)):
+        raise ValueError("topic numbers must be exactly 1..26")
     cards = render_cards(rows)
     report = run_rails(cards, mode="basic", strict=True)
     report.print_report()
@@ -111,7 +116,7 @@ def main() -> None:
     builder = QuizBuilder(
         cards=cards,
         title=TITLE,
-        subtitle="2026 기출 24개 조 · S/A/B/C 야마 빈도순 · 서술형 백지회상",
+        subtitle="2026 기출 24개 조 + 4조 신규 2문항 · S/A/B/C 야마 빈도순 · 서술형 백지회상",
         storage_prefix=STORAGE_PREFIX,
         enable_self_answer=True,
         randomize_review=False,

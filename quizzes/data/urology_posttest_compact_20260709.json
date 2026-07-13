@@ -317,8 +317,38 @@
     "title": "탈야 빠른 키워드",
     "prompt": ["PI-RADS, URS 금기, mHSPC 강화치료, 방광암 T병기, 미하강고환, PDE5 inhibitor를 한 줄씩 잠그시오."],
     "sections": [
-      {"heading": "6개 키워드", "items": ["PI-RADS 1→5로 임상적으로 유의한 전립선암 가능성 증가. 4~5는 표적+체계적 생검 고려.", "URS 핵심 금기: 치료되지 않은 UTI·urosepsis, 마취 불가. 출혈위험·심한 협착은 사전교정.", "mHSPC: ADT+AR pathway inhibitor가 기본 강화치료, 고용량·fit 환자는 docetaxel 포함 triplet 고려.", "방광암 T: Ta 유두상 비침윤, Tis CIS, T1 lamina propria, T2 muscle, T3 perivesical fat, T4 adjacent organ.", "미하강고환: 불임·고환암·염전·서혜부탈장 위험. 보통 생후 6~18개월 orchiopexy.", "PDE5 inhibitor: PDE5 억제→cGMP 증가→평활근 이완. 질산염과 병용 금기."]}
+      {"heading": "6개 키워드", "items": ["PI-RADS 1→5로 임상적으로 유의한 전립선암 가능성 증가. 4~5는 표적+체계적 생검 고려.", "URS 핵심 금기: 치료되지 않은 UTI·urosepsis, 마취 불가. 출혈위험·심한 협착은 사전교정.", "mHSPC: ADT+AR pathway inhibitor가 기본 강화치료, 고용량·fit 환자는 docetaxel 포함 triplet 고려.", "방광암 T: Ta 유두상 비침윤, Tis CIS, T1 lamina propria, T2 muscle, T3 perivesical fat, T4 adjacent organ.", "미하강고환: 불임·고환암·염전·서혜부탈장 위험. 생후 6~12개월 orchiopexy, 늦어도 18개월까지 완료.", "PDE5 inhibitor: PDE5 억제→cGMP 증가→평활근 이완. 질산염과 병용 금기."]}
     ],
     "lock": "PI-RADS·감염 URS·ADT 강화·Ta/Tis/T1/T2/T3/T4·미하강 합병증·PDE5-질산염 금기."
+  },
+  {
+    "id": "URO-RECALL-20260710-ED",
+    "num": 25,
+    "tier": "C",
+    "frequency": "26년 4조 신규",
+    "title": "발기부전",
+    "prompt": ["발기부전의 원인을 분류하고 이 환자에서 가능성이 높은 원인을 쓰시오.", "1차 치료인 PDE5 inhibitor의 작용기전과 금기증을 쓰시오.", "PDE5 inhibitor 실패·금기 시 2차 치료법을 쓰시오."],
+    "sections": [
+      {"heading": "원인 분류", "items": ["크게 유기성(organic), 심인성(psychogenic), 혼합성(mixed)으로 분류하며 실제로는 혼합성이 흔하다.", "유기성은 혈관성(당뇨·고혈압·이상지질혈증·흡연·동맥경화), 신경성(당뇨병성 신경병증·척수손상·골반수술), 내분비성(성선기능저하·고프로락틴혈증·갑상선질환), 해부학적(Peyronie병), 약물·의인성으로 나눈다.", "이 증례의 당뇨·고혈압은 혈관성 유기성 발기부전을 가장 시사하며 당뇨병성 신경병증이 함께 기여할 수 있다."]},
+      {"heading": "PDE5 inhibitor", "items": ["성적 자극으로 NO가 분비되면 guanylate cyclase가 cGMP를 만들고 음경해면체 평활근이 이완된다. Sildenafil·tadalafil 등은 PDE5의 cGMP 분해를 억제해 동맥 유입과 정맥폐쇄성 발기를 강화한다.", "성적 자극이 있어야 효과가 나며 대표 부작용은 두통, 안면홍조, 소화불량, 코막힘이다."]},
+      {"heading": "금기·다음 치료", "items": ["절대 금기: nitrate·NO donor(니트로글리세린, isosorbide, poppers) 또는 nicorandil 병용. cGMP가 과도하게 축적돼 중증 저혈압을 일으킬 수 있다.", "불안정·불응성 협심증, 최근 심근경색·뇌졸중, 비보상성 심부전·고위험 부정맥, 중증 저혈압처럼 성행위 자체가 위험한 상태는 심혈관 상태를 먼저 안정화한다. α-blocker 병용은 절대 금기가 아니라 저혈압에 주의한다.", "2차: 음경해면체 내 alprostadil 주사 또는 진공발기기(VED). 요도 내 alprostadil도 대안이며, 덜 침습적인 치료에 실패하거나 확정적 치료를 원하면 음경보형물을 고려한다."]}
+    ],
+    "lock": "당뇨·고혈압은 혈관성 유기성; PDE5는 NO-cGMP를 보존하고 nitrate는 금기, 다음은 해면체주사·VED.",
+    "source_note": "26년 4조 신규 복기(260710) · EAU Sexual and Reproductive Health 2026 교차확인"
+  },
+  {
+    "id": "URO-RECALL-20260710-CRYPTORCHIDISM",
+    "num": 26,
+    "tier": "C",
+    "frequency": "26년 4조 신규",
+    "title": "잠복고환",
+    "prompt": ["잠복고환의 정의를 쓰시오.", "주요 합병증을 쓰시오.", "권장 수술 시기와 촉지·복강 내 고환의 수술법을 쓰시오."],
+    "sections": [
+      {"heading": "정의", "items": ["한쪽 또는 양쪽 고환이 정상 음낭 위치까지 완전히 하강하지 못한 상태다. 진성 미하강고환은 정상 하강 경로에서 멈추고, 이소성 고환은 정상 경로 밖에 위치한다.", "퇴축고환은 음낭으로 쉽게 내려와 잠시 머무는 상태로 진성 잠복고환과 구분한다."]},
+      {"heading": "합병증", "items": ["생식세포·Leydig 세포 소실과 고환 위축에 따른 생식능 저하·불임, 특히 양측성에서 위험이 크다.", "고환암 위험 증가. 조기 고환고정술이 위험을 낮추고 추적·자가검진을 쉽게 하지만 위험을 정상 수준으로 완전히 없애지는 못한다.", "고환염전·외상, 동반 서혜부탈장 또는 열린 초상돌기(patent processus vaginalis), 미용·심리 문제."]},
+      {"heading": "시기·수술", "items": ["교정연령 6개월 이후 자연하강은 드물다. 생후 6개월부터 치료를 시작해 6~12개월에 orchiopexy를 시행하고 늦어도 18개월까지 완료한다.", "촉지되는 서혜부 고환은 정삭을 충분히 박리·가동한 뒤 긴장 없이 음낭 dartos pouch에 고정하고 동반된 열린 초상돌기를 처리한다.", "비촉지 고환은 진단 복강경으로 위치·존재를 확인한다. 낮은 복강 내 고환은 복강경 고환고정술, 높은 복강 내 고환으로 길이가 부족하면 staged Fowler-Stephens를 고려한다.", "2단계 Fowler-Stephens는 1단계에서 고환혈관을 결찰·분리해 정관동맥·거근혈관의 측부순환 발달을 기다리고, 보통 약 6개월 뒤 2단계에서 고환을 음낭으로 내린다."]}
+    ],
+    "lock": "6개월부터, 12개월 내·늦어도 18개월까지 orchiopexy; 높은 복강 내 고환은 staged Fowler-Stephens.",
+    "source_note": "26년 4조 신규 복기(260710) · EAU Paediatric Urology 2026 교차확인"
   }
 ]
