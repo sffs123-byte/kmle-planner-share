@@ -25,6 +25,12 @@ STORAGE_PREFIX = "urology_posttest_20260703"
 def render_cards(rows: list[dict]) -> list[dict]:
     cards: list[dict] = []
     for row in rows:
+        recent_yama = ""
+        if row.get("recent_yama"):
+            recent_yama = (
+                "<span class='deck-chip recent-yama'>"
+                f"{html.escape(row['recent_yama'])}</span>"
+            )
         prompt = "".join(
             f"<p class='subq'>{index}. {html.escape(text)}</p>"
             for index, text in enumerate(row["prompt"], 1)
@@ -45,6 +51,7 @@ def render_cards(rows: list[dict]) -> list[dict]:
             "<div class='urology-front'><div>"
             f"<span class='deck-chip tier-{row['tier'].lower()}'>{html.escape(row['tier'])}급</span>"
             f"<span class='deck-chip'>{html.escape(row['frequency'])}</span>"
+            f"{recent_yama}"
             "</div>"
             f"<h3>{row['num']}. {html.escape(row['title'])}</h3>{prompt}</div>"
         )
@@ -92,6 +99,7 @@ def add_theme(document: str) -> str:
 .urology-front p{margin:7px 0;line-height:1.65}.urology-front .subq{padding-left:8px;border-left:3px solid #89b4fa}
 .deck-chip{display:inline-block;padding:3px 8px;margin-right:5px;border-radius:999px;background:#313244;color:#89b4fa;font-size:.76rem;font-weight:800}
 .deck-chip.tier-s{background:#f38ba8;color:#11111b}.deck-chip.tier-a{background:#fab387;color:#11111b}.deck-chip.tier-b{background:#f9e2af;color:#11111b}.deck-chip.tier-c{background:#a6e3a1;color:#11111b}
+.deck-chip.recent-yama{background:#cba6f7;color:#11111b;box-shadow:0 0 0 1px rgba(203,166,247,.35)}
 .urology-answer h3{color:#1e66f5;margin-bottom:12px}.urology-answer h4{color:#5c6ac4;margin:14px 0 5px}.urology-answer p,.urology-answer li{line-height:1.58}
 .urology-answer ul{padding-left:22px;margin:5px 0}.lock-line{margin-top:16px;padding:13px 15px;border-left:5px solid #df8e1d;background:#fff4d6;border-radius:8px;color:#5c3a00}
 .current-correction{margin-top:14px;padding:12px 14px;border-left:5px solid #d20f39;background:#ffe8ec;border-radius:8px;color:#5c1725;line-height:1.55}

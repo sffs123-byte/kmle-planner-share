@@ -4,6 +4,7 @@
     "num": 1,
     "tier": "S",
     "frequency": "22/24",
+    "recent_yama": "직전 4조 · Q6-7",
     "title": "요실금 4종",
     "prompt": ["복압성·절박성·복합성·범람성 요실금의 정의와 기전을 쓰시오.", "산후 여성의 기침 시 누출과 강한 요의 시 누출이 함께 있을 때 진단을 쓰시오.", "초기평가 3가지와 유형별 1차치료를 쓰시오."],
     "sections": [
@@ -18,6 +19,7 @@
     "num": 2,
     "tier": "S",
     "frequency": "21/24",
+    "recent_yama": "직전 4조 · Q1-2",
     "title": "혈뇨",
     "prompt": ["혈뇨의 정의와 위양성 유발물질을 쓰시오.", "장기별 대표 원인을 쓰고 상·하부요로 악성종양을 구분하시오.", "고령 흡연자의 무통성 육안혈뇨에서 가장 의심할 진단과 표준검사 2가지를 쓰시오."],
     "sections": [
@@ -47,6 +49,7 @@
     "num": 4,
     "tier": "S",
     "frequency": "20/24",
+    "recent_yama": "직전 4조 · Q9",
     "title": "BPH 약물 5종",
     "prompt": ["5개 약제군의 기전·대표약·주요 부작용을 쓰시오.", "전립선 30 mL, PSA 1.5 ng/mL 환자의 기본 조합을 쓰시오."],
     "sections": [
@@ -101,6 +104,7 @@
     "num": 8,
     "tier": "S",
     "frequency": "18/24",
+    "recent_yama": "직전 4조 · Q4-5",
     "title": "PSA",
     "prompt": ["PSA 상승 5가지와 감소 2가지 원인을 쓰시오.", "PSA density·free ratio·velocity의 정의와 암 시사 기준을 쓰시오.", "PSA의 양성예측도를 높이는 방법을 쓰시오."],
     "sections": [
@@ -116,6 +120,7 @@
     "num": 9,
     "tier": "S",
     "frequency": "18/24",
+    "recent_yama": "직전 4조 · Q10-11",
     "title": "요로결석",
     "prompt": ["요관의 생리적 협착 3곳과 응급실 검사·초기치료를 쓰시오.", "응급감압 적응증과 감염성 폐색의 치료 순서를 쓰시오.", "ESWL·URS·PCNL의 대표 적응증과 핵심 단점을 비교하시오."],
     "sections": [
@@ -146,6 +151,7 @@
     "num": 11,
     "tier": "A",
     "frequency": "15/24",
+    "recent_yama": "직전 4조 · Q15",
     "title": "고환염전 감별",
     "prompt": ["고환염전과 부고환염을 연령·발병·반사·Prehn sign·Doppler로 비교하시오.", "강하게 의심할 소견과 치료원칙을 쓰시오.", "기타 급성 음낭통 감별을 쓰시오."],
     "sections": [
@@ -160,6 +166,7 @@
     "num": 12,
     "tier": "A",
     "frequency": "12/24",
+    "recent_yama": "직전 4조 · Q12-13",
     "title": "전립선암",
     "prompt": ["PSA 12, Gleason 4+4, 다발 골전이의 병기를 쓰시오.", "호르몬치료 각 군의 기전을 쓰시오.", "CRPC 정의와 Active Surveillance 기준을 쓰시오."],
     "sections": [
@@ -251,6 +258,7 @@
     "num": 19,
     "tier": "B",
     "frequency": "4/24",
+    "recent_yama": "직전 4조 · Q3",
     "title": "외래검사·UDS",
     "prompt": ["Uroflow Qmax와 검사조건, PVR 기준을 쓰시오.", "DRE 항목을 쓰시오.", "UDS 구성과 적응증을 쓰시오."],
     "sections": [
@@ -302,6 +310,7 @@
     "num": 23,
     "tier": "C",
     "frequency": "특정 조",
+    "recent_yama": "직전 4조 · Q6-7",
     "title": "OAB 정의·치료",
     "prompt": ["OAB를 정의하고 1차 행동요법과 약물 2군을 쓰시오."],
     "sections": [
@@ -326,6 +335,7 @@
     "num": 25,
     "tier": "C",
     "frequency": "26년 4조 신규",
+    "recent_yama": "직전 4조 · Q8",
     "title": "발기부전",
     "prompt": ["발기부전의 원인을 분류하고 이 환자에서 가능성이 높은 원인을 쓰시오.", "1차 치료인 PDE5 inhibitor의 작용기전과 금기증을 쓰시오.", "PDE5 inhibitor 실패·금기 시 2차 치료법을 쓰시오."],
     "sections": [
@@ -341,6 +351,7 @@
     "num": 26,
     "tier": "C",
     "frequency": "26년 4조 신규",
+    "recent_yama": "직전 4조 · Q14",
     "title": "잠복고환",
     "prompt": ["잠복고환의 정의를 쓰시오.", "주요 합병증을 쓰시오.", "권장 수술 시기와 촉지·복강 내 고환의 수술법을 쓰시오."],
     "sections": [
