@@ -1,0 +1,324 @@
+[
+  {
+    "id": "URO-POST-20260703-06",
+    "num": 1,
+    "tier": "S",
+    "frequency": "22/24",
+    "title": "요실금 4종",
+    "prompt": ["복압성·절박성·복합성·범람성 요실금의 정의와 기전을 쓰시오.", "산후 여성의 기침 시 누출과 강한 요의 시 누출이 함께 있을 때 진단을 쓰시오.", "초기평가 3가지와 유형별 1차치료를 쓰시오."],
+    "sections": [
+      {"heading": "정의·기전", "items": ["복압성(SUI): 복압 상승 시 방광 수축 없이 누출. 골반저근 약화와 요도 과이동성.", "절박성(UUI): 갑작스러운 강한 요의와 동시에 누출. 배뇨근 과활동성.", "복합성: SUI와 UUI가 함께 존재. 산후의 기침 시+요의 시 누출 사례.", "범람성: 과팽창 방광에서 넘쳐흐름. 하부요로폐색 또는 배뇨근 수축력 상실."]},
+      {"heading": "초기평가 3", "items": ["병력·문진과 배뇨일지", "선 자세 Valsalva·기침유발검사와 골반장기탈출 확인", "요검사로 요로감염 배제"]},
+      {"heading": "1차치료", "items": ["SUI: 체중감량·Kegel·biofeedback, 불응 시 midurethral sling. 국내 공인 1차약 없음.", "UUI: 카페인·알코올·수분 조절과 방광훈련, anticholinergic 또는 β3 agonist. 불응 시 SNM·Botox.", "범람성: 유치도뇨 또는 CIC로 감압하고 BPH 등 원인을 치료."]}
+    ],
+    "lock": "기침=SUI, 급한 요의=UUI, 둘 다=복합성, 과팽창=PVR 큰 범람성."
+  },
+  {
+    "id": "URO-POST-20260703-01",
+    "num": 2,
+    "tier": "S",
+    "frequency": "21/24",
+    "title": "혈뇨",
+    "prompt": ["혈뇨의 정의와 위양성 유발물질을 쓰시오.", "장기별 대표 원인을 쓰고 상·하부요로 악성종양을 구분하시오.", "고령 흡연자의 무통성 육안혈뇨에서 가장 의심할 진단과 표준검사 2가지를 쓰시오."],
+    "sections": [
+      {"heading": "정의·위양성", "items": ["육안적 혈뇨: 붉은 변색이 육안으로 확인. 현미경적 혈뇨: HPF당 RBC 3개 이상.", "붉은 소변 위양성: rifampin, phenazopyridine, 비트."]},
+      {"heading": "장기별 대표 원인", "items": ["신장·신우: RCC, 신우암, 결석, 사구체신염.", "요관: 요관암, 결석, 협착. 방광: 방광암, 결석, 급성 방광염.", "요도: 요도암, 요도염, 외상. 전립선: 전립선암, BPH, 전립선염.", "상부 악성: RCC·신우암·요관암. 하부 악성: 방광암·요도암·전립선암."]},
+      {"heading": "핵심 사례·검사", "items": ["60대·30갑년·무통성 육안혈뇨: 방광 요로상피암 우선.", "표준평가: CT urography로 상부요로 + cystoscopy로 하부요로·방광.", "보조: 요침사, 요세포검사, 요배양. 상부감염 의심 시 요배양+조영증강 CT."]}
+    ],
+    "lock": "고령 흡연자의 무통성 육안혈뇨는 방광암부터, CT urography + cystoscopy."
+  },
+  {
+    "id": "URO-COMPACT-20260709-03",
+    "num": 3,
+    "tier": "S",
+    "frequency": "20/24",
+    "title": "급성 요폐",
+    "prompt": ["원인을 폐색·신경·약물·해부학 범주로 나누어 쓰시오.", "병력청취 3가지와 초기처치를 쓰시오.", "1000 mL 이상 배액 후 감시할 합병증을 쓰시오."],
+    "sections": [
+      {"heading": "원인", "items": ["폐색성: BPH 이행대 비대. 신경학적: 척수손상·당뇨 신경병증.", "약물성: 항히스타민의 항콜린작용, pseudoephedrine의 α작용.", "해부학적: 요도·방광경부 협착, 감돈 결석, 전립선암 침윤, 심한 포경.", "기타: 과음과 장시간 참기, 수술·마취 후."]},
+      {"heading": "문진·처치", "items": ["BPH 약 복용, 감기약 복용, 직전 과음·장시간 참기.", "Foley로 즉시 방광 감압. 요도손상 의심이면 먼저 RUG."]},
+      {"heading": "대량 배액 후 감시", "items": ["감압성 혈뇨, 저혈압·vasovagal syncope, post-obstructive diuresis와 전해질 이상."]}
+    ],
+    "correction": "원문의 ‘300~400 mL씩 단계적 배액’보다 현재 표준은 신속하고 완전한 배액이다. 단계적 감압이 혈뇨·저혈압을 줄인다는 근거는 없다.",
+    "lock": "AUR은 원인 문진 후 Foley로 완전 감압하고 혈뇨·저혈압·폐색후이뇨를 감시한다."
+  },
+  {
+    "id": "URO-POST-20260703-09",
+    "num": 4,
+    "tier": "S",
+    "frequency": "20/24",
+    "title": "BPH 약물 5종",
+    "prompt": ["5개 약제군의 기전·대표약·주요 부작용을 쓰시오.", "전립선 30 mL, PSA 1.5 ng/mL 환자의 기본 조합을 쓰시오."],
+    "sections": [
+      {"heading": "5개 약제군", "items": ["α1 blocker: 전립선 평활근 이완 / tamsulosin·alfuzosin / 기립성 저혈압·사정장애.", "5-ARI: DHT 생성 차단·전립선 축소 / finasteride·dutasteride / 성욕감퇴·발기부전.", "Anticholinergic: 배뇨근 무스카린 차단 / solifenacin·fesoterodine / 입마름·변비·요폐.", "β3 agonist: 저장기 배뇨근 이완·용적 증가 / mirabegron·vibegron / 고혈압·두통·빈맥.", "PDE5 inhibitor: cGMP 분해 억제 / tadalafil / 두통·홍조·소화불량."]},
+      {"heading": "30 mL·PSA 1.5", "items": ["α1 blocker 단독. 저장증상이 뚜렷하면 α1 blocker + β3 agonist 또는 anticholinergic.", "작은 전립선·낮은 PSA라 진행위험이 낮아 5-ARI는 우선 제외."]}
+    ],
+    "lock": "빠른 배뇨개선=α1, 큰 전립선 진행억제=5-ARI, 저장증상=항콜린 또는 β3."
+  },
+  {
+    "id": "URO-COMPACT-20260709-05",
+    "num": 5,
+    "tier": "S",
+    "frequency": "19/24",
+    "title": "LUTS 분류",
+    "prompt": ["저장·배뇨·배뇨후 증상을 각각 쓰시오.", "각 범주의 임상적 의미와 기본검사 3축을 쓰시오."],
+    "sections": [
+      {"heading": "증상", "items": ["저장: 빈뇨, 절박뇨, 야간뇨, 절박성 요실금, 방광통.", "배뇨: 약한 요류, 요주저, 간헐뇨.", "배뇨후: 잔뇨감, 배뇨후 요점적."]},
+      {"heading": "의미·검사", "items": ["저장증상은 배뇨근 과활동·순응도 저하 등 방광 저장기 이상을 시사.", "배뇨·배뇨후 증상은 BPH·요도협착에 의한 BOO를 시사.", "IPSS+QoL, uroflowmetry+PVR, TRUS."]}
+    ],
+    "lock": "저장은 방광, 배뇨·배뇨후는 출구폐색; IPSS, flow+PVR, TRUS."
+  },
+  {
+    "id": "URO-COMPACT-20260709-06",
+    "num": 6,
+    "tier": "S",
+    "frequency": "18/24",
+    "title": "도뇨관 Foley",
+    "prompt": ["적응증 5가지, 합병증 3가지, 금기 2가지를 쓰시오.", "골반골절에서 요도손상 의심 소견과 다음 검사를 쓰시오.", "요감염·급성 전립선염 동반 시 주의점을 쓰시오."],
+    "sections": [
+      {"heading": "적응증·합병증", "items": ["적응증: 급성 요폐 감압, 중환자 시간당 요량, 수술 중 배액, 비뇨기수술 후 배액·부목, 방광세척·국소약물.", "합병증: CAUTI, 요도허혈·협착, 잘못된 발룬 팽창에 의한 요도외상·혈뇨."]},
+      {"heading": "금기·외상", "items": ["요도손상 의심, 급성 전립선염에서의 경요도 유치도뇨는 피한다.", "골반골절+요도구 혈흔·회음부 혈종·고위 전립선: Foley 유보 후 RUG."]},
+      {"heading": "감염 시", "items": ["무균술, 충분한 윤활과 부드러운 삽입. 급성 전립선염+요폐면 치골상부 방광루를 고려."]}
+    ],
+    "lock": "요도구 피·회음부 혈종·고위 전립선이면 Foley 금지, RUG 먼저."
+  },
+  {
+    "id": "URO-COMPACT-20260709-07",
+    "num": 7,
+    "tier": "S",
+    "frequency": "18/24",
+    "title": "BPH 수술 적응증",
+    "prompt": ["절대적·상대적 적응증을 쓰시오.", "50 g과 100 g에서 수술 선택을 쓰시오.", "TURP 합병증을 쓰시오."],
+    "sections": [
+      {"heading": "적응증", "items": ["절대적: 반복 AUR, 재발 UTI, 반복 육안혈뇨, 방광결석, BOO로 인한 신기능 저하.", "상대적: 삶의 질을 떨어뜨리는 약물불응 LUTS, 과다한 PVR."]},
+      {"heading": "크기별 수술", "items": ["50 g 약물불응: TURP 또는 HoLEP.", "100 g 거대 전립선: HoLEP 또는 simple prostatectomy."]},
+      {"heading": "TURP 합병증", "items": ["TUR syndrome, 출혈·캡슐 파열, 역행성 사정, 요도협착."]}
+    ],
+    "lock": "요폐·감염·혈뇨·결석·신손상은 수술, 50 g TURP/HoLEP, 100 g HoLEP/simple."
+  },
+  {
+    "id": "URO-POST-20260703-04",
+    "num": 8,
+    "tier": "S",
+    "frequency": "18/24",
+    "title": "PSA",
+    "prompt": ["PSA 상승 5가지와 감소 2가지 원인을 쓰시오.", "PSA density·free ratio·velocity의 정의와 암 시사 기준을 쓰시오.", "PSA의 양성예측도를 높이는 방법을 쓰시오."],
+    "sections": [
+      {"heading": "상승·감소", "items": ["상승: 전립선암, BPH, 급성 전립선염, 생검·기구조작, 사정, 급성 요폐.", "감소: 5-ARI 사용 시 약 50% 감소, 비만에서는 혈액희석으로 낮게 측정."]},
+      {"heading": "파생지표", "items": ["Density=총 PSA/TRUS 전립선부피. 0.15 이상이면 의심 증가.", "Free/total PSA ratio. 15~20% 이하이면 의심 증가.", "Velocity=연간 상승속도. 전통적 0.75 ng/mL/년 이상은 의심 소견이나 단독 생검 기준으로 쓰지 않는다."]},
+      {"heading": "PPV 높이기", "items": ["PSA density, free PSA ratio, 추세·velocity, 연령별 기준치와 DRE·MRI를 함께 해석.", "5-ARI 6개월 이상이면 측정 PSA를 대략 2배로 보정."]}
+    ],
+    "correction": "DRE는 PSA를 임상적으로 의미 있게 올리는 원인으로 보지 않는다. 생검, 요로기구조작, 급성 요폐·전립선염을 더 중요하게 본다.",
+    "lock": "Density는 PSA/부피, free ratio는 낮을수록, 추세는 빠를수록 암 의심."
+  },
+  {
+    "id": "URO-POST-20260703-10",
+    "num": 9,
+    "tier": "S",
+    "frequency": "18/24",
+    "title": "요로결석",
+    "prompt": ["요관의 생리적 협착 3곳과 응급실 검사·초기치료를 쓰시오.", "응급감압 적응증과 감염성 폐색의 치료 순서를 쓰시오.", "ESWL·URS·PCNL의 대표 적응증과 핵심 단점을 비교하시오."],
+    "sections": [
+      {"heading": "위치·평가", "items": ["협착: UPJ, 총장골동맥 교차부, UVJ.", "요침사, 비조영 CT 표준, KUB 추적, 혈청 creatinine.", "NSAID 우선, 불응 시 opioid. 정상 수분상태를 유지."]},
+      {"heading": "응급감압", "items": ["폐색성 신우신염·패혈증, 조절불가 통증, 무뇨·양측폐색, 폐색성 급성 신부전.", "항생제·수액 안정화 → DJ stent 또는 PCN 감압 → 감염 안정 후 지연성 결석 제거."]},
+      {"heading": "시술 선택", "items": ["ESWL: 대개 2 cm 미만 신결석·작은 상부요관석. 비침습적이나 단단한 돌·하부신배는 성공률 저하.", "URS/RIRS: 2 cm 미만 요관·신결석, 특히 하부요관. 높은 제거율이나 마취·천공·협착 위험.", "PCNL: 2 cm 이상, 다발성·녹각석. 1회 제거율이 높으나 출혈·패혈증 위험.", "ESWL 금기: 임신, 교정되지 않은 출혈위험, 결석 하부 폐색."]}
+    ],
+    "correction": "통증 조절 뒤에도 결석 배출을 목적으로 강제 수액하지 않는다. 탈수를 교정하고 정상 수분상태만 유지한다.",
+    "lock": "감염+폐색은 먼저 배액, 2 cm 이상 신결석은 PCNL."
+  },
+  {
+    "id": "URO-POST-20260703-14",
+    "num": 10,
+    "tier": "S",
+    "frequency": "18/24",
+    "title": "방광암·BCG",
+    "prompt": ["NMIBC와 MIBC의 치료원칙을 구분하시오.", "re-TURBT 적응증과 BCG 목적을 쓰시오.", "BCG failure 4분류와 조기 방광적출 적응증을 쓰시오."],
+    "sections": [
+      {"heading": "치료원칙", "items": ["NMIBC: TURBT 후 위험도에 따라 방광내 BCG로 재발·진행 억제.", "MIBC: radical cystectomy+골반 림프절절제, cisplatin 기반 수술전 항암을 우선 고려."]},
+      {"heading": "re-TURBT·BCG", "items": ["re-TURBT: 불완전 절제, T1, 고등급, 최초 검체에 근층 없음 등에서 보통 2~6주 내 잔존암·병기 재평가.", "BCG: 국소 면역반응으로 고위험 NMIBC의 잔존암·재발·근침윤 진행을 억제."]},
+      {"heading": "Failure·조기 적출", "items": ["Refractory: 적절한 BCG에도 6개월 내 관해 실패·악화. Resistant: 3개월 저등급 잔존 후 6개월 내 소실.", "Relapsing: 무병 후 고등급 재발. Unresponsive: 충분한 BCG 후 조기 고등급 재발로 추가 BCG 이득이 기대되지 않는 군.", "조기 적출: BCG-unresponsive, 공격적 변이, 전립선요도 CIS, 고등급 T1+LVI 등."]}
+    ],
+    "correction": "BCG-unresponsive의 시험 답은 ‘adequate BCG 후 Ta/T1 고등급 6개월 이내 또는 CIS 12개월 이내 재발’로 잠근다.",
+    "lock": "NMIBC는 TURBT+위험도별 BCG, MIBC와 BCG-unresponsive는 적출 축."
+  },
+  {
+    "id": "URO-POST-20260703-15",
+    "num": 11,
+    "tier": "A",
+    "frequency": "15/24",
+    "title": "고환염전 감별",
+    "prompt": ["고환염전과 부고환염을 연령·발병·반사·Prehn sign·Doppler로 비교하시오.", "강하게 의심할 소견과 치료원칙을 쓰시오.", "기타 급성 음낭통 감별을 쓰시오."],
+    "sections": [
+      {"heading": "염전 vs 부고환염", "items": ["염전: 사춘기, 갑작스러운 극심한 통증·구토, high-riding·horizontal, cremasteric reflex 소실, Prehn 음성, 혈류 감소.", "부고환염: 성적 활동기, 점진적 통증·발열·요증상, reflex 유지, 거상 시 호전 가능, 혈류 증가."]},
+      {"heading": "처치", "items": ["강력 의심 시 영상 때문에 지연하지 말고 6시간 내 응급 탐색·detorsion.", "생존력 확인 후 양측 orchiopexy."]},
+      {"heading": "기타 감별", "items": ["고환수염 염전(blue dot), 외상성 고환파열, 감돈 서혜부탈장, orchitis."]}
+    ],
+    "lock": "갑작스런 통증+구토+반사소실+고위 고환이면 Doppler보다 수술이 먼저."
+  },
+  {
+    "id": "URO-POST-20260703-12",
+    "num": 12,
+    "tier": "A",
+    "frequency": "12/24",
+    "title": "전립선암",
+    "prompt": ["PSA 12, Gleason 4+4, 다발 골전이의 병기를 쓰시오.", "호르몬치료 각 군의 기전을 쓰시오.", "CRPC 정의와 Active Surveillance 기준을 쓰시오."],
+    "sections": [
+      {"heading": "병기·치료기전", "items": ["다발 골전이: 전이성 거세민감성 전립선암, M1b·4기.", "LHRH antagonist는 즉시 차단, agonist는 지속자극 후 하향조절하며 초기 flare가 있다.", "고환절제는 testosterone 공급원 제거. ARSI는 AR 신호전달을 차단. 1세대 antiandrogen은 flare 방지에 병용."]},
+      {"heading": "적응증", "items": ["N1/M1의 1차 ADT, 국소진행성 방사선 전후 병용, 근치치료 후 생화학적 재발."]},
+      {"heading": "CRPC·AS", "items": ["CRPC: testosterone 거세수준(<50 ng/dL)인데도 PSA 진행 또는 영상학적 진행.", "AS 저위험축: PSA≤10, cT1c~T2a, Gleason≤6(GG1), 적은 양성 코어·낮은 침범률, 기대수명≥10년."]}
+    ],
+    "lock": "거세수준인데 PSA·영상이 진행하면 CRPC; PSA≤10·T2a 이하·GG1이면 AS 축."
+  },
+  {
+    "id": "URO-COMPACT-20260709-13",
+    "num": 13,
+    "tier": "A",
+    "frequency": "11/24",
+    "title": "신세포암 RCC",
+    "prompt": ["위험인자·증상·표준영상을 쓰시오.", "부분신절제와 근치신절제의 선택 기준과 장단점을 쓰시오."],
+    "sections": [
+      {"heading": "위험·진단", "items": ["흡연, 비만, 고혈압, 장기 투석, VHL 등 유전.", "고전 3징: 측복통·육안혈뇨·촉지 종물. 현재는 다수가 무증상 우연 발견.", "Dynamic contrast-enhanced CT 표준, 신정맥 침범 의심 시 MRI."]},
+      {"heading": "수술 선택", "items": ["Partial: 보통 4 cm 이하 T1a, 단신·양측성·CKD, 외측 피질 병변. 신기능 보존.", "Radical: 크거나 신문부·대혈관 중심으로 보존 불가. 신장+주변 지방+Gerota fascia 절제.", "부분절제 장점은 CKD·심혈관 위험 감소, 단점은 출혈·요루·양성 절제면·기술 난도."]}
+    ],
+    "lock": "T1a·단신·양측·CKD는 nephron-sparing, 크고 hilar이면 radical."
+  },
+  {
+    "id": "URO-POST-20260703-08",
+    "num": 14,
+    "tier": "A",
+    "frequency": "11/24",
+    "title": "방광내시경 적응증",
+    "prompt": ["적응증 5가지를 쓰시오.", "장점과 한계를 쓰시오.", "육안혈뇨와 atypical cytology에서 놓치면 안 되는 병변과 추가검사를 쓰시오."],
+    "sections": [
+      {"heading": "적응증", "items": ["원인불명 혈뇨, 영상상 방광종물, 반복·만성 UTI, 불응성 LUTS·골반통, 요도협착·이물·결석 확인과 제거."]},
+      {"heading": "장점·한계", "items": ["하부요로 점막을 직접 보고 즉시 생검·지혈 가능.", "표면 관찰이라 근층침윤·림프절 병기판정은 불가. 급성 UTI·심한 협착에서는 제한."]},
+      {"heading": "CIS·atypical cytology", "items": ["미세 발적·거친 표면의 CIS를 놓치지 않는다.", "Cystoscopy, CT urography, random/mapping biopsy, 전립선요도 생검."]}
+    ],
+    "lock": "Cystoscopy는 하부요로 점막·생검의 표준이지만 침윤깊이와 전이는 못 본다."
+  },
+  {
+    "id": "URO-COMPACT-20260709-15",
+    "num": 15,
+    "tier": "A",
+    "frequency": "10/24",
+    "title": "Lithotomy position",
+    "prompt": ["대표 수술·시술 5가지를 쓰시오.", "합병증 3가지와 이 자세가 적합한 이유를 쓰시오."],
+    "sections": [
+      {"heading": "시술", "items": ["TURBT, TURP, URS, RIRS, Double-J stent 삽입."]},
+      {"heading": "합병증·이유", "items": ["비골신경 마비, 대퇴·하전장골신경 압박, 하지 구획증후군.", "요도구부터 방광·하부요관까지 내시경 동선을 정렬하고 회음부를 노출하며 C-arm 공간을 확보."]}
+    ],
+    "lock": "TURBT·TURP·URS·RIRS·DJ는 lithotomy; 신경압박과 compartment를 조심."
+  },
+  {
+    "id": "URO-COMPACT-20260709-16",
+    "num": 16,
+    "tier": "A",
+    "frequency": "9/24",
+    "title": "방광염 vs 신우신염",
+    "prompt": ["전신증상, 통증·CVAT, 소화기증상으로 두 질환을 비교하시오."],
+    "sections": [
+      {"heading": "감별", "items": ["방광염: 전신증상 없음, 치골상부·하복부 통증, CVAT 없음, 소화기증상 드묾.", "신우신염: 38도 이상 고열·오한·근육통, 측복통과 CVAT, 구역·구토가 흔함."]}
+    ],
+    "lock": "고열·오한+측복통+CVAT+구토면 신우신염, 없고 하부증상만이면 방광염."
+  },
+  {
+    "id": "URO-COMPACT-20260709-17",
+    "num": 17,
+    "tier": "B",
+    "frequency": "4/24",
+    "title": "신외상 AAST grade",
+    "prompt": ["Grade 1~5를 구분하시오.", "집합관 침범과 요누출의 등급·치료를 쓰시오.", "응급수술 적응증을 쓰시오."],
+    "sections": [
+      {"heading": "Grade", "items": ["1: 타박 또는 피막하 비확장성 혈종.", "2: 1 cm 이하 피질 열상 또는 비확장성 신주위 혈종. 3: 1 cm 초과 열상, 집합관 손상 없음.", "4: 집합관 손상·요누출 또는 분지혈관 손상·분역경색.", "5: shattered kidney 또는 주 신혈관·신문부 완전 손상과 무관류."]},
+      {"heading": "치료", "items": ["안정하면 비수술 관리. 지속 요누출은 DJ stent 또는 PCN을 고려.", "응급수술: 소생 불응 혈역학 불안정, 확장성·박동성 혈종, 주요 신혈관 완전 손상 등."]}
+    ],
+    "lock": "집합관+요누출=Grade 4, shattered·hilar avulsion=Grade 5."
+  },
+  {
+    "id": "URO-COMPACT-20260709-18",
+    "num": 18,
+    "tier": "B",
+    "frequency": "5/24",
+    "title": "신우신염+결석 응급",
+    "prompt": ["폐색성 신우신염의 진단명과 우선순위 3단계를 쓰시오."],
+    "sections": [
+      {"heading": "우선순위", "items": ["진단: 결석 폐색과 수신증을 동반한 급성 신우신염.", "1단계: 배양 채취, 광범위 항생제·수액·해열진통으로 안정화.", "2단계: DJ stent 또는 PCN으로 응급 감압.", "3단계: 감염 안정 후 보통 1~2주 뒤 URS·ESWL 등 결석 제거."]}
+    ],
+    "lock": "열+수신증+결석은 항생제와 응급 배액이 먼저, 돌은 나중."
+  },
+  {
+    "id": "URO-POST-20260703-03",
+    "num": 19,
+    "tier": "B",
+    "frequency": "4/24",
+    "title": "외래검사·UDS",
+    "prompt": ["Uroflow Qmax와 검사조건, PVR 기준을 쓰시오.", "DRE 항목을 쓰시오.", "UDS 구성과 적응증을 쓰시오."],
+    "sections": [
+      {"heading": "Uroflow·PVR", "items": ["Qmax는 최대요류속도. 방광 150~200 mL 이상, 배뇨량 150 mL 미만이면 해석 제한.", "PVR은 초음파 또는 도뇨로 측정. 100 mL 이상 또는 방광용량의 20% 이상이면 의미."]},
+      {"heading": "DRE·UDS", "items": ["DRE: 크기, 경도, 대칭·중앙홈, 압통.", "UDS: uroflowmetry, filling cystometry, pressure-flow study, pelvic floor EMG.", "적응증: 1차치료 불응 요실금, 수술 후 지속장애, 신경인성방광, 복합성 요실금 수술 전 정밀평가."]}
+    ],
+    "lock": "Flow=흐름, cystometry=저장, pressure-flow=폐색 대 근력, EMG=협응."
+  },
+  {
+    "id": "URO-COMPACT-20260709-20",
+    "num": 20,
+    "tier": "B",
+    "frequency": "3/24",
+    "title": "방광파열",
+    "prompt": ["진단검사를 쓰시오.", "복막외와 복막내 파열의 위치·치료를 비교하시오."],
+    "sections": [
+      {"heading": "진단·치료", "items": ["역행성 방광조영술 또는 CT cystography가 핵심.", "복막외: 골반강으로 누출. 단순형은 유치도뇨 2~3주.", "복막내: 방광 dome 파열로 복강 내 누출. 즉시 외과적 봉합+방광 도뇨 배액."]}
+    ],
+    "correction": "복막내 파열은 수술적 봉합 후 요도 Foley 배액이 일반적이며, 치골상부 방광루가 항상 필수인 것은 아니다.",
+    "lock": "Extra는 Foley 보존, intra는 dome 파열이라 수술 봉합."
+  },
+  {
+    "id": "URO-COMPACT-20260709-21",
+    "num": 21,
+    "tier": "C",
+    "frequency": "특정 조",
+    "title": "여성 재발성 UTI 비약물 예방",
+    "prompt": ["비약물 예방 3가지를 쓰고 각각의 이유를 연결하시오."],
+    "sections": [
+      {"heading": "예방 3", "items": ["충분한 수분 섭취: 요량을 늘려 세균 배출.", "성관계 후 배뇨: 역행성으로 들어온 세균 배출.", "배변 후 앞에서 뒤로 닦기: E. coli의 요도 오염 감소."]}
+    ],
+    "lock": "물, 성관계 후 소변, 앞에서 뒤로."
+  },
+  {
+    "id": "URO-COMPACT-20260709-22",
+    "num": 22,
+    "tier": "C",
+    "frequency": "특정 조",
+    "title": "전립선 생검 합병증·예방",
+    "prompt": ["대표 합병증과 감염·출혈 예방 원칙을 쓰시오."],
+    "sections": [
+      {"heading": "합병증·예방", "items": ["혈뇨, 직장출혈, 혈정액증, 요로감염·패혈증, 급성 요폐.", "시술 경로·지역 내성에 맞춘 항생제 예방, 직장 전처치, 항혈전제는 혈전위험과 출혈위험을 함께 평가해 개별 중단."]}
+    ],
+    "correction": "Fluoroquinolone 일률 투여와 항혈전제 1주 일률 중단은 현재는 지역 내성·생검경로·혈전위험에 따라 개별화한다.",
+    "lock": "출혈·감염·요폐를 기억하고, 항생제와 항혈전제는 개별화."
+  },
+  {
+    "id": "URO-POST-20260703-07",
+    "num": 23,
+    "tier": "C",
+    "frequency": "특정 조",
+    "title": "OAB 정의·치료",
+    "prompt": ["OAB를 정의하고 1차 행동요법과 약물 2군을 쓰시오."],
+    "sections": [
+      {"heading": "정의·치료", "items": ["OAB: 요로감염·명백한 병변 없이 절박뇨를 중심으로 빈뇨·야간뇨가 동반되는 증상증후군. 요실금은 있을 수도 없을 수도 있다.", "행동요법: 방광훈련, timed voiding, 골반저근운동, 카페인·수분·체중·변비 조절.", "약물: anticholinergic 또는 β3 agonist."]}
+    ],
+    "lock": "OAB의 핵심은 urgency, 치료는 행동요법 후 항콜린 또는 β3."
+  },
+  {
+    "id": "URO-POST-20260703-05",
+    "num": 24,
+    "tier": "C",
+    "frequency": "탈야",
+    "title": "탈야 빠른 키워드",
+    "prompt": ["PI-RADS, URS 금기, mHSPC 강화치료, 방광암 T병기, 미하강고환, PDE5 inhibitor를 한 줄씩 잠그시오."],
+    "sections": [
+      {"heading": "6개 키워드", "items": ["PI-RADS 1→5로 임상적으로 유의한 전립선암 가능성 증가. 4~5는 표적+체계적 생검 고려.", "URS 핵심 금기: 치료되지 않은 UTI·urosepsis, 마취 불가. 출혈위험·심한 협착은 사전교정.", "mHSPC: ADT+AR pathway inhibitor가 기본 강화치료, 고용량·fit 환자는 docetaxel 포함 triplet 고려.", "방광암 T: Ta 유두상 비침윤, Tis CIS, T1 lamina propria, T2 muscle, T3 perivesical fat, T4 adjacent organ.", "미하강고환: 불임·고환암·염전·서혜부탈장 위험. 보통 생후 6~18개월 orchiopexy.", "PDE5 inhibitor: PDE5 억제→cGMP 증가→평활근 이완. 질산염과 병용 금기."]}
+    ],
+    "lock": "PI-RADS·감염 URS·ADT 강화·Ta/Tis/T1/T2/T3/T4·미하강 합병증·PDE5-질산염 금기."
+  }
+]
