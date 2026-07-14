@@ -76,6 +76,7 @@
     "num": 6,
     "tier": "S",
     "frequency": "18/24",
+    "rotation_yama": "과거 반복축 · 도뇨관",
     "title": "도뇨관 Foley",
     "prompt": ["적응증 5가지, 합병증 3가지, 금기 2가지를 쓰시오.", "골반골절에서 요도손상 의심 소견과 다음 검사를 쓰시오.", "요감염·급성 전립선염 동반 시 주의점을 쓰시오."],
     "sections": [
@@ -136,6 +137,7 @@
     "num": 10,
     "tier": "S",
     "frequency": "18/24",
+    "rotation_yama": "과거 반복축 · BCG/NMIBC",
     "title": "방광암·BCG",
     "prompt": ["NMIBC와 MIBC의 치료원칙을 구분하시오.", "re-TURBT 적응증과 BCG 목적을 쓰시오.", "BCG failure 4분류와 조기 방광적출 적응증을 쓰시오."],
     "sections": [
@@ -208,6 +210,7 @@
     "num": 15,
     "tier": "A",
     "frequency": "10/24",
+    "rotation_yama": "과거 반복축 · Lithotomy",
     "title": "Lithotomy position",
     "prompt": ["대표 수술·시술 5가지를 쓰시오.", "합병증 3가지와 이 자세가 적합한 이유를 쓰시오."],
     "sections": [
@@ -233,6 +236,7 @@
     "num": 17,
     "tier": "B",
     "frequency": "4/24",
+    "rotation_yama": "과거 반복축 · 신장 외상",
     "title": "신외상 AAST grade",
     "prompt": ["Grade 1~5를 구분하시오.", "집합관 침범과 요누출의 등급·치료를 쓰시오.", "응급수술 적응증을 쓰시오."],
     "sections": [
@@ -272,6 +276,7 @@
     "num": 20,
     "tier": "B",
     "frequency": "3/24",
+    "rotation_yama": "과거 반복축 · 방광 외상",
     "title": "방광파열",
     "prompt": ["진단검사를 쓰시오.", "복막외와 복막내 파열의 위치·치료를 비교하시오."],
     "sections": [
@@ -336,6 +341,7 @@
     "tier": "C",
     "frequency": "26년 4조 신규",
     "recent_yama": "직전 4조 · Q8",
+    "rotation_yama": "과거 반복축 · PDE5",
     "title": "발기부전",
     "prompt": ["발기부전의 원인을 분류하고 이 환자에서 가능성이 높은 원인을 쓰시오.", "1차 치료인 PDE5 inhibitor의 작용기전과 금기증을 쓰시오.", "PDE5 inhibitor 실패·금기 시 2차 치료법을 쓰시오."],
     "sections": [
@@ -352,6 +358,7 @@
     "tier": "C",
     "frequency": "26년 4조 신규",
     "recent_yama": "직전 4조 · Q14",
+    "rotation_yama": "과거 반복축 · 잠복고환",
     "title": "잠복고환",
     "prompt": ["잠복고환의 정의를 쓰시오.", "주요 합병증을 쓰시오.", "권장 수술 시기와 촉지·복강 내 고환의 수술법을 쓰시오."],
     "sections": [
