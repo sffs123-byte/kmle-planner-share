@@ -468,5 +468,91 @@
     "correction": "qSOFA가 낮다고 폐색성 감염을 배제할 수 없다. 항생제만으로 기다리지 말고 감염된 폐색계의 신속한 감압을 source control로 시행한다.",
     "lock": "열+폐색+수신증은 배양·정주항생제와 DJ/PCN 감압이 먼저, 돌 제거는 감염 안정 뒤.",
     "source_note": "IMG_1583 영상 2페이지(해설 6 시작부) · 다중 프레임과 원문 화면 교차확인"
+  },
+  {
+    "id": "URO-VIDEO-20260716-P4-09-RCC",
+    "num": 33,
+    "tier": "S",
+    "frequency": "7/16 영상복기 신규",
+    "recent_yama": "7/16 영상 4p · 해설 9",
+    "title": "신장 종괴·RCC 통합",
+    "prompt": ["RCC의 주요 위험인자와 대표 유전증후군을 연결하시오.", "신장 종괴의 양성·악성 감별진단을 쓰시오.", "Bosniak I, II, IIF, III, IV를 구분하고 기본 대응을 쓰시오.", "cT1a 신장암에서 부분신절제술을 우선하는 이유를 쓰시오.", "전이성 clear-cell RCC의 대표 1차 치료 조합을 쓰시오."],
+    "sections": [
+      {"heading": "위험인자·유전증후군", "items": ["주요 위험인자는 흡연, 비만, 고혈압, 만성 신질환·투석과 trichloroethylene 노출이다.", "VHL 변이는 clear-cell RCC와 망막·중추신경계 hemangioblastoma, HLRCC의 FH 변이는 공격적인 papillary RCC type 2, Birt-Hogg-Dubé의 FLCN 변이는 chromophobe·oncocytic·hybrid 종양과 연결한다.", "Tuberous sclerosis complex에서는 angiomyolipoma와 RCC 위험이 증가한다."]},
+      {"heading": "신장 종괴 감별", "items": ["양성 종괴는 육안적 지방을 포함하는 angiomyolipoma와 oncocytoma가 대표적이다.", "악성은 clear-cell, papillary, chromophobe RCC 외에 신우 요로상피암, 림프종과 다른 암의 신장 전이를 감별한다."]},
+      {"heading": "Bosniak 분류", "items": ["I은 단순 낭종, II는 얇은 소수 격막·석회화 등 양성 소견으로 일반적으로 추적이 필요 없다.", "IIF는 더 복잡하지만 즉시 수술보다 영상 추적이 기본이다.", "III는 조영증강되는 두꺼운 벽·격막으로 악성 가능성이 있어 수술 또는 적극적 관찰을 환자·병변에 맞춰 결정한다.", "IV는 조영증강 고형 결절을 포함해 악성 가능성이 매우 높다."]},
+      {"heading": "cT1a 부분신절제술", "items": ["근치적 신절제술과 비슷한 종양학적 성적을 유지하면서 정상 신실질과 신기능을 보존해 만성콩팥병과 심혈관 위험을 줄일 수 있다."]},
+      {"heading": "전이성 clear-cell RCC 1차 치료", "items": ["IMDC 위험도와 환자 상태에 따라 pembrolizumab+axitinib, pembrolizumab+lenvatinib, nivolumab+cabozantinib 같은 면역관문억제제+TKI 조합을 사용한다.", "Intermediate/poor risk에서는 nivolumab+ipilimumab도 대표 선택지이다."]}
+    ],
+    "lock": "RCC는 위험인자·유전증후군과 Bosniak을 연결하고, cT1a는 신기능 보존을 위해 부분신절제, 전이는 IO+TKI 또는 nivo+ipi.",
+    "source_note": "IMG_1583 영상 4페이지(해설 9) · 완성답안·해설 원문 교차확인"
+  },
+  {
+    "id": "URO-VIDEO-20260716-P4-10-NMIBC",
+    "num": 34,
+    "tier": "S",
+    "frequency": "7/16 영상복기 신규",
+    "recent_yama": "7/16 영상 4p · 해설 10",
+    "title": "방광암·NMIBC 통합",
+    "prompt": ["방광암의 주요 위험인자를 쓰시오.", "TUR-BT에서 수술기록과 병리보고서로 반드시 확인할 정보를 쓰고 repeat TUR-BT 적응증을 쓰시오.", "NMIBC의 low, intermediate, high/very-high risk 치료를 비교하시오.", "BCG induction 일정과 투여를 연기하거나 피해야 할 상황을 쓰시오.", "근치적 방광절제술 후 요로전환술 3가지를 비교하시오."],
+    "sections": [
+      {"heading": "위험인자", "items": ["흡연이 가장 중요하다. 방향족 아민 등 직업성 화학물질, cyclophosphamide, 골반 방사선, 만성 염증과 Schistosoma 노출도 관련된다."]},
+      {"heading": "TUR-BT 필수정보·재절제", "items": ["종양의 수, 크기, 위치, 형태와 완전 절제 여부를 기록한다.", "병리에서는 histology와 variant, grade, T stage, CIS 및 detrusor muscle 포함 여부를 확인한다.", "T1 또는 high-grade 종양인데 근육층이 없거나 초기 절제가 불완전하면 repeat TUR-BT가 필요하다."]},
+      {"heading": "NMIBC 위험도별 치료", "items": ["Low risk는 완전 TUR-BT 뒤 즉시 단회 방광 내 항암제 주입을 시행한다.", "Intermediate risk는 재발위험에 따라 방광 내 항암제 또는 BCG induction·유지요법을 선택한다.", "High/very-high risk는 BCG induction과 1~3년 유지요법을 시행하며, very-high risk에서는 조기 radical cystectomy도 논의한다."]},
+      {"heading": "BCG 일정·금기", "items": ["Induction은 주 1회씩 6주이며 고위험군은 유지요법을 시행한다.", "증상성 UTI, 육안적 혈뇨, 최근의 외상성 도뇨·TUR-BT, 활동성 결핵과 심한 면역억제 상태에서는 투여를 연기하거나 피한다."]},
+      {"heading": "요로전환술", "items": ["Ileal conduit는 구조가 단순하고 합병증 부담이 비교적 적지만 외부 stoma bag이 필요하다.", "Orthotopic neobladder는 요도로 배뇨할 수 있으나 배뇨훈련과 야간요실금·요폐 관리가 필요하다.", "Continent cutaneous reservoir는 도뇨 가능한 stoma를 만들며 간헐적 자가도뇨가 필요하다."]}
+    ],
+    "lock": "TUR-BT는 근육층 포함을 확인하고, NMIBC는 low=단회 항암제, high=BCG 유지, very-high=조기 방광절제까지 논의.",
+    "source_note": "IMG_1583 영상 4페이지(해설 10) · 완성답안·해설 원문 교차확인"
+  },
+  {
+    "id": "URO-VIDEO-20260716-P45-11-PROSTATE-STAGE",
+    "num": 35,
+    "tier": "S",
+    "frequency": "7/16 영상복기 신규",
+    "recent_yama": "7/16 영상 4·5p · 해설 11",
+    "title": "전립선암 병기별 치료",
+    "prompt": ["Favorable intermediate-risk 전립선암의 치료 선택지를 쓰시오.", "High-risk 또는 locally advanced cT3b 전립선암의 표준치료를 쓰시오.", "High-volume metastatic hormone-sensitive prostate cancer의 강화치료를 쓰시오.", "ADT의 주요 부작용과 관리 축을 쓰시오.", "CRPC의 진단 기준과 mCRPC의 대표 치료 선택지를 쓰시오."],
+    "sections": [
+      {"heading": "Favorable intermediate risk", "items": ["기대여명, 종양량과 환자 선호를 고려해 active surveillance를 엄선하여 적용하거나 radical prostatectomy 또는 방사선치료를 선택한다."]},
+      {"heading": "High-risk·locally advanced cT3b", "items": ["골반 방사선치료와 장기 ADT 2~3년이 대표적인 표준치료이며, 적응 환자에서는 abiraterone 추가를 고려한다.", "수술은 선택된 환자에서 multimodal therapy를 전제로 시행하고 병리 결과에 따라 salvage 방사선치료±ADT를 결정한다."]},
+      {"heading": "High-volume mHSPC", "items": ["ADT 단독은 부족하다. Fit한 환자는 ADT+docetaxel+darolutamide 또는 ADT+docetaxel+abiraterone 같은 triplet therapy를 우선 고려한다.", "Docetaxel이 부적절하면 ADT와 androgen receptor pathway inhibitor의 doublet을 사용한다."]},
+      {"heading": "ADT 부작용 관리", "items": ["골건강은 DEXA, 체중부하운동, 칼슘·비타민 D와 필요 시 denosumab 또는 bisphosphonate로 관리한다.", "혈압·지질·당대사·금연·운동 등 대사·심혈관 위험을 관리하고 우울·인지기능을 선별한다.", "성기능 저하는 치료 전 상담과 필요 시 발기부전 치료·재활을 시행하며, hot flush에는 venlafaxine 또는 gabapentin을 고려한다."]},
+      {"heading": "CRPC·mCRPC", "items": ["거세 수준 testosterone을 유지하는데도 PSA, 영상 또는 임상적 진행이 있으면 castration-resistant prostate cancer이다.", "mCRPC에서는 기존 노출 약제, 증상과 유전자검사에 따라 abiraterone, enzalutamide, docetaxel, cabazitaxel, PARP inhibitor, Lu-177 PSMA 또는 골표적 치료를 순차 선택하며 ADT는 계속 유지한다."]}
+    ],
+    "lock": "Favorable intermediate는 선택 치료, cT3b는 RT+장기 ADT, high-volume mHSPC는 doublet/triplet 강화, CRPC에서도 ADT는 유지.",
+    "source_note": "IMG_1583 영상 4·5페이지(해설 11) · 완성답안·해설 원문 교차확인"
+  },
+  {
+    "id": "URO-VIDEO-20260716-P5-12-UROTRAUMA",
+    "num": 36,
+    "tier": "S",
+    "frequency": "7/16 영상복기 신규",
+    "recent_yama": "7/16 영상 5p · 해설 12",
+    "title": "비뇨기 외상 통합",
+    "prompt": ["AAST 신장손상 Grade I~V를 구분하고 안정·불안정 환자의 치료 원칙을 쓰시오.", "골반골절 환자의 요도구 출혈·배뇨불능에서 검사와 초기 처치를 쓰시오.", "복강내·복강외 방광파열 치료를 비교하시오.", "음낭·고환 외상의 검사와 수술 적응증을 쓰시오."],
+    "sections": [
+      {"heading": "AAST 신장손상", "items": ["Grade I은 신좌상 또는 비확장성 피막하 혈종이며 열상이 없다.", "Grade II는 Gerota fascia 안의 신주위 혈종 또는 깊이 1 cm 이하 열상으로 요누출이 없고, Grade III는 깊이 1 cm 초과 열상이지만 집뇨계 파열은 없다.", "Grade IV는 집뇨계까지 이어지는 열상·요누출, 분절 혈관손상 또는 신장 내에 국한된 출혈이며, Grade V는 shattered kidney 또는 신문부 혈관 박리·폐색으로 신장 무혈류가 생긴 상태이다.", "혈역학적으로 안정하면 고등급도 보존치료·색전술을 우선할 수 있고, 불안정하며 지속 출혈이면 수술한다."]},
+      {"heading": "요도손상", "items": ["요도구 출혈, 골반골절과 배뇨불능이 있으면 무리한 Foley 삽입 전에 retrograde urethrography를 시행한다.", "후부요도 완전파열이면 우선 suprapubic drainage 후 지연 요도성형술을 고려한다."]},
+      {"heading": "방광손상", "items": ["복강내 파열은 수술적 봉합이 원칙이다.", "단순 복강외 파열은 Foley 배액으로 치료할 수 있지만 방광경부 손상, 골편 관통, 직장·질 손상 동반 등 복잡 손상은 수술한다."]},
+      {"heading": "음낭·고환 외상", "items": ["도플러 초음파로 고환 혈류와 백막 파열을 확인한다.", "고환 파열 또는 큰 혈종은 조기 탐색, 괴사조직 제거와 백막 봉합을 시행한다."]}
+    ],
+    "lock": "요도구 출혈은 Foley 전 RUG, 복강내 방광파열은 수술, 고환파열은 조기 탐색; 신외상은 혈역학 안정성이 치료를 가른다.",
+    "source_note": "IMG_1583 영상 5페이지(해설 12) · 완성답안·해설 원문 교차확인"
+  },
+  {
+    "id": "URO-VIDEO-20260716-P5-13-EMERGENCIES",
+    "num": 37,
+    "tier": "S",
+    "frequency": "7/16 영상복기 신규",
+    "recent_yama": "7/16 영상 5p · 해설 13",
+    "title": "고환염전·Fournier 응급",
+    "prompt": ["고환염전과 부고환염의 임상·도플러 소견을 비교하고 고환염전의 처치를 쓰시오.", "Fournier gangrene의 초기 치료 우선순위를 쓰시오."],
+    "sections": [
+      {"heading": "고환염전 vs 부고환염", "items": ["갑작스러운 심한 통증, 높은 위치·수평축 고환과 cremasteric reflex 소실은 고환염전을 시사한다. Prehn sign은 신뢰도가 낮다.", "임상적으로 강하게 의심되면 도플러 초음파 때문에 수술을 지연하지 말고 즉시 탐색, detorsion과 양측 orchiopexy를 시행한다.", "부고환염은 대개 더 점진적인 통증과 도플러 혈류 증가를 보이며 원인에 맞는 항생제로 치료한다."]},
+      {"heading": "Fournier gangrene", "items": ["배양을 채취하는 즉시 광범위 항생제를 투여하고, 괴사조직을 조기에 넓게 반복 절제한다.", "패혈증·혈당·영양을 집중 관리하며, 영상검사가 수술을 지연시키면 안 된다."]}
+    ],
+    "lock": "염전 의심이 강하면 초음파로 지연하지 말고 즉시 탐색+양측 고정, Fournier는 항생제와 광범위 반복 절제가 동시에 핵심.",
+    "source_note": "IMG_1583 영상 5페이지(해설 13) · 완성답안·해설 원문 교차확인"
   }
 ]
