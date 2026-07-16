@@ -35,6 +35,11 @@ PAGES_45_VIDEO_IDS = (
     "URO-VIDEO-20260716-P5-12-UROTRAUMA",
     "URO-VIDEO-20260716-P5-13-EMERGENCIES",
 )
+PAGE_3_VIDEO_IDS = (
+    "URO-VIDEO-20260716-P3-06-DRAINAGE-METABOLIC",
+    "URO-VIDEO-20260716-P3-07-STONE-CASES",
+    "URO-VIDEO-20260716-P3-08-BPH",
+)
 
 
 def render_cards(rows: list[dict]) -> list[dict]:
@@ -127,6 +132,7 @@ def add_theme(document: str) -> str:
 .urology-answer ul{padding-left:22px;margin:5px 0}.lock-line{margin-top:16px;padding:13px 15px;border-left:5px solid #df8e1d;background:#fff4d6;border-radius:8px;color:#5c3a00}
 .current-correction{margin-top:14px;padding:12px 14px;border-left:5px solid #d20f39;background:#ffe8ec;border-radius:8px;color:#5c1725;line-height:1.55}
 .urology-guide{padding:4px}.urology-guide h4{color:#89b4fa}.urology-guide p{line-height:1.55;margin:8px 0}
+.page3-video-btn{background:linear-gradient(135deg,#f9e2af,#fab387)!important;color:#11111b!important;font-weight:900!important}
 .latest-video-btn{background:linear-gradient(135deg,#cba6f7,#89b4fa)!important;color:#11111b!important;font-weight:900!important}
 .pages12-video-btn{background:linear-gradient(135deg,#89dceb,#a6e3a1)!important;color:#11111b!important;font-weight:900!important}
 .latest-video-sidebar{margin-bottom:8px!important}
@@ -139,6 +145,8 @@ def add_theme(document: str) -> str:
 def add_latest_video_shortcut(document: str) -> str:
     hero_marker = '<button class="review-hero-btn" id="btnReviewHero"'
     hero_buttons = (
+        '<button class="review-hero-btn page3-video-btn" id="btnPage3VideoHero" '
+        'onclick="startPage3VideoReview()">📄 3p 신규 3문항</button>\n        '
         '<button class="review-hero-btn latest-video-btn" id="btnLatestVideoHero" '
         'onclick="startLatestVideoReview()">📄 4·5p 신규 5문항</button>\n        '
         '<button class="review-hero-btn pages12-video-btn" id="btnPages12VideoHero" '
@@ -150,6 +158,8 @@ def add_latest_video_shortcut(document: str) -> str:
 
     sidebar_marker = '<div class="sb-quiz-btns">'
     sidebar_buttons = (
+        '\n            <button class="btn-review page3-video-btn latest-video-sidebar" '
+        'id="btnPage3VideoSidebar" onclick="startPage3VideoReview()">📄 3p 신규 3문항</button>'
         '\n            <button class="btn-review latest-video-btn latest-video-sidebar" '
         'id="btnLatestVideoSidebar" onclick="startLatestVideoReview()">📄 4·5p 신규 5문항</button>'
         '\n            <button class="btn-review pages12-video-btn latest-video-sidebar" '
@@ -164,10 +174,14 @@ def add_latest_video_shortcut(document: str) -> str:
         + json.dumps(PAGES_12_VIDEO_IDS, ensure_ascii=False)
         + ";\nconst PAGES_45_VIDEO_IDS = "
         + json.dumps(PAGES_45_VIDEO_IDS, ensure_ascii=False)
+        + ";\nconst PAGE_3_VIDEO_IDS = "
+        + json.dumps(PAGE_3_VIDEO_IDS, ensure_ascii=False)
         + ";\nfunction startLatestVideoReview() {\n"
         + "    startQuizWith([...PAGES_45_VIDEO_IDS]);\n}\n"
         + "function startPages12VideoReview() {\n"
         + "    startQuizWith([...PAGES_12_VIDEO_IDS]);\n}\n"
+        + "function startPage3VideoReview() {\n"
+        + "    startQuizWith([...PAGE_3_VIDEO_IDS]);\n}\n"
     )
     script_end = document.rfind("</script>")
     if script_end < 0:
@@ -177,10 +191,10 @@ def add_latest_video_shortcut(document: str) -> str:
 
 def main() -> None:
     rows = json.loads(DATA.read_text(encoding="utf-8"))
-    if len(rows) != 37:
-        raise ValueError(f"expected 26 existing topics plus 11 video-recall topics, got {len(rows)}")
-    if [row["num"] for row in rows] != list(range(1, 38)):
-        raise ValueError("topic numbers must be exactly 1..37")
+    if len(rows) != 40:
+        raise ValueError(f"expected 26 existing topics plus 14 video-recall topics, got {len(rows)}")
+    if [row["num"] for row in rows] != list(range(1, 41)):
+        raise ValueError("topic numbers must be exactly 1..40")
     cards = render_cards(rows)
     report = run_rails(cards, mode="basic", strict=True)
     report.print_report()
@@ -189,7 +203,7 @@ def main() -> None:
     builder = QuizBuilder(
         cards=cards,
         title=TITLE,
-        subtitle="기존 COMPACT 26문항 + 7/16 영상복기 1·2페이지 6문항 + 4·5페이지 신규 5문항 · S/A/B/C 야마 빈도순 · 서술형 백지회상",
+        subtitle="기존 COMPACT 26문항 + 7/16 영상복기 1·2페이지 6문항 + 3페이지 신규 3문항 + 4·5페이지 신규 5문항 · S/A/B/C 야마 빈도순 · 서술형 백지회상",
         storage_prefix=STORAGE_PREFIX,
         enable_self_answer=True,
         randomize_review=False,
