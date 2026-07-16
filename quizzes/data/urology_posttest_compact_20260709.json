@@ -364,5 +364,109 @@
     ],
     "lock": "잠복고환은 생후 6개월부터 치료해 6~12개월에 고환고정술을 시행하고 늦어도 18개월까지 마친다. 높은 복강 내 고환은 단계적 파울러-스티븐스 수술을 고려한다.",
     "source_note": "26년 4조 신규 복기(260710) · EAU Paediatric Urology 2026 교차확인"
+  },
+  {
+    "id": "URO-VIDEO-20260716-P1-01-OUTPATIENT-TESTS",
+    "num": 27,
+    "tier": "S",
+    "frequency": "7/16 영상복기 신규",
+    "recent_yama": "7/16 영상 1p · 해설 1",
+    "title": "외래 비침습검사 심화",
+    "prompt": ["IPSS 7항목을 저장·배출 증상으로 나누고 중증도와 QoL 점수 범위를 쓰시오.", "요역동학검사의 4가지 구성과 각각의 의미를 쓰시오.", "방광일기의 필수 기록 항목과 권장 기간을 쓰시오.", "남성 방광출구폐색을 시사하는 pressure-flow 소견과 BOOI 공식을 쓰시오."],
+    "sections": [
+      {"heading": "IPSS", "items": ["저장 증상은 빈뇨, 절박뇨, 야간뇨이다. 배출·배뇨후 축은 잔뇨감, 간헐뇨, 약뇨, 복압배뇨이다.", "총점 0~7점은 경증, 8~19점은 중등도, 20~35점은 중증이며 삶의 질(QoL) 지수 0~6점은 별도로 묻는다."]},
+      {"heading": "요역동학검사 4축", "items": ["요류검사(uroflowmetry): 최대요속(Qmax), 배뇨량, 배뇨시간과 요류 모양을 정량화한다.", "충전방광내압검사(filling cystometry): 감각, 용적, 순응도와 배뇨근 과활동을 평가한다.", "압력-요류검사(pressure-flow study): Pdet@Qmax와 요류를 함께 보아 방광출구폐색과 배뇨근 저활동을 구분한다.", "골반저근·외요도괄약근 근전도(EMG): 배뇨근-괄약근 협응과 부조화(DSD)를 확인한다."]},
+      {"heading": "방광일기", "items": ["배뇨시각, 배뇨량, 수분섭취량, 절박감 정도와 요실금 사건을 적으며 대표적인 최소 3일 기록을 사용한다."]},
+      {"heading": "방광출구폐색", "items": ["Pdet@Qmax가 높고 Qmax가 낮으면 폐색을 시사한다. 영상 원문의 기억값은 Pdet@Qmax >40 cmH2O이면서 Qmax <10 mL/s이다.", "남성 BOOI는 Pdet@Qmax - 2×Qmax이며, >40은 폐색, 20~40은 애매, <20은 비폐색으로 해석한다."]}
+    ],
+    "lock": "IPSS는 저장 3+배출·배뇨후 4, UDS는 flow·filling·pressure-flow·EMG, BOOI는 PdetQmax-2Qmax.",
+    "source_note": "IMG_1583 영상 1페이지(해설 1) · 다중 프레임과 원문 화면 교차확인"
+  },
+  {
+    "id": "URO-VIDEO-20260716-P1-02-SURGICAL-POSITIONS",
+    "num": 28,
+    "tier": "S",
+    "frequency": "7/16 영상복기 신규",
+    "recent_yama": "7/16 영상 1p · 해설 2",
+    "title": "수술 자세 심화",
+    "prompt": ["RARC의 자세와 대표 합병증을 쓰시오.", "PCNL의 복와위와 앙와위 장단점을 비교하시오.", "Split-leg 자세를 쓰는 수술과 하지 구획증후군 위험요인을 쓰시오.", "총비골·척골·대퇴신경 손상 예방법을 쓰시오."],
+    "sections": [
+      {"heading": "RARC", "items": ["로봇 보조 근치적 방광절제술(RARC)은 steep Trendelenburg와 lithotomy 자세를 사용한다.", "안구내압 상승·시신경병증, 뇌부종·상기도부종, 하지 구획증후군과 대퇴신경 압박을 주의한다."]},
+      {"heading": "PCNL 자세", "items": ["복와위(prone)는 안전한 후방 접근과 넓은 술기 공간이 장점이지만 호흡·순환 부담과 마취·체위전환의 어려움이 있다.", "앙와위(supine, Valdivia)는 마취 관리가 쉽고 요관 접근을 병행할 수 있으나 술기 공간이 좁고 학습곡선이 있다."]},
+      {"heading": "Split-leg·구획증후군", "items": ["로봇 보조 근치적 전립선절제술(RALP), RARC 등에서 사용한다.", "4시간을 넘는 장시간 수술, 비만, 과도한 lithotomy 각도, 저혈압과 하지 압박이 위험요인이다."]},
+      {"heading": "신경손상 예방", "items": ["총비골신경: 비골두·무릎 외측 압박을 피하고 충분히 패딩한다.", "척골신경: 팔 외전을 90도 미만으로 하고 전완을 회외·중립으로 지지한다.", "대퇴신경: 고관절의 과도한 굴곡·외전·외회전을 피한다."]}
+    ],
+    "lock": "RARC는 steep Trendelenburg+lithotomy, PCNL은 prone 대 supine, 장시간·비만·저혈압·압박은 compartment 위험.",
+    "source_note": "IMG_1583 영상 1페이지(해설 2) · 다중 프레임과 원문 화면 교차확인"
+  },
+  {
+    "id": "URO-VIDEO-20260716-P1-03-RAPN",
+    "num": 29,
+    "tier": "S",
+    "frequency": "7/16 영상복기 신규",
+    "recent_yama": "7/16 영상 1p · 해설 3",
+    "title": "RAPN 단계·R.E.N.A.L. score",
+    "prompt": ["로봇 보조 부분신절제술(RAPN)의 수술 단계를 순서대로 쓰시오.", "Warm ischemia time의 의미와 단축 전략을 쓰시오.", "R.E.N.A.L. nephrometry score의 각 글자를 풀어 쓰시오.", "RAPN의 대표 합병증을 쓰시오."],
+    "sections": [
+      {"heading": "수술 단계", "items": ["경복막 또는 후복막 접근과 포트 배치 → 결장 박리와 Gerota 근막 개방 → 신문부 혈관 박리 → 수술 중 초음파로 종양 위치 확인 → 신문부 clamp와 warm ischemia 시작 → 종양 절제 → 집뇨계가 열리면 내층 봉합 → 신실질 renorrhaphy → unclamp와 지혈 확인 순서이다."]},
+      {"heading": "Warm ischemia", "items": ["허혈시간이 길수록 신기능 저하 위험이 증가하므로 가능한 짧게 하고, 영상 원문의 기억값은 25분 이내이다.", "선택적·초선택적 혈관 clamp, 조기 unclamping, off-clamp 전략을 종양 위치와 출혈위험에 맞춰 고려한다."]},
+      {"heading": "R.E.N.A.L.", "items": ["R: radius(종양 크기), E: exophytic/endophytic, N: nearness to collecting system or sinus, A: anterior/posterior, L: location relative to polar lines."]},
+      {"heading": "합병증", "items": ["출혈, 가성동맥류·동정맥루, 집뇨계 손상과 요누출, 양성 절제면, 신기능 저하를 주의한다."]}
+    ],
+    "correction": "부분신절제의 목표는 음성 절제면이며 모든 종양에 일률적인 1 cm 안전역이 필수는 아니다. Warm ischemia 25분은 전통적 목표선이지 절대적 안전선이 아니므로 가능한 짧게 한다.",
+    "lock": "US로 위치 확인→clamp→절제→collecting system 봉합→renorrhaphy→unclamp; R.E.N.A.L.은 크기·돌출·집뇨계 거리·앞뒤·극선.",
+    "source_note": "IMG_1583 영상 1페이지(해설 3) · 다중 프레임과 원문 화면 교차확인"
+  },
+  {
+    "id": "URO-VIDEO-20260716-P2-04-OAB",
+    "num": 30,
+    "tier": "S",
+    "frequency": "7/16 영상복기 신규",
+    "recent_yama": "7/16 영상 2p · 해설 4",
+    "title": "요실금 5종·과민성 방광",
+    "prompt": ["요실금 5종과 각각의 기전을 쓰시오.", "과민성 방광의 정의와 감별진단을 쓰시오.", "과민성 방광의 1·2·3차 치료를 쓰시오.", "항무스카린제 금기와 고령자에서 베타3 작용제를 선호하는 이유를 쓰시오."],
+    "sections": [
+      {"heading": "요실금 5종", "items": ["복압성: 기침·운동 등 복압 상승 때 요도 지지 부족 또는 내인성 괄약근 부전으로 누출한다.", "절박성: 절박뇨와 함께 배뇨근 과활동으로 누출한다. 혼합성은 복압성과 절박성이 함께 있다.", "범람성: 만성 요폐와 과팽창된 방광에서 넘쳐 흐르며 BPH, 당뇨병성 신경병증 등이 원인이다.", "기능성: 인지·이동 장애 때문에 제때 화장실에 도달하지 못한다."]},
+      {"heading": "정의·감별", "items": ["과민성 방광은 요로감염이나 다른 명백한 병변 없이 요절박을 주증상으로 하며, 빈뇨·야간뇨가 흔하고 절박성 요실금은 있을 수도 없을 수도 있다.", "요로감염, 방광 CIS·결석, 신경질환, 폐경 후 위축, 다뇨·이뇨제와 방광통증증후군을 감별한다."]},
+      {"heading": "치료", "items": ["1차: 카페인·수분·체중·변비 조절, 방광훈련, 골반저근운동.", "2차: 항무스카린제(solifenacin, tolterodine, fesoterodine 등) 또는 베타3 아드레날린 수용체 작용제(mirabegron, vibegron).", "불응성에서는 방광 내 보툴리눔독소 주입, 천수신경조절 또는 경피적 경골신경자극을 고려한다."]},
+      {"heading": "금기·고령자", "items": ["항무스카린제는 요폐·많은 잔뇨, 치료되지 않은 폐쇄각 녹내장, 위정체·심한 장폐색에서 피한다.", "고령자는 항콜린 부담에 따른 인지저하·섬망·변비·낙상 위험 때문에 베타3 작용제를 선호할 수 있다. 미라베그론은 조절되지 않는 중증 고혈압에서 피하거나 주의한다."]}
+    ],
+    "lock": "요실금은 복압·절박·혼합·범람·기능성 5종, OAB는 요절박 중심이며 행동치료→항무스카린/베타3→BTX·신경조절.",
+    "source_note": "IMG_1583 영상 2페이지(해설 4) · 다중 프레임과 원문 화면 교차확인"
+  },
+  {
+    "id": "URO-VIDEO-20260716-P2-05-PSA-BIOPSY",
+    "num": 31,
+    "tier": "S",
+    "frequency": "7/16 영상복기 신규",
+    "recent_yama": "7/16 영상 2p · 해설 5",
+    "title": "PSA 정밀평가·Fusion biopsy",
+    "prompt": ["PSA velocity, PSA density, free/total PSA ratio의 정의와 기억값을 쓰시오.", "PI-RADS v2.1의 1~5 등급과 표적생검 고려 기준을 쓰시오.", "MRI-ultrasound fusion biopsy의 장점을 쓰시오.", "전립선 조직검사 합병증과 targeted prophylaxis 원칙을 쓰시오."],
+    "sections": [
+      {"heading": "PSA 유도지표", "items": ["PSA velocity는 연간 상승률이며 영상 원문의 기억값은 0.75 ng/mL/년 초과이다.", "PSA density는 PSA/전립선 부피이며 0.15 ng/mL/cc 초과를 암 위험 증가 기억값으로 쓴다.", "Free/total PSA 비율이 0.10~0.15 미만이면 암 가능성이 올라가고, 양성전립선비대증에서는 free 비율이 상대적으로 높다."]},
+      {"heading": "PI-RADS v2.1", "items": ["1은 임상적으로 유의한 암 가능성이 매우 낮고, 2는 낮음, 3은 애매, 4는 높음, 5는 매우 높음이다.", "PI-RADS 5는 보통 1.5 cm 이상이거나 전립선 밖 침범을 보이는 병변이며, PI-RADS 3 이상은 임상위험과 PSA density를 함께 보아 표적생검을 고려한다."]},
+      {"heading": "Fusion biopsy", "items": ["MRI 표적을 실시간 초음파와 융합해 임상적으로 유의한 전립선암 검출을 높이고 불필요한 저등급암 검출을 줄일 수 있다.", "재생검에서 같은 표적을 추적하기 쉽고, 표적생검과 체계적 생검을 병행하면 병기·등급 과소평가를 줄인다."]},
+      {"heading": "합병증·감염예방", "items": ["혈뇨, 직장출혈, 혈정액증, 급성 요폐, 전립선염·요로감염·패혈증을 주의한다.", "직장 swab 배양과 지역 내성에 맞춘 표적 항생제 예방을 사용하며, fluoroquinolone 내성·ESBL 위험이 높으면 감수성에 따라 대체 약제를 고른다.", "경회음(transperineal) 접근은 경직장 접근보다 감염 위험을 낮춘다."]}
+    ],
+    "correction": "PSA velocity 0.75라는 단일 문턱만으로 생검을 결정하지 않는다. 나이·직장수지검사·PSA density·위험계산기·MRI를 종합하며, carbapenem의 경험적 일률 투여도 피하고 생검 경로와 배양·지역 내성에 맞춘다.",
+    "lock": "Velocity는 속도, density는 PSA/부피, free ratio는 낮을수록 암; PI-RADS 3+는 위험도와 함께 표적생검, 감염은 경회음·표적예방.",
+    "source_note": "IMG_1583 영상 2페이지(해설 5) · 다중 프레임과 원문 화면 교차확인"
+  },
+  {
+    "id": "URO-VIDEO-20260716-P2-06-OBSTRUCTIVE-PYELO",
+    "num": 32,
+    "tier": "S",
+    "frequency": "7/16 영상복기 신규",
+    "recent_yama": "7/16 영상 2p · 해설 6",
+    "title": "폐색성 신우신염 응급처치",
+    "prompt": ["감염을 동반한 상부요로 폐색의 진단명과 응급인 이유를 쓰시오.", "초기 처치를 순서대로 쓰시오.", "감압 방법과 결석 제거 치료의 시점을 쓰시오."],
+    "sections": [
+      {"heading": "진단·위험", "items": ["폐색성 신우신염(obstructive pyelonephritis)은 감염된 신장에서 소변 배출이 막힌 비뇨기 응급이며 요로패혈증으로 빠르게 진행할 수 있다."]},
+      {"heading": "초기 처치", "items": ["혈액·소변배양과 기본검사를 채취하고 패혈증 중증도를 평가하되, 항생제와 감압을 지연하지 않는다.", "정주 광범위 항생제와 수액·혈역학적 지지를 시작하고, 중증도와 내성 위험에 따라 piperacillin-tazobactam 또는 carbapenem 등을 선택한 뒤 배양 결과로 좁힌다."]},
+      {"heading": "Source control", "items": ["Double-J ureteral stent 또는 경피적 신루설치술(PCN)로 응급 감압한다. 두 방법 모두 가능하며 해부학, 환자 상태와 현지 술기 가능성을 기준으로 고른다.", "URS·ESWL·PCNL 같은 확정 결석 제거는 감염과 패혈증이 안정된 뒤 시행한다."]}
+    ],
+    "correction": "qSOFA가 낮다고 폐색성 감염을 배제할 수 없다. 항생제만으로 기다리지 말고 감염된 폐색계의 신속한 감압을 source control로 시행한다.",
+    "lock": "열+폐색+수신증은 배양·정주항생제와 DJ/PCN 감압이 먼저, 돌 제거는 감염 안정 뒤.",
+    "source_note": "IMG_1583 영상 2페이지(해설 6 시작부) · 다중 프레임과 원문 화면 교차확인"
   }
 ]
