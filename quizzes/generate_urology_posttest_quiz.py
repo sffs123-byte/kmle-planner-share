@@ -135,6 +135,7 @@ def add_theme(document: str) -> str:
 .page3-video-btn{background:linear-gradient(135deg,#f9e2af,#fab387)!important;color:#11111b!important;font-weight:900!important}
 .latest-video-btn{background:linear-gradient(135deg,#cba6f7,#89b4fa)!important;color:#11111b!important;font-weight:900!important}
 .pages12-video-btn{background:linear-gradient(135deg,#89dceb,#a6e3a1)!important;color:#11111b!important;font-weight:900!important}
+.all-video-random-btn{background:linear-gradient(135deg,#a6e3a1,#89dceb,#cba6f7)!important;color:#11111b!important;font-weight:950!important;box-shadow:0 0 0 2px rgba(166,227,161,.28)!important}
 .latest-video-sidebar{margin-bottom:8px!important}
 @media(max-width:640px){.urology-front h3{font-size:1.06rem}.urology-answer{font-size:.95rem}}
 </style>
@@ -145,6 +146,8 @@ def add_theme(document: str) -> str:
 def add_latest_video_shortcut(document: str) -> str:
     hero_marker = '<button class="review-hero-btn" id="btnReviewHero"'
     hero_buttons = (
+        '<button class="review-hero-btn all-video-random-btn" id="btnAllVideoRandomHero" '
+        'onclick="startAllVideoPagesRandomReview()">🔀 1~5p 통합 랜덤 14문항</button>\n        '
         '<button class="review-hero-btn page3-video-btn" id="btnPage3VideoHero" '
         'onclick="startPage3VideoReview()">📄 3p 신규 3문항</button>\n        '
         '<button class="review-hero-btn latest-video-btn" id="btnLatestVideoHero" '
@@ -158,6 +161,8 @@ def add_latest_video_shortcut(document: str) -> str:
 
     sidebar_marker = '<div class="sb-quiz-btns">'
     sidebar_buttons = (
+        '\n            <button class="btn-review all-video-random-btn latest-video-sidebar" '
+        'id="btnAllVideoRandomSidebar" onclick="startAllVideoPagesRandomReview()">🔀 1~5p 통합 랜덤 14문항</button>'
         '\n            <button class="btn-review page3-video-btn latest-video-sidebar" '
         'id="btnPage3VideoSidebar" onclick="startPage3VideoReview()">📄 3p 신규 3문항</button>'
         '\n            <button class="btn-review latest-video-btn latest-video-sidebar" '
@@ -176,7 +181,13 @@ def add_latest_video_shortcut(document: str) -> str:
         + json.dumps(PAGES_45_VIDEO_IDS, ensure_ascii=False)
         + ";\nconst PAGE_3_VIDEO_IDS = "
         + json.dumps(PAGE_3_VIDEO_IDS, ensure_ascii=False)
-        + ";\nfunction startLatestVideoReview() {\n"
+        + ";\nconst VIDEO_PAGES_1_TO_5_IDS = [\n"
+        + "    ...PAGES_12_VIDEO_IDS,\n"
+        + "    ...PAGE_3_VIDEO_IDS,\n"
+        + "    ...PAGES_45_VIDEO_IDS,\n"
+        + "];\nfunction startAllVideoPagesRandomReview() {\n"
+        + "    startQuizWith(shuffledCopy(VIDEO_PAGES_1_TO_5_IDS));\n}\n"
+        + "function startLatestVideoReview() {\n"
         + "    startQuizWith([...PAGES_45_VIDEO_IDS]);\n}\n"
         + "function startPages12VideoReview() {\n"
         + "    startQuizWith([...PAGES_12_VIDEO_IDS]);\n}\n"
