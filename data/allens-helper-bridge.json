@@ -1,7 +1,7 @@
 {
   "serverUrl": "https://manner-citations-guided-pierre.trycloudflare.com/api/interpret",
   "healthUrl": "https://manner-citations-guided-pierre.trycloudflare.com/health",
-  "updatedAt": "2026-06-11T10:38:35Z",
+  "updatedAt": "2026-07-19T15:01:48Z",
   "source": "mac-mini-allens-helper-launchagent",
   "note": "Bridge token is intentionally not published. Extension stores token locally."
 }
