@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CC45 물질 오남용 · 통암기 트레이너</title>
+<style>
+:root {
+  --ink: oklch(23% 0.028 251); --muted: oklch(42% 0.032 251);
+  --paper: oklch(98% 0.008 82); --wash: oklch(94% 0.018 250);
+  --line: oklch(84% 0.025 250); --blue: oklch(53% 0.18 256);
+  --blue-dark: oklch(35% 0.13 256); --amber: oklch(79% 0.13 78);
+  --green: oklch(57% 0.13 155); --red: oklch(58% 0.17 28);
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+  --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem;
+  font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+* { box-sizing: border-box; }
+html { background: var(--paper); color: var(--ink); }
+body { margin: 0; min-height: 100dvh; background:
+  linear-gradient(90deg, transparent 0 4.5rem, color-mix(in oklch,var(--blue) 14%,transparent) 4.5rem 4.6rem, transparent 4.6rem),
+  repeating-linear-gradient(0deg, transparent 0 31px, color-mix(in oklch,var(--line) 32%,transparent) 31px 32px), var(--paper); }
+button, select { font: inherit; }
+button { min-height: 44px; border: 0; cursor: pointer; }
+button:focus-visible, select:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+.app { max-width: 1180px; margin: 0 auto; padding: max(1rem,env(safe-area-inset-top)) 1rem max(1rem,env(safe-area-inset-bottom)); }
+.masthead { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: var(--space-8); align-items: end; padding: var(--space-6) 0 var(--space-8); border-bottom: 2px solid var(--ink); }
+.eyebrow { font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); }
+h1 { margin: .35rem 0 0; font-size: clamp(2rem,5vw,4.4rem); line-height: .98; letter-spacing: -.055em; max-width: 13ch; }
+.source-lock { text-align: right; font-size: .78rem; color: var(--muted); line-height: 1.55; }
+.source-lock strong { color: var(--green); }
+.progress-wrap { padding: var(--space-4) 0 var(--space-6); display: grid; grid-template-columns: 1fr auto; gap: .7rem 1rem; align-items: center; }
+.progress-track { height: 8px; background: var(--wash); border-radius: 99px; overflow: hidden; }
+.progress-bar { height: 100%; width: 0; background: var(--blue); transition: transform 180ms cubic-bezier(.25,1,.5,1), width 180ms cubic-bezier(.25,1,.5,1); }
+.progress-text { font-size: .84rem; font-weight: 700; color: var(--blue-dark); font-variant-numeric: tabular-nums; }
+.workspace { display: grid; grid-template-columns: 245px minmax(0,1fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+.rail { position: sticky; top: 1rem; max-height: calc(100dvh - 2rem); overflow: auto; padding-right: .4rem; }
+.rail h2 { margin: 0 0 .75rem; font-size: .82rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.chunk-list { display: grid; gap: 2px; }
+.chunk-link { width: 100%; text-align: left; background: transparent; color: var(--muted); padding: .55rem .65rem; border-left: 3px solid transparent; font-size: .82rem; line-height: 1.25; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.chunk-link:hover { background: color-mix(in oklch,var(--wash) 68%,transparent); color: var(--ink); }
+.chunk-link[aria-current="true"] { color: var(--blue-dark); border-left-color: var(--blue); background: color-mix(in oklch,var(--blue) 8%,transparent); font-weight: 800; }
+.chunk-link.mastered::after { content: "✓"; float: right; color: var(--green); }
+.stage { min-width: 0; }
+.toolbar { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: var(--space-4); }
+.mode { border: 1px solid var(--line); background: color-mix(in oklch,var(--paper) 88%,var(--wash)); color: var(--ink); border-radius: .35rem; padding: .55rem .75rem; min-height: 44px; }
+.hotkeys { margin-left: auto; color: var(--muted); font-size: .78rem; }
+.sheet { background: color-mix(in oklch,var(--paper) 95%,var(--wash)); border-top: 6px solid var(--blue); padding: clamp(1.2rem,4vw,3rem); min-height: 500px; box-shadow: 0 20px 55px color-mix(in oklch,var(--ink) 10%,transparent); }
+.index-line { display: flex; gap: 1rem; align-items: baseline; color: var(--blue); font-weight: 900; letter-spacing: .06em; }
+.index-line span:last-child { color: var(--muted); font-size: .82rem; font-weight: 700; letter-spacing: 0; }
+h2#chunkLabel { margin: var(--space-4) 0 var(--space-8); font-size: clamp(1.3rem,3vw,2rem); line-height: 1.25; max-width: 30ch; }
+.bridge { margin: 0 0 var(--space-8); padding: .8rem 0 .8rem 1rem; border-left: 2px solid var(--line); color: var(--muted); font-size: .9rem; }
+.cue-label { font-size: .76rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
+.cue { margin: .5rem 0 var(--space-8); font-size: clamp(1.4rem,4vw,2.65rem); line-height: 1.2; font-weight: 800; letter-spacing: -.03em; }
+.answer-zone { min-height: 155px; border-top: 1px solid var(--line); padding-top: var(--space-6); }
+.answer-placeholder { color: var(--muted); font-size: 1rem; }
+.answer { display: none; font-size: clamp(1.05rem,2.4vw,1.35rem); line-height: 1.75; white-space: pre-wrap; max-width: 68ch; }
+.answer.visible { display: block; animation: reveal 280ms cubic-bezier(.16,1,.3,1) both; }
+@keyframes reveal { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.actions { display: grid; grid-template-columns: auto 1fr auto auto; gap: .6rem; margin-top: var(--space-8); }
+.btn { padding: .68rem 1rem; border-radius: .35rem; font-weight: 800; }
+.btn-ghost { background: transparent; border: 1px solid var(--line); color: var(--ink); }
+.btn-reveal { background: var(--blue); color: var(--paper); }
+.btn-wrong { background: color-mix(in oklch,var(--red) 12%,var(--paper)); color: var(--red); }
+.btn-right { background: var(--green); color: var(--paper); }
+.mobile-nav { display: none; width: 100%; margin-bottom: 1rem; }
+.status-note { margin-top: 1rem; color: var(--muted); font-size: .78rem; }
+@media (max-width: 760px) {
+  body { background-position-x: -3.2rem; }
+  .masthead { grid-template-columns: 1fr; gap: 1rem; }
+  .source-lock { text-align: left; }
+  .workspace { grid-template-columns: 1fr; }
+  .rail { display: none; }
+  .mobile-nav { display: block; min-height: 48px; border: 1px solid var(--line); background: var(--paper); padding: .6rem; }
+  .hotkeys { display: none; }
+  .sheet { min-height: 0; }
+  .answer-zone { min-height: 108px; }
+  .actions { grid-template-columns: 1fr 1fr; }
+  .btn-reveal { grid-column: 1 / -1; grid-row: 1; }
+}
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+</style>
+</head>
+<body>
+<main class="app">
+<header class="masthead">
+  <div><div class="eyebrow">Full-script recall · CPX Editor source</div><h1>45. 약물 오남용</h1></div>
+  <div class="source-lock"><strong>원문보존 AUDIT PASS</strong><br><span id="sourceMeta"></span></div>
+</header>
+<div class="progress-wrap"><div class="progress-track" aria-label="암기 진행률"><div class="progress-bar" id="progressBar"></div></div><div class="progress-text" id="progressText"></div></div>
+<div class="workspace">
+  <aside class="rail"><h2>순서 · <span id="chunkTotal"></span> chunks</h2><nav class="chunk-list" id="chunkList" aria-label="대본 순서"></nav></aside>
+  <section class="stage">
+    <select class="mobile-nav" id="mobileNav" aria-label="암기 덩어리 선택"></select>
+    <div class="toolbar">
+      <select class="mode" id="mode" aria-label="학습 모드"><option value="recall">가리고 회상</option><option value="bridge">연결 집중</option><option value="read">원문 읽기</option></select>
+      <span class="hotkeys">←/→ 이동 · Space 공개 · M 외움</span>
+    </div>
+    <article class="sheet">
+      <div class="index-line"><span id="chunkId"></span><span id="section"></span></div>
+      <h2 id="chunkLabel"></h2>
+      <div class="bridge" id="bridge"></div>
+      <div class="cue-label">첫머리 cue</div><div class="cue" id="cue"></div>
+      <div class="answer-zone"><div class="answer-placeholder" id="placeholder">입으로 전부 말한 뒤 원문을 공개하세요.</div><div class="answer" id="answer"></div></div>
+      <div class="actions">
+        <button class="btn btn-ghost" id="prev">이전</button>
+        <button class="btn btn-reveal" id="reveal">원문 공개</button>
+        <button class="btn btn-wrong" id="wrong">다시</button>
+        <button class="btn btn-right" id="right">외움</button>
+      </div>
+      <div class="status-note" id="statusNote"></div>
+    </article>
+  </section>
+</div>
+</main>
+<script>const DATA={"chunks": [{"id": "H01", "section": "History taking", "source_line": 1, "source_row_part": 1, "label": "History taking 섹션 시작", "cue": "[History taking]", "previous_tail": "[시작]", "exact_text": "[History taking]", "kind": "heading"}, {"id": "H02", "section": "History taking", "source_line": 3, "source_row_part": 1, "label": "★ · 손씻기 + 자기소개 및 환자 확인 + PPI", "cue": "안녕하세요, 학생 의사 손유영입니다. 환자분", "previous_tail": "[History taking]", "exact_text": "(손씻기) 안녕하세요, 학생 의사 손유영입니다. 환자분 성함과 나이가 어떻게 되세요? 기다리시느라 고생 많으셨습니다. 지금부터 10분 정도 진료 보려고 하는데, 중간에 궁금한 점 있으시면 편하게 말씀해주세요.", "kind": "recitation"}, {"id": "H03", "section": "History taking", "source_line": 5, "source_row_part": 1, "label": "C.C · 어떤 것 + 자세히(어떤 약, 어떤 경로)", "cue": "오늘 어떤 것 때문에 병원에 오셨나요? 어떤", "previous_tail": "려고 하는데, 중간에 궁금한 점 있으시면 편하게 말씀해주세요.", "exact_text": "오늘 어떤 것 때문에 병원에 오셨나요? -> 어떤 약을 복용하시나요?, 어떤 경로로 약을 처방 받으셨었나요?", "kind": "recitation"}, {"id": "H04", "section": "History taking", "source_line": 6, "source_row_part": 1, "label": "비밀 · 비밀보장", "cue": "앞으로 여쭤볼 내용은 민감한 내용일 수 있지", "previous_tail": "떤 약을 복용하시나요?, 어떤 경로로 약을 처방 받으셨었나요?", "exact_text": "앞으로 여쭤볼 내용은 민감한 내용일 수 있지만 꼭 필요한 질문들입니다. 말씀해주시는 모든 내용은 비밀이 보장되니 걱정하지 말고 편하게 답변해주세요.", "kind": "recitation"}, {"id": "H05", "section": "History taking", "source_line": 7, "source_row_part": 1, "label": "행태 · 언제부터, 상황, 유발 인자", "cue": "언제부터 약을 복용하셨나요? 약 복용을 시작", "previous_tail": "든 내용은 비밀이 보장되니 걱정하지 말고 편하게 답변해주세요.", "exact_text": "언제부터 약을 복용하셨나요? 약 복용을 시작하게 된 계기가 있었나요? 주로 어떤 이유로 약을 복용하시나요?(스트레스, 주변 사람, 습관)", "kind": "recitation"}, {"id": "H06", "section": "History taking", "source_line": 8, "source_row_part": 1, "label": "기간, 빈도, 양, 누구랑", "cue": "약물 사용 기간이 얼마나 되나요?, 얼마나", "previous_tail": "어떤 이유로 약을 복용하시나요?(스트레스, 주변 사람, 습관)", "exact_text": "약물 사용 기간이 얼마나 되나요?, 얼마나 자주 복용하시나요? 한 번 드실 때 얼마나 많이 복용하시나요? 누구랑 복용하시나요?", "kind": "recitation"}, {"id": "H07", "section": "History taking", "source_line": 9, "source_row_part": 1, "label": "중단 계획 및 계기, 이전 중단 시도, 중단 기간, 실패 및 방해요인", "cue": "앞으로 약물 복용 중단하실 계획이 있나요", "previous_tail": " 번 드실 때 얼마나 많이 복용하시나요? 누구랑 복용하시나요?", "exact_text": "앞으로 약물 복용 중단하실 계획이 있나요? 복용 중단을 결심하게 된 계기가 있었나요? 이전에 복용 중단을 시도해본 적이 있나요? 얼마나 오래 복용을 중단하셨나요? 왜 실패하셨다고 생각하시나요? 주로 중단을 방해하는 요소에는 어떤 것들이 있나요?", "kind": "recitation"}, {"id": "H08", "section": "History taking", "source_line": 10, "source_row_part": 1, "label": "의존 · 중독: (개방형)", "cue": "약을 복용했을 때 어떤 효과가 있나요", "previous_tail": "하시나요? 주로 중단을 방해하는 요소에는 어떤 것들이 있나요?", "exact_text": "약을 복용했을 때 어떤 효과가 있나요?", "kind": "recitation"}, {"id": "H09", "section": "History taking", "source_line": 11, "source_row_part": 1, "label": "내성: 양 증가", "cue": "같은 효과를 위해 복용하는 약물 양이 점점", "previous_tail": "약을 복용했을 때 어떤 효과가 있나요?", "exact_text": "같은 효과를 위해 복용하는 약물 양이 점점 더 증가하나요?", "kind": "recitation"}, {"id": "H10", "section": "History taking", "source_line": 12, "source_row_part": 1, "label": "금단 · 금단: (개방형)", "cue": "약을 복용하지 못했을 때 어떤 증상이 있었나", "previous_tail": "같은 효과를 위해 복용하는 약물 양이 점점 더 증가하나요?", "exact_text": "약을 복용하지 못했을 때 어떤 증상이 있었나요? 불안하거나 초조했나요? 잠을 잘 못 주무셨나요? 두근거리거나 식은땀이 났었나요? / 우울하거나 무기력했나요? 평소보다 잠을 많이 주무셨나요? 집중력이 떨어졌나요? / 근육통이 생겼나요? 눈물, 콧물, 하품이 나왔나요? 속이 메스껍고 토를 하거나 설사를 했나요?", "kind": "recitation"}, {"id": "H11", "section": "History taking", "source_line": 12, "source_row_part": 2, "label": "금단 · 금단: (개방형)", "cue": "복용 중단하고 얼마나 지나서 그러셨어요", "previous_tail": " 하품이 나왔나요? 속이 메스껍고 토를 하거나 설사를 했나요?", "exact_text": "복용 중단하고 얼마나 지나서 그러셨어요?", "kind": "recitation"}, {"id": "H12", "section": "History taking", "source_line": 13, "source_row_part": 1, "label": "핵심 개념", "cue": "금단 증상 + 시간 경과 - 진정제: 불안", "previous_tail": "복용 중단하고 얼마나 지나서 그러셨어요?", "exact_text": "금단 증상 + 시간 경과 - 진정제: 불안/초조, 불면, 두근거림/식은땀 - 각성제: 우울/무기력, 과다수면, 집중력 저하 - 아편: 근육통, 눈물/콧물/하품, 구역/구토/설사", "kind": "recitation"}, {"id": "H13", "section": "History taking", "source_line": 14, "source_row_part": 1, "label": "남용 · 역할 수행, 위험 상황, 법적 문제, 대인관계", "cue": "약물로 인해 지각, 결근(과제 제출, 성적", "previous_tail": "력 저하 - 아편: 근육통, 눈물/콧물/하품, 구역/구토/설사", "exact_text": "약물로 인해 지각, 결근(과제 제출, 성적 저하 / 집안일, 육아 방치)을 자주 하시나요? 약물로 인해 위험한 상황이나 다칠 뻔한 상황이 있었나요?, 약물로 인해 법적 문제에 휘말린 적이 있나요? 약물로 인해 대인 관계나 가족 내 갈등이 발생했나요?", "kind": "recitation"}, {"id": "H14", "section": "History taking", "source_line": 15, "source_row_part": 1, "label": "QoL · 일상 생활 지장", "cue": "약물로 인해 일상 생활에 지장이 많이 가나요", "previous_tail": "있나요? 약물로 인해 대인 관계나 가족 내 갈등이 발생했나요?", "exact_text": "약물로 인해 일상 생활에 지장이 많이 가나요?", "kind": "recitation"}, {"id": "H15", "section": "History taking", "source_line": 16, "source_row_part": 1, "label": "★ · 요약", "cue": "요약해보자면 ~~이네요. 맞나요", "previous_tail": "약물로 인해 일상 생활에 지장이 많이 가나요?", "exact_text": "요약해보자면 ~~이네요. 맞나요?", "kind": "recitation"}, {"id": "H16", "section": "History taking", "source_line": 17, "source_row_part": 1, "label": "A\n중독 · (개방형)", "cue": "다른 불편한 증상은 없으신가요", "previous_tail": "요약해보자면 ~~이네요. 맞나요?", "exact_text": "다른 불편한 증상은 없으신가요?", "kind": "recitation"}, {"id": "H17", "section": "History taking", "source_line": 18, "source_row_part": 1, "label": "전신 · 발열, 오한, 피로, 체중 변화, 부종", "cue": "열이 나거나 몸이 으슬으슬 떨리셨나요? 최근", "previous_tail": "다른 불편한 증상은 없으신가요?", "exact_text": "열이 나거나 몸이 으슬으슬 떨리셨나요? 최근 부쩍 피곤하거나 체중 변화가 있었나요?", "kind": "recitation"}, {"id": "H18", "section": "History taking", "source_line": 19, "source_row_part": 1, "label": "신경 · 구음장애, 보행장애, 경련, 의식저하,", "cue": "말이 어눌하거나 걷는게 불편하세요? 경련을", "previous_tail": "으슬 떨리셨나요? 최근 부쩍 피곤하거나 체중 변화가 있었나요?", "exact_text": "말이 어눌하거나 걷는게 불편하세요? 경련을 일으키거나 의식이 떨어진 적 있나요?", "kind": "recitation"}, {"id": "H19", "section": "History taking", "source_line": 20, "source_row_part": 1, "label": "정신 · 우울, 불안, 수면, 기억력/집중력, 환청/망상", "cue": "우울하거나 불안하진 않으세요? 잠을 잘 못", "previous_tail": "는게 불편하세요? 경련을 일으키거나 의식이 떨어진 적 있나요?", "exact_text": "우울하거나 불안하진 않으세요? 잠을 잘 못 주무시나요? 기억력이나 집중력이 떨어지셨나요? 헛것이 보이거나 들리진 않았나요?", "kind": "recitation"}, {"id": "H20", "section": "History taking", "source_line": 21, "source_row_part": 1, "label": "순환/호흡 · 가슴통증, 호흡곤란, 기침, 가래", "cue": "가슴 쪽이 아프세요? 숨이 잘 차거나 숨 쉬", "previous_tail": "이나 집중력이 떨어지셨나요? 헛것이 보이거나 들리진 않았나요?", "exact_text": "가슴 쪽이 아프세요? 숨이 잘 차거나 숨 쉬기 힘드세요? 기침이나 가래 있으세요?", "kind": "recitation"}, {"id": "H21", "section": "History taking", "source_line": 22, "source_row_part": 1, "label": "E · 이전 건강검진 이상 소견", "cue": "이전 건강검진에서 이상 소견 있었나요", "previous_tail": " 숨이 잘 차거나 숨 쉬기 힘드세요? 기침이나 가래 있으세요?", "exact_text": "이전 건강검진에서 이상 소견 있었나요?", "kind": "recitation"}, {"id": "H22", "section": "History taking", "source_line": 23, "source_row_part": 1, "label": "과 · (개방형)", "cue": "기존에 진단 받으신 질환 있으세요", "previous_tail": "이전 건강검진에서 이상 소견 있었나요?", "exact_text": "기존에 진단 받으신 질환 있으세요?", "kind": "recitation"}, {"id": "H23", "section": "History taking", "source_line": 24, "source_row_part": 1, "label": "고혈압, 당뇨, 고지혈증, 간질환, 신질환, 정신과질환", "cue": "고혈압이나 당뇨, 고지혈증 있으세요? 간이나", "previous_tail": "기존에 진단 받으신 질환 있으세요?", "exact_text": "고혈압이나 당뇨, 고지혈증 있으세요? 간이나 콩팥 관련 질환 있으세요? 정신건강의학과 진료 보신 적 있으신가요?", "kind": "recitation"}, {"id": "H24", "section": "History taking", "source_line": 25, "source_row_part": 1, "label": "약 · 복용 중인 약물", "cue": "추가로 드시고 있는 약물 있으세요", "previous_tail": "관련 질환 있으세요? 정신건강의학과 진료 보신 적 있으신가요?", "exact_text": "추가로 드시고 있는 약물 있으세요?", "kind": "recitation"}, {"id": "H25", "section": "History taking", "source_line": 26, "source_row_part": 1, "label": "사 · 직업/스트레스, 흡연, 음주", "cue": "실례지만 직업이 어떻게 되세요? 스트레스를", "previous_tail": "추가로 드시고 있는 약물 있으세요?", "exact_text": "실례지만 직업이 어떻게 되세요? 스트레스를 많이 받으시나요?, 흡연/음주는 하시나요?", "kind": "recitation"}, {"id": "H26", "section": "History taking", "source_line": 27, "source_row_part": 1, "label": "가 · 가족 중 유사 증상, 간질환, 신질환", "cue": "가족 중에서도 약물로 인해 힘들어하셨던 분", "previous_tail": "되세요? 스트레스를 많이 받으시나요?, 흡연/음주는 하시나요?", "exact_text": "가족 중에서도 약물로 인해 힘들어하셨던 분 있으세요? 가족 중 간이나 콩팥 질환 앓으시는 분 있으세요?", "kind": "recitation"}, {"id": "H27", "section": "History taking", "source_line": 28, "source_row_part": 1, "label": "외 · 외상/수술, 입원", "cue": "어디 다치거나, 수술하신 적 있으세요? 입원", "previous_tail": " 있으세요? 가족 중 간이나 콩팥 질환 앓으시는 분 있으세요?", "exact_text": "어디 다치거나, 수술하신 적 있으세요? 입원하신 적 있으세요?", "kind": "recitation"}, {"id": "H28", "section": "History taking", "source_line": 29, "source_row_part": 1, "label": "여 · 월경중/폐경 → 임신가능성", "cue": "실례지만 월경은 하고 계신가요?/폐경 하셨나", "previous_tail": "어디 다치거나, 수술하신 적 있으세요? 입원하신 적 있으세요?", "exact_text": "실례지만 월경은 하고 계신가요?/폐경 하셨나요? 조금 민감한 질문일 수 있지만 꼭 필요한 질문이라 여쭤보겠습니다. 임신 가능성이 있나요?", "kind": "recitation"}, {"id": "H29", "section": "History taking", "source_line": 30, "source_row_part": 1, "label": "★ · 요약", "cue": "힘드셨을텐데 잘 답변해주셔서 감사합니다. 요", "previous_tail": "만 꼭 필요한 질문이라 여쭤보겠습니다. 임신 가능성이 있나요?", "exact_text": "힘드셨을텐데 잘 답변해주셔서 감사합니다. 요약해보자면 ~~이네요. 맞나요?", "kind": "recitation"}, {"id": "K01", "section": "핵심 질환", "source_line": 32, "source_row_part": 1, "label": "핵심 질환 섹션 시작", "cue": "[핵심 질환] ⭐️", "previous_tail": "잘 답변해주셔서 감사합니다. 요약해보자면 ~~이네요. 맞나요?", "exact_text": "[핵심 질환] ⭐️", "kind": "heading"}, {"id": "K02", "section": "핵심 질환", "source_line": 34, "source_row_part": 1, "label": "핵심 질환 이미지", "cue": "핵심 질환 이미지", "previous_tail": "[핵심 질환] ⭐️", "exact_text": "{{upload:hwang_substance_core width=64%}}", "kind": "asset"}, {"id": "K03", "section": "핵심 질환", "source_line": 38, "source_row_part": 1, "label": "페이지 구획 전환", "cue": "--- 페이지 추가 ---", "previous_tail": "d:hwang_substance_core width=64%}}", "exact_text": "--- 페이지 추가 ---", "kind": "separator"}, {"id": "P01", "section": "Physical examination", "source_line": 40, "source_row_part": 1, "label": "Physical examination 섹션 시작", "cue": "[Physical examination] →", "previous_tail": "--- 페이지 추가 ---", "exact_text": "[Physical examination] → 생략 가능", "kind": "heading"}, {"id": "P02", "section": "Physical examination", "source_line": 42, "source_row_part": 1, "label": "★ · 손씻기 + 동의 구하기", "cue": "그럼 이제 신체진찰 진행하려고 하는데 그 과", "previous_tail": "[Physical examination] → 생략 가능", "exact_text": "(손씻기) 그럼 이제 신체진찰 진행하려고 하는데 그 과정에서 신체 접촉 및 노출이 있을 수 있습니다. 진행해도 괜찮을까요?", "kind": "recitation"}, {"id": "P03", "section": "Physical examination", "source_line": 44, "source_row_part": 1, "label": "V/S · 혈압, 맥박수, 호흡수, 체온 / 키, 체중", "cue": "활력징후 확인하겠습니다. 모두 정상인데 ~~", "previous_tail": "신체 접촉 및 노출이 있을 수 있습니다. 진행해도 괜찮을까요?", "exact_text": "활력징후 확인하겠습니다. 모두 정상인데 ~~만 조금 높습니다/낮습니다.", "kind": "recitation"}, {"id": "P04", "section": "Physical examination", "source_line": 45, "source_row_part": 1, "label": "앉아서 · 눈", "cue": "결막 시진(빈혈, 충혈), 공막 시진(황달)", "previous_tail": "확인하겠습니다. 모두 정상인데 ~~만 조금 높습니다/낮습니다.", "exact_text": "결막 시진(빈혈, 충혈), 공막 시진(황달),", "kind": "action"}, {"id": "P05", "section": "Physical examination", "source_line": 46, "source_row_part": 1, "label": "입", "cue": "구강 시진(탈수, 분비물 증가)", "previous_tail": "결막 시진(빈혈, 충혈), 공막 시진(황달),", "exact_text": "구강 시진(탈수, 분비물 증가)", "kind": "action"}, {"id": "P06", "section": "Physical examination", "source_line": 47, "source_row_part": 1, "label": "목", "cue": "갑상선 촉진, 림프절 촉진", "previous_tail": "구강 시진(탈수, 분비물 증가)", "exact_text": "갑상선 촉진, 림프절 촉진", "kind": "action"}, {"id": "P07", "section": "Physical examination", "source_line": 48, "source_row_part": 1, "label": "사지", "cue": "피부 긴장도(탈수), 하지 촉진(부종)", "previous_tail": "갑상선 촉진, 림프절 촉진", "exact_text": "피부 긴장도(탈수), 하지 촉진(부종)", "kind": "action"}, {"id": "P08", "section": "Physical examination", "source_line": 49, "source_row_part": 1, "label": "신경", "cue": "동공크기/반사, 안구운동, 안면감각/운동", "previous_tail": "피부 긴장도(탈수), 하지 촉진(부종)", "exact_text": "동공크기/반사, 안구운동, 안면감각/운동", "kind": "action"}, {"id": "P09", "section": "Physical examination", "source_line": 50, "source_row_part": 1, "label": "신체진찰", "cue": "근긴장도/근력/감각, DTR, 병적반사", "previous_tail": "동공크기/반사, 안구운동, 안면감각/운동", "exact_text": "근긴장도/근력/감각, DTR, 병적반사", "kind": "action"}, {"id": "P10", "section": "Physical examination", "source_line": 51, "source_row_part": 1, "label": "★ · 신체노출 + 불필요한 부분 가리기", "cue": "가슴 진찰 진행 시 상의를 탈의해주셔야 합니", "previous_tail": "근긴장도/근력/감각, DTR, 병적반사", "exact_text": "가슴 진찰 진행 시 상의를 탈의해주셔야 합니다. 괜찮을까요? 진료에 불필요한 부분은 가려드리도록 하겠습니다.", "kind": "recitation"}, {"id": "P11", "section": "Physical examination", "source_line": 52, "source_row_part": 1, "label": "가슴", "cue": "호흡 청진, 심장 청진", "previous_tail": " 괜찮을까요? 진료에 불필요한 부분은 가려드리도록 하겠습니다.", "exact_text": "호흡 청진, 심장 청진", "kind": "action"}, {"id": "P12", "section": "Physical examination", "source_line": 53, "source_row_part": 1, "label": "누워서 · ★ · 신체노출 + 불필요한 부분 가리기", "cue": "복부 진찰 진행 시 상의를 명치까지, 하의를", "previous_tail": "호흡 청진, 심장 청진", "exact_text": "복부 진찰 진행 시 상의를 명치까지, 하의를 골반까지 내려주셔야 합니다. 괜찮을까요? 편하게 누우셔서 다리를 구부리고 있으시면 됩니다. 진료에 불필요한 부분은 가려드리도록 하겠습니다.", "kind": "recitation"}, {"id": "P13", "section": "Physical examination", "source_line": 54, "source_row_part": 1, "label": "복부", "cue": "시진 – 청진 – 타진 – 촉진", "previous_tail": "시면 됩니다. 진료에 불필요한 부분은 가려드리도록 하겠습니다.", "exact_text": "시진 – 청진 – 타진 – 촉진", "kind": "action"}, {"id": "P14", "section": "Physical examination", "source_line": 55, "source_row_part": 1, "label": "★ · 손씻기 + PPI", "cue": "신체진찰 모두 끝났습니다. 도중에 불편한 점", "previous_tail": "시진 – 청진 – 타진 – 촉진", "exact_text": "(손씻기) 신체진찰 모두 끝났습니다. 도중에 불편한 점은 없으셨나요? 자리로 오시면 오늘 진료 내용 다시 정리해서 말씀드리도록 하겠습니다.", "kind": "recitation"}, {"id": "E01", "section": "Education", "source_line": 57, "source_row_part": 1, "label": "Education 섹션 시작", "cue": "[Education]", "previous_tail": "오시면 오늘 진료 내용 다시 정리해서 말씀드리도록 하겠습니다.", "exact_text": "[Education]", "kind": "heading"}, {"id": "E02", "section": "Education", "source_line": 59, "source_row_part": 1, "label": "★", "cue": "진찰 받으시느라 고생 많으셨습니다", "previous_tail": "[Education]", "exact_text": "진찰 받으시느라 고생 많으셨습니다.", "kind": "recitation"}, {"id": "E03", "section": "Education", "source_line": 61, "source_row_part": 1, "label": "진단", "cue": "지금까지의 문진을 종합해 보았을 때, OOO", "previous_tail": "진찰 받으시느라 고생 많으셨습니다.", "exact_text": "지금까지의 문진을 종합해 보았을 때, OOO님께서는 ~~한 것으로 보아 ~~가 의심이 됩니다.", "kind": "recitation"}, {"id": "E04", "section": "Education", "source_line": 62, "source_row_part": 1, "label": "검사", "cue": "하지만 ~~ 증상도 있기 때문에 ~~의 가능", "previous_tail": "때, OOO님께서는 ~~한 것으로 보아 ~~가 의심이 됩니다.", "exact_text": "하지만 ~~ 증상도 있기 때문에 ~~의 가능성도 있습니다. 이에 대해서 추가적으로 ~~를 시행해볼 예정입니다. 괜찮을까요?", "kind": "recitation"}, {"id": "E05", "section": "Education", "source_line": 63, "source_row_part": 1, "label": "장단점 · 단점", "cue": "지금 OOO 님이 ~~~을 필요로 하고 있는", "previous_tail": "에 대해서 추가적으로 ~~를 시행해볼 예정입니다. 괜찮을까요?", "exact_text": "지금 OOO 님이 ~~~을 필요로 하고 있는 상황을 충분히 이해합니다. 하지만 ~~~를 오랜 기간 사용할 경우, 원하는 효과는 보지 못하고 오히려 ~~~하는 부작용이 생길 수 있습니다.", "kind": "recitation"}, {"id": "E06", "section": "Education", "source_line": 64, "source_row_part": 1, "label": "교육 분기/문장", "cue": "~~장점~~", "previous_tail": "는 보지 못하고 오히려 ~~~하는 부작용이 생길 수 있습니다.", "exact_text": "~~장점~~", "kind": "recitation"}, {"id": "E07", "section": "Education", "source_line": 65, "source_row_part": 1, "label": "예후 · 권유", "cue": "이번 기회에 한 번 약물을 끊어 보시는게 어", "previous_tail": "~~장점~~", "exact_text": "이번 기회에 한 번 약물을 끊어 보시는게 어떠신가요? 네, 정말 잘 결정하셨습니다.", "kind": "recitation"}, {"id": "E08", "section": "Education", "source_line": 66, "source_row_part": 1, "label": "교육 분기/문장", "cue": "약이 필요한 이유를 댐: ~~~ 할 상황에", "previous_tail": "물을 끊어 보시는게 어떠신가요? 네, 정말 잘 결정하셨습니다.", "exact_text": "약이 필요한 이유를 댐: ~~~ 할 상황에 대해 걱정하고 계시는군요. 하지만 위에 말씀드렸다시피, 약물을 사용한다면 지금 당장 효과가 있을 수 있을지는 몰라도 점점 효과가 떨어질뿐더러, 오히려 부작용만 심해질 수 있습니다. 대신 약물을 사용하지 않고도 ~~~ 하지 않도록 도와드릴테니 약물을 끊어 보시는게 어떠신가요?", "kind": "recitation"}, {"id": "E09", "section": "Education", "source_line": 67, "source_row_part": 1, "label": "교육 분기/문장", "cue": "금단 증상에 대한 두려움: ~~~ 할 상황에", "previous_tail": "~ 하지 않도록 도와드릴테니 약물을 끊어 보시는게 어떠신가요?", "exact_text": "금단 증상에 대한 두려움: ~~~ 할 상황에 대해 걱정하고 계시는군요. 하지만 이런 금단 증상은 물론 초반엔 많이 힘드시겠지만 결국 시간이 지나면 사라집니다. 대신 이러한 금단 증상을 줄여주는 약을 처방해드릴테니 약물을 끊어 보시는게 어떠신가요?", "kind": "recitation"}, {"id": "E10", "section": "Education", "source_line": 68, "source_row_part": 1, "label": "격려", "cue": "시작이 반이라는 말이 있듯이 오늘 병원에 오", "previous_tail": "줄여주는 약을 처방해드릴테니 약물을 끊어 보시는게 어떠신가요?", "exact_text": "시작이 반이라는 말이 있듯이 오늘 병원에 오신 것만으로도 정말 잘하셨습니다. 약물을 끊을 때에는 혼자 하는 것보다 전문가의 도움을 받는 것이 훨씬 성공률도 높고 힘들기도 덜 힘듭니다. 저도 최선을 다해 도와드리겠습니다.", "kind": "recitation"}, {"id": "E11", "section": "Education", "source_line": 69, "source_row_part": 1, "label": "교육 · 목표", "cue": "약물을 단번에 끊기 보다는 점차 횟수나 양을", "previous_tail": "고 힘들기도 덜 힘듭니다. 저도 최선을 다해 도와드리겠습니다.", "exact_text": "약물을 단번에 끊기 보다는 점차 횟수나 양을 줄이는 목표를 갖는 것이 좋을 것 같습니다.", "kind": "recitation"}, {"id": "E12", "section": "Education", "source_line": 70, "source_row_part": 1, "label": "교육 분기/문장", "cue": "~~날짜~~", "previous_tail": "점차 횟수나 양을 줄이는 목표를 갖는 것이 좋을 것 같습니다.", "exact_text": "~~날짜~~", "kind": "recitation"}, {"id": "E13", "section": "Education", "source_line": 71, "source_row_part": 1, "label": "전략", "cue": "OOO님은 ~~~ 때문에 약물을 사용하고 계", "previous_tail": "~~날짜~~", "exact_text": "OOO님은 ~~~ 때문에 약물을 사용하고 계셨는데요, 약물을 사용하는 대신 ~~를 통해 ~~~를 도울 수 있습니다.", "kind": "recitation"}, {"id": "E14", "section": "Education", "source_line": 72, "source_row_part": 1, "label": "요약", "cue": "여기까지 이해 되셨나요", "previous_tail": "약물을 사용하는 대신 ~~를 통해 ~~~를 도울 수 있습니다.", "exact_text": "여기까지 이해 되셨나요?", "kind": "recitation"}, {"id": "E15", "section": "Education", "source_line": 73, "source_row_part": 1, "label": "치료 · 약물", "cue": "만약 중독 증상이 심하다면 입원하셔서 치료하", "previous_tail": "여기까지 이해 되셨나요?", "exact_text": "만약 중독 증상이 심하다면 입원하셔서 치료하시는 것을 권해드립니다. 해독제를 통해 현재 느끼는 불편한 증상을 완화시킬 수 있고, 길항제나 대체 약물 등으로 서서히 약물의 필요량을 줄이도록 도울 수 있습니다..", "kind": "recitation"}, {"id": "E16", "section": "Education", "source_line": 74, "source_row_part": 1, "label": "교육 분기/문장", "cue": "또 오랜 기간 약물을 복용하면 몸이 이에 익", "previous_tail": " 등으로 서서히 약물의 필요량을 줄이도록 도울 수 있습니다..", "exact_text": "또 오랜 기간 약물을 복용하면 몸이 이에 익숙해져 있어 갑자기 약물을 끊었을 때 금단 증상이 생길 수 있습니다. ~~~ 등의 증상이 타날 수 있습니다. 무척 힘들겠지만 며칠 지나면 점점 사라지기 때문에 너무 걱정하시진 않으셔도 됩니다. 이 시기를 잘 넘길 수 있도록 금단증상을 줄여주는 약도 같이 챙겨드리겠습니다.", "kind": "recitation"}, {"id": "E17", "section": "Education", "source_line": 75, "source_row_part": 1, "label": "★", "cue": "약물을 끊는 게 얼마나 어려운지 잘 알고 있", "previous_tail": "길 수 있도록 금단증상을 줄여주는 약도 같이 챙겨드리겠습니다.", "exact_text": "약물을 끊는 게 얼마나 어려운지 잘 알고 있습니다. 그 과정에서 예상치 못한 어려움이 있을 수 있겠지만 포기하지 마시고 제가 옆에서 OOO님의 성공적인 약물 중단과 건강 회복을 도와드리겠습니다", "kind": "recitation"}, {"id": "E18", "section": "Education", "source_line": 76, "source_row_part": 1, "label": "교육 분기/문장", "cue": "여기까지 궁금한 점 있으신가요? 네, 그러면", "previous_tail": " OOO님의 성공적인 약물 중단과 건강 회복을 도와드리겠습니다", "exact_text": "여기까지 궁금한 점 있으신가요? 네, 그러면 1~2주 뒤에 다시 외래 방문하셔서 그동안 있었던 일들에 대해 말씀 나눠보도록 하겠습니다. 혹시라도 중간에 신체적, 정신적으로 많이 힘드실 때는 언제든 찾아오셔도 좋습니다. 수고 많으셨습니다.", "kind": "recitation"}], "audit": {"source_sha256": "3f27f86e3a94f9e80b0724a3b32785e83e5e87e63f32476ff16ced82b8ba6849", "source_lines": 76, "parsed_content_rows": 63, "mapped_source_rows": 63, "missing_source_row_lines": [], "chunks": 64, "sections": {"History taking": 29, "핵심 질환": 3, "Physical examination": 14, "Education": 18}, "chunk_fragments_not_found_in_normalized_source": [], "pass": true}};</script>
+<script>
+const chunks=DATA.chunks;
+const key='cpx45-fullscript-progress-v1';
+let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+let index=Math.max(0,Math.min(chunks.length-1,Number(saved.index)||0));
+let statuses=saved.statuses||{}; let revealed=false;
+const $=id=>document.getElementById(id);
+function persist(){localStorage.setItem(key,JSON.stringify({index,statuses}));}
+function renderNav(){
+  $('chunkList').innerHTML=''; $('mobileNav').innerHTML='';
+  chunks.forEach((c,i)=>{
+    const b=document.createElement('button'); b.className='chunk-link'+(statuses[c.id]==='mastered'?' mastered':''); b.textContent=`${c.id} · ${c.cue}`; b.title=`${c.id} · ${c.cue}`; b.setAttribute('aria-current',i===index?'true':'false'); b.onclick=()=>go(i); $('chunkList').appendChild(b);
+    const o=document.createElement('option'); o.value=i; o.textContent=`${c.id} · ${c.cue}`; o.selected=i===index; $('mobileNav').appendChild(o);
+  });
+}
+function render(){
+  const c=chunks[index], mode=$('mode').value; revealed=mode==='read';
+  $('chunkId').textContent=c.id; $('section').textContent=c.section; $('chunkLabel').textContent=c.label;
+  $('bridge').textContent=`이전 끝 → ${c.previous_tail}`; $('bridge').style.display=mode==='recall'?'none':'block';
+  $('cue').textContent=c.cue; $('answer').textContent=c.exact_text;
+  $('answer').classList.toggle('visible',revealed); $('placeholder').style.display=revealed?'none':'block';
+  $('reveal').textContent=revealed?'원문 가리기':'원문 공개';
+  $('statusNote').textContent=`현재 위치 ${index+1}/${chunks.length} · 원문 행 ${c.source_line} · 상태: ${statuses[c.id]==='mastered'?'외움':statuses[c.id]==='redo'?'다시 보기':'미학습'}`;
+  const mastered=chunks.filter(x=>statuses[x.id]==='mastered').length;
+  $('progressBar').style.width=`${mastered/chunks.length*100}%`; $('progressText').textContent=`외운 덩어리 ${mastered} / ${chunks.length}`;
+  renderNav(); persist();
+}
+function go(i){index=(i+chunks.length)%chunks.length; render();}
+$('prev').onclick=()=>go(index-1); $('reveal').onclick=()=>{revealed=!revealed;$('answer').classList.toggle('visible',revealed);$('placeholder').style.display=revealed?'none':'block';$('reveal').textContent=revealed?'원문 가리기':'원문 공개';};
+$('wrong').onclick=()=>{statuses[chunks[index].id]='redo';go(index+1)};
+$('right').onclick=()=>{statuses[chunks[index].id]='mastered';go(index+1)};
+$('mode').onchange=render; $('mobileNav').onchange=e=>go(Number(e.target.value));
+document.addEventListener('keydown',e=>{if(e.target.matches('select,button'))return;if(e.key==='ArrowRight')go(index+1);else if(e.key==='ArrowLeft')go(index-1);else if(e.code==='Space'){e.preventDefault();$('reveal').click()}else if(e.key.toLowerCase()==='m')$('right').click();});
+$('sourceMeta').textContent=`${DATA.audit.chunks} chunks · source ${DATA.audit.source_sha256.slice(0,12)}`;
+$('chunkTotal').textContent=chunks.length;
+render();
+</script>
+</body></html>
