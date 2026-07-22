@@ -3,152 +3,515 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CC45 물질 오남용 · 통암기 트레이너</title>
+<meta name="theme-color" content="#f4f3ee">
+<title>CC45 물질 오남용 · 통암기 리허설</title>
 <style>
 :root {
-  --ink: oklch(23% 0.028 251); --muted: oklch(42% 0.032 251);
-  --paper: oklch(98% 0.008 82); --wash: oklch(94% 0.018 250);
-  --line: oklch(84% 0.025 250); --blue: oklch(53% 0.18 256);
-  --blue-dark: oklch(35% 0.13 256); --amber: oklch(79% 0.13 78);
-  --green: oklch(57% 0.13 155); --red: oklch(58% 0.17 28);
-  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
-  --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem;
-  font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --paper: #f4f3ee;
+  --paper-raised: #faf9f5;
+  --ink: #11110f;
+  --ink-soft: #3f3f3a;
+  --muted: #74736d;
+  --faint: #aaa9a1;
+  --line: #d3d1c8;
+  --line-strong: #a6a49b;
+  --max: 1480px;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  font-family: "Pretendard Variable", "SUIT Variable", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
-html { background: var(--paper); color: var(--ink); }
-body { margin: 0; min-height: 100dvh; background:
-  linear-gradient(90deg, transparent 0 4.5rem, color-mix(in oklch,var(--blue) 14%,transparent) 4.5rem 4.6rem, transparent 4.6rem),
-  repeating-linear-gradient(0deg, transparent 0 31px, color-mix(in oklch,var(--line) 32%,transparent) 31px 32px), var(--paper); }
-button, select { font: inherit; }
-button { min-height: 44px; border: 0; cursor: pointer; }
-button:focus-visible, select:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
-.app { max-width: 1180px; margin: 0 auto; padding: max(1rem,env(safe-area-inset-top)) 1rem max(1rem,env(safe-area-inset-bottom)); }
-.masthead { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: var(--space-8); align-items: end; padding: var(--space-6) 0 var(--space-8); border-bottom: 2px solid var(--ink); }
-.eyebrow { font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); }
-h1 { margin: .35rem 0 0; font-size: clamp(2rem,5vw,4.4rem); line-height: .98; letter-spacing: -.055em; max-width: 13ch; }
-.source-lock { text-align: right; font-size: .78rem; color: var(--muted); line-height: 1.55; }
-.source-lock strong { color: var(--green); }
-.progress-wrap { padding: var(--space-4) 0 var(--space-6); display: grid; grid-template-columns: 1fr auto; gap: .7rem 1rem; align-items: center; }
-.progress-track { height: 8px; background: var(--wash); border-radius: 99px; overflow: hidden; }
-.progress-bar { height: 100%; width: 0; background: var(--blue); transition: transform 180ms cubic-bezier(.25,1,.5,1), width 180ms cubic-bezier(.25,1,.5,1); }
-.progress-text { font-size: .84rem; font-weight: 700; color: var(--blue-dark); font-variant-numeric: tabular-nums; }
-.workspace { display: grid; grid-template-columns: 245px minmax(0,1fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
-.rail { position: sticky; top: 1rem; max-height: calc(100dvh - 2rem); overflow: auto; padding-right: .4rem; }
-.rail h2 { margin: 0 0 .75rem; font-size: .82rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
-.chunk-list { display: grid; gap: 2px; }
-.chunk-link { width: 100%; text-align: left; background: transparent; color: var(--muted); padding: .55rem .65rem; border-left: 3px solid transparent; font-size: .82rem; line-height: 1.25; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
-.chunk-link:hover { background: color-mix(in oklch,var(--wash) 68%,transparent); color: var(--ink); }
-.chunk-link[aria-current="true"] { color: var(--blue-dark); border-left-color: var(--blue); background: color-mix(in oklch,var(--blue) 8%,transparent); font-weight: 800; }
-.chunk-link.mastered::after { content: "✓"; float: right; color: var(--green); }
-.stage { min-width: 0; }
-.toolbar { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: var(--space-4); }
-.mode { border: 1px solid var(--line); background: color-mix(in oklch,var(--paper) 88%,var(--wash)); color: var(--ink); border-radius: .35rem; padding: .55rem .75rem; min-height: 44px; }
-.hotkeys { margin-left: auto; color: var(--muted); font-size: .78rem; }
-.sheet { background: color-mix(in oklch,var(--paper) 95%,var(--wash)); border-top: 6px solid var(--blue); padding: clamp(1.2rem,4vw,3rem); min-height: 500px; box-shadow: 0 20px 55px color-mix(in oklch,var(--ink) 10%,transparent); }
-.index-line { display: flex; gap: 1rem; align-items: baseline; color: var(--blue); font-weight: 900; letter-spacing: .06em; }
-.index-line span:last-child { color: var(--muted); font-size: .82rem; font-weight: 700; letter-spacing: 0; }
-h2#chunkLabel { margin: var(--space-4) 0 var(--space-8); font-size: clamp(1.3rem,3vw,2rem); line-height: 1.25; max-width: 30ch; }
-.bridge { margin: 0 0 var(--space-8); padding: .8rem 0 .8rem 1rem; border-left: 2px solid var(--line); color: var(--muted); font-size: .9rem; }
-.cue-label { font-size: .76rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
-.cue { margin: .5rem 0 var(--space-8); font-size: clamp(1.4rem,4vw,2.65rem); line-height: 1.2; font-weight: 800; letter-spacing: -.03em; }
-.answer-zone { min-height: 155px; border-top: 1px solid var(--line); padding-top: var(--space-6); }
-.answer-placeholder { color: var(--muted); font-size: 1rem; }
-.answer { display: none; font-size: clamp(1.05rem,2.4vw,1.35rem); line-height: 1.75; white-space: pre-wrap; max-width: 68ch; }
-.answer.visible { display: block; animation: reveal 280ms cubic-bezier(.16,1,.3,1) both; }
-@keyframes reveal { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-.actions { display: grid; grid-template-columns: auto 1fr auto auto; gap: .6rem; margin-top: var(--space-8); }
-.btn { padding: .68rem 1rem; border-radius: .35rem; font-weight: 800; }
-.btn-ghost { background: transparent; border: 1px solid var(--line); color: var(--ink); }
-.btn-reveal { background: var(--blue); color: var(--paper); }
-.btn-wrong { background: color-mix(in oklch,var(--red) 12%,var(--paper)); color: var(--red); }
-.btn-right { background: var(--green); color: var(--paper); }
-.mobile-nav { display: none; width: 100%; margin-bottom: 1rem; }
-.status-note { margin-top: 1rem; color: var(--muted); font-size: .78rem; }
-@media (max-width: 760px) {
-  body { background-position-x: -3.2rem; }
-  .masthead { grid-template-columns: 1fr; gap: 1rem; }
-  .source-lock { text-align: left; }
-  .workspace { grid-template-columns: 1fr; }
-  .rail { display: none; }
-  .mobile-nav { display: block; min-height: 48px; border: 1px solid var(--line); background: var(--paper); padding: .6rem; }
-  .hotkeys { display: none; }
-  .sheet { min-height: 0; }
-  .answer-zone { min-height: 108px; }
-  .actions { grid-template-columns: 1fr 1fr; }
-  .btn-reveal { grid-column: 1 / -1; grid-row: 1; }
+html { background: var(--paper); color: var(--ink); font-size: 16px; }
+body { margin: 0; min-width: 320px; min-height: 100dvh; background: var(--paper); }
+button, select { font: inherit; color: inherit; }
+button { border: 0; cursor: pointer; }
+button:focus-visible, select:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+button:disabled { cursor: not-allowed; opacity: .34; }
+.skip-link { position: fixed; top: .5rem; left: .5rem; z-index: 100; transform: translateY(-180%); background: var(--ink); color: var(--paper); padding: .75rem 1rem; }
+.skip-link:focus { transform: none; }
+.topbar { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--paper) 94%, transparent); border-bottom: 1px solid var(--line-strong); backdrop-filter: blur(12px); }
+.topbar-inner { max-width: var(--max); margin: 0 auto; min-height: 64px; padding: 0 clamp(1rem, 3vw, 2.5rem); display: grid; grid-template-columns: minmax(190px, 1fr) minmax(260px, 1.4fr) minmax(190px, 1fr); align-items: center; gap: 2rem; }
+.brand { font-size: .88rem; font-weight: 750; letter-spacing: -.01em; white-space: nowrap; }
+.progress-summary { display: grid; grid-template-columns: auto minmax(100px, 1fr); align-items: center; gap: .8rem; min-width: 0; }
+.progress-label { font-size: .78rem; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.progress-track { height: 3px; background: var(--line); overflow: hidden; }
+.progress-fill { display: block; width: 0; height: 100%; background: var(--ink); transition: width 220ms var(--ease); }
+.source-lock { text-align: right; color: var(--muted); font-size: .72rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.app { max-width: var(--max); margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2.5rem) max(2rem, env(safe-area-inset-bottom)); }
+.section-tabs { min-height: 64px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
+.section-tab { position: relative; min-height: 64px; padding: .75rem .5rem; background: transparent; color: var(--muted); font-size: .82rem; font-weight: 650; }
+.section-tab::after { content: ""; position: absolute; left: 18%; right: 18%; bottom: -1px; height: 2px; background: transparent; }
+.section-tab[aria-selected="true"] { color: var(--ink); }
+.section-tab[aria-selected="true"]::after { background: var(--ink); }
+.section-tab small { display: block; margin-top: .22rem; color: var(--faint); font-size: .65rem; font-weight: 550; }
+.workspace { display: grid; grid-template-columns: minmax(220px, 2.5fr) minmax(0, 9.5fr); min-height: calc(100dvh - 129px); }
+.sidebar { border-right: 1px solid var(--line); padding: clamp(1.5rem, 3vw, 2.6rem) clamp(1.25rem, 2.5vw, 2rem) 2rem 0; }
+.sidebar-head { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; margin-bottom: 1.25rem; }
+.sidebar-head h2 { margin: 0; font-size: .82rem; font-weight: 760; }
+.sidebar-count { color: var(--muted); font-size: .72rem; font-variant-numeric: tabular-nums; }
+.chunk-nav { display: grid; gap: .15rem; }
+.chunk-nav-button { width: 100%; min-height: 44px; display: grid; grid-template-columns: 2.6rem 1fr auto; align-items: center; gap: .65rem; padding: .62rem .55rem; background: transparent; border-left: 2px solid transparent; text-align: left; color: var(--muted); }
+.chunk-nav-button:hover { color: var(--ink); background: #eeede7; }
+.chunk-nav-button[aria-current="step"] { color: var(--ink); border-left-color: var(--ink); background: #e9e8e1; }
+.chunk-nav-id { font-size: .7rem; font-variant-numeric: tabular-nums; }
+.chunk-nav-title { min-width: 0; font-size: .8rem; line-height: 1.35; word-break: keep-all; overflow-wrap: normal; }
+.chunk-nav-status { width: .42rem; height: .42rem; border: 1px solid var(--line-strong); border-radius: 50%; }
+.chunk-nav-button[data-status="mastered"] .chunk-nav-status { border-color: var(--ink); background: var(--ink); }
+.chunk-nav-button[data-status="redo"] .chunk-nav-status { border-color: var(--ink); background: var(--line-strong); box-shadow: inset 0 0 0 1px var(--paper); }
+.sidebar-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.reset-button { min-height: 44px; padding: .4rem 0; background: transparent; color: var(--muted); font-size: .72rem; text-align: left; }
+.stage { min-width: 0; padding: clamp(1.5rem, 3.5vw, 3rem) 0 0 clamp(1.25rem, 4vw, 4rem); }
+.viewbar { min-height: 46px; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--line-strong); }
+.view-tabs { display: flex; align-items: stretch; gap: 2rem; }
+.view-tab { position: relative; min-height: 46px; padding: 0; background: transparent; color: var(--muted); font-size: .82rem; font-weight: 700; }
+.view-tab::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: transparent; }
+.view-tab[aria-selected="true"] { color: var(--ink); }
+.view-tab[aria-selected="true"]::after { background: var(--ink); }
+.bridge-toggle { min-height: 40px; padding: 0; background: transparent; color: var(--muted); font-size: .72rem; }
+.bridge-toggle[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: .25rem; }
+.mobile-jump { display: none; width: 100%; min-height: 48px; margin: 1rem 0 0; padding: 0 .75rem; border: 1px solid var(--line-strong); border-radius: 0; background: var(--paper); }
+.recall-view { padding-bottom: 2rem; }
+.chunk-header { padding: clamp(2rem, 5vw, 4.5rem) 0 1.5rem; }
+.chunk-kicker { display: flex; gap: .75rem; align-items: center; color: var(--muted); font-size: .76rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+.chunk-kicker .rule { width: 2rem; height: 1px; background: var(--line-strong); }
+.chunk-title { margin: .75rem 0 0; font-size: clamp(1.9rem, 4vw, 3.35rem); line-height: 1.08; letter-spacing: -.055em; font-weight: 760; }
+.bridge-panel { display: none; margin: .4rem 0 2rem; padding: 1rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; color: var(--muted); font-size: .78rem; line-height: 1.55; }
+.bridge-panel.visible { display: grid; }
+.bridge-arrow { color: var(--ink); }
+.bridge-panel strong { display: block; margin-bottom: .25rem; color: var(--ink); font-weight: 700; }
+.bridge-next { text-align: right; }
+.cue-block { margin-top: .5rem; }
+.overline { color: var(--muted); font-size: .72rem; font-weight: 720; letter-spacing: .04em; }
+.cue-text { margin: .7rem 0 0; padding: clamp(1.5rem, 4vw, 3rem); min-height: 176px; display: flex; align-items: center; border: 1px solid var(--line-strong); background: var(--paper-raised); font-size: clamp(1.2rem, 2.35vw, 1.75rem); line-height: 1.55; letter-spacing: -.02em; }
+.answer-region { margin-top: clamp(2rem, 4vw, 3rem); }
+.answer-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: .7rem; border-bottom: 1px solid var(--ink); }
+.answer-heading h2 { margin: 0; font-size: .86rem; font-weight: 760; }
+.answer-meta { color: var(--muted); font-size: .68rem; font-variant-numeric: tabular-nums; }
+.answer-placeholder { min-height: 140px; display: grid; place-items: center; color: var(--muted); text-align: center; font-size: .9rem; }
+.answer-content { display: none; }
+.answer-content.visible { display: block; animation: reveal 280ms var(--ease) both; }
+@keyframes reveal { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.source-row { display: grid; grid-template-columns: minmax(7rem, 1.7fr) minmax(0, 5.3fr); gap: clamp(1rem, 3vw, 2.5rem); padding: 1.1rem 0 1.2rem; border-bottom: 1px solid var(--line); }
+.source-context { color: var(--muted); font-size: .72rem; line-height: 1.55; }
+.source-role { display: block; margin-bottom: .35rem; color: var(--ink); font-size: .64rem; font-weight: 760; letter-spacing: .05em; }
+.source-line-number { display: block; margin-top: .5rem; color: var(--faint); font-size: .62rem; font-variant-numeric: tabular-nums; }
+.source-text { margin: 0; color: var(--ink); font-size: clamp(1rem, 1.55vw, 1.16rem); font-weight: 500; line-height: 1.85; white-space: pre-wrap; word-break: keep-all; overflow-wrap: anywhere; }
+.full-chunk-lines .source-text { max-width: 68ch; }
+.core-image { display: block; width: min(100%, 46rem); height: auto; border: 1px solid var(--line); background: white; }
+.actionbar { display: grid; grid-template-columns: auto minmax(10rem, 1fr) auto auto auto; gap: .65rem; margin-top: 2rem; padding: 1.25rem 0; border-top: 1px solid var(--line-strong); }
+.action { min-height: 48px; padding: .7rem 1.05rem; border: 1px solid var(--line-strong); border-radius: 0; background: transparent; font-size: .82rem; font-weight: 720; }
+.action:hover { background: #e9e8e1; }
+.action-primary { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.action-primary:hover { background: #2d2d29; }
+.action-wrong { color: var(--ink-soft); }
+.action-spacer { border: 0; pointer-events: none; }
+.sequence { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: end; margin-top: 1rem; padding: 1.15rem 0 2rem; border-top: 1px solid var(--line); }
+.sequence-item { min-width: 0; }
+.sequence-item:last-child { text-align: right; }
+.sequence-label { color: var(--faint); font-size: .62rem; }
+.sequence-value { display: block; margin-top: .3rem; color: var(--muted); font-size: .75rem; line-height: 1.4; }
+.sequence-current { color: var(--ink); font-size: .78rem; font-weight: 760; font-variant-numeric: tabular-nums; }
+.full-view { display: none; padding: clamp(2rem, 4vw, 4rem) 0 5rem; }
+.full-view.visible { display: block; }
+.full-intro { display: grid; grid-template-columns: minmax(0, 2fr) minmax(13rem, 1fr); gap: 3rem; align-items: end; padding-bottom: 2rem; border-bottom: 1px solid var(--ink); }
+.full-intro h1 { margin: 0; max-width: 12ch; font-size: clamp(2.2rem, 5vw, 4.5rem); line-height: .98; letter-spacing: -.065em; }
+.full-intro p { margin: 0; color: var(--muted); font-size: .78rem; line-height: 1.7; }
+.full-section { padding-top: 4rem; scroll-margin-top: 140px; }
+.full-section-title { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: .8rem; border-bottom: 2px solid var(--ink); }
+.full-section-title h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.03em; }
+.full-section-title span { color: var(--muted); font-size: .7rem; }
+.full-chunk { display: grid; grid-template-columns: minmax(9rem, 2fr) minmax(0, 7fr); gap: clamp(1.5rem, 4vw, 4rem); padding: 2rem 0; border-bottom: 1px solid var(--line-strong); }
+.full-chunk-head { position: sticky; top: 86px; align-self: start; }
+.full-chunk-id { color: var(--muted); font-size: .7rem; font-variant-numeric: tabular-nums; }
+.full-chunk h3 { margin: .45rem 0 0; font-size: 1rem; line-height: 1.4; }
+.full-chunk-lines .source-row:first-child { padding-top: 0; }
+.full-chunk-lines .source-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.full-chunk-lines .source-row { grid-template-columns: minmax(6rem, 1.3fr) minmax(0, 5.7fr); }
+[hidden] { display: none !important; }
+@media (max-width: 900px) {
+  .topbar-inner { grid-template-columns: 1fr 1.5fr; gap: 1rem; }
+  .source-lock { display: none; }
+  .workspace { grid-template-columns: minmax(180px, 2.6fr) minmax(0, 7.4fr); }
+  .stage { padding-left: 2rem; }
 }
-@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+@media (max-width: 720px) {
+  body { padding-bottom: calc(74px + env(safe-area-inset-bottom)); }
+  .topbar-inner { min-height: 56px; grid-template-columns: auto minmax(0, 1fr); padding-inline: 1rem; }
+  .brand { font-size: .78rem; }
+  .progress-summary { justify-self: stretch; }
+  .progress-label { font-size: .68rem; }
+  .app { padding-inline: 1rem; }
+  .section-tabs { min-height: 58px; margin-inline: -1rem; grid-template-columns: repeat(4, minmax(0, 1fr)); padding-inline: .35rem; }
+  .section-tab { min-height: 58px; padding-inline: .15rem; font-size: .72rem; }
+  .workspace { display: block; min-height: 0; }
+  .sidebar { display: none; }
+  .stage { padding: 1rem 0 0; }
+  .viewbar { align-items: center; }
+  .view-tabs { gap: 1.35rem; }
+  .mobile-jump { display: block; }
+  .chunk-header { padding: 2.2rem 0 1.1rem; }
+  .chunk-title { font-size: clamp(1.75rem, 9vw, 2.6rem); }
+  .bridge-panel.visible { grid-template-columns: 1fr; gap: .65rem; }
+  .bridge-arrow { display: none; }
+  .bridge-next { text-align: left; }
+  .cue-text { min-height: 148px; padding: 1.35rem; font-size: 1.18rem; }
+  .answer-placeholder { min-height: 108px; }
+  .source-row, .full-chunk-lines .source-row { grid-template-columns: 1fr; gap: .55rem; }
+  .source-context { display: flex; flex-wrap: wrap; gap: .35rem .7rem; align-items: baseline; }
+  .source-role, .source-line-number { display: inline; margin: 0; }
+  .source-text { font-size: 1rem; line-height: 1.78; }
+  .actionbar { position: fixed; z-index: 35; left: 0; right: 0; bottom: 0; margin: 0; padding: .75rem 1rem max(.75rem, env(safe-area-inset-bottom)); grid-template-columns: 3.25rem minmax(7rem, 1fr) 3.8rem 3.8rem; gap: .5rem; background: color-mix(in srgb, var(--paper) 97%, transparent); border-top: 1px solid var(--line-strong); backdrop-filter: blur(14px); }
+  .action { min-height: 48px; padding: .55rem .25rem; font-size: .75rem; }
+  .action-spacer { display: none; }
+  .sequence { padding-bottom: 1rem; }
+  .full-intro { grid-template-columns: 1fr; gap: 1rem; }
+  .full-intro h1 { font-size: 2.75rem; }
+  .full-section { padding-top: 3rem; }
+  .full-chunk { grid-template-columns: 1fr; gap: 1.25rem; }
+  .full-chunk-head { position: static; }
+}
+@media (max-width: 390px) {
+  .brand { max-width: 8.5rem; white-space: normal; line-height: 1.15; }
+  .progress-summary { gap: .5rem; }
+  .progress-label { max-width: 5.8rem; white-space: normal; line-height: 1.2; }
+  .bridge-toggle { font-size: .68rem; }
+  .actionbar { padding-inline: .65rem; gap: .4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
 </style>
 </head>
 <body>
-<main class="app">
-<header class="masthead">
-  <div><div class="eyebrow">Full-script recall · CPX Editor source</div><h1>45. 약물 오남용</h1></div>
-  <div class="source-lock"><strong>원문보존 AUDIT PASS</strong><br><span id="sourceMeta"></span></div>
-</header>
-<div class="progress-wrap"><div class="progress-track" aria-label="암기 진행률"><div class="progress-bar" id="progressBar"></div></div><div class="progress-text" id="progressText"></div></div>
-<div class="workspace">
-  <aside class="rail"><h2>순서 · <span id="chunkTotal"></span> chunks</h2><nav class="chunk-list" id="chunkList" aria-label="대본 순서"></nav></aside>
-  <section class="stage">
-    <select class="mobile-nav" id="mobileNav" aria-label="암기 덩어리 선택"></select>
-    <div class="toolbar">
-      <select class="mode" id="mode" aria-label="학습 모드"><option value="recall">가리고 회상</option><option value="bridge">연결 집중</option><option value="read">원문 읽기</option></select>
-      <span class="hotkeys">←/→ 이동 · Space 공개 · M 외움</span>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">CPX 통암기 리허설</div>
+    <div class="progress-summary" aria-label="전체 암기 진행률">
+      <span class="progress-label" id="progressLabel"></span>
+      <span class="progress-track"><span class="progress-fill" id="progressFill"></span></span>
     </div>
-    <article class="sheet">
-      <div class="index-line"><span id="chunkId"></span><span id="section"></span></div>
-      <h2 id="chunkLabel"></h2>
-      <div class="bridge" id="bridge"></div>
-      <div class="cue-label">첫머리 cue</div><div class="cue" id="cue"></div>
-      <div class="answer-zone"><div class="answer-placeholder" id="placeholder">입으로 전부 말한 뒤 원문을 공개하세요.</div><div class="answer" id="answer"></div></div>
-      <div class="actions">
-        <button class="btn btn-ghost" id="prev">이전</button>
-        <button class="btn btn-reveal" id="reveal">원문 공개</button>
-        <button class="btn btn-wrong" id="wrong">다시</button>
-        <button class="btn btn-right" id="right">외움</button>
+    <div class="source-lock" id="sourceLock"></div>
+  </div>
+</header>
+<main class="app" id="main">
+  <nav class="section-tabs" id="sectionTabs" aria-label="대본 구역" role="tablist"></nav>
+  <div class="workspace">
+    <aside class="sidebar" aria-label="현재 구역 암기 순서">
+      <div class="sidebar-head"><h2 id="sidebarTitle"></h2><span class="sidebar-count" id="sidebarCount"></span></div>
+      <nav class="chunk-nav" id="chunkNav" aria-label="암기 단계"></nav>
+      <div class="sidebar-footer"><button class="reset-button" id="resetProgress">진행 기록 초기화</button></div>
+    </aside>
+    <section class="stage">
+      <div class="viewbar">
+        <div class="view-tabs" role="tablist" aria-label="보기 방식">
+          <button class="view-tab" id="recallTab" role="tab" aria-selected="true">암기</button>
+          <button class="view-tab" id="fullTab" role="tab" aria-selected="false">전체 대본</button>
+        </div>
+        <button class="bridge-toggle" id="bridgeToggle" aria-pressed="false">문장 연결 보기</button>
       </div>
-      <div class="status-note" id="statusNote"></div>
-    </article>
-  </section>
-</div>
+      <select class="mobile-jump" id="mobileJump" aria-label="암기 단계 바로 이동"></select>
+      <section class="recall-view" id="recallView" role="tabpanel" aria-labelledby="recallTab">
+        <header class="chunk-header">
+          <div class="chunk-kicker"><span id="chunkPosition"></span><span class="rule"></span><span id="chunkSourceLines"></span></div>
+          <h1 class="chunk-title" id="chunkTitle"></h1>
+        </header>
+        <div class="bridge-panel" id="bridgePanel">
+          <div><strong>이전 끝</strong><span id="previousEnding"></span></div>
+          <span class="bridge-arrow" aria-hidden="true">→</span>
+          <div class="bridge-next"><strong>지금 시작</strong><span id="currentBeginning"></span></div>
+        </div>
+        <section class="cue-block" aria-labelledby="cueHeading">
+          <div class="overline" id="cueHeading">첫 문장</div>
+          <p class="cue-text" id="cueText"></p>
+        </section>
+        <section class="answer-region" aria-labelledby="answerHeading">
+          <div class="answer-heading"><h2 id="answerHeading">전체 원문</h2><span class="answer-meta" id="answerMeta"></span></div>
+          <div class="answer-placeholder" id="answerPlaceholder">입으로 이 덩어리를 끝까지 말한 뒤<br>원문을 확인하세요.</div>
+          <div class="answer-content" id="answerContent" aria-live="polite"></div>
+        </section>
+        <div class="actionbar" id="actionbar">
+          <button class="action" id="previousButton" aria-label="이전 암기 단계">이전</button>
+          <span class="action-spacer" aria-hidden="true"></span>
+          <button class="action action-primary" id="revealButton">원문 보기</button>
+          <button class="action action-wrong" id="redoButton">다시</button>
+          <button class="action" id="masterButton">외움</button>
+        </div>
+        <nav class="sequence" aria-label="앞뒤 암기 단계">
+          <div class="sequence-item"><span class="sequence-label">이전</span><span class="sequence-value" id="sequencePrevious"></span></div>
+          <div class="sequence-current" id="sequenceCurrent"></div>
+          <div class="sequence-item"><span class="sequence-label">다음</span><span class="sequence-value" id="sequenceNext"></span></div>
+        </nav>
+      </section>
+      <section class="full-view" id="fullView" role="tabpanel" aria-labelledby="fullTab">
+        <header class="full-intro">
+          <h1>45. 약물 오남용</h1>
+          <p>암기 단위만 다시 묶었고 원문 문구는 줄이거나 고치지 않았습니다.<br><span id="fullCoverage"></span></p>
+        </header>
+        <div id="fullContent"></div>
+      </section>
+    </section>
+  </div>
 </main>
-<script>const DATA={"chunks": [{"id": "H01", "section": "History taking", "source_line": 1, "source_row_part": 1, "label": "History taking 섹션 시작", "cue": "[History taking]", "previous_tail": "[시작]", "exact_text": "[History taking]", "kind": "heading"}, {"id": "H02", "section": "History taking", "source_line": 3, "source_row_part": 1, "label": "★ · 손씻기 + 자기소개 및 환자 확인 + PPI", "cue": "안녕하세요, 학생 의사 손유영입니다. 환자분", "previous_tail": "[History taking]", "exact_text": "(손씻기) 안녕하세요, 학생 의사 손유영입니다. 환자분 성함과 나이가 어떻게 되세요? 기다리시느라 고생 많으셨습니다. 지금부터 10분 정도 진료 보려고 하는데, 중간에 궁금한 점 있으시면 편하게 말씀해주세요.", "kind": "recitation"}, {"id": "H03", "section": "History taking", "source_line": 5, "source_row_part": 1, "label": "C.C · 어떤 것 + 자세히(어떤 약, 어떤 경로)", "cue": "오늘 어떤 것 때문에 병원에 오셨나요? 어떤", "previous_tail": "려고 하는데, 중간에 궁금한 점 있으시면 편하게 말씀해주세요.", "exact_text": "오늘 어떤 것 때문에 병원에 오셨나요? -> 어떤 약을 복용하시나요?, 어떤 경로로 약을 처방 받으셨었나요?", "kind": "recitation"}, {"id": "H04", "section": "History taking", "source_line": 6, "source_row_part": 1, "label": "비밀 · 비밀보장", "cue": "앞으로 여쭤볼 내용은 민감한 내용일 수 있지", "previous_tail": "떤 약을 복용하시나요?, 어떤 경로로 약을 처방 받으셨었나요?", "exact_text": "앞으로 여쭤볼 내용은 민감한 내용일 수 있지만 꼭 필요한 질문들입니다. 말씀해주시는 모든 내용은 비밀이 보장되니 걱정하지 말고 편하게 답변해주세요.", "kind": "recitation"}, {"id": "H05", "section": "History taking", "source_line": 7, "source_row_part": 1, "label": "행태 · 언제부터, 상황, 유발 인자", "cue": "언제부터 약을 복용하셨나요? 약 복용을 시작", "previous_tail": "든 내용은 비밀이 보장되니 걱정하지 말고 편하게 답변해주세요.", "exact_text": "언제부터 약을 복용하셨나요? 약 복용을 시작하게 된 계기가 있었나요? 주로 어떤 이유로 약을 복용하시나요?(스트레스, 주변 사람, 습관)", "kind": "recitation"}, {"id": "H06", "section": "History taking", "source_line": 8, "source_row_part": 1, "label": "기간, 빈도, 양, 누구랑", "cue": "약물 사용 기간이 얼마나 되나요?, 얼마나", "previous_tail": "어떤 이유로 약을 복용하시나요?(스트레스, 주변 사람, 습관)", "exact_text": "약물 사용 기간이 얼마나 되나요?, 얼마나 자주 복용하시나요? 한 번 드실 때 얼마나 많이 복용하시나요? 누구랑 복용하시나요?", "kind": "recitation"}, {"id": "H07", "section": "History taking", "source_line": 9, "source_row_part": 1, "label": "중단 계획 및 계기, 이전 중단 시도, 중단 기간, 실패 및 방해요인", "cue": "앞으로 약물 복용 중단하실 계획이 있나요", "previous_tail": " 번 드실 때 얼마나 많이 복용하시나요? 누구랑 복용하시나요?", "exact_text": "앞으로 약물 복용 중단하실 계획이 있나요? 복용 중단을 결심하게 된 계기가 있었나요? 이전에 복용 중단을 시도해본 적이 있나요? 얼마나 오래 복용을 중단하셨나요? 왜 실패하셨다고 생각하시나요? 주로 중단을 방해하는 요소에는 어떤 것들이 있나요?", "kind": "recitation"}, {"id": "H08", "section": "History taking", "source_line": 10, "source_row_part": 1, "label": "의존 · 중독: (개방형)", "cue": "약을 복용했을 때 어떤 효과가 있나요", "previous_tail": "하시나요? 주로 중단을 방해하는 요소에는 어떤 것들이 있나요?", "exact_text": "약을 복용했을 때 어떤 효과가 있나요?", "kind": "recitation"}, {"id": "H09", "section": "History taking", "source_line": 11, "source_row_part": 1, "label": "내성: 양 증가", "cue": "같은 효과를 위해 복용하는 약물 양이 점점", "previous_tail": "약을 복용했을 때 어떤 효과가 있나요?", "exact_text": "같은 효과를 위해 복용하는 약물 양이 점점 더 증가하나요?", "kind": "recitation"}, {"id": "H10", "section": "History taking", "source_line": 12, "source_row_part": 1, "label": "금단 · 금단: (개방형)", "cue": "약을 복용하지 못했을 때 어떤 증상이 있었나", "previous_tail": "같은 효과를 위해 복용하는 약물 양이 점점 더 증가하나요?", "exact_text": "약을 복용하지 못했을 때 어떤 증상이 있었나요? 불안하거나 초조했나요? 잠을 잘 못 주무셨나요? 두근거리거나 식은땀이 났었나요? / 우울하거나 무기력했나요? 평소보다 잠을 많이 주무셨나요? 집중력이 떨어졌나요? / 근육통이 생겼나요? 눈물, 콧물, 하품이 나왔나요? 속이 메스껍고 토를 하거나 설사를 했나요?", "kind": "recitation"}, {"id": "H11", "section": "History taking", "source_line": 12, "source_row_part": 2, "label": "금단 · 금단: (개방형)", "cue": "복용 중단하고 얼마나 지나서 그러셨어요", "previous_tail": " 하품이 나왔나요? 속이 메스껍고 토를 하거나 설사를 했나요?", "exact_text": "복용 중단하고 얼마나 지나서 그러셨어요?", "kind": "recitation"}, {"id": "H12", "section": "History taking", "source_line": 13, "source_row_part": 1, "label": "핵심 개념", "cue": "금단 증상 + 시간 경과 - 진정제: 불안", "previous_tail": "복용 중단하고 얼마나 지나서 그러셨어요?", "exact_text": "금단 증상 + 시간 경과 - 진정제: 불안/초조, 불면, 두근거림/식은땀 - 각성제: 우울/무기력, 과다수면, 집중력 저하 - 아편: 근육통, 눈물/콧물/하품, 구역/구토/설사", "kind": "recitation"}, {"id": "H13", "section": "History taking", "source_line": 14, "source_row_part": 1, "label": "남용 · 역할 수행, 위험 상황, 법적 문제, 대인관계", "cue": "약물로 인해 지각, 결근(과제 제출, 성적", "previous_tail": "력 저하 - 아편: 근육통, 눈물/콧물/하품, 구역/구토/설사", "exact_text": "약물로 인해 지각, 결근(과제 제출, 성적 저하 / 집안일, 육아 방치)을 자주 하시나요? 약물로 인해 위험한 상황이나 다칠 뻔한 상황이 있었나요?, 약물로 인해 법적 문제에 휘말린 적이 있나요? 약물로 인해 대인 관계나 가족 내 갈등이 발생했나요?", "kind": "recitation"}, {"id": "H14", "section": "History taking", "source_line": 15, "source_row_part": 1, "label": "QoL · 일상 생활 지장", "cue": "약물로 인해 일상 생활에 지장이 많이 가나요", "previous_tail": "있나요? 약물로 인해 대인 관계나 가족 내 갈등이 발생했나요?", "exact_text": "약물로 인해 일상 생활에 지장이 많이 가나요?", "kind": "recitation"}, {"id": "H15", "section": "History taking", "source_line": 16, "source_row_part": 1, "label": "★ · 요약", "cue": "요약해보자면 ~~이네요. 맞나요", "previous_tail": "약물로 인해 일상 생활에 지장이 많이 가나요?", "exact_text": "요약해보자면 ~~이네요. 맞나요?", "kind": "recitation"}, {"id": "H16", "section": "History taking", "source_line": 17, "source_row_part": 1, "label": "A\n중독 · (개방형)", "cue": "다른 불편한 증상은 없으신가요", "previous_tail": "요약해보자면 ~~이네요. 맞나요?", "exact_text": "다른 불편한 증상은 없으신가요?", "kind": "recitation"}, {"id": "H17", "section": "History taking", "source_line": 18, "source_row_part": 1, "label": "전신 · 발열, 오한, 피로, 체중 변화, 부종", "cue": "열이 나거나 몸이 으슬으슬 떨리셨나요? 최근", "previous_tail": "다른 불편한 증상은 없으신가요?", "exact_text": "열이 나거나 몸이 으슬으슬 떨리셨나요? 최근 부쩍 피곤하거나 체중 변화가 있었나요?", "kind": "recitation"}, {"id": "H18", "section": "History taking", "source_line": 19, "source_row_part": 1, "label": "신경 · 구음장애, 보행장애, 경련, 의식저하,", "cue": "말이 어눌하거나 걷는게 불편하세요? 경련을", "previous_tail": "으슬 떨리셨나요? 최근 부쩍 피곤하거나 체중 변화가 있었나요?", "exact_text": "말이 어눌하거나 걷는게 불편하세요? 경련을 일으키거나 의식이 떨어진 적 있나요?", "kind": "recitation"}, {"id": "H19", "section": "History taking", "source_line": 20, "source_row_part": 1, "label": "정신 · 우울, 불안, 수면, 기억력/집중력, 환청/망상", "cue": "우울하거나 불안하진 않으세요? 잠을 잘 못", "previous_tail": "는게 불편하세요? 경련을 일으키거나 의식이 떨어진 적 있나요?", "exact_text": "우울하거나 불안하진 않으세요? 잠을 잘 못 주무시나요? 기억력이나 집중력이 떨어지셨나요? 헛것이 보이거나 들리진 않았나요?", "kind": "recitation"}, {"id": "H20", "section": "History taking", "source_line": 21, "source_row_part": 1, "label": "순환/호흡 · 가슴통증, 호흡곤란, 기침, 가래", "cue": "가슴 쪽이 아프세요? 숨이 잘 차거나 숨 쉬", "previous_tail": "이나 집중력이 떨어지셨나요? 헛것이 보이거나 들리진 않았나요?", "exact_text": "가슴 쪽이 아프세요? 숨이 잘 차거나 숨 쉬기 힘드세요? 기침이나 가래 있으세요?", "kind": "recitation"}, {"id": "H21", "section": "History taking", "source_line": 22, "source_row_part": 1, "label": "E · 이전 건강검진 이상 소견", "cue": "이전 건강검진에서 이상 소견 있었나요", "previous_tail": " 숨이 잘 차거나 숨 쉬기 힘드세요? 기침이나 가래 있으세요?", "exact_text": "이전 건강검진에서 이상 소견 있었나요?", "kind": "recitation"}, {"id": "H22", "section": "History taking", "source_line": 23, "source_row_part": 1, "label": "과 · (개방형)", "cue": "기존에 진단 받으신 질환 있으세요", "previous_tail": "이전 건강검진에서 이상 소견 있었나요?", "exact_text": "기존에 진단 받으신 질환 있으세요?", "kind": "recitation"}, {"id": "H23", "section": "History taking", "source_line": 24, "source_row_part": 1, "label": "고혈압, 당뇨, 고지혈증, 간질환, 신질환, 정신과질환", "cue": "고혈압이나 당뇨, 고지혈증 있으세요? 간이나", "previous_tail": "기존에 진단 받으신 질환 있으세요?", "exact_text": "고혈압이나 당뇨, 고지혈증 있으세요? 간이나 콩팥 관련 질환 있으세요? 정신건강의학과 진료 보신 적 있으신가요?", "kind": "recitation"}, {"id": "H24", "section": "History taking", "source_line": 25, "source_row_part": 1, "label": "약 · 복용 중인 약물", "cue": "추가로 드시고 있는 약물 있으세요", "previous_tail": "관련 질환 있으세요? 정신건강의학과 진료 보신 적 있으신가요?", "exact_text": "추가로 드시고 있는 약물 있으세요?", "kind": "recitation"}, {"id": "H25", "section": "History taking", "source_line": 26, "source_row_part": 1, "label": "사 · 직업/스트레스, 흡연, 음주", "cue": "실례지만 직업이 어떻게 되세요? 스트레스를", "previous_tail": "추가로 드시고 있는 약물 있으세요?", "exact_text": "실례지만 직업이 어떻게 되세요? 스트레스를 많이 받으시나요?, 흡연/음주는 하시나요?", "kind": "recitation"}, {"id": "H26", "section": "History taking", "source_line": 27, "source_row_part": 1, "label": "가 · 가족 중 유사 증상, 간질환, 신질환", "cue": "가족 중에서도 약물로 인해 힘들어하셨던 분", "previous_tail": "되세요? 스트레스를 많이 받으시나요?, 흡연/음주는 하시나요?", "exact_text": "가족 중에서도 약물로 인해 힘들어하셨던 분 있으세요? 가족 중 간이나 콩팥 질환 앓으시는 분 있으세요?", "kind": "recitation"}, {"id": "H27", "section": "History taking", "source_line": 28, "source_row_part": 1, "label": "외 · 외상/수술, 입원", "cue": "어디 다치거나, 수술하신 적 있으세요? 입원", "previous_tail": " 있으세요? 가족 중 간이나 콩팥 질환 앓으시는 분 있으세요?", "exact_text": "어디 다치거나, 수술하신 적 있으세요? 입원하신 적 있으세요?", "kind": "recitation"}, {"id": "H28", "section": "History taking", "source_line": 29, "source_row_part": 1, "label": "여 · 월경중/폐경 → 임신가능성", "cue": "실례지만 월경은 하고 계신가요?/폐경 하셨나", "previous_tail": "어디 다치거나, 수술하신 적 있으세요? 입원하신 적 있으세요?", "exact_text": "실례지만 월경은 하고 계신가요?/폐경 하셨나요? 조금 민감한 질문일 수 있지만 꼭 필요한 질문이라 여쭤보겠습니다. 임신 가능성이 있나요?", "kind": "recitation"}, {"id": "H29", "section": "History taking", "source_line": 30, "source_row_part": 1, "label": "★ · 요약", "cue": "힘드셨을텐데 잘 답변해주셔서 감사합니다. 요", "previous_tail": "만 꼭 필요한 질문이라 여쭤보겠습니다. 임신 가능성이 있나요?", "exact_text": "힘드셨을텐데 잘 답변해주셔서 감사합니다. 요약해보자면 ~~이네요. 맞나요?", "kind": "recitation"}, {"id": "K01", "section": "핵심 질환", "source_line": 32, "source_row_part": 1, "label": "핵심 질환 섹션 시작", "cue": "[핵심 질환] ⭐️", "previous_tail": "잘 답변해주셔서 감사합니다. 요약해보자면 ~~이네요. 맞나요?", "exact_text": "[핵심 질환] ⭐️", "kind": "heading"}, {"id": "K02", "section": "핵심 질환", "source_line": 34, "source_row_part": 1, "label": "핵심 질환 이미지", "cue": "핵심 질환 이미지", "previous_tail": "[핵심 질환] ⭐️", "exact_text": "{{upload:hwang_substance_core width=64%}}", "kind": "asset"}, {"id": "K03", "section": "핵심 질환", "source_line": 38, "source_row_part": 1, "label": "페이지 구획 전환", "cue": "--- 페이지 추가 ---", "previous_tail": "d:hwang_substance_core width=64%}}", "exact_text": "--- 페이지 추가 ---", "kind": "separator"}, {"id": "P01", "section": "Physical examination", "source_line": 40, "source_row_part": 1, "label": "Physical examination 섹션 시작", "cue": "[Physical examination] →", "previous_tail": "--- 페이지 추가 ---", "exact_text": "[Physical examination] → 생략 가능", "kind": "heading"}, {"id": "P02", "section": "Physical examination", "source_line": 42, "source_row_part": 1, "label": "★ · 손씻기 + 동의 구하기", "cue": "그럼 이제 신체진찰 진행하려고 하는데 그 과", "previous_tail": "[Physical examination] → 생략 가능", "exact_text": "(손씻기) 그럼 이제 신체진찰 진행하려고 하는데 그 과정에서 신체 접촉 및 노출이 있을 수 있습니다. 진행해도 괜찮을까요?", "kind": "recitation"}, {"id": "P03", "section": "Physical examination", "source_line": 44, "source_row_part": 1, "label": "V/S · 혈압, 맥박수, 호흡수, 체온 / 키, 체중", "cue": "활력징후 확인하겠습니다. 모두 정상인데 ~~", "previous_tail": "신체 접촉 및 노출이 있을 수 있습니다. 진행해도 괜찮을까요?", "exact_text": "활력징후 확인하겠습니다. 모두 정상인데 ~~만 조금 높습니다/낮습니다.", "kind": "recitation"}, {"id": "P04", "section": "Physical examination", "source_line": 45, "source_row_part": 1, "label": "앉아서 · 눈", "cue": "결막 시진(빈혈, 충혈), 공막 시진(황달)", "previous_tail": "확인하겠습니다. 모두 정상인데 ~~만 조금 높습니다/낮습니다.", "exact_text": "결막 시진(빈혈, 충혈), 공막 시진(황달),", "kind": "action"}, {"id": "P05", "section": "Physical examination", "source_line": 46, "source_row_part": 1, "label": "입", "cue": "구강 시진(탈수, 분비물 증가)", "previous_tail": "결막 시진(빈혈, 충혈), 공막 시진(황달),", "exact_text": "구강 시진(탈수, 분비물 증가)", "kind": "action"}, {"id": "P06", "section": "Physical examination", "source_line": 47, "source_row_part": 1, "label": "목", "cue": "갑상선 촉진, 림프절 촉진", "previous_tail": "구강 시진(탈수, 분비물 증가)", "exact_text": "갑상선 촉진, 림프절 촉진", "kind": "action"}, {"id": "P07", "section": "Physical examination", "source_line": 48, "source_row_part": 1, "label": "사지", "cue": "피부 긴장도(탈수), 하지 촉진(부종)", "previous_tail": "갑상선 촉진, 림프절 촉진", "exact_text": "피부 긴장도(탈수), 하지 촉진(부종)", "kind": "action"}, {"id": "P08", "section": "Physical examination", "source_line": 49, "source_row_part": 1, "label": "신경", "cue": "동공크기/반사, 안구운동, 안면감각/운동", "previous_tail": "피부 긴장도(탈수), 하지 촉진(부종)", "exact_text": "동공크기/반사, 안구운동, 안면감각/운동", "kind": "action"}, {"id": "P09", "section": "Physical examination", "source_line": 50, "source_row_part": 1, "label": "신체진찰", "cue": "근긴장도/근력/감각, DTR, 병적반사", "previous_tail": "동공크기/반사, 안구운동, 안면감각/운동", "exact_text": "근긴장도/근력/감각, DTR, 병적반사", "kind": "action"}, {"id": "P10", "section": "Physical examination", "source_line": 51, "source_row_part": 1, "label": "★ · 신체노출 + 불필요한 부분 가리기", "cue": "가슴 진찰 진행 시 상의를 탈의해주셔야 합니", "previous_tail": "근긴장도/근력/감각, DTR, 병적반사", "exact_text": "가슴 진찰 진행 시 상의를 탈의해주셔야 합니다. 괜찮을까요? 진료에 불필요한 부분은 가려드리도록 하겠습니다.", "kind": "recitation"}, {"id": "P11", "section": "Physical examination", "source_line": 52, "source_row_part": 1, "label": "가슴", "cue": "호흡 청진, 심장 청진", "previous_tail": " 괜찮을까요? 진료에 불필요한 부분은 가려드리도록 하겠습니다.", "exact_text": "호흡 청진, 심장 청진", "kind": "action"}, {"id": "P12", "section": "Physical examination", "source_line": 53, "source_row_part": 1, "label": "누워서 · ★ · 신체노출 + 불필요한 부분 가리기", "cue": "복부 진찰 진행 시 상의를 명치까지, 하의를", "previous_tail": "호흡 청진, 심장 청진", "exact_text": "복부 진찰 진행 시 상의를 명치까지, 하의를 골반까지 내려주셔야 합니다. 괜찮을까요? 편하게 누우셔서 다리를 구부리고 있으시면 됩니다. 진료에 불필요한 부분은 가려드리도록 하겠습니다.", "kind": "recitation"}, {"id": "P13", "section": "Physical examination", "source_line": 54, "source_row_part": 1, "label": "복부", "cue": "시진 – 청진 – 타진 – 촉진", "previous_tail": "시면 됩니다. 진료에 불필요한 부분은 가려드리도록 하겠습니다.", "exact_text": "시진 – 청진 – 타진 – 촉진", "kind": "action"}, {"id": "P14", "section": "Physical examination", "source_line": 55, "source_row_part": 1, "label": "★ · 손씻기 + PPI", "cue": "신체진찰 모두 끝났습니다. 도중에 불편한 점", "previous_tail": "시진 – 청진 – 타진 – 촉진", "exact_text": "(손씻기) 신체진찰 모두 끝났습니다. 도중에 불편한 점은 없으셨나요? 자리로 오시면 오늘 진료 내용 다시 정리해서 말씀드리도록 하겠습니다.", "kind": "recitation"}, {"id": "E01", "section": "Education", "source_line": 57, "source_row_part": 1, "label": "Education 섹션 시작", "cue": "[Education]", "previous_tail": "오시면 오늘 진료 내용 다시 정리해서 말씀드리도록 하겠습니다.", "exact_text": "[Education]", "kind": "heading"}, {"id": "E02", "section": "Education", "source_line": 59, "source_row_part": 1, "label": "★", "cue": "진찰 받으시느라 고생 많으셨습니다", "previous_tail": "[Education]", "exact_text": "진찰 받으시느라 고생 많으셨습니다.", "kind": "recitation"}, {"id": "E03", "section": "Education", "source_line": 61, "source_row_part": 1, "label": "진단", "cue": "지금까지의 문진을 종합해 보았을 때, OOO", "previous_tail": "진찰 받으시느라 고생 많으셨습니다.", "exact_text": "지금까지의 문진을 종합해 보았을 때, OOO님께서는 ~~한 것으로 보아 ~~가 의심이 됩니다.", "kind": "recitation"}, {"id": "E04", "section": "Education", "source_line": 62, "source_row_part": 1, "label": "검사", "cue": "하지만 ~~ 증상도 있기 때문에 ~~의 가능", "previous_tail": "때, OOO님께서는 ~~한 것으로 보아 ~~가 의심이 됩니다.", "exact_text": "하지만 ~~ 증상도 있기 때문에 ~~의 가능성도 있습니다. 이에 대해서 추가적으로 ~~를 시행해볼 예정입니다. 괜찮을까요?", "kind": "recitation"}, {"id": "E05", "section": "Education", "source_line": 63, "source_row_part": 1, "label": "장단점 · 단점", "cue": "지금 OOO 님이 ~~~을 필요로 하고 있는", "previous_tail": "에 대해서 추가적으로 ~~를 시행해볼 예정입니다. 괜찮을까요?", "exact_text": "지금 OOO 님이 ~~~을 필요로 하고 있는 상황을 충분히 이해합니다. 하지만 ~~~를 오랜 기간 사용할 경우, 원하는 효과는 보지 못하고 오히려 ~~~하는 부작용이 생길 수 있습니다.", "kind": "recitation"}, {"id": "E06", "section": "Education", "source_line": 64, "source_row_part": 1, "label": "교육 분기/문장", "cue": "~~장점~~", "previous_tail": "는 보지 못하고 오히려 ~~~하는 부작용이 생길 수 있습니다.", "exact_text": "~~장점~~", "kind": "recitation"}, {"id": "E07", "section": "Education", "source_line": 65, "source_row_part": 1, "label": "예후 · 권유", "cue": "이번 기회에 한 번 약물을 끊어 보시는게 어", "previous_tail": "~~장점~~", "exact_text": "이번 기회에 한 번 약물을 끊어 보시는게 어떠신가요? 네, 정말 잘 결정하셨습니다.", "kind": "recitation"}, {"id": "E08", "section": "Education", "source_line": 66, "source_row_part": 1, "label": "교육 분기/문장", "cue": "약이 필요한 이유를 댐: ~~~ 할 상황에", "previous_tail": "물을 끊어 보시는게 어떠신가요? 네, 정말 잘 결정하셨습니다.", "exact_text": "약이 필요한 이유를 댐: ~~~ 할 상황에 대해 걱정하고 계시는군요. 하지만 위에 말씀드렸다시피, 약물을 사용한다면 지금 당장 효과가 있을 수 있을지는 몰라도 점점 효과가 떨어질뿐더러, 오히려 부작용만 심해질 수 있습니다. 대신 약물을 사용하지 않고도 ~~~ 하지 않도록 도와드릴테니 약물을 끊어 보시는게 어떠신가요?", "kind": "recitation"}, {"id": "E09", "section": "Education", "source_line": 67, "source_row_part": 1, "label": "교육 분기/문장", "cue": "금단 증상에 대한 두려움: ~~~ 할 상황에", "previous_tail": "~ 하지 않도록 도와드릴테니 약물을 끊어 보시는게 어떠신가요?", "exact_text": "금단 증상에 대한 두려움: ~~~ 할 상황에 대해 걱정하고 계시는군요. 하지만 이런 금단 증상은 물론 초반엔 많이 힘드시겠지만 결국 시간이 지나면 사라집니다. 대신 이러한 금단 증상을 줄여주는 약을 처방해드릴테니 약물을 끊어 보시는게 어떠신가요?", "kind": "recitation"}, {"id": "E10", "section": "Education", "source_line": 68, "source_row_part": 1, "label": "격려", "cue": "시작이 반이라는 말이 있듯이 오늘 병원에 오", "previous_tail": "줄여주는 약을 처방해드릴테니 약물을 끊어 보시는게 어떠신가요?", "exact_text": "시작이 반이라는 말이 있듯이 오늘 병원에 오신 것만으로도 정말 잘하셨습니다. 약물을 끊을 때에는 혼자 하는 것보다 전문가의 도움을 받는 것이 훨씬 성공률도 높고 힘들기도 덜 힘듭니다. 저도 최선을 다해 도와드리겠습니다.", "kind": "recitation"}, {"id": "E11", "section": "Education", "source_line": 69, "source_row_part": 1, "label": "교육 · 목표", "cue": "약물을 단번에 끊기 보다는 점차 횟수나 양을", "previous_tail": "고 힘들기도 덜 힘듭니다. 저도 최선을 다해 도와드리겠습니다.", "exact_text": "약물을 단번에 끊기 보다는 점차 횟수나 양을 줄이는 목표를 갖는 것이 좋을 것 같습니다.", "kind": "recitation"}, {"id": "E12", "section": "Education", "source_line": 70, "source_row_part": 1, "label": "교육 분기/문장", "cue": "~~날짜~~", "previous_tail": "점차 횟수나 양을 줄이는 목표를 갖는 것이 좋을 것 같습니다.", "exact_text": "~~날짜~~", "kind": "recitation"}, {"id": "E13", "section": "Education", "source_line": 71, "source_row_part": 1, "label": "전략", "cue": "OOO님은 ~~~ 때문에 약물을 사용하고 계", "previous_tail": "~~날짜~~", "exact_text": "OOO님은 ~~~ 때문에 약물을 사용하고 계셨는데요, 약물을 사용하는 대신 ~~를 통해 ~~~를 도울 수 있습니다.", "kind": "recitation"}, {"id": "E14", "section": "Education", "source_line": 72, "source_row_part": 1, "label": "요약", "cue": "여기까지 이해 되셨나요", "previous_tail": "약물을 사용하는 대신 ~~를 통해 ~~~를 도울 수 있습니다.", "exact_text": "여기까지 이해 되셨나요?", "kind": "recitation"}, {"id": "E15", "section": "Education", "source_line": 73, "source_row_part": 1, "label": "치료 · 약물", "cue": "만약 중독 증상이 심하다면 입원하셔서 치료하", "previous_tail": "여기까지 이해 되셨나요?", "exact_text": "만약 중독 증상이 심하다면 입원하셔서 치료하시는 것을 권해드립니다. 해독제를 통해 현재 느끼는 불편한 증상을 완화시킬 수 있고, 길항제나 대체 약물 등으로 서서히 약물의 필요량을 줄이도록 도울 수 있습니다..", "kind": "recitation"}, {"id": "E16", "section": "Education", "source_line": 74, "source_row_part": 1, "label": "교육 분기/문장", "cue": "또 오랜 기간 약물을 복용하면 몸이 이에 익", "previous_tail": " 등으로 서서히 약물의 필요량을 줄이도록 도울 수 있습니다..", "exact_text": "또 오랜 기간 약물을 복용하면 몸이 이에 익숙해져 있어 갑자기 약물을 끊었을 때 금단 증상이 생길 수 있습니다. ~~~ 등의 증상이 타날 수 있습니다. 무척 힘들겠지만 며칠 지나면 점점 사라지기 때문에 너무 걱정하시진 않으셔도 됩니다. 이 시기를 잘 넘길 수 있도록 금단증상을 줄여주는 약도 같이 챙겨드리겠습니다.", "kind": "recitation"}, {"id": "E17", "section": "Education", "source_line": 75, "source_row_part": 1, "label": "★", "cue": "약물을 끊는 게 얼마나 어려운지 잘 알고 있", "previous_tail": "길 수 있도록 금단증상을 줄여주는 약도 같이 챙겨드리겠습니다.", "exact_text": "약물을 끊는 게 얼마나 어려운지 잘 알고 있습니다. 그 과정에서 예상치 못한 어려움이 있을 수 있겠지만 포기하지 마시고 제가 옆에서 OOO님의 성공적인 약물 중단과 건강 회복을 도와드리겠습니다", "kind": "recitation"}, {"id": "E18", "section": "Education", "source_line": 76, "source_row_part": 1, "label": "교육 분기/문장", "cue": "여기까지 궁금한 점 있으신가요? 네, 그러면", "previous_tail": " OOO님의 성공적인 약물 중단과 건강 회복을 도와드리겠습니다", "exact_text": "여기까지 궁금한 점 있으신가요? 네, 그러면 1~2주 뒤에 다시 외래 방문하셔서 그동안 있었던 일들에 대해 말씀 나눠보도록 하겠습니다. 혹시라도 중간에 신체적, 정신적으로 많이 힘드실 때는 언제든 찾아오셔도 좋습니다. 수고 많으셨습니다.", "kind": "recitation"}], "audit": {"source_sha256": "3f27f86e3a94f9e80b0724a3b32785e83e5e87e63f32476ff16ced82b8ba6849", "source_lines": 76, "parsed_content_rows": 63, "mapped_source_rows": 63, "missing_source_row_lines": [], "chunks": 64, "sections": {"History taking": 29, "핵심 질환": 3, "Physical examination": 14, "Education": 18}, "chunk_fragments_not_found_in_normalized_source": [], "pass": true}};</script>
+<script>const DATA={"meta":{"title":"45. 약물 오남용","subtitle":"CPX 통암기 리허설","version":2,"source_sha256":"3f27f86e3a94f9e80b0724a3b32785e83e5e87e63f32476ff16ced82b8ba6849","source_lock":"원문 의미 행 100% 반영"},"sections":[{"id":"history","name":"문진","source_name":"History taking","optional":false},{"id":"core","name":"핵심 질환","source_name":"핵심 질환","optional":false},{"id":"physical","name":"신체진찰","source_name":"Physical examination","optional":true},{"id":"education","name":"설명·교육","source_name":"Education","optional":false}],"chunks":[{"id":"H01","order":1,"section_id":"history","section_name":"문진","section_step":1,"section_total":13,"title":"진료 시작·환자 확인","source_lines":[3],"cue":"(손씻기) 안녕하세요, 학생 의사 손유영입니다.","ending":"지금부터 10분 정도 진료 보려고 하는데, 중간에 궁금한 점 있으시면 편하게 말씀해주세요.","rows":[{"source_line":3,"role":"spoken","context":["★","손씻기 + 자기소개 및 환자 확인 + PPI"],"text":"(손씻기) 안녕하세요, 학생 의사 손유영입니다. 환자분 성함과 나이가 어떻게 되세요? 기다리시느라 고생 많으셨습니다. 지금부터 10분 정도 진료 보려고 하는데, 중간에 궁금한 점 있으시면 편하게 말씀해주세요.","source_plain":"★ | 손씻기 + 자기소개 및 환자 확인 + PPI | (손씻기) 안녕하세요, 학생 의사 손유영입니다. 환자분 성함과 나이가 어떻게 되세요? 기다리시느라 고생 많으셨습니다. 지금부터 10분 정도 진료 보려고 하는데, 중간에 궁금한 점 있으시면 편하게 말씀해주세요."}],"previous":null,"next":{"id":"H02","title":"방문 이유·비밀보장","cue":"오늘 어떤 것 때문에 병원에 오셨나요?"}},{"id":"H02","order":2,"section_id":"history","section_name":"문진","section_step":2,"section_total":13,"title":"방문 이유·비밀보장","source_lines":[5,6],"cue":"오늘 어떤 것 때문에 병원에 오셨나요?","ending":"말씀해주시는 모든 내용은 비밀이 보장되니 걱정하지 말고 편하게 답변해주세요.","rows":[{"source_line":5,"role":"spoken","context":["C.C","어떤 것 + 자세히(어떤 약, 어떤 경로)"],"text":"오늘 어떤 것 때문에 병원에 오셨나요? -> 어떤 약을 복용하시나요?, 어떤 경로로 약을 처방 받으셨었나요?","source_plain":"C.C | 어떤 것 + 자세히(어떤 약, 어떤 경로) | 오늘 어떤 것 때문에 병원에 오셨나요? -> 어떤 약을 복용하시나요?, 어떤 경로로 약을 처방 받으셨었나요?"},{"source_line":6,"role":"spoken","context":["비밀","비밀보장"],"text":"앞으로 여쭤볼 내용은 민감한 내용일 수 있지만 꼭 필요한 질문들입니다. 말씀해주시는 모든 내용은 비밀이 보장되니 걱정하지 말고 편하게 답변해주세요.","source_plain":"비밀 | 비밀보장 | 앞으로 여쭤볼 내용은 민감한 내용일 수 있지만 꼭 필요한 질문들입니다. 말씀해주시는 모든 내용은 비밀이 보장되니 걱정하지 말고 편하게 답변해주세요."}],"previous":{"id":"H01","title":"진료 시작·환자 확인","ending":"지금부터 10분 정도 진료 보려고 하는데, 중간에 궁금한 점 있으시면 편하게 말씀해주세요."},"next":{"id":"H03","title":"사용 양상","cue":"언제부터 약을 복용하셨나요?"}},{"id":"H03","order":3,"section_id":"history","section_name":"문진","section_step":3,"section_total":13,"title":"사용 양상","source_lines":[7,8],"cue":"언제부터 약을 복용하셨나요?","ending":"누구랑 복용하시나요?","rows":[{"source_line":7,"role":"spoken","context":["행태","언제부터, 상황, 유발 인자"],"text":"언제부터 약을 복용하셨나요? 약 복용을 시작하게 된 계기가 있었나요? 주로 어떤 이유로 약을 복용하시나요?(스트레스, 주변 사람, 습관)","source_plain":"행태 | 언제부터, 상황, 유발 인자 | 언제부터 약을 복용하셨나요? 약 복용을 시작하게 된 계기가 있었나요? 주로 어떤 이유로 약을 복용하시나요?(스트레스, 주변 사람, 습관)"},{"source_line":8,"role":"spoken","context":["기간, 빈도, 양, 누구랑"],"text":"약물 사용 기간이 얼마나 되나요?, 얼마나 자주 복용하시나요? 한 번 드실 때 얼마나 많이 복용하시나요? 누구랑 복용하시나요?","source_plain":"기간, 빈도, 양, 누구랑 | 약물 사용 기간이 얼마나 되나요?, 얼마나 자주 복용하시나요? 한 번 드실 때 얼마나 많이 복용하시나요? 누구랑 복용하시나요?"}],"previous":{"id":"H02","title":"방문 이유·비밀보장","ending":"말씀해주시는 모든 내용은 비밀이 보장되니 걱정하지 말고 편하게 답변해주세요."},"next":{"id":"H04","title":"중단 계획·이전 시도","cue":"앞으로 약물 복용 중단하실 계획이 있나요?"}},{"id":"H04","order":4,"section_id":"history","section_name":"문진","section_step":4,"section_total":13,"title":"중단 계획·이전 시도","source_lines":[9],"cue":"앞으로 약물 복용 중단하실 계획이 있나요?","ending":"주로 중단을 방해하는 요소에는 어떤 것들이 있나요?","rows":[{"source_line":9,"role":"spoken","context":["중단 계획 및 계기, 이전 중단 시도, 중단 기간, 실패 및 방해요인"],"text":"앞으로 약물 복용 중단하실 계획이 있나요? 복용 중단을 결심하게 된 계기가 있었나요? 이전에 복용 중단을 시도해본 적이 있나요? 얼마나 오래 복용을 중단하셨나요? 왜 실패하셨다고 생각하시나요? 주로 중단을 방해하는 요소에는 어떤 것들이 있나요?","source_plain":"중단 계획 및 계기, 이전 중단 시도, 중단 기간, 실패 및 방해요인 | 앞으로 약물 복용 중단하실 계획이 있나요? 복용 중단을 결심하게 된 계기가 있었나요? 이전에 복용 중단을 시도해본 적이 있나요? 얼마나 오래 복용을 중단하셨나요? 왜 실패하셨다고 생각하시나요? 주로 중단을 방해하는 요소에는 어떤 것들이 있나요?"}],"previous":{"id":"H03","title":"사용 양상","ending":"누구랑 복용하시나요?"},"next":{"id":"H05","title":"효과·내성","cue":"약을 복용했을 때 어떤 효과가 있나요?"}},{"id":"H05","order":5,"section_id":"history","section_name":"문진","section_step":5,"section_total":13,"title":"효과·내성","source_lines":[10,11],"cue":"약을 복용했을 때 어떤 효과가 있나요?","ending":"같은 효과를 위해 복용하는 약물 양이 점점 더 증가하나요?","rows":[{"source_line":10,"role":"spoken","context":["의존","중독: (개방형)"],"text":"약을 복용했을 때 어떤 효과가 있나요?","source_plain":"의존 | 중독: (개방형) | 약을 복용했을 때 어떤 효과가 있나요?"},{"source_line":11,"role":"spoken","context":["내성: 양 증가"],"text":"같은 효과를 위해 복용하는 약물 양이 점점 더 증가하나요?","source_plain":"내성: 양 증가 | 같은 효과를 위해 복용하는 약물 양이 점점 더 증가하나요?"}],"previous":{"id":"H04","title":"중단 계획·이전 시도","ending":"주로 중단을 방해하는 요소에는 어떤 것들이 있나요?"},"next":{"id":"H06","title":"금단 증상 질문","cue":"약을 복용하지 못했을 때 어떤 증상이 있었나요?"}},{"id":"H06","order":6,"section_id":"history","section_name":"문진","section_step":6,"section_total":13,"title":"금단 증상 질문","source_lines":[12],"cue":"약을 복용하지 못했을 때 어떤 증상이 있었나요?","ending":"복용 중단하고 얼마나 지나서 그러셨어요?","rows":[{"source_line":12,"role":"spoken","context":["금단","금단: (개방형)"],"text":"약을 복용하지 못했을 때 어떤 증상이 있었나요? 불안하거나 초조했나요? 잠을 잘 못 주무셨나요? 두근거리거나 식은땀이 났었나요? / 우울하거나 무기력했나요? 평소보다 잠을 많이 주무셨나요? 집중력이 떨어졌나요? / 근육통이 생겼나요? 눈물, 콧물, 하품이 나왔나요? 속이 메스껍고 토를 하거나 설사를 했나요? 복용 중단하고 얼마나 지나서 그러셨어요?","source_plain":"금단 | 금단: (개방형) | 약을 복용하지 못했을 때 어떤 증상이 있었나요? 불안하거나 초조했나요? 잠을 잘 못 주무셨나요? 두근거리거나 식은땀이 났었나요? / 우울하거나 무기력했나요? 평소보다 잠을 많이 주무셨나요? 집중력이 떨어졌나요? / 근육통이 생겼나요? 눈물, 콧물, 하품이 나왔나요? 속이 메스껍고 토를 하거나 설사를 했나요? 복용 중단하고 얼마나 지나서 그러셨어요?"}],"previous":{"id":"H05","title":"효과·내성","ending":"같은 효과를 위해 복용하는 약물 양이 점점 더 증가하나요?"},"next":{"id":"H07","title":"금단 증상 암기표","cue":"금단 증상 + 시간 경과 - 진정제: 불안/초조, 불면, 두근거림/식은땀 - 각성제: 우울/무기력, 과다수면, 집중력 저하 - 아편: 근육통, 눈물/콧물/하품, 구역/구토/설사"}},{"id":"H07","order":7,"section_id":"history","section_name":"문진","section_step":7,"section_total":13,"title":"금단 증상 암기표","source_lines":[13],"cue":"금단 증상 + 시간 경과 - 진정제: 불안/초조, 불면, 두근거림/식은땀 - 각성제: 우울/무기력, 과다수면, 집중력 저하 - 아편: 근육통, 눈물/콧물/하품, 구역/구토/설사","ending":"금단 증상 + 시간 경과 - 진정제: 불안/초조, 불면, 두근거림/식은땀 - 각성제: 우울/무기력, 과다수면, 집중력 저하 - 아편: 근육통, 눈물/콧물/하품, 구역/구토/설사","rows":[{"source_line":13,"role":"concept","context":[],"text":"금단 증상 + 시간 경과\n- 진정제: 불안/초조, 불면, 두근거림/식은땀\n- 각성제: 우울/무기력, 과다수면, 집중력 저하\n- 아편: 근육통, 눈물/콧물/하품, 구역/구토/설사","source_plain":"금단 증상 + 시간 경과\n- 진정제: 불안/초조, 불면, 두근거림/식은땀\n- 각성제: 우울/무기력, 과다수면, 집중력 저하\n- 아편: 근육통, 눈물/콧물/하품, 구역/구토/설사"}],"previous":{"id":"H06","title":"금단 증상 질문","ending":"복용 중단하고 얼마나 지나서 그러셨어요?"},"next":{"id":"H08","title":"남용·일상 영향·중간 요약","cue":"약물로 인해 지각, 결근(과제 제출, 성적 저하 / 집안일, 육아 방치)을 자주 하시나요?"}},{"id":"H08","order":8,"section_id":"history","section_name":"문진","section_step":8,"section_total":13,"title":"남용·일상 영향·중간 요약","source_lines":[14,15,16],"cue":"약물로 인해 지각, 결근(과제 제출, 성적 저하 / 집안일, 육아 방치)을 자주 하시나요?","ending":"맞나요?","rows":[{"source_line":14,"role":"spoken","context":["남용","역할 수행, 위험 상황, 법적 문제, 대인관계"],"text":"약물로 인해 지각, 결근(과제 제출, 성적 저하 / 집안일, 육아 방치)을 자주 하시나요?\n약물로 인해 위험한 상황이나 다칠 뻔한 상황이 있었나요?, 약물로 인해 법적 문제에 휘말린 적이 있나요? 약물로 인해 대인 관계나 가족 내 갈등이 발생했나요?","source_plain":"남용 | 역할 수행, 위험 상황, 법적 문제, 대인관계 | 약물로 인해 지각, 결근(과제 제출, 성적 저하 / 집안일, 육아 방치)을 자주 하시나요?\n약물로 인해 위험한 상황이나 다칠 뻔한 상황이 있었나요?, 약물로 인해 법적 문제에 휘말린 적이 있나요? 약물로 인해 대인 관계나 가족 내 갈등이 발생했나요?"},{"source_line":15,"role":"spoken","context":["QoL","일상 생활 지장"],"text":"약물로 인해 일상 생활에 지장이 많이 가나요?","source_plain":"QoL | 일상 생활 지장 | 약물로 인해 일상 생활에 지장이 많이 가나요?"},{"source_line":16,"role":"spoken","context":["★","요약"],"text":"요약해보자면 ~~이네요. 맞나요?","source_plain":"★ | 요약 | 요약해보자면 ~~이네요. 맞나요?"}],"previous":{"id":"H07","title":"금단 증상 암기표","ending":"금단 증상 + 시간 경과 - 진정제: 불안/초조, 불면, 두근거림/식은땀 - 각성제: 우울/무기력, 과다수면, 집중력 저하 - 아편: 근육통, 눈물/콧물/하품, 구역/구토/설사"},"next":{"id":"H09","title":"동반 증상 ① 전신","cue":"다른 불편한 증상은 없으신가요?"}},{"id":"H09","order":9,"section_id":"history","section_name":"문진","section_step":9,"section_total":13,"title":"동반 증상 ① 전신","source_lines":[17,18],"cue":"다른 불편한 증상은 없으신가요?","ending":"최근 부쩍 피곤하거나 체중 변화가 있었나요?","rows":[{"source_line":17,"role":"spoken","context":["A\n중독","(개방형)"],"text":"다른 불편한 증상은 없으신가요?","source_plain":"A\n중독 | (개방형) | 다른 불편한 증상은 없으신가요?"},{"source_line":18,"role":"spoken","context":["전신","발열, 오한, 피로, 체중 변화, 부종"],"text":"열이 나거나 몸이 으슬으슬 떨리셨나요? 최근 부쩍 피곤하거나 체중 변화가 있었나요?","source_plain":"전신 | 발열, 오한, 피로, 체중 변화, 부종 | 열이 나거나 몸이 으슬으슬 떨리셨나요? 최근 부쩍 피곤하거나 체중 변화가 있었나요?"}],"previous":{"id":"H08","title":"남용·일상 영향·중간 요약","ending":"맞나요?"},"next":{"id":"H10","title":"동반 증상 ② 신경·정신·심폐","cue":"말이 어눌하거나 걷는게 불편하세요?"}},{"id":"H10","order":10,"section_id":"history","section_name":"문진","section_step":10,"section_total":13,"title":"동반 증상 ② 신경·정신·심폐","source_lines":[19,20,21],"cue":"말이 어눌하거나 걷는게 불편하세요?","ending":"기침이나 가래 있으세요?","rows":[{"source_line":19,"role":"spoken","context":["신경","구음장애, 보행장애, 경련, 의식저하,"],"text":"말이 어눌하거나 걷는게 불편하세요? 경련을 일으키거나 의식이 떨어진 적 있나요?","source_plain":"신경 | 구음장애, 보행장애, 경련, 의식저하, | 말이 어눌하거나 걷는게 불편하세요? 경련을 일으키거나 의식이 떨어진 적 있나요?"},{"source_line":20,"role":"spoken","context":["정신","우울, 불안, 수면, 기억력/집중력, 환청/망상"],"text":"우울하거나 불안하진 않으세요? 잠을 잘 못 주무시나요? 기억력이나 집중력이 떨어지셨나요? 헛것이 보이거나 들리진 않았나요?","source_plain":"정신 | 우울, 불안, 수면, 기억력/집중력, 환청/망상 | 우울하거나 불안하진 않으세요? 잠을 잘 못 주무시나요? 기억력이나 집중력이 떨어지셨나요? 헛것이 보이거나 들리진 않았나요?"},{"source_line":21,"role":"spoken","context":["순환/호흡","가슴통증, 호흡곤란, 기침, 가래"],"text":"가슴 쪽이 아프세요? 숨이 잘 차거나 숨 쉬기 힘드세요? 기침이나 가래 있으세요?","source_plain":"순환/호흡 | 가슴통증, 호흡곤란, 기침, 가래 | 가슴 쪽이 아프세요? 숨이 잘 차거나 숨 쉬기 힘드세요? 기침이나 가래 있으세요?"}],"previous":{"id":"H09","title":"동반 증상 ① 전신","ending":"최근 부쩍 피곤하거나 체중 변화가 있었나요?"},"next":{"id":"H11","title":"건강검진·과거력","cue":"이전 건강검진에서 이상 소견 있었나요?"}},{"id":"H11","order":11,"section_id":"history","section_name":"문진","section_step":11,"section_total":13,"title":"건강검진·과거력","source_lines":[22,23,24],"cue":"이전 건강검진에서 이상 소견 있었나요?","ending":"정신건강의학과 진료 보신 적 있으신가요?","rows":[{"source_line":22,"role":"spoken","context":["E","이전 건강검진 이상 소견"],"text":"이전 건강검진에서 이상 소견 있었나요?","source_plain":"E | 이전 건강검진 이상 소견 | 이전 건강검진에서 이상 소견 있었나요?"},{"source_line":23,"role":"spoken","context":["과","(개방형)"],"text":"기존에 진단 받으신 질환 있으세요?","source_plain":"과 | (개방형) | 기존에 진단 받으신 질환 있으세요?"},{"source_line":24,"role":"spoken","context":["고혈압, 당뇨, 고지혈증, 간질환, 신질환, 정신과질환"],"text":"고혈압이나 당뇨, 고지혈증 있으세요? 간이나 콩팥 관련 질환 있으세요? 정신건강의학과 진료 보신 적 있으신가요?","source_plain":"고혈압, 당뇨, 고지혈증, 간질환, 신질환, 정신과질환 | 고혈압이나 당뇨, 고지혈증 있으세요? 간이나 콩팥 관련 질환 있으세요? 정신건강의학과 진료 보신 적 있으신가요?"}],"previous":{"id":"H10","title":"동반 증상 ② 신경·정신·심폐","ending":"기침이나 가래 있으세요?"},"next":{"id":"H12","title":"약물·사회력·가족력","cue":"추가로 드시고 있는 약물 있으세요?"}},{"id":"H12","order":12,"section_id":"history","section_name":"문진","section_step":12,"section_total":13,"title":"약물·사회력·가족력","source_lines":[25,26,27],"cue":"추가로 드시고 있는 약물 있으세요?","ending":"가족 중 간이나 콩팥 질환 앓으시는 분 있으세요?","rows":[{"source_line":25,"role":"spoken","context":["약","복용 중인 약물"],"text":"추가로 드시고 있는 약물 있으세요?","source_plain":"약 | 복용 중인 약물 | 추가로 드시고 있는 약물 있으세요?"},{"source_line":26,"role":"spoken","context":["사","직업/스트레스, 흡연, 음주"],"text":"실례지만 직업이 어떻게 되세요? 스트레스를 많이 받으시나요?, 흡연/음주는 하시나요?","source_plain":"사 | 직업/스트레스, 흡연, 음주 | 실례지만 직업이 어떻게 되세요? 스트레스를 많이 받으시나요?, 흡연/음주는 하시나요?"},{"source_line":27,"role":"spoken","context":["가","가족 중 유사 증상, 간질환, 신질환"],"text":"가족 중에서도 약물로 인해 힘들어하셨던 분 있으세요? 가족 중 간이나 콩팥 질환 앓으시는 분 있으세요?","source_plain":"가 | 가족 중 유사 증상, 간질환, 신질환 | 가족 중에서도 약물로 인해 힘들어하셨던 분 있으세요? 가족 중 간이나 콩팥 질환 앓으시는 분 있으세요?"}],"previous":{"id":"H11","title":"건강검진·과거력","ending":"정신건강의학과 진료 보신 적 있으신가요?"},"next":{"id":"H13","title":"외상·여성력·문진 마무리","cue":"어디 다치거나, 수술하신 적 있으세요?"}},{"id":"H13","order":13,"section_id":"history","section_name":"문진","section_step":13,"section_total":13,"title":"외상·여성력·문진 마무리","source_lines":[28,29,30],"cue":"어디 다치거나, 수술하신 적 있으세요?","ending":"맞나요?","rows":[{"source_line":28,"role":"spoken","context":["외","외상/수술, 입원"],"text":"어디 다치거나, 수술하신 적 있으세요? 입원하신 적 있으세요?","source_plain":"외 | 외상/수술, 입원 | 어디 다치거나, 수술하신 적 있으세요? 입원하신 적 있으세요?"},{"source_line":29,"role":"spoken","context":["여","월경중/폐경 → 임신가능성"],"text":"실례지만 월경은 하고 계신가요?/폐경 하셨나요? 조금 민감한 질문일 수 있지만 꼭 필요한 질문이라 여쭤보겠습니다. 임신 가능성이 있나요?","source_plain":"여 | 월경중/폐경 → 임신가능성 | 실례지만 월경은 하고 계신가요?/폐경 하셨나요? 조금 민감한 질문일 수 있지만 꼭 필요한 질문이라 여쭤보겠습니다. 임신 가능성이 있나요?"},{"source_line":30,"role":"spoken","context":["★","요약"],"text":"힘드셨을텐데 잘 답변해주셔서 감사합니다. 요약해보자면 ~~이네요. 맞나요?","source_plain":"★ | 요약 | 힘드셨을텐데 잘 답변해주셔서 감사합니다. 요약해보자면 ~~이네요. 맞나요?"}],"previous":{"id":"H12","title":"약물·사회력·가족력","ending":"가족 중 간이나 콩팥 질환 앓으시는 분 있으세요?"},"next":{"id":"K01","title":"핵심 질환 분류","cue":"- 물질 사용장애: 물질 의존, 물질 남용 - 물질 관련 상태: 물질 중독, 물질 금단"}},{"id":"K01","order":14,"section_id":"core","section_name":"핵심 질환","section_step":1,"section_total":1,"title":"핵심 질환 분류","source_lines":[34,36],"cue":"- 물질 사용장애: 물질 의존, 물질 남용 - 물질 관련 상태: 물질 중독, 물질 금단","ending":"- 물질 사용장애: 물질 의존, 물질 남용 - 물질 관련 상태: 물질 중독, 물질 금단","rows":[{"source_line":34,"role":"asset","context":["원문 업로드 이미지"],"text":"물질 오남용 핵심질환 도식","source_plain":"{{upload:hwang_substance_core width=64%}}"},{"source_line":36,"role":"concept","context":[],"text":"- 물질 사용장애: 물질 의존, 물질 남용\n- 물질 관련 상태: 물질 중독, 물질 금단","source_plain":"- 물질 사용장애: 물질 의존, 물질 남용\n- 물질 관련 상태: 물질 중독, 물질 금단"}],"previous":{"id":"H13","title":"외상·여성력·문진 마무리","ending":"맞나요?"},"next":{"id":"P01","title":"신체진찰 동의","cue":"(손씻기) 그럼 이제 신체진찰 진행하려고 하는데 그 과정에서 신체 접촉 및 노출이 있을 수 있습니다."}},{"id":"P01","order":15,"section_id":"physical","section_name":"신체진찰","section_step":1,"section_total":6,"title":"신체진찰 동의","source_lines":[42],"cue":"(손씻기) 그럼 이제 신체진찰 진행하려고 하는데 그 과정에서 신체 접촉 및 노출이 있을 수 있습니다.","ending":"진행해도 괜찮을까요?","rows":[{"source_line":42,"role":"spoken","context":["★","손씻기 + 동의 구하기"],"text":"(손씻기) 그럼 이제 신체진찰 진행하려고 하는데 그 과정에서 신체 접촉 및 노출이 있을 수 있습니다. 진행해도 괜찮을까요?","source_plain":"★ | 손씻기 + 동의 구하기 | (손씻기) 그럼 이제 신체진찰 진행하려고 하는데 그 과정에서 신체 접촉 및 노출이 있을 수 있습니다. 진행해도 괜찮을까요?"}],"previous":{"id":"K01","title":"핵심 질환 분류","ending":"- 물질 사용장애: 물질 의존, 물질 남용 - 물질 관련 상태: 물질 중독, 물질 금단"},"next":{"id":"P02","title":"활력징후·기본 진찰","cue":"활력징후 확인하겠습니다."}},{"id":"P02","order":16,"section_id":"physical","section_name":"신체진찰","section_step":2,"section_total":6,"title":"활력징후·기본 진찰","source_lines":[44,45,46,47,48],"cue":"활력징후 확인하겠습니다.","ending":"피부 긴장도(탈수), 하지 촉진(부종)","rows":[{"source_line":44,"role":"spoken","context":["V/S","혈압, 맥박수, 호흡수, 체온 / 키, 체중"],"text":"활력징후 확인하겠습니다. 모두 정상인데 ~~만 조금 높습니다/낮습니다.","source_plain":"V/S | 혈압, 맥박수, 호흡수, 체온 / 키, 체중 | 활력징후 확인하겠습니다. 모두 정상인데 ~~만 조금 높습니다/낮습니다."},{"source_line":45,"role":"action","context":["앉아서","눈"],"text":"결막 시진(빈혈, 충혈), 공막 시진(황달),","source_plain":"앉아서 | 눈 | 결막 시진(빈혈, 충혈), 공막 시진(황달),"},{"source_line":46,"role":"action","context":["입"],"text":"구강 시진(탈수, 분비물 증가)","source_plain":"입 | 구강 시진(탈수, 분비물 증가)"},{"source_line":47,"role":"action","context":["목"],"text":"갑상선 촉진, 림프절 촉진","source_plain":"목 | 갑상선 촉진, 림프절 촉진"},{"source_line":48,"role":"action","context":["사지"],"text":"피부 긴장도(탈수), 하지 촉진(부종)","source_plain":"사지 | 피부 긴장도(탈수), 하지 촉진(부종)"}],"previous":{"id":"P01","title":"신체진찰 동의","ending":"진행해도 괜찮을까요?"},"next":{"id":"P03","title":"신경진찰","cue":"동공크기/반사, 안구운동, 안면감각/운동"}},{"id":"P03","order":17,"section_id":"physical","section_name":"신체진찰","section_step":3,"section_total":6,"title":"신경진찰","source_lines":[49,50],"cue":"동공크기/반사, 안구운동, 안면감각/운동","ending":"근긴장도/근력/감각, DTR, 병적반사","rows":[{"source_line":49,"role":"action","context":["신경"],"text":"동공크기/반사, 안구운동, 안면감각/운동","source_plain":"신경 | 동공크기/반사, 안구운동, 안면감각/운동"},{"source_line":50,"role":"action","context":[],"text":"근긴장도/근력/감각, DTR, 병적반사","source_plain":"근긴장도/근력/감각, DTR, 병적반사"}],"previous":{"id":"P02","title":"활력징후·기본 진찰","ending":"피부 긴장도(탈수), 하지 촉진(부종)"},"next":{"id":"P04","title":"가슴 진찰","cue":"가슴 진찰 진행 시 상의를 탈의해주셔야 합니다."}},{"id":"P04","order":18,"section_id":"physical","section_name":"신체진찰","section_step":4,"section_total":6,"title":"가슴 진찰","source_lines":[51,52],"cue":"가슴 진찰 진행 시 상의를 탈의해주셔야 합니다.","ending":"호흡 청진, 심장 청진","rows":[{"source_line":51,"role":"spoken","context":["★","신체노출 + 불필요한 부분 가리기"],"text":"가슴 진찰 진행 시 상의를 탈의해주셔야 합니다. 괜찮을까요? 진료에 불필요한 부분은 가려드리도록 하겠습니다.","source_plain":"★ | 신체노출 + 불필요한 부분 가리기 | 가슴 진찰 진행 시 상의를 탈의해주셔야 합니다. 괜찮을까요? 진료에 불필요한 부분은 가려드리도록 하겠습니다."},{"source_line":52,"role":"action","context":["가슴"],"text":"호흡 청진, 심장 청진","source_plain":"가슴 | 호흡 청진, 심장 청진"}],"previous":{"id":"P03","title":"신경진찰","ending":"근긴장도/근력/감각, DTR, 병적반사"},"next":{"id":"P05","title":"복부 진찰","cue":"복부 진찰 진행 시 상의를 명치까지, 하의를 골반까지 내려주셔야 합니다."}},{"id":"P05","order":19,"section_id":"physical","section_name":"신체진찰","section_step":5,"section_total":6,"title":"복부 진찰","source_lines":[53,54],"cue":"복부 진찰 진행 시 상의를 명치까지, 하의를 골반까지 내려주셔야 합니다.","ending":"시진 – 청진 – 타진 – 촉진","rows":[{"source_line":53,"role":"spoken","context":["누워서","★","신체노출 + 불필요한 부분 가리기"],"text":"복부 진찰 진행 시 상의를 명치까지, 하의를 골반까지 내려주셔야 합니다. 괜찮을까요? 편하게 누우셔서 다리를 구부리고 있으시면 됩니다. 진료에 불필요한 부분은 가려드리도록 하겠습니다.","source_plain":"누워서 | ★ | 신체노출 + 불필요한 부분 가리기 | 복부 진찰 진행 시 상의를 명치까지, 하의를 골반까지 내려주셔야 합니다. 괜찮을까요? 편하게 누우셔서 다리를 구부리고 있으시면 됩니다. 진료에 불필요한 부분은 가려드리도록 하겠습니다."},{"source_line":54,"role":"action","context":["복부"],"text":"시진 – 청진 – 타진 – 촉진","source_plain":"복부 | 시진 – 청진 – 타진 – 촉진"}],"previous":{"id":"P04","title":"가슴 진찰","ending":"호흡 청진, 심장 청진"},"next":{"id":"P06","title":"신체진찰 마무리","cue":"(손씻기) 신체진찰 모두 끝났습니다."}},{"id":"P06","order":20,"section_id":"physical","section_name":"신체진찰","section_step":6,"section_total":6,"title":"신체진찰 마무리","source_lines":[55],"cue":"(손씻기) 신체진찰 모두 끝났습니다.","ending":"자리로 오시면 오늘 진료 내용 다시 정리해서 말씀드리도록 하겠습니다.","rows":[{"source_line":55,"role":"spoken","context":["★","손씻기 + PPI"],"text":"(손씻기) 신체진찰 모두 끝났습니다. 도중에 불편한 점은 없으셨나요? 자리로 오시면 오늘 진료 내용 다시 정리해서 말씀드리도록 하겠습니다.","source_plain":"★ | 손씻기 + PPI | (손씻기) 신체진찰 모두 끝났습니다. 도중에 불편한 점은 없으셨나요? 자리로 오시면 오늘 진료 내용 다시 정리해서 말씀드리도록 하겠습니다."}],"previous":{"id":"P05","title":"복부 진찰","ending":"시진 – 청진 – 타진 – 촉진"},"next":{"id":"E01","title":"교육 시작","cue":"진찰 받으시느라 고생 많으셨습니다."}},{"id":"E01","order":21,"section_id":"education","section_name":"설명·교육","section_step":1,"section_total":9,"title":"교육 시작","source_lines":[59],"cue":"진찰 받으시느라 고생 많으셨습니다.","ending":"진찰 받으시느라 고생 많으셨습니다.","rows":[{"source_line":59,"role":"spoken","context":["★"],"text":"진찰 받으시느라 고생 많으셨습니다.","source_plain":"★ | 진찰 받으시느라 고생 많으셨습니다."}],"previous":{"id":"P06","title":"신체진찰 마무리","ending":"자리로 오시면 오늘 진료 내용 다시 정리해서 말씀드리도록 하겠습니다."},"next":{"id":"E02","title":"진단·추가 검사","cue":"지금까지의 문진을 종합해 보았을 때, OOO님께서는 ~~한 것으로 보아 ~~가 의심이 됩니다."}},{"id":"E02","order":22,"section_id":"education","section_name":"설명·교육","section_step":2,"section_total":9,"title":"진단·추가 검사","source_lines":[61,62],"cue":"지금까지의 문진을 종합해 보았을 때, OOO님께서는 ~~한 것으로 보아 ~~가 의심이 됩니다.","ending":"괜찮을까요?","rows":[{"source_line":61,"role":"spoken","context":["진단"],"text":"지금까지의 문진을 종합해 보았을 때, OOO님께서는 ~~한 것으로 보아 ~~가 의심이 됩니다.","source_plain":"진단 | 지금까지의 문진을 종합해 보았을 때, OOO님께서는 ~~한 것으로 보아 ~~가 의심이 됩니다."},{"source_line":62,"role":"spoken","context":["검사"],"text":"하지만 ~~ 증상도 있기 때문에 ~~의 가능성도 있습니다. 이에 대해서 추가적으로 ~~를 시행해볼 예정입니다. 괜찮을까요?","source_plain":"검사 | 하지만 ~~ 증상도 있기 때문에 ~~의 가능성도 있습니다. 이에 대해서 추가적으로 ~~를 시행해볼 예정입니다. 괜찮을까요?"}],"previous":{"id":"E01","title":"교육 시작","ending":"진찰 받으시느라 고생 많으셨습니다."},"next":{"id":"E03","title":"장단점 설명","cue":"지금 OOO 님이 ~~~을 필요로 하고 있는 상황을 충분히 이해합니다."}},{"id":"E03","order":23,"section_id":"education","section_name":"설명·교육","section_step":3,"section_total":9,"title":"장단점 설명","source_lines":[63,64],"cue":"지금 OOO 님이 ~~~을 필요로 하고 있는 상황을 충분히 이해합니다.","ending":"~~장점~~","rows":[{"source_line":63,"role":"spoken","context":["장단점","단점"],"text":"지금 OOO 님이 ~~~을 필요로 하고 있는 상황을 충분히 이해합니다. 하지만 ~~~를 오랜 기간 사용할 경우, 원하는 효과는 보지 못하고 오히려 ~~~하는 부작용이 생길 수 있습니다.","source_plain":"장단점 | 단점 | 지금 OOO 님이 ~~~을 필요로 하고 있는 상황을 충분히 이해합니다. 하지만 ~~~를 오랜 기간 사용할 경우, 원하는 효과는 보지 못하고 오히려 ~~~하는 부작용이 생길 수 있습니다."},{"source_line":64,"role":"placeholder","context":[],"text":"~~장점~~","source_plain":"~~장점~~"}],"previous":{"id":"E02","title":"진단·추가 검사","ending":"괜찮을까요?"},"next":{"id":"E04","title":"중단 권유","cue":"이번 기회에 한 번 약물을 끊어 보시는게 어떠신가요?"}},{"id":"E04","order":24,"section_id":"education","section_name":"설명·교육","section_step":4,"section_total":9,"title":"중단 권유","source_lines":[65],"cue":"이번 기회에 한 번 약물을 끊어 보시는게 어떠신가요?","ending":"네, 정말 잘 결정하셨습니다.","rows":[{"source_line":65,"role":"spoken","context":["예후","권유"],"text":"이번 기회에 한 번 약물을 끊어 보시는게 어떠신가요? 네, 정말 잘 결정하셨습니다.","source_plain":"예후 | 권유 | 이번 기회에 한 번 약물을 끊어 보시는게 어떠신가요? 네, 정말 잘 결정하셨습니다."}],"previous":{"id":"E03","title":"장단점 설명","ending":"~~장점~~"},"next":{"id":"E05","title":"거절 대응 ① 약이 필요한 이유","cue":"약이 필요한 이유를 댐: ~~~ 할 상황에 대해 걱정하고 계시는군요."}},{"id":"E05","order":25,"section_id":"education","section_name":"설명·교육","section_step":5,"section_total":9,"title":"거절 대응 ① 약이 필요한 이유","source_lines":[66],"cue":"약이 필요한 이유를 댐: ~~~ 할 상황에 대해 걱정하고 계시는군요.","ending":"대신 약물을 사용하지 않고도 ~~~ 하지 않도록 도와드릴테니 약물을 끊어 보시는게 어떠신가요?","rows":[{"source_line":66,"role":"spoken","context":[],"text":"약이 필요한 이유를 댐: ~~~ 할 상황에 대해 걱정하고 계시는군요. 하지만 위에 말씀드렸다시피, 약물을 사용한다면 지금 당장 효과가 있을 수 있을지는 몰라도 점점 효과가 떨어질뿐더러, 오히려 부작용만 심해질 수 있습니다. 대신 약물을 사용하지 않고도 ~~~ 하지 않도록 도와드릴테니 약물을 끊어 보시는게 어떠신가요?","source_plain":"약이 필요한 이유를 댐: ~~~ 할 상황에 대해 걱정하고 계시는군요. 하지만 위에 말씀드렸다시피, 약물을 사용한다면 지금 당장 효과가 있을 수 있을지는 몰라도 점점 효과가 떨어질뿐더러, 오히려 부작용만 심해질 수 있습니다. 대신 약물을 사용하지 않고도 ~~~ 하지 않도록 도와드릴테니 약물을 끊어 보시는게 어떠신가요?"}],"previous":{"id":"E04","title":"중단 권유","ending":"네, 정말 잘 결정하셨습니다."},"next":{"id":"E06","title":"거절 대응 ② 금단 두려움","cue":"금단 증상에 대한 두려움: ~~~ 할 상황에 대해 걱정하고 계시는군요."}},{"id":"E06","order":26,"section_id":"education","section_name":"설명·교육","section_step":6,"section_total":9,"title":"거절 대응 ② 금단 두려움","source_lines":[67],"cue":"금단 증상에 대한 두려움: ~~~ 할 상황에 대해 걱정하고 계시는군요.","ending":"대신 이러한 금단 증상을 줄여주는 약을 처방해드릴테니 약물을 끊어 보시는게 어떠신가요?","rows":[{"source_line":67,"role":"spoken","context":[],"text":"금단 증상에 대한 두려움: ~~~ 할 상황에 대해 걱정하고 계시는군요. 하지만 이런 금단 증상은 물론 초반엔 많이 힘드시겠지만 결국 시간이 지나면 사라집니다. 대신 이러한 금단 증상을 줄여주는 약을 처방해드릴테니 약물을 끊어 보시는게 어떠신가요?","source_plain":"금단 증상에 대한 두려움: ~~~ 할 상황에 대해 걱정하고 계시는군요. 하지만 이런 금단 증상은 물론 초반엔 많이 힘드시겠지만 결국 시간이 지나면 사라집니다. 대신 이러한 금단 증상을 줄여주는 약을 처방해드릴테니 약물을 끊어 보시는게 어떠신가요?"}],"previous":{"id":"E05","title":"거절 대응 ① 약이 필요한 이유","ending":"대신 약물을 사용하지 않고도 ~~~ 하지 않도록 도와드릴테니 약물을 끊어 보시는게 어떠신가요?"},"next":{"id":"E07","title":"격려·감량 목표·대체 전략","cue":"시작이 반이라는 말이 있듯이 오늘 병원에 오신 것만으로도 정말 잘하셨습니다."}},{"id":"E07","order":27,"section_id":"education","section_name":"설명·교육","section_step":7,"section_total":9,"title":"격려·감량 목표·대체 전략","source_lines":[68,69,70,71,72],"cue":"시작이 반이라는 말이 있듯이 오늘 병원에 오신 것만으로도 정말 잘하셨습니다.","ending":"여기까지 이해 되셨나요?","rows":[{"source_line":68,"role":"spoken","context":["격려"],"text":"시작이 반이라는 말이 있듯이 오늘 병원에 오신 것만으로도 정말 잘하셨습니다. 약물을 끊을 때에는 혼자 하는 것보다 전문가의 도움을 받는 것이 훨씬 성공률도 높고 힘들기도 덜 힘듭니다. 저도 최선을 다해 도와드리겠습니다.","source_plain":"격려 | 시작이 반이라는 말이 있듯이 오늘 병원에 오신 것만으로도 정말 잘하셨습니다. 약물을 끊을 때에는 혼자 하는 것보다 전문가의 도움을 받는 것이 훨씬 성공률도 높고 힘들기도 덜 힘듭니다. 저도 최선을 다해 도와드리겠습니다."},{"source_line":69,"role":"spoken","context":["교육","목표"],"text":"약물을 단번에 끊기 보다는 점차 횟수나 양을 줄이는 목표를 갖는 것이 좋을 것 같습니다.","source_plain":"교육 | 목표 | 약물을 단번에 끊기 보다는 점차 횟수나 양을 줄이는 목표를 갖는 것이 좋을 것 같습니다."},{"source_line":70,"role":"placeholder","context":[],"text":"~~날짜~~","source_plain":"~~날짜~~"},{"source_line":71,"role":"spoken","context":["전략"],"text":"OOO님은 ~~~ 때문에 약물을 사용하고 계셨는데요, 약물을 사용하는 대신 ~~를 통해 ~~~를 도울 수 있습니다.","source_plain":"전략 | OOO님은 ~~~ 때문에 약물을 사용하고 계셨는데요, 약물을 사용하는 대신 ~~를 통해 ~~~를 도울 수 있습니다."},{"source_line":72,"role":"spoken","context":["요약"],"text":"여기까지 이해 되셨나요?","source_plain":"요약 | 여기까지 이해 되셨나요?"}],"previous":{"id":"E06","title":"거절 대응 ② 금단 두려움","ending":"대신 이러한 금단 증상을 줄여주는 약을 처방해드릴테니 약물을 끊어 보시는게 어떠신가요?"},"next":{"id":"E08","title":"치료·금단 설명","cue":"만약 중독 증상이 심하다면 입원하셔서 치료하시는 것을 권해드립니다."}},{"id":"E08","order":28,"section_id":"education","section_name":"설명·교육","section_step":8,"section_total":9,"title":"치료·금단 설명","source_lines":[73,74],"cue":"만약 중독 증상이 심하다면 입원하셔서 치료하시는 것을 권해드립니다.","ending":"이 시기를 잘 넘길 수 있도록 금단증상을 줄여주는 약도 같이 챙겨드리겠습니다.","rows":[{"source_line":73,"role":"spoken","context":["치료","약물"],"text":"만약 중독 증상이 심하다면 입원하셔서 치료하시는 것을 권해드립니다. 해독제를 통해 현재 느끼는 불편한 증상을 완화시킬 수 있고, 길항제나 대체 약물 등으로 서서히 약물의 필요량을 줄이도록 도울 수 있습니다..","source_plain":"치료 | 약물 | 만약 중독 증상이 심하다면 입원하셔서 치료하시는 것을 권해드립니다. 해독제를 통해 현재 느끼는 불편한 증상을 완화시킬 수 있고, 길항제나 대체 약물 등으로 서서히 약물의 필요량을 줄이도록 도울 수 있습니다.."},{"source_line":74,"role":"spoken","context":[],"text":"또 오랜 기간 약물을 복용하면 몸이 이에 익숙해져 있어 갑자기 약물을 끊었을 때 금단 증상이 생길 수 있습니다. ~~~ 등의 증상이 타날 수 있습니다. 무척 힘들겠지만 며칠 지나면 점점 사라지기 때문에 너무 걱정하시진 않으셔도 됩니다. 이 시기를 잘 넘길 수 있도록 금단증상을 줄여주는 약도 같이 챙겨드리겠습니다.","source_plain":"또 오랜 기간 약물을 복용하면 몸이 이에 익숙해져 있어 갑자기 약물을 끊었을 때 금단 증상이 생길 수 있습니다. ~~~ 등의 증상이 타날 수 있습니다. 무척 힘들겠지만 며칠 지나면 점점 사라지기 때문에 너무 걱정하시진 않으셔도 됩니다. 이 시기를 잘 넘길 수 있도록 금단증상을 줄여주는 약도 같이 챙겨드리겠습니다."}],"previous":{"id":"E07","title":"격려·감량 목표·대체 전략","ending":"여기까지 이해 되셨나요?"},"next":{"id":"E09","title":"지지·추적 계획","cue":"약물을 끊는 게 얼마나 어려운지 잘 알고 있습니다."}},{"id":"E09","order":29,"section_id":"education","section_name":"설명·교육","section_step":9,"section_total":9,"title":"지지·추적 계획","source_lines":[75,76],"cue":"약물을 끊는 게 얼마나 어려운지 잘 알고 있습니다.","ending":"수고 많으셨습니다.","rows":[{"source_line":75,"role":"spoken","context":["★"],"text":"약물을 끊는 게 얼마나 어려운지 잘 알고 있습니다. 그 과정에서 예상치 못한 어려움이 있을 수 있겠지만 포기하지 마시고 제가 옆에서 OOO님의 성공적인 약물 중단과 건강 회복을 도와드리겠습니다","source_plain":"★ | 약물을 끊는 게 얼마나 어려운지 잘 알고 있습니다. 그 과정에서 예상치 못한 어려움이 있을 수 있겠지만 포기하지 마시고 제가 옆에서 OOO님의 성공적인 약물 중단과 건강 회복을 도와드리겠습니다"},{"source_line":76,"role":"spoken","context":[],"text":"여기까지 궁금한 점 있으신가요? 네, 그러면 1~2주 뒤에 다시 외래 방문하셔서 그동안 있었던 일들에 대해 말씀 나눠보도록 하겠습니다. 혹시라도 중간에 신체적, 정신적으로 많이 힘드실 때는 언제든 찾아오셔도 좋습니다. 수고 많으셨습니다.","source_plain":"여기까지 궁금한 점 있으신가요? 네, 그러면 1~2주 뒤에 다시 외래 방문하셔서 그동안 있었던 일들에 대해 말씀 나눠보도록 하겠습니다. 혹시라도 중간에 신체적, 정신적으로 많이 힘드실 때는 언제든 찾아오셔도 좋습니다. 수고 많으셨습니다."}],"previous":{"id":"E08","title":"치료·금단 설명","ending":"이 시기를 잘 넘길 수 있도록 금단증상을 줄여주는 약도 같이 챙겨드리겠습니다."},"next":null}],"full_source":[{"source_line":1,"section":"History taking","type":"heading","plain":"[History taking]"},{"source_line":3,"section":"History taking","type":"row","plain":"★ | 손씻기 + 자기소개 및 환자 확인 + PPI | (손씻기) 안녕하세요, 학생 의사 손유영입니다. 환자분 성함과 나이가 어떻게 되세요? 기다리시느라 고생 많으셨습니다. 지금부터 10분 정도 진료 보려고 하는데, 중간에 궁금한 점 있으시면 편하게 말씀해주세요.","cells":["★","손씻기 + 자기소개 및 환자 확인 + PPI","(손씻기) 안녕하세요, 학생 의사 손유영입니다. 환자분 성함과 나이가 어떻게 되세요? 기다리시느라 고생 많으셨습니다. 지금부터 10분 정도 진료 보려고 하는데, 중간에 궁금한 점 있으시면 편하게 말씀해주세요."]},{"source_line":4,"section":"History taking","type":"delimiter","plain":"|---|---|---|"},{"source_line":5,"section":"History taking","type":"row","plain":"C.C | 어떤 것 + 자세히(어떤 약, 어떤 경로) | 오늘 어떤 것 때문에 병원에 오셨나요? -> 어떤 약을 복용하시나요?, 어떤 경로로 약을 처방 받으셨었나요?","cells":["C.C","어떤 것 + 자세히(어떤 약, 어떤 경로)","오늘 어떤 것 때문에 병원에 오셨나요? -> 어떤 약을 복용하시나요?, 어떤 경로로 약을 처방 받으셨었나요?"]},{"source_line":6,"section":"History taking","type":"row","plain":"비밀 | 비밀보장 | 앞으로 여쭤볼 내용은 민감한 내용일 수 있지만 꼭 필요한 질문들입니다. 말씀해주시는 모든 내용은 비밀이 보장되니 걱정하지 말고 편하게 답변해주세요.","cells":["비밀","비밀보장","앞으로 여쭤볼 내용은 민감한 내용일 수 있지만 꼭 필요한 질문들입니다. 말씀해주시는 모든 내용은 비밀이 보장되니 걱정하지 말고 편하게 답변해주세요."]},{"source_line":7,"section":"History taking","type":"row","plain":"행태 | 언제부터, 상황, 유발 인자 | 언제부터 약을 복용하셨나요? 약 복용을 시작하게 된 계기가 있었나요? 주로 어떤 이유로 약을 복용하시나요?(스트레스, 주변 사람, 습관)","cells":["행태","언제부터, 상황, 유발 인자","언제부터 약을 복용하셨나요? 약 복용을 시작하게 된 계기가 있었나요? 주로 어떤 이유로 약을 복용하시나요?(스트레스, 주변 사람, 습관)"]},{"source_line":8,"section":"History taking","type":"row","plain":"기간, 빈도, 양, 누구랑 | 약물 사용 기간이 얼마나 되나요?, 얼마나 자주 복용하시나요? 한 번 드실 때 얼마나 많이 복용하시나요? 누구랑 복용하시나요?","cells":["기간, 빈도, 양, 누구랑","약물 사용 기간이 얼마나 되나요?, 얼마나 자주 복용하시나요? 한 번 드실 때 얼마나 많이 복용하시나요? 누구랑 복용하시나요?"]},{"source_line":9,"section":"History taking","type":"row","plain":"중단 계획 및 계기, 이전 중단 시도, 중단 기간, 실패 및 방해요인 | 앞으로 약물 복용 중단하실 계획이 있나요? 복용 중단을 결심하게 된 계기가 있었나요? 이전에 복용 중단을 시도해본 적이 있나요? 얼마나 오래 복용을 중단하셨나요? 왜 실패하셨다고 생각하시나요? 주로 중단을 방해하는 요소에는 어떤 것들이 있나요?","cells":["중단 계획 및 계기, 이전 중단 시도, 중단 기간, 실패 및 방해요인","앞으로 약물 복용 중단하실 계획이 있나요? 복용 중단을 결심하게 된 계기가 있었나요? 이전에 복용 중단을 시도해본 적이 있나요? 얼마나 오래 복용을 중단하셨나요? 왜 실패하셨다고 생각하시나요? 주로 중단을 방해하는 요소에는 어떤 것들이 있나요?"]},{"source_line":10,"section":"History taking","type":"row","plain":"의존 | 중독: (개방형) | 약을 복용했을 때 어떤 효과가 있나요?","cells":["의존","중독: (개방형)","약을 복용했을 때 어떤 효과가 있나요?"]},{"source_line":11,"section":"History taking","type":"row","plain":"내성: 양 증가 | 같은 효과를 위해 복용하는 약물 양이 점점 더 증가하나요?","cells":["내성: 양 증가","같은 효과를 위해 복용하는 약물 양이 점점 더 증가하나요?"]},{"source_line":12,"section":"History taking","type":"row","plain":"금단 | 금단: (개방형) | 약을 복용하지 못했을 때 어떤 증상이 있었나요? 불안하거나 초조했나요? 잠을 잘 못 주무셨나요? 두근거리거나 식은땀이 났었나요? / 우울하거나 무기력했나요? 평소보다 잠을 많이 주무셨나요? 집중력이 떨어졌나요? / 근육통이 생겼나요? 눈물, 콧물, 하품이 나왔나요? 속이 메스껍고 토를 하거나 설사를 했나요? 복용 중단하고 얼마나 지나서 그러셨어요?","cells":["금단","금단: (개방형)","약을 복용하지 못했을 때 어떤 증상이 있었나요? 불안하거나 초조했나요? 잠을 잘 못 주무셨나요? 두근거리거나 식은땀이 났었나요? / 우울하거나 무기력했나요? 평소보다 잠을 많이 주무셨나요? 집중력이 떨어졌나요? / 근육통이 생겼나요? 눈물, 콧물, 하품이 나왔나요? 속이 메스껍고 토를 하거나 설사를 했나요? 복용 중단하고 얼마나 지나서 그러셨어요?"]},{"source_line":13,"section":"History taking","type":"row","plain":"금단 증상 + 시간 경과\n- 진정제: 불안/초조, 불면, 두근거림/식은땀\n- 각성제: 우울/무기력, 과다수면, 집중력 저하\n- 아편: 근육통, 눈물/콧물/하품, 구역/구토/설사","cells":["금단 증상 + 시간 경과\n- 진정제: 불안/초조, 불면, 두근거림/식은땀\n- 각성제: 우울/무기력, 과다수면, 집중력 저하\n- 아편: 근육통, 눈물/콧물/하품, 구역/구토/설사"]},{"source_line":14,"section":"History taking","type":"row","plain":"남용 | 역할 수행, 위험 상황, 법적 문제, 대인관계 | 약물로 인해 지각, 결근(과제 제출, 성적 저하 / 집안일, 육아 방치)을 자주 하시나요?\n약물로 인해 위험한 상황이나 다칠 뻔한 상황이 있었나요?, 약물로 인해 법적 문제에 휘말린 적이 있나요? 약물로 인해 대인 관계나 가족 내 갈등이 발생했나요?","cells":["남용","역할 수행, 위험 상황, 법적 문제, 대인관계","약물로 인해 지각, 결근(과제 제출, 성적 저하 / 집안일, 육아 방치)을 자주 하시나요?\n약물로 인해 위험한 상황이나 다칠 뻔한 상황이 있었나요?, 약물로 인해 법적 문제에 휘말린 적이 있나요? 약물로 인해 대인 관계나 가족 내 갈등이 발생했나요?"]},{"source_line":15,"section":"History taking","type":"row","plain":"QoL | 일상 생활 지장 | 약물로 인해 일상 생활에 지장이 많이 가나요?","cells":["QoL","일상 생활 지장","약물로 인해 일상 생활에 지장이 많이 가나요?"]},{"source_line":16,"section":"History taking","type":"row","plain":"★ | 요약 | 요약해보자면 ~~이네요. 맞나요?","cells":["★","요약","요약해보자면 ~~이네요. 맞나요?"]},{"source_line":17,"section":"History taking","type":"row","plain":"A\n중독 | (개방형) | 다른 불편한 증상은 없으신가요?","cells":["A\n중독","(개방형)","다른 불편한 증상은 없으신가요?"]},{"source_line":18,"section":"History taking","type":"row","plain":"전신 | 발열, 오한, 피로, 체중 변화, 부종 | 열이 나거나 몸이 으슬으슬 떨리셨나요? 최근 부쩍 피곤하거나 체중 변화가 있었나요?","cells":["전신","발열, 오한, 피로, 체중 변화, 부종","열이 나거나 몸이 으슬으슬 떨리셨나요? 최근 부쩍 피곤하거나 체중 변화가 있었나요?"]},{"source_line":19,"section":"History taking","type":"row","plain":"신경 | 구음장애, 보행장애, 경련, 의식저하, | 말이 어눌하거나 걷는게 불편하세요? 경련을 일으키거나 의식이 떨어진 적 있나요?","cells":["신경","구음장애, 보행장애, 경련, 의식저하,","말이 어눌하거나 걷는게 불편하세요? 경련을 일으키거나 의식이 떨어진 적 있나요?"]},{"source_line":20,"section":"History taking","type":"row","plain":"정신 | 우울, 불안, 수면, 기억력/집중력, 환청/망상 | 우울하거나 불안하진 않으세요? 잠을 잘 못 주무시나요? 기억력이나 집중력이 떨어지셨나요? 헛것이 보이거나 들리진 않았나요?","cells":["정신","우울, 불안, 수면, 기억력/집중력, 환청/망상","우울하거나 불안하진 않으세요? 잠을 잘 못 주무시나요? 기억력이나 집중력이 떨어지셨나요? 헛것이 보이거나 들리진 않았나요?"]},{"source_line":21,"section":"History taking","type":"row","plain":"순환/호흡 | 가슴통증, 호흡곤란, 기침, 가래 | 가슴 쪽이 아프세요? 숨이 잘 차거나 숨 쉬기 힘드세요? 기침이나 가래 있으세요?","cells":["순환/호흡","가슴통증, 호흡곤란, 기침, 가래","가슴 쪽이 아프세요? 숨이 잘 차거나 숨 쉬기 힘드세요? 기침이나 가래 있으세요?"]},{"source_line":22,"section":"History taking","type":"row","plain":"E | 이전 건강검진 이상 소견 | 이전 건강검진에서 이상 소견 있었나요?","cells":["E","이전 건강검진 이상 소견","이전 건강검진에서 이상 소견 있었나요?"]},{"source_line":23,"section":"History taking","type":"row","plain":"과 | (개방형) | 기존에 진단 받으신 질환 있으세요?","cells":["과","(개방형)","기존에 진단 받으신 질환 있으세요?"]},{"source_line":24,"section":"History taking","type":"row","plain":"고혈압, 당뇨, 고지혈증, 간질환, 신질환, 정신과질환 | 고혈압이나 당뇨, 고지혈증 있으세요? 간이나 콩팥 관련 질환 있으세요? 정신건강의학과 진료 보신 적 있으신가요?","cells":["고혈압, 당뇨, 고지혈증, 간질환, 신질환, 정신과질환","고혈압이나 당뇨, 고지혈증 있으세요? 간이나 콩팥 관련 질환 있으세요? 정신건강의학과 진료 보신 적 있으신가요?"]},{"source_line":25,"section":"History taking","type":"row","plain":"약 | 복용 중인 약물 | 추가로 드시고 있는 약물 있으세요?","cells":["약","복용 중인 약물","추가로 드시고 있는 약물 있으세요?"]},{"source_line":26,"section":"History taking","type":"row","plain":"사 | 직업/스트레스, 흡연, 음주 | 실례지만 직업이 어떻게 되세요? 스트레스를 많이 받으시나요?, 흡연/음주는 하시나요?","cells":["사","직업/스트레스, 흡연, 음주","실례지만 직업이 어떻게 되세요? 스트레스를 많이 받으시나요?, 흡연/음주는 하시나요?"]},{"source_line":27,"section":"History taking","type":"row","plain":"가 | 가족 중 유사 증상, 간질환, 신질환 | 가족 중에서도 약물로 인해 힘들어하셨던 분 있으세요? 가족 중 간이나 콩팥 질환 앓으시는 분 있으세요?","cells":["가","가족 중 유사 증상, 간질환, 신질환","가족 중에서도 약물로 인해 힘들어하셨던 분 있으세요? 가족 중 간이나 콩팥 질환 앓으시는 분 있으세요?"]},{"source_line":28,"section":"History taking","type":"row","plain":"외 | 외상/수술, 입원 | 어디 다치거나, 수술하신 적 있으세요? 입원하신 적 있으세요?","cells":["외","외상/수술, 입원","어디 다치거나, 수술하신 적 있으세요? 입원하신 적 있으세요?"]},{"source_line":29,"section":"History taking","type":"row","plain":"여 | 월경중/폐경 → 임신가능성 | 실례지만 월경은 하고 계신가요?/폐경 하셨나요? 조금 민감한 질문일 수 있지만 꼭 필요한 질문이라 여쭤보겠습니다. 임신 가능성이 있나요?","cells":["여","월경중/폐경 → 임신가능성","실례지만 월경은 하고 계신가요?/폐경 하셨나요? 조금 민감한 질문일 수 있지만 꼭 필요한 질문이라 여쭤보겠습니다. 임신 가능성이 있나요?"]},{"source_line":30,"section":"History taking","type":"row","plain":"★ | 요약 | 힘드셨을텐데 잘 답변해주셔서 감사합니다. 요약해보자면 ~~이네요. 맞나요?","cells":["★","요약","힘드셨을텐데 잘 답변해주셔서 감사합니다. 요약해보자면 ~~이네요. 맞나요?"]},{"source_line":32,"section":"핵심 질환","type":"heading","plain":"[핵심 질환] ⭐️"},{"source_line":34,"section":"핵심 질환","type":"asset","plain":"{{upload:hwang_substance_core width=64%}}"},{"source_line":36,"section":"핵심 질환","type":"row","plain":"- 물질 사용장애: 물질 의존, 물질 남용\n- 물질 관련 상태: 물질 중독, 물질 금단","cells":["- 물질 사용장애: 물질 의존, 물질 남용\n- 물질 관련 상태: 물질 중독, 물질 금단"]},{"source_line":38,"section":"핵심 질환","type":"separator","plain":"--- 페이지 추가 ---"},{"source_line":40,"section":"Physical examination","type":"heading","plain":"[Physical examination] → 생략 가능"},{"source_line":42,"section":"Physical examination","type":"row","plain":"★ | 손씻기 + 동의 구하기 | (손씻기) 그럼 이제 신체진찰 진행하려고 하는데 그 과정에서 신체 접촉 및 노출이 있을 수 있습니다. 진행해도 괜찮을까요?","cells":["★","손씻기 + 동의 구하기","(손씻기) 그럼 이제 신체진찰 진행하려고 하는데 그 과정에서 신체 접촉 및 노출이 있을 수 있습니다. 진행해도 괜찮을까요?"]},{"source_line":43,"section":"Physical examination","type":"delimiter","plain":"|---|---|---|"},{"source_line":44,"section":"Physical examination","type":"row","plain":"V/S | 혈압, 맥박수, 호흡수, 체온 / 키, 체중 | 활력징후 확인하겠습니다. 모두 정상인데 ~~만 조금 높습니다/낮습니다.","cells":["V/S","혈압, 맥박수, 호흡수, 체온 / 키, 체중","활력징후 확인하겠습니다. 모두 정상인데 ~~만 조금 높습니다/낮습니다."]},{"source_line":45,"section":"Physical examination","type":"row","plain":"앉아서 | 눈 | 결막 시진(빈혈, 충혈), 공막 시진(황달),","cells":["앉아서","눈","결막 시진(빈혈, 충혈), 공막 시진(황달),"]},{"source_line":46,"section":"Physical examination","type":"row","plain":"입 | 구강 시진(탈수, 분비물 증가)","cells":["입","구강 시진(탈수, 분비물 증가)"]},{"source_line":47,"section":"Physical examination","type":"row","plain":"목 | 갑상선 촉진, 림프절 촉진","cells":["목","갑상선 촉진, 림프절 촉진"]},{"source_line":48,"section":"Physical examination","type":"row","plain":"사지 | 피부 긴장도(탈수), 하지 촉진(부종)","cells":["사지","피부 긴장도(탈수), 하지 촉진(부종)"]},{"source_line":49,"section":"Physical examination","type":"row","plain":"신경 | 동공크기/반사, 안구운동, 안면감각/운동","cells":["신경","동공크기/반사, 안구운동, 안면감각/운동"]},{"source_line":50,"section":"Physical examination","type":"row","plain":"근긴장도/근력/감각, DTR, 병적반사","cells":["근긴장도/근력/감각, DTR, 병적반사"]},{"source_line":51,"section":"Physical examination","type":"row","plain":"★ | 신체노출 + 불필요한 부분 가리기 | 가슴 진찰 진행 시 상의를 탈의해주셔야 합니다. 괜찮을까요? 진료에 불필요한 부분은 가려드리도록 하겠습니다.","cells":["★","신체노출 + 불필요한 부분 가리기","가슴 진찰 진행 시 상의를 탈의해주셔야 합니다. 괜찮을까요? 진료에 불필요한 부분은 가려드리도록 하겠습니다."]},{"source_line":52,"section":"Physical examination","type":"row","plain":"가슴 | 호흡 청진, 심장 청진","cells":["가슴","호흡 청진, 심장 청진"]},{"source_line":53,"section":"Physical examination","type":"row","plain":"누워서 | ★ | 신체노출 + 불필요한 부분 가리기 | 복부 진찰 진행 시 상의를 명치까지, 하의를 골반까지 내려주셔야 합니다. 괜찮을까요? 편하게 누우셔서 다리를 구부리고 있으시면 됩니다. 진료에 불필요한 부분은 가려드리도록 하겠습니다.","cells":["누워서","★","신체노출 + 불필요한 부분 가리기","복부 진찰 진행 시 상의를 명치까지, 하의를 골반까지 내려주셔야 합니다. 괜찮을까요? 편하게 누우셔서 다리를 구부리고 있으시면 됩니다. 진료에 불필요한 부분은 가려드리도록 하겠습니다."]},{"source_line":54,"section":"Physical examination","type":"row","plain":"복부 | 시진 – 청진 – 타진 – 촉진","cells":["복부","시진 – 청진 – 타진 – 촉진"]},{"source_line":55,"section":"Physical examination","type":"row","plain":"★ | 손씻기 + PPI | (손씻기) 신체진찰 모두 끝났습니다. 도중에 불편한 점은 없으셨나요? 자리로 오시면 오늘 진료 내용 다시 정리해서 말씀드리도록 하겠습니다.","cells":["★","손씻기 + PPI","(손씻기) 신체진찰 모두 끝났습니다. 도중에 불편한 점은 없으셨나요? 자리로 오시면 오늘 진료 내용 다시 정리해서 말씀드리도록 하겠습니다."]},{"source_line":57,"section":"Education","type":"heading","plain":"[Education]"},{"source_line":59,"section":"Education","type":"row","plain":"★ | 진찰 받으시느라 고생 많으셨습니다.","cells":["★","진찰 받으시느라 고생 많으셨습니다."]},{"source_line":60,"section":"Education","type":"delimiter","plain":"|---|---|"},{"source_line":61,"section":"Education","type":"row","plain":"진단 | 지금까지의 문진을 종합해 보았을 때, OOO님께서는 ~~한 것으로 보아 ~~가 의심이 됩니다.","cells":["진단","지금까지의 문진을 종합해 보았을 때, OOO님께서는 ~~한 것으로 보아 ~~가 의심이 됩니다."]},{"source_line":62,"section":"Education","type":"row","plain":"검사 | 하지만 ~~ 증상도 있기 때문에 ~~의 가능성도 있습니다. 이에 대해서 추가적으로 ~~를 시행해볼 예정입니다. 괜찮을까요?","cells":["검사","하지만 ~~ 증상도 있기 때문에 ~~의 가능성도 있습니다. 이에 대해서 추가적으로 ~~를 시행해볼 예정입니다. 괜찮을까요?"]},{"source_line":63,"section":"Education","type":"row","plain":"장단점 | 단점 | 지금 OOO 님이 ~~~을 필요로 하고 있는 상황을 충분히 이해합니다. 하지만 ~~~를 오랜 기간 사용할 경우, 원하는 효과는 보지 못하고 오히려 ~~~하는 부작용이 생길 수 있습니다.","cells":["장단점","단점","지금 OOO 님이 ~~~을 필요로 하고 있는 상황을 충분히 이해합니다. 하지만 ~~~를 오랜 기간 사용할 경우, 원하는 효과는 보지 못하고 오히려 ~~~하는 부작용이 생길 수 있습니다."]},{"source_line":64,"section":"Education","type":"row","plain":"~~장점~~","cells":["~~장점~~"]},{"source_line":65,"section":"Education","type":"row","plain":"예후 | 권유 | 이번 기회에 한 번 약물을 끊어 보시는게 어떠신가요? 네, 정말 잘 결정하셨습니다.","cells":["예후","권유","이번 기회에 한 번 약물을 끊어 보시는게 어떠신가요? 네, 정말 잘 결정하셨습니다."]},{"source_line":66,"section":"Education","type":"row","plain":"약이 필요한 이유를 댐: ~~~ 할 상황에 대해 걱정하고 계시는군요. 하지만 위에 말씀드렸다시피, 약물을 사용한다면 지금 당장 효과가 있을 수 있을지는 몰라도 점점 효과가 떨어질뿐더러, 오히려 부작용만 심해질 수 있습니다. 대신 약물을 사용하지 않고도 ~~~ 하지 않도록 도와드릴테니 약물을 끊어 보시는게 어떠신가요?","cells":["약이 필요한 이유를 댐: ~~~ 할 상황에 대해 걱정하고 계시는군요. 하지만 위에 말씀드렸다시피, 약물을 사용한다면 지금 당장 효과가 있을 수 있을지는 몰라도 점점 효과가 떨어질뿐더러, 오히려 부작용만 심해질 수 있습니다. 대신 약물을 사용하지 않고도 ~~~ 하지 않도록 도와드릴테니 약물을 끊어 보시는게 어떠신가요?"]},{"source_line":67,"section":"Education","type":"row","plain":"금단 증상에 대한 두려움: ~~~ 할 상황에 대해 걱정하고 계시는군요. 하지만 이런 금단 증상은 물론 초반엔 많이 힘드시겠지만 결국 시간이 지나면 사라집니다. 대신 이러한 금단 증상을 줄여주는 약을 처방해드릴테니 약물을 끊어 보시는게 어떠신가요?","cells":["금단 증상에 대한 두려움: ~~~ 할 상황에 대해 걱정하고 계시는군요. 하지만 이런 금단 증상은 물론 초반엔 많이 힘드시겠지만 결국 시간이 지나면 사라집니다. 대신 이러한 금단 증상을 줄여주는 약을 처방해드릴테니 약물을 끊어 보시는게 어떠신가요?"]},{"source_line":68,"section":"Education","type":"row","plain":"격려 | 시작이 반이라는 말이 있듯이 오늘 병원에 오신 것만으로도 정말 잘하셨습니다. 약물을 끊을 때에는 혼자 하는 것보다 전문가의 도움을 받는 것이 훨씬 성공률도 높고 힘들기도 덜 힘듭니다. 저도 최선을 다해 도와드리겠습니다.","cells":["격려","시작이 반이라는 말이 있듯이 오늘 병원에 오신 것만으로도 정말 잘하셨습니다. 약물을 끊을 때에는 혼자 하는 것보다 전문가의 도움을 받는 것이 훨씬 성공률도 높고 힘들기도 덜 힘듭니다. 저도 최선을 다해 도와드리겠습니다."]},{"source_line":69,"section":"Education","type":"row","plain":"교육 | 목표 | 약물을 단번에 끊기 보다는 점차 횟수나 양을 줄이는 목표를 갖는 것이 좋을 것 같습니다.","cells":["교육","목표","약물을 단번에 끊기 보다는 점차 횟수나 양을 줄이는 목표를 갖는 것이 좋을 것 같습니다."]},{"source_line":70,"section":"Education","type":"row","plain":"~~날짜~~","cells":["~~날짜~~"]},{"source_line":71,"section":"Education","type":"row","plain":"전략 | OOO님은 ~~~ 때문에 약물을 사용하고 계셨는데요, 약물을 사용하는 대신 ~~를 통해 ~~~를 도울 수 있습니다.","cells":["전략","OOO님은 ~~~ 때문에 약물을 사용하고 계셨는데요, 약물을 사용하는 대신 ~~를 통해 ~~~를 도울 수 있습니다."]},{"source_line":72,"section":"Education","type":"row","plain":"요약 | 여기까지 이해 되셨나요?","cells":["요약","여기까지 이해 되셨나요?"]},{"source_line":73,"section":"Education","type":"row","plain":"치료 | 약물 | 만약 중독 증상이 심하다면 입원하셔서 치료하시는 것을 권해드립니다. 해독제를 통해 현재 느끼는 불편한 증상을 완화시킬 수 있고, 길항제나 대체 약물 등으로 서서히 약물의 필요량을 줄이도록 도울 수 있습니다..","cells":["치료","약물","만약 중독 증상이 심하다면 입원하셔서 치료하시는 것을 권해드립니다. 해독제를 통해 현재 느끼는 불편한 증상을 완화시킬 수 있고, 길항제나 대체 약물 등으로 서서히 약물의 필요량을 줄이도록 도울 수 있습니다.."]},{"source_line":74,"section":"Education","type":"row","plain":"또 오랜 기간 약물을 복용하면 몸이 이에 익숙해져 있어 갑자기 약물을 끊었을 때 금단 증상이 생길 수 있습니다. ~~~ 등의 증상이 타날 수 있습니다. 무척 힘들겠지만 며칠 지나면 점점 사라지기 때문에 너무 걱정하시진 않으셔도 됩니다. 이 시기를 잘 넘길 수 있도록 금단증상을 줄여주는 약도 같이 챙겨드리겠습니다.","cells":["또 오랜 기간 약물을 복용하면 몸이 이에 익숙해져 있어 갑자기 약물을 끊었을 때 금단 증상이 생길 수 있습니다. ~~~ 등의 증상이 타날 수 있습니다. 무척 힘들겠지만 며칠 지나면 점점 사라지기 때문에 너무 걱정하시진 않으셔도 됩니다. 이 시기를 잘 넘길 수 있도록 금단증상을 줄여주는 약도 같이 챙겨드리겠습니다."]},{"source_line":75,"section":"Education","type":"row","plain":"★ | 약물을 끊는 게 얼마나 어려운지 잘 알고 있습니다. 그 과정에서 예상치 못한 어려움이 있을 수 있겠지만 포기하지 마시고 제가 옆에서 OOO님의 성공적인 약물 중단과 건강 회복을 도와드리겠습니다","cells":["★","약물을 끊는 게 얼마나 어려운지 잘 알고 있습니다. 그 과정에서 예상치 못한 어려움이 있을 수 있겠지만 포기하지 마시고 제가 옆에서 OOO님의 성공적인 약물 중단과 건강 회복을 도와드리겠습니다"]},{"source_line":76,"section":"Education","type":"row","plain":"여기까지 궁금한 점 있으신가요? 네, 그러면 1~2주 뒤에 다시 외래 방문하셔서 그동안 있었던 일들에 대해 말씀 나눠보도록 하겠습니다. 혹시라도 중간에 신체적, 정신적으로 많이 힘드실 때는 언제든 찾아오셔도 좋습니다. 수고 많으셨습니다.","cells":["여기까지 궁금한 점 있으신가요? 네, 그러면 1~2주 뒤에 다시 외래 방문하셔서 그동안 있었던 일들에 대해 말씀 나눠보도록 하겠습니다. 혹시라도 중간에 신체적, 정신적으로 많이 힘드실 때는 언제든 찾아오셔도 좋습니다. 수고 많으셨습니다."]}],"core_image_data_url":"data:image/png;base64,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Sut5CFS+/zZvW7w2vLSeWv/z+DcJBCLg7XsPtIfbSIAESIAESIAESIAESIAEIoIARXtEXAZWggRIgARIgARIgARIgASCE6BoD86Ge0iABEiABEiABEiABEggIghQtEfEZWAlSIAESIAESIAESIAESCA4AYr24Gy4p5YQKGu2gVqCgc0kARIgARIgARKIYAKcPSaCL05VVi2/AMtFF69OWpVlV2dZXsGOGQIwj2511qRyyy7Q62tt5UQ0lQuauZNANRHATCfhmjmlmpoQcrGYahIpnDPXhFyJKj7BrjOnAK5i6pFTHEV75FyLaq1J27btKrwwR7U2YB8Kh8HHktSffTZD7rnnHonSRZT0sbcPOdWAU7RZEO1xuvAVEwmQgLsIYDXn+Pj4osXd3NW6YK3xyC5dENCj/yXpSq61ZS0LrAweE1P6IoTBiHF7zSdA0V7zr2FYWtCgQdkLY4SloAjLBPPmrly5SpfgTvF6oiOsfqwOCZAACZRFIFZXku6xX6+yDnPNfnib4XSZOHGirc46bty4WtXLwJBO19zKITeEoj1kZDzBbQSw6h26V/GbiQRIgARqIoHaKOTS0tKK7HZtbH9NvE9Z54oR4EDUivHj2SRAAiRAAiRAAtVAAELdiWuvhuJZJAlUOQGK9ipHzgJJgARIgARIgARIgARIIDQCFO2h8eLRJEACJEACJEACJEACJFDlBCjaqxw5CyQBEiABEiABEiABEiCB0AhQtIfGi0eTAAmQAAmQAAmQAAmQQJUToGivcuQskARIgARIgARIgARIgARCI0DRHhovHk0CJEACJEACJEACJEACVU6Aor3KkbNAEiABEiABEiABEiABEgiNAEV7aLx4NAmQAAmQAAmQAAmQAAlUOQGK9ipHzgJJgARIgARIgARIgARIIDQCFO2h8eLRJEACJEACJEACJEACJFDlBCjaqxw5CyQBEiABEiABEiABEiCB0AhQtIfGi0eTAAmQAAmQAAmQAAmQQJUToGivcuQskARIgARIgARIgARIgARCI0DRHhovHk0CJEACJEACJEACJEACVU6Aor3KkbNAEiABEiABEiABEiABEgiNAEV7aLx4NAmQAAmQAAmQAAmQAAlUOQGK9ipHzgJJgARIgARIgARIgARIIDQCFO2h8eLRJEACJEACJEACJEACJFDlBCjaqxw5CyQBEiABEiAB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","audit":{"version":2,"source_sha256":"3f27f86e3a94f9e80b0724a3b32785e83e5e87e63f32476ff16ced82b8ba6849","source_lines_total":76,"source_nonblank_lines":67,"delimiter_lines":[4,43,60],"structural_lines":[1,32,38,40,57],"semantic_source_lines":59,"mapped_semantic_lines":59,"missing_semantic_lines":[],"duplicate_or_multiply_mapped_lines":[],"unexpected_mapped_lines":[],"unaccounted_nonblank_lines":[],"semantic_text_multiset_match":true,"core_disease_row_36_present":true,"core_image_line_34_present":true,"memorization_chunks":29,"sections":{"history":13,"core":1,"physical":6,"education":9},"pass":true}};</script>
 <script>
-const chunks=DATA.chunks;
-const key='cpx45-fullscript-progress-v1';
-let saved={}; try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
-let index=Math.max(0,Math.min(chunks.length-1,Number(saved.index)||0));
-let statuses=saved.statuses||{}; let revealed=false;
-const $=id=>document.getElementById(id);
-function persist(){localStorage.setItem(key,JSON.stringify({index,statuses}));}
-function renderNav(){
-  $('chunkList').innerHTML=''; $('mobileNav').innerHTML='';
-  chunks.forEach((c,i)=>{
-    const b=document.createElement('button'); b.className='chunk-link'+(statuses[c.id]==='mastered'?' mastered':''); b.textContent=`${c.id} · ${c.cue}`; b.title=`${c.id} · ${c.cue}`; b.setAttribute('aria-current',i===index?'true':'false'); b.onclick=()=>go(i); $('chunkList').appendChild(b);
-    const o=document.createElement('option'); o.value=i; o.textContent=`${c.id} · ${c.cue}`; o.selected=i===index; $('mobileNav').appendChild(o);
+(() => {
+  'use strict';
+  const chunks = DATA.chunks;
+  const sections = DATA.sections;
+  const storageKey = 'cpx45-fullscript-progress-v2';
+  const $ = id => document.getElementById(id);
+  let state = { index: 0, statuses: {}, view: 'recall', bridge: false };
+  try { state = { ...state, ...JSON.parse(localStorage.getItem(storageKey) || '{}') }; } catch (_) {}
+  state.index = Math.max(0, Math.min(chunks.length - 1, Number(state.index) || 0));
+  state.statuses = state.statuses || {};
+  let revealed = false;
+  let resetArmed = false;
+  let resetTimer = null;
+
+  const roleNames = {
+    spoken: '말할 원문',
+    action: '진찰 행동',
+    concept: '핵심 개념',
+    placeholder: '원문 빈칸',
+    asset: '원문 이미지'
+  };
+
+  function persist() {
+    localStorage.setItem(storageKey, JSON.stringify({
+      index: state.index,
+      statuses: state.statuses,
+      view: state.view,
+      bridge: state.bridge
+    }));
+  }
+
+  function current() { return chunks[state.index]; }
+
+  function sectionChunks(sectionId) {
+    return chunks.filter(chunk => chunk.section_id === sectionId);
+  }
+
+  function firstIncompleteIndex(sectionId) {
+    const candidates = chunks.map((chunk, index) => ({ chunk, index })).filter(item => item.chunk.section_id === sectionId);
+    const open = candidates.find(item => state.statuses[item.chunk.id] !== 'mastered');
+    return (open || candidates[0]).index;
+  }
+
+  function makeSourceRow(row) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'source-row';
+    wrapper.dataset.role = row.role;
+    wrapper.dataset.sourceLine = String(row.source_line);
+    const context = document.createElement('div');
+    context.className = 'source-context';
+    const role = document.createElement('span');
+    role.className = 'source-role';
+    role.textContent = roleNames[row.role] || '원문';
+    context.appendChild(role);
+    if (row.context && row.context.length) {
+      const labels = document.createElement('span');
+      labels.textContent = row.context.join(' · ');
+      context.appendChild(labels);
+    }
+    const line = document.createElement('span');
+    line.className = 'source-line-number';
+    line.textContent = `원문 ${row.source_line}행`;
+    context.appendChild(line);
+    wrapper.appendChild(context);
+    if (row.role === 'asset') {
+      const image = document.createElement('img');
+      image.className = 'core-image';
+      image.src = DATA.core_image_data_url;
+      image.alt = '물질 사용장애와 물질 관련 상태의 관계를 설명하는 핵심질환 도식';
+      wrapper.appendChild(image);
+    } else {
+      const text = document.createElement('p');
+      text.className = 'source-text';
+      text.textContent = row.text;
+      wrapper.appendChild(text);
+    }
+    return wrapper;
+  }
+
+  function renderSectionTabs() {
+    const active = current().section_id;
+    $('sectionTabs').replaceChildren(...sections.map(section => {
+      const button = document.createElement('button');
+      button.className = 'section-tab';
+      button.type = 'button';
+      button.role = 'tab';
+      button.setAttribute('aria-selected', section.id === active ? 'true' : 'false');
+      const list = sectionChunks(section.id);
+      const mastered = list.filter(chunk => state.statuses[chunk.id] === 'mastered').length;
+      button.innerHTML = `<span>${section.name}</span><small>${mastered} / ${list.length}${section.optional ? ' · 선택' : ''}</small>`;
+      button.addEventListener('click', () => go(firstIncompleteIndex(section.id)));
+      return button;
+    }));
+  }
+
+  function renderSidebar() {
+    const chunk = current();
+    const list = sectionChunks(chunk.section_id);
+    $('sidebarTitle').textContent = `${chunk.section_name} 순서`;
+    $('sidebarCount').textContent = `${chunk.section_step} / ${chunk.section_total}`;
+    const buttons = list.map(item => {
+      const button = document.createElement('button');
+      button.className = 'chunk-nav-button';
+      button.type = 'button';
+      button.dataset.status = state.statuses[item.id] || 'new';
+      if (item.id === chunk.id) button.setAttribute('aria-current', 'step');
+      const id = document.createElement('span'); id.className = 'chunk-nav-id'; id.textContent = item.id;
+      const title = document.createElement('span'); title.className = 'chunk-nav-title'; title.textContent = item.title;
+      const status = document.createElement('span'); status.className = 'chunk-nav-status'; status.setAttribute('aria-hidden', 'true');
+      button.append(id, title, status);
+      button.addEventListener('click', () => go(chunks.indexOf(item)));
+      return button;
+    });
+    $('chunkNav').replaceChildren(...buttons);
+    $('mobileJump').replaceChildren(...list.map(item => {
+      const option = document.createElement('option');
+      option.value = chunks.indexOf(item);
+      option.textContent = `${item.id} · ${item.title}`;
+      option.selected = item.id === chunk.id;
+      return option;
+    }));
+  }
+
+  function renderProgress() {
+    const mastered = chunks.filter(chunk => state.statuses[chunk.id] === 'mastered').length;
+    const percent = chunks.length ? mastered / chunks.length * 100 : 0;
+    $('progressLabel').textContent = `${current().section_name} ${current().section_step} / ${current().section_total}`;
+    $('progressFill').style.width = `${percent}%`;
+    $('sourceLock').textContent = `전체 ${chunks.length}개 · 완료 ${mastered}개 · 원문 ${DATA.audit.mapped_semantic_lines}/${DATA.audit.semantic_source_lines}`;
+  }
+
+  function renderAnswer() {
+    const chunk = current();
+    $('answerContent').replaceChildren(...chunk.rows.map(makeSourceRow));
+    $('answerContent').classList.toggle('visible', revealed);
+    $('answerPlaceholder').hidden = revealed;
+    $('revealButton').textContent = revealed ? '원문 가리기' : '원문 보기';
+  }
+
+  function renderRecall() {
+    const chunk = current();
+    $('chunkPosition').textContent = `${chunk.id} · ${chunk.section_name} ${chunk.section_step} / ${chunk.section_total}`;
+    $('chunkSourceLines').textContent = `원문 ${chunk.source_lines.length}행`;
+    $('chunkTitle').textContent = chunk.title;
+    $('cueText').textContent = chunk.cue;
+    $('answerMeta').textContent = `원문 ${chunk.source_lines.join(' · ')}행`;
+    $('previousEnding').textContent = chunk.previous ? chunk.previous.ending : '처음부터 시작합니다.';
+    $('currentBeginning').textContent = chunk.cue;
+    $('bridgePanel').classList.toggle('visible', state.bridge);
+    $('bridgeToggle').setAttribute('aria-pressed', state.bridge ? 'true' : 'false');
+    $('bridgeToggle').textContent = state.bridge ? '문장 연결 숨기기' : '문장 연결 보기';
+    $('previousButton').disabled = state.index === 0;
+    $('sequencePrevious').textContent = chunk.previous ? `${chunk.previous.id} · ${chunk.previous.title}` : '시작';
+    $('sequenceCurrent').textContent = `${state.index + 1} / ${chunks.length}`;
+    $('sequenceNext').textContent = chunk.next ? `${chunk.next.id} · ${chunk.next.title}` : '완료';
+    renderAnswer();
+  }
+
+  function renderView() {
+    const recall = state.view === 'recall';
+    $('recallTab').setAttribute('aria-selected', recall ? 'true' : 'false');
+    $('fullTab').setAttribute('aria-selected', recall ? 'false' : 'true');
+    $('recallView').hidden = !recall;
+    $('fullView').classList.toggle('visible', !recall);
+    $('mobileJump').hidden = !recall;
+    $('bridgeToggle').hidden = !recall;
+  }
+
+  function render() {
+    renderProgress();
+    renderSectionTabs();
+    renderSidebar();
+    renderRecall();
+    renderView();
+    persist();
+  }
+
+  function go(index) {
+    state.index = Math.max(0, Math.min(chunks.length - 1, index));
+    revealed = false;
+    state.view = 'recall';
+    render();
+    if (window.matchMedia('(max-width: 720px)').matches) window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function mark(status) {
+    state.statuses[current().id] = status;
+    if (state.index < chunks.length - 1) go(state.index + 1);
+    else render();
+  }
+
+  function buildFullView() {
+    const nodes = [];
+    sections.forEach(section => {
+      const sectionNode = document.createElement('section');
+      sectionNode.className = 'full-section';
+      sectionNode.id = `full-${section.id}`;
+      const title = document.createElement('div');
+      title.className = 'full-section-title';
+      const h2 = document.createElement('h2'); h2.textContent = section.name;
+      const count = document.createElement('span'); count.textContent = `${sectionChunks(section.id).length}개 단위${section.optional ? ' · 원문상 생략 가능' : ''}`;
+      title.append(h2, count);
+      sectionNode.appendChild(title);
+      sectionChunks(section.id).forEach(chunk => {
+        const article = document.createElement('article');
+        article.className = 'full-chunk';
+        article.id = `full-${chunk.id}`;
+        const head = document.createElement('header'); head.className = 'full-chunk-head';
+        const id = document.createElement('div'); id.className = 'full-chunk-id'; id.textContent = `${chunk.id} · 원문 ${chunk.source_lines.join(', ')}행`;
+        const h3 = document.createElement('h3'); h3.textContent = chunk.title;
+        head.append(id, h3);
+        const lines = document.createElement('div'); lines.className = 'full-chunk-lines';
+        lines.replaceChildren(...chunk.rows.map(makeSourceRow));
+        article.append(head, lines);
+        sectionNode.appendChild(article);
+      });
+      nodes.push(sectionNode);
+    });
+    $('fullContent').replaceChildren(...nodes);
+    $('fullCoverage').textContent = `원문 의미 행 ${DATA.audit.mapped_semantic_lines}/${DATA.audit.semantic_source_lines} · 누락 0 · 중복 0`;
+  }
+
+  $('previousButton').addEventListener('click', () => go(state.index - 1));
+  $('revealButton').addEventListener('click', () => { revealed = !revealed; renderAnswer(); });
+  $('redoButton').addEventListener('click', () => mark('redo'));
+  $('masterButton').addEventListener('click', () => mark('mastered'));
+  $('mobileJump').addEventListener('change', event => go(Number(event.target.value)));
+  $('bridgeToggle').addEventListener('click', () => { state.bridge = !state.bridge; render(); });
+  $('recallTab').addEventListener('click', () => { state.view = 'recall'; renderView(); persist(); });
+  $('fullTab').addEventListener('click', () => { state.view = 'full'; renderView(); persist(); });
+  $('resetProgress').addEventListener('click', () => {
+    if (!resetArmed) {
+      resetArmed = true;
+      $('resetProgress').textContent = '한 번 더 눌러 초기화';
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(() => { resetArmed = false; $('resetProgress').textContent = '진행 기록 초기화'; }, 3000);
+      return;
+    }
+    state.statuses = {};
+    state.index = 0;
+    resetArmed = false;
+    $('resetProgress').textContent = '진행 기록 초기화';
+    render();
   });
-}
-function render(){
-  const c=chunks[index], mode=$('mode').value; revealed=mode==='read';
-  $('chunkId').textContent=c.id; $('section').textContent=c.section; $('chunkLabel').textContent=c.label;
-  $('bridge').textContent=`이전 끝 → ${c.previous_tail}`; $('bridge').style.display=mode==='recall'?'none':'block';
-  $('cue').textContent=c.cue; $('answer').textContent=c.exact_text;
-  $('answer').classList.toggle('visible',revealed); $('placeholder').style.display=revealed?'none':'block';
-  $('reveal').textContent=revealed?'원문 가리기':'원문 공개';
-  $('statusNote').textContent=`현재 위치 ${index+1}/${chunks.length} · 원문 행 ${c.source_line} · 상태: ${statuses[c.id]==='mastered'?'외움':statuses[c.id]==='redo'?'다시 보기':'미학습'}`;
-  const mastered=chunks.filter(x=>statuses[x.id]==='mastered').length;
-  $('progressBar').style.width=`${mastered/chunks.length*100}%`; $('progressText').textContent=`외운 덩어리 ${mastered} / ${chunks.length}`;
-  renderNav(); persist();
-}
-function go(i){index=(i+chunks.length)%chunks.length; render();}
-$('prev').onclick=()=>go(index-1); $('reveal').onclick=()=>{revealed=!revealed;$('answer').classList.toggle('visible',revealed);$('placeholder').style.display=revealed?'none':'block';$('reveal').textContent=revealed?'원문 가리기':'원문 공개';};
-$('wrong').onclick=()=>{statuses[chunks[index].id]='redo';go(index+1)};
-$('right').onclick=()=>{statuses[chunks[index].id]='mastered';go(index+1)};
-$('mode').onchange=render; $('mobileNav').onchange=e=>go(Number(e.target.value));
-document.addEventListener('keydown',e=>{if(e.target.matches('select,button'))return;if(e.key==='ArrowRight')go(index+1);else if(e.key==='ArrowLeft')go(index-1);else if(e.code==='Space'){e.preventDefault();$('reveal').click()}else if(e.key.toLowerCase()==='m')$('right').click();});
-$('sourceMeta').textContent=`${DATA.audit.chunks} chunks · source ${DATA.audit.source_sha256.slice(0,12)}`;
-$('chunkTotal').textContent=chunks.length;
-render();
+
+  document.addEventListener('keydown', event => {
+    if (event.target.matches('button, select, input, textarea, a')) return;
+    if (event.key === 'ArrowRight') go(state.index + 1);
+    else if (event.key === 'ArrowLeft') go(state.index - 1);
+    else if (event.code === 'Space' && state.view === 'recall') { event.preventDefault(); $('revealButton').click(); }
+    else if (event.key === '1' && state.view === 'recall') mark('redo');
+    else if (event.key === '2' && state.view === 'recall') mark('mastered');
+  });
+
+  buildFullView();
+  render();
+})();
 </script>
-</body></html>
+</body>
+</html>
