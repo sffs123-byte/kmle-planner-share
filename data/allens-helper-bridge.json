@@ -1,7 +1,7 @@
 {
-  "serverUrl": "https://firewall-seller-pan-genesis.trycloudflare.com/api/interpret",
-  "healthUrl": "https://firewall-seller-pan-genesis.trycloudflare.com/health",
-  "updatedAt": "2026-07-19T15:05:13Z",
+  "serverUrl": "https://habitat-twice-fired-its.trycloudflare.com/api/interpret",
+  "healthUrl": "https://habitat-twice-fired-its.trycloudflare.com/health",
+  "updatedAt": "2026-08-18T12:29:39Z",
   "source": "mac-mini-allens-helper-launchagent",
   "note": "Bridge token is intentionally not published. Extension stores token locally."
 }
