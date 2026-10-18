@@ -1,7 +1,7 @@
 {
-  "serverUrl": "https://habitat-twice-fired-its.trycloudflare.com/api/interpret",
-  "healthUrl": "https://habitat-twice-fired-its.trycloudflare.com/health",
-  "updatedAt": "2026-08-18T12:29:39Z",
+  "serverUrl": "https://admit-suffering-strap-bailey.trycloudflare.com/api/interpret",
+  "healthUrl": "https://admit-suffering-strap-bailey.trycloudflare.com/health",
+  "updatedAt": "2026-10-18T03:46:03Z",
   "source": "mac-mini-allens-helper-launchagent",
   "note": "Bridge token is intentionally not published. Extension stores token locally."
 }
