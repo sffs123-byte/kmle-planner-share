@@ -1,7 +1,7 @@
 {
-  "serverUrl": "https://polo-reservation-nicholas-producer.trycloudflare.com/api/interpret",
-  "healthUrl": "https://polo-reservation-nicholas-producer.trycloudflare.com/health",
-  "updatedAt": "2026-10-25T05:16:12Z",
+  "serverUrl": "https://ages-deadline-thesis-houston.trycloudflare.com/api/interpret",
+  "healthUrl": "https://ages-deadline-thesis-houston.trycloudflare.com/health",
+  "updatedAt": "2026-10-25T05:23:03Z",
   "source": "mac-mini-allens-helper-launchagent",
   "note": "Bridge token is intentionally not published. Extension stores token locally."
 }
