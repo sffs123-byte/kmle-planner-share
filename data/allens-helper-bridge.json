@@ -1,7 +1,7 @@
 {
-  "serverUrl": "https://wall-blue-modifications-exams.trycloudflare.com/api/interpret",
-  "healthUrl": "https://wall-blue-modifications-exams.trycloudflare.com/health",
-  "updatedAt": "2026-10-25T12:05:58Z",
+  "serverUrl": "https://menus-messenger-drawings-cool.trycloudflare.com/api/interpret",
+  "healthUrl": "https://menus-messenger-drawings-cool.trycloudflare.com/health",
+  "updatedAt": "2026-10-25T13:38:44Z",
   "source": "mac-mini-allens-helper-launchagent",
   "note": "Bridge token is intentionally not published. Extension stores token locally."
 }
