@@ -1,7 +1,7 @@
 {
-  "serverUrl": "https://kingdom-jobs-race-language.trycloudflare.com/api/interpret",
-  "healthUrl": "https://kingdom-jobs-race-language.trycloudflare.com/health",
-  "updatedAt": "2026-10-25T06:24:22Z",
+  "serverUrl": "https://kiss-asn-police-epson.trycloudflare.com/api/interpret",
+  "healthUrl": "https://kiss-asn-police-epson.trycloudflare.com/health",
+  "updatedAt": "2026-10-25T06:42:16Z",
   "source": "mac-mini-allens-helper-launchagent",
   "note": "Bridge token is intentionally not published. Extension stores token locally."
 }
